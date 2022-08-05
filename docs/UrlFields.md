@@ -1,0 +1,18 @@
+# twitter::UrlFields
+
+Represent the portion of text recognized as a URL.
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**description** | **character** | Description of the URL landing page. | [optional] 
+**display_url** | **character** | The URL as displayed in the Twitter client. | [optional] 
+**expanded_url** | **character** | A validly formatted URL. | [optional] 
+**images** | [**array[UrlImage]**](UrlImage.md) |  | [optional] 
+**media_key** | **character** | The Media Key identifier for this attachment. | [optional] 
+**status** | **integer** | HTTP Status Code. | [optional] 
+**title** | **character** | Title of the page the URL points to. | [optional] 
+**unwound_url** | **character** | Fully resolved url. | [optional] 
+**url** | **character** | A validly formatted URL. | 
+
+
