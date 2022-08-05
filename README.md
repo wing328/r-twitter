@@ -389,7 +389,7 @@ Class | Method | HTTP request | Description
 
 ### BearerToken
 
-- **Type**: HTTP basic authentication
+- **Type**: Bearer authentication
 
 ### OAuth2UserToken
 
@@ -418,7 +418,6 @@ Class | Method | HTTP request | Description
 
 ### UserToken
 
-- **Type**: HTTP basic authentication
 
 
 
