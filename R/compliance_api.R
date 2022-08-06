@@ -379,7 +379,10 @@ ComplianceApi <- R6::R6Class(
       }
 
       local_var_url_path <- "/2/compliance/jobs"
-      header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      # Bearer token
+      if (!is.null(self$api_client$bearer_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      }
 
       # The Accept request HTTP header
       local_var_accepts = list("application/json", "application/problem+json")
@@ -496,7 +499,10 @@ ComplianceApi <- R6::R6Class(
         local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
-      header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      # Bearer token
+      if (!is.null(self$api_client$bearer_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      }
 
       # The Accept request HTTP header
       local_var_accepts = list("application/json", "application/problem+json")
@@ -619,7 +625,10 @@ ComplianceApi <- R6::R6Class(
       query_params["end_time"] <- `end_time`
 
       local_var_url_path <- "/2/tweets/compliance/stream"
-      header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      # Bearer token
+      if (!is.null(self$api_client$bearer_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      }
 
       # The Accept request HTTP header
       local_var_accepts = list("application/json", "application/problem+json")
@@ -742,7 +751,10 @@ ComplianceApi <- R6::R6Class(
       query_params["end_time"] <- `end_time`
 
       local_var_url_path <- "/2/users/compliance/stream"
-      header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      # Bearer token
+      if (!is.null(self$api_client$bearer_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      }
 
       # The Accept request HTTP header
       local_var_accepts = list("application/json", "application/problem+json")
@@ -861,7 +873,10 @@ ComplianceApi <- R6::R6Class(
       query_params["compliance_job.fields"] <- `compliance_job_fields`
 
       local_var_url_path <- "/2/compliance/jobs"
-      header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      # Bearer token
+      if (!is.null(self$api_client$bearer_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      }
 
       # The Accept request HTTP header
       local_var_accepts = list("application/json", "application/problem+json")

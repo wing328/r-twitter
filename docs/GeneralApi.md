@@ -29,15 +29,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `get_open_api_spec`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters

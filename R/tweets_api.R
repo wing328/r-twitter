@@ -1916,7 +1916,10 @@ TweetsApi <- R6::R6Class(
       }
 
       local_var_url_path <- "/2/tweets/search/stream/rules"
-      header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      # Bearer token
+      if (!is.null(self$api_client$bearer_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      }
 
       # The Accept request HTTP header
       local_var_accepts = list("application/json", "application/problem+json")
@@ -2032,7 +2035,9 @@ TweetsApi <- R6::R6Class(
 
       local_var_url_path <- "/2/tweets"
       # OAuth token
-      header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      if (!is.null(self$api_client$access_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      }
 
       # The Accept request HTTP header
       local_var_accepts = list("application/json", "application/problem+json")
@@ -2146,7 +2151,9 @@ TweetsApi <- R6::R6Class(
       }
 
       # OAuth token
-      header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      if (!is.null(self$api_client$access_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      }
 
       # The Accept request HTTP header
       local_var_accepts = list("application/json", "application/problem+json")
@@ -2283,9 +2290,14 @@ TweetsApi <- R6::R6Class(
         local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
-      header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      # Bearer token
+      if (!is.null(self$api_client$bearer_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      }
       # OAuth token
-      header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      if (!is.null(self$api_client$access_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      }
 
       # The Accept request HTTP header
       local_var_accepts = list("application/json", "application/problem+json")
@@ -2420,9 +2432,14 @@ TweetsApi <- R6::R6Class(
       query_params["place.fields"] <- `place_fields`
 
       local_var_url_path <- "/2/tweets"
-      header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      # Bearer token
+      if (!is.null(self$api_client$bearer_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      }
       # OAuth token
-      header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      if (!is.null(self$api_client$access_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      }
 
       # The Accept request HTTP header
       local_var_accepts = list("application/json", "application/problem+json")
@@ -2571,9 +2588,14 @@ TweetsApi <- R6::R6Class(
         local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
-      header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      # Bearer token
+      if (!is.null(self$api_client$bearer_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      }
       # OAuth token
-      header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      if (!is.null(self$api_client$access_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      }
 
       # The Accept request HTTP header
       local_var_accepts = list("application/json", "application/problem+json")
@@ -2685,7 +2707,10 @@ TweetsApi <- R6::R6Class(
       query_params["pagination_token"] <- `pagination_token`
 
       local_var_url_path <- "/2/tweets/search/stream/rules"
-      header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      # Bearer token
+      if (!is.null(self$api_client$bearer_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      }
 
       # The Accept request HTTP header
       local_var_accepts = list("application/json", "application/problem+json")
@@ -2832,7 +2857,10 @@ TweetsApi <- R6::R6Class(
       query_params["place.fields"] <- `place_fields`
 
       local_var_url_path <- "/2/tweets/firehose/stream"
-      header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      # Bearer token
+      if (!is.null(self$api_client$bearer_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      }
 
       # The Accept request HTTP header
       local_var_accepts = list("application/json", "application/problem+json")
@@ -2979,7 +3007,10 @@ TweetsApi <- R6::R6Class(
       query_params["place.fields"] <- `place_fields`
 
       local_var_url_path <- "/2/tweets/sample10/stream"
-      header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      # Bearer token
+      if (!is.null(self$api_client$bearer_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      }
 
       # The Accept request HTTP header
       local_var_accepts = list("application/json", "application/problem+json")
@@ -3101,7 +3132,9 @@ TweetsApi <- R6::R6Class(
       }
 
       # OAuth token
-      header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      if (!is.null(self$api_client$access_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      }
 
       # The Accept request HTTP header
       local_var_accepts = list("application/json", "application/problem+json")
@@ -3246,9 +3279,14 @@ TweetsApi <- R6::R6Class(
         local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
-      header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      # Bearer token
+      if (!is.null(self$api_client$bearer_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      }
       # OAuth token
-      header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      if (!is.null(self$api_client$access_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      }
 
       # The Accept request HTTP header
       local_var_accepts = list("application/json", "application/problem+json")
@@ -3376,7 +3414,10 @@ TweetsApi <- R6::R6Class(
       query_params["place.fields"] <- `place_fields`
 
       local_var_url_path <- "/2/tweets/sample/stream"
-      header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      # Bearer token
+      if (!is.null(self$api_client$bearer_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      }
 
       # The Accept request HTTP header
       local_var_accepts = list("application/json", "application/problem+json")
@@ -3512,7 +3553,10 @@ TweetsApi <- R6::R6Class(
       query_params["place.fields"] <- `place_fields`
 
       local_var_url_path <- "/2/tweets/search/stream"
-      header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      # Bearer token
+      if (!is.null(self$api_client$bearer_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      }
 
       # The Accept request HTTP header
       local_var_accepts = list("application/json", "application/problem+json")
@@ -3646,7 +3690,9 @@ TweetsApi <- R6::R6Class(
       }
 
       # OAuth token
-      header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      if (!is.null(self$api_client$access_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      }
 
       # The Accept request HTTP header
       local_var_accepts = list("application/json", "application/problem+json")
@@ -3787,9 +3833,14 @@ TweetsApi <- R6::R6Class(
         local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
-      header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      # Bearer token
+      if (!is.null(self$api_client$bearer_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      }
       # OAuth token
-      header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      if (!is.null(self$api_client$access_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      }
 
       # The Accept request HTTP header
       local_var_accepts = list("application/json", "application/problem+json")
@@ -3932,7 +3983,10 @@ TweetsApi <- R6::R6Class(
       query_params["search_count.fields"] <- `search_count_fields`
 
       local_var_url_path <- "/2/tweets/counts/all"
-      header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      # Bearer token
+      if (!is.null(self$api_client$bearer_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      }
 
       # The Accept request HTTP header
       local_var_accepts = list("application/json", "application/problem+json")
@@ -4075,7 +4129,10 @@ TweetsApi <- R6::R6Class(
       query_params["search_count.fields"] <- `search_count_fields`
 
       local_var_url_path <- "/2/tweets/counts/recent"
-      header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      # Bearer token
+      if (!is.null(self$api_client$bearer_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      }
 
       # The Accept request HTTP header
       local_var_accepts = list("application/json", "application/problem+json")
@@ -4242,7 +4299,10 @@ TweetsApi <- R6::R6Class(
       query_params["place.fields"] <- `place_fields`
 
       local_var_url_path <- "/2/tweets/search/all"
-      header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      # Bearer token
+      if (!is.null(self$api_client$bearer_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      }
 
       # The Accept request HTTP header
       local_var_accepts = list("application/json", "application/problem+json")
@@ -4409,9 +4469,14 @@ TweetsApi <- R6::R6Class(
       query_params["place.fields"] <- `place_fields`
 
       local_var_url_path <- "/2/tweets/search/recent"
-      header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      # Bearer token
+      if (!is.null(self$api_client$bearer_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      }
       # OAuth token
-      header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      if (!is.null(self$api_client$access_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      }
 
       # The Accept request HTTP header
       local_var_accepts = list("application/json", "application/problem+json")
@@ -4533,7 +4598,9 @@ TweetsApi <- R6::R6Class(
       }
 
       # OAuth token
-      header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      if (!is.null(self$api_client$access_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      }
 
       # The Accept request HTTP header
       local_var_accepts = list("application/json", "application/problem+json")
@@ -4678,9 +4745,14 @@ TweetsApi <- R6::R6Class(
         local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
-      header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      # Bearer token
+      if (!is.null(self$api_client$bearer_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      }
       # OAuth token
-      header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      if (!is.null(self$api_client$access_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      }
 
       # The Accept request HTTP header
       local_var_accepts = list("application/json", "application/problem+json")
@@ -4841,9 +4913,14 @@ TweetsApi <- R6::R6Class(
         local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
-      header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      # Bearer token
+      if (!is.null(self$api_client$bearer_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      }
       # OAuth token
-      header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      if (!is.null(self$api_client$access_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      }
 
       # The Accept request HTTP header
       local_var_accepts = list("application/json", "application/problem+json")
@@ -4965,7 +5042,9 @@ TweetsApi <- R6::R6Class(
       }
 
       # OAuth token
-      header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      if (!is.null(self$api_client$access_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      }
 
       # The Accept request HTTP header
       local_var_accepts = list("application/json", "application/problem+json")
@@ -5131,7 +5210,9 @@ TweetsApi <- R6::R6Class(
       }
 
       # OAuth token
-      header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      if (!is.null(self$api_client$access_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      }
 
       # The Accept request HTTP header
       local_var_accepts = list("application/json", "application/problem+json")
@@ -5296,9 +5377,14 @@ TweetsApi <- R6::R6Class(
         local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
-      header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      # Bearer token
+      if (!is.null(self$api_client$bearer_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      }
       # OAuth token
-      header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      if (!is.null(self$api_client$access_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      }
 
       # The Accept request HTTP header
       local_var_accepts = list("application/json", "application/problem+json")
@@ -5425,7 +5511,9 @@ TweetsApi <- R6::R6Class(
       }
 
       # OAuth token
-      header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      if (!is.null(self$api_client$access_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      }
 
       # The Accept request HTTP header
       local_var_accepts = list("application/json", "application/problem+json")
@@ -5552,7 +5640,9 @@ TweetsApi <- R6::R6Class(
       }
 
       # OAuth token
-      header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      if (!is.null(self$api_client$access_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      }
 
       # The Accept request HTTP header
       local_var_accepts = list("application/json", "application/problem+json")

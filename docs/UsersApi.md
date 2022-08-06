@@ -36,14 +36,14 @@ This endpoint returns information about the requesting User.
 ```R
 library(twitter)
 
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display.
-var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand.
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display.
+var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
+var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 
 #User lookup me
 api_instance <- UsersApi$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$find_my_user(user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
@@ -52,15 +52,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `find_my_user`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -102,16 +101,16 @@ This endpoint returns information about a User. Specify User by ID.
 library(twitter)
 
 var_id <- "2244994945" # character | The ID of the User to lookup.
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display.
-var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand.
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display.
+var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
+var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 
 #User lookup by ID
 api_instance <- UsersApi$new()
 # Configure HTTP bearer authorization: BearerToken
-api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$find_user_by_id(var_id, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
@@ -120,15 +119,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `find_user_by_id`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -171,16 +169,16 @@ This endpoint returns information about a User. Specify User by username.
 library(twitter)
 
 var_username <- "TwitterDev" # character | A username.
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display.
-var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand.
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display.
+var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
+var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 
 #User lookup by username
 api_instance <- UsersApi$new()
 # Configure HTTP bearer authorization: BearerToken
-api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$find_user_by_username(var_username, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
@@ -189,15 +187,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `find_user_by_username`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -240,16 +237,16 @@ This endpoint returns information about Users. Specify Users by their ID.
 library(twitter)
 
 var_ids <- list("inner_example") # array[character] | A list of User IDs, comma-separated. You can specify up to 100 IDs.
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display.
-var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand.
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display.
+var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
+var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 
 #User lookup by IDs
 api_instance <- UsersApi$new()
 # Configure HTTP bearer authorization: BearerToken
-api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$find_users_by_id(var_ids, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
@@ -258,15 +255,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `find_users_by_id`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -309,16 +305,16 @@ This endpoint returns information about Users. Specify Users by their username.
 library(twitter)
 
 var_usernames <- list("inner_example") # array[character] | A list of usernames, comma-separated.
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display.
-var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand.
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display.
+var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
+var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 
 #User lookup by usernames
 api_instance <- UsersApi$new()
 # Configure HTTP bearer authorization: BearerToken
-api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$find_users_by_username(var_usernames, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
@@ -327,15 +323,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `find_users_by_username`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -378,18 +373,18 @@ Returns a list of Users that follow a List by the provided List ID
 library(twitter)
 
 var_id <- "id_example" # character | The ID of the List.
-var_max_results <- 100 # integer | The maximum number of results.
-var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results.
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display.
-var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand.
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display.
+var_max_results <- 100 # integer | The maximum number of results. (Optional)
+var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results. (Optional)
+var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
+var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 
 #Returns User objects that follow a List by the provided List ID
 api_instance <- UsersApi$new()
 # Configure HTTP bearer authorization: BearerToken
-api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$list_get_followers(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
@@ -398,15 +393,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `list_get_followers`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -451,18 +445,18 @@ Returns a list of Users that are members of a List by the provided List ID.
 library(twitter)
 
 var_id <- "id_example" # character | The ID of the List.
-var_max_results <- 100 # integer | The maximum number of results.
-var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results.
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display.
-var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand.
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display.
+var_max_results <- 100 # integer | The maximum number of results. (Optional)
+var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results. (Optional)
+var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
+var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 
 #Returns User objects that are members of a List by the provided List ID.
 api_instance <- UsersApi$new()
 # Configure HTTP bearer authorization: BearerToken
-api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$list_get_members(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
@@ -471,15 +465,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `list_get_members`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -524,18 +517,18 @@ Returns a list of Users that have liked the provided Tweet ID
 library(twitter)
 
 var_id <- "id_example" # character | A single Tweet ID.
-var_max_results <- 100 # integer | The maximum number of results.
-var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results.
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display.
-var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand.
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display.
+var_max_results <- 100 # integer | The maximum number of results. (Optional)
+var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. (Optional)
+var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
+var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 
 #Returns User objects that have liked the provided Tweet ID
 api_instance <- UsersApi$new()
 # Configure HTTP bearer authorization: BearerToken
-api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$tweets_id_liking_users(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
@@ -544,15 +537,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `tweets_id_liking_users`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -597,18 +589,18 @@ Returns a list of Users that have retweeted the provided Tweet ID
 library(twitter)
 
 var_id <- "id_example" # character | A single Tweet ID.
-var_max_results <- 100 # integer | The maximum number of results.
-var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results.
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display.
-var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand.
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display.
+var_max_results <- 100 # integer | The maximum number of results. (Optional)
+var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. (Optional)
+var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
+var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 
 #Returns User objects that have retweeted the provided Tweet ID
 api_instance <- UsersApi$new()
 # Configure HTTP bearer authorization: BearerToken
-api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$tweets_id_retweeting_users(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
@@ -617,15 +609,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `tweets_id_retweeting_users`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -675,7 +666,7 @@ var_block_user_request <- BlockUserRequest$new("target_user_id_example") # Block
 #Block User by User ID
 api_instance <- UsersApi$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$users_id_block(var_id, var_block_user_request, data_file = "result.txt"),
@@ -684,15 +675,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `users_id_block`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -733,16 +723,16 @@ Returns a list of Users that are blocked by the provided User ID
 library(twitter)
 
 var_id <- "id_example" # character | The ID of the authenticated source User for whom to return results.
-var_max_results <- 56 # integer | The maximum number of results.
-var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results.
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display.
-var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand.
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display.
+var_max_results <- 56 # integer | The maximum number of results. (Optional)
+var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results. (Optional)
+var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
+var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 
 #Returns User objects that are blocked by provided User ID
 api_instance <- UsersApi$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$users_id_blocking(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
@@ -751,15 +741,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `users_id_blocking`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -804,12 +793,12 @@ Causes the User(in the path) to follow, or “request to follow” for protected
 library(twitter)
 
 var_id <- "id_example" # character | The ID of the authenticated source User that is requesting to follow the target User.
-var_users_following_create_request <- UsersFollowingCreateRequest$new("target_user_id_example") # UsersFollowingCreateRequest | 
+var_users_following_create_request <- UsersFollowingCreateRequest$new("target_user_id_example") # UsersFollowingCreateRequest |  (Optional)
 
 #Follow User
 api_instance <- UsersApi$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$users_id_follow(var_id, users_following_create_request = var_users_following_create_request, data_file = "result.txt"),
@@ -818,15 +807,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `users_id_follow`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -867,18 +855,18 @@ Returns a list of Users that follow the provided User ID
 library(twitter)
 
 var_id <- "2244994945" # character | The ID of the User to lookup.
-var_max_results <- 56 # integer | The maximum number of results.
-var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results.
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display.
-var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand.
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display.
+var_max_results <- 56 # integer | The maximum number of results. (Optional)
+var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results. (Optional)
+var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
+var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 
 #Returns User objects that follow a List by the provided User ID
 api_instance <- UsersApi$new()
 # Configure HTTP bearer authorization: BearerToken
-api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$users_id_followers(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
@@ -887,15 +875,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `users_id_followers`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -940,18 +927,18 @@ Returns a list of Users that are being followed by the provided User ID
 library(twitter)
 
 var_id <- "2244994945" # character | The ID of the User to lookup.
-var_max_results <- 56 # integer | The maximum number of results.
-var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results.
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display.
-var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand.
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display.
+var_max_results <- 56 # integer | The maximum number of results. (Optional)
+var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results. (Optional)
+var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
+var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 
 #Following by User ID
 api_instance <- UsersApi$new()
 # Configure HTTP bearer authorization: BearerToken
-api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$users_id_following(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
@@ -960,15 +947,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `users_id_following`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -1013,12 +999,12 @@ Causes the User (in the path) to mute the target User. The User (in the path) mu
 library(twitter)
 
 var_id <- "id_example" # character | The ID of the authenticated source User that is requesting to mute the target User.
-var_mute_user_request <- MuteUserRequest$new("target_user_id_example") # MuteUserRequest | 
+var_mute_user_request <- MuteUserRequest$new("target_user_id_example") # MuteUserRequest |  (Optional)
 
 #Mute User by User ID.
 api_instance <- UsersApi$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$users_id_mute(var_id, mute_user_request = var_mute_user_request, data_file = "result.txt"),
@@ -1027,15 +1013,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `users_id_mute`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -1076,16 +1061,16 @@ Returns a list of Users that are muted by the provided User ID
 library(twitter)
 
 var_id <- "id_example" # character | The ID of the authenticated source User for whom to return results.
-var_max_results <- 100 # integer | The maximum number of results.
-var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results.
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display.
-var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand.
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display.
+var_max_results <- 100 # integer | The maximum number of results. (Optional)
+var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. (Optional)
+var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
+var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 
 #Returns User objects that are muted by the provided User ID
 api_instance <- UsersApi$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$users_id_muting(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
@@ -1094,15 +1079,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `users_id_muting`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -1152,7 +1136,7 @@ var_target_user_id <- "target_user_id_example" # character | The ID of the User 
 #Unblock User by User ID
 api_instance <- UsersApi$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$users_id_unblock(var_source_user_id, var_target_user_id, data_file = "result.txt"),
@@ -1161,15 +1145,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `users_id_unblock`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -1215,7 +1198,7 @@ var_target_user_id <- "target_user_id_example" # character | The ID of the User 
 #Unfollow User
 api_instance <- UsersApi$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$users_id_unfollow(var_source_user_id, var_target_user_id, data_file = "result.txt"),
@@ -1224,15 +1207,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `users_id_unfollow`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -1278,7 +1260,7 @@ var_target_user_id <- "target_user_id_example" # character | The ID of the User 
 #Unmute User by User ID
 api_instance <- UsersApi$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$users_id_unmute(var_source_user_id, var_target_user_id, data_file = "result.txt"),
@@ -1287,15 +1269,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `users_id_unmute`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters

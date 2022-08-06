@@ -45,12 +45,12 @@ Add or delete rules from a User's active rule set. Users can provide unique, opt
 library(twitter)
 
 var_add_or_delete_rules_request <- AddOrDeleteRulesRequest$new(list(RuleNoId$new("value_example", "tag_example")), DeleteRulesRequest_delete$new(list("ids_example"), list("values_example"))) # AddOrDeleteRulesRequest | 
-var_dry_run <- "dry_run_example" # character | Dry Run can be used with both the add and delete action, with the expected result given, but without actually taking any action in the system (meaning the end state will always be as it was when the request was submitted). This is particularly useful to validate rule changes.
+var_dry_run <- "dry_run_example" # character | Dry Run can be used with both the add and delete action, with the expected result given, but without actually taking any action in the system (meaning the end state will always be as it was when the request was submitted). This is particularly useful to validate rule changes. (Optional)
 
 #Add/Delete rules
 api_instance <- TweetsApi$new()
 # Configure HTTP bearer authorization: BearerToken
-api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$add_or_delete_rules(var_add_or_delete_rules_request, dry_run = var_dry_run, data_file = "result.txt"),
@@ -59,15 +59,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `add_or_delete_rules`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -112,7 +111,7 @@ var_tweet_create_request <- TweetCreateRequest$new("direct_message_deep_link_exa
 #Creation of a Tweet
 api_instance <- TweetsApi$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$create_tweet(var_tweet_create_request, data_file = "result.txt"),
@@ -121,15 +120,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `create_tweet`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -173,7 +171,7 @@ var_id <- "id_example" # character | The ID of the Tweet to be deleted.
 #Tweet delete by Tweet ID
 api_instance <- TweetsApi$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$delete_tweet_by_id(var_id, data_file = "result.txt"),
@@ -182,15 +180,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `delete_tweet_by_id`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -230,19 +227,19 @@ Returns a variety of information about the Tweet specified by the requested ID.
 library(twitter)
 
 var_id <- "id_example" # character | A single Tweet ID.
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display.
-var_expansions <- list("attachments.media_keys") # set[character] | A comma separated list of fields to expand.
-var_media_fields <- list("alt_text") # set[character] | A comma separated list of Media fields to display.
-var_poll_fields <- list("duration_minutes") # set[character] | A comma separated list of Poll fields to display.
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display.
-var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display.
+var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+var_expansions <- list("attachments.media_keys") # set[character] | A comma separated list of fields to expand. (Optional)
+var_media_fields <- list("alt_text") # set[character] | A comma separated list of Media fields to display. (Optional)
+var_poll_fields <- list("duration_minutes") # set[character] | A comma separated list of Poll fields to display. (Optional)
+var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 
 #Tweet lookup by Tweet ID
 api_instance <- TweetsApi$new()
 # Configure HTTP bearer authorization: BearerToken
-api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$find_tweet_by_id(var_id, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
@@ -251,15 +248,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `find_tweet_by_id`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -305,19 +301,19 @@ Returns a variety of information about the Tweet specified by the requested ID.
 library(twitter)
 
 var_ids <- list("inner_example") # array[character] | A comma separated list of Tweet IDs. Up to 100 are allowed in a single request.
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display.
-var_expansions <- list("attachments.media_keys") # set[character] | A comma separated list of fields to expand.
-var_media_fields <- list("alt_text") # set[character] | A comma separated list of Media fields to display.
-var_poll_fields <- list("duration_minutes") # set[character] | A comma separated list of Poll fields to display.
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display.
-var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display.
+var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+var_expansions <- list("attachments.media_keys") # set[character] | A comma separated list of fields to expand. (Optional)
+var_media_fields <- list("alt_text") # set[character] | A comma separated list of Media fields to display. (Optional)
+var_poll_fields <- list("duration_minutes") # set[character] | A comma separated list of Poll fields to display. (Optional)
+var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 
 #Tweet lookup by Tweet IDs
 api_instance <- TweetsApi$new()
 # Configure HTTP bearer authorization: BearerToken
-api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$find_tweets_by_id(var_ids, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
@@ -326,15 +322,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `find_tweets_by_id`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -380,22 +375,22 @@ Returns a variety of information about each Tweet that quotes the Tweet specifie
 library(twitter)
 
 var_id <- "id_example" # character | A single Tweet ID.
-var_max_results <- 10 # integer | The maximum number of results to be returned.
-var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results.
-var_exclude <- list("replies") # set[character] | The set of entities to exclude (e.g. 'replies' or 'retweets').
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display.
-var_expansions <- list("attachments.media_keys") # set[character] | A comma separated list of fields to expand.
-var_media_fields <- list("alt_text") # set[character] | A comma separated list of Media fields to display.
-var_poll_fields <- list("duration_minutes") # set[character] | A comma separated list of Poll fields to display.
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display.
-var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display.
+var_max_results <- 10 # integer | The maximum number of results to be returned. (Optional)
+var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results. (Optional)
+var_exclude <- list("replies") # set[character] | The set of entities to exclude (e.g. 'replies' or 'retweets'). (Optional)
+var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+var_expansions <- list("attachments.media_keys") # set[character] | A comma separated list of fields to expand. (Optional)
+var_media_fields <- list("alt_text") # set[character] | A comma separated list of Media fields to display. (Optional)
+var_poll_fields <- list("duration_minutes") # set[character] | A comma separated list of Poll fields to display. (Optional)
+var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 
 #Retrieve Tweets that quote a Tweet.
 api_instance <- TweetsApi$new()
 # Configure HTTP bearer authorization: BearerToken
-api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$find_tweets_that_quote_a_tweet(var_id, max_results = var_max_results, pagination_token = var_pagination_token, exclude = var_exclude, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
@@ -404,15 +399,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `find_tweets_that_quote_a_tweet`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -460,14 +454,14 @@ Returns rules from a User's active rule set. Users can fetch all of their rules 
 ```R
 library(twitter)
 
-var_ids <- list("inner_example") # array[character] | A comma-separated list of Rule IDs.
-var_max_results <- 1000 # integer | The maximum number of results.
-var_pagination_token <- "pagination_token_example" # character | This value is populated by passing the 'next_token' returned in a request to paginate through results.
+var_ids <- list("inner_example") # array[character] | A comma-separated list of Rule IDs. (Optional)
+var_max_results <- 1000 # integer | The maximum number of results. (Optional)
+var_pagination_token <- "pagination_token_example" # character | This value is populated by passing the 'next_token' returned in a request to paginate through results. (Optional)
 
 #Rules lookup
 api_instance <- TweetsApi$new()
 # Configure HTTP bearer authorization: BearerToken
-api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$get_rules(ids = var_ids, max_results = var_max_results, pagination_token = var_pagination_token, data_file = "result.txt"),
@@ -476,15 +470,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `get_rules`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -526,20 +519,20 @@ Streams 100% of public Tweets.
 library(twitter)
 
 var_partition <- 56 # integer | The partition number.
-var_backfill_minutes <- 56 # integer | The number of minutes of backfill requested.
-var_start_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp to which the Tweets will be provided.
-var_end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided.
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display.
-var_expansions <- list("attachments.media_keys") # set[character] | A comma separated list of fields to expand.
-var_media_fields <- list("alt_text") # set[character] | A comma separated list of Media fields to display.
-var_poll_fields <- list("duration_minutes") # set[character] | A comma separated list of Poll fields to display.
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display.
-var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display.
+var_backfill_minutes <- 56 # integer | The number of minutes of backfill requested. (Optional)
+var_start_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp to which the Tweets will be provided. (Optional)
+var_end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided. (Optional)
+var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+var_expansions <- list("attachments.media_keys") # set[character] | A comma separated list of fields to expand. (Optional)
+var_media_fields <- list("alt_text") # set[character] | A comma separated list of Media fields to display. (Optional)
+var_poll_fields <- list("duration_minutes") # set[character] | A comma separated list of Poll fields to display. (Optional)
+var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 
 #Firehose stream
 api_instance <- TweetsApi$new()
 # Configure HTTP bearer authorization: BearerToken
-api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$get_tweets_firehose_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
@@ -548,15 +541,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `get_tweets_firehose_stream`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -605,20 +597,20 @@ Streams a deterministic 10% of public Tweets.
 library(twitter)
 
 var_partition <- 56 # integer | The partition number.
-var_backfill_minutes <- 56 # integer | The number of minutes of backfill requested.
-var_start_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp to which the Tweets will be provided.
-var_end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided.
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display.
-var_expansions <- list("attachments.media_keys") # set[character] | A comma separated list of fields to expand.
-var_media_fields <- list("alt_text") # set[character] | A comma separated list of Media fields to display.
-var_poll_fields <- list("duration_minutes") # set[character] | A comma separated list of Poll fields to display.
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display.
-var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display.
+var_backfill_minutes <- 56 # integer | The number of minutes of backfill requested. (Optional)
+var_start_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp to which the Tweets will be provided. (Optional)
+var_end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided. (Optional)
+var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+var_expansions <- list("attachments.media_keys") # set[character] | A comma separated list of fields to expand. (Optional)
+var_media_fields <- list("alt_text") # set[character] | A comma separated list of Media fields to display. (Optional)
+var_poll_fields <- list("duration_minutes") # set[character] | A comma separated list of Poll fields to display. (Optional)
+var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 
 #Sample 10% stream
 api_instance <- TweetsApi$new()
 # Configure HTTP bearer authorization: BearerToken
-api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$get_tweets_sample10_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
@@ -627,15 +619,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `get_tweets_sample10_stream`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -684,12 +675,12 @@ Hides or unhides a reply to an owned conversation.
 library(twitter)
 
 var_tweet_id <- "tweet_id_example" # character | The ID of the reply that you want to hide or unhide.
-var_tweet_hide_request <- TweetHideRequest$new("hidden_example") # TweetHideRequest | 
+var_tweet_hide_request <- TweetHideRequest$new("hidden_example") # TweetHideRequest |  (Optional)
 
 #Hide replies
 api_instance <- TweetsApi$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$hide_reply_by_id(var_tweet_id, tweet_hide_request = var_tweet_hide_request, data_file = "result.txt"),
@@ -698,15 +689,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `hide_reply_by_id`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -747,21 +737,21 @@ Returns a list of Tweets associated with the provided List ID.
 library(twitter)
 
 var_id <- "id_example" # character | The ID of the List.
-var_max_results <- 100 # integer | The maximum number of results.
-var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results.
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display.
-var_expansions <- list("attachments.media_keys") # set[character] | A comma separated list of fields to expand.
-var_media_fields <- list("alt_text") # set[character] | A comma separated list of Media fields to display.
-var_poll_fields <- list("duration_minutes") # set[character] | A comma separated list of Poll fields to display.
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display.
-var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display.
+var_max_results <- 100 # integer | The maximum number of results. (Optional)
+var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. (Optional)
+var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+var_expansions <- list("attachments.media_keys") # set[character] | A comma separated list of fields to expand. (Optional)
+var_media_fields <- list("alt_text") # set[character] | A comma separated list of Media fields to display. (Optional)
+var_poll_fields <- list("duration_minutes") # set[character] | A comma separated list of Poll fields to display. (Optional)
+var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 
 #List Tweets timeline by List ID.
 api_instance <- TweetsApi$new()
 # Configure HTTP bearer authorization: BearerToken
-api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$lists_id_tweets(var_id, max_results = var_max_results, pagination_token = var_pagination_token, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
@@ -770,15 +760,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `lists_id_tweets`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -825,18 +814,18 @@ Streams a deterministic 1% of public Tweets.
 ```R
 library(twitter)
 
-var_backfill_minutes <- 56 # integer | The number of minutes of backfill requested.
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display.
-var_expansions <- list("attachments.media_keys") # set[character] | A comma separated list of fields to expand.
-var_media_fields <- list("alt_text") # set[character] | A comma separated list of Media fields to display.
-var_poll_fields <- list("duration_minutes") # set[character] | A comma separated list of Poll fields to display.
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display.
-var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display.
+var_backfill_minutes <- 56 # integer | The number of minutes of backfill requested. (Optional)
+var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+var_expansions <- list("attachments.media_keys") # set[character] | A comma separated list of fields to expand. (Optional)
+var_media_fields <- list("alt_text") # set[character] | A comma separated list of Media fields to display. (Optional)
+var_poll_fields <- list("duration_minutes") # set[character] | A comma separated list of Poll fields to display. (Optional)
+var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 
 #Sample stream
 api_instance <- TweetsApi$new()
 # Configure HTTP bearer authorization: BearerToken
-api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$sample_stream(backfill_minutes = var_backfill_minutes, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
@@ -845,15 +834,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `sample_stream`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -898,20 +886,20 @@ Streams Tweets matching the stream's active rule set.
 ```R
 library(twitter)
 
-var_backfill_minutes <- 56 # integer | The number of minutes of backfill requested.
-var_start_time <- "2021-02-01T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweets will be provided.
-var_end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided.
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display.
-var_expansions <- list("attachments.media_keys") # set[character] | A comma separated list of fields to expand.
-var_media_fields <- list("alt_text") # set[character] | A comma separated list of Media fields to display.
-var_poll_fields <- list("duration_minutes") # set[character] | A comma separated list of Poll fields to display.
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display.
-var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display.
+var_backfill_minutes <- 56 # integer | The number of minutes of backfill requested. (Optional)
+var_start_time <- "2021-02-01T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweets will be provided. (Optional)
+var_end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided. (Optional)
+var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+var_expansions <- list("attachments.media_keys") # set[character] | A comma separated list of fields to expand. (Optional)
+var_media_fields <- list("alt_text") # set[character] | A comma separated list of Media fields to display. (Optional)
+var_poll_fields <- list("duration_minutes") # set[character] | A comma separated list of Poll fields to display. (Optional)
+var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 
 #Filtered stream
 api_instance <- TweetsApi$new()
 # Configure HTTP bearer authorization: BearerToken
-api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$search_stream(backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
@@ -920,15 +908,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `search_stream`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -976,16 +963,16 @@ Retrieves the list of Users who purchased a ticket to the given space
 library(twitter)
 
 var_id <- "1YqKDqWqdPLsV" # character | The ID of the Space to be retrieved.
-var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results.
-var_max_results <- 100 # integer | The maximum number of results.
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display.
-var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand.
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display.
+var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results. (Optional)
+var_max_results <- 100 # integer | The maximum number of results. (Optional)
+var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
+var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 
 #Retrieve the list of Users who purchased a ticket to the given space
 api_instance <- TweetsApi$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$space_buyers(var_id, pagination_token = var_pagination_token, max_results = var_max_results, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
@@ -994,15 +981,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `space_buyers`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -1047,20 +1033,20 @@ Retrieves Tweets shared in the specified Space.
 library(twitter)
 
 var_id <- "1YqKDqWqdPLsV" # character | The ID of the Space to be retrieved.
-var_max_results <- 100 # integer | The number of Tweets to fetch from the provided space. If not provided, the value will default to the maximum of 100.
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display.
-var_expansions <- list("attachments.media_keys") # set[character] | A comma separated list of fields to expand.
-var_media_fields <- list("alt_text") # set[character] | A comma separated list of Media fields to display.
-var_poll_fields <- list("duration_minutes") # set[character] | A comma separated list of Poll fields to display.
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display.
-var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display.
+var_max_results <- 100 # integer | The number of Tweets to fetch from the provided space. If not provided, the value will default to the maximum of 100. (Optional)
+var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+var_expansions <- list("attachments.media_keys") # set[character] | A comma separated list of fields to expand. (Optional)
+var_media_fields <- list("alt_text") # set[character] | A comma separated list of Media fields to display. (Optional)
+var_poll_fields <- list("duration_minutes") # set[character] | A comma separated list of Poll fields to display. (Optional)
+var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 
 #Retrieve Tweets from a Space.
 api_instance <- TweetsApi$new()
 # Configure HTTP bearer authorization: BearerToken
-api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$space_tweets(var_id, max_results = var_max_results, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
@@ -1069,15 +1055,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `space_tweets`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -1124,19 +1109,19 @@ Returns Tweet Counts that match a search query.
 library(twitter)
 
 var_query <- "(from:TwitterDev OR from:TwitterAPI) has:media -is:retweet" # character | One query/rule/filter for matching Tweets. Refer to https://t.co/rulelength to identify the max query length.
-var_start_time <- "start_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The oldest UTC timestamp (from most recent 7 days) from which the Tweets will be provided. Timestamp is in second granularity and is inclusive (i.e. 12:00:01 includes the first second of the minute).
-var_end_time <- "end_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The newest, most recent UTC timestamp to which the Tweets will be provided. Timestamp is in second granularity and is exclusive (i.e. 12:00:01 excludes the first second of the minute).
-var_since_id <- "since_id_example" # character | Returns results with a Tweet ID greater than (that is, more recent than) the specified ID.
-var_until_id <- "until_id_example" # character | Returns results with a Tweet ID less than (that is, older than) the specified ID.
-var_next_token <- "next_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
-var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
-var_granularity <- "hour" # character | The granularity for the search counts results.
-var_search_count_fields <- list("end") # set[character] | A comma separated list of SearchCount fields to display.
+var_start_time <- "start_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The oldest UTC timestamp (from most recent 7 days) from which the Tweets will be provided. Timestamp is in second granularity and is inclusive (i.e. 12:00:01 includes the first second of the minute). (Optional)
+var_end_time <- "end_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The newest, most recent UTC timestamp to which the Tweets will be provided. Timestamp is in second granularity and is exclusive (i.e. 12:00:01 excludes the first second of the minute). (Optional)
+var_since_id <- "since_id_example" # character | Returns results with a Tweet ID greater than (that is, more recent than) the specified ID. (Optional)
+var_until_id <- "until_id_example" # character | Returns results with a Tweet ID less than (that is, older than) the specified ID. (Optional)
+var_next_token <- "next_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified. (Optional)
+var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified. (Optional)
+var_granularity <- "hour" # character | The granularity for the search counts results. (Optional)
+var_search_count_fields <- list("end") # set[character] | A comma separated list of SearchCount fields to display. (Optional)
 
 #Full archive search counts
 api_instance <- TweetsApi$new()
 # Configure HTTP bearer authorization: BearerToken
-api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$tweet_counts_full_archive_search(var_query, start_time = var_start_time, end_time = var_end_time, since_id = var_since_id, until_id = var_until_id, next_token = var_next_token, pagination_token = var_pagination_token, granularity = var_granularity, search_count_fields = var_search_count_fields, data_file = "result.txt"),
@@ -1145,15 +1130,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `tweet_counts_full_archive_search`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -1201,19 +1185,19 @@ Returns Tweet Counts from the last 7 days that match a search query.
 library(twitter)
 
 var_query <- "(from:TwitterDev OR from:TwitterAPI) has:media -is:retweet" # character | One query/rule/filter for matching Tweets. Refer to https://t.co/rulelength to identify the max query length.
-var_start_time <- "start_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The oldest UTC timestamp (from most recent 7 days) from which the Tweets will be provided. Timestamp is in second granularity and is inclusive (i.e. 12:00:01 includes the first second of the minute).
-var_end_time <- "end_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The newest, most recent UTC timestamp to which the Tweets will be provided. Timestamp is in second granularity and is exclusive (i.e. 12:00:01 excludes the first second of the minute).
-var_since_id <- "since_id_example" # character | Returns results with a Tweet ID greater than (that is, more recent than) the specified ID.
-var_until_id <- "until_id_example" # character | Returns results with a Tweet ID less than (that is, older than) the specified ID.
-var_next_token <- "next_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
-var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
-var_granularity <- "hour" # character | The granularity for the search counts results.
-var_search_count_fields <- list("end") # set[character] | A comma separated list of SearchCount fields to display.
+var_start_time <- "start_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The oldest UTC timestamp (from most recent 7 days) from which the Tweets will be provided. Timestamp is in second granularity and is inclusive (i.e. 12:00:01 includes the first second of the minute). (Optional)
+var_end_time <- "end_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The newest, most recent UTC timestamp to which the Tweets will be provided. Timestamp is in second granularity and is exclusive (i.e. 12:00:01 excludes the first second of the minute). (Optional)
+var_since_id <- "since_id_example" # character | Returns results with a Tweet ID greater than (that is, more recent than) the specified ID. (Optional)
+var_until_id <- "until_id_example" # character | Returns results with a Tweet ID less than (that is, older than) the specified ID. (Optional)
+var_next_token <- "next_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified. (Optional)
+var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified. (Optional)
+var_granularity <- "hour" # character | The granularity for the search counts results. (Optional)
+var_search_count_fields <- list("end") # set[character] | A comma separated list of SearchCount fields to display. (Optional)
 
 #Recent search counts
 api_instance <- TweetsApi$new()
 # Configure HTTP bearer authorization: BearerToken
-api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$tweet_counts_recent_search(var_query, start_time = var_start_time, end_time = var_end_time, since_id = var_since_id, until_id = var_until_id, next_token = var_next_token, pagination_token = var_pagination_token, granularity = var_granularity, search_count_fields = var_search_count_fields, data_file = "result.txt"),
@@ -1222,15 +1206,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `tweet_counts_recent_search`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -1278,25 +1261,25 @@ Returns Tweets that match a search query.
 library(twitter)
 
 var_query <- "(from:TwitterDev OR from:TwitterAPI) has:media -is:retweet" # character | One query/rule/filter for matching Tweets. Refer to https://t.co/rulelength to identify the max query length.
-var_start_time <- "start_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The oldest UTC timestamp from which the Tweets will be provided. Timestamp is in second granularity and is inclusive (i.e. 12:00:01 includes the first second of the minute).
-var_end_time <- "end_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The newest, most recent UTC timestamp to which the Tweets will be provided. Timestamp is in second granularity and is exclusive (i.e. 12:00:01 excludes the first second of the minute).
-var_since_id <- "since_id_example" # character | Returns results with a Tweet ID greater than (that is, more recent than) the specified ID.
-var_until_id <- "until_id_example" # character | Returns results with a Tweet ID less than (that is, older than) the specified ID.
-var_max_results <- 10 # integer | The maximum number of search results to be returned by a request.
-var_next_token <- "next_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
-var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
-var_sort_order <- "sort_order_example" # character | This order in which to return results.
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display.
-var_expansions <- list("attachments.media_keys") # set[character] | A comma separated list of fields to expand.
-var_media_fields <- list("alt_text") # set[character] | A comma separated list of Media fields to display.
-var_poll_fields <- list("duration_minutes") # set[character] | A comma separated list of Poll fields to display.
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display.
-var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display.
+var_start_time <- "start_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The oldest UTC timestamp from which the Tweets will be provided. Timestamp is in second granularity and is inclusive (i.e. 12:00:01 includes the first second of the minute). (Optional)
+var_end_time <- "end_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The newest, most recent UTC timestamp to which the Tweets will be provided. Timestamp is in second granularity and is exclusive (i.e. 12:00:01 excludes the first second of the minute). (Optional)
+var_since_id <- "since_id_example" # character | Returns results with a Tweet ID greater than (that is, more recent than) the specified ID. (Optional)
+var_until_id <- "until_id_example" # character | Returns results with a Tweet ID less than (that is, older than) the specified ID. (Optional)
+var_max_results <- 10 # integer | The maximum number of search results to be returned by a request. (Optional)
+var_next_token <- "next_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified. (Optional)
+var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified. (Optional)
+var_sort_order <- "sort_order_example" # character | This order in which to return results. (Optional)
+var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+var_expansions <- list("attachments.media_keys") # set[character] | A comma separated list of fields to expand. (Optional)
+var_media_fields <- list("alt_text") # set[character] | A comma separated list of Media fields to display. (Optional)
+var_poll_fields <- list("duration_minutes") # set[character] | A comma separated list of Poll fields to display. (Optional)
+var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 
 #Full-archive search
 api_instance <- TweetsApi$new()
 # Configure HTTP bearer authorization: BearerToken
-api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$tweets_fullarchive_search(var_query, start_time = var_start_time, end_time = var_end_time, since_id = var_since_id, until_id = var_until_id, max_results = var_max_results, next_token = var_next_token, pagination_token = var_pagination_token, sort_order = var_sort_order, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
@@ -1305,15 +1288,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `tweets_fullarchive_search`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -1367,27 +1349,27 @@ Returns Tweets from the last 7 days that match a search query.
 library(twitter)
 
 var_query <- "(from:TwitterDev OR from:TwitterAPI) has:media -is:retweet" # character | One query/rule/filter for matching Tweets. Refer to https://t.co/rulelength to identify the max query length.
-var_start_time <- "start_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The oldest UTC timestamp from which the Tweets will be provided. Timestamp is in second granularity and is inclusive (i.e. 12:00:01 includes the first second of the minute).
-var_end_time <- "end_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The newest, most recent UTC timestamp to which the Tweets will be provided. Timestamp is in second granularity and is exclusive (i.e. 12:00:01 excludes the first second of the minute).
-var_since_id <- "since_id_example" # character | Returns results with a Tweet ID greater than (that is, more recent than) the specified ID.
-var_until_id <- "until_id_example" # character | Returns results with a Tweet ID less than (that is, older than) the specified ID.
-var_max_results <- 10 # integer | The maximum number of search results to be returned by a request.
-var_next_token <- "next_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
-var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
-var_sort_order <- "sort_order_example" # character | This order in which to return results.
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display.
-var_expansions <- list("attachments.media_keys") # set[character] | A comma separated list of fields to expand.
-var_media_fields <- list("alt_text") # set[character] | A comma separated list of Media fields to display.
-var_poll_fields <- list("duration_minutes") # set[character] | A comma separated list of Poll fields to display.
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display.
-var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display.
+var_start_time <- "start_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The oldest UTC timestamp from which the Tweets will be provided. Timestamp is in second granularity and is inclusive (i.e. 12:00:01 includes the first second of the minute). (Optional)
+var_end_time <- "end_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The newest, most recent UTC timestamp to which the Tweets will be provided. Timestamp is in second granularity and is exclusive (i.e. 12:00:01 excludes the first second of the minute). (Optional)
+var_since_id <- "since_id_example" # character | Returns results with a Tweet ID greater than (that is, more recent than) the specified ID. (Optional)
+var_until_id <- "until_id_example" # character | Returns results with a Tweet ID less than (that is, older than) the specified ID. (Optional)
+var_max_results <- 10 # integer | The maximum number of search results to be returned by a request. (Optional)
+var_next_token <- "next_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified. (Optional)
+var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified. (Optional)
+var_sort_order <- "sort_order_example" # character | This order in which to return results. (Optional)
+var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+var_expansions <- list("attachments.media_keys") # set[character] | A comma separated list of fields to expand. (Optional)
+var_media_fields <- list("alt_text") # set[character] | A comma separated list of Media fields to display. (Optional)
+var_poll_fields <- list("duration_minutes") # set[character] | A comma separated list of Poll fields to display. (Optional)
+var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 
 #Recent search
 api_instance <- TweetsApi$new()
 # Configure HTTP bearer authorization: BearerToken
-api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$tweets_recent_search(var_query, start_time = var_start_time, end_time = var_end_time, since_id = var_since_id, until_id = var_until_id, max_results = var_max_results, next_token = var_next_token, pagination_token = var_pagination_token, sort_order = var_sort_order, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
@@ -1396,15 +1378,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `tweets_recent_search`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -1458,12 +1439,12 @@ Causes the User (in the path) to like the specified Tweet. The User in the path 
 library(twitter)
 
 var_id <- "id_example" # character | The ID of the authenticated source User that is requesting to like the Tweet.
-var_users_likes_create_request <- UsersLikesCreateRequest$new("tweet_id_example") # UsersLikesCreateRequest | 
+var_users_likes_create_request <- UsersLikesCreateRequest$new("tweet_id_example") # UsersLikesCreateRequest |  (Optional)
 
 #Causes the User (in the path) to like the specified Tweet
 api_instance <- TweetsApi$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$users_id_like(var_id, users_likes_create_request = var_users_likes_create_request, data_file = "result.txt"),
@@ -1472,15 +1453,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `users_id_like`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -1521,21 +1501,21 @@ Returns a list of Tweets liked by the provided User ID
 library(twitter)
 
 var_id <- "2244994945" # character | The ID of the User to lookup.
-var_max_results <- 56 # integer | The maximum number of results.
-var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results.
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display.
-var_expansions <- list("attachments.media_keys") # set[character] | A comma separated list of fields to expand.
-var_media_fields <- list("alt_text") # set[character] | A comma separated list of Media fields to display.
-var_poll_fields <- list("duration_minutes") # set[character] | A comma separated list of Poll fields to display.
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display.
-var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display.
+var_max_results <- 56 # integer | The maximum number of results. (Optional)
+var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. (Optional)
+var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+var_expansions <- list("attachments.media_keys") # set[character] | A comma separated list of fields to expand. (Optional)
+var_media_fields <- list("alt_text") # set[character] | A comma separated list of Media fields to display. (Optional)
+var_poll_fields <- list("duration_minutes") # set[character] | A comma separated list of Poll fields to display. (Optional)
+var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 
 #Returns Tweet objects liked by the provided User ID
 api_instance <- TweetsApi$new()
 # Configure HTTP bearer authorization: BearerToken
-api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$users_id_liked_tweets(var_id, max_results = var_max_results, pagination_token = var_pagination_token, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
@@ -1544,15 +1524,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `users_id_liked_tweets`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -1600,25 +1579,25 @@ Returns Tweet objects that mention username associated to the provided User ID
 library(twitter)
 
 var_id <- "2244994945" # character | The ID of the User to lookup.
-var_since_id <- "since_id_example" # character | The minimum Tweet ID to be included in the result set. This parameter takes precedence over start_time if both are specified.
-var_until_id <- "1346889436626259968" # character | The maximum Tweet ID to be included in the result set. This parameter takes precedence over end_time if both are specified.
-var_max_results <- 56 # integer | The maximum number of results.
-var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results.
-var_start_time <- "2021-02-01T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweets will be provided. The since_id parameter takes precedence if it is also specified.
-var_end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided. The until_id parameter takes precedence if it is also specified.
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display.
-var_expansions <- list("attachments.media_keys") # set[character] | A comma separated list of fields to expand.
-var_media_fields <- list("alt_text") # set[character] | A comma separated list of Media fields to display.
-var_poll_fields <- list("duration_minutes") # set[character] | A comma separated list of Poll fields to display.
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display.
-var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display.
+var_since_id <- "since_id_example" # character | The minimum Tweet ID to be included in the result set. This parameter takes precedence over start_time if both are specified. (Optional)
+var_until_id <- "1346889436626259968" # character | The maximum Tweet ID to be included in the result set. This parameter takes precedence over end_time if both are specified. (Optional)
+var_max_results <- 56 # integer | The maximum number of results. (Optional)
+var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. (Optional)
+var_start_time <- "2021-02-01T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweets will be provided. The since_id parameter takes precedence if it is also specified. (Optional)
+var_end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided. The until_id parameter takes precedence if it is also specified. (Optional)
+var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+var_expansions <- list("attachments.media_keys") # set[character] | A comma separated list of fields to expand. (Optional)
+var_media_fields <- list("alt_text") # set[character] | A comma separated list of Media fields to display. (Optional)
+var_poll_fields <- list("duration_minutes") # set[character] | A comma separated list of Poll fields to display. (Optional)
+var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 
 #User mention timeline by User ID
 api_instance <- TweetsApi$new()
 # Configure HTTP bearer authorization: BearerToken
-api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$users_id_mentions(var_id, since_id = var_since_id, until_id = var_until_id, max_results = var_max_results, pagination_token = var_pagination_token, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
@@ -1627,15 +1606,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `users_id_mentions`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -1687,12 +1665,12 @@ Causes the User (in the path) to retweet the specified Tweet. The User in the pa
 library(twitter)
 
 var_id <- "id_example" # character | The ID of the authenticated source User that is requesting to retweet the Tweet.
-var_users_retweets_create_request <- UsersRetweetsCreateRequest$new("tweet_id_example") # UsersRetweetsCreateRequest | 
+var_users_retweets_create_request <- UsersRetweetsCreateRequest$new("tweet_id_example") # UsersRetweetsCreateRequest |  (Optional)
 
 #Causes the User (in the path) to retweet the specified Tweet.
 api_instance <- TweetsApi$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$users_id_retweets(var_id, users_retweets_create_request = var_users_retweets_create_request, data_file = "result.txt"),
@@ -1701,15 +1679,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `users_id_retweets`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -1750,24 +1727,24 @@ Returns Tweet objects that appears in the provided User ID's home timeline
 library(twitter)
 
 var_id <- "id_example" # character | The ID of the authenticated source User to list Reverse Chronological Timeline Tweets of.
-var_since_id <- "791775337160081409" # character | The minimum Tweet ID to be included in the result set. This parameter takes precedence over start_time if both are specified.
-var_until_id <- "1346889436626259968" # character | The maximum Tweet ID to be included in the result set. This parameter takes precedence over end_time if both are specified.
-var_max_results <- 56 # integer | The maximum number of results.
-var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results.
-var_exclude <- list("replies") # set[character] | The set of entities to exclude (e.g. 'replies' or 'retweets').
-var_start_time <- "2021-02-01T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweets will be provided. The since_id parameter takes precedence if it is also specified.
-var_end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided. The until_id parameter takes precedence if it is also specified.
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display.
-var_expansions <- list("attachments.media_keys") # set[character] | A comma separated list of fields to expand.
-var_media_fields <- list("alt_text") # set[character] | A comma separated list of Media fields to display.
-var_poll_fields <- list("duration_minutes") # set[character] | A comma separated list of Poll fields to display.
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display.
-var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display.
+var_since_id <- "791775337160081409" # character | The minimum Tweet ID to be included in the result set. This parameter takes precedence over start_time if both are specified. (Optional)
+var_until_id <- "1346889436626259968" # character | The maximum Tweet ID to be included in the result set. This parameter takes precedence over end_time if both are specified. (Optional)
+var_max_results <- 56 # integer | The maximum number of results. (Optional)
+var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. (Optional)
+var_exclude <- list("replies") # set[character] | The set of entities to exclude (e.g. 'replies' or 'retweets'). (Optional)
+var_start_time <- "2021-02-01T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweets will be provided. The since_id parameter takes precedence if it is also specified. (Optional)
+var_end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided. The until_id parameter takes precedence if it is also specified. (Optional)
+var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+var_expansions <- list("attachments.media_keys") # set[character] | A comma separated list of fields to expand. (Optional)
+var_media_fields <- list("alt_text") # set[character] | A comma separated list of Media fields to display. (Optional)
+var_poll_fields <- list("duration_minutes") # set[character] | A comma separated list of Poll fields to display. (Optional)
+var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 
 #User home timeline by User ID
 api_instance <- TweetsApi$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$users_id_timeline(var_id, since_id = var_since_id, until_id = var_until_id, max_results = var_max_results, pagination_token = var_pagination_token, exclude = var_exclude, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
@@ -1776,15 +1753,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `users_id_timeline`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -1837,26 +1813,26 @@ Returns a list of Tweets authored by the provided User ID
 library(twitter)
 
 var_id <- "2244994945" # character | The ID of the User to lookup.
-var_since_id <- "791775337160081409" # character | The minimum Tweet ID to be included in the result set. This parameter takes precedence over start_time if both are specified.
-var_until_id <- "1346889436626259968" # character | The maximum Tweet ID to be included in the result set. This parameter takes precedence over end_time if both are specified.
-var_max_results <- 56 # integer | The maximum number of results.
-var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results.
-var_exclude <- list("replies") # set[character] | The set of entities to exclude (e.g. 'replies' or 'retweets').
-var_start_time <- "2021-02-01T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweets will be provided. The since_id parameter takes precedence if it is also specified.
-var_end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided. The until_id parameter takes precedence if it is also specified.
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display.
-var_expansions <- list("attachments.media_keys") # set[character] | A comma separated list of fields to expand.
-var_media_fields <- list("alt_text") # set[character] | A comma separated list of Media fields to display.
-var_poll_fields <- list("duration_minutes") # set[character] | A comma separated list of Poll fields to display.
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display.
-var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display.
+var_since_id <- "791775337160081409" # character | The minimum Tweet ID to be included in the result set. This parameter takes precedence over start_time if both are specified. (Optional)
+var_until_id <- "1346889436626259968" # character | The maximum Tweet ID to be included in the result set. This parameter takes precedence over end_time if both are specified. (Optional)
+var_max_results <- 56 # integer | The maximum number of results. (Optional)
+var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. (Optional)
+var_exclude <- list("replies") # set[character] | The set of entities to exclude (e.g. 'replies' or 'retweets'). (Optional)
+var_start_time <- "2021-02-01T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweets will be provided. The since_id parameter takes precedence if it is also specified. (Optional)
+var_end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided. The until_id parameter takes precedence if it is also specified. (Optional)
+var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+var_expansions <- list("attachments.media_keys") # set[character] | A comma separated list of fields to expand. (Optional)
+var_media_fields <- list("alt_text") # set[character] | A comma separated list of Media fields to display. (Optional)
+var_poll_fields <- list("duration_minutes") # set[character] | A comma separated list of Poll fields to display. (Optional)
+var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 
 #User Tweets timeline by User ID
 api_instance <- TweetsApi$new()
 # Configure HTTP bearer authorization: BearerToken
-api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$users_id_tweets(var_id, since_id = var_since_id, until_id = var_until_id, max_results = var_max_results, pagination_token = var_pagination_token, exclude = var_exclude, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
@@ -1865,15 +1841,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `users_id_tweets`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -1931,7 +1906,7 @@ var_tweet_id <- "tweet_id_example" # character | The ID of the Tweet that the Us
 #Causes the User (in the path) to unlike the specified Tweet
 api_instance <- TweetsApi$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$users_id_unlike(var_id, var_tweet_id, data_file = "result.txt"),
@@ -1940,15 +1915,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `users_id_unlike`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -1994,7 +1968,7 @@ var_source_tweet_id <- "source_tweet_id_example" # character | The ID of the Twe
 #Causes the User (in the path) to unretweet the specified Tweet
 api_instance <- TweetsApi$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$users_id_unretweets(var_id, var_source_tweet_id, data_file = "result.txt"),
@@ -2003,15 +1977,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `users_id_unretweets`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters

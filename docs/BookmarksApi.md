@@ -21,19 +21,19 @@ Returns Tweet objects that have been bookmarked by the requesting User
 library(twitter)
 
 var_id <- "id_example" # character | The ID of the authenticated source User for whom to return results.
-var_max_results <- 56 # integer | The maximum number of results.
-var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results.
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display.
-var_expansions <- list("attachments.media_keys") # set[character] | A comma separated list of fields to expand.
-var_media_fields <- list("alt_text") # set[character] | A comma separated list of Media fields to display.
-var_poll_fields <- list("duration_minutes") # set[character] | A comma separated list of Poll fields to display.
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display.
-var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display.
+var_max_results <- 56 # integer | The maximum number of results. (Optional)
+var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. (Optional)
+var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+var_expansions <- list("attachments.media_keys") # set[character] | A comma separated list of fields to expand. (Optional)
+var_media_fields <- list("alt_text") # set[character] | A comma separated list of Media fields to display. (Optional)
+var_poll_fields <- list("duration_minutes") # set[character] | A comma separated list of Poll fields to display. (Optional)
+var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 
 #Bookmarks by User
 api_instance <- BookmarksApi$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$get_users_id_bookmarks(var_id, max_results = var_max_results, pagination_token = var_pagination_token, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
@@ -42,15 +42,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `get_users_id_bookmarks`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -103,7 +102,7 @@ var_bookmark_add_request <- BookmarkAddRequest$new("tweet_id_example") # Bookmar
 #Add Tweet to Bookmarks
 api_instance <- BookmarksApi$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$post_users_id_bookmarks(var_id, var_bookmark_add_request, data_file = "result.txt"),
@@ -112,15 +111,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `post_users_id_bookmarks`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters
@@ -166,7 +164,7 @@ var_tweet_id <- "tweet_id_example" # character | The ID of the Tweet that the so
 #Remove a bookmarked Tweet
 api_instance <- BookmarksApi$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$users_id_bookmarks_delete(var_id, var_tweet_id, data_file = "result.txt"),
@@ -175,15 +173,14 @@ result <- tryCatch(
           )
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
-  dput(result$ApiException)
+  print("Exception occurs when calling `users_id_bookmarks_delete`:")
+  dput(result$ApiException$toString())
 } else {
   # deserialized response object
-  dput(result$content)
-  # response headers
-  dput(result$response$headers)
-  # response status code
-  dput(result$response$status_code)
+  print("The response is ...")
+  dput(result$toString())
 }
+
 ```
 
 ### Parameters

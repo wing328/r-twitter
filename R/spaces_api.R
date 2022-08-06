@@ -503,9 +503,14 @@ SpacesApi <- R6::R6Class(
         local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
-      header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      # Bearer token
+      if (!is.null(self$api_client$bearer_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      }
       # OAuth token
-      header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      if (!is.null(self$api_client$access_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      }
 
       # The Accept request HTTP header
       local_var_accepts = list("application/json", "application/problem+json")
@@ -632,9 +637,14 @@ SpacesApi <- R6::R6Class(
       query_params["topic.fields"] <- `topic_fields`
 
       local_var_url_path <- "/2/spaces/by/creator_ids"
-      header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      # Bearer token
+      if (!is.null(self$api_client$bearer_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      }
       # OAuth token
-      header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      if (!is.null(self$api_client$access_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      }
 
       # The Accept request HTTP header
       local_var_accepts = list("application/json", "application/problem+json")
@@ -761,9 +771,14 @@ SpacesApi <- R6::R6Class(
       query_params["topic.fields"] <- `topic_fields`
 
       local_var_url_path <- "/2/spaces"
-      header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      # Bearer token
+      if (!is.null(self$api_client$bearer_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      }
       # OAuth token
-      header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      if (!is.null(self$api_client$access_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      }
 
       # The Accept request HTTP header
       local_var_accepts = list("application/json", "application/problem+json")
@@ -898,9 +913,14 @@ SpacesApi <- R6::R6Class(
       query_params["topic.fields"] <- `topic_fields`
 
       local_var_url_path <- "/2/spaces/search"
-      header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      # Bearer token
+      if (!is.null(self$api_client$bearer_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      }
       # OAuth token
-      header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      if (!is.null(self$api_client$access_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      }
 
       # The Accept request HTTP header
       local_var_accepts = list("application/json", "application/problem+json")
@@ -1034,7 +1054,9 @@ SpacesApi <- R6::R6Class(
       }
 
       # OAuth token
-      header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      if (!is.null(self$api_client$access_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      }
 
       # The Accept request HTTP header
       local_var_accepts = list("application/json", "application/problem+json")
@@ -1175,9 +1197,14 @@ SpacesApi <- R6::R6Class(
         local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
-      header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      # Bearer token
+      if (!is.null(self$api_client$bearer_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      }
       # OAuth token
-      header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      if (!is.null(self$api_client$access_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      }
 
       # The Accept request HTTP header
       local_var_accepts = list("application/json", "application/problem+json")

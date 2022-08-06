@@ -306,7 +306,9 @@ BookmarksApi <- R6::R6Class(
       }
 
       # OAuth token
-      header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      if (!is.null(self$api_client$access_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      }
 
       # The Accept request HTTP header
       local_var_accepts = list("application/json", "application/problem+json")
@@ -435,7 +437,9 @@ BookmarksApi <- R6::R6Class(
       }
 
       # OAuth token
-      header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      if (!is.null(self$api_client$access_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      }
 
       # The Accept request HTTP header
       local_var_accepts = list("application/json", "application/problem+json")
@@ -562,7 +566,9 @@ BookmarksApi <- R6::R6Class(
       }
 
       # OAuth token
-      header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      if (!is.null(self$api_client$access_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
+      }
 
       # The Accept request HTTP header
       local_var_accepts = list("application/json", "application/problem+json")
