@@ -915,6 +915,8 @@ ListsApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`id`)) {
         rlang::abort(message = "Missing required parameter `id`.",
@@ -923,11 +925,11 @@ ListsApi <- R6::R6Class(
                                                      reason = "Missing required parameter `id`."))
       }
 
-      if (!str_detect(`id`, "/^[0-9]{1,19}$/")) {
-        rlang::abort(message = "Invalid value for `id` when calling ListsApi$get_user_list_memberships, must conform to the pattern /^[0-9]{1,19}$/.",
+      if (!str_detect(`id`, "^[0-9]{1,19}$")) {
+        rlang::abort(message = "Invalid value for `id` when calling ListsApi$get_user_list_memberships, must conform to the pattern ^[0-9]{1,19}$.",
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `id` when calling ListsApi$get_user_list_memberships, must conform to the pattern /^[0-9]{1,19}$/."))
+                                                     reason = "Invalid value for `id` when calling ListsApi$get_user_list_memberships, must conform to the pattern ^[0-9]{1,19}$."))
       }
 
       if (`max_results` > 100) {
@@ -996,16 +998,15 @@ ListsApi <- R6::R6Class(
       if (!is.null(self$api_client$bearer_token)) {
         header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
       }
-      # OAuth token
-      if (!is.null(self$api_client$access_token)) {
-        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
-      }
+      # OAuth-related settings
+      is_oauth <- TRUE
+      oauth_scopes <- "users.read tweet.read list.read"
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list()
+      local_var_content_types <- list()
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "GET",
@@ -1016,6 +1017,8 @@ ListsApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -1101,6 +1104,8 @@ ListsApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`id`)) {
         rlang::abort(message = "Missing required parameter `id`.",
@@ -1109,11 +1114,11 @@ ListsApi <- R6::R6Class(
                                                      reason = "Missing required parameter `id`."))
       }
 
-      if (!str_detect(`id`, "/^[0-9]{1,19}$/")) {
-        rlang::abort(message = "Invalid value for `id` when calling ListsApi$list_add_member, must conform to the pattern /^[0-9]{1,19}$/.",
+      if (!str_detect(`id`, "^[0-9]{1,19}$")) {
+        rlang::abort(message = "Invalid value for `id` when calling ListsApi$list_add_member, must conform to the pattern ^[0-9]{1,19}$.",
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `id` when calling ListsApi$list_add_member, must conform to the pattern /^[0-9]{1,19}$/."))
+                                                     reason = "Invalid value for `id` when calling ListsApi$list_add_member, must conform to the pattern ^[0-9]{1,19}$."))
       }
 
 
@@ -1128,16 +1133,15 @@ ListsApi <- R6::R6Class(
         local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
-      # OAuth token
-      if (!is.null(self$api_client$access_token)) {
-        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
-      }
+      # OAuth-related settings
+      is_oauth <- TRUE
+      oauth_scopes <- "users.read tweet.read list.write"
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list("application/json")
+      local_var_content_types <- list("application/json")
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "POST",
@@ -1148,6 +1152,8 @@ ListsApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -1231,6 +1237,8 @@ ListsApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
 
       if (!missing(`list_create_request`)) {
@@ -1240,16 +1248,15 @@ ListsApi <- R6::R6Class(
       }
 
       local_var_url_path <- "/2/lists"
-      # OAuth token
-      if (!is.null(self$api_client$access_token)) {
-        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
-      }
+      # OAuth-related settings
+      is_oauth <- TRUE
+      oauth_scopes <- "users.read tweet.read list.write list.read"
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list("application/json")
+      local_var_content_types <- list("application/json")
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "POST",
@@ -1260,6 +1267,8 @@ ListsApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -1343,6 +1352,8 @@ ListsApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`id`)) {
         rlang::abort(message = "Missing required parameter `id`.",
@@ -1351,11 +1362,11 @@ ListsApi <- R6::R6Class(
                                                      reason = "Missing required parameter `id`."))
       }
 
-      if (!str_detect(`id`, "/^[0-9]{1,19}$/")) {
-        rlang::abort(message = "Invalid value for `id` when calling ListsApi$list_id_delete, must conform to the pattern /^[0-9]{1,19}$/.",
+      if (!str_detect(`id`, "^[0-9]{1,19}$")) {
+        rlang::abort(message = "Invalid value for `id` when calling ListsApi$list_id_delete, must conform to the pattern ^[0-9]{1,19}$.",
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `id` when calling ListsApi$list_id_delete, must conform to the pattern /^[0-9]{1,19}$/."))
+                                                     reason = "Invalid value for `id` when calling ListsApi$list_id_delete, must conform to the pattern ^[0-9]{1,19}$."))
       }
 
       local_var_url_path <- "/2/lists/{id}"
@@ -1363,16 +1374,15 @@ ListsApi <- R6::R6Class(
         local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
-      # OAuth token
-      if (!is.null(self$api_client$access_token)) {
-        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
-      }
+      # OAuth-related settings
+      is_oauth <- TRUE
+      oauth_scopes <- "users.read tweet.read list.write"
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list()
+      local_var_content_types <- list()
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "DELETE",
@@ -1383,6 +1393,8 @@ ListsApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -1472,6 +1484,8 @@ ListsApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`id`)) {
         rlang::abort(message = "Missing required parameter `id`.",
@@ -1480,11 +1494,11 @@ ListsApi <- R6::R6Class(
                                                      reason = "Missing required parameter `id`."))
       }
 
-      if (!str_detect(`id`, "/^[0-9]{1,19}$/")) {
-        rlang::abort(message = "Invalid value for `id` when calling ListsApi$list_id_get, must conform to the pattern /^[0-9]{1,19}$/.",
+      if (!str_detect(`id`, "^[0-9]{1,19}$")) {
+        rlang::abort(message = "Invalid value for `id` when calling ListsApi$list_id_get, must conform to the pattern ^[0-9]{1,19}$.",
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `id` when calling ListsApi$list_id_get, must conform to the pattern /^[0-9]{1,19}$/."))
+                                                     reason = "Invalid value for `id` when calling ListsApi$list_id_get, must conform to the pattern ^[0-9]{1,19}$."))
       }
 
       if (length(`list_fields`) < 1) {
@@ -1523,16 +1537,15 @@ ListsApi <- R6::R6Class(
       if (!is.null(self$api_client$bearer_token)) {
         header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
       }
-      # OAuth token
-      if (!is.null(self$api_client$access_token)) {
-        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
-      }
+      # OAuth-related settings
+      is_oauth <- TRUE
+      oauth_scopes <- "users.read tweet.read list.read"
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list()
+      local_var_content_types <- list()
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "GET",
@@ -1543,6 +1556,8 @@ ListsApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -1628,6 +1643,8 @@ ListsApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`id`)) {
         rlang::abort(message = "Missing required parameter `id`.",
@@ -1636,11 +1653,11 @@ ListsApi <- R6::R6Class(
                                                      reason = "Missing required parameter `id`."))
       }
 
-      if (!str_detect(`id`, "/^[0-9]{1,19}$/")) {
-        rlang::abort(message = "Invalid value for `id` when calling ListsApi$list_id_update, must conform to the pattern /^[0-9]{1,19}$/.",
+      if (!str_detect(`id`, "^[0-9]{1,19}$")) {
+        rlang::abort(message = "Invalid value for `id` when calling ListsApi$list_id_update, must conform to the pattern ^[0-9]{1,19}$.",
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `id` when calling ListsApi$list_id_update, must conform to the pattern /^[0-9]{1,19}$/."))
+                                                     reason = "Invalid value for `id` when calling ListsApi$list_id_update, must conform to the pattern ^[0-9]{1,19}$."))
       }
 
 
@@ -1655,16 +1672,15 @@ ListsApi <- R6::R6Class(
         local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
-      # OAuth token
-      if (!is.null(self$api_client$access_token)) {
-        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
-      }
+      # OAuth-related settings
+      is_oauth <- TRUE
+      oauth_scopes <- "users.read tweet.read list.write"
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list("application/json")
+      local_var_content_types <- list("application/json")
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "PUT",
@@ -1675,6 +1691,8 @@ ListsApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -1760,6 +1778,8 @@ ListsApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`id`)) {
         rlang::abort(message = "Missing required parameter `id`.",
@@ -1775,18 +1795,18 @@ ListsApi <- R6::R6Class(
                                                      reason = "Missing required parameter `user_id`."))
       }
 
-      if (!str_detect(`id`, "/^[0-9]{1,19}$/")) {
-        rlang::abort(message = "Invalid value for `id` when calling ListsApi$list_remove_member, must conform to the pattern /^[0-9]{1,19}$/.",
+      if (!str_detect(`id`, "^[0-9]{1,19}$")) {
+        rlang::abort(message = "Invalid value for `id` when calling ListsApi$list_remove_member, must conform to the pattern ^[0-9]{1,19}$.",
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `id` when calling ListsApi$list_remove_member, must conform to the pattern /^[0-9]{1,19}$/."))
+                                                     reason = "Invalid value for `id` when calling ListsApi$list_remove_member, must conform to the pattern ^[0-9]{1,19}$."))
       }
 
-      if (!str_detect(`user_id`, "/^[0-9]{1,19}$/")) {
-        rlang::abort(message = "Invalid value for `user_id` when calling ListsApi$list_remove_member, must conform to the pattern /^[0-9]{1,19}$/.",
+      if (!str_detect(`user_id`, "^[0-9]{1,19}$")) {
+        rlang::abort(message = "Invalid value for `user_id` when calling ListsApi$list_remove_member, must conform to the pattern ^[0-9]{1,19}$.",
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `user_id` when calling ListsApi$list_remove_member, must conform to the pattern /^[0-9]{1,19}$/."))
+                                                     reason = "Invalid value for `user_id` when calling ListsApi$list_remove_member, must conform to the pattern ^[0-9]{1,19}$."))
       }
 
       local_var_url_path <- "/2/lists/{id}/members/{user_id}"
@@ -1798,16 +1818,15 @@ ListsApi <- R6::R6Class(
         local_var_url_path <- gsub(paste0("\\{", "user_id", "\\}"), URLencode(as.character(`user_id`), reserved = TRUE), local_var_url_path)
       }
 
-      # OAuth token
-      if (!is.null(self$api_client$access_token)) {
-        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
-      }
+      # OAuth-related settings
+      is_oauth <- TRUE
+      oauth_scopes <- "users.read tweet.read list.write"
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list()
+      local_var_content_types <- list()
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "DELETE",
@@ -1818,6 +1837,8 @@ ListsApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -1903,6 +1924,8 @@ ListsApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`id`)) {
         rlang::abort(message = "Missing required parameter `id`.",
@@ -1924,16 +1947,15 @@ ListsApi <- R6::R6Class(
         local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
-      # OAuth token
-      if (!is.null(self$api_client$access_token)) {
-        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
-      }
+      # OAuth-related settings
+      is_oauth <- TRUE
+      oauth_scopes <- "users.read tweet.read list.write"
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list("application/json")
+      local_var_content_types <- list("application/json")
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "POST",
@@ -1944,6 +1966,8 @@ ListsApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -2037,6 +2061,8 @@ ListsApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`id`)) {
         rlang::abort(message = "Missing required parameter `id`.",
@@ -2045,11 +2071,11 @@ ListsApi <- R6::R6Class(
                                                      reason = "Missing required parameter `id`."))
       }
 
-      if (!str_detect(`id`, "/^[0-9]{1,19}$/")) {
-        rlang::abort(message = "Invalid value for `id` when calling ListsApi$list_user_owned_lists, must conform to the pattern /^[0-9]{1,19}$/.",
+      if (!str_detect(`id`, "^[0-9]{1,19}$")) {
+        rlang::abort(message = "Invalid value for `id` when calling ListsApi$list_user_owned_lists, must conform to the pattern ^[0-9]{1,19}$.",
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `id` when calling ListsApi$list_user_owned_lists, must conform to the pattern /^[0-9]{1,19}$/."))
+                                                     reason = "Invalid value for `id` when calling ListsApi$list_user_owned_lists, must conform to the pattern ^[0-9]{1,19}$."))
       }
 
       if (`max_results` > 100) {
@@ -2118,16 +2144,15 @@ ListsApi <- R6::R6Class(
       if (!is.null(self$api_client$bearer_token)) {
         header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
       }
-      # OAuth token
-      if (!is.null(self$api_client$access_token)) {
-        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
-      }
+      # OAuth-related settings
+      is_oauth <- TRUE
+      oauth_scopes <- "users.read tweet.read list.read"
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list()
+      local_var_content_types <- list()
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "GET",
@@ -2138,6 +2163,8 @@ ListsApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -2223,6 +2250,8 @@ ListsApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`id`)) {
         rlang::abort(message = "Missing required parameter `id`.",
@@ -2251,16 +2280,15 @@ ListsApi <- R6::R6Class(
         local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
-      # OAuth token
-      if (!is.null(self$api_client$access_token)) {
-        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
-      }
+      # OAuth-related settings
+      is_oauth <- TRUE
+      oauth_scopes <- "users.read tweet.read list.write"
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list("application/json")
+      local_var_content_types <- list("application/json")
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "POST",
@@ -2271,6 +2299,8 @@ ListsApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -2360,6 +2390,8 @@ ListsApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`id`)) {
         rlang::abort(message = "Missing required parameter `id`.",
@@ -2401,16 +2433,15 @@ ListsApi <- R6::R6Class(
         local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
-      # OAuth token
-      if (!is.null(self$api_client$access_token)) {
-        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
-      }
+      # OAuth-related settings
+      is_oauth <- TRUE
+      oauth_scopes <- "users.read tweet.read list.read"
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list()
+      local_var_content_types <- list()
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "GET",
@@ -2421,6 +2452,8 @@ ListsApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -2506,6 +2539,8 @@ ListsApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`id`)) {
         rlang::abort(message = "Missing required parameter `id`.",
@@ -2522,11 +2557,11 @@ ListsApi <- R6::R6Class(
       }
 
 
-      if (!str_detect(`list_id`, "/^[0-9]{1,19}$/")) {
-        rlang::abort(message = "Invalid value for `list_id` when calling ListsApi$list_user_unfollow, must conform to the pattern /^[0-9]{1,19}$/.",
+      if (!str_detect(`list_id`, "^[0-9]{1,19}$")) {
+        rlang::abort(message = "Invalid value for `list_id` when calling ListsApi$list_user_unfollow, must conform to the pattern ^[0-9]{1,19}$.",
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `list_id` when calling ListsApi$list_user_unfollow, must conform to the pattern /^[0-9]{1,19}$/."))
+                                                     reason = "Invalid value for `list_id` when calling ListsApi$list_user_unfollow, must conform to the pattern ^[0-9]{1,19}$."))
       }
 
       local_var_url_path <- "/2/users/{id}/followed_lists/{list_id}"
@@ -2538,16 +2573,15 @@ ListsApi <- R6::R6Class(
         local_var_url_path <- gsub(paste0("\\{", "list_id", "\\}"), URLencode(as.character(`list_id`), reserved = TRUE), local_var_url_path)
       }
 
-      # OAuth token
-      if (!is.null(self$api_client$access_token)) {
-        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
-      }
+      # OAuth-related settings
+      is_oauth <- TRUE
+      oauth_scopes <- "users.read tweet.read list.write"
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list()
+      local_var_content_types <- list()
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "DELETE",
@@ -2558,6 +2592,8 @@ ListsApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -2643,6 +2679,8 @@ ListsApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`id`)) {
         rlang::abort(message = "Missing required parameter `id`.",
@@ -2659,11 +2697,11 @@ ListsApi <- R6::R6Class(
       }
 
 
-      if (!str_detect(`list_id`, "/^[0-9]{1,19}$/")) {
-        rlang::abort(message = "Invalid value for `list_id` when calling ListsApi$list_user_unpin, must conform to the pattern /^[0-9]{1,19}$/.",
+      if (!str_detect(`list_id`, "^[0-9]{1,19}$")) {
+        rlang::abort(message = "Invalid value for `list_id` when calling ListsApi$list_user_unpin, must conform to the pattern ^[0-9]{1,19}$.",
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `list_id` when calling ListsApi$list_user_unpin, must conform to the pattern /^[0-9]{1,19}$/."))
+                                                     reason = "Invalid value for `list_id` when calling ListsApi$list_user_unpin, must conform to the pattern ^[0-9]{1,19}$."))
       }
 
       local_var_url_path <- "/2/users/{id}/pinned_lists/{list_id}"
@@ -2675,16 +2713,15 @@ ListsApi <- R6::R6Class(
         local_var_url_path <- gsub(paste0("\\{", "list_id", "\\}"), URLencode(as.character(`list_id`), reserved = TRUE), local_var_url_path)
       }
 
-      # OAuth token
-      if (!is.null(self$api_client$access_token)) {
-        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
-      }
+      # OAuth-related settings
+      is_oauth <- TRUE
+      oauth_scopes <- "users.read tweet.read list.write"
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list()
+      local_var_content_types <- list()
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "DELETE",
@@ -2695,6 +2732,8 @@ ListsApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -2788,6 +2827,8 @@ ListsApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`id`)) {
         rlang::abort(message = "Missing required parameter `id`.",
@@ -2796,11 +2837,11 @@ ListsApi <- R6::R6Class(
                                                      reason = "Missing required parameter `id`."))
       }
 
-      if (!str_detect(`id`, "/^[0-9]{1,19}$/")) {
-        rlang::abort(message = "Invalid value for `id` when calling ListsApi$user_followed_lists, must conform to the pattern /^[0-9]{1,19}$/.",
+      if (!str_detect(`id`, "^[0-9]{1,19}$")) {
+        rlang::abort(message = "Invalid value for `id` when calling ListsApi$user_followed_lists, must conform to the pattern ^[0-9]{1,19}$.",
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `id` when calling ListsApi$user_followed_lists, must conform to the pattern /^[0-9]{1,19}$/."))
+                                                     reason = "Invalid value for `id` when calling ListsApi$user_followed_lists, must conform to the pattern ^[0-9]{1,19}$."))
       }
 
       if (`max_results` > 100) {
@@ -2869,16 +2910,15 @@ ListsApi <- R6::R6Class(
       if (!is.null(self$api_client$bearer_token)) {
         header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
       }
-      # OAuth token
-      if (!is.null(self$api_client$access_token)) {
-        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
-      }
+      # OAuth-related settings
+      is_oauth <- TRUE
+      oauth_scopes <- "users.read tweet.read list.read"
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list()
+      local_var_content_types <- list()
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "GET",
@@ -2889,6 +2929,8 @@ ListsApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {

@@ -276,6 +276,8 @@ BookmarksApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`id`)) {
         rlang::abort(message = "Missing required parameter `id`.",
@@ -368,16 +370,15 @@ BookmarksApi <- R6::R6Class(
         local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
-      # OAuth token
-      if (!is.null(self$api_client$access_token)) {
-        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
-      }
+      # OAuth-related settings
+      is_oauth <- TRUE
+      oauth_scopes <- "tweet.read users.read bookmark.read"
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list()
+      local_var_content_types <- list()
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "GET",
@@ -388,6 +389,8 @@ BookmarksApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -473,6 +476,8 @@ BookmarksApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`id`)) {
         rlang::abort(message = "Missing required parameter `id`.",
@@ -501,16 +506,15 @@ BookmarksApi <- R6::R6Class(
         local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
-      # OAuth token
-      if (!is.null(self$api_client$access_token)) {
-        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
-      }
+      # OAuth-related settings
+      is_oauth <- TRUE
+      oauth_scopes <- "tweet.read users.read bookmark.write"
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list("application/json")
+      local_var_content_types <- list("application/json")
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "POST",
@@ -521,6 +525,8 @@ BookmarksApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -606,6 +612,8 @@ BookmarksApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`id`)) {
         rlang::abort(message = "Missing required parameter `id`.",
@@ -622,11 +630,11 @@ BookmarksApi <- R6::R6Class(
       }
 
 
-      if (!str_detect(`tweet_id`, "/^[0-9]{1,19}$/")) {
-        rlang::abort(message = "Invalid value for `tweet_id` when calling BookmarksApi$users_id_bookmarks_delete, must conform to the pattern /^[0-9]{1,19}$/.",
+      if (!str_detect(`tweet_id`, "^[0-9]{1,19}$")) {
+        rlang::abort(message = "Invalid value for `tweet_id` when calling BookmarksApi$users_id_bookmarks_delete, must conform to the pattern ^[0-9]{1,19}$.",
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `tweet_id` when calling BookmarksApi$users_id_bookmarks_delete, must conform to the pattern /^[0-9]{1,19}$/."))
+                                                     reason = "Invalid value for `tweet_id` when calling BookmarksApi$users_id_bookmarks_delete, must conform to the pattern ^[0-9]{1,19}$."))
       }
 
       local_var_url_path <- "/2/users/{id}/bookmarks/{tweet_id}"
@@ -638,16 +646,15 @@ BookmarksApi <- R6::R6Class(
         local_var_url_path <- gsub(paste0("\\{", "tweet_id", "\\}"), URLencode(as.character(`tweet_id`), reserved = TRUE), local_var_url_path)
       }
 
-      # OAuth token
-      if (!is.null(self$api_client$access_token)) {
-        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
-      }
+      # OAuth-related settings
+      is_oauth <- TRUE
+      oauth_scopes <- "tweet.read users.read bookmark.write"
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list()
+      local_var_content_types <- list()
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "DELETE",
@@ -658,6 +665,8 @@ BookmarksApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {

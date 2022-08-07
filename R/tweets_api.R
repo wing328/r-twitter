@@ -1899,6 +1899,8 @@ TweetsApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`add_or_delete_rules_request`)) {
         rlang::abort(message = "Missing required parameter `add_or_delete_rules_request`.",
@@ -1924,10 +1926,10 @@ TweetsApi <- R6::R6Class(
       }
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list("application/json")
+      local_var_content_types <- list("application/json")
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "POST",
@@ -1938,6 +1940,8 @@ TweetsApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -2021,6 +2025,8 @@ TweetsApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`tweet_create_request`)) {
         rlang::abort(message = "Missing required parameter `tweet_create_request`.",
@@ -2037,16 +2043,15 @@ TweetsApi <- R6::R6Class(
       }
 
       local_var_url_path <- "/2/tweets"
-      # OAuth token
-      if (!is.null(self$api_client$access_token)) {
-        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
-      }
+      # OAuth-related settings
+      is_oauth <- TRUE
+      oauth_scopes <- "users.read tweet.read tweet.write"
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list("application/json")
+      local_var_content_types <- list("application/json")
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "POST",
@@ -2057,6 +2062,8 @@ TweetsApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -2140,6 +2147,8 @@ TweetsApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`id`)) {
         rlang::abort(message = "Missing required parameter `id`.",
@@ -2148,11 +2157,11 @@ TweetsApi <- R6::R6Class(
                                                      reason = "Missing required parameter `id`."))
       }
 
-      if (!str_detect(`id`, "/^[0-9]{1,19}$/")) {
-        rlang::abort(message = "Invalid value for `id` when calling TweetsApi$delete_tweet_by_id, must conform to the pattern /^[0-9]{1,19}$/.",
+      if (!str_detect(`id`, "^[0-9]{1,19}$")) {
+        rlang::abort(message = "Invalid value for `id` when calling TweetsApi$delete_tweet_by_id, must conform to the pattern ^[0-9]{1,19}$.",
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `id` when calling TweetsApi$delete_tweet_by_id, must conform to the pattern /^[0-9]{1,19}$/."))
+                                                     reason = "Invalid value for `id` when calling TweetsApi$delete_tweet_by_id, must conform to the pattern ^[0-9]{1,19}$."))
       }
 
       local_var_url_path <- "/2/tweets/{id}"
@@ -2160,16 +2169,15 @@ TweetsApi <- R6::R6Class(
         local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
-      # OAuth token
-      if (!is.null(self$api_client$access_token)) {
-        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
-      }
+      # OAuth-related settings
+      is_oauth <- TRUE
+      oauth_scopes <- "users.read tweet.read tweet.write"
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list()
+      local_var_content_types <- list()
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "DELETE",
@@ -2180,6 +2188,8 @@ TweetsApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -2275,6 +2285,8 @@ TweetsApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`id`)) {
         rlang::abort(message = "Missing required parameter `id`.",
@@ -2283,11 +2295,11 @@ TweetsApi <- R6::R6Class(
                                                      reason = "Missing required parameter `id`."))
       }
 
-      if (!str_detect(`id`, "/^[0-9]{1,19}$/")) {
-        rlang::abort(message = "Invalid value for `id` when calling TweetsApi$find_tweet_by_id, must conform to the pattern /^[0-9]{1,19}$/.",
+      if (!str_detect(`id`, "^[0-9]{1,19}$")) {
+        rlang::abort(message = "Invalid value for `id` when calling TweetsApi$find_tweet_by_id, must conform to the pattern ^[0-9]{1,19}$.",
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `id` when calling TweetsApi$find_tweet_by_id, must conform to the pattern /^[0-9]{1,19}$/."))
+                                                     reason = "Invalid value for `id` when calling TweetsApi$find_tweet_by_id, must conform to the pattern ^[0-9]{1,19}$."))
       }
 
       if (length(`tweet_fields`) < 1) {
@@ -2353,16 +2365,15 @@ TweetsApi <- R6::R6Class(
       if (!is.null(self$api_client$bearer_token)) {
         header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
       }
-      # OAuth token
-      if (!is.null(self$api_client$access_token)) {
-        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
-      }
+      # OAuth-related settings
+      is_oauth <- TRUE
+      oauth_scopes <- "tweet.read users.read"
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list()
+      local_var_content_types <- list()
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "GET",
@@ -2373,6 +2384,8 @@ TweetsApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -2468,6 +2481,8 @@ TweetsApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`ids`)) {
         rlang::abort(message = "Missing required parameter `ids`.",
@@ -2550,16 +2565,15 @@ TweetsApi <- R6::R6Class(
       if (!is.null(self$api_client$bearer_token)) {
         header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
       }
-      # OAuth token
-      if (!is.null(self$api_client$access_token)) {
-        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
-      }
+      # OAuth-related settings
+      is_oauth <- TRUE
+      oauth_scopes <- "tweet.read users.read"
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list()
+      local_var_content_types <- list()
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "GET",
@@ -2570,6 +2584,8 @@ TweetsApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -2671,6 +2687,8 @@ TweetsApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`id`)) {
         rlang::abort(message = "Missing required parameter `id`.",
@@ -2679,11 +2697,11 @@ TweetsApi <- R6::R6Class(
                                                      reason = "Missing required parameter `id`."))
       }
 
-      if (!str_detect(`id`, "/^[0-9]{1,19}$/")) {
-        rlang::abort(message = "Invalid value for `id` when calling TweetsApi$find_tweets_that_quote_a_tweet, must conform to the pattern /^[0-9]{1,19}$/.",
+      if (!str_detect(`id`, "^[0-9]{1,19}$")) {
+        rlang::abort(message = "Invalid value for `id` when calling TweetsApi$find_tweets_that_quote_a_tweet, must conform to the pattern ^[0-9]{1,19}$.",
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `id` when calling TweetsApi$find_tweets_that_quote_a_tweet, must conform to the pattern /^[0-9]{1,19}$/."))
+                                                     reason = "Invalid value for `id` when calling TweetsApi$find_tweets_that_quote_a_tweet, must conform to the pattern ^[0-9]{1,19}$."))
       }
 
       if (`max_results` > 100) {
@@ -2782,16 +2800,15 @@ TweetsApi <- R6::R6Class(
       if (!is.null(self$api_client$bearer_token)) {
         header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
       }
-      # OAuth token
-      if (!is.null(self$api_client$access_token)) {
-        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
-      }
+      # OAuth-related settings
+      is_oauth <- TRUE
+      oauth_scopes <- "tweet.read users.read"
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list()
+      local_var_content_types <- list()
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "GET",
@@ -2802,6 +2819,8 @@ TweetsApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -2889,6 +2908,8 @@ TweetsApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
 
       if (`max_results` > 1000) {
@@ -2930,10 +2951,10 @@ TweetsApi <- R6::R6Class(
       }
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list()
+      local_var_content_types <- list()
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "GET",
@@ -2944,6 +2965,8 @@ TweetsApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -3045,6 +3068,8 @@ TweetsApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`partition`)) {
         rlang::abort(message = "Missing required parameter `partition`.",
@@ -3150,10 +3175,10 @@ TweetsApi <- R6::R6Class(
       }
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list()
+      local_var_content_types <- list()
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "GET",
@@ -3164,6 +3189,8 @@ TweetsApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -3265,6 +3292,8 @@ TweetsApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`partition`)) {
         rlang::abort(message = "Missing required parameter `partition`.",
@@ -3370,10 +3399,10 @@ TweetsApi <- R6::R6Class(
       }
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list()
+      local_var_content_types <- list()
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "GET",
@@ -3384,6 +3413,8 @@ TweetsApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -3469,6 +3500,8 @@ TweetsApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`tweet_id`)) {
         rlang::abort(message = "Missing required parameter `tweet_id`.",
@@ -3477,11 +3510,11 @@ TweetsApi <- R6::R6Class(
                                                      reason = "Missing required parameter `tweet_id`."))
       }
 
-      if (!str_detect(`tweet_id`, "/^[0-9]{1,19}$/")) {
-        rlang::abort(message = "Invalid value for `tweet_id` when calling TweetsApi$hide_reply_by_id, must conform to the pattern /^[0-9]{1,19}$/.",
+      if (!str_detect(`tweet_id`, "^[0-9]{1,19}$")) {
+        rlang::abort(message = "Invalid value for `tweet_id` when calling TweetsApi$hide_reply_by_id, must conform to the pattern ^[0-9]{1,19}$.",
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `tweet_id` when calling TweetsApi$hide_reply_by_id, must conform to the pattern /^[0-9]{1,19}$/."))
+                                                     reason = "Invalid value for `tweet_id` when calling TweetsApi$hide_reply_by_id, must conform to the pattern ^[0-9]{1,19}$."))
       }
 
 
@@ -3496,16 +3529,15 @@ TweetsApi <- R6::R6Class(
         local_var_url_path <- gsub(paste0("\\{", "tweet_id", "\\}"), URLencode(as.character(`tweet_id`), reserved = TRUE), local_var_url_path)
       }
 
-      # OAuth token
-      if (!is.null(self$api_client$access_token)) {
-        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
-      }
+      # OAuth-related settings
+      is_oauth <- TRUE
+      oauth_scopes <- "users.read tweet.read tweet.moderate.write"
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list("application/json")
+      local_var_content_types <- list("application/json")
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "PUT",
@@ -3516,6 +3548,8 @@ TweetsApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -3615,6 +3649,8 @@ TweetsApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`id`)) {
         rlang::abort(message = "Missing required parameter `id`.",
@@ -3623,11 +3659,11 @@ TweetsApi <- R6::R6Class(
                                                      reason = "Missing required parameter `id`."))
       }
 
-      if (!str_detect(`id`, "/^[0-9]{1,19}$/")) {
-        rlang::abort(message = "Invalid value for `id` when calling TweetsApi$lists_id_tweets, must conform to the pattern /^[0-9]{1,19}$/.",
+      if (!str_detect(`id`, "^[0-9]{1,19}$")) {
+        rlang::abort(message = "Invalid value for `id` when calling TweetsApi$lists_id_tweets, must conform to the pattern ^[0-9]{1,19}$.",
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `id` when calling TweetsApi$lists_id_tweets, must conform to the pattern /^[0-9]{1,19}$/."))
+                                                     reason = "Invalid value for `id` when calling TweetsApi$lists_id_tweets, must conform to the pattern ^[0-9]{1,19}$."))
       }
 
       if (`max_results` > 100) {
@@ -3717,16 +3753,15 @@ TweetsApi <- R6::R6Class(
       if (!is.null(self$api_client$bearer_token)) {
         header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
       }
-      # OAuth token
-      if (!is.null(self$api_client$access_token)) {
-        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
-      }
+      # OAuth-related settings
+      is_oauth <- TRUE
+      oauth_scopes <- "users.read tweet.read list.read"
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list()
+      local_var_content_types <- list()
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "GET",
@@ -3737,6 +3772,8 @@ TweetsApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -3832,6 +3869,8 @@ TweetsApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (`backfill_minutes` > 5) {
         rlang::abort(message = "Invalid value for `backfill_minutes` when calling TweetsApi$sample_stream, must be smaller than or equal to 5.",
@@ -3909,10 +3948,10 @@ TweetsApi <- R6::R6Class(
       }
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list()
+      local_var_content_types <- list()
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "GET",
@@ -3923,6 +3962,8 @@ TweetsApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -4022,6 +4063,8 @@ TweetsApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (`backfill_minutes` > 5) {
         rlang::abort(message = "Invalid value for `backfill_minutes` when calling TweetsApi$search_stream, must be smaller than or equal to 5.",
@@ -4105,10 +4148,10 @@ TweetsApi <- R6::R6Class(
       }
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list()
+      local_var_content_types <- list()
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "GET",
@@ -4119,6 +4162,8 @@ TweetsApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -4212,6 +4257,8 @@ TweetsApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`id`)) {
         rlang::abort(message = "Missing required parameter `id`.",
@@ -4220,11 +4267,11 @@ TweetsApi <- R6::R6Class(
                                                      reason = "Missing required parameter `id`."))
       }
 
-      if (!str_detect(`id`, "/^[a-zA-Z0-9]{1,13}$/")) {
-        rlang::abort(message = "Invalid value for `id` when calling TweetsApi$space_buyers, must conform to the pattern /^[a-zA-Z0-9]{1,13}$/.",
+      if (!str_detect(`id`, "^[a-zA-Z0-9]{1,13}$")) {
+        rlang::abort(message = "Invalid value for `id` when calling TweetsApi$space_buyers, must conform to the pattern ^[a-zA-Z0-9]{1,13}$.",
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `id` when calling TweetsApi$space_buyers, must conform to the pattern /^[a-zA-Z0-9]{1,13}$/."))
+                                                     reason = "Invalid value for `id` when calling TweetsApi$space_buyers, must conform to the pattern ^[a-zA-Z0-9]{1,13}$."))
       }
 
       if (nchar(`pagination_token`) < 16) {
@@ -4283,16 +4330,15 @@ TweetsApi <- R6::R6Class(
         local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
-      # OAuth token
-      if (!is.null(self$api_client$access_token)) {
-        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
-      }
+      # OAuth-related settings
+      is_oauth <- TRUE
+      oauth_scopes <- "users.read tweet.read space.read"
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list()
+      local_var_content_types <- list()
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "GET",
@@ -4303,6 +4349,8 @@ TweetsApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -4400,6 +4448,8 @@ TweetsApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`id`)) {
         rlang::abort(message = "Missing required parameter `id`.",
@@ -4408,11 +4458,11 @@ TweetsApi <- R6::R6Class(
                                                      reason = "Missing required parameter `id`."))
       }
 
-      if (!str_detect(`id`, "/^[a-zA-Z0-9]{1,13}$/")) {
-        rlang::abort(message = "Invalid value for `id` when calling TweetsApi$space_tweets, must conform to the pattern /^[a-zA-Z0-9]{1,13}$/.",
+      if (!str_detect(`id`, "^[a-zA-Z0-9]{1,13}$")) {
+        rlang::abort(message = "Invalid value for `id` when calling TweetsApi$space_tweets, must conform to the pattern ^[a-zA-Z0-9]{1,13}$.",
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `id` when calling TweetsApi$space_tweets, must conform to the pattern /^[a-zA-Z0-9]{1,13}$/."))
+                                                     reason = "Invalid value for `id` when calling TweetsApi$space_tweets, must conform to the pattern ^[a-zA-Z0-9]{1,13}$."))
       }
 
       if (`max_results` > 100) {
@@ -4493,16 +4543,15 @@ TweetsApi <- R6::R6Class(
       if (!is.null(self$api_client$bearer_token)) {
         header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
       }
-      # OAuth token
-      if (!is.null(self$api_client$access_token)) {
-        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
-      }
+      # OAuth-related settings
+      is_oauth <- TRUE
+      oauth_scopes <- "users.read tweet.read space.read"
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list()
+      local_var_content_types <- list()
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "GET",
@@ -4513,6 +4562,8 @@ TweetsApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -4612,6 +4663,8 @@ TweetsApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`query`)) {
         rlang::abort(message = "Missing required parameter `query`.",
@@ -4635,18 +4688,18 @@ TweetsApi <- R6::R6Class(
 
 
 
-      if (!str_detect(`since_id`, "/^[0-9]{1,19}$/")) {
-        rlang::abort(message = "Invalid value for `since_id` when calling TweetsApi$tweet_counts_full_archive_search, must conform to the pattern /^[0-9]{1,19}$/.",
+      if (!str_detect(`since_id`, "^[0-9]{1,19}$")) {
+        rlang::abort(message = "Invalid value for `since_id` when calling TweetsApi$tweet_counts_full_archive_search, must conform to the pattern ^[0-9]{1,19}$.",
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `since_id` when calling TweetsApi$tweet_counts_full_archive_search, must conform to the pattern /^[0-9]{1,19}$/."))
+                                                     reason = "Invalid value for `since_id` when calling TweetsApi$tweet_counts_full_archive_search, must conform to the pattern ^[0-9]{1,19}$."))
       }
 
-      if (!str_detect(`until_id`, "/^[0-9]{1,19}$/")) {
-        rlang::abort(message = "Invalid value for `until_id` when calling TweetsApi$tweet_counts_full_archive_search, must conform to the pattern /^[0-9]{1,19}$/.",
+      if (!str_detect(`until_id`, "^[0-9]{1,19}$")) {
+        rlang::abort(message = "Invalid value for `until_id` when calling TweetsApi$tweet_counts_full_archive_search, must conform to the pattern ^[0-9]{1,19}$.",
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `until_id` when calling TweetsApi$tweet_counts_full_archive_search, must conform to the pattern /^[0-9]{1,19}$/."))
+                                                     reason = "Invalid value for `until_id` when calling TweetsApi$tweet_counts_full_archive_search, must conform to the pattern ^[0-9]{1,19}$."))
       }
 
       if (nchar(`next_token`) < 1) {
@@ -4696,10 +4749,10 @@ TweetsApi <- R6::R6Class(
       }
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list()
+      local_var_content_types <- list()
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "GET",
@@ -4710,6 +4763,8 @@ TweetsApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -4809,6 +4864,8 @@ TweetsApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`query`)) {
         rlang::abort(message = "Missing required parameter `query`.",
@@ -4832,18 +4889,18 @@ TweetsApi <- R6::R6Class(
 
 
 
-      if (!str_detect(`since_id`, "/^[0-9]{1,19}$/")) {
-        rlang::abort(message = "Invalid value for `since_id` when calling TweetsApi$tweet_counts_recent_search, must conform to the pattern /^[0-9]{1,19}$/.",
+      if (!str_detect(`since_id`, "^[0-9]{1,19}$")) {
+        rlang::abort(message = "Invalid value for `since_id` when calling TweetsApi$tweet_counts_recent_search, must conform to the pattern ^[0-9]{1,19}$.",
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `since_id` when calling TweetsApi$tweet_counts_recent_search, must conform to the pattern /^[0-9]{1,19}$/."))
+                                                     reason = "Invalid value for `since_id` when calling TweetsApi$tweet_counts_recent_search, must conform to the pattern ^[0-9]{1,19}$."))
       }
 
-      if (!str_detect(`until_id`, "/^[0-9]{1,19}$/")) {
-        rlang::abort(message = "Invalid value for `until_id` when calling TweetsApi$tweet_counts_recent_search, must conform to the pattern /^[0-9]{1,19}$/.",
+      if (!str_detect(`until_id`, "^[0-9]{1,19}$")) {
+        rlang::abort(message = "Invalid value for `until_id` when calling TweetsApi$tweet_counts_recent_search, must conform to the pattern ^[0-9]{1,19}$.",
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `until_id` when calling TweetsApi$tweet_counts_recent_search, must conform to the pattern /^[0-9]{1,19}$/."))
+                                                     reason = "Invalid value for `until_id` when calling TweetsApi$tweet_counts_recent_search, must conform to the pattern ^[0-9]{1,19}$."))
       }
 
       if (nchar(`next_token`) < 1) {
@@ -4893,10 +4950,10 @@ TweetsApi <- R6::R6Class(
       }
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list()
+      local_var_content_types <- list()
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "GET",
@@ -4907,6 +4964,8 @@ TweetsApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -5018,6 +5077,8 @@ TweetsApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`query`)) {
         rlang::abort(message = "Missing required parameter `query`.",
@@ -5041,18 +5102,18 @@ TweetsApi <- R6::R6Class(
 
 
 
-      if (!str_detect(`since_id`, "/^[0-9]{1,19}$/")) {
-        rlang::abort(message = "Invalid value for `since_id` when calling TweetsApi$tweets_fullarchive_search, must conform to the pattern /^[0-9]{1,19}$/.",
+      if (!str_detect(`since_id`, "^[0-9]{1,19}$")) {
+        rlang::abort(message = "Invalid value for `since_id` when calling TweetsApi$tweets_fullarchive_search, must conform to the pattern ^[0-9]{1,19}$.",
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `since_id` when calling TweetsApi$tweets_fullarchive_search, must conform to the pattern /^[0-9]{1,19}$/."))
+                                                     reason = "Invalid value for `since_id` when calling TweetsApi$tweets_fullarchive_search, must conform to the pattern ^[0-9]{1,19}$."))
       }
 
-      if (!str_detect(`until_id`, "/^[0-9]{1,19}$/")) {
-        rlang::abort(message = "Invalid value for `until_id` when calling TweetsApi$tweets_fullarchive_search, must conform to the pattern /^[0-9]{1,19}$/.",
+      if (!str_detect(`until_id`, "^[0-9]{1,19}$")) {
+        rlang::abort(message = "Invalid value for `until_id` when calling TweetsApi$tweets_fullarchive_search, must conform to the pattern ^[0-9]{1,19}$.",
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `until_id` when calling TweetsApi$tweets_fullarchive_search, must conform to the pattern /^[0-9]{1,19}$/."))
+                                                     reason = "Invalid value for `until_id` when calling TweetsApi$tweets_fullarchive_search, must conform to the pattern ^[0-9]{1,19}$."))
       }
 
       if (`max_results` > 500) {
@@ -5162,10 +5223,10 @@ TweetsApi <- R6::R6Class(
       }
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list()
+      local_var_content_types <- list()
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "GET",
@@ -5176,6 +5237,8 @@ TweetsApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -5287,6 +5350,8 @@ TweetsApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`query`)) {
         rlang::abort(message = "Missing required parameter `query`.",
@@ -5310,18 +5375,18 @@ TweetsApi <- R6::R6Class(
 
 
 
-      if (!str_detect(`since_id`, "/^[0-9]{1,19}$/")) {
-        rlang::abort(message = "Invalid value for `since_id` when calling TweetsApi$tweets_recent_search, must conform to the pattern /^[0-9]{1,19}$/.",
+      if (!str_detect(`since_id`, "^[0-9]{1,19}$")) {
+        rlang::abort(message = "Invalid value for `since_id` when calling TweetsApi$tweets_recent_search, must conform to the pattern ^[0-9]{1,19}$.",
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `since_id` when calling TweetsApi$tweets_recent_search, must conform to the pattern /^[0-9]{1,19}$/."))
+                                                     reason = "Invalid value for `since_id` when calling TweetsApi$tweets_recent_search, must conform to the pattern ^[0-9]{1,19}$."))
       }
 
-      if (!str_detect(`until_id`, "/^[0-9]{1,19}$/")) {
-        rlang::abort(message = "Invalid value for `until_id` when calling TweetsApi$tweets_recent_search, must conform to the pattern /^[0-9]{1,19}$/.",
+      if (!str_detect(`until_id`, "^[0-9]{1,19}$")) {
+        rlang::abort(message = "Invalid value for `until_id` when calling TweetsApi$tweets_recent_search, must conform to the pattern ^[0-9]{1,19}$.",
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `until_id` when calling TweetsApi$tweets_recent_search, must conform to the pattern /^[0-9]{1,19}$/."))
+                                                     reason = "Invalid value for `until_id` when calling TweetsApi$tweets_recent_search, must conform to the pattern ^[0-9]{1,19}$."))
       }
 
       if (`max_results` > 100) {
@@ -5429,16 +5494,15 @@ TweetsApi <- R6::R6Class(
       if (!is.null(self$api_client$bearer_token)) {
         header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
       }
-      # OAuth token
-      if (!is.null(self$api_client$access_token)) {
-        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
-      }
+      # OAuth-related settings
+      is_oauth <- TRUE
+      oauth_scopes <- "tweet.read users.read"
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list()
+      local_var_content_types <- list()
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "GET",
@@ -5449,6 +5513,8 @@ TweetsApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -5534,6 +5600,8 @@ TweetsApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`id`)) {
         rlang::abort(message = "Missing required parameter `id`.",
@@ -5555,16 +5623,15 @@ TweetsApi <- R6::R6Class(
         local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
-      # OAuth token
-      if (!is.null(self$api_client$access_token)) {
-        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
-      }
+      # OAuth-related settings
+      is_oauth <- TRUE
+      oauth_scopes <- "users.read tweet.read like.write"
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list("application/json")
+      local_var_content_types <- list("application/json")
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "POST",
@@ -5575,6 +5642,8 @@ TweetsApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -5674,6 +5743,8 @@ TweetsApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`id`)) {
         rlang::abort(message = "Missing required parameter `id`.",
@@ -5682,11 +5753,11 @@ TweetsApi <- R6::R6Class(
                                                      reason = "Missing required parameter `id`."))
       }
 
-      if (!str_detect(`id`, "/^[0-9]{1,19}$/")) {
-        rlang::abort(message = "Invalid value for `id` when calling TweetsApi$users_id_liked_tweets, must conform to the pattern /^[0-9]{1,19}$/.",
+      if (!str_detect(`id`, "^[0-9]{1,19}$")) {
+        rlang::abort(message = "Invalid value for `id` when calling TweetsApi$users_id_liked_tweets, must conform to the pattern ^[0-9]{1,19}$.",
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `id` when calling TweetsApi$users_id_liked_tweets, must conform to the pattern /^[0-9]{1,19}$/."))
+                                                     reason = "Invalid value for `id` when calling TweetsApi$users_id_liked_tweets, must conform to the pattern ^[0-9]{1,19}$."))
       }
 
       if (`max_results` > 100) {
@@ -5776,16 +5847,15 @@ TweetsApi <- R6::R6Class(
       if (!is.null(self$api_client$bearer_token)) {
         header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
       }
-      # OAuth token
-      if (!is.null(self$api_client$access_token)) {
-        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
-      }
+      # OAuth-related settings
+      is_oauth <- TRUE
+      oauth_scopes <- "users.read tweet.read like.read"
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list()
+      local_var_content_types <- list()
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "GET",
@@ -5796,6 +5866,8 @@ TweetsApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -5903,6 +5975,8 @@ TweetsApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`id`)) {
         rlang::abort(message = "Missing required parameter `id`.",
@@ -5911,25 +5985,25 @@ TweetsApi <- R6::R6Class(
                                                      reason = "Missing required parameter `id`."))
       }
 
-      if (!str_detect(`id`, "/^[0-9]{1,19}$/")) {
-        rlang::abort(message = "Invalid value for `id` when calling TweetsApi$users_id_mentions, must conform to the pattern /^[0-9]{1,19}$/.",
+      if (!str_detect(`id`, "^[0-9]{1,19}$")) {
+        rlang::abort(message = "Invalid value for `id` when calling TweetsApi$users_id_mentions, must conform to the pattern ^[0-9]{1,19}$.",
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `id` when calling TweetsApi$users_id_mentions, must conform to the pattern /^[0-9]{1,19}$/."))
+                                                     reason = "Invalid value for `id` when calling TweetsApi$users_id_mentions, must conform to the pattern ^[0-9]{1,19}$."))
       }
 
-      if (!str_detect(`since_id`, "/^[0-9]{1,19}$/")) {
-        rlang::abort(message = "Invalid value for `since_id` when calling TweetsApi$users_id_mentions, must conform to the pattern /^[0-9]{1,19}$/.",
+      if (!str_detect(`since_id`, "^[0-9]{1,19}$")) {
+        rlang::abort(message = "Invalid value for `since_id` when calling TweetsApi$users_id_mentions, must conform to the pattern ^[0-9]{1,19}$.",
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `since_id` when calling TweetsApi$users_id_mentions, must conform to the pattern /^[0-9]{1,19}$/."))
+                                                     reason = "Invalid value for `since_id` when calling TweetsApi$users_id_mentions, must conform to the pattern ^[0-9]{1,19}$."))
       }
 
-      if (!str_detect(`until_id`, "/^[0-9]{1,19}$/")) {
-        rlang::abort(message = "Invalid value for `until_id` when calling TweetsApi$users_id_mentions, must conform to the pattern /^[0-9]{1,19}$/.",
+      if (!str_detect(`until_id`, "^[0-9]{1,19}$")) {
+        rlang::abort(message = "Invalid value for `until_id` when calling TweetsApi$users_id_mentions, must conform to the pattern ^[0-9]{1,19}$.",
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `until_id` when calling TweetsApi$users_id_mentions, must conform to the pattern /^[0-9]{1,19}$/."))
+                                                     reason = "Invalid value for `until_id` when calling TweetsApi$users_id_mentions, must conform to the pattern ^[0-9]{1,19}$."))
       }
 
       if (`max_results` > 100) {
@@ -6029,16 +6103,15 @@ TweetsApi <- R6::R6Class(
       if (!is.null(self$api_client$bearer_token)) {
         header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
       }
-      # OAuth token
-      if (!is.null(self$api_client$access_token)) {
-        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
-      }
+      # OAuth-related settings
+      is_oauth <- TRUE
+      oauth_scopes <- "tweet.read users.read"
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list()
+      local_var_content_types <- list()
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "GET",
@@ -6049,6 +6122,8 @@ TweetsApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -6134,6 +6209,8 @@ TweetsApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`id`)) {
         rlang::abort(message = "Missing required parameter `id`.",
@@ -6155,16 +6232,15 @@ TweetsApi <- R6::R6Class(
         local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
-      # OAuth token
-      if (!is.null(self$api_client$access_token)) {
-        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
-      }
+      # OAuth-related settings
+      is_oauth <- TRUE
+      oauth_scopes <- "users.read tweet.read tweet.write"
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list("application/json")
+      local_var_content_types <- list("application/json")
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "POST",
@@ -6175,6 +6251,8 @@ TweetsApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -6284,6 +6362,8 @@ TweetsApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`id`)) {
         rlang::abort(message = "Missing required parameter `id`.",
@@ -6293,18 +6373,18 @@ TweetsApi <- R6::R6Class(
       }
 
 
-      if (!str_detect(`since_id`, "/^[0-9]{1,19}$/")) {
-        rlang::abort(message = "Invalid value for `since_id` when calling TweetsApi$users_id_timeline, must conform to the pattern /^[0-9]{1,19}$/.",
+      if (!str_detect(`since_id`, "^[0-9]{1,19}$")) {
+        rlang::abort(message = "Invalid value for `since_id` when calling TweetsApi$users_id_timeline, must conform to the pattern ^[0-9]{1,19}$.",
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `since_id` when calling TweetsApi$users_id_timeline, must conform to the pattern /^[0-9]{1,19}$/."))
+                                                     reason = "Invalid value for `since_id` when calling TweetsApi$users_id_timeline, must conform to the pattern ^[0-9]{1,19}$."))
       }
 
-      if (!str_detect(`until_id`, "/^[0-9]{1,19}$/")) {
-        rlang::abort(message = "Invalid value for `until_id` when calling TweetsApi$users_id_timeline, must conform to the pattern /^[0-9]{1,19}$/.",
+      if (!str_detect(`until_id`, "^[0-9]{1,19}$")) {
+        rlang::abort(message = "Invalid value for `until_id` when calling TweetsApi$users_id_timeline, must conform to the pattern ^[0-9]{1,19}$.",
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `until_id` when calling TweetsApi$users_id_timeline, must conform to the pattern /^[0-9]{1,19}$/."))
+                                                     reason = "Invalid value for `until_id` when calling TweetsApi$users_id_timeline, must conform to the pattern ^[0-9]{1,19}$."))
       }
 
       if (`max_results` > 100) {
@@ -6403,16 +6483,15 @@ TweetsApi <- R6::R6Class(
         local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
-      # OAuth token
-      if (!is.null(self$api_client$access_token)) {
-        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
-      }
+      # OAuth-related settings
+      is_oauth <- TRUE
+      oauth_scopes <- "tweet.read users.read"
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list()
+      local_var_content_types <- list()
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "GET",
@@ -6423,6 +6502,8 @@ TweetsApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -6532,6 +6613,8 @@ TweetsApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`id`)) {
         rlang::abort(message = "Missing required parameter `id`.",
@@ -6540,25 +6623,25 @@ TweetsApi <- R6::R6Class(
                                                      reason = "Missing required parameter `id`."))
       }
 
-      if (!str_detect(`id`, "/^[0-9]{1,19}$/")) {
-        rlang::abort(message = "Invalid value for `id` when calling TweetsApi$users_id_tweets, must conform to the pattern /^[0-9]{1,19}$/.",
+      if (!str_detect(`id`, "^[0-9]{1,19}$")) {
+        rlang::abort(message = "Invalid value for `id` when calling TweetsApi$users_id_tweets, must conform to the pattern ^[0-9]{1,19}$.",
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `id` when calling TweetsApi$users_id_tweets, must conform to the pattern /^[0-9]{1,19}$/."))
+                                                     reason = "Invalid value for `id` when calling TweetsApi$users_id_tweets, must conform to the pattern ^[0-9]{1,19}$."))
       }
 
-      if (!str_detect(`since_id`, "/^[0-9]{1,19}$/")) {
-        rlang::abort(message = "Invalid value for `since_id` when calling TweetsApi$users_id_tweets, must conform to the pattern /^[0-9]{1,19}$/.",
+      if (!str_detect(`since_id`, "^[0-9]{1,19}$")) {
+        rlang::abort(message = "Invalid value for `since_id` when calling TweetsApi$users_id_tweets, must conform to the pattern ^[0-9]{1,19}$.",
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `since_id` when calling TweetsApi$users_id_tweets, must conform to the pattern /^[0-9]{1,19}$/."))
+                                                     reason = "Invalid value for `since_id` when calling TweetsApi$users_id_tweets, must conform to the pattern ^[0-9]{1,19}$."))
       }
 
-      if (!str_detect(`until_id`, "/^[0-9]{1,19}$/")) {
-        rlang::abort(message = "Invalid value for `until_id` when calling TweetsApi$users_id_tweets, must conform to the pattern /^[0-9]{1,19}$/.",
+      if (!str_detect(`until_id`, "^[0-9]{1,19}$")) {
+        rlang::abort(message = "Invalid value for `until_id` when calling TweetsApi$users_id_tweets, must conform to the pattern ^[0-9]{1,19}$.",
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `until_id` when calling TweetsApi$users_id_tweets, must conform to the pattern /^[0-9]{1,19}$/."))
+                                                     reason = "Invalid value for `until_id` when calling TweetsApi$users_id_tweets, must conform to the pattern ^[0-9]{1,19}$."))
       }
 
       if (`max_results` > 100) {
@@ -6667,16 +6750,15 @@ TweetsApi <- R6::R6Class(
       if (!is.null(self$api_client$bearer_token)) {
         header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
       }
-      # OAuth token
-      if (!is.null(self$api_client$access_token)) {
-        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
-      }
+      # OAuth-related settings
+      is_oauth <- TRUE
+      oauth_scopes <- "tweet.read users.read"
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list()
+      local_var_content_types <- list()
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "GET",
@@ -6687,6 +6769,8 @@ TweetsApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -6772,6 +6856,8 @@ TweetsApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`id`)) {
         rlang::abort(message = "Missing required parameter `id`.",
@@ -6788,11 +6874,11 @@ TweetsApi <- R6::R6Class(
       }
 
 
-      if (!str_detect(`tweet_id`, "/^[0-9]{1,19}$/")) {
-        rlang::abort(message = "Invalid value for `tweet_id` when calling TweetsApi$users_id_unlike, must conform to the pattern /^[0-9]{1,19}$/.",
+      if (!str_detect(`tweet_id`, "^[0-9]{1,19}$")) {
+        rlang::abort(message = "Invalid value for `tweet_id` when calling TweetsApi$users_id_unlike, must conform to the pattern ^[0-9]{1,19}$.",
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `tweet_id` when calling TweetsApi$users_id_unlike, must conform to the pattern /^[0-9]{1,19}$/."))
+                                                     reason = "Invalid value for `tweet_id` when calling TweetsApi$users_id_unlike, must conform to the pattern ^[0-9]{1,19}$."))
       }
 
       local_var_url_path <- "/2/users/{id}/likes/{tweet_id}"
@@ -6804,16 +6890,15 @@ TweetsApi <- R6::R6Class(
         local_var_url_path <- gsub(paste0("\\{", "tweet_id", "\\}"), URLencode(as.character(`tweet_id`), reserved = TRUE), local_var_url_path)
       }
 
-      # OAuth token
-      if (!is.null(self$api_client$access_token)) {
-        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
-      }
+      # OAuth-related settings
+      is_oauth <- TRUE
+      oauth_scopes <- "users.read tweet.read like.write"
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list()
+      local_var_content_types <- list()
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "DELETE",
@@ -6824,6 +6909,8 @@ TweetsApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -6909,6 +6996,8 @@ TweetsApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`id`)) {
         rlang::abort(message = "Missing required parameter `id`.",
@@ -6925,11 +7014,11 @@ TweetsApi <- R6::R6Class(
       }
 
 
-      if (!str_detect(`source_tweet_id`, "/^[0-9]{1,19}$/")) {
-        rlang::abort(message = "Invalid value for `source_tweet_id` when calling TweetsApi$users_id_unretweets, must conform to the pattern /^[0-9]{1,19}$/.",
+      if (!str_detect(`source_tweet_id`, "^[0-9]{1,19}$")) {
+        rlang::abort(message = "Invalid value for `source_tweet_id` when calling TweetsApi$users_id_unretweets, must conform to the pattern ^[0-9]{1,19}$.",
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `source_tweet_id` when calling TweetsApi$users_id_unretweets, must conform to the pattern /^[0-9]{1,19}$/."))
+                                                     reason = "Invalid value for `source_tweet_id` when calling TweetsApi$users_id_unretweets, must conform to the pattern ^[0-9]{1,19}$."))
       }
 
       local_var_url_path <- "/2/users/{id}/retweets/{source_tweet_id}"
@@ -6941,16 +7030,15 @@ TweetsApi <- R6::R6Class(
         local_var_url_path <- gsub(paste0("\\{", "source_tweet_id", "\\}"), URLencode(as.character(`source_tweet_id`), reserved = TRUE), local_var_url_path)
       }
 
-      # OAuth token
-      if (!is.null(self$api_client$access_token)) {
-        header_params["Authorization"] <- paste("Bearer", self$api_client$access_token, sep = " ")
-      }
+      # OAuth-related settings
+      is_oauth <- TRUE
+      oauth_scopes <- "users.read tweet.read tweet.write"
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list()
+      local_var_content_types <- list()
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "DELETE",
@@ -6961,6 +7049,8 @@ TweetsApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {

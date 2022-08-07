@@ -364,6 +364,8 @@ ComplianceApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`create_compliance_job_request`)) {
         rlang::abort(message = "Missing required parameter `create_compliance_job_request`.",
@@ -386,10 +388,10 @@ ComplianceApi <- R6::R6Class(
       }
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list("application/json")
+      local_var_content_types <- list("application/json")
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "POST",
@@ -400,6 +402,8 @@ ComplianceApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -485,6 +489,8 @@ ComplianceApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`id`)) {
         rlang::abort(message = "Missing required parameter `id`.",
@@ -493,11 +499,11 @@ ComplianceApi <- R6::R6Class(
                                                      reason = "Missing required parameter `id`."))
       }
 
-      if (!str_detect(`id`, "/^[0-9]{1,19}$/")) {
-        rlang::abort(message = "Invalid value for `id` when calling ComplianceApi$get_batch_compliance_job, must conform to the pattern /^[0-9]{1,19}$/.",
+      if (!str_detect(`id`, "^[0-9]{1,19}$")) {
+        rlang::abort(message = "Invalid value for `id` when calling ComplianceApi$get_batch_compliance_job, must conform to the pattern ^[0-9]{1,19}$.",
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `id` when calling ComplianceApi$get_batch_compliance_job, must conform to the pattern /^[0-9]{1,19}$/."))
+                                                     reason = "Invalid value for `id` when calling ComplianceApi$get_batch_compliance_job, must conform to the pattern ^[0-9]{1,19}$."))
       }
 
       if (length(`compliance_job_fields`) < 1) {
@@ -520,10 +526,10 @@ ComplianceApi <- R6::R6Class(
       }
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list()
+      local_var_content_types <- list()
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "GET",
@@ -534,6 +540,8 @@ ComplianceApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -623,6 +631,8 @@ ComplianceApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`partition`)) {
         rlang::abort(message = "Missing required parameter `partition`.",
@@ -674,10 +684,10 @@ ComplianceApi <- R6::R6Class(
       }
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list()
+      local_var_content_types <- list()
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "GET",
@@ -688,6 +698,8 @@ ComplianceApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -777,6 +789,8 @@ ComplianceApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`partition`)) {
         rlang::abort(message = "Missing required parameter `partition`.",
@@ -828,10 +842,10 @@ ComplianceApi <- R6::R6Class(
       }
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list()
+      local_var_content_types <- list()
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "GET",
@@ -842,6 +856,8 @@ ComplianceApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
@@ -929,6 +945,8 @@ ComplianceApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
 
       if (missing(`type`)) {
         rlang::abort(message = "Missing required parameter `type`.",
@@ -959,10 +977,10 @@ ComplianceApi <- R6::R6Class(
       }
 
       # The Accept request HTTP header
-      local_var_accepts = list("application/json", "application/problem+json")
+      local_var_accepts <- list("application/json", "application/problem+json")
 
       # The Content-Type representation header
-      local_var_content_types = list()
+      local_var_content_types <- list()
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "GET",
@@ -973,6 +991,8 @@ ComplianceApi <- R6::R6Class(
                                  accepts = local_var_accepts,
                                  content_types = local_var_content_types,
                                  body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
