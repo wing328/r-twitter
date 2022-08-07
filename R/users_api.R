@@ -1262,6 +1262,27 @@ UsersApi <- R6::R6Class(
       file_params <- list()
       local_var_body <- NULL
 
+      if (length(`user_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `user_fields` when calling UsersApi$find_my_user, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `user_fields` when calling UsersApi$find_my_user, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`expansions`) < 1) {
+        rlang::abort(message = "Invalid length for `expansions` when calling UsersApi$find_my_user, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `expansions` when calling UsersApi$find_my_user, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`tweet_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `tweet_fields` when calling UsersApi$find_my_user, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `tweet_fields` when calling UsersApi$find_my_user, number of items must be greater than or equal to 1."))
+      }
+
       query_params["user.fields"] <- `user_fields`
 
       query_params["expansions"] <- `expansions`
@@ -1384,6 +1405,34 @@ UsersApi <- R6::R6Class(
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
                                                      reason = "Missing required parameter `id`."))
+      }
+
+      if (!str_detect(`id`, "/^[0-9]{1,19}$/")) {
+        rlang::abort(message = "Invalid value for `id` when calling UsersApi$find_user_by_id, must conform to the pattern /^[0-9]{1,19}$/.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `id` when calling UsersApi$find_user_by_id, must conform to the pattern /^[0-9]{1,19}$/."))
+      }
+
+      if (length(`user_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `user_fields` when calling UsersApi$find_user_by_id, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `user_fields` when calling UsersApi$find_user_by_id, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`expansions`) < 1) {
+        rlang::abort(message = "Invalid length for `expansions` when calling UsersApi$find_user_by_id, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `expansions` when calling UsersApi$find_user_by_id, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`tweet_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `tweet_fields` when calling UsersApi$find_user_by_id, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `tweet_fields` when calling UsersApi$find_user_by_id, number of items must be greater than or equal to 1."))
       }
 
       query_params["user.fields"] <- `user_fields`
@@ -1518,6 +1567,34 @@ UsersApi <- R6::R6Class(
                                                      reason = "Missing required parameter `username`."))
       }
 
+      if (!str_detect(`username`, "/^[A-Za-z0-9_]{1,15}$/")) {
+        rlang::abort(message = "Invalid value for `username` when calling UsersApi$find_user_by_username, must conform to the pattern /^[A-Za-z0-9_]{1,15}$/.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `username` when calling UsersApi$find_user_by_username, must conform to the pattern /^[A-Za-z0-9_]{1,15}$/."))
+      }
+
+      if (length(`user_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `user_fields` when calling UsersApi$find_user_by_username, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `user_fields` when calling UsersApi$find_user_by_username, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`expansions`) < 1) {
+        rlang::abort(message = "Invalid length for `expansions` when calling UsersApi$find_user_by_username, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `expansions` when calling UsersApi$find_user_by_username, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`tweet_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `tweet_fields` when calling UsersApi$find_user_by_username, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `tweet_fields` when calling UsersApi$find_user_by_username, number of items must be greater than or equal to 1."))
+      }
+
       query_params["user.fields"] <- `user_fields`
 
       query_params["expansions"] <- `expansions`
@@ -1650,6 +1727,40 @@ UsersApi <- R6::R6Class(
                                                      reason = "Missing required parameter `ids`."))
       }
 
+      if (length(`ids`) > 100) {
+        rlang::abort(message = "Invalid length for `ids` when calling UsersApi$find_users_by_id, number of items must be less than or equal to 100.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `ids` when calling UsersApi$find_users_by_id, number of items must be less than or equal to 100."))
+      }
+      if (length(`ids`) < 1) {
+        rlang::abort(message = "Invalid length for `ids` when calling UsersApi$find_users_by_id, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `ids` when calling UsersApi$find_users_by_id, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`user_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `user_fields` when calling UsersApi$find_users_by_id, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `user_fields` when calling UsersApi$find_users_by_id, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`expansions`) < 1) {
+        rlang::abort(message = "Invalid length for `expansions` when calling UsersApi$find_users_by_id, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `expansions` when calling UsersApi$find_users_by_id, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`tweet_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `tweet_fields` when calling UsersApi$find_users_by_id, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `tweet_fields` when calling UsersApi$find_users_by_id, number of items must be greater than or equal to 1."))
+      }
+
       query_params["ids"] <- `ids`
 
       query_params["user.fields"] <- `user_fields`
@@ -1778,6 +1889,40 @@ UsersApi <- R6::R6Class(
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
                                                      reason = "Missing required parameter `usernames`."))
+      }
+
+      if (length(`usernames`) > 100) {
+        rlang::abort(message = "Invalid length for `usernames` when calling UsersApi$find_users_by_username, number of items must be less than or equal to 100.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `usernames` when calling UsersApi$find_users_by_username, number of items must be less than or equal to 100."))
+      }
+      if (length(`usernames`) < 1) {
+        rlang::abort(message = "Invalid length for `usernames` when calling UsersApi$find_users_by_username, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `usernames` when calling UsersApi$find_users_by_username, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`user_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `user_fields` when calling UsersApi$find_users_by_username, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `user_fields` when calling UsersApi$find_users_by_username, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`expansions`) < 1) {
+        rlang::abort(message = "Invalid length for `expansions` when calling UsersApi$find_users_by_username, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `expansions` when calling UsersApi$find_users_by_username, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`tweet_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `tweet_fields` when calling UsersApi$find_users_by_username, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `tweet_fields` when calling UsersApi$find_users_by_username, number of items must be greater than or equal to 1."))
       }
 
       query_params["usernames"] <- `usernames`
@@ -1912,6 +2057,60 @@ UsersApi <- R6::R6Class(
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
                                                      reason = "Missing required parameter `id`."))
+      }
+
+      if (!str_detect(`id`, "/^[0-9]{1,19}$/")) {
+        rlang::abort(message = "Invalid value for `id` when calling UsersApi$list_get_followers, must conform to the pattern /^[0-9]{1,19}$/.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `id` when calling UsersApi$list_get_followers, must conform to the pattern /^[0-9]{1,19}$/."))
+      }
+
+      if (`max_results` > 100) {
+        rlang::abort(message = "Invalid value for `max_results` when calling UsersApi$list_get_followers, must be smaller than or equal to 100.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling UsersApi$list_get_followers, must be smaller than or equal to 100."))
+      }
+      if (`max_results` < 1) {
+        rlang::abort(message = "Invalid value for `max_results` when calling UsersApi$list_get_followers, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling UsersApi$list_get_followers, must be bigger than or equal to 1."))
+      }
+
+      if (nchar(`pagination_token`) > 19) {
+        rlang::abort(message = "Invalid length for `pagination_token` when calling UsersApi$list_get_followers, must be smaller than or equal to 19.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for $pagination_token when calling UsersApi.list_get_followers, must be smaller than or equal to 19."))
+      }
+      if (nchar(`pagination_token`) < 1) {
+        rlang::abort(message = "Invalid length for `pagination_token` when calling UsersApi$list_get_followers, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `pagination_token` when calling UsersApi$list_get_followers, must be bigger than or equal to 1."))
+      }
+
+      if (length(`user_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `user_fields` when calling UsersApi$list_get_followers, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `user_fields` when calling UsersApi$list_get_followers, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`expansions`) < 1) {
+        rlang::abort(message = "Invalid length for `expansions` when calling UsersApi$list_get_followers, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `expansions` when calling UsersApi$list_get_followers, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`tweet_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `tweet_fields` when calling UsersApi$list_get_followers, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `tweet_fields` when calling UsersApi$list_get_followers, number of items must be greater than or equal to 1."))
       }
 
       query_params["max_results"] <- `max_results`
@@ -2054,6 +2253,60 @@ UsersApi <- R6::R6Class(
                                                      reason = "Missing required parameter `id`."))
       }
 
+      if (!str_detect(`id`, "/^[0-9]{1,19}$/")) {
+        rlang::abort(message = "Invalid value for `id` when calling UsersApi$list_get_members, must conform to the pattern /^[0-9]{1,19}$/.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `id` when calling UsersApi$list_get_members, must conform to the pattern /^[0-9]{1,19}$/."))
+      }
+
+      if (`max_results` > 100) {
+        rlang::abort(message = "Invalid value for `max_results` when calling UsersApi$list_get_members, must be smaller than or equal to 100.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling UsersApi$list_get_members, must be smaller than or equal to 100."))
+      }
+      if (`max_results` < 1) {
+        rlang::abort(message = "Invalid value for `max_results` when calling UsersApi$list_get_members, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling UsersApi$list_get_members, must be bigger than or equal to 1."))
+      }
+
+      if (nchar(`pagination_token`) > 19) {
+        rlang::abort(message = "Invalid length for `pagination_token` when calling UsersApi$list_get_members, must be smaller than or equal to 19.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for $pagination_token when calling UsersApi.list_get_members, must be smaller than or equal to 19."))
+      }
+      if (nchar(`pagination_token`) < 1) {
+        rlang::abort(message = "Invalid length for `pagination_token` when calling UsersApi$list_get_members, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `pagination_token` when calling UsersApi$list_get_members, must be bigger than or equal to 1."))
+      }
+
+      if (length(`user_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `user_fields` when calling UsersApi$list_get_members, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `user_fields` when calling UsersApi$list_get_members, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`expansions`) < 1) {
+        rlang::abort(message = "Invalid length for `expansions` when calling UsersApi$list_get_members, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `expansions` when calling UsersApi$list_get_members, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`tweet_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `tweet_fields` when calling UsersApi$list_get_members, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `tweet_fields` when calling UsersApi$list_get_members, number of items must be greater than or equal to 1."))
+      }
+
       query_params["max_results"] <- `max_results`
 
       query_params["pagination_token"] <- `pagination_token`
@@ -2192,6 +2445,54 @@ UsersApi <- R6::R6Class(
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
                                                      reason = "Missing required parameter `id`."))
+      }
+
+      if (!str_detect(`id`, "/^[0-9]{1,19}$/")) {
+        rlang::abort(message = "Invalid value for `id` when calling UsersApi$tweets_id_liking_users, must conform to the pattern /^[0-9]{1,19}$/.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `id` when calling UsersApi$tweets_id_liking_users, must conform to the pattern /^[0-9]{1,19}$/."))
+      }
+
+      if (`max_results` > 100) {
+        rlang::abort(message = "Invalid value for `max_results` when calling UsersApi$tweets_id_liking_users, must be smaller than or equal to 100.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling UsersApi$tweets_id_liking_users, must be smaller than or equal to 100."))
+      }
+      if (`max_results` < 1) {
+        rlang::abort(message = "Invalid value for `max_results` when calling UsersApi$tweets_id_liking_users, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling UsersApi$tweets_id_liking_users, must be bigger than or equal to 1."))
+      }
+
+      if (nchar(`pagination_token`) < 1) {
+        rlang::abort(message = "Invalid length for `pagination_token` when calling UsersApi$tweets_id_liking_users, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `pagination_token` when calling UsersApi$tweets_id_liking_users, must be bigger than or equal to 1."))
+      }
+
+      if (length(`user_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `user_fields` when calling UsersApi$tweets_id_liking_users, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `user_fields` when calling UsersApi$tweets_id_liking_users, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`expansions`) < 1) {
+        rlang::abort(message = "Invalid length for `expansions` when calling UsersApi$tweets_id_liking_users, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `expansions` when calling UsersApi$tweets_id_liking_users, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`tweet_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `tweet_fields` when calling UsersApi$tweets_id_liking_users, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `tweet_fields` when calling UsersApi$tweets_id_liking_users, number of items must be greater than or equal to 1."))
       }
 
       query_params["max_results"] <- `max_results`
@@ -2334,6 +2635,54 @@ UsersApi <- R6::R6Class(
                                                      reason = "Missing required parameter `id`."))
       }
 
+      if (!str_detect(`id`, "/^[0-9]{1,19}$/")) {
+        rlang::abort(message = "Invalid value for `id` when calling UsersApi$tweets_id_retweeting_users, must conform to the pattern /^[0-9]{1,19}$/.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `id` when calling UsersApi$tweets_id_retweeting_users, must conform to the pattern /^[0-9]{1,19}$/."))
+      }
+
+      if (`max_results` > 100) {
+        rlang::abort(message = "Invalid value for `max_results` when calling UsersApi$tweets_id_retweeting_users, must be smaller than or equal to 100.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling UsersApi$tweets_id_retweeting_users, must be smaller than or equal to 100."))
+      }
+      if (`max_results` < 1) {
+        rlang::abort(message = "Invalid value for `max_results` when calling UsersApi$tweets_id_retweeting_users, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling UsersApi$tweets_id_retweeting_users, must be bigger than or equal to 1."))
+      }
+
+      if (nchar(`pagination_token`) < 1) {
+        rlang::abort(message = "Invalid length for `pagination_token` when calling UsersApi$tweets_id_retweeting_users, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `pagination_token` when calling UsersApi$tweets_id_retweeting_users, must be bigger than or equal to 1."))
+      }
+
+      if (length(`user_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `user_fields` when calling UsersApi$tweets_id_retweeting_users, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `user_fields` when calling UsersApi$tweets_id_retweeting_users, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`expansions`) < 1) {
+        rlang::abort(message = "Invalid length for `expansions` when calling UsersApi$tweets_id_retweeting_users, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `expansions` when calling UsersApi$tweets_id_retweeting_users, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`tweet_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `tweet_fields` when calling UsersApi$tweets_id_retweeting_users, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `tweet_fields` when calling UsersApi$tweets_id_retweeting_users, number of items must be greater than or equal to 1."))
+      }
+
       query_params["max_results"] <- `max_results`
 
       query_params["pagination_token"] <- `pagination_token`
@@ -2473,6 +2822,8 @@ UsersApi <- R6::R6Class(
                                                      reason = "Missing required parameter `block_user_request`."))
       }
 
+
+
       if (!missing(`block_user_request`)) {
         local_var_body <- `block_user_request`$toJSONString()
       } else {
@@ -2605,6 +2956,48 @@ UsersApi <- R6::R6Class(
                                                      reason = "Missing required parameter `id`."))
       }
 
+
+      if (`max_results` > 1000) {
+        rlang::abort(message = "Invalid value for `max_results` when calling UsersApi$users_id_blocking, must be smaller than or equal to 1000.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling UsersApi$users_id_blocking, must be smaller than or equal to 1000."))
+      }
+      if (`max_results` < 1) {
+        rlang::abort(message = "Invalid value for `max_results` when calling UsersApi$users_id_blocking, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling UsersApi$users_id_blocking, must be bigger than or equal to 1."))
+      }
+
+      if (nchar(`pagination_token`) < 16) {
+        rlang::abort(message = "Invalid length for `pagination_token` when calling UsersApi$users_id_blocking, must be bigger than or equal to 16.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `pagination_token` when calling UsersApi$users_id_blocking, must be bigger than or equal to 16."))
+      }
+
+      if (length(`user_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `user_fields` when calling UsersApi$users_id_blocking, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `user_fields` when calling UsersApi$users_id_blocking, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`expansions`) < 1) {
+        rlang::abort(message = "Invalid length for `expansions` when calling UsersApi$users_id_blocking, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `expansions` when calling UsersApi$users_id_blocking, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`tweet_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `tweet_fields` when calling UsersApi$users_id_blocking, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `tweet_fields` when calling UsersApi$users_id_blocking, number of items must be greater than or equal to 1."))
+      }
+
       query_params["max_results"] <- `max_results`
 
       query_params["pagination_token"] <- `pagination_token`
@@ -2732,6 +3125,8 @@ UsersApi <- R6::R6Class(
                      ApiException = ApiException$new(status = 0,
                                                      reason = "Missing required parameter `id`."))
       }
+
+
 
       if (!missing(`users_following_create_request`)) {
         local_var_body <- `users_following_create_request`$toJSONString()
@@ -2863,6 +3258,54 @@ UsersApi <- R6::R6Class(
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
                                                      reason = "Missing required parameter `id`."))
+      }
+
+      if (!str_detect(`id`, "/^[0-9]{1,19}$/")) {
+        rlang::abort(message = "Invalid value for `id` when calling UsersApi$users_id_followers, must conform to the pattern /^[0-9]{1,19}$/.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `id` when calling UsersApi$users_id_followers, must conform to the pattern /^[0-9]{1,19}$/."))
+      }
+
+      if (`max_results` > 1000) {
+        rlang::abort(message = "Invalid value for `max_results` when calling UsersApi$users_id_followers, must be smaller than or equal to 1000.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling UsersApi$users_id_followers, must be smaller than or equal to 1000."))
+      }
+      if (`max_results` < 1) {
+        rlang::abort(message = "Invalid value for `max_results` when calling UsersApi$users_id_followers, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling UsersApi$users_id_followers, must be bigger than or equal to 1."))
+      }
+
+      if (nchar(`pagination_token`) < 16) {
+        rlang::abort(message = "Invalid length for `pagination_token` when calling UsersApi$users_id_followers, must be bigger than or equal to 16.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `pagination_token` when calling UsersApi$users_id_followers, must be bigger than or equal to 16."))
+      }
+
+      if (length(`user_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `user_fields` when calling UsersApi$users_id_followers, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `user_fields` when calling UsersApi$users_id_followers, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`expansions`) < 1) {
+        rlang::abort(message = "Invalid length for `expansions` when calling UsersApi$users_id_followers, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `expansions` when calling UsersApi$users_id_followers, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`tweet_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `tweet_fields` when calling UsersApi$users_id_followers, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `tweet_fields` when calling UsersApi$users_id_followers, number of items must be greater than or equal to 1."))
       }
 
       query_params["max_results"] <- `max_results`
@@ -3005,6 +3448,54 @@ UsersApi <- R6::R6Class(
                                                      reason = "Missing required parameter `id`."))
       }
 
+      if (!str_detect(`id`, "/^[0-9]{1,19}$/")) {
+        rlang::abort(message = "Invalid value for `id` when calling UsersApi$users_id_following, must conform to the pattern /^[0-9]{1,19}$/.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `id` when calling UsersApi$users_id_following, must conform to the pattern /^[0-9]{1,19}$/."))
+      }
+
+      if (`max_results` > 1000) {
+        rlang::abort(message = "Invalid value for `max_results` when calling UsersApi$users_id_following, must be smaller than or equal to 1000.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling UsersApi$users_id_following, must be smaller than or equal to 1000."))
+      }
+      if (`max_results` < 1) {
+        rlang::abort(message = "Invalid value for `max_results` when calling UsersApi$users_id_following, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling UsersApi$users_id_following, must be bigger than or equal to 1."))
+      }
+
+      if (nchar(`pagination_token`) < 16) {
+        rlang::abort(message = "Invalid length for `pagination_token` when calling UsersApi$users_id_following, must be bigger than or equal to 16.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `pagination_token` when calling UsersApi$users_id_following, must be bigger than or equal to 16."))
+      }
+
+      if (length(`user_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `user_fields` when calling UsersApi$users_id_following, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `user_fields` when calling UsersApi$users_id_following, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`expansions`) < 1) {
+        rlang::abort(message = "Invalid length for `expansions` when calling UsersApi$users_id_following, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `expansions` when calling UsersApi$users_id_following, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`tweet_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `tweet_fields` when calling UsersApi$users_id_following, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `tweet_fields` when calling UsersApi$users_id_following, number of items must be greater than or equal to 1."))
+      }
+
       query_params["max_results"] <- `max_results`
 
       query_params["pagination_token"] <- `pagination_token`
@@ -3137,6 +3628,8 @@ UsersApi <- R6::R6Class(
                                                      reason = "Missing required parameter `id`."))
       }
 
+
+
       if (!missing(`mute_user_request`)) {
         local_var_body <- `mute_user_request`$toJSONString()
       } else {
@@ -3267,6 +3760,54 @@ UsersApi <- R6::R6Class(
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
                                                      reason = "Missing required parameter `id`."))
+      }
+
+
+      if (`max_results` > 1000) {
+        rlang::abort(message = "Invalid value for `max_results` when calling UsersApi$users_id_muting, must be smaller than or equal to 1000.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling UsersApi$users_id_muting, must be smaller than or equal to 1000."))
+      }
+      if (`max_results` < 1) {
+        rlang::abort(message = "Invalid value for `max_results` when calling UsersApi$users_id_muting, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling UsersApi$users_id_muting, must be bigger than or equal to 1."))
+      }
+
+      if (nchar(`pagination_token`) > 19) {
+        rlang::abort(message = "Invalid length for `pagination_token` when calling UsersApi$users_id_muting, must be smaller than or equal to 19.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for $pagination_token when calling UsersApi.users_id_muting, must be smaller than or equal to 19."))
+      }
+      if (nchar(`pagination_token`) < 1) {
+        rlang::abort(message = "Invalid length for `pagination_token` when calling UsersApi$users_id_muting, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `pagination_token` when calling UsersApi$users_id_muting, must be bigger than or equal to 1."))
+      }
+
+      if (length(`user_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `user_fields` when calling UsersApi$users_id_muting, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `user_fields` when calling UsersApi$users_id_muting, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`expansions`) < 1) {
+        rlang::abort(message = "Invalid length for `expansions` when calling UsersApi$users_id_muting, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `expansions` when calling UsersApi$users_id_muting, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`tweet_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `tweet_fields` when calling UsersApi$users_id_muting, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `tweet_fields` when calling UsersApi$users_id_muting, number of items must be greater than or equal to 1."))
       }
 
       query_params["max_results"] <- `max_results`
@@ -3404,6 +3945,14 @@ UsersApi <- R6::R6Class(
                                                      reason = "Missing required parameter `target_user_id`."))
       }
 
+
+      if (!str_detect(`target_user_id`, "/^[0-9]{1,19}$/")) {
+        rlang::abort(message = "Invalid value for `target_user_id` when calling UsersApi$users_id_unblock, must conform to the pattern /^[0-9]{1,19}$/.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `target_user_id` when calling UsersApi$users_id_unblock, must conform to the pattern /^[0-9]{1,19}$/."))
+      }
+
       local_var_url_path <- "/2/users/{source_user_id}/blocking/{target_user_id}"
       if (!missing(`source_user_id`)) {
         local_var_url_path <- gsub(paste0("\\{", "source_user_id", "\\}"), URLencode(as.character(`source_user_id`), reserved = TRUE), local_var_url_path)
@@ -3533,6 +4082,14 @@ UsersApi <- R6::R6Class(
                                                      reason = "Missing required parameter `target_user_id`."))
       }
 
+
+      if (!str_detect(`target_user_id`, "/^[0-9]{1,19}$/")) {
+        rlang::abort(message = "Invalid value for `target_user_id` when calling UsersApi$users_id_unfollow, must conform to the pattern /^[0-9]{1,19}$/.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `target_user_id` when calling UsersApi$users_id_unfollow, must conform to the pattern /^[0-9]{1,19}$/."))
+      }
+
       local_var_url_path <- "/2/users/{source_user_id}/following/{target_user_id}"
       if (!missing(`source_user_id`)) {
         local_var_url_path <- gsub(paste0("\\{", "source_user_id", "\\}"), URLencode(as.character(`source_user_id`), reserved = TRUE), local_var_url_path)
@@ -3660,6 +4217,14 @@ UsersApi <- R6::R6Class(
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
                                                      reason = "Missing required parameter `target_user_id`."))
+      }
+
+
+      if (!str_detect(`target_user_id`, "/^[0-9]{1,19}$/")) {
+        rlang::abort(message = "Invalid value for `target_user_id` when calling UsersApi$users_id_unmute, must conform to the pattern /^[0-9]{1,19}$/.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `target_user_id` when calling UsersApi$users_id_unmute, must conform to the pattern /^[0-9]{1,19}$/."))
       }
 
       local_var_url_path <- "/2/users/{source_user_id}/muting/{target_user_id}"

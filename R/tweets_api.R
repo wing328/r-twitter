@@ -1907,6 +1907,8 @@ TweetsApi <- R6::R6Class(
                                                      reason = "Missing required parameter `add_or_delete_rules_request`."))
       }
 
+
+
       query_params["dry_run"] <- `dry_run`
 
       if (!missing(`add_or_delete_rules_request`)) {
@@ -2027,6 +2029,7 @@ TweetsApi <- R6::R6Class(
                                                      reason = "Missing required parameter `tweet_create_request`."))
       }
 
+
       if (!missing(`tweet_create_request`)) {
         local_var_body <- `tweet_create_request`$toJSONString()
       } else {
@@ -2143,6 +2146,13 @@ TweetsApi <- R6::R6Class(
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
                                                      reason = "Missing required parameter `id`."))
+      }
+
+      if (!str_detect(`id`, "/^[0-9]{1,19}$/")) {
+        rlang::abort(message = "Invalid value for `id` when calling TweetsApi$delete_tweet_by_id, must conform to the pattern /^[0-9]{1,19}$/.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `id` when calling TweetsApi$delete_tweet_by_id, must conform to the pattern /^[0-9]{1,19}$/."))
       }
 
       local_var_url_path <- "/2/tweets/{id}"
@@ -2271,6 +2281,55 @@ TweetsApi <- R6::R6Class(
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
                                                      reason = "Missing required parameter `id`."))
+      }
+
+      if (!str_detect(`id`, "/^[0-9]{1,19}$/")) {
+        rlang::abort(message = "Invalid value for `id` when calling TweetsApi$find_tweet_by_id, must conform to the pattern /^[0-9]{1,19}$/.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `id` when calling TweetsApi$find_tweet_by_id, must conform to the pattern /^[0-9]{1,19}$/."))
+      }
+
+      if (length(`tweet_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `tweet_fields` when calling TweetsApi$find_tweet_by_id, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `tweet_fields` when calling TweetsApi$find_tweet_by_id, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`expansions`) < 1) {
+        rlang::abort(message = "Invalid length for `expansions` when calling TweetsApi$find_tweet_by_id, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `expansions` when calling TweetsApi$find_tweet_by_id, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`media_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `media_fields` when calling TweetsApi$find_tweet_by_id, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `media_fields` when calling TweetsApi$find_tweet_by_id, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`poll_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `poll_fields` when calling TweetsApi$find_tweet_by_id, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `poll_fields` when calling TweetsApi$find_tweet_by_id, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`user_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `user_fields` when calling TweetsApi$find_tweet_by_id, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `user_fields` when calling TweetsApi$find_tweet_by_id, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`place_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `place_fields` when calling TweetsApi$find_tweet_by_id, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `place_fields` when calling TweetsApi$find_tweet_by_id, number of items must be greater than or equal to 1."))
       }
 
       query_params["tweet.fields"] <- `tweet_fields`
@@ -2415,6 +2474,61 @@ TweetsApi <- R6::R6Class(
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
                                                      reason = "Missing required parameter `ids`."))
+      }
+
+      if (length(`ids`) > 100) {
+        rlang::abort(message = "Invalid length for `ids` when calling TweetsApi$find_tweets_by_id, number of items must be less than or equal to 100.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `ids` when calling TweetsApi$find_tweets_by_id, number of items must be less than or equal to 100."))
+      }
+      if (length(`ids`) < 1) {
+        rlang::abort(message = "Invalid length for `ids` when calling TweetsApi$find_tweets_by_id, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `ids` when calling TweetsApi$find_tweets_by_id, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`tweet_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `tweet_fields` when calling TweetsApi$find_tweets_by_id, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `tweet_fields` when calling TweetsApi$find_tweets_by_id, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`expansions`) < 1) {
+        rlang::abort(message = "Invalid length for `expansions` when calling TweetsApi$find_tweets_by_id, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `expansions` when calling TweetsApi$find_tweets_by_id, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`media_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `media_fields` when calling TweetsApi$find_tweets_by_id, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `media_fields` when calling TweetsApi$find_tweets_by_id, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`poll_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `poll_fields` when calling TweetsApi$find_tweets_by_id, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `poll_fields` when calling TweetsApi$find_tweets_by_id, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`user_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `user_fields` when calling TweetsApi$find_tweets_by_id, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `user_fields` when calling TweetsApi$find_tweets_by_id, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`place_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `place_fields` when calling TweetsApi$find_tweets_by_id, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `place_fields` when calling TweetsApi$find_tweets_by_id, number of items must be greater than or equal to 1."))
       }
 
       query_params["ids"] <- `ids`
@@ -2565,6 +2679,82 @@ TweetsApi <- R6::R6Class(
                                                      reason = "Missing required parameter `id`."))
       }
 
+      if (!str_detect(`id`, "/^[0-9]{1,19}$/")) {
+        rlang::abort(message = "Invalid value for `id` when calling TweetsApi$find_tweets_that_quote_a_tweet, must conform to the pattern /^[0-9]{1,19}$/.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `id` when calling TweetsApi$find_tweets_that_quote_a_tweet, must conform to the pattern /^[0-9]{1,19}$/."))
+      }
+
+      if (`max_results` > 100) {
+        rlang::abort(message = "Invalid value for `max_results` when calling TweetsApi$find_tweets_that_quote_a_tweet, must be smaller than or equal to 100.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling TweetsApi$find_tweets_that_quote_a_tweet, must be smaller than or equal to 100."))
+      }
+      if (`max_results` < 10) {
+        rlang::abort(message = "Invalid value for `max_results` when calling TweetsApi$find_tweets_that_quote_a_tweet, must be bigger than or equal to 10.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling TweetsApi$find_tweets_that_quote_a_tweet, must be bigger than or equal to 10."))
+      }
+
+      if (nchar(`pagination_token`) < 1) {
+        rlang::abort(message = "Invalid length for `pagination_token` when calling TweetsApi$find_tweets_that_quote_a_tweet, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `pagination_token` when calling TweetsApi$find_tweets_that_quote_a_tweet, must be bigger than or equal to 1."))
+      }
+
+      if (length(`exclude`) < 1) {
+        rlang::abort(message = "Invalid length for `exclude` when calling TweetsApi$find_tweets_that_quote_a_tweet, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `exclude` when calling TweetsApi$find_tweets_that_quote_a_tweet, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`tweet_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `tweet_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `tweet_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`expansions`) < 1) {
+        rlang::abort(message = "Invalid length for `expansions` when calling TweetsApi$find_tweets_that_quote_a_tweet, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `expansions` when calling TweetsApi$find_tweets_that_quote_a_tweet, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`media_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `media_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `media_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`poll_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `poll_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `poll_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`user_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `user_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `user_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`place_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `place_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `place_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet, number of items must be greater than or equal to 1."))
+      }
+
       query_params["max_results"] <- `max_results`
 
       query_params["pagination_token"] <- `pagination_token`
@@ -2700,6 +2890,33 @@ TweetsApi <- R6::R6Class(
       file_params <- list()
       local_var_body <- NULL
 
+
+      if (`max_results` > 1000) {
+        rlang::abort(message = "Invalid value for `max_results` when calling TweetsApi$get_rules, must be smaller than or equal to 1000.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling TweetsApi$get_rules, must be smaller than or equal to 1000."))
+      }
+      if (`max_results` < 1) {
+        rlang::abort(message = "Invalid value for `max_results` when calling TweetsApi$get_rules, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling TweetsApi$get_rules, must be bigger than or equal to 1."))
+      }
+
+      if (nchar(`pagination_token`) > 16) {
+        rlang::abort(message = "Invalid length for `pagination_token` when calling TweetsApi$get_rules, must be smaller than or equal to 16.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for $pagination_token when calling TweetsApi.get_rules, must be smaller than or equal to 16."))
+      }
+      if (nchar(`pagination_token`) < 16) {
+        rlang::abort(message = "Invalid length for `pagination_token` when calling TweetsApi$get_rules, must be bigger than or equal to 16.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `pagination_token` when calling TweetsApi$get_rules, must be bigger than or equal to 16."))
+      }
+
       query_params["ids"] <- `ids`
 
       query_params["max_results"] <- `max_results`
@@ -2834,6 +3051,76 @@ TweetsApi <- R6::R6Class(
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
                                                      reason = "Missing required parameter `partition`."))
+      }
+
+      if (`partition` > 20) {
+        rlang::abort(message = "Invalid value for `partition` when calling TweetsApi$get_tweets_firehose_stream, must be smaller than or equal to 20.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `partition` when calling TweetsApi$get_tweets_firehose_stream, must be smaller than or equal to 20."))
+      }
+      if (`partition` < 1) {
+        rlang::abort(message = "Invalid value for `partition` when calling TweetsApi$get_tweets_firehose_stream, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `partition` when calling TweetsApi$get_tweets_firehose_stream, must be bigger than or equal to 1."))
+      }
+
+      if (`backfill_minutes` > 5) {
+        rlang::abort(message = "Invalid value for `backfill_minutes` when calling TweetsApi$get_tweets_firehose_stream, must be smaller than or equal to 5.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `backfill_minutes` when calling TweetsApi$get_tweets_firehose_stream, must be smaller than or equal to 5."))
+      }
+      if (`backfill_minutes` < 0) {
+        rlang::abort(message = "Invalid value for `backfill_minutes` when calling TweetsApi$get_tweets_firehose_stream, must be bigger than or equal to 0.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `backfill_minutes` when calling TweetsApi$get_tweets_firehose_stream, must be bigger than or equal to 0."))
+      }
+
+
+
+      if (length(`tweet_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `tweet_fields` when calling TweetsApi$get_tweets_firehose_stream, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `tweet_fields` when calling TweetsApi$get_tweets_firehose_stream, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`expansions`) < 1) {
+        rlang::abort(message = "Invalid length for `expansions` when calling TweetsApi$get_tweets_firehose_stream, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `expansions` when calling TweetsApi$get_tweets_firehose_stream, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`media_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `media_fields` when calling TweetsApi$get_tweets_firehose_stream, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `media_fields` when calling TweetsApi$get_tweets_firehose_stream, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`poll_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `poll_fields` when calling TweetsApi$get_tweets_firehose_stream, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `poll_fields` when calling TweetsApi$get_tweets_firehose_stream, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`user_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `user_fields` when calling TweetsApi$get_tweets_firehose_stream, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `user_fields` when calling TweetsApi$get_tweets_firehose_stream, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`place_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `place_fields` when calling TweetsApi$get_tweets_firehose_stream, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `place_fields` when calling TweetsApi$get_tweets_firehose_stream, number of items must be greater than or equal to 1."))
       }
 
       query_params["backfill_minutes"] <- `backfill_minutes`
@@ -2986,6 +3273,76 @@ TweetsApi <- R6::R6Class(
                                                      reason = "Missing required parameter `partition`."))
       }
 
+      if (`partition` > 2) {
+        rlang::abort(message = "Invalid value for `partition` when calling TweetsApi$get_tweets_sample10_stream, must be smaller than or equal to 2.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `partition` when calling TweetsApi$get_tweets_sample10_stream, must be smaller than or equal to 2."))
+      }
+      if (`partition` < 1) {
+        rlang::abort(message = "Invalid value for `partition` when calling TweetsApi$get_tweets_sample10_stream, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `partition` when calling TweetsApi$get_tweets_sample10_stream, must be bigger than or equal to 1."))
+      }
+
+      if (`backfill_minutes` > 5) {
+        rlang::abort(message = "Invalid value for `backfill_minutes` when calling TweetsApi$get_tweets_sample10_stream, must be smaller than or equal to 5.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `backfill_minutes` when calling TweetsApi$get_tweets_sample10_stream, must be smaller than or equal to 5."))
+      }
+      if (`backfill_minutes` < 0) {
+        rlang::abort(message = "Invalid value for `backfill_minutes` when calling TweetsApi$get_tweets_sample10_stream, must be bigger than or equal to 0.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `backfill_minutes` when calling TweetsApi$get_tweets_sample10_stream, must be bigger than or equal to 0."))
+      }
+
+
+
+      if (length(`tweet_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `tweet_fields` when calling TweetsApi$get_tweets_sample10_stream, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `tweet_fields` when calling TweetsApi$get_tweets_sample10_stream, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`expansions`) < 1) {
+        rlang::abort(message = "Invalid length for `expansions` when calling TweetsApi$get_tweets_sample10_stream, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `expansions` when calling TweetsApi$get_tweets_sample10_stream, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`media_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `media_fields` when calling TweetsApi$get_tweets_sample10_stream, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `media_fields` when calling TweetsApi$get_tweets_sample10_stream, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`poll_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `poll_fields` when calling TweetsApi$get_tweets_sample10_stream, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `poll_fields` when calling TweetsApi$get_tweets_sample10_stream, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`user_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `user_fields` when calling TweetsApi$get_tweets_sample10_stream, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `user_fields` when calling TweetsApi$get_tweets_sample10_stream, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`place_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `place_fields` when calling TweetsApi$get_tweets_sample10_stream, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `place_fields` when calling TweetsApi$get_tweets_sample10_stream, number of items must be greater than or equal to 1."))
+      }
+
       query_params["backfill_minutes"] <- `backfill_minutes`
 
       query_params["partition"] <- `partition`
@@ -3119,6 +3476,14 @@ TweetsApi <- R6::R6Class(
                      ApiException = ApiException$new(status = 0,
                                                      reason = "Missing required parameter `tweet_id`."))
       }
+
+      if (!str_detect(`tweet_id`, "/^[0-9]{1,19}$/")) {
+        rlang::abort(message = "Invalid value for `tweet_id` when calling TweetsApi$hide_reply_by_id, must conform to the pattern /^[0-9]{1,19}$/.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `tweet_id` when calling TweetsApi$hide_reply_by_id, must conform to the pattern /^[0-9]{1,19}$/."))
+      }
+
 
       if (!missing(`tweet_hide_request`)) {
         local_var_body <- `tweet_hide_request`$toJSONString()
@@ -3256,6 +3621,75 @@ TweetsApi <- R6::R6Class(
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
                                                      reason = "Missing required parameter `id`."))
+      }
+
+      if (!str_detect(`id`, "/^[0-9]{1,19}$/")) {
+        rlang::abort(message = "Invalid value for `id` when calling TweetsApi$lists_id_tweets, must conform to the pattern /^[0-9]{1,19}$/.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `id` when calling TweetsApi$lists_id_tweets, must conform to the pattern /^[0-9]{1,19}$/."))
+      }
+
+      if (`max_results` > 100) {
+        rlang::abort(message = "Invalid value for `max_results` when calling TweetsApi$lists_id_tweets, must be smaller than or equal to 100.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling TweetsApi$lists_id_tweets, must be smaller than or equal to 100."))
+      }
+      if (`max_results` < 1) {
+        rlang::abort(message = "Invalid value for `max_results` when calling TweetsApi$lists_id_tweets, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling TweetsApi$lists_id_tweets, must be bigger than or equal to 1."))
+      }
+
+      if (nchar(`pagination_token`) < 1) {
+        rlang::abort(message = "Invalid length for `pagination_token` when calling TweetsApi$lists_id_tweets, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `pagination_token` when calling TweetsApi$lists_id_tweets, must be bigger than or equal to 1."))
+      }
+
+      if (length(`tweet_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `tweet_fields` when calling TweetsApi$lists_id_tweets, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `tweet_fields` when calling TweetsApi$lists_id_tweets, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`expansions`) < 1) {
+        rlang::abort(message = "Invalid length for `expansions` when calling TweetsApi$lists_id_tweets, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `expansions` when calling TweetsApi$lists_id_tweets, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`media_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `media_fields` when calling TweetsApi$lists_id_tweets, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `media_fields` when calling TweetsApi$lists_id_tweets, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`poll_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `poll_fields` when calling TweetsApi$lists_id_tweets, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `poll_fields` when calling TweetsApi$lists_id_tweets, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`user_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `user_fields` when calling TweetsApi$lists_id_tweets, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `user_fields` when calling TweetsApi$lists_id_tweets, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`place_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `place_fields` when calling TweetsApi$lists_id_tweets, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `place_fields` when calling TweetsApi$lists_id_tweets, number of items must be greater than or equal to 1."))
       }
 
       query_params["max_results"] <- `max_results`
@@ -3399,6 +3833,61 @@ TweetsApi <- R6::R6Class(
       file_params <- list()
       local_var_body <- NULL
 
+      if (`backfill_minutes` > 5) {
+        rlang::abort(message = "Invalid value for `backfill_minutes` when calling TweetsApi$sample_stream, must be smaller than or equal to 5.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `backfill_minutes` when calling TweetsApi$sample_stream, must be smaller than or equal to 5."))
+      }
+      if (`backfill_minutes` < 0) {
+        rlang::abort(message = "Invalid value for `backfill_minutes` when calling TweetsApi$sample_stream, must be bigger than or equal to 0.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `backfill_minutes` when calling TweetsApi$sample_stream, must be bigger than or equal to 0."))
+      }
+
+      if (length(`tweet_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `tweet_fields` when calling TweetsApi$sample_stream, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `tweet_fields` when calling TweetsApi$sample_stream, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`expansions`) < 1) {
+        rlang::abort(message = "Invalid length for `expansions` when calling TweetsApi$sample_stream, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `expansions` when calling TweetsApi$sample_stream, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`media_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `media_fields` when calling TweetsApi$sample_stream, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `media_fields` when calling TweetsApi$sample_stream, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`poll_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `poll_fields` when calling TweetsApi$sample_stream, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `poll_fields` when calling TweetsApi$sample_stream, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`user_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `user_fields` when calling TweetsApi$sample_stream, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `user_fields` when calling TweetsApi$sample_stream, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`place_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `place_fields` when calling TweetsApi$sample_stream, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `place_fields` when calling TweetsApi$sample_stream, number of items must be greater than or equal to 1."))
+      }
+
       query_params["backfill_minutes"] <- `backfill_minutes`
 
       query_params["tweet.fields"] <- `tweet_fields`
@@ -3533,6 +4022,63 @@ TweetsApi <- R6::R6Class(
       form_params <- list()
       file_params <- list()
       local_var_body <- NULL
+
+      if (`backfill_minutes` > 5) {
+        rlang::abort(message = "Invalid value for `backfill_minutes` when calling TweetsApi$search_stream, must be smaller than or equal to 5.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `backfill_minutes` when calling TweetsApi$search_stream, must be smaller than or equal to 5."))
+      }
+      if (`backfill_minutes` < 0) {
+        rlang::abort(message = "Invalid value for `backfill_minutes` when calling TweetsApi$search_stream, must be bigger than or equal to 0.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `backfill_minutes` when calling TweetsApi$search_stream, must be bigger than or equal to 0."))
+      }
+
+
+
+      if (length(`tweet_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `tweet_fields` when calling TweetsApi$search_stream, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `tweet_fields` when calling TweetsApi$search_stream, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`expansions`) < 1) {
+        rlang::abort(message = "Invalid length for `expansions` when calling TweetsApi$search_stream, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `expansions` when calling TweetsApi$search_stream, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`media_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `media_fields` when calling TweetsApi$search_stream, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `media_fields` when calling TweetsApi$search_stream, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`poll_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `poll_fields` when calling TweetsApi$search_stream, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `poll_fields` when calling TweetsApi$search_stream, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`user_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `user_fields` when calling TweetsApi$search_stream, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `user_fields` when calling TweetsApi$search_stream, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`place_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `place_fields` when calling TweetsApi$search_stream, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `place_fields` when calling TweetsApi$search_stream, number of items must be greater than or equal to 1."))
+      }
 
       query_params["backfill_minutes"] <- `backfill_minutes`
 
@@ -3674,6 +4220,54 @@ TweetsApi <- R6::R6Class(
                                                      reason = "Missing required parameter `id`."))
       }
 
+      if (!str_detect(`id`, "/^[a-zA-Z0-9]{1,13}$/")) {
+        rlang::abort(message = "Invalid value for `id` when calling TweetsApi$space_buyers, must conform to the pattern /^[a-zA-Z0-9]{1,13}$/.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `id` when calling TweetsApi$space_buyers, must conform to the pattern /^[a-zA-Z0-9]{1,13}$/."))
+      }
+
+      if (nchar(`pagination_token`) < 16) {
+        rlang::abort(message = "Invalid length for `pagination_token` when calling TweetsApi$space_buyers, must be bigger than or equal to 16.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `pagination_token` when calling TweetsApi$space_buyers, must be bigger than or equal to 16."))
+      }
+
+      if (`max_results` > 100) {
+        rlang::abort(message = "Invalid value for `max_results` when calling TweetsApi$space_buyers, must be smaller than or equal to 100.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling TweetsApi$space_buyers, must be smaller than or equal to 100."))
+      }
+      if (`max_results` < 1) {
+        rlang::abort(message = "Invalid value for `max_results` when calling TweetsApi$space_buyers, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling TweetsApi$space_buyers, must be bigger than or equal to 1."))
+      }
+
+      if (length(`user_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `user_fields` when calling TweetsApi$space_buyers, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `user_fields` when calling TweetsApi$space_buyers, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`expansions`) < 1) {
+        rlang::abort(message = "Invalid length for `expansions` when calling TweetsApi$space_buyers, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `expansions` when calling TweetsApi$space_buyers, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`tweet_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `tweet_fields` when calling TweetsApi$space_buyers, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `tweet_fields` when calling TweetsApi$space_buyers, number of items must be greater than or equal to 1."))
+      }
+
       query_params["pagination_token"] <- `pagination_token`
 
       query_params["max_results"] <- `max_results`
@@ -3812,6 +4406,68 @@ TweetsApi <- R6::R6Class(
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
                                                      reason = "Missing required parameter `id`."))
+      }
+
+      if (!str_detect(`id`, "/^[a-zA-Z0-9]{1,13}$/")) {
+        rlang::abort(message = "Invalid value for `id` when calling TweetsApi$space_tweets, must conform to the pattern /^[a-zA-Z0-9]{1,13}$/.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `id` when calling TweetsApi$space_tweets, must conform to the pattern /^[a-zA-Z0-9]{1,13}$/."))
+      }
+
+      if (`max_results` > 100) {
+        rlang::abort(message = "Invalid value for `max_results` when calling TweetsApi$space_tweets, must be smaller than or equal to 100.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling TweetsApi$space_tweets, must be smaller than or equal to 100."))
+      }
+      if (`max_results` < 1) {
+        rlang::abort(message = "Invalid value for `max_results` when calling TweetsApi$space_tweets, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling TweetsApi$space_tweets, must be bigger than or equal to 1."))
+      }
+
+      if (length(`tweet_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `tweet_fields` when calling TweetsApi$space_tweets, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `tweet_fields` when calling TweetsApi$space_tweets, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`expansions`) < 1) {
+        rlang::abort(message = "Invalid length for `expansions` when calling TweetsApi$space_tweets, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `expansions` when calling TweetsApi$space_tweets, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`media_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `media_fields` when calling TweetsApi$space_tweets, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `media_fields` when calling TweetsApi$space_tweets, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`poll_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `poll_fields` when calling TweetsApi$space_tweets, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `poll_fields` when calling TweetsApi$space_tweets, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`user_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `user_fields` when calling TweetsApi$space_tweets, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `user_fields` when calling TweetsApi$space_tweets, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`place_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `place_fields` when calling TweetsApi$space_tweets, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `place_fields` when calling TweetsApi$space_tweets, number of items must be greater than or equal to 1."))
       }
 
       query_params["max_results"] <- `max_results`
@@ -3964,6 +4620,57 @@ TweetsApi <- R6::R6Class(
                                                      reason = "Missing required parameter `query`."))
       }
 
+      if (nchar(`query`) > 4096) {
+        rlang::abort(message = "Invalid length for `query` when calling TweetsApi$tweet_counts_full_archive_search, must be smaller than or equal to 4096.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for $query when calling TweetsApi.tweet_counts_full_archive_search, must be smaller than or equal to 4096."))
+      }
+      if (nchar(`query`) < 1) {
+        rlang::abort(message = "Invalid length for `query` when calling TweetsApi$tweet_counts_full_archive_search, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `query` when calling TweetsApi$tweet_counts_full_archive_search, must be bigger than or equal to 1."))
+      }
+
+
+
+      if (!str_detect(`since_id`, "/^[0-9]{1,19}$/")) {
+        rlang::abort(message = "Invalid value for `since_id` when calling TweetsApi$tweet_counts_full_archive_search, must conform to the pattern /^[0-9]{1,19}$/.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `since_id` when calling TweetsApi$tweet_counts_full_archive_search, must conform to the pattern /^[0-9]{1,19}$/."))
+      }
+
+      if (!str_detect(`until_id`, "/^[0-9]{1,19}$/")) {
+        rlang::abort(message = "Invalid value for `until_id` when calling TweetsApi$tweet_counts_full_archive_search, must conform to the pattern /^[0-9]{1,19}$/.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `until_id` when calling TweetsApi$tweet_counts_full_archive_search, must conform to the pattern /^[0-9]{1,19}$/."))
+      }
+
+      if (nchar(`next_token`) < 1) {
+        rlang::abort(message = "Invalid length for `next_token` when calling TweetsApi$tweet_counts_full_archive_search, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `next_token` when calling TweetsApi$tweet_counts_full_archive_search, must be bigger than or equal to 1."))
+      }
+
+      if (nchar(`pagination_token`) < 1) {
+        rlang::abort(message = "Invalid length for `pagination_token` when calling TweetsApi$tweet_counts_full_archive_search, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `pagination_token` when calling TweetsApi$tweet_counts_full_archive_search, must be bigger than or equal to 1."))
+      }
+
+
+      if (length(`search_count_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `search_count_fields` when calling TweetsApi$tweet_counts_full_archive_search, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `search_count_fields` when calling TweetsApi$tweet_counts_full_archive_search, number of items must be greater than or equal to 1."))
+      }
+
       query_params["query"] <- `query`
 
       query_params["start_time"] <- `start_time`
@@ -4108,6 +4815,57 @@ TweetsApi <- R6::R6Class(
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
                                                      reason = "Missing required parameter `query`."))
+      }
+
+      if (nchar(`query`) > 4096) {
+        rlang::abort(message = "Invalid length for `query` when calling TweetsApi$tweet_counts_recent_search, must be smaller than or equal to 4096.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for $query when calling TweetsApi.tweet_counts_recent_search, must be smaller than or equal to 4096."))
+      }
+      if (nchar(`query`) < 1) {
+        rlang::abort(message = "Invalid length for `query` when calling TweetsApi$tweet_counts_recent_search, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `query` when calling TweetsApi$tweet_counts_recent_search, must be bigger than or equal to 1."))
+      }
+
+
+
+      if (!str_detect(`since_id`, "/^[0-9]{1,19}$/")) {
+        rlang::abort(message = "Invalid value for `since_id` when calling TweetsApi$tweet_counts_recent_search, must conform to the pattern /^[0-9]{1,19}$/.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `since_id` when calling TweetsApi$tweet_counts_recent_search, must conform to the pattern /^[0-9]{1,19}$/."))
+      }
+
+      if (!str_detect(`until_id`, "/^[0-9]{1,19}$/")) {
+        rlang::abort(message = "Invalid value for `until_id` when calling TweetsApi$tweet_counts_recent_search, must conform to the pattern /^[0-9]{1,19}$/.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `until_id` when calling TweetsApi$tweet_counts_recent_search, must conform to the pattern /^[0-9]{1,19}$/."))
+      }
+
+      if (nchar(`next_token`) < 1) {
+        rlang::abort(message = "Invalid length for `next_token` when calling TweetsApi$tweet_counts_recent_search, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `next_token` when calling TweetsApi$tweet_counts_recent_search, must be bigger than or equal to 1."))
+      }
+
+      if (nchar(`pagination_token`) < 1) {
+        rlang::abort(message = "Invalid length for `pagination_token` when calling TweetsApi$tweet_counts_recent_search, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `pagination_token` when calling TweetsApi$tweet_counts_recent_search, must be bigger than or equal to 1."))
+      }
+
+
+      if (length(`search_count_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `search_count_fields` when calling TweetsApi$tweet_counts_recent_search, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `search_count_fields` when calling TweetsApi$tweet_counts_recent_search, number of items must be greater than or equal to 1."))
       }
 
       query_params["query"] <- `query`
@@ -4266,6 +5024,105 @@ TweetsApi <- R6::R6Class(
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
                                                      reason = "Missing required parameter `query`."))
+      }
+
+      if (nchar(`query`) > 4096) {
+        rlang::abort(message = "Invalid length for `query` when calling TweetsApi$tweets_fullarchive_search, must be smaller than or equal to 4096.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for $query when calling TweetsApi.tweets_fullarchive_search, must be smaller than or equal to 4096."))
+      }
+      if (nchar(`query`) < 1) {
+        rlang::abort(message = "Invalid length for `query` when calling TweetsApi$tweets_fullarchive_search, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `query` when calling TweetsApi$tweets_fullarchive_search, must be bigger than or equal to 1."))
+      }
+
+
+
+      if (!str_detect(`since_id`, "/^[0-9]{1,19}$/")) {
+        rlang::abort(message = "Invalid value for `since_id` when calling TweetsApi$tweets_fullarchive_search, must conform to the pattern /^[0-9]{1,19}$/.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `since_id` when calling TweetsApi$tweets_fullarchive_search, must conform to the pattern /^[0-9]{1,19}$/."))
+      }
+
+      if (!str_detect(`until_id`, "/^[0-9]{1,19}$/")) {
+        rlang::abort(message = "Invalid value for `until_id` when calling TweetsApi$tweets_fullarchive_search, must conform to the pattern /^[0-9]{1,19}$/.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `until_id` when calling TweetsApi$tweets_fullarchive_search, must conform to the pattern /^[0-9]{1,19}$/."))
+      }
+
+      if (`max_results` > 500) {
+        rlang::abort(message = "Invalid value for `max_results` when calling TweetsApi$tweets_fullarchive_search, must be smaller than or equal to 500.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling TweetsApi$tweets_fullarchive_search, must be smaller than or equal to 500."))
+      }
+      if (`max_results` < 10) {
+        rlang::abort(message = "Invalid value for `max_results` when calling TweetsApi$tweets_fullarchive_search, must be bigger than or equal to 10.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling TweetsApi$tweets_fullarchive_search, must be bigger than or equal to 10."))
+      }
+
+      if (nchar(`next_token`) < 1) {
+        rlang::abort(message = "Invalid length for `next_token` when calling TweetsApi$tweets_fullarchive_search, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `next_token` when calling TweetsApi$tweets_fullarchive_search, must be bigger than or equal to 1."))
+      }
+
+      if (nchar(`pagination_token`) < 1) {
+        rlang::abort(message = "Invalid length for `pagination_token` when calling TweetsApi$tweets_fullarchive_search, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `pagination_token` when calling TweetsApi$tweets_fullarchive_search, must be bigger than or equal to 1."))
+      }
+
+
+      if (length(`tweet_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `tweet_fields` when calling TweetsApi$tweets_fullarchive_search, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `tweet_fields` when calling TweetsApi$tweets_fullarchive_search, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`expansions`) < 1) {
+        rlang::abort(message = "Invalid length for `expansions` when calling TweetsApi$tweets_fullarchive_search, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `expansions` when calling TweetsApi$tweets_fullarchive_search, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`media_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `media_fields` when calling TweetsApi$tweets_fullarchive_search, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `media_fields` when calling TweetsApi$tweets_fullarchive_search, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`poll_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `poll_fields` when calling TweetsApi$tweets_fullarchive_search, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `poll_fields` when calling TweetsApi$tweets_fullarchive_search, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`user_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `user_fields` when calling TweetsApi$tweets_fullarchive_search, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `user_fields` when calling TweetsApi$tweets_fullarchive_search, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`place_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `place_fields` when calling TweetsApi$tweets_fullarchive_search, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `place_fields` when calling TweetsApi$tweets_fullarchive_search, number of items must be greater than or equal to 1."))
       }
 
       query_params["query"] <- `query`
@@ -4438,6 +5295,105 @@ TweetsApi <- R6::R6Class(
                                                      reason = "Missing required parameter `query`."))
       }
 
+      if (nchar(`query`) > 4096) {
+        rlang::abort(message = "Invalid length for `query` when calling TweetsApi$tweets_recent_search, must be smaller than or equal to 4096.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for $query when calling TweetsApi.tweets_recent_search, must be smaller than or equal to 4096."))
+      }
+      if (nchar(`query`) < 1) {
+        rlang::abort(message = "Invalid length for `query` when calling TweetsApi$tweets_recent_search, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `query` when calling TweetsApi$tweets_recent_search, must be bigger than or equal to 1."))
+      }
+
+
+
+      if (!str_detect(`since_id`, "/^[0-9]{1,19}$/")) {
+        rlang::abort(message = "Invalid value for `since_id` when calling TweetsApi$tweets_recent_search, must conform to the pattern /^[0-9]{1,19}$/.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `since_id` when calling TweetsApi$tweets_recent_search, must conform to the pattern /^[0-9]{1,19}$/."))
+      }
+
+      if (!str_detect(`until_id`, "/^[0-9]{1,19}$/")) {
+        rlang::abort(message = "Invalid value for `until_id` when calling TweetsApi$tweets_recent_search, must conform to the pattern /^[0-9]{1,19}$/.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `until_id` when calling TweetsApi$tweets_recent_search, must conform to the pattern /^[0-9]{1,19}$/."))
+      }
+
+      if (`max_results` > 100) {
+        rlang::abort(message = "Invalid value for `max_results` when calling TweetsApi$tweets_recent_search, must be smaller than or equal to 100.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling TweetsApi$tweets_recent_search, must be smaller than or equal to 100."))
+      }
+      if (`max_results` < 10) {
+        rlang::abort(message = "Invalid value for `max_results` when calling TweetsApi$tweets_recent_search, must be bigger than or equal to 10.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling TweetsApi$tweets_recent_search, must be bigger than or equal to 10."))
+      }
+
+      if (nchar(`next_token`) < 1) {
+        rlang::abort(message = "Invalid length for `next_token` when calling TweetsApi$tweets_recent_search, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `next_token` when calling TweetsApi$tweets_recent_search, must be bigger than or equal to 1."))
+      }
+
+      if (nchar(`pagination_token`) < 1) {
+        rlang::abort(message = "Invalid length for `pagination_token` when calling TweetsApi$tweets_recent_search, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `pagination_token` when calling TweetsApi$tweets_recent_search, must be bigger than or equal to 1."))
+      }
+
+
+      if (length(`tweet_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `tweet_fields` when calling TweetsApi$tweets_recent_search, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `tweet_fields` when calling TweetsApi$tweets_recent_search, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`expansions`) < 1) {
+        rlang::abort(message = "Invalid length for `expansions` when calling TweetsApi$tweets_recent_search, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `expansions` when calling TweetsApi$tweets_recent_search, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`media_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `media_fields` when calling TweetsApi$tweets_recent_search, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `media_fields` when calling TweetsApi$tweets_recent_search, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`poll_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `poll_fields` when calling TweetsApi$tweets_recent_search, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `poll_fields` when calling TweetsApi$tweets_recent_search, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`user_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `user_fields` when calling TweetsApi$tweets_recent_search, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `user_fields` when calling TweetsApi$tweets_recent_search, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`place_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `place_fields` when calling TweetsApi$tweets_recent_search, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `place_fields` when calling TweetsApi$tweets_recent_search, number of items must be greater than or equal to 1."))
+      }
+
       query_params["query"] <- `query`
 
       query_params["start_time"] <- `start_time`
@@ -4586,6 +5542,8 @@ TweetsApi <- R6::R6Class(
                                                      reason = "Missing required parameter `id`."))
       }
 
+
+
       if (!missing(`users_likes_create_request`)) {
         local_var_body <- `users_likes_create_request`$toJSONString()
       } else {
@@ -4722,6 +5680,75 @@ TweetsApi <- R6::R6Class(
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
                                                      reason = "Missing required parameter `id`."))
+      }
+
+      if (!str_detect(`id`, "/^[0-9]{1,19}$/")) {
+        rlang::abort(message = "Invalid value for `id` when calling TweetsApi$users_id_liked_tweets, must conform to the pattern /^[0-9]{1,19}$/.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `id` when calling TweetsApi$users_id_liked_tweets, must conform to the pattern /^[0-9]{1,19}$/."))
+      }
+
+      if (`max_results` > 100) {
+        rlang::abort(message = "Invalid value for `max_results` when calling TweetsApi$users_id_liked_tweets, must be smaller than or equal to 100.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling TweetsApi$users_id_liked_tweets, must be smaller than or equal to 100."))
+      }
+      if (`max_results` < 5) {
+        rlang::abort(message = "Invalid value for `max_results` when calling TweetsApi$users_id_liked_tweets, must be bigger than or equal to 5.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling TweetsApi$users_id_liked_tweets, must be bigger than or equal to 5."))
+      }
+
+      if (nchar(`pagination_token`) < 1) {
+        rlang::abort(message = "Invalid length for `pagination_token` when calling TweetsApi$users_id_liked_tweets, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `pagination_token` when calling TweetsApi$users_id_liked_tweets, must be bigger than or equal to 1."))
+      }
+
+      if (length(`tweet_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `tweet_fields` when calling TweetsApi$users_id_liked_tweets, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `tweet_fields` when calling TweetsApi$users_id_liked_tweets, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`expansions`) < 1) {
+        rlang::abort(message = "Invalid length for `expansions` when calling TweetsApi$users_id_liked_tweets, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `expansions` when calling TweetsApi$users_id_liked_tweets, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`media_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `media_fields` when calling TweetsApi$users_id_liked_tweets, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `media_fields` when calling TweetsApi$users_id_liked_tweets, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`poll_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `poll_fields` when calling TweetsApi$users_id_liked_tweets, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `poll_fields` when calling TweetsApi$users_id_liked_tweets, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`user_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `user_fields` when calling TweetsApi$users_id_liked_tweets, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `user_fields` when calling TweetsApi$users_id_liked_tweets, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`place_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `place_fields` when calling TweetsApi$users_id_liked_tweets, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `place_fields` when calling TweetsApi$users_id_liked_tweets, number of items must be greater than or equal to 1."))
       }
 
       query_params["max_results"] <- `max_results`
@@ -4884,6 +5911,91 @@ TweetsApi <- R6::R6Class(
                                                      reason = "Missing required parameter `id`."))
       }
 
+      if (!str_detect(`id`, "/^[0-9]{1,19}$/")) {
+        rlang::abort(message = "Invalid value for `id` when calling TweetsApi$users_id_mentions, must conform to the pattern /^[0-9]{1,19}$/.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `id` when calling TweetsApi$users_id_mentions, must conform to the pattern /^[0-9]{1,19}$/."))
+      }
+
+      if (!str_detect(`since_id`, "/^[0-9]{1,19}$/")) {
+        rlang::abort(message = "Invalid value for `since_id` when calling TweetsApi$users_id_mentions, must conform to the pattern /^[0-9]{1,19}$/.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `since_id` when calling TweetsApi$users_id_mentions, must conform to the pattern /^[0-9]{1,19}$/."))
+      }
+
+      if (!str_detect(`until_id`, "/^[0-9]{1,19}$/")) {
+        rlang::abort(message = "Invalid value for `until_id` when calling TweetsApi$users_id_mentions, must conform to the pattern /^[0-9]{1,19}$/.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `until_id` when calling TweetsApi$users_id_mentions, must conform to the pattern /^[0-9]{1,19}$/."))
+      }
+
+      if (`max_results` > 100) {
+        rlang::abort(message = "Invalid value for `max_results` when calling TweetsApi$users_id_mentions, must be smaller than or equal to 100.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling TweetsApi$users_id_mentions, must be smaller than or equal to 100."))
+      }
+      if (`max_results` < 5) {
+        rlang::abort(message = "Invalid value for `max_results` when calling TweetsApi$users_id_mentions, must be bigger than or equal to 5.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling TweetsApi$users_id_mentions, must be bigger than or equal to 5."))
+      }
+
+      if (nchar(`pagination_token`) < 1) {
+        rlang::abort(message = "Invalid length for `pagination_token` when calling TweetsApi$users_id_mentions, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `pagination_token` when calling TweetsApi$users_id_mentions, must be bigger than or equal to 1."))
+      }
+
+
+
+      if (length(`tweet_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `tweet_fields` when calling TweetsApi$users_id_mentions, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `tweet_fields` when calling TweetsApi$users_id_mentions, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`expansions`) < 1) {
+        rlang::abort(message = "Invalid length for `expansions` when calling TweetsApi$users_id_mentions, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `expansions` when calling TweetsApi$users_id_mentions, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`media_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `media_fields` when calling TweetsApi$users_id_mentions, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `media_fields` when calling TweetsApi$users_id_mentions, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`poll_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `poll_fields` when calling TweetsApi$users_id_mentions, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `poll_fields` when calling TweetsApi$users_id_mentions, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`user_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `user_fields` when calling TweetsApi$users_id_mentions, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `user_fields` when calling TweetsApi$users_id_mentions, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`place_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `place_fields` when calling TweetsApi$users_id_mentions, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `place_fields` when calling TweetsApi$users_id_mentions, number of items must be greater than or equal to 1."))
+      }
+
       query_params["since_id"] <- `since_id`
 
       query_params["until_id"] <- `until_id`
@@ -5029,6 +6141,8 @@ TweetsApi <- R6::R6Class(
                      ApiException = ApiException$new(status = 0,
                                                      reason = "Missing required parameter `id`."))
       }
+
+
 
       if (!missing(`users_retweets_create_request`)) {
         local_var_body <- `users_retweets_create_request`$toJSONString()
@@ -5176,6 +6290,86 @@ TweetsApi <- R6::R6Class(
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
                                                      reason = "Missing required parameter `id`."))
+      }
+
+
+      if (!str_detect(`since_id`, "/^[0-9]{1,19}$/")) {
+        rlang::abort(message = "Invalid value for `since_id` when calling TweetsApi$users_id_timeline, must conform to the pattern /^[0-9]{1,19}$/.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `since_id` when calling TweetsApi$users_id_timeline, must conform to the pattern /^[0-9]{1,19}$/."))
+      }
+
+      if (!str_detect(`until_id`, "/^[0-9]{1,19}$/")) {
+        rlang::abort(message = "Invalid value for `until_id` when calling TweetsApi$users_id_timeline, must conform to the pattern /^[0-9]{1,19}$/.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `until_id` when calling TweetsApi$users_id_timeline, must conform to the pattern /^[0-9]{1,19}$/."))
+      }
+
+      if (`max_results` > 100) {
+        rlang::abort(message = "Invalid value for `max_results` when calling TweetsApi$users_id_timeline, must be smaller than or equal to 100.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling TweetsApi$users_id_timeline, must be smaller than or equal to 100."))
+      }
+      if (`max_results` < 1) {
+        rlang::abort(message = "Invalid value for `max_results` when calling TweetsApi$users_id_timeline, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling TweetsApi$users_id_timeline, must be bigger than or equal to 1."))
+      }
+
+      if (nchar(`pagination_token`) < 1) {
+        rlang::abort(message = "Invalid length for `pagination_token` when calling TweetsApi$users_id_timeline, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `pagination_token` when calling TweetsApi$users_id_timeline, must be bigger than or equal to 1."))
+      }
+
+
+
+
+      if (length(`tweet_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `tweet_fields` when calling TweetsApi$users_id_timeline, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `tweet_fields` when calling TweetsApi$users_id_timeline, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`expansions`) < 1) {
+        rlang::abort(message = "Invalid length for `expansions` when calling TweetsApi$users_id_timeline, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `expansions` when calling TweetsApi$users_id_timeline, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`media_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `media_fields` when calling TweetsApi$users_id_timeline, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `media_fields` when calling TweetsApi$users_id_timeline, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`poll_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `poll_fields` when calling TweetsApi$users_id_timeline, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `poll_fields` when calling TweetsApi$users_id_timeline, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`user_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `user_fields` when calling TweetsApi$users_id_timeline, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `user_fields` when calling TweetsApi$users_id_timeline, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`place_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `place_fields` when calling TweetsApi$users_id_timeline, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `place_fields` when calling TweetsApi$users_id_timeline, number of items must be greater than or equal to 1."))
       }
 
       query_params["since_id"] <- `since_id`
@@ -5346,6 +6540,98 @@ TweetsApi <- R6::R6Class(
                                                      reason = "Missing required parameter `id`."))
       }
 
+      if (!str_detect(`id`, "/^[0-9]{1,19}$/")) {
+        rlang::abort(message = "Invalid value for `id` when calling TweetsApi$users_id_tweets, must conform to the pattern /^[0-9]{1,19}$/.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `id` when calling TweetsApi$users_id_tweets, must conform to the pattern /^[0-9]{1,19}$/."))
+      }
+
+      if (!str_detect(`since_id`, "/^[0-9]{1,19}$/")) {
+        rlang::abort(message = "Invalid value for `since_id` when calling TweetsApi$users_id_tweets, must conform to the pattern /^[0-9]{1,19}$/.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `since_id` when calling TweetsApi$users_id_tweets, must conform to the pattern /^[0-9]{1,19}$/."))
+      }
+
+      if (!str_detect(`until_id`, "/^[0-9]{1,19}$/")) {
+        rlang::abort(message = "Invalid value for `until_id` when calling TweetsApi$users_id_tweets, must conform to the pattern /^[0-9]{1,19}$/.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `until_id` when calling TweetsApi$users_id_tweets, must conform to the pattern /^[0-9]{1,19}$/."))
+      }
+
+      if (`max_results` > 100) {
+        rlang::abort(message = "Invalid value for `max_results` when calling TweetsApi$users_id_tweets, must be smaller than or equal to 100.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling TweetsApi$users_id_tweets, must be smaller than or equal to 100."))
+      }
+      if (`max_results` < 5) {
+        rlang::abort(message = "Invalid value for `max_results` when calling TweetsApi$users_id_tweets, must be bigger than or equal to 5.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling TweetsApi$users_id_tweets, must be bigger than or equal to 5."))
+      }
+
+      if (nchar(`pagination_token`) < 1) {
+        rlang::abort(message = "Invalid length for `pagination_token` when calling TweetsApi$users_id_tweets, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `pagination_token` when calling TweetsApi$users_id_tweets, must be bigger than or equal to 1."))
+      }
+
+      if (length(`exclude`) < 1) {
+        rlang::abort(message = "Invalid length for `exclude` when calling TweetsApi$users_id_tweets, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `exclude` when calling TweetsApi$users_id_tweets, number of items must be greater than or equal to 1."))
+      }
+
+
+
+      if (length(`tweet_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `tweet_fields` when calling TweetsApi$users_id_tweets, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `tweet_fields` when calling TweetsApi$users_id_tweets, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`expansions`) < 1) {
+        rlang::abort(message = "Invalid length for `expansions` when calling TweetsApi$users_id_tweets, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `expansions` when calling TweetsApi$users_id_tweets, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`media_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `media_fields` when calling TweetsApi$users_id_tweets, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `media_fields` when calling TweetsApi$users_id_tweets, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`poll_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `poll_fields` when calling TweetsApi$users_id_tweets, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `poll_fields` when calling TweetsApi$users_id_tweets, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`user_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `user_fields` when calling TweetsApi$users_id_tweets, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `user_fields` when calling TweetsApi$users_id_tweets, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`place_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `place_fields` when calling TweetsApi$users_id_tweets, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `place_fields` when calling TweetsApi$users_id_tweets, number of items must be greater than or equal to 1."))
+      }
+
       query_params["since_id"] <- `since_id`
 
       query_params["until_id"] <- `until_id`
@@ -5501,6 +6787,14 @@ TweetsApi <- R6::R6Class(
                                                      reason = "Missing required parameter `tweet_id`."))
       }
 
+
+      if (!str_detect(`tweet_id`, "/^[0-9]{1,19}$/")) {
+        rlang::abort(message = "Invalid value for `tweet_id` when calling TweetsApi$users_id_unlike, must conform to the pattern /^[0-9]{1,19}$/.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `tweet_id` when calling TweetsApi$users_id_unlike, must conform to the pattern /^[0-9]{1,19}$/."))
+      }
+
       local_var_url_path <- "/2/users/{id}/likes/{tweet_id}"
       if (!missing(`id`)) {
         local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
@@ -5628,6 +6922,14 @@ TweetsApi <- R6::R6Class(
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
                                                      reason = "Missing required parameter `source_tweet_id`."))
+      }
+
+
+      if (!str_detect(`source_tweet_id`, "/^[0-9]{1,19}$/")) {
+        rlang::abort(message = "Invalid value for `source_tweet_id` when calling TweetsApi$users_id_unretweets, must conform to the pattern /^[0-9]{1,19}$/.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `source_tweet_id` when calling TweetsApi$users_id_unretweets, must conform to the pattern /^[0-9]{1,19}$/."))
       }
 
       local_var_url_path <- "/2/users/{id}/retweets/{source_tweet_id}"

@@ -372,6 +372,7 @@ ComplianceApi <- R6::R6Class(
                                                      reason = "Missing required parameter `create_compliance_job_request`."))
       }
 
+
       if (!missing(`create_compliance_job_request`)) {
         local_var_body <- `create_compliance_job_request`$toJSONString()
       } else {
@@ -490,6 +491,20 @@ ComplianceApi <- R6::R6Class(
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
                                                      reason = "Missing required parameter `id`."))
+      }
+
+      if (!str_detect(`id`, "/^[0-9]{1,19}$/")) {
+        rlang::abort(message = "Invalid value for `id` when calling ComplianceApi$get_batch_compliance_job, must conform to the pattern /^[0-9]{1,19}$/.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `id` when calling ComplianceApi$get_batch_compliance_job, must conform to the pattern /^[0-9]{1,19}$/."))
+      }
+
+      if (length(`compliance_job_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `compliance_job_fields` when calling ComplianceApi$get_batch_compliance_job, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `compliance_job_fields` when calling ComplianceApi$get_batch_compliance_job, number of items must be greater than or equal to 1."))
       }
 
       query_params["compliance_job.fields"] <- `compliance_job_fields`
@@ -615,6 +630,34 @@ ComplianceApi <- R6::R6Class(
                      ApiException = ApiException$new(status = 0,
                                                      reason = "Missing required parameter `partition`."))
       }
+
+      if (`partition` > 4) {
+        rlang::abort(message = "Invalid value for `partition` when calling ComplianceApi$get_tweets_compliance_stream, must be smaller than or equal to 4.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `partition` when calling ComplianceApi$get_tweets_compliance_stream, must be smaller than or equal to 4."))
+      }
+      if (`partition` < 1) {
+        rlang::abort(message = "Invalid value for `partition` when calling ComplianceApi$get_tweets_compliance_stream, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `partition` when calling ComplianceApi$get_tweets_compliance_stream, must be bigger than or equal to 1."))
+      }
+
+      if (`backfill_minutes` > 5) {
+        rlang::abort(message = "Invalid value for `backfill_minutes` when calling ComplianceApi$get_tweets_compliance_stream, must be smaller than or equal to 5.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `backfill_minutes` when calling ComplianceApi$get_tweets_compliance_stream, must be smaller than or equal to 5."))
+      }
+      if (`backfill_minutes` < 0) {
+        rlang::abort(message = "Invalid value for `backfill_minutes` when calling ComplianceApi$get_tweets_compliance_stream, must be bigger than or equal to 0.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `backfill_minutes` when calling ComplianceApi$get_tweets_compliance_stream, must be bigger than or equal to 0."))
+      }
+
+
 
       query_params["backfill_minutes"] <- `backfill_minutes`
 
@@ -742,6 +785,34 @@ ComplianceApi <- R6::R6Class(
                                                      reason = "Missing required parameter `partition`."))
       }
 
+      if (`partition` > 4) {
+        rlang::abort(message = "Invalid value for `partition` when calling ComplianceApi$get_users_compliance_stream, must be smaller than or equal to 4.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `partition` when calling ComplianceApi$get_users_compliance_stream, must be smaller than or equal to 4."))
+      }
+      if (`partition` < 1) {
+        rlang::abort(message = "Invalid value for `partition` when calling ComplianceApi$get_users_compliance_stream, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `partition` when calling ComplianceApi$get_users_compliance_stream, must be bigger than or equal to 1."))
+      }
+
+      if (`backfill_minutes` > 5) {
+        rlang::abort(message = "Invalid value for `backfill_minutes` when calling ComplianceApi$get_users_compliance_stream, must be smaller than or equal to 5.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `backfill_minutes` when calling ComplianceApi$get_users_compliance_stream, must be smaller than or equal to 5."))
+      }
+      if (`backfill_minutes` < 0) {
+        rlang::abort(message = "Invalid value for `backfill_minutes` when calling ComplianceApi$get_users_compliance_stream, must be bigger than or equal to 0.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `backfill_minutes` when calling ComplianceApi$get_users_compliance_stream, must be bigger than or equal to 0."))
+      }
+
+
+
       query_params["backfill_minutes"] <- `backfill_minutes`
 
       query_params["partition"] <- `partition`
@@ -864,6 +935,15 @@ ComplianceApi <- R6::R6Class(
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
                                                      reason = "Missing required parameter `type`."))
+      }
+
+
+
+      if (length(`compliance_job_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `compliance_job_fields` when calling ComplianceApi$list_batch_compliance_jobs, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `compliance_job_fields` when calling ComplianceApi$list_batch_compliance_jobs, number of items must be greater than or equal to 1."))
       }
 
       query_params["type"] <- `type`

@@ -53,6 +53,19 @@ ApiClient  <- R6::R6Class(
     api_keys = NULL,
     # Access token
     access_token = NULL,
+    # OAuth2 client ID
+    oauth2_client_id = NULL,
+    # OAuth2 secret
+    oauth2_secret = NULL,
+    # OAuth2 refresh token
+    oauth2_refresh_token = NULL,
+    # OAuth2
+    # Flow type
+    oauth_flow_type = "accessCode",
+    # Authoriziation URL
+    oauth_authorization_url = "https://api.twitter.com/2/oauth2/authorize",
+    # Token URL
+    oauth_token_url = "https://api.twitter.com/2/oauth2/token",
     # Bearer token
     bearer_token = NULL,
     # Time Out (seconds)
@@ -256,6 +269,18 @@ ApiClient  <- R6::R6Class(
 
       # set HTTP verb
       req <- req %>% req_method(method)
+
+      # oauth
+      client <- oauth_client(
+        id = "28acfec0674bb3da9f38",
+        secret = obfuscated(paste0(
+           "J9iiGmyelHltyxqrHXW41ZZPZamyUNxSX1_uKnv",
+           "PeinhhxET_7FfUs2X0LLKotXY2bpgOMoHRCo"
+        )),
+        token_url = "https://github.com/login/oauth/access_token",
+        name = "hadley-oauth-test"
+      )
+      req <- req %>% 
 
       # stream data
       if (typeof(stream_callback) == "closure") {

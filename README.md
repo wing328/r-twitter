@@ -396,6 +396,7 @@ Class | Method | HTTP request | Description
 - **Type**: OAuth
 - **Flow**: accessCode
 - **Authorization URL**: https://api.twitter.com/2/oauth2/authorize
+- **Token URL**: https://api.twitter.com/2/oauth2/token
 - **Scopes**: 
   - block.read: Accounts you’ve blocked.
   - block.write: Block and unblock accounts for you.

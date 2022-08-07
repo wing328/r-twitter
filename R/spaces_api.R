@@ -490,6 +490,41 @@ SpacesApi <- R6::R6Class(
                                                      reason = "Missing required parameter `id`."))
       }
 
+      if (!str_detect(`id`, "/^[a-zA-Z0-9]{1,13}$/")) {
+        rlang::abort(message = "Invalid value for `id` when calling SpacesApi$find_space_by_id, must conform to the pattern /^[a-zA-Z0-9]{1,13}$/.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `id` when calling SpacesApi$find_space_by_id, must conform to the pattern /^[a-zA-Z0-9]{1,13}$/."))
+      }
+
+      if (length(`space_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `space_fields` when calling SpacesApi$find_space_by_id, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `space_fields` when calling SpacesApi$find_space_by_id, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`expansions`) < 1) {
+        rlang::abort(message = "Invalid length for `expansions` when calling SpacesApi$find_space_by_id, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `expansions` when calling SpacesApi$find_space_by_id, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`user_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `user_fields` when calling SpacesApi$find_space_by_id, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `user_fields` when calling SpacesApi$find_space_by_id, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`topic_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `topic_fields` when calling SpacesApi$find_space_by_id, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `topic_fields` when calling SpacesApi$find_space_by_id, number of items must be greater than or equal to 1."))
+      }
+
       query_params["space.fields"] <- `space_fields`
 
       query_params["expansions"] <- `expansions`
@@ -626,6 +661,47 @@ SpacesApi <- R6::R6Class(
                                                      reason = "Missing required parameter `user_ids`."))
       }
 
+      if (length(`user_ids`) > 100) {
+        rlang::abort(message = "Invalid length for `user_ids` when calling SpacesApi$find_spaces_by_creator_ids, number of items must be less than or equal to 100.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `user_ids` when calling SpacesApi$find_spaces_by_creator_ids, number of items must be less than or equal to 100."))
+      }
+      if (length(`user_ids`) < 1) {
+        rlang::abort(message = "Invalid length for `user_ids` when calling SpacesApi$find_spaces_by_creator_ids, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `user_ids` when calling SpacesApi$find_spaces_by_creator_ids, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`space_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `space_fields` when calling SpacesApi$find_spaces_by_creator_ids, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `space_fields` when calling SpacesApi$find_spaces_by_creator_ids, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`expansions`) < 1) {
+        rlang::abort(message = "Invalid length for `expansions` when calling SpacesApi$find_spaces_by_creator_ids, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `expansions` when calling SpacesApi$find_spaces_by_creator_ids, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`user_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `user_fields` when calling SpacesApi$find_spaces_by_creator_ids, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `user_fields` when calling SpacesApi$find_spaces_by_creator_ids, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`topic_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `topic_fields` when calling SpacesApi$find_spaces_by_creator_ids, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `topic_fields` when calling SpacesApi$find_spaces_by_creator_ids, number of items must be greater than or equal to 1."))
+      }
+
       query_params["user_ids"] <- `user_ids`
 
       query_params["space.fields"] <- `space_fields`
@@ -758,6 +834,47 @@ SpacesApi <- R6::R6Class(
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
                                                      reason = "Missing required parameter `ids`."))
+      }
+
+      if (length(`ids`) > 100) {
+        rlang::abort(message = "Invalid length for `ids` when calling SpacesApi$find_spaces_by_ids, number of items must be less than or equal to 100.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `ids` when calling SpacesApi$find_spaces_by_ids, number of items must be less than or equal to 100."))
+      }
+      if (length(`ids`) < 1) {
+        rlang::abort(message = "Invalid length for `ids` when calling SpacesApi$find_spaces_by_ids, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `ids` when calling SpacesApi$find_spaces_by_ids, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`space_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `space_fields` when calling SpacesApi$find_spaces_by_ids, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `space_fields` when calling SpacesApi$find_spaces_by_ids, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`expansions`) < 1) {
+        rlang::abort(message = "Invalid length for `expansions` when calling SpacesApi$find_spaces_by_ids, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `expansions` when calling SpacesApi$find_spaces_by_ids, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`user_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `user_fields` when calling SpacesApi$find_spaces_by_ids, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `user_fields` when calling SpacesApi$find_spaces_by_ids, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`topic_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `topic_fields` when calling SpacesApi$find_spaces_by_ids, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `topic_fields` when calling SpacesApi$find_spaces_by_ids, number of items must be greater than or equal to 1."))
       }
 
       query_params["ids"] <- `ids`
@@ -896,6 +1013,61 @@ SpacesApi <- R6::R6Class(
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
                                                      reason = "Missing required parameter `query`."))
+      }
+
+      if (nchar(`query`) > 2048) {
+        rlang::abort(message = "Invalid length for `query` when calling SpacesApi$search_spaces, must be smaller than or equal to 2048.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for $query when calling SpacesApi.search_spaces, must be smaller than or equal to 2048."))
+      }
+      if (nchar(`query`) < 1) {
+        rlang::abort(message = "Invalid length for `query` when calling SpacesApi$search_spaces, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `query` when calling SpacesApi$search_spaces, must be bigger than or equal to 1."))
+      }
+
+
+      if (`max_results` > 100) {
+        rlang::abort(message = "Invalid value for `max_results` when calling SpacesApi$search_spaces, must be smaller than or equal to 100.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling SpacesApi$search_spaces, must be smaller than or equal to 100."))
+      }
+      if (`max_results` < 1) {
+        rlang::abort(message = "Invalid value for `max_results` when calling SpacesApi$search_spaces, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling SpacesApi$search_spaces, must be bigger than or equal to 1."))
+      }
+
+      if (length(`space_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `space_fields` when calling SpacesApi$search_spaces, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `space_fields` when calling SpacesApi$search_spaces, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`expansions`) < 1) {
+        rlang::abort(message = "Invalid length for `expansions` when calling SpacesApi$search_spaces, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `expansions` when calling SpacesApi$search_spaces, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`user_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `user_fields` when calling SpacesApi$search_spaces, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `user_fields` when calling SpacesApi$search_spaces, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`topic_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `topic_fields` when calling SpacesApi$search_spaces, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `topic_fields` when calling SpacesApi$search_spaces, number of items must be greater than or equal to 1."))
       }
 
       query_params["query"] <- `query`
@@ -1038,6 +1210,54 @@ SpacesApi <- R6::R6Class(
                                                      reason = "Missing required parameter `id`."))
       }
 
+      if (!str_detect(`id`, "/^[a-zA-Z0-9]{1,13}$/")) {
+        rlang::abort(message = "Invalid value for `id` when calling SpacesApi$space_buyers, must conform to the pattern /^[a-zA-Z0-9]{1,13}$/.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `id` when calling SpacesApi$space_buyers, must conform to the pattern /^[a-zA-Z0-9]{1,13}$/."))
+      }
+
+      if (nchar(`pagination_token`) < 16) {
+        rlang::abort(message = "Invalid length for `pagination_token` when calling SpacesApi$space_buyers, must be bigger than or equal to 16.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `pagination_token` when calling SpacesApi$space_buyers, must be bigger than or equal to 16."))
+      }
+
+      if (`max_results` > 100) {
+        rlang::abort(message = "Invalid value for `max_results` when calling SpacesApi$space_buyers, must be smaller than or equal to 100.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling SpacesApi$space_buyers, must be smaller than or equal to 100."))
+      }
+      if (`max_results` < 1) {
+        rlang::abort(message = "Invalid value for `max_results` when calling SpacesApi$space_buyers, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling SpacesApi$space_buyers, must be bigger than or equal to 1."))
+      }
+
+      if (length(`user_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `user_fields` when calling SpacesApi$space_buyers, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `user_fields` when calling SpacesApi$space_buyers, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`expansions`) < 1) {
+        rlang::abort(message = "Invalid length for `expansions` when calling SpacesApi$space_buyers, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `expansions` when calling SpacesApi$space_buyers, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`tweet_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `tweet_fields` when calling SpacesApi$space_buyers, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `tweet_fields` when calling SpacesApi$space_buyers, number of items must be greater than or equal to 1."))
+      }
+
       query_params["pagination_token"] <- `pagination_token`
 
       query_params["max_results"] <- `max_results`
@@ -1176,6 +1396,68 @@ SpacesApi <- R6::R6Class(
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
                                                      reason = "Missing required parameter `id`."))
+      }
+
+      if (!str_detect(`id`, "/^[a-zA-Z0-9]{1,13}$/")) {
+        rlang::abort(message = "Invalid value for `id` when calling SpacesApi$space_tweets, must conform to the pattern /^[a-zA-Z0-9]{1,13}$/.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `id` when calling SpacesApi$space_tweets, must conform to the pattern /^[a-zA-Z0-9]{1,13}$/."))
+      }
+
+      if (`max_results` > 100) {
+        rlang::abort(message = "Invalid value for `max_results` when calling SpacesApi$space_tweets, must be smaller than or equal to 100.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling SpacesApi$space_tweets, must be smaller than or equal to 100."))
+      }
+      if (`max_results` < 1) {
+        rlang::abort(message = "Invalid value for `max_results` when calling SpacesApi$space_tweets, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling SpacesApi$space_tweets, must be bigger than or equal to 1."))
+      }
+
+      if (length(`tweet_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `tweet_fields` when calling SpacesApi$space_tweets, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `tweet_fields` when calling SpacesApi$space_tweets, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`expansions`) < 1) {
+        rlang::abort(message = "Invalid length for `expansions` when calling SpacesApi$space_tweets, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `expansions` when calling SpacesApi$space_tweets, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`media_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `media_fields` when calling SpacesApi$space_tweets, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `media_fields` when calling SpacesApi$space_tweets, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`poll_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `poll_fields` when calling SpacesApi$space_tweets, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `poll_fields` when calling SpacesApi$space_tweets, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`user_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `user_fields` when calling SpacesApi$space_tweets, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `user_fields` when calling SpacesApi$space_tweets, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`place_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `place_fields` when calling SpacesApi$space_tweets, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `place_fields` when calling SpacesApi$space_tweets, number of items must be greater than or equal to 1."))
       }
 
       query_params["max_results"] <- `max_results`

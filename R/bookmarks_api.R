@@ -284,6 +284,69 @@ BookmarksApi <- R6::R6Class(
                                                      reason = "Missing required parameter `id`."))
       }
 
+
+      if (`max_results` > 100) {
+        rlang::abort(message = "Invalid value for `max_results` when calling BookmarksApi$get_users_id_bookmarks, must be smaller than or equal to 100.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling BookmarksApi$get_users_id_bookmarks, must be smaller than or equal to 100."))
+      }
+      if (`max_results` < 1) {
+        rlang::abort(message = "Invalid value for `max_results` when calling BookmarksApi$get_users_id_bookmarks, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `max_results` when calling BookmarksApi$get_users_id_bookmarks, must be bigger than or equal to 1."))
+      }
+
+      if (nchar(`pagination_token`) < 1) {
+        rlang::abort(message = "Invalid length for `pagination_token` when calling BookmarksApi$get_users_id_bookmarks, must be bigger than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `pagination_token` when calling BookmarksApi$get_users_id_bookmarks, must be bigger than or equal to 1."))
+      }
+
+      if (length(`tweet_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `tweet_fields` when calling BookmarksApi$get_users_id_bookmarks, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `tweet_fields` when calling BookmarksApi$get_users_id_bookmarks, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`expansions`) < 1) {
+        rlang::abort(message = "Invalid length for `expansions` when calling BookmarksApi$get_users_id_bookmarks, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `expansions` when calling BookmarksApi$get_users_id_bookmarks, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`media_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `media_fields` when calling BookmarksApi$get_users_id_bookmarks, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `media_fields` when calling BookmarksApi$get_users_id_bookmarks, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`poll_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `poll_fields` when calling BookmarksApi$get_users_id_bookmarks, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `poll_fields` when calling BookmarksApi$get_users_id_bookmarks, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`user_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `user_fields` when calling BookmarksApi$get_users_id_bookmarks, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `user_fields` when calling BookmarksApi$get_users_id_bookmarks, number of items must be greater than or equal to 1."))
+      }
+
+      if (length(`place_fields`) < 1) {
+        rlang::abort(message = "Invalid length for `place_fields` when calling BookmarksApi$get_users_id_bookmarks, number of items must be greater than or equal to 1.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid length for `place_fields` when calling BookmarksApi$get_users_id_bookmarks, number of items must be greater than or equal to 1."))
+      }
+
       query_params["max_results"] <- `max_results`
 
       query_params["pagination_token"] <- `pagination_token`
@@ -425,6 +488,8 @@ BookmarksApi <- R6::R6Class(
                                                      reason = "Missing required parameter `bookmark_add_request`."))
       }
 
+
+
       if (!missing(`bookmark_add_request`)) {
         local_var_body <- `bookmark_add_request`$toJSONString()
       } else {
@@ -554,6 +619,14 @@ BookmarksApi <- R6::R6Class(
                      .subclass = "ApiException",
                      ApiException = ApiException$new(status = 0,
                                                      reason = "Missing required parameter `tweet_id`."))
+      }
+
+
+      if (!str_detect(`tweet_id`, "/^[0-9]{1,19}$/")) {
+        rlang::abort(message = "Invalid value for `tweet_id` when calling BookmarksApi$users_id_bookmarks_delete, must conform to the pattern /^[0-9]{1,19}$/.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `tweet_id` when calling BookmarksApi$users_id_bookmarks_delete, must conform to the pattern /^[0-9]{1,19}$/."))
       }
 
       local_var_url_path <- "/2/users/{id}/bookmarks/{tweet_id}"
