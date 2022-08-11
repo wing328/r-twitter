@@ -126,6 +126,37 @@ UserUndeleteComplianceSchema <- R6::R6Class(
     #' @export
     toString = function() {
       self$toJSONString()
+    },
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @description
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @return true if the values in all fields are valid.
+    #' @export
+    isValid = function() {
+      # check if the required `user_undelete` is null
+      if (is.null(`user_undelete`)) {
+        FALSE
+      }
+
+      TRUE
+    },
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @description
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @return A list of invalid fields (if any).
+    #' @export
+    getInvalidFields = function() {
+      invalid_fields <- list()
+      # check if the required `user_undelete` is null
+      if (is.null(`user_undelete`)) {
+        invalid_fields[`user_undelete`] = "Non-nullable required field `user_undelete` cannot be null."
+      }
+
+      invalid_fields
     }
   )
 )

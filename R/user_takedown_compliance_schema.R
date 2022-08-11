@@ -186,6 +186,65 @@ UserTakedownComplianceSchema <- R6::R6Class(
     #' @export
     toString = function() {
       self$toJSONString()
+    },
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @description
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @return true if the values in all fields are valid.
+    #' @export
+    isValid = function() {
+      # check if the required `event_at` is null
+      if (is.null(`event_at`)) {
+        FALSE
+      }
+
+      # check if the required `user` is null
+      if (is.null(`user`)) {
+        FALSE
+      }
+
+      # check if the required `withheld_in_countries` is null
+      if (is.null(`withheld_in_countries`)) {
+        FALSE
+      }
+
+      if (length(`withheld_in_countries`) < 1) {
+        FALSE
+      }
+
+      TRUE
+    },
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @description
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @return A list of invalid fields (if any).
+    #' @export
+    getInvalidFields = function() {
+      invalid_fields <- list()
+      # check if the required `event_at` is null
+      if (is.null(`event_at`)) {
+        invalid_fields[`event_at`] = "Non-nullable required field `event_at` cannot be null."
+      }
+
+      # check if the required `user` is null
+      if (is.null(`user`)) {
+        invalid_fields[`user`] = "Non-nullable required field `user` cannot be null."
+      }
+
+      # check if the required `withheld_in_countries` is null
+      if (is.null(`withheld_in_countries`)) {
+        invalid_fields[`withheld_in_countries`] = "Non-nullable required field `withheld_in_countries` cannot be null."
+      }
+
+      if (length(`withheld_in_countries`) < 1) {
+        invalid_fields[`withheld_in_countries`] = "Invalid length for ``, number of items must be greater than or equal to 1."
+      }
+
+      invalid_fields
     }
   )
 )

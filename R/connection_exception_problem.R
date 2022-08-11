@@ -223,6 +223,47 @@ ConnectionExceptionProblem <- R6::R6Class(
     #' @export
     toString = function() {
       self$toJSONString()
+    },
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @description
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @return true if the values in all fields are valid.
+    #' @export
+    isValid = function() {
+      # check if the required `title` is null
+      if (is.null(`title`)) {
+        FALSE
+      }
+
+      # check if the required `type` is null
+      if (is.null(`type`)) {
+        FALSE
+      }
+
+      TRUE
+    },
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @description
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @return A list of invalid fields (if any).
+    #' @export
+    getInvalidFields = function() {
+      invalid_fields <- list()
+      # check if the required `title` is null
+      if (is.null(`title`)) {
+        invalid_fields[`title`] = "Non-nullable required field `title` cannot be null."
+      }
+
+      # check if the required `type` is null
+      if (is.null(`type`)) {
+        invalid_fields[`type`] = "Non-nullable required field `type` cannot be null."
+      }
+
+      invalid_fields
     }
   )
 )

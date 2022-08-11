@@ -182,6 +182,65 @@ ResourceUnavailableProblemAllOf <- R6::R6Class(
     #' @export
     toString = function() {
       self$toJSONString()
+    },
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @description
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @return true if the values in all fields are valid.
+    #' @export
+    isValid = function() {
+      # check if the required `parameter` is null
+      if (is.null(`parameter`)) {
+        FALSE
+      }
+
+      if (nchar(`parameter`) < 1) {
+        FALSE
+      }
+
+      # check if the required `resource_id` is null
+      if (is.null(`resource_id`)) {
+        FALSE
+      }
+
+      # check if the required `resource_type` is null
+      if (is.null(`resource_type`)) {
+        FALSE
+      }
+
+      TRUE
+    },
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @description
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @return A list of invalid fields (if any).
+    #' @export
+    getInvalidFields = function() {
+      invalid_fields <- list()
+      # check if the required `parameter` is null
+      if (is.null(`parameter`)) {
+        invalid_fields[`parameter`] = "Non-nullable required field `parameter` cannot be null."
+      }
+
+      if (nchar(`parameter`) < 1) {
+        invalid_fields[`parameter`] = "Invalid length for `parameter`, must be bigger than or equal to 1."
+      }
+
+      # check if the required `resource_id` is null
+      if (is.null(`resource_id`)) {
+        invalid_fields[`resource_id`] = "Non-nullable required field `resource_id` cannot be null."
+      }
+
+      # check if the required `resource_type` is null
+      if (is.null(`resource_type`)) {
+        invalid_fields[`resource_type`] = "Non-nullable required field `resource_type` cannot be null."
+      }
+
+      invalid_fields
     }
   )
 )

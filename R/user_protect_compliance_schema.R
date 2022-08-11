@@ -126,6 +126,37 @@ UserProtectComplianceSchema <- R6::R6Class(
     #' @export
     toString = function() {
       self$toJSONString()
+    },
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @description
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @return true if the values in all fields are valid.
+    #' @export
+    isValid = function() {
+      # check if the required `user_protect` is null
+      if (is.null(`user_protect`)) {
+        FALSE
+      }
+
+      TRUE
+    },
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @description
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @return A list of invalid fields (if any).
+    #' @export
+    getInvalidFields = function() {
+      invalid_fields <- list()
+      # check if the required `user_protect` is null
+      if (is.null(`user_protect`)) {
+        invalid_fields[`user_protect`] = "Non-nullable required field `user_protect` cannot be null."
+      }
+
+      invalid_fields
     }
   )
 )

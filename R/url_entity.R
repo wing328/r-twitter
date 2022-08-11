@@ -367,6 +367,103 @@ UrlEntity <- R6::R6Class(
     #' @export
     toString = function() {
       self$toJSONString()
+    },
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @description
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @return true if the values in all fields are valid.
+    #' @export
+    isValid = function() {
+      # check if the required `end` is null
+      if (is.null(`end`)) {
+        FALSE
+      }
+
+      if (`end` < 0) {
+        FALSE
+      }
+
+      # check if the required `start` is null
+      if (is.null(`start`)) {
+        FALSE
+      }
+
+      if (`start` < 0) {
+        FALSE
+      }
+
+      if (length(`images`) < 1) {
+        FALSE
+      }
+
+      if (!str_detect(`media_key`, "^([0-9]+)_([0-9]+)$")) {
+        FALSE
+      }
+
+      if (`status` > 599) {
+        FALSE
+      }
+      if (`status` < 100) {
+        FALSE
+      }
+
+      # check if the required `url` is null
+      if (is.null(`url`)) {
+        FALSE
+      }
+
+      TRUE
+    },
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @description
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @return A list of invalid fields (if any).
+    #' @export
+    getInvalidFields = function() {
+      invalid_fields <- list()
+      # check if the required `end` is null
+      if (is.null(`end`)) {
+        invalid_fields[`end`] = "Non-nullable required field `end` cannot be null."
+      }
+
+      if (`end` < 0) {
+        invalid_fields[`end`] = "Invalid value for `end`, must be bigger than or equal to 0."
+      }
+
+      # check if the required `start` is null
+      if (is.null(`start`)) {
+        invalid_fields[`start`] = "Non-nullable required field `start` cannot be null."
+      }
+
+      if (`start` < 0) {
+        invalid_fields[`start`] = "Invalid value for `start`, must be bigger than or equal to 0."
+      }
+
+      if (length(`images`) < 1) {
+        invalid_fields[`images`] = "Invalid length for ``, number of items must be greater than or equal to 1."
+      }
+
+      if (!str_detect(`media_key`, "^([0-9]+)_([0-9]+)$")) {
+        invalid_fields[`media_key`] = "Invalid value for `media_key`, must conform to the pattern ^([0-9]+)_([0-9]+)$."
+      }
+
+      if (`status` > 599) {
+        invalid_fields[`status`] = "Invalid value for `status`, must be smaller than or equal to 599."
+      }
+      if (`status` < 100) {
+        invalid_fields[`status`] = "Invalid value for `status`, must be bigger than or equal to 100."
+      }
+
+      # check if the required `url` is null
+      if (is.null(`url`)) {
+        invalid_fields[`url`] = "Non-nullable required field `url` cannot be null."
+      }
+
+      invalid_fields
     }
   )
 )

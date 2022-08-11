@@ -182,6 +182,57 @@ FieldUnauthorizedProblemAllOf <- R6::R6Class(
     #' @export
     toString = function() {
       self$toJSONString()
+    },
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @description
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @return true if the values in all fields are valid.
+    #' @export
+    isValid = function() {
+      # check if the required `field` is null
+      if (is.null(`field`)) {
+        FALSE
+      }
+
+      # check if the required `resource_type` is null
+      if (is.null(`resource_type`)) {
+        FALSE
+      }
+
+      # check if the required `section` is null
+      if (is.null(`section`)) {
+        FALSE
+      }
+
+      TRUE
+    },
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @description
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @return A list of invalid fields (if any).
+    #' @export
+    getInvalidFields = function() {
+      invalid_fields <- list()
+      # check if the required `field` is null
+      if (is.null(`field`)) {
+        invalid_fields[`field`] = "Non-nullable required field `field` cannot be null."
+      }
+
+      # check if the required `resource_type` is null
+      if (is.null(`resource_type`)) {
+        invalid_fields[`resource_type`] = "Non-nullable required field `resource_type` cannot be null."
+      }
+
+      # check if the required `section` is null
+      if (is.null(`section`)) {
+        invalid_fields[`section`] = "Non-nullable required field `section` cannot be null."
+      }
+
+      invalid_fields
     }
   )
 )

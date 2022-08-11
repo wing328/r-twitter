@@ -157,6 +157,47 @@ ContextAnnotation <- R6::R6Class(
     #' @export
     toString = function() {
       self$toJSONString()
+    },
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @description
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @return true if the values in all fields are valid.
+    #' @export
+    isValid = function() {
+      # check if the required `domain` is null
+      if (is.null(`domain`)) {
+        FALSE
+      }
+
+      # check if the required `entity` is null
+      if (is.null(`entity`)) {
+        FALSE
+      }
+
+      TRUE
+    },
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @description
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @return A list of invalid fields (if any).
+    #' @export
+    getInvalidFields = function() {
+      invalid_fields <- list()
+      # check if the required `domain` is null
+      if (is.null(`domain`)) {
+        invalid_fields[`domain`] = "Non-nullable required field `domain` cannot be null."
+      }
+
+      # check if the required `entity` is null
+      if (is.null(`entity`)) {
+        invalid_fields[`entity`] = "Non-nullable required field `entity` cannot be null."
+      }
+
+      invalid_fields
     }
   )
 )

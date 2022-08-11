@@ -182,6 +182,71 @@ PollOption <- R6::R6Class(
     #' @export
     toString = function() {
       self$toJSONString()
+    },
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @description
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @return true if the values in all fields are valid.
+    #' @export
+    isValid = function() {
+      # check if the required `label` is null
+      if (is.null(`label`)) {
+        FALSE
+      }
+
+      if (nchar(`label`) > 25) {
+        FALSE
+      }
+      if (nchar(`label`) < 1) {
+        FALSE
+      }
+
+      # check if the required `position` is null
+      if (is.null(`position`)) {
+        FALSE
+      }
+
+      # check if the required `votes` is null
+      if (is.null(`votes`)) {
+        FALSE
+      }
+
+      TRUE
+    },
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @description
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @return A list of invalid fields (if any).
+    #' @export
+    getInvalidFields = function() {
+      invalid_fields <- list()
+      # check if the required `label` is null
+      if (is.null(`label`)) {
+        invalid_fields[`label`] = "Non-nullable required field `label` cannot be null."
+      }
+
+      if (nchar(`label`) > 25) {
+        invalid_fields[`label`] = "Invalid length for `label`, must be smaller than or equal to 25."
+      }
+      if (nchar(`label`) < 1) {
+        invalid_fields[`label`] = "Invalid length for `label`, must be bigger than or equal to 1."
+      }
+
+      # check if the required `position` is null
+      if (is.null(`position`)) {
+        invalid_fields[`position`] = "Non-nullable required field `position` cannot be null."
+      }
+
+      # check if the required `votes` is null
+      if (is.null(`votes`)) {
+        invalid_fields[`votes`] = "Non-nullable required field `votes` cannot be null."
+      }
+
+      invalid_fields
     }
   )
 )

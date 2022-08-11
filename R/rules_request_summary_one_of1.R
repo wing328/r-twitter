@@ -153,6 +153,47 @@ RulesRequestSummaryOneOf1 <- R6::R6Class(
     #' @export
     toString = function() {
       self$toJSONString()
+    },
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @description
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @return true if the values in all fields are valid.
+    #' @export
+    isValid = function() {
+      # check if the required `deleted` is null
+      if (is.null(`deleted`)) {
+        FALSE
+      }
+
+      # check if the required `not_deleted` is null
+      if (is.null(`not_deleted`)) {
+        FALSE
+      }
+
+      TRUE
+    },
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @description
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @return A list of invalid fields (if any).
+    #' @export
+    getInvalidFields = function() {
+      invalid_fields <- list()
+      # check if the required `deleted` is null
+      if (is.null(`deleted`)) {
+        invalid_fields[`deleted`] = "Non-nullable required field `deleted` cannot be null."
+      }
+
+      # check if the required `not_deleted` is null
+      if (is.null(`not_deleted`)) {
+        invalid_fields[`not_deleted`] = "Non-nullable required field `not_deleted` cannot be null."
+      }
+
+      invalid_fields
     }
   )
 )

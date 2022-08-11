@@ -126,6 +126,37 @@ UserDeleteComplianceSchema <- R6::R6Class(
     #' @export
     toString = function() {
       self$toJSONString()
+    },
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @description
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @return true if the values in all fields are valid.
+    #' @export
+    isValid = function() {
+      # check if the required `user_delete` is null
+      if (is.null(`user_delete`)) {
+        FALSE
+      }
+
+      TRUE
+    },
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @description
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @return A list of invalid fields (if any).
+    #' @export
+    getInvalidFields = function() {
+      invalid_fields <- list()
+      # check if the required `user_delete` is null
+      if (is.null(`user_delete`)) {
+        invalid_fields[`user_delete`] = "Non-nullable required field `user_delete` cannot be null."
+      }
+
+      invalid_fields
     }
   )
 )

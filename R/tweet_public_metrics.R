@@ -205,6 +205,57 @@ TweetPublicMetrics <- R6::R6Class(
     #' @export
     toString = function() {
       self$toJSONString()
+    },
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @description
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @return true if the values in all fields are valid.
+    #' @export
+    isValid = function() {
+      # check if the required `like_count` is null
+      if (is.null(`like_count`)) {
+        FALSE
+      }
+
+      # check if the required `reply_count` is null
+      if (is.null(`reply_count`)) {
+        FALSE
+      }
+
+      # check if the required `retweet_count` is null
+      if (is.null(`retweet_count`)) {
+        FALSE
+      }
+
+      TRUE
+    },
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @description
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @return A list of invalid fields (if any).
+    #' @export
+    getInvalidFields = function() {
+      invalid_fields <- list()
+      # check if the required `like_count` is null
+      if (is.null(`like_count`)) {
+        invalid_fields[`like_count`] = "Non-nullable required field `like_count` cannot be null."
+      }
+
+      # check if the required `reply_count` is null
+      if (is.null(`reply_count`)) {
+        invalid_fields[`reply_count`] = "Non-nullable required field `reply_count` cannot be null."
+      }
+
+      # check if the required `retweet_count` is null
+      if (is.null(`retweet_count`)) {
+        invalid_fields[`retweet_count`] = "Non-nullable required field `retweet_count` cannot be null."
+      }
+
+      invalid_fields
     }
   )
 )

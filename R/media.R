@@ -193,6 +193,61 @@ Media <- R6::R6Class(
     #' @export
     toString = function() {
       self$toJSONString()
+    },
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @description
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @return true if the values in all fields are valid.
+    #' @export
+    isValid = function() {
+      if (`height` < 0) {
+        FALSE
+      }
+
+      if (!str_detect(`media_key`, "^([0-9]+)_([0-9]+)$")) {
+        FALSE
+      }
+
+      # check if the required `type` is null
+      if (is.null(`type`)) {
+        FALSE
+      }
+
+      if (`width` < 0) {
+        FALSE
+      }
+
+      TRUE
+    },
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @description
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @return A list of invalid fields (if any).
+    #' @export
+    getInvalidFields = function() {
+      invalid_fields <- list()
+      if (`height` < 0) {
+        invalid_fields[`height`] = "Invalid value for `height`, must be bigger than or equal to 0."
+      }
+
+      if (!str_detect(`media_key`, "^([0-9]+)_([0-9]+)$")) {
+        invalid_fields[`media_key`] = "Invalid value for `media_key`, must conform to the pattern ^([0-9]+)_([0-9]+)$."
+      }
+
+      # check if the required `type` is null
+      if (is.null(`type`)) {
+        invalid_fields[`type`] = "Non-nullable required field `type` cannot be null."
+      }
+
+      if (`width` < 0) {
+        invalid_fields[`width`] = "Invalid value for `width`, must be bigger than or equal to 0."
+      }
+
+      invalid_fields
     }
   )
 )

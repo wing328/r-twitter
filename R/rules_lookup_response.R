@@ -150,6 +150,37 @@ RulesLookupResponse <- R6::R6Class(
     #' @export
     toString = function() {
       self$toJSONString()
+    },
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @description
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @return true if the values in all fields are valid.
+    #' @export
+    isValid = function() {
+      # check if the required `meta` is null
+      if (is.null(`meta`)) {
+        FALSE
+      }
+
+      TRUE
+    },
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @description
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @return A list of invalid fields (if any).
+    #' @export
+    getInvalidFields = function() {
+      invalid_fields <- list()
+      # check if the required `meta` is null
+      if (is.null(`meta`)) {
+        invalid_fields[`meta`] = "Non-nullable required field `meta` cannot be null."
+      }
+
+      invalid_fields
     }
   )
 )

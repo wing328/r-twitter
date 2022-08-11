@@ -211,6 +211,67 @@ RulesRequestSummaryOneOf <- R6::R6Class(
     #' @export
     toString = function() {
       self$toJSONString()
+    },
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @description
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @return true if the values in all fields are valid.
+    #' @export
+    isValid = function() {
+      # check if the required `created` is null
+      if (is.null(`created`)) {
+        FALSE
+      }
+
+      # check if the required `invalid` is null
+      if (is.null(`invalid`)) {
+        FALSE
+      }
+
+      # check if the required `not_created` is null
+      if (is.null(`not_created`)) {
+        FALSE
+      }
+
+      # check if the required `valid` is null
+      if (is.null(`valid`)) {
+        FALSE
+      }
+
+      TRUE
+    },
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @description
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @return A list of invalid fields (if any).
+    #' @export
+    getInvalidFields = function() {
+      invalid_fields <- list()
+      # check if the required `created` is null
+      if (is.null(`created`)) {
+        invalid_fields[`created`] = "Non-nullable required field `created` cannot be null."
+      }
+
+      # check if the required `invalid` is null
+      if (is.null(`invalid`)) {
+        invalid_fields[`invalid`] = "Non-nullable required field `invalid` cannot be null."
+      }
+
+      # check if the required `not_created` is null
+      if (is.null(`not_created`)) {
+        invalid_fields[`not_created`] = "Non-nullable required field `not_created` cannot be null."
+      }
+
+      # check if the required `valid` is null
+      if (is.null(`valid`)) {
+        invalid_fields[`valid`] = "Non-nullable required field `valid` cannot be null."
+      }
+
+      invalid_fields
     }
   )
 )

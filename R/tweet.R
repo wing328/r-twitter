@@ -587,6 +587,95 @@ Tweet <- R6::R6Class(
     #' @export
     toString = function() {
       self$toJSONString()
+    },
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @description
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @return true if the values in all fields are valid.
+    #' @export
+    isValid = function() {
+      if (!str_detect(`author_id`, "^[0-9]{1,19}$")) {
+        FALSE
+      }
+
+      if (length(`context_annotations`) < 1) {
+        FALSE
+      }
+
+      if (!str_detect(`conversation_id`, "^[0-9]{1,19}$")) {
+        FALSE
+      }
+
+      # check if the required `id` is null
+      if (is.null(`id`)) {
+        FALSE
+      }
+
+      if (!str_detect(`id`, "^[0-9]{1,19}$")) {
+        FALSE
+      }
+
+      if (!str_detect(`in_reply_to_user_id`, "^[0-9]{1,19}$")) {
+        FALSE
+      }
+
+      if (length(`referenced_tweets`) < 1) {
+        FALSE
+      }
+
+      # check if the required `text` is null
+      if (is.null(`text`)) {
+        FALSE
+      }
+
+      TRUE
+    },
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @description
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @return A list of invalid fields (if any).
+    #' @export
+    getInvalidFields = function() {
+      invalid_fields <- list()
+      if (!str_detect(`author_id`, "^[0-9]{1,19}$")) {
+        invalid_fields[`author_id`] = "Invalid value for `author_id`, must conform to the pattern ^[0-9]{1,19}$."
+      }
+
+      if (length(`context_annotations`) < 1) {
+        invalid_fields[`context_annotations`] = "Invalid length for ``, number of items must be greater than or equal to 1."
+      }
+
+      if (!str_detect(`conversation_id`, "^[0-9]{1,19}$")) {
+        invalid_fields[`conversation_id`] = "Invalid value for `conversation_id`, must conform to the pattern ^[0-9]{1,19}$."
+      }
+
+      # check if the required `id` is null
+      if (is.null(`id`)) {
+        invalid_fields[`id`] = "Non-nullable required field `id` cannot be null."
+      }
+
+      if (!str_detect(`id`, "^[0-9]{1,19}$")) {
+        invalid_fields[`id`] = "Invalid value for `id`, must conform to the pattern ^[0-9]{1,19}$."
+      }
+
+      if (!str_detect(`in_reply_to_user_id`, "^[0-9]{1,19}$")) {
+        invalid_fields[`in_reply_to_user_id`] = "Invalid value for `in_reply_to_user_id`, must conform to the pattern ^[0-9]{1,19}$."
+      }
+
+      if (length(`referenced_tweets`) < 1) {
+        invalid_fields[`referenced_tweets`] = "Invalid length for ``, number of items must be greater than or equal to 1."
+      }
+
+      # check if the required `text` is null
+      if (is.null(`text`)) {
+        invalid_fields[`text`] = "Non-nullable required field `text` cannot be null."
+      }
+
+      invalid_fields
     }
   )
 )

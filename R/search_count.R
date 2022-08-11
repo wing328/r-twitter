@@ -182,6 +182,57 @@ SearchCount <- R6::R6Class(
     #' @export
     toString = function() {
       self$toJSONString()
+    },
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @description
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @return true if the values in all fields are valid.
+    #' @export
+    isValid = function() {
+      # check if the required `end` is null
+      if (is.null(`end`)) {
+        FALSE
+      }
+
+      # check if the required `start` is null
+      if (is.null(`start`)) {
+        FALSE
+      }
+
+      # check if the required `tweet_count` is null
+      if (is.null(`tweet_count`)) {
+        FALSE
+      }
+
+      TRUE
+    },
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @description
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @return A list of invalid fields (if any).
+    #' @export
+    getInvalidFields = function() {
+      invalid_fields <- list()
+      # check if the required `end` is null
+      if (is.null(`end`)) {
+        invalid_fields[`end`] = "Non-nullable required field `end` cannot be null."
+      }
+
+      # check if the required `start` is null
+      if (is.null(`start`)) {
+        invalid_fields[`start`] = "Non-nullable required field `start` cannot be null."
+      }
+
+      # check if the required `tweet_count` is null
+      if (is.null(`tweet_count`)) {
+        invalid_fields[`tweet_count`] = "Non-nullable required field `tweet_count` cannot be null."
+      }
+
+      invalid_fields
     }
   )
 )

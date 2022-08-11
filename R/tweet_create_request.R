@@ -310,6 +310,35 @@ TweetCreateRequest <- R6::R6Class(
     #' @export
     toString = function() {
       self$toJSONString()
+    },
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @description
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @return true if the values in all fields are valid.
+    #' @export
+    isValid = function() {
+      if (!str_detect(`quote_tweet_id`, "^[0-9]{1,19}$")) {
+        FALSE
+      }
+
+      TRUE
+    },
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @description
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @return A list of invalid fields (if any).
+    #' @export
+    getInvalidFields = function() {
+      invalid_fields <- list()
+      if (!str_detect(`quote_tweet_id`, "^[0-9]{1,19}$")) {
+        invalid_fields[`quote_tweet_id`] = "Invalid value for `quote_tweet_id`, must conform to the pattern ^[0-9]{1,19}$."
+      }
+
+      invalid_fields
     }
   )
 )

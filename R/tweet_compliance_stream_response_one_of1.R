@@ -126,6 +126,45 @@ TweetComplianceStreamResponseOneOf1 <- R6::R6Class(
     #' @export
     toString = function() {
       self$toJSONString()
+    },
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @description
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @return true if the values in all fields are valid.
+    #' @export
+    isValid = function() {
+      # check if the required `errors` is null
+      if (is.null(`errors`)) {
+        FALSE
+      }
+
+      if (length(`errors`) < 1) {
+        FALSE
+      }
+
+      TRUE
+    },
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @description
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @return A list of invalid fields (if any).
+    #' @export
+    getInvalidFields = function() {
+      invalid_fields <- list()
+      # check if the required `errors` is null
+      if (is.null(`errors`)) {
+        invalid_fields[`errors`] = "Non-nullable required field `errors` cannot be null."
+      }
+
+      if (length(`errors`) < 1) {
+        invalid_fields[`errors`] = "Invalid length for ``, number of items must be greater than or equal to 1."
+      }
+
+      invalid_fields
     }
   )
 )

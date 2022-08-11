@@ -195,6 +195,45 @@ RulesResponseMetadata <- R6::R6Class(
     #' @export
     toString = function() {
       self$toJSONString()
+    },
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @description
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @return true if the values in all fields are valid.
+    #' @export
+    isValid = function() {
+      if (nchar(`next_token`) < 1) {
+        FALSE
+      }
+
+      # check if the required `sent` is null
+      if (is.null(`sent`)) {
+        FALSE
+      }
+
+      TRUE
+    },
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @description
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @return A list of invalid fields (if any).
+    #' @export
+    getInvalidFields = function() {
+      invalid_fields <- list()
+      if (nchar(`next_token`) < 1) {
+        invalid_fields[`next_token`] = "Invalid length for `next_token`, must be bigger than or equal to 1."
+      }
+
+      # check if the required `sent` is null
+      if (is.null(`sent`)) {
+        invalid_fields[`sent`] = "Non-nullable required field `sent` cannot be null."
+      }
+
+      invalid_fields
     }
   )
 )

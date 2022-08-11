@@ -182,6 +182,73 @@ HashtagEntity <- R6::R6Class(
     #' @export
     toString = function() {
       self$toJSONString()
+    },
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @description
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @return true if the values in all fields are valid.
+    #' @export
+    isValid = function() {
+      # check if the required `end` is null
+      if (is.null(`end`)) {
+        FALSE
+      }
+
+      if (`end` < 0) {
+        FALSE
+      }
+
+      # check if the required `start` is null
+      if (is.null(`start`)) {
+        FALSE
+      }
+
+      if (`start` < 0) {
+        FALSE
+      }
+
+      # check if the required `tag` is null
+      if (is.null(`tag`)) {
+        FALSE
+      }
+
+      TRUE
+    },
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @description
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @return A list of invalid fields (if any).
+    #' @export
+    getInvalidFields = function() {
+      invalid_fields <- list()
+      # check if the required `end` is null
+      if (is.null(`end`)) {
+        invalid_fields[`end`] = "Non-nullable required field `end` cannot be null."
+      }
+
+      if (`end` < 0) {
+        invalid_fields[`end`] = "Invalid value for `end`, must be bigger than or equal to 0."
+      }
+
+      # check if the required `start` is null
+      if (is.null(`start`)) {
+        invalid_fields[`start`] = "Non-nullable required field `start` cannot be null."
+      }
+
+      if (`start` < 0) {
+        invalid_fields[`start`] = "Invalid value for `start`, must be bigger than or equal to 0."
+      }
+
+      # check if the required `tag` is null
+      if (is.null(`tag`)) {
+        invalid_fields[`tag`] = "Non-nullable required field `tag` cannot be null."
+      }
+
+      invalid_fields
     }
   )
 )

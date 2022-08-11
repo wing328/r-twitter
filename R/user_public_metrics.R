@@ -211,6 +211,67 @@ UserPublicMetrics <- R6::R6Class(
     #' @export
     toString = function() {
       self$toJSONString()
+    },
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @description
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @return true if the values in all fields are valid.
+    #' @export
+    isValid = function() {
+      # check if the required `followers_count` is null
+      if (is.null(`followers_count`)) {
+        FALSE
+      }
+
+      # check if the required `following_count` is null
+      if (is.null(`following_count`)) {
+        FALSE
+      }
+
+      # check if the required `listed_count` is null
+      if (is.null(`listed_count`)) {
+        FALSE
+      }
+
+      # check if the required `tweet_count` is null
+      if (is.null(`tweet_count`)) {
+        FALSE
+      }
+
+      TRUE
+    },
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @description
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @return A list of invalid fields (if any).
+    #' @export
+    getInvalidFields = function() {
+      invalid_fields <- list()
+      # check if the required `followers_count` is null
+      if (is.null(`followers_count`)) {
+        invalid_fields[`followers_count`] = "Non-nullable required field `followers_count` cannot be null."
+      }
+
+      # check if the required `following_count` is null
+      if (is.null(`following_count`)) {
+        invalid_fields[`following_count`] = "Non-nullable required field `following_count` cannot be null."
+      }
+
+      # check if the required `listed_count` is null
+      if (is.null(`listed_count`)) {
+        invalid_fields[`listed_count`] = "Non-nullable required field `listed_count` cannot be null."
+      }
+
+      # check if the required `tweet_count` is null
+      if (is.null(`tweet_count`)) {
+        invalid_fields[`tweet_count`] = "Non-nullable required field `tweet_count` cannot be null."
+      }
+
+      invalid_fields
     }
   )
 )

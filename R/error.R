@@ -153,6 +153,47 @@ Error <- R6::R6Class(
     #' @export
     toString = function() {
       self$toJSONString()
+    },
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @description
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @return true if the values in all fields are valid.
+    #' @export
+    isValid = function() {
+      # check if the required `code` is null
+      if (is.null(`code`)) {
+        FALSE
+      }
+
+      # check if the required `message` is null
+      if (is.null(`message`)) {
+        FALSE
+      }
+
+      TRUE
+    },
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @description
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @return A list of invalid fields (if any).
+    #' @export
+    getInvalidFields = function() {
+      invalid_fields <- list()
+      # check if the required `code` is null
+      if (is.null(`code`)) {
+        invalid_fields[`code`] = "Non-nullable required field `code` cannot be null."
+      }
+
+      # check if the required `message` is null
+      if (is.null(`message`)) {
+        invalid_fields[`message`] = "Non-nullable required field `message` cannot be null."
+      }
+
+      invalid_fields
     }
   )
 )

@@ -178,6 +178,55 @@ TweetWithheld <- R6::R6Class(
     #' @export
     toString = function() {
       self$toJSONString()
+    },
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @description
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @return true if the values in all fields are valid.
+    #' @export
+    isValid = function() {
+      # check if the required `copyright` is null
+      if (is.null(`copyright`)) {
+        FALSE
+      }
+
+      # check if the required `country_codes` is null
+      if (is.null(`country_codes`)) {
+        FALSE
+      }
+
+      if (length(`country_codes`) < 1) {
+        FALSE
+      }
+
+      TRUE
+    },
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @description
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @return A list of invalid fields (if any).
+    #' @export
+    getInvalidFields = function() {
+      invalid_fields <- list()
+      # check if the required `copyright` is null
+      if (is.null(`copyright`)) {
+        invalid_fields[`copyright`] = "Non-nullable required field `copyright` cannot be null."
+      }
+
+      # check if the required `country_codes` is null
+      if (is.null(`country_codes`)) {
+        invalid_fields[`country_codes`] = "Non-nullable required field `country_codes` cannot be null."
+      }
+
+      if (length(`country_codes`) < 1) {
+        invalid_fields[`country_codes`] = "Invalid length for ``, number of items must be greater than or equal to 1."
+      }
+
+      invalid_fields
     }
   )
 )

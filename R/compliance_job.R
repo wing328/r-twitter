@@ -354,6 +354,123 @@ ComplianceJob <- R6::R6Class(
     #' @export
     toString = function() {
       self$toJSONString()
+    },
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @description
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @return true if the values in all fields are valid.
+    #' @export
+    isValid = function() {
+      # check if the required `created_at` is null
+      if (is.null(`created_at`)) {
+        FALSE
+      }
+
+      # check if the required `download_expires_at` is null
+      if (is.null(`download_expires_at`)) {
+        FALSE
+      }
+
+      # check if the required `download_url` is null
+      if (is.null(`download_url`)) {
+        FALSE
+      }
+
+      # check if the required `id` is null
+      if (is.null(`id`)) {
+        FALSE
+      }
+
+      if (!str_detect(`id`, "^[0-9]{1,19}$")) {
+        FALSE
+      }
+
+      if (nchar(`name`) > 64) {
+        FALSE
+      }
+
+      # check if the required `status` is null
+      if (is.null(`status`)) {
+        FALSE
+      }
+
+      # check if the required `type` is null
+      if (is.null(`type`)) {
+        FALSE
+      }
+
+      # check if the required `upload_expires_at` is null
+      if (is.null(`upload_expires_at`)) {
+        FALSE
+      }
+
+      # check if the required `upload_url` is null
+      if (is.null(`upload_url`)) {
+        FALSE
+      }
+
+      TRUE
+    },
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @description
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @return A list of invalid fields (if any).
+    #' @export
+    getInvalidFields = function() {
+      invalid_fields <- list()
+      # check if the required `created_at` is null
+      if (is.null(`created_at`)) {
+        invalid_fields[`created_at`] = "Non-nullable required field `created_at` cannot be null."
+      }
+
+      # check if the required `download_expires_at` is null
+      if (is.null(`download_expires_at`)) {
+        invalid_fields[`download_expires_at`] = "Non-nullable required field `download_expires_at` cannot be null."
+      }
+
+      # check if the required `download_url` is null
+      if (is.null(`download_url`)) {
+        invalid_fields[`download_url`] = "Non-nullable required field `download_url` cannot be null."
+      }
+
+      # check if the required `id` is null
+      if (is.null(`id`)) {
+        invalid_fields[`id`] = "Non-nullable required field `id` cannot be null."
+      }
+
+      if (!str_detect(`id`, "^[0-9]{1,19}$")) {
+        invalid_fields[`id`] = "Invalid value for `id`, must conform to the pattern ^[0-9]{1,19}$."
+      }
+
+      if (nchar(`name`) > 64) {
+        invalid_fields[`name`] = "Invalid length for `name`, must be smaller than or equal to 64."
+      }
+
+      # check if the required `status` is null
+      if (is.null(`status`)) {
+        invalid_fields[`status`] = "Non-nullable required field `status` cannot be null."
+      }
+
+      # check if the required `type` is null
+      if (is.null(`type`)) {
+        invalid_fields[`type`] = "Non-nullable required field `type` cannot be null."
+      }
+
+      # check if the required `upload_expires_at` is null
+      if (is.null(`upload_expires_at`)) {
+        invalid_fields[`upload_expires_at`] = "Non-nullable required field `upload_expires_at` cannot be null."
+      }
+
+      # check if the required `upload_url` is null
+      if (is.null(`upload_url`)) {
+        invalid_fields[`upload_url`] = "Non-nullable required field `upload_url` cannot be null."
+      }
+
+      invalid_fields
     }
   )
 )

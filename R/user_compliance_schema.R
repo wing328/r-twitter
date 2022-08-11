@@ -155,6 +155,47 @@ UserComplianceSchema <- R6::R6Class(
     #' @export
     toString = function() {
       self$toJSONString()
+    },
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @description
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @return true if the values in all fields are valid.
+    #' @export
+    isValid = function() {
+      # check if the required `event_at` is null
+      if (is.null(`event_at`)) {
+        FALSE
+      }
+
+      # check if the required `user` is null
+      if (is.null(`user`)) {
+        FALSE
+      }
+
+      TRUE
+    },
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @description
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @return A list of invalid fields (if any).
+    #' @export
+    getInvalidFields = function() {
+      invalid_fields <- list()
+      # check if the required `event_at` is null
+      if (is.null(`event_at`)) {
+        invalid_fields[`event_at`] = "Non-nullable required field `event_at` cannot be null."
+      }
+
+      # check if the required `user` is null
+      if (is.null(`user`)) {
+        invalid_fields[`user`] = "Non-nullable required field `user` cannot be null."
+      }
+
+      invalid_fields
     }
   )
 )
