@@ -134,11 +134,11 @@ ListAddUserRequest <- R6::R6Class(
     #' @export
     isValid = function() {
       # check if the required `user_id` is null
-      if (is.null(`user_id`)) {
+      if (is.null(self$`user_id`)) {
         FALSE
       }
 
-      if (!str_detect(`user_id`, "^[0-9]{1,19}$")) {
+      if (!str_detect(self$`user_id`, "^[0-9]{1,19}$")) {
         FALSE
       }
 
@@ -154,12 +154,12 @@ ListAddUserRequest <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `user_id` is null
-      if (is.null(`user_id`)) {
-        invalid_fields[`user_id`] = "Non-nullable required field `user_id` cannot be null."
+      if (is.null(self$`user_id`)) {
+        invalid_fields["user_id"] <- "Non-nullable required field `user_id` cannot be null."
       }
 
-      if (!str_detect(`user_id`, "^[0-9]{1,19}$")) {
-        invalid_fields[`user_id`] = "Invalid value for `user_id`, must conform to the pattern ^[0-9]{1,19}$."
+      if (!str_detect(self$`user_id`, "^[0-9]{1,19}$")) {
+        invalid_fields["user_id"] <- "Invalid value for `user_id`, must conform to the pattern ^[0-9]{1,19}$."
       }
 
       invalid_fields

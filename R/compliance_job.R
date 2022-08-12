@@ -364,50 +364,50 @@ ComplianceJob <- R6::R6Class(
     #' @export
     isValid = function() {
       # check if the required `created_at` is null
-      if (is.null(`created_at`)) {
+      if (is.null(self$`created_at`)) {
         FALSE
       }
 
       # check if the required `download_expires_at` is null
-      if (is.null(`download_expires_at`)) {
+      if (is.null(self$`download_expires_at`)) {
         FALSE
       }
 
       # check if the required `download_url` is null
-      if (is.null(`download_url`)) {
+      if (is.null(self$`download_url`)) {
         FALSE
       }
 
       # check if the required `id` is null
-      if (is.null(`id`)) {
+      if (is.null(self$`id`)) {
         FALSE
       }
 
-      if (!str_detect(`id`, "^[0-9]{1,19}$")) {
+      if (!str_detect(self$`id`, "^[0-9]{1,19}$")) {
         FALSE
       }
 
-      if (nchar(`name`) > 64) {
+      if (nchar(self$`name`) > 64) {
         FALSE
       }
 
       # check if the required `status` is null
-      if (is.null(`status`)) {
+      if (is.null(self$`status`)) {
         FALSE
       }
 
       # check if the required `type` is null
-      if (is.null(`type`)) {
+      if (is.null(self$`type`)) {
         FALSE
       }
 
       # check if the required `upload_expires_at` is null
-      if (is.null(`upload_expires_at`)) {
+      if (is.null(self$`upload_expires_at`)) {
         FALSE
       }
 
       # check if the required `upload_url` is null
-      if (is.null(`upload_url`)) {
+      if (is.null(self$`upload_url`)) {
         FALSE
       }
 
@@ -423,51 +423,51 @@ ComplianceJob <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `created_at` is null
-      if (is.null(`created_at`)) {
-        invalid_fields[`created_at`] = "Non-nullable required field `created_at` cannot be null."
+      if (is.null(self$`created_at`)) {
+        invalid_fields["created_at"] <- "Non-nullable required field `created_at` cannot be null."
       }
 
       # check if the required `download_expires_at` is null
-      if (is.null(`download_expires_at`)) {
-        invalid_fields[`download_expires_at`] = "Non-nullable required field `download_expires_at` cannot be null."
+      if (is.null(self$`download_expires_at`)) {
+        invalid_fields["download_expires_at"] <- "Non-nullable required field `download_expires_at` cannot be null."
       }
 
       # check if the required `download_url` is null
-      if (is.null(`download_url`)) {
-        invalid_fields[`download_url`] = "Non-nullable required field `download_url` cannot be null."
+      if (is.null(self$`download_url`)) {
+        invalid_fields["download_url"] <- "Non-nullable required field `download_url` cannot be null."
       }
 
       # check if the required `id` is null
-      if (is.null(`id`)) {
-        invalid_fields[`id`] = "Non-nullable required field `id` cannot be null."
+      if (is.null(self$`id`)) {
+        invalid_fields["id"] <- "Non-nullable required field `id` cannot be null."
       }
 
-      if (!str_detect(`id`, "^[0-9]{1,19}$")) {
-        invalid_fields[`id`] = "Invalid value for `id`, must conform to the pattern ^[0-9]{1,19}$."
+      if (!str_detect(self$`id`, "^[0-9]{1,19}$")) {
+        invalid_fields["id"] <- "Invalid value for `id`, must conform to the pattern ^[0-9]{1,19}$."
       }
 
-      if (nchar(`name`) > 64) {
-        invalid_fields[`name`] = "Invalid length for `name`, must be smaller than or equal to 64."
+      if (nchar(self$`name`) > 64) {
+        invalid_fields["name"] <- "Invalid length for `name`, must be smaller than or equal to 64."
       }
 
       # check if the required `status` is null
-      if (is.null(`status`)) {
-        invalid_fields[`status`] = "Non-nullable required field `status` cannot be null."
+      if (is.null(self$`status`)) {
+        invalid_fields["status"] <- "Non-nullable required field `status` cannot be null."
       }
 
       # check if the required `type` is null
-      if (is.null(`type`)) {
-        invalid_fields[`type`] = "Non-nullable required field `type` cannot be null."
+      if (is.null(self$`type`)) {
+        invalid_fields["type"] <- "Non-nullable required field `type` cannot be null."
       }
 
       # check if the required `upload_expires_at` is null
-      if (is.null(`upload_expires_at`)) {
-        invalid_fields[`upload_expires_at`] = "Non-nullable required field `upload_expires_at` cannot be null."
+      if (is.null(self$`upload_expires_at`)) {
+        invalid_fields["upload_expires_at"] <- "Non-nullable required field `upload_expires_at` cannot be null."
       }
 
       # check if the required `upload_url` is null
-      if (is.null(`upload_url`)) {
-        invalid_fields[`upload_url`] = "Non-nullable required field `upload_url` cannot be null."
+      if (is.null(self$`upload_url`)) {
+        invalid_fields["upload_url"] <- "Non-nullable required field `upload_url` cannot be null."
       }
 
       invalid_fields

@@ -165,19 +165,19 @@ Point <- R6::R6Class(
     #' @export
     isValid = function() {
       # check if the required `coordinates` is null
-      if (is.null(`coordinates`)) {
+      if (is.null(self$`coordinates`)) {
         FALSE
       }
 
-      if (length(`coordinates`) > 2) {
+      if (length(self$`coordinates`) > 2) {
         FALSE
       }
-      if (length(`coordinates`) < 2) {
+      if (length(self$`coordinates`) < 2) {
         FALSE
       }
 
       # check if the required `type` is null
-      if (is.null(`type`)) {
+      if (is.null(self$`type`)) {
         FALSE
       }
 
@@ -193,20 +193,20 @@ Point <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `coordinates` is null
-      if (is.null(`coordinates`)) {
-        invalid_fields[`coordinates`] = "Non-nullable required field `coordinates` cannot be null."
+      if (is.null(self$`coordinates`)) {
+        invalid_fields["coordinates"] <- "Non-nullable required field `coordinates` cannot be null."
       }
 
-      if (length(`coordinates`) > 2) {
-        invalid_fields[`coordinates`] = "Invalid length for `coordinates`, number of items must be less than or equal to 2."
+      if (length(self$`coordinates`) > 2) {
+        invalid_fields["coordinates"] <- "Invalid length for `coordinates`, number of items must be less than or equal to 2."
       }
-      if (length(`coordinates`) < 2) {
-        invalid_fields[`coordinates`] = "Invalid length for ``, number of items must be greater than or equal to 2."
+      if (length(self$`coordinates`) < 2) {
+        invalid_fields["coordinates"] <- "Invalid length for ``, number of items must be greater than or equal to 2."
       }
 
       # check if the required `type` is null
-      if (is.null(`type`)) {
-        invalid_fields[`type`] = "Non-nullable required field `type` cannot be null."
+      if (is.null(self$`type`)) {
+        invalid_fields["type"] <- "Non-nullable required field `type` cannot be null."
       }
 
       invalid_fields

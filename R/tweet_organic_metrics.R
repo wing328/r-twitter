@@ -221,22 +221,22 @@ TweetOrganicMetrics <- R6::R6Class(
     #' @export
     isValid = function() {
       # check if the required `impression_count` is null
-      if (is.null(`impression_count`)) {
+      if (is.null(self$`impression_count`)) {
         FALSE
       }
 
       # check if the required `like_count` is null
-      if (is.null(`like_count`)) {
+      if (is.null(self$`like_count`)) {
         FALSE
       }
 
       # check if the required `reply_count` is null
-      if (is.null(`reply_count`)) {
+      if (is.null(self$`reply_count`)) {
         FALSE
       }
 
       # check if the required `retweet_count` is null
-      if (is.null(`retweet_count`)) {
+      if (is.null(self$`retweet_count`)) {
         FALSE
       }
 
@@ -252,23 +252,23 @@ TweetOrganicMetrics <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `impression_count` is null
-      if (is.null(`impression_count`)) {
-        invalid_fields[`impression_count`] = "Non-nullable required field `impression_count` cannot be null."
+      if (is.null(self$`impression_count`)) {
+        invalid_fields["impression_count"] <- "Non-nullable required field `impression_count` cannot be null."
       }
 
       # check if the required `like_count` is null
-      if (is.null(`like_count`)) {
-        invalid_fields[`like_count`] = "Non-nullable required field `like_count` cannot be null."
+      if (is.null(self$`like_count`)) {
+        invalid_fields["like_count"] <- "Non-nullable required field `like_count` cannot be null."
       }
 
       # check if the required `reply_count` is null
-      if (is.null(`reply_count`)) {
-        invalid_fields[`reply_count`] = "Non-nullable required field `reply_count` cannot be null."
+      if (is.null(self$`reply_count`)) {
+        invalid_fields["reply_count"] <- "Non-nullable required field `reply_count` cannot be null."
       }
 
       # check if the required `retweet_count` is null
-      if (is.null(`retweet_count`)) {
-        invalid_fields[`retweet_count`] = "Non-nullable required field `retweet_count` cannot be null."
+      if (is.null(self$`retweet_count`)) {
+        invalid_fields["retweet_count"] <- "Non-nullable required field `retweet_count` cannot be null."
       }
 
       invalid_fields

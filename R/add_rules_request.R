@@ -136,7 +136,7 @@ AddRulesRequest <- R6::R6Class(
     #' @export
     isValid = function() {
       # check if the required `add` is null
-      if (is.null(`add`)) {
+      if (is.null(self$`add`)) {
         FALSE
       }
 
@@ -152,8 +152,8 @@ AddRulesRequest <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `add` is null
-      if (is.null(`add`)) {
-        invalid_fields[`add`] = "Non-nullable required field `add` cannot be null."
+      if (is.null(self$`add`)) {
+        invalid_fields["add"] <- "Non-nullable required field `add` cannot be null."
       }
 
       invalid_fields

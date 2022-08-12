@@ -160,7 +160,7 @@ RulesLookupResponse <- R6::R6Class(
     #' @export
     isValid = function() {
       # check if the required `meta` is null
-      if (is.null(`meta`)) {
+      if (is.null(self$`meta`)) {
         FALSE
       }
 
@@ -176,8 +176,8 @@ RulesLookupResponse <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `meta` is null
-      if (is.null(`meta`)) {
-        invalid_fields[`meta`] = "Non-nullable required field `meta` cannot be null."
+      if (is.null(self$`meta`)) {
+        invalid_fields["meta"] <- "Non-nullable required field `meta` cannot be null."
       }
 
       invalid_fields

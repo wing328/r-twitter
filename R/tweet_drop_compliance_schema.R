@@ -136,7 +136,7 @@ TweetDropComplianceSchema <- R6::R6Class(
     #' @export
     isValid = function() {
       # check if the required `drop` is null
-      if (is.null(`drop`)) {
+      if (is.null(self$`drop`)) {
         FALSE
       }
 
@@ -152,8 +152,8 @@ TweetDropComplianceSchema <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `drop` is null
-      if (is.null(`drop`)) {
-        invalid_fields[`drop`] = "Non-nullable required field `drop` cannot be null."
+      if (is.null(self$`drop`)) {
+        invalid_fields["drop"] <- "Non-nullable required field `drop` cannot be null."
       }
 
       invalid_fields

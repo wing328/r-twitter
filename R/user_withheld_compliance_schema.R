@@ -136,7 +136,7 @@ UserWithheldComplianceSchema <- R6::R6Class(
     #' @export
     isValid = function() {
       # check if the required `user_withheld` is null
-      if (is.null(`user_withheld`)) {
+      if (is.null(self$`user_withheld`)) {
         FALSE
       }
 
@@ -152,8 +152,8 @@ UserWithheldComplianceSchema <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `user_withheld` is null
-      if (is.null(`user_withheld`)) {
-        invalid_fields[`user_withheld`] = "Non-nullable required field `user_withheld` cannot be null."
+      if (is.null(self$`user_withheld`)) {
+        invalid_fields["user_withheld"] <- "Non-nullable required field `user_withheld` cannot be null."
       }
 
       invalid_fields

@@ -152,11 +152,11 @@ TweetAttachments <- R6::R6Class(
     #' @return true if the values in all fields are valid.
     #' @export
     isValid = function() {
-      if (length(`media_keys`) < 1) {
+      if (length(self$`media_keys`) < 1) {
         FALSE
       }
 
-      if (length(`poll_ids`) < 1) {
+      if (length(self$`poll_ids`) < 1) {
         FALSE
       }
 
@@ -171,12 +171,12 @@ TweetAttachments <- R6::R6Class(
     #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
-      if (length(`media_keys`) < 1) {
-        invalid_fields[`media_keys`] = "Invalid length for ``, number of items must be greater than or equal to 1."
+      if (length(self$`media_keys`) < 1) {
+        invalid_fields["media_keys"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
-      if (length(`poll_ids`) < 1) {
-        invalid_fields[`poll_ids`] = "Invalid length for ``, number of items must be greater than or equal to 1."
+      if (length(self$`poll_ids`) < 1) {
+        invalid_fields["poll_ids"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
       invalid_fields

@@ -134,11 +134,11 @@ ListPinnedRequest <- R6::R6Class(
     #' @export
     isValid = function() {
       # check if the required `list_id` is null
-      if (is.null(`list_id`)) {
+      if (is.null(self$`list_id`)) {
         FALSE
       }
 
-      if (!str_detect(`list_id`, "^[0-9]{1,19}$")) {
+      if (!str_detect(self$`list_id`, "^[0-9]{1,19}$")) {
         FALSE
       }
 
@@ -154,12 +154,12 @@ ListPinnedRequest <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `list_id` is null
-      if (is.null(`list_id`)) {
-        invalid_fields[`list_id`] = "Non-nullable required field `list_id` cannot be null."
+      if (is.null(self$`list_id`)) {
+        invalid_fields["list_id"] <- "Non-nullable required field `list_id` cannot be null."
       }
 
-      if (!str_detect(`list_id`, "^[0-9]{1,19}$")) {
-        invalid_fields[`list_id`] = "Invalid value for `list_id`, must conform to the pattern ^[0-9]{1,19}$."
+      if (!str_detect(self$`list_id`, "^[0-9]{1,19}$")) {
+        invalid_fields["list_id"] <- "Invalid value for `list_id`, must conform to the pattern ^[0-9]{1,19}$."
       }
 
       invalid_fields

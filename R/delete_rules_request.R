@@ -136,7 +136,7 @@ DeleteRulesRequest <- R6::R6Class(
     #' @export
     isValid = function() {
       # check if the required `delete` is null
-      if (is.null(`delete`)) {
+      if (is.null(self$`delete`)) {
         FALSE
       }
 
@@ -152,8 +152,8 @@ DeleteRulesRequest <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `delete` is null
-      if (is.null(`delete`)) {
-        invalid_fields[`delete`] = "Non-nullable required field `delete` cannot be null."
+      if (is.null(self$`delete`)) {
+        invalid_fields["delete"] <- "Non-nullable required field `delete` cannot be null."
       }
 
       invalid_fields

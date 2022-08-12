@@ -163,12 +163,12 @@ Error <- R6::R6Class(
     #' @export
     isValid = function() {
       # check if the required `code` is null
-      if (is.null(`code`)) {
+      if (is.null(self$`code`)) {
         FALSE
       }
 
       # check if the required `message` is null
-      if (is.null(`message`)) {
+      if (is.null(self$`message`)) {
         FALSE
       }
 
@@ -184,13 +184,13 @@ Error <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `code` is null
-      if (is.null(`code`)) {
-        invalid_fields[`code`] = "Non-nullable required field `code` cannot be null."
+      if (is.null(self$`code`)) {
+        invalid_fields["code"] <- "Non-nullable required field `code` cannot be null."
       }
 
       # check if the required `message` is null
-      if (is.null(`message`)) {
-        invalid_fields[`message`] = "Non-nullable required field `message` cannot be null."
+      if (is.null(self$`message`)) {
+        invalid_fields["message"] <- "Non-nullable required field `message` cannot be null."
       }
 
       invalid_fields

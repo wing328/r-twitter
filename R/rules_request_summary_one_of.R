@@ -221,22 +221,22 @@ RulesRequestSummaryOneOf <- R6::R6Class(
     #' @export
     isValid = function() {
       # check if the required `created` is null
-      if (is.null(`created`)) {
+      if (is.null(self$`created`)) {
         FALSE
       }
 
       # check if the required `invalid` is null
-      if (is.null(`invalid`)) {
+      if (is.null(self$`invalid`)) {
         FALSE
       }
 
       # check if the required `not_created` is null
-      if (is.null(`not_created`)) {
+      if (is.null(self$`not_created`)) {
         FALSE
       }
 
       # check if the required `valid` is null
-      if (is.null(`valid`)) {
+      if (is.null(self$`valid`)) {
         FALSE
       }
 
@@ -252,23 +252,23 @@ RulesRequestSummaryOneOf <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `created` is null
-      if (is.null(`created`)) {
-        invalid_fields[`created`] = "Non-nullable required field `created` cannot be null."
+      if (is.null(self$`created`)) {
+        invalid_fields["created"] <- "Non-nullable required field `created` cannot be null."
       }
 
       # check if the required `invalid` is null
-      if (is.null(`invalid`)) {
-        invalid_fields[`invalid`] = "Non-nullable required field `invalid` cannot be null."
+      if (is.null(self$`invalid`)) {
+        invalid_fields["invalid"] <- "Non-nullable required field `invalid` cannot be null."
       }
 
       # check if the required `not_created` is null
-      if (is.null(`not_created`)) {
-        invalid_fields[`not_created`] = "Non-nullable required field `not_created` cannot be null."
+      if (is.null(self$`not_created`)) {
+        invalid_fields["not_created"] <- "Non-nullable required field `not_created` cannot be null."
       }
 
       # check if the required `valid` is null
-      if (is.null(`valid`)) {
-        invalid_fields[`valid`] = "Non-nullable required field `valid` cannot be null."
+      if (is.null(self$`valid`)) {
+        invalid_fields["valid"] <- "Non-nullable required field `valid` cannot be null."
       }
 
       invalid_fields

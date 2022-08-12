@@ -136,7 +136,7 @@ UserProfileModificationComplianceSchema <- R6::R6Class(
     #' @export
     isValid = function() {
       # check if the required `user_profile_modification` is null
-      if (is.null(`user_profile_modification`)) {
+      if (is.null(self$`user_profile_modification`)) {
         FALSE
       }
 
@@ -152,8 +152,8 @@ UserProfileModificationComplianceSchema <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `user_profile_modification` is null
-      if (is.null(`user_profile_modification`)) {
-        invalid_fields[`user_profile_modification`] = "Non-nullable required field `user_profile_modification` cannot be null."
+      if (is.null(self$`user_profile_modification`)) {
+        invalid_fields["user_profile_modification"] <- "Non-nullable required field `user_profile_modification` cannot be null."
       }
 
       invalid_fields

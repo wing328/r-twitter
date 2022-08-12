@@ -248,27 +248,27 @@ Expansions <- R6::R6Class(
     #' @return true if the values in all fields are valid.
     #' @export
     isValid = function() {
-      if (length(`media`) < 1) {
+      if (length(self$`media`) < 1) {
         FALSE
       }
 
-      if (length(`places`) < 1) {
+      if (length(self$`places`) < 1) {
         FALSE
       }
 
-      if (length(`polls`) < 1) {
+      if (length(self$`polls`) < 1) {
         FALSE
       }
 
-      if (length(`topics`) < 1) {
+      if (length(self$`topics`) < 1) {
         FALSE
       }
 
-      if (length(`tweets`) < 1) {
+      if (length(self$`tweets`) < 1) {
         FALSE
       }
 
-      if (length(`users`) < 1) {
+      if (length(self$`users`) < 1) {
         FALSE
       }
 
@@ -283,28 +283,28 @@ Expansions <- R6::R6Class(
     #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
-      if (length(`media`) < 1) {
-        invalid_fields[`media`] = "Invalid length for ``, number of items must be greater than or equal to 1."
+      if (length(self$`media`) < 1) {
+        invalid_fields["media"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
-      if (length(`places`) < 1) {
-        invalid_fields[`places`] = "Invalid length for ``, number of items must be greater than or equal to 1."
+      if (length(self$`places`) < 1) {
+        invalid_fields["places"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
-      if (length(`polls`) < 1) {
-        invalid_fields[`polls`] = "Invalid length for ``, number of items must be greater than or equal to 1."
+      if (length(self$`polls`) < 1) {
+        invalid_fields["polls"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
-      if (length(`topics`) < 1) {
-        invalid_fields[`topics`] = "Invalid length for ``, number of items must be greater than or equal to 1."
+      if (length(self$`topics`) < 1) {
+        invalid_fields["topics"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
-      if (length(`tweets`) < 1) {
-        invalid_fields[`tweets`] = "Invalid length for ``, number of items must be greater than or equal to 1."
+      if (length(self$`tweets`) < 1) {
+        invalid_fields["tweets"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
-      if (length(`users`) < 1) {
-        invalid_fields[`users`] = "Invalid length for ``, number of items must be greater than or equal to 1."
+      if (length(self$`users`) < 1) {
+        invalid_fields["users"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
       invalid_fields

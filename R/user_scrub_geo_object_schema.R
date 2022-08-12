@@ -194,21 +194,21 @@ UserScrubGeoObjectSchema <- R6::R6Class(
     #' @export
     isValid = function() {
       # check if the required `event_at` is null
-      if (is.null(`event_at`)) {
+      if (is.null(self$`event_at`)) {
         FALSE
       }
 
       # check if the required `up_to_tweet_id` is null
-      if (is.null(`up_to_tweet_id`)) {
+      if (is.null(self$`up_to_tweet_id`)) {
         FALSE
       }
 
-      if (!str_detect(`up_to_tweet_id`, "^[0-9]{1,19}$")) {
+      if (!str_detect(self$`up_to_tweet_id`, "^[0-9]{1,19}$")) {
         FALSE
       }
 
       # check if the required `user` is null
-      if (is.null(`user`)) {
+      if (is.null(self$`user`)) {
         FALSE
       }
 
@@ -224,22 +224,22 @@ UserScrubGeoObjectSchema <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `event_at` is null
-      if (is.null(`event_at`)) {
-        invalid_fields[`event_at`] = "Non-nullable required field `event_at` cannot be null."
+      if (is.null(self$`event_at`)) {
+        invalid_fields["event_at"] <- "Non-nullable required field `event_at` cannot be null."
       }
 
       # check if the required `up_to_tweet_id` is null
-      if (is.null(`up_to_tweet_id`)) {
-        invalid_fields[`up_to_tweet_id`] = "Non-nullable required field `up_to_tweet_id` cannot be null."
+      if (is.null(self$`up_to_tweet_id`)) {
+        invalid_fields["up_to_tweet_id"] <- "Non-nullable required field `up_to_tweet_id` cannot be null."
       }
 
-      if (!str_detect(`up_to_tweet_id`, "^[0-9]{1,19}$")) {
-        invalid_fields[`up_to_tweet_id`] = "Invalid value for `up_to_tweet_id`, must conform to the pattern ^[0-9]{1,19}$."
+      if (!str_detect(self$`up_to_tweet_id`, "^[0-9]{1,19}$")) {
+        invalid_fields["up_to_tweet_id"] <- "Invalid value for `up_to_tweet_id`, must conform to the pattern ^[0-9]{1,19}$."
       }
 
       # check if the required `user` is null
-      if (is.null(`user`)) {
-        invalid_fields[`user`] = "Non-nullable required field `user` cannot be null."
+      if (is.null(self$`user`)) {
+        invalid_fields["user"] <- "Non-nullable required field `user` cannot be null."
       }
 
       invalid_fields

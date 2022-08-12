@@ -202,11 +202,11 @@ Get2UsersIdBlockingResponse <- R6::R6Class(
     #' @return true if the values in all fields are valid.
     #' @export
     isValid = function() {
-      if (length(`data`) < 1) {
+      if (length(self$`data`) < 1) {
         FALSE
       }
 
-      if (length(`errors`) < 1) {
+      if (length(self$`errors`) < 1) {
         FALSE
       }
 
@@ -221,12 +221,12 @@ Get2UsersIdBlockingResponse <- R6::R6Class(
     #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
-      if (length(`data`) < 1) {
-        invalid_fields[`data`] = "Invalid length for ``, number of items must be greater than or equal to 1."
+      if (length(self$`data`) < 1) {
+        invalid_fields["data"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
-      if (length(`errors`) < 1) {
-        invalid_fields[`errors`] = "Invalid length for ``, number of items must be greater than or equal to 1."
+      if (length(self$`errors`) < 1) {
+        invalid_fields["errors"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
       invalid_fields

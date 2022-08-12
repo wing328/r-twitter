@@ -183,12 +183,12 @@ AddOrDeleteRulesResponse <- R6::R6Class(
     #' @return true if the values in all fields are valid.
     #' @export
     isValid = function() {
-      if (length(`errors`) < 1) {
+      if (length(self$`errors`) < 1) {
         FALSE
       }
 
       # check if the required `meta` is null
-      if (is.null(`meta`)) {
+      if (is.null(self$`meta`)) {
         FALSE
       }
 
@@ -203,13 +203,13 @@ AddOrDeleteRulesResponse <- R6::R6Class(
     #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
-      if (length(`errors`) < 1) {
-        invalid_fields[`errors`] = "Invalid length for ``, number of items must be greater than or equal to 1."
+      if (length(self$`errors`) < 1) {
+        invalid_fields["errors"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
       # check if the required `meta` is null
-      if (is.null(`meta`)) {
-        invalid_fields[`meta`] = "Non-nullable required field `meta` cannot be null."
+      if (is.null(self$`meta`)) {
+        invalid_fields["meta"] <- "Non-nullable required field `meta` cannot be null."
       }
 
       invalid_fields

@@ -157,7 +157,7 @@ RuleNoId <- R6::R6Class(
     #' @export
     isValid = function() {
       # check if the required `value` is null
-      if (is.null(`value`)) {
+      if (is.null(self$`value`)) {
         FALSE
       }
 
@@ -173,8 +173,8 @@ RuleNoId <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `value` is null
-      if (is.null(`value`)) {
-        invalid_fields[`value`] = "Non-nullable required field `value` cannot be null."
+      if (is.null(self$`value`)) {
+        invalid_fields["value"] <- "Non-nullable required field `value` cannot be null."
       }
 
       invalid_fields

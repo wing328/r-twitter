@@ -159,11 +159,11 @@ UserWithheld <- R6::R6Class(
     #' @export
     isValid = function() {
       # check if the required `country_codes` is null
-      if (is.null(`country_codes`)) {
+      if (is.null(self$`country_codes`)) {
         FALSE
       }
 
-      if (length(`country_codes`) < 1) {
+      if (length(self$`country_codes`) < 1) {
         FALSE
       }
 
@@ -179,12 +179,12 @@ UserWithheld <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `country_codes` is null
-      if (is.null(`country_codes`)) {
-        invalid_fields[`country_codes`] = "Non-nullable required field `country_codes` cannot be null."
+      if (is.null(self$`country_codes`)) {
+        invalid_fields["country_codes"] <- "Non-nullable required field `country_codes` cannot be null."
       }
 
-      if (length(`country_codes`) < 1) {
-        invalid_fields[`country_codes`] = "Invalid length for ``, number of items must be greater than or equal to 1."
+      if (length(self$`country_codes`) < 1) {
+        invalid_fields["country_codes"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
       invalid_fields

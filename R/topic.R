@@ -186,12 +186,12 @@ Topic <- R6::R6Class(
     #' @export
     isValid = function() {
       # check if the required `id` is null
-      if (is.null(`id`)) {
+      if (is.null(self$`id`)) {
         FALSE
       }
 
       # check if the required `name` is null
-      if (is.null(`name`)) {
+      if (is.null(self$`name`)) {
         FALSE
       }
 
@@ -207,13 +207,13 @@ Topic <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `id` is null
-      if (is.null(`id`)) {
-        invalid_fields[`id`] = "Non-nullable required field `id` cannot be null."
+      if (is.null(self$`id`)) {
+        invalid_fields["id"] <- "Non-nullable required field `id` cannot be null."
       }
 
       # check if the required `name` is null
-      if (is.null(`name`)) {
-        invalid_fields[`name`] = "Non-nullable required field `name` cannot be null."
+      if (is.null(self$`name`)) {
+        invalid_fields["name"] <- "Non-nullable required field `name` cannot be null."
       }
 
       invalid_fields

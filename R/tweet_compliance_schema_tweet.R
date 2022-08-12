@@ -163,20 +163,20 @@ TweetComplianceSchemaTweet <- R6::R6Class(
     #' @export
     isValid = function() {
       # check if the required `author_id` is null
-      if (is.null(`author_id`)) {
+      if (is.null(self$`author_id`)) {
         FALSE
       }
 
-      if (!str_detect(`author_id`, "^[0-9]{1,19}$")) {
+      if (!str_detect(self$`author_id`, "^[0-9]{1,19}$")) {
         FALSE
       }
 
       # check if the required `id` is null
-      if (is.null(`id`)) {
+      if (is.null(self$`id`)) {
         FALSE
       }
 
-      if (!str_detect(`id`, "^[0-9]{1,19}$")) {
+      if (!str_detect(self$`id`, "^[0-9]{1,19}$")) {
         FALSE
       }
 
@@ -192,21 +192,21 @@ TweetComplianceSchemaTweet <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `author_id` is null
-      if (is.null(`author_id`)) {
-        invalid_fields[`author_id`] = "Non-nullable required field `author_id` cannot be null."
+      if (is.null(self$`author_id`)) {
+        invalid_fields["author_id"] <- "Non-nullable required field `author_id` cannot be null."
       }
 
-      if (!str_detect(`author_id`, "^[0-9]{1,19}$")) {
-        invalid_fields[`author_id`] = "Invalid value for `author_id`, must conform to the pattern ^[0-9]{1,19}$."
+      if (!str_detect(self$`author_id`, "^[0-9]{1,19}$")) {
+        invalid_fields["author_id"] <- "Invalid value for `author_id`, must conform to the pattern ^[0-9]{1,19}$."
       }
 
       # check if the required `id` is null
-      if (is.null(`id`)) {
-        invalid_fields[`id`] = "Non-nullable required field `id` cannot be null."
+      if (is.null(self$`id`)) {
+        invalid_fields["id"] <- "Non-nullable required field `id` cannot be null."
       }
 
-      if (!str_detect(`id`, "^[0-9]{1,19}$")) {
-        invalid_fields[`id`] = "Invalid value for `id`, must conform to the pattern ^[0-9]{1,19}$."
+      if (!str_detect(self$`id`, "^[0-9]{1,19}$")) {
+        invalid_fields["id"] <- "Invalid value for `id`, must conform to the pattern ^[0-9]{1,19}$."
       }
 
       invalid_fields

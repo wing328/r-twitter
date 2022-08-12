@@ -136,7 +136,7 @@ UserScrubGeoSchema <- R6::R6Class(
     #' @export
     isValid = function() {
       # check if the required `scrub_geo` is null
-      if (is.null(`scrub_geo`)) {
+      if (is.null(self$`scrub_geo`)) {
         FALSE
       }
 
@@ -152,8 +152,8 @@ UserScrubGeoSchema <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `scrub_geo` is null
-      if (is.null(`scrub_geo`)) {
-        invalid_fields[`scrub_geo`] = "Non-nullable required field `scrub_geo` cannot be null."
+      if (is.null(self$`scrub_geo`)) {
+        invalid_fields["scrub_geo"] <- "Non-nullable required field `scrub_geo` cannot be null."
       }
 
       invalid_fields

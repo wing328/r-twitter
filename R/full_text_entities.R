@@ -224,23 +224,23 @@ FullTextEntities <- R6::R6Class(
     #' @return true if the values in all fields are valid.
     #' @export
     isValid = function() {
-      if (length(`annotations`) < 1) {
+      if (length(self$`annotations`) < 1) {
         FALSE
       }
 
-      if (length(`cashtags`) < 1) {
+      if (length(self$`cashtags`) < 1) {
         FALSE
       }
 
-      if (length(`hashtags`) < 1) {
+      if (length(self$`hashtags`) < 1) {
         FALSE
       }
 
-      if (length(`mentions`) < 1) {
+      if (length(self$`mentions`) < 1) {
         FALSE
       }
 
-      if (length(`urls`) < 1) {
+      if (length(self$`urls`) < 1) {
         FALSE
       }
 
@@ -255,24 +255,24 @@ FullTextEntities <- R6::R6Class(
     #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
-      if (length(`annotations`) < 1) {
-        invalid_fields[`annotations`] = "Invalid length for ``, number of items must be greater than or equal to 1."
+      if (length(self$`annotations`) < 1) {
+        invalid_fields["annotations"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
-      if (length(`cashtags`) < 1) {
-        invalid_fields[`cashtags`] = "Invalid length for ``, number of items must be greater than or equal to 1."
+      if (length(self$`cashtags`) < 1) {
+        invalid_fields["cashtags"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
-      if (length(`hashtags`) < 1) {
-        invalid_fields[`hashtags`] = "Invalid length for ``, number of items must be greater than or equal to 1."
+      if (length(self$`hashtags`) < 1) {
+        invalid_fields["hashtags"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
-      if (length(`mentions`) < 1) {
-        invalid_fields[`mentions`] = "Invalid length for ``, number of items must be greater than or equal to 1."
+      if (length(self$`mentions`) < 1) {
+        invalid_fields["mentions"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
-      if (length(`urls`) < 1) {
-        invalid_fields[`urls`] = "Invalid length for ``, number of items must be greater than or equal to 1."
+      if (length(self$`urls`) < 1) {
+        invalid_fields["urls"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
       invalid_fields

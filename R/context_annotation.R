@@ -167,12 +167,12 @@ ContextAnnotation <- R6::R6Class(
     #' @export
     isValid = function() {
       # check if the required `domain` is null
-      if (is.null(`domain`)) {
+      if (is.null(self$`domain`)) {
         FALSE
       }
 
       # check if the required `entity` is null
-      if (is.null(`entity`)) {
+      if (is.null(self$`entity`)) {
         FALSE
       }
 
@@ -188,13 +188,13 @@ ContextAnnotation <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `domain` is null
-      if (is.null(`domain`)) {
-        invalid_fields[`domain`] = "Non-nullable required field `domain` cannot be null."
+      if (is.null(self$`domain`)) {
+        invalid_fields["domain"] <- "Non-nullable required field `domain` cannot be null."
       }
 
       # check if the required `entity` is null
-      if (is.null(`entity`)) {
-        invalid_fields[`entity`] = "Non-nullable required field `entity` cannot be null."
+      if (is.null(self$`entity`)) {
+        invalid_fields["entity"] <- "Non-nullable required field `entity` cannot be null."
       }
 
       invalid_fields

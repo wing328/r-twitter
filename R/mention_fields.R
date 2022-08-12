@@ -156,16 +156,16 @@ MentionFields <- R6::R6Class(
     #' @return true if the values in all fields are valid.
     #' @export
     isValid = function() {
-      if (!str_detect(`id`, "^[0-9]{1,19}$")) {
+      if (!str_detect(self$`id`, "^[0-9]{1,19}$")) {
         FALSE
       }
 
       # check if the required `username` is null
-      if (is.null(`username`)) {
+      if (is.null(self$`username`)) {
         FALSE
       }
 
-      if (!str_detect(`username`, "^[A-Za-z0-9_]{1,15}$")) {
+      if (!str_detect(self$`username`, "^[A-Za-z0-9_]{1,15}$")) {
         FALSE
       }
 
@@ -180,17 +180,17 @@ MentionFields <- R6::R6Class(
     #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
-      if (!str_detect(`id`, "^[0-9]{1,19}$")) {
-        invalid_fields[`id`] = "Invalid value for `id`, must conform to the pattern ^[0-9]{1,19}$."
+      if (!str_detect(self$`id`, "^[0-9]{1,19}$")) {
+        invalid_fields["id"] <- "Invalid value for `id`, must conform to the pattern ^[0-9]{1,19}$."
       }
 
       # check if the required `username` is null
-      if (is.null(`username`)) {
-        invalid_fields[`username`] = "Non-nullable required field `username` cannot be null."
+      if (is.null(self$`username`)) {
+        invalid_fields["username"] <- "Non-nullable required field `username` cannot be null."
       }
 
-      if (!str_detect(`username`, "^[A-Za-z0-9_]{1,15}$")) {
-        invalid_fields[`username`] = "Invalid value for `username`, must conform to the pattern ^[A-Za-z0-9_]{1,15}$."
+      if (!str_detect(self$`username`, "^[A-Za-z0-9_]{1,15}$")) {
+        invalid_fields["username"] <- "Invalid value for `username`, must conform to the pattern ^[A-Za-z0-9_]{1,15}$."
       }
 
       invalid_fields

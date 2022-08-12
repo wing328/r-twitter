@@ -134,7 +134,7 @@ CashtagFields <- R6::R6Class(
     #' @export
     isValid = function() {
       # check if the required `tag` is null
-      if (is.null(`tag`)) {
+      if (is.null(self$`tag`)) {
         FALSE
       }
 
@@ -150,8 +150,8 @@ CashtagFields <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `tag` is null
-      if (is.null(`tag`)) {
-        invalid_fields[`tag`] = "Non-nullable required field `tag` cannot be null."
+      if (is.null(self$`tag`)) {
+        invalid_fields["tag"] <- "Non-nullable required field `tag` cannot be null."
       }
 
       invalid_fields

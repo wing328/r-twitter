@@ -188,26 +188,26 @@ TweetCreateRequestPoll <- R6::R6Class(
     #' @export
     isValid = function() {
       # check if the required `duration_minutes` is null
-      if (is.null(`duration_minutes`)) {
+      if (is.null(self$`duration_minutes`)) {
         FALSE
       }
 
-      if (`duration_minutes` > 10080) {
+      if (self$`duration_minutes` > 10080) {
         FALSE
       }
-      if (`duration_minutes` < 5) {
+      if (self$`duration_minutes` < 5) {
         FALSE
       }
 
       # check if the required `options` is null
-      if (is.null(`options`)) {
+      if (is.null(self$`options`)) {
         FALSE
       }
 
-      if (length(`options`) > 4) {
+      if (length(self$`options`) > 4) {
         FALSE
       }
-      if (length(`options`) < 2) {
+      if (length(self$`options`) < 2) {
         FALSE
       }
 
@@ -223,27 +223,27 @@ TweetCreateRequestPoll <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `duration_minutes` is null
-      if (is.null(`duration_minutes`)) {
-        invalid_fields[`duration_minutes`] = "Non-nullable required field `duration_minutes` cannot be null."
+      if (is.null(self$`duration_minutes`)) {
+        invalid_fields["duration_minutes"] <- "Non-nullable required field `duration_minutes` cannot be null."
       }
 
-      if (`duration_minutes` > 10080) {
-        invalid_fields[`duration_minutes`] = "Invalid value for `duration_minutes`, must be smaller than or equal to 10080."
+      if (self$`duration_minutes` > 10080) {
+        invalid_fields["duration_minutes"] <- "Invalid value for `duration_minutes`, must be smaller than or equal to 10080."
       }
-      if (`duration_minutes` < 5) {
-        invalid_fields[`duration_minutes`] = "Invalid value for `duration_minutes`, must be bigger than or equal to 5."
+      if (self$`duration_minutes` < 5) {
+        invalid_fields["duration_minutes"] <- "Invalid value for `duration_minutes`, must be bigger than or equal to 5."
       }
 
       # check if the required `options` is null
-      if (is.null(`options`)) {
-        invalid_fields[`options`] = "Non-nullable required field `options` cannot be null."
+      if (is.null(self$`options`)) {
+        invalid_fields["options"] <- "Non-nullable required field `options` cannot be null."
       }
 
-      if (length(`options`) > 4) {
-        invalid_fields[`options`] = "Invalid length for `options`, number of items must be less than or equal to 4."
+      if (length(self$`options`) > 4) {
+        invalid_fields["options"] <- "Invalid length for `options`, number of items must be less than or equal to 4."
       }
-      if (length(`options`) < 2) {
-        invalid_fields[`options`] = "Invalid length for ``, number of items must be greater than or equal to 2."
+      if (length(self$`options`) < 2) {
+        invalid_fields["options"] <- "Invalid length for ``, number of items must be greater than or equal to 2."
       }
 
       invalid_fields

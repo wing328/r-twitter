@@ -233,31 +233,31 @@ Poll <- R6::R6Class(
     #' @return true if the values in all fields are valid.
     #' @export
     isValid = function() {
-      if (`duration_minutes` > 10080) {
+      if (self$`duration_minutes` > 10080) {
         FALSE
       }
-      if (`duration_minutes` < 5) {
+      if (self$`duration_minutes` < 5) {
         FALSE
       }
 
       # check if the required `id` is null
-      if (is.null(`id`)) {
+      if (is.null(self$`id`)) {
         FALSE
       }
 
-      if (!str_detect(`id`, "^[0-9]{1,19}$")) {
+      if (!str_detect(self$`id`, "^[0-9]{1,19}$")) {
         FALSE
       }
 
       # check if the required `options` is null
-      if (is.null(`options`)) {
+      if (is.null(self$`options`)) {
         FALSE
       }
 
-      if (length(`options`) > 4) {
+      if (length(self$`options`) > 4) {
         FALSE
       }
-      if (length(`options`) < 2) {
+      if (length(self$`options`) < 2) {
         FALSE
       }
 
@@ -272,32 +272,32 @@ Poll <- R6::R6Class(
     #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
-      if (`duration_minutes` > 10080) {
-        invalid_fields[`duration_minutes`] = "Invalid value for `duration_minutes`, must be smaller than or equal to 10080."
+      if (self$`duration_minutes` > 10080) {
+        invalid_fields["duration_minutes"] <- "Invalid value for `duration_minutes`, must be smaller than or equal to 10080."
       }
-      if (`duration_minutes` < 5) {
-        invalid_fields[`duration_minutes`] = "Invalid value for `duration_minutes`, must be bigger than or equal to 5."
+      if (self$`duration_minutes` < 5) {
+        invalid_fields["duration_minutes"] <- "Invalid value for `duration_minutes`, must be bigger than or equal to 5."
       }
 
       # check if the required `id` is null
-      if (is.null(`id`)) {
-        invalid_fields[`id`] = "Non-nullable required field `id` cannot be null."
+      if (is.null(self$`id`)) {
+        invalid_fields["id"] <- "Non-nullable required field `id` cannot be null."
       }
 
-      if (!str_detect(`id`, "^[0-9]{1,19}$")) {
-        invalid_fields[`id`] = "Invalid value for `id`, must conform to the pattern ^[0-9]{1,19}$."
+      if (!str_detect(self$`id`, "^[0-9]{1,19}$")) {
+        invalid_fields["id"] <- "Invalid value for `id`, must conform to the pattern ^[0-9]{1,19}$."
       }
 
       # check if the required `options` is null
-      if (is.null(`options`)) {
-        invalid_fields[`options`] = "Non-nullable required field `options` cannot be null."
+      if (is.null(self$`options`)) {
+        invalid_fields["options"] <- "Non-nullable required field `options` cannot be null."
       }
 
-      if (length(`options`) > 4) {
-        invalid_fields[`options`] = "Invalid length for `options`, number of items must be less than or equal to 4."
+      if (length(self$`options`) > 4) {
+        invalid_fields["options"] <- "Invalid length for `options`, number of items must be less than or equal to 4."
       }
-      if (length(`options`) < 2) {
-        invalid_fields[`options`] = "Invalid length for ``, number of items must be greater than or equal to 2."
+      if (length(self$`options`) < 2) {
+        invalid_fields["options"] <- "Invalid length for ``, number of items must be greater than or equal to 2."
       }
 
       invalid_fields

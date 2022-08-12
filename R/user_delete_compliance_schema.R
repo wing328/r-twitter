@@ -136,7 +136,7 @@ UserDeleteComplianceSchema <- R6::R6Class(
     #' @export
     isValid = function() {
       # check if the required `user_delete` is null
-      if (is.null(`user_delete`)) {
+      if (is.null(self$`user_delete`)) {
         FALSE
       }
 
@@ -152,8 +152,8 @@ UserDeleteComplianceSchema <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `user_delete` is null
-      if (is.null(`user_delete`)) {
-        invalid_fields[`user_delete`] = "Non-nullable required field `user_delete` cannot be null."
+      if (is.null(self$`user_delete`)) {
+        invalid_fields["user_delete"] <- "Non-nullable required field `user_delete` cannot be null."
       }
 
       invalid_fields

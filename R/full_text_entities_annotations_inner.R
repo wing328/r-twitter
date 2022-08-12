@@ -232,27 +232,27 @@ FullTextEntitiesAnnotationsInner <- R6::R6Class(
     #' @export
     isValid = function() {
       # check if the required `end` is null
-      if (is.null(`end`)) {
+      if (is.null(self$`end`)) {
         FALSE
       }
 
-      if (`end` < 0) {
+      if (self$`end` < 0) {
         FALSE
       }
 
       # check if the required `start` is null
-      if (is.null(`start`)) {
+      if (is.null(self$`start`)) {
         FALSE
       }
 
-      if (`start` < 0) {
+      if (self$`start` < 0) {
         FALSE
       }
 
-      if (`probability` > 1) {
+      if (self$`probability` > 1) {
         FALSE
       }
-      if (`probability` < 0) {
+      if (self$`probability` < 0) {
         FALSE
       }
 
@@ -268,28 +268,28 @@ FullTextEntitiesAnnotationsInner <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `end` is null
-      if (is.null(`end`)) {
-        invalid_fields[`end`] = "Non-nullable required field `end` cannot be null."
+      if (is.null(self$`end`)) {
+        invalid_fields["end"] <- "Non-nullable required field `end` cannot be null."
       }
 
-      if (`end` < 0) {
-        invalid_fields[`end`] = "Invalid value for `end`, must be bigger than or equal to 0."
+      if (self$`end` < 0) {
+        invalid_fields["end"] <- "Invalid value for `end`, must be bigger than or equal to 0."
       }
 
       # check if the required `start` is null
-      if (is.null(`start`)) {
-        invalid_fields[`start`] = "Non-nullable required field `start` cannot be null."
+      if (is.null(self$`start`)) {
+        invalid_fields["start"] <- "Non-nullable required field `start` cannot be null."
       }
 
-      if (`start` < 0) {
-        invalid_fields[`start`] = "Invalid value for `start`, must be bigger than or equal to 0."
+      if (self$`start` < 0) {
+        invalid_fields["start"] <- "Invalid value for `start`, must be bigger than or equal to 0."
       }
 
-      if (`probability` > 1) {
-        invalid_fields[`probability`] = "Invalid value for `probability`, must be smaller than or equal to 1."
+      if (self$`probability` > 1) {
+        invalid_fields["probability"] <- "Invalid value for `probability`, must be smaller than or equal to 1."
       }
-      if (`probability` < 0) {
-        invalid_fields[`probability`] = "Invalid value for `probability`, must be bigger than or equal to 0."
+      if (self$`probability` < 0) {
+        invalid_fields["probability"] <- "Invalid value for `probability`, must be bigger than or equal to 0."
       }
 
       invalid_fields

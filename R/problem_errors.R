@@ -136,7 +136,7 @@ ProblemErrors <- R6::R6Class(
     #' @export
     isValid = function() {
       # check if the required `errors` is null
-      if (is.null(`errors`)) {
+      if (is.null(self$`errors`)) {
         FALSE
       }
 
@@ -152,8 +152,8 @@ ProblemErrors <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `errors` is null
-      if (is.null(`errors`)) {
-        invalid_fields[`errors`] = "Non-nullable required field `errors` cannot be null."
+      if (is.null(self$`errors`)) {
+        invalid_fields["errors"] <- "Non-nullable required field `errors` cannot be null."
       }
 
       invalid_fields

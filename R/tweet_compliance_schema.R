@@ -188,16 +188,16 @@ TweetComplianceSchema <- R6::R6Class(
     #' @export
     isValid = function() {
       # check if the required `event_at` is null
-      if (is.null(`event_at`)) {
+      if (is.null(self$`event_at`)) {
         FALSE
       }
 
-      if (!str_detect(`quote_tweet_id`, "^[0-9]{1,19}$")) {
+      if (!str_detect(self$`quote_tweet_id`, "^[0-9]{1,19}$")) {
         FALSE
       }
 
       # check if the required `tweet` is null
-      if (is.null(`tweet`)) {
+      if (is.null(self$`tweet`)) {
         FALSE
       }
 
@@ -213,17 +213,17 @@ TweetComplianceSchema <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `event_at` is null
-      if (is.null(`event_at`)) {
-        invalid_fields[`event_at`] = "Non-nullable required field `event_at` cannot be null."
+      if (is.null(self$`event_at`)) {
+        invalid_fields["event_at"] <- "Non-nullable required field `event_at` cannot be null."
       }
 
-      if (!str_detect(`quote_tweet_id`, "^[0-9]{1,19}$")) {
-        invalid_fields[`quote_tweet_id`] = "Invalid value for `quote_tweet_id`, must conform to the pattern ^[0-9]{1,19}$."
+      if (!str_detect(self$`quote_tweet_id`, "^[0-9]{1,19}$")) {
+        invalid_fields["quote_tweet_id"] <- "Invalid value for `quote_tweet_id`, must conform to the pattern ^[0-9]{1,19}$."
       }
 
       # check if the required `tweet` is null
-      if (is.null(`tweet`)) {
-        invalid_fields[`tweet`] = "Non-nullable required field `tweet` cannot be null."
+      if (is.null(self$`tweet`)) {
+        invalid_fields["tweet"] <- "Non-nullable required field `tweet` cannot be null."
       }
 
       invalid_fields

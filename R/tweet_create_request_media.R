@@ -160,21 +160,21 @@ TweetCreateRequestMedia <- R6::R6Class(
     #' @export
     isValid = function() {
       # check if the required `media_ids` is null
-      if (is.null(`media_ids`)) {
+      if (is.null(self$`media_ids`)) {
         FALSE
       }
 
-      if (length(`media_ids`) > 4) {
+      if (length(self$`media_ids`) > 4) {
         FALSE
       }
-      if (length(`media_ids`) < 1) {
+      if (length(self$`media_ids`) < 1) {
         FALSE
       }
 
-      if (length(`tagged_user_ids`) > 10) {
+      if (length(self$`tagged_user_ids`) > 10) {
         FALSE
       }
-      if (length(`tagged_user_ids`) < 0) {
+      if (length(self$`tagged_user_ids`) < 0) {
         FALSE
       }
 
@@ -190,22 +190,22 @@ TweetCreateRequestMedia <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `media_ids` is null
-      if (is.null(`media_ids`)) {
-        invalid_fields[`media_ids`] = "Non-nullable required field `media_ids` cannot be null."
+      if (is.null(self$`media_ids`)) {
+        invalid_fields["media_ids"] <- "Non-nullable required field `media_ids` cannot be null."
       }
 
-      if (length(`media_ids`) > 4) {
-        invalid_fields[`media_ids`] = "Invalid length for `media_ids`, number of items must be less than or equal to 4."
+      if (length(self$`media_ids`) > 4) {
+        invalid_fields["media_ids"] <- "Invalid length for `media_ids`, number of items must be less than or equal to 4."
       }
-      if (length(`media_ids`) < 1) {
-        invalid_fields[`media_ids`] = "Invalid length for ``, number of items must be greater than or equal to 1."
+      if (length(self$`media_ids`) < 1) {
+        invalid_fields["media_ids"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
-      if (length(`tagged_user_ids`) > 10) {
-        invalid_fields[`tagged_user_ids`] = "Invalid length for `tagged_user_ids`, number of items must be less than or equal to 10."
+      if (length(self$`tagged_user_ids`) > 10) {
+        invalid_fields["tagged_user_ids"] <- "Invalid length for `tagged_user_ids`, number of items must be less than or equal to 10."
       }
-      if (length(`tagged_user_ids`) < 0) {
-        invalid_fields[`tagged_user_ids`] = "Invalid length for ``, number of items must be greater than or equal to 0."
+      if (length(self$`tagged_user_ids`) < 0) {
+        invalid_fields["tagged_user_ids"] <- "Invalid length for ``, number of items must be greater than or equal to 0."
       }
 
       invalid_fields

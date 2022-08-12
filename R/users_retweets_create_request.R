@@ -134,11 +134,11 @@ UsersRetweetsCreateRequest <- R6::R6Class(
     #' @export
     isValid = function() {
       # check if the required `tweet_id` is null
-      if (is.null(`tweet_id`)) {
+      if (is.null(self$`tweet_id`)) {
         FALSE
       }
 
-      if (!str_detect(`tweet_id`, "^[0-9]{1,19}$")) {
+      if (!str_detect(self$`tweet_id`, "^[0-9]{1,19}$")) {
         FALSE
       }
 
@@ -154,12 +154,12 @@ UsersRetweetsCreateRequest <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `tweet_id` is null
-      if (is.null(`tweet_id`)) {
-        invalid_fields[`tweet_id`] = "Non-nullable required field `tweet_id` cannot be null."
+      if (is.null(self$`tweet_id`)) {
+        invalid_fields["tweet_id"] <- "Non-nullable required field `tweet_id` cannot be null."
       }
 
-      if (!str_detect(`tweet_id`, "^[0-9]{1,19}$")) {
-        invalid_fields[`tweet_id`] = "Invalid value for `tweet_id`, must conform to the pattern ^[0-9]{1,19}$."
+      if (!str_detect(self$`tweet_id`, "^[0-9]{1,19}$")) {
+        invalid_fields["tweet_id"] <- "Invalid value for `tweet_id`, must conform to the pattern ^[0-9]{1,19}$."
       }
 
       invalid_fields

@@ -179,12 +179,12 @@ CreateComplianceJobRequest <- R6::R6Class(
     #' @return true if the values in all fields are valid.
     #' @export
     isValid = function() {
-      if (nchar(`name`) > 64) {
+      if (nchar(self$`name`) > 64) {
         FALSE
       }
 
       # check if the required `type` is null
-      if (is.null(`type`)) {
+      if (is.null(self$`type`)) {
         FALSE
       }
 
@@ -199,13 +199,13 @@ CreateComplianceJobRequest <- R6::R6Class(
     #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
-      if (nchar(`name`) > 64) {
-        invalid_fields[`name`] = "Invalid length for `name`, must be smaller than or equal to 64."
+      if (nchar(self$`name`) > 64) {
+        invalid_fields["name"] <- "Invalid length for `name`, must be smaller than or equal to 64."
       }
 
       # check if the required `type` is null
-      if (is.null(`type`)) {
-        invalid_fields[`type`] = "Non-nullable required field `type` cannot be null."
+      if (is.null(self$`type`)) {
+        invalid_fields["type"] <- "Non-nullable required field `type` cannot be null."
       }
 
       invalid_fields

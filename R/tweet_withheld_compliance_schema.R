@@ -136,7 +136,7 @@ TweetWithheldComplianceSchema <- R6::R6Class(
     #' @export
     isValid = function() {
       # check if the required `withheld` is null
-      if (is.null(`withheld`)) {
+      if (is.null(self$`withheld`)) {
         FALSE
       }
 
@@ -152,8 +152,8 @@ TweetWithheldComplianceSchema <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `withheld` is null
-      if (is.null(`withheld`)) {
-        invalid_fields[`withheld`] = "Non-nullable required field `withheld` cannot be null."
+      if (is.null(self$`withheld`)) {
+        invalid_fields["withheld"] <- "Non-nullable required field `withheld` cannot be null."
       }
 
       invalid_fields

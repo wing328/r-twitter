@@ -128,7 +128,7 @@ InvalidRequestProblemAllOf <- R6::R6Class(
     #' @return true if the values in all fields are valid.
     #' @export
     isValid = function() {
-      if (length(`errors`) < 1) {
+      if (length(self$`errors`) < 1) {
         FALSE
       }
 
@@ -143,8 +143,8 @@ InvalidRequestProblemAllOf <- R6::R6Class(
     #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
-      if (length(`errors`) < 1) {
-        invalid_fields[`errors`] = "Invalid length for ``, number of items must be greater than or equal to 1."
+      if (length(self$`errors`) < 1) {
+        invalid_fields["errors"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
       invalid_fields
