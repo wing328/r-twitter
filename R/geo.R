@@ -218,24 +218,24 @@ Geo <- R6::R6Class(
     isValid = function() {
       # check if the required `bbox` is null
       if (is.null(self$`bbox`)) {
-        FALSE
+        return(FALSE)
       }
 
       if (length(self$`bbox`) > 4) {
-        FALSE
+        return(FALSE)
       }
       if (length(self$`bbox`) < 4) {
-        FALSE
+        return(FALSE)
       }
 
       # check if the required `properties` is null
       if (is.null(self$`properties`)) {
-        FALSE
+        return(FALSE)
       }
 
       # check if the required `type` is null
       if (is.null(self$`type`)) {
-        FALSE
+        return(FALSE)
       }
 
       TRUE
@@ -251,27 +251,28 @@ Geo <- R6::R6Class(
       invalid_fields <- list()
       # check if the required `bbox` is null
       if (is.null(self$`bbox`)) {
-        invalid_fields["bbox"] <- "Non-nullable required field `bbox` cannot be null."
+        invalid_fields["bbox"] = "Non-nullable required field `bbox` cannot be null."
       }
 
       if (length(self$`bbox`) > 4) {
-        invalid_fields["bbox"] <- "Invalid length for `bbox`, number of items must be less than or equal to 4."
+        invalid_fields["bbox"] = "Invalid length for `bbox`, number of items must be less than or equal to 4."
       }
       if (length(self$`bbox`) < 4) {
-        invalid_fields["bbox"] <- "Invalid length for ``, number of items must be greater than or equal to 4."
+        invalid_fields["bbox"] = "Invalid length for ``, number of items must be greater than or equal to 4."
       }
 
       # check if the required `properties` is null
       if (is.null(self$`properties`)) {
-        invalid_fields["properties"] <- "Non-nullable required field `properties` cannot be null."
+        invalid_fields["properties"] = "Non-nullable required field `properties` cannot be null."
       }
 
       # check if the required `type` is null
       if (is.null(self$`type`)) {
-        invalid_fields["type"] <- "Non-nullable required field `type` cannot be null."
+        invalid_fields["type"] = "Non-nullable required field `type` cannot be null."
       }
 
       invalid_fields
     }
   )
 )
+

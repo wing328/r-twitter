@@ -222,22 +222,22 @@ UserPublicMetrics <- R6::R6Class(
     isValid = function() {
       # check if the required `followers_count` is null
       if (is.null(self$`followers_count`)) {
-        FALSE
+        return(FALSE)
       }
 
       # check if the required `following_count` is null
       if (is.null(self$`following_count`)) {
-        FALSE
+        return(FALSE)
       }
 
       # check if the required `listed_count` is null
       if (is.null(self$`listed_count`)) {
-        FALSE
+        return(FALSE)
       }
 
       # check if the required `tweet_count` is null
       if (is.null(self$`tweet_count`)) {
-        FALSE
+        return(FALSE)
       }
 
       TRUE
@@ -253,25 +253,26 @@ UserPublicMetrics <- R6::R6Class(
       invalid_fields <- list()
       # check if the required `followers_count` is null
       if (is.null(self$`followers_count`)) {
-        invalid_fields["followers_count"] <- "Non-nullable required field `followers_count` cannot be null."
+        invalid_fields["followers_count"] = "Non-nullable required field `followers_count` cannot be null."
       }
 
       # check if the required `following_count` is null
       if (is.null(self$`following_count`)) {
-        invalid_fields["following_count"] <- "Non-nullable required field `following_count` cannot be null."
+        invalid_fields["following_count"] = "Non-nullable required field `following_count` cannot be null."
       }
 
       # check if the required `listed_count` is null
       if (is.null(self$`listed_count`)) {
-        invalid_fields["listed_count"] <- "Non-nullable required field `listed_count` cannot be null."
+        invalid_fields["listed_count"] = "Non-nullable required field `listed_count` cannot be null."
       }
 
       # check if the required `tweet_count` is null
       if (is.null(self$`tweet_count`)) {
-        invalid_fields["tweet_count"] <- "Non-nullable required field `tweet_count` cannot be null."
+        invalid_fields["tweet_count"] = "Non-nullable required field `tweet_count` cannot be null."
       }
 
       invalid_fields
     }
   )
 )
+

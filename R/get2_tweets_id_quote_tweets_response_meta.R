@@ -151,7 +151,7 @@ Get2TweetsIdQuoteTweetsResponseMeta <- R6::R6Class(
     #' @export
     isValid = function() {
       if (nchar(self$`next_token`) < 1) {
-        FALSE
+        return(FALSE)
       }
 
       TRUE
@@ -166,10 +166,11 @@ Get2TweetsIdQuoteTweetsResponseMeta <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       if (nchar(self$`next_token`) < 1) {
-        invalid_fields["next_token"] <- "Invalid length for `next_token`, must be bigger than or equal to 1."
+        invalid_fields["next_token"] = "Invalid length for `next_token`, must be bigger than or equal to 1."
       }
 
       invalid_fields
     }
   )
 )
+

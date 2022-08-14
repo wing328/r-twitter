@@ -193,17 +193,17 @@ DisallowedResourceProblemAllOf <- R6::R6Class(
     isValid = function() {
       # check if the required `resource_id` is null
       if (is.null(self$`resource_id`)) {
-        FALSE
+        return(FALSE)
       }
 
       # check if the required `resource_type` is null
       if (is.null(self$`resource_type`)) {
-        FALSE
+        return(FALSE)
       }
 
       # check if the required `section` is null
       if (is.null(self$`section`)) {
-        FALSE
+        return(FALSE)
       }
 
       TRUE
@@ -219,20 +219,21 @@ DisallowedResourceProblemAllOf <- R6::R6Class(
       invalid_fields <- list()
       # check if the required `resource_id` is null
       if (is.null(self$`resource_id`)) {
-        invalid_fields["resource_id"] <- "Non-nullable required field `resource_id` cannot be null."
+        invalid_fields["resource_id"] = "Non-nullable required field `resource_id` cannot be null."
       }
 
       # check if the required `resource_type` is null
       if (is.null(self$`resource_type`)) {
-        invalid_fields["resource_type"] <- "Non-nullable required field `resource_type` cannot be null."
+        invalid_fields["resource_type"] = "Non-nullable required field `resource_type` cannot be null."
       }
 
       # check if the required `section` is null
       if (is.null(self$`section`)) {
-        invalid_fields["section"] <- "Non-nullable required field `section` cannot be null."
+        invalid_fields["section"] = "Non-nullable required field `section` cannot be null."
       }
 
       invalid_fields
     }
   )
 )
+

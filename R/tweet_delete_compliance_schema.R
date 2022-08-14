@@ -137,7 +137,7 @@ TweetDeleteComplianceSchema <- R6::R6Class(
     isValid = function() {
       # check if the required `delete` is null
       if (is.null(self$`delete`)) {
-        FALSE
+        return(FALSE)
       }
 
       TRUE
@@ -153,10 +153,11 @@ TweetDeleteComplianceSchema <- R6::R6Class(
       invalid_fields <- list()
       # check if the required `delete` is null
       if (is.null(self$`delete`)) {
-        invalid_fields["delete"] <- "Non-nullable required field `delete` cannot be null."
+        invalid_fields["delete"] = "Non-nullable required field `delete` cannot be null."
       }
 
       invalid_fields
     }
   )
 )
+

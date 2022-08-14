@@ -166,12 +166,12 @@ UserComplianceSchema <- R6::R6Class(
     isValid = function() {
       # check if the required `event_at` is null
       if (is.null(self$`event_at`)) {
-        FALSE
+        return(FALSE)
       }
 
       # check if the required `user` is null
       if (is.null(self$`user`)) {
-        FALSE
+        return(FALSE)
       }
 
       TRUE
@@ -187,15 +187,16 @@ UserComplianceSchema <- R6::R6Class(
       invalid_fields <- list()
       # check if the required `event_at` is null
       if (is.null(self$`event_at`)) {
-        invalid_fields["event_at"] <- "Non-nullable required field `event_at` cannot be null."
+        invalid_fields["event_at"] = "Non-nullable required field `event_at` cannot be null."
       }
 
       # check if the required `user` is null
       if (is.null(self$`user`)) {
-        invalid_fields["user"] <- "Non-nullable required field `user` cannot be null."
+        invalid_fields["user"] = "Non-nullable required field `user` cannot be null."
       }
 
       invalid_fields
     }
   )
 )
+

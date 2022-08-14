@@ -234,12 +234,12 @@ OperationalDisconnectProblem <- R6::R6Class(
     isValid = function() {
       # check if the required `title` is null
       if (is.null(self$`title`)) {
-        FALSE
+        return(FALSE)
       }
 
       # check if the required `type` is null
       if (is.null(self$`type`)) {
-        FALSE
+        return(FALSE)
       }
 
       TRUE
@@ -255,15 +255,16 @@ OperationalDisconnectProblem <- R6::R6Class(
       invalid_fields <- list()
       # check if the required `title` is null
       if (is.null(self$`title`)) {
-        invalid_fields["title"] <- "Non-nullable required field `title` cannot be null."
+        invalid_fields["title"] = "Non-nullable required field `title` cannot be null."
       }
 
       # check if the required `type` is null
       if (is.null(self$`type`)) {
-        invalid_fields["type"] <- "Non-nullable required field `type` cannot be null."
+        invalid_fields["type"] = "Non-nullable required field `type` cannot be null."
       }
 
       invalid_fields
     }
   )
 )
+

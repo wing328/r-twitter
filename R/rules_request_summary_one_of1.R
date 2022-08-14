@@ -164,12 +164,12 @@ RulesRequestSummaryOneOf1 <- R6::R6Class(
     isValid = function() {
       # check if the required `deleted` is null
       if (is.null(self$`deleted`)) {
-        FALSE
+        return(FALSE)
       }
 
       # check if the required `not_deleted` is null
       if (is.null(self$`not_deleted`)) {
-        FALSE
+        return(FALSE)
       }
 
       TRUE
@@ -185,15 +185,16 @@ RulesRequestSummaryOneOf1 <- R6::R6Class(
       invalid_fields <- list()
       # check if the required `deleted` is null
       if (is.null(self$`deleted`)) {
-        invalid_fields["deleted"] <- "Non-nullable required field `deleted` cannot be null."
+        invalid_fields["deleted"] = "Non-nullable required field `deleted` cannot be null."
       }
 
       # check if the required `not_deleted` is null
       if (is.null(self$`not_deleted`)) {
-        invalid_fields["not_deleted"] <- "Non-nullable required field `not_deleted` cannot be null."
+        invalid_fields["not_deleted"] = "Non-nullable required field `not_deleted` cannot be null."
       }
 
       invalid_fields
     }
   )
 )
+

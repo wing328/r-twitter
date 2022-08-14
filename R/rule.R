@@ -180,12 +180,12 @@ Rule <- R6::R6Class(
     #' @export
     isValid = function() {
       if (!str_detect(self$`id`, "^[0-9]{1,19}$")) {
-        FALSE
+        return(FALSE)
       }
 
       # check if the required `value` is null
       if (is.null(self$`value`)) {
-        FALSE
+        return(FALSE)
       }
 
       TRUE
@@ -200,15 +200,16 @@ Rule <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       if (!str_detect(self$`id`, "^[0-9]{1,19}$")) {
-        invalid_fields["id"] <- "Invalid value for `id`, must conform to the pattern ^[0-9]{1,19}$."
+        invalid_fields["id"] = "Invalid value for `id`, must conform to the pattern ^[0-9]{1,19}$."
       }
 
       # check if the required `value` is null
       if (is.null(self$`value`)) {
-        invalid_fields["value"] <- "Non-nullable required field `value` cannot be null."
+        invalid_fields["value"] = "Non-nullable required field `value` cannot be null."
       }
 
       invalid_fields
     }
   )
 )
+

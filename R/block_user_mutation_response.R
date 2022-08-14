@@ -154,7 +154,7 @@ BlockUserMutationResponse <- R6::R6Class(
     #' @export
     isValid = function() {
       if (length(self$`errors`) < 1) {
-        FALSE
+        return(FALSE)
       }
 
       TRUE
@@ -169,10 +169,11 @@ BlockUserMutationResponse <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       if (length(self$`errors`) < 1) {
-        invalid_fields["errors"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
+        invalid_fields["errors"] = "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
       invalid_fields
     }
   )
 )
+

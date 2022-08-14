@@ -137,7 +137,7 @@ UserUnprotectComplianceSchema <- R6::R6Class(
     isValid = function() {
       # check if the required `user_unprotect` is null
       if (is.null(self$`user_unprotect`)) {
-        FALSE
+        return(FALSE)
       }
 
       TRUE
@@ -153,10 +153,11 @@ UserUnprotectComplianceSchema <- R6::R6Class(
       invalid_fields <- list()
       # check if the required `user_unprotect` is null
       if (is.null(self$`user_unprotect`)) {
-        invalid_fields["user_unprotect"] <- "Non-nullable required field `user_unprotect` cannot be null."
+        invalid_fields["user_unprotect"] = "Non-nullable required field `user_unprotect` cannot be null."
       }
 
       invalid_fields
     }
   )
 )
+

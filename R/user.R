@@ -452,29 +452,29 @@ User <- R6::R6Class(
     isValid = function() {
       # check if the required `id` is null
       if (is.null(self$`id`)) {
-        FALSE
+        return(FALSE)
       }
 
       if (!str_detect(self$`id`, "^[0-9]{1,19}$")) {
-        FALSE
+        return(FALSE)
       }
 
       # check if the required `name` is null
       if (is.null(self$`name`)) {
-        FALSE
+        return(FALSE)
       }
 
       if (!str_detect(self$`pinned_tweet_id`, "^[0-9]{1,19}$")) {
-        FALSE
+        return(FALSE)
       }
 
       # check if the required `username` is null
       if (is.null(self$`username`)) {
-        FALSE
+        return(FALSE)
       }
 
       if (!str_detect(self$`username`, "^[A-Za-z0-9_]{1,15}$")) {
-        FALSE
+        return(FALSE)
       }
 
       TRUE
@@ -490,32 +490,33 @@ User <- R6::R6Class(
       invalid_fields <- list()
       # check if the required `id` is null
       if (is.null(self$`id`)) {
-        invalid_fields["id"] <- "Non-nullable required field `id` cannot be null."
+        invalid_fields["id"] = "Non-nullable required field `id` cannot be null."
       }
 
       if (!str_detect(self$`id`, "^[0-9]{1,19}$")) {
-        invalid_fields["id"] <- "Invalid value for `id`, must conform to the pattern ^[0-9]{1,19}$."
+        invalid_fields["id"] = "Invalid value for `id`, must conform to the pattern ^[0-9]{1,19}$."
       }
 
       # check if the required `name` is null
       if (is.null(self$`name`)) {
-        invalid_fields["name"] <- "Non-nullable required field `name` cannot be null."
+        invalid_fields["name"] = "Non-nullable required field `name` cannot be null."
       }
 
       if (!str_detect(self$`pinned_tweet_id`, "^[0-9]{1,19}$")) {
-        invalid_fields["pinned_tweet_id"] <- "Invalid value for `pinned_tweet_id`, must conform to the pattern ^[0-9]{1,19}$."
+        invalid_fields["pinned_tweet_id"] = "Invalid value for `pinned_tweet_id`, must conform to the pattern ^[0-9]{1,19}$."
       }
 
       # check if the required `username` is null
       if (is.null(self$`username`)) {
-        invalid_fields["username"] <- "Non-nullable required field `username` cannot be null."
+        invalid_fields["username"] = "Non-nullable required field `username` cannot be null."
       }
 
       if (!str_detect(self$`username`, "^[A-Za-z0-9_]{1,15}$")) {
-        invalid_fields["username"] <- "Invalid value for `username`, must conform to the pattern ^[A-Za-z0-9_]{1,15}$."
+        invalid_fields["username"] = "Invalid value for `username`, must conform to the pattern ^[A-Za-z0-9_]{1,15}$."
       }
 
       invalid_fields
     }
   )
 )
+

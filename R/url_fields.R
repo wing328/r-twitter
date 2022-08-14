@@ -319,23 +319,23 @@ UrlFields <- R6::R6Class(
     #' @export
     isValid = function() {
       if (length(self$`images`) < 1) {
-        FALSE
+        return(FALSE)
       }
 
       if (!str_detect(self$`media_key`, "^([0-9]+)_([0-9]+)$")) {
-        FALSE
+        return(FALSE)
       }
 
       if (self$`status` > 599) {
-        FALSE
+        return(FALSE)
       }
       if (self$`status` < 100) {
-        FALSE
+        return(FALSE)
       }
 
       # check if the required `url` is null
       if (is.null(self$`url`)) {
-        FALSE
+        return(FALSE)
       }
 
       TRUE
@@ -350,26 +350,27 @@ UrlFields <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       if (length(self$`images`) < 1) {
-        invalid_fields["images"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
+        invalid_fields["images"] = "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
       if (!str_detect(self$`media_key`, "^([0-9]+)_([0-9]+)$")) {
-        invalid_fields["media_key"] <- "Invalid value for `media_key`, must conform to the pattern ^([0-9]+)_([0-9]+)$."
+        invalid_fields["media_key"] = "Invalid value for `media_key`, must conform to the pattern ^([0-9]+)_([0-9]+)$."
       }
 
       if (self$`status` > 599) {
-        invalid_fields["status"] <- "Invalid value for `status`, must be smaller than or equal to 599."
+        invalid_fields["status"] = "Invalid value for `status`, must be smaller than or equal to 599."
       }
       if (self$`status` < 100) {
-        invalid_fields["status"] <- "Invalid value for `status`, must be bigger than or equal to 100."
+        invalid_fields["status"] = "Invalid value for `status`, must be bigger than or equal to 100."
       }
 
       # check if the required `url` is null
       if (is.null(self$`url`)) {
-        invalid_fields["url"] <- "Non-nullable required field `url` cannot be null."
+        invalid_fields["url"] = "Non-nullable required field `url` cannot be null."
       }
 
       invalid_fields
     }
   )
 )
+

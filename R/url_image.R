@@ -174,11 +174,11 @@ UrlImage <- R6::R6Class(
     #' @export
     isValid = function() {
       if (self$`height` < 0) {
-        FALSE
+        return(FALSE)
       }
 
       if (self$`width` < 0) {
-        FALSE
+        return(FALSE)
       }
 
       TRUE
@@ -193,14 +193,15 @@ UrlImage <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       if (self$`height` < 0) {
-        invalid_fields["height"] <- "Invalid value for `height`, must be bigger than or equal to 0."
+        invalid_fields["height"] = "Invalid value for `height`, must be bigger than or equal to 0."
       }
 
       if (self$`width` < 0) {
-        invalid_fields["width"] <- "Invalid value for `width`, must be bigger than or equal to 0."
+        invalid_fields["width"] = "Invalid value for `width`, must be bigger than or equal to 0."
       }
 
       invalid_fields
     }
   )
 )
+

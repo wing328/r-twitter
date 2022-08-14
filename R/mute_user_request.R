@@ -135,11 +135,11 @@ MuteUserRequest <- R6::R6Class(
     isValid = function() {
       # check if the required `target_user_id` is null
       if (is.null(self$`target_user_id`)) {
-        FALSE
+        return(FALSE)
       }
 
       if (!str_detect(self$`target_user_id`, "^[0-9]{1,19}$")) {
-        FALSE
+        return(FALSE)
       }
 
       TRUE
@@ -155,14 +155,15 @@ MuteUserRequest <- R6::R6Class(
       invalid_fields <- list()
       # check if the required `target_user_id` is null
       if (is.null(self$`target_user_id`)) {
-        invalid_fields["target_user_id"] <- "Non-nullable required field `target_user_id` cannot be null."
+        invalid_fields["target_user_id"] = "Non-nullable required field `target_user_id` cannot be null."
       }
 
       if (!str_detect(self$`target_user_id`, "^[0-9]{1,19}$")) {
-        invalid_fields["target_user_id"] <- "Invalid value for `target_user_id`, must conform to the pattern ^[0-9]{1,19}$."
+        invalid_fields["target_user_id"] = "Invalid value for `target_user_id`, must conform to the pattern ^[0-9]{1,19}$."
       }
 
       invalid_fields
     }
   )
 )
+

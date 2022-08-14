@@ -512,21 +512,21 @@ Space <- R6::R6Class(
     #' @export
     isValid = function() {
       if (!str_detect(self$`creator_id`, "^[0-9]{1,19}$")) {
-        FALSE
+        return(FALSE)
       }
 
       # check if the required `id` is null
       if (is.null(self$`id`)) {
-        FALSE
+        return(FALSE)
       }
 
       if (!str_detect(self$`id`, "^[a-zA-Z0-9]{1,13}$")) {
-        FALSE
+        return(FALSE)
       }
 
       # check if the required `state` is null
       if (is.null(self$`state`)) {
-        FALSE
+        return(FALSE)
       }
 
       TRUE
@@ -541,24 +541,25 @@ Space <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       if (!str_detect(self$`creator_id`, "^[0-9]{1,19}$")) {
-        invalid_fields["creator_id"] <- "Invalid value for `creator_id`, must conform to the pattern ^[0-9]{1,19}$."
+        invalid_fields["creator_id"] = "Invalid value for `creator_id`, must conform to the pattern ^[0-9]{1,19}$."
       }
 
       # check if the required `id` is null
       if (is.null(self$`id`)) {
-        invalid_fields["id"] <- "Non-nullable required field `id` cannot be null."
+        invalid_fields["id"] = "Non-nullable required field `id` cannot be null."
       }
 
       if (!str_detect(self$`id`, "^[a-zA-Z0-9]{1,13}$")) {
-        invalid_fields["id"] <- "Invalid value for `id`, must conform to the pattern ^[a-zA-Z0-9]{1,13}$."
+        invalid_fields["id"] = "Invalid value for `id`, must conform to the pattern ^[a-zA-Z0-9]{1,13}$."
       }
 
       # check if the required `state` is null
       if (is.null(self$`state`)) {
-        invalid_fields["state"] <- "Non-nullable required field `state` cannot be null."
+        invalid_fields["state"] = "Non-nullable required field `state` cannot be null."
       }
 
       invalid_fields
     }
   )
 )
+

@@ -174,10 +174,10 @@ FullTextEntitiesAnnotationsInnerAllOf <- R6::R6Class(
     #' @export
     isValid = function() {
       if (self$`probability` > 1) {
-        FALSE
+        return(FALSE)
       }
       if (self$`probability` < 0) {
-        FALSE
+        return(FALSE)
       }
 
       TRUE
@@ -192,13 +192,14 @@ FullTextEntitiesAnnotationsInnerAllOf <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       if (self$`probability` > 1) {
-        invalid_fields["probability"] <- "Invalid value for `probability`, must be smaller than or equal to 1."
+        invalid_fields["probability"] = "Invalid value for `probability`, must be smaller than or equal to 1."
       }
       if (self$`probability` < 0) {
-        invalid_fields["probability"] <- "Invalid value for `probability`, must be bigger than or equal to 0."
+        invalid_fields["probability"] = "Invalid value for `probability`, must be bigger than or equal to 0."
       }
 
       invalid_fields
     }
   )
 )
+

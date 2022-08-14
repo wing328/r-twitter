@@ -220,25 +220,25 @@ TweetTakedownComplianceSchema <- R6::R6Class(
     isValid = function() {
       # check if the required `event_at` is null
       if (is.null(self$`event_at`)) {
-        FALSE
+        return(FALSE)
       }
 
       if (!str_detect(self$`quote_tweet_id`, "^[0-9]{1,19}$")) {
-        FALSE
+        return(FALSE)
       }
 
       # check if the required `tweet` is null
       if (is.null(self$`tweet`)) {
-        FALSE
+        return(FALSE)
       }
 
       # check if the required `withheld_in_countries` is null
       if (is.null(self$`withheld_in_countries`)) {
-        FALSE
+        return(FALSE)
       }
 
       if (length(self$`withheld_in_countries`) < 1) {
-        FALSE
+        return(FALSE)
       }
 
       TRUE
@@ -254,28 +254,29 @@ TweetTakedownComplianceSchema <- R6::R6Class(
       invalid_fields <- list()
       # check if the required `event_at` is null
       if (is.null(self$`event_at`)) {
-        invalid_fields["event_at"] <- "Non-nullable required field `event_at` cannot be null."
+        invalid_fields["event_at"] = "Non-nullable required field `event_at` cannot be null."
       }
 
       if (!str_detect(self$`quote_tweet_id`, "^[0-9]{1,19}$")) {
-        invalid_fields["quote_tweet_id"] <- "Invalid value for `quote_tweet_id`, must conform to the pattern ^[0-9]{1,19}$."
+        invalid_fields["quote_tweet_id"] = "Invalid value for `quote_tweet_id`, must conform to the pattern ^[0-9]{1,19}$."
       }
 
       # check if the required `tweet` is null
       if (is.null(self$`tweet`)) {
-        invalid_fields["tweet"] <- "Non-nullable required field `tweet` cannot be null."
+        invalid_fields["tweet"] = "Non-nullable required field `tweet` cannot be null."
       }
 
       # check if the required `withheld_in_countries` is null
       if (is.null(self$`withheld_in_countries`)) {
-        invalid_fields["withheld_in_countries"] <- "Non-nullable required field `withheld_in_countries` cannot be null."
+        invalid_fields["withheld_in_countries"] = "Non-nullable required field `withheld_in_countries` cannot be null."
       }
 
       if (length(self$`withheld_in_countries`) < 1) {
-        invalid_fields["withheld_in_countries"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
+        invalid_fields["withheld_in_countries"] = "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
       invalid_fields
     }
   )
 )
+

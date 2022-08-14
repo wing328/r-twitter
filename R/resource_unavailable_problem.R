@@ -298,31 +298,31 @@ ResourceUnavailableProblem <- R6::R6Class(
     isValid = function() {
       # check if the required `title` is null
       if (is.null(self$`title`)) {
-        FALSE
+        return(FALSE)
       }
 
       # check if the required `type` is null
       if (is.null(self$`type`)) {
-        FALSE
+        return(FALSE)
       }
 
       # check if the required `parameter` is null
       if (is.null(self$`parameter`)) {
-        FALSE
+        return(FALSE)
       }
 
       if (nchar(self$`parameter`) < 1) {
-        FALSE
+        return(FALSE)
       }
 
       # check if the required `resource_id` is null
       if (is.null(self$`resource_id`)) {
-        FALSE
+        return(FALSE)
       }
 
       # check if the required `resource_type` is null
       if (is.null(self$`resource_type`)) {
-        FALSE
+        return(FALSE)
       }
 
       TRUE
@@ -338,34 +338,35 @@ ResourceUnavailableProblem <- R6::R6Class(
       invalid_fields <- list()
       # check if the required `title` is null
       if (is.null(self$`title`)) {
-        invalid_fields["title"] <- "Non-nullable required field `title` cannot be null."
+        invalid_fields["title"] = "Non-nullable required field `title` cannot be null."
       }
 
       # check if the required `type` is null
       if (is.null(self$`type`)) {
-        invalid_fields["type"] <- "Non-nullable required field `type` cannot be null."
+        invalid_fields["type"] = "Non-nullable required field `type` cannot be null."
       }
 
       # check if the required `parameter` is null
       if (is.null(self$`parameter`)) {
-        invalid_fields["parameter"] <- "Non-nullable required field `parameter` cannot be null."
+        invalid_fields["parameter"] = "Non-nullable required field `parameter` cannot be null."
       }
 
       if (nchar(self$`parameter`) < 1) {
-        invalid_fields["parameter"] <- "Invalid length for `parameter`, must be bigger than or equal to 1."
+        invalid_fields["parameter"] = "Invalid length for `parameter`, must be bigger than or equal to 1."
       }
 
       # check if the required `resource_id` is null
       if (is.null(self$`resource_id`)) {
-        invalid_fields["resource_id"] <- "Non-nullable required field `resource_id` cannot be null."
+        invalid_fields["resource_id"] = "Non-nullable required field `resource_id` cannot be null."
       }
 
       # check if the required `resource_type` is null
       if (is.null(self$`resource_type`)) {
-        invalid_fields["resource_type"] <- "Non-nullable required field `resource_type` cannot be null."
+        invalid_fields["resource_type"] = "Non-nullable required field `resource_type` cannot be null."
       }
 
       invalid_fields
     }
   )
 )
+

@@ -159,11 +159,11 @@ TweetCreateRequestReply <- R6::R6Class(
     isValid = function() {
       # check if the required `in_reply_to_tweet_id` is null
       if (is.null(self$`in_reply_to_tweet_id`)) {
-        FALSE
+        return(FALSE)
       }
 
       if (!str_detect(self$`in_reply_to_tweet_id`, "^[0-9]{1,19}$")) {
-        FALSE
+        return(FALSE)
       }
 
       TRUE
@@ -179,14 +179,15 @@ TweetCreateRequestReply <- R6::R6Class(
       invalid_fields <- list()
       # check if the required `in_reply_to_tweet_id` is null
       if (is.null(self$`in_reply_to_tweet_id`)) {
-        invalid_fields["in_reply_to_tweet_id"] <- "Non-nullable required field `in_reply_to_tweet_id` cannot be null."
+        invalid_fields["in_reply_to_tweet_id"] = "Non-nullable required field `in_reply_to_tweet_id` cannot be null."
       }
 
       if (!str_detect(self$`in_reply_to_tweet_id`, "^[0-9]{1,19}$")) {
-        invalid_fields["in_reply_to_tweet_id"] <- "Invalid value for `in_reply_to_tweet_id`, must conform to the pattern ^[0-9]{1,19}$."
+        invalid_fields["in_reply_to_tweet_id"] = "Invalid value for `in_reply_to_tweet_id`, must conform to the pattern ^[0-9]{1,19}$."
       }
 
       invalid_fields
     }
   )
 )
+

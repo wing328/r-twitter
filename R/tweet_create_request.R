@@ -320,7 +320,7 @@ TweetCreateRequest <- R6::R6Class(
     #' @export
     isValid = function() {
       if (!str_detect(self$`quote_tweet_id`, "^[0-9]{1,19}$")) {
-        FALSE
+        return(FALSE)
       }
 
       TRUE
@@ -335,10 +335,11 @@ TweetCreateRequest <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       if (!str_detect(self$`quote_tweet_id`, "^[0-9]{1,19}$")) {
-        invalid_fields["quote_tweet_id"] <- "Invalid value for `quote_tweet_id`, must conform to the pattern ^[0-9]{1,19}$."
+        invalid_fields["quote_tweet_id"] = "Invalid value for `quote_tweet_id`, must conform to the pattern ^[0-9]{1,19}$."
       }
 
       invalid_fields
     }
   )
 )
+

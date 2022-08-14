@@ -225,23 +225,23 @@ FullTextEntities <- R6::R6Class(
     #' @export
     isValid = function() {
       if (length(self$`annotations`) < 1) {
-        FALSE
+        return(FALSE)
       }
 
       if (length(self$`cashtags`) < 1) {
-        FALSE
+        return(FALSE)
       }
 
       if (length(self$`hashtags`) < 1) {
-        FALSE
+        return(FALSE)
       }
 
       if (length(self$`mentions`) < 1) {
-        FALSE
+        return(FALSE)
       }
 
       if (length(self$`urls`) < 1) {
-        FALSE
+        return(FALSE)
       }
 
       TRUE
@@ -256,26 +256,27 @@ FullTextEntities <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       if (length(self$`annotations`) < 1) {
-        invalid_fields["annotations"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
+        invalid_fields["annotations"] = "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
       if (length(self$`cashtags`) < 1) {
-        invalid_fields["cashtags"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
+        invalid_fields["cashtags"] = "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
       if (length(self$`hashtags`) < 1) {
-        invalid_fields["hashtags"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
+        invalid_fields["hashtags"] = "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
       if (length(self$`mentions`) < 1) {
-        invalid_fields["mentions"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
+        invalid_fields["mentions"] = "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
       if (length(self$`urls`) < 1) {
-        invalid_fields["urls"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
+        invalid_fields["urls"] = "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
       invalid_fields
     }
   )
 )
+

@@ -164,16 +164,16 @@ TweetReferencedTweetsInner <- R6::R6Class(
     isValid = function() {
       # check if the required `id` is null
       if (is.null(self$`id`)) {
-        FALSE
+        return(FALSE)
       }
 
       if (!str_detect(self$`id`, "^[0-9]{1,19}$")) {
-        FALSE
+        return(FALSE)
       }
 
       # check if the required `type` is null
       if (is.null(self$`type`)) {
-        FALSE
+        return(FALSE)
       }
 
       TRUE
@@ -189,19 +189,20 @@ TweetReferencedTweetsInner <- R6::R6Class(
       invalid_fields <- list()
       # check if the required `id` is null
       if (is.null(self$`id`)) {
-        invalid_fields["id"] <- "Non-nullable required field `id` cannot be null."
+        invalid_fields["id"] = "Non-nullable required field `id` cannot be null."
       }
 
       if (!str_detect(self$`id`, "^[0-9]{1,19}$")) {
-        invalid_fields["id"] <- "Invalid value for `id`, must conform to the pattern ^[0-9]{1,19}$."
+        invalid_fields["id"] = "Invalid value for `id`, must conform to the pattern ^[0-9]{1,19}$."
       }
 
       # check if the required `type` is null
       if (is.null(self$`type`)) {
-        invalid_fields["type"] <- "Non-nullable required field `type` cannot be null."
+        invalid_fields["type"] = "Non-nullable required field `type` cannot be null."
       }
 
       invalid_fields
     }
   )
 )
+

@@ -216,33 +216,33 @@ MentionEntity <- R6::R6Class(
     isValid = function() {
       # check if the required `end` is null
       if (is.null(self$`end`)) {
-        FALSE
+        return(FALSE)
       }
 
       if (self$`end` < 0) {
-        FALSE
+        return(FALSE)
       }
 
       # check if the required `start` is null
       if (is.null(self$`start`)) {
-        FALSE
+        return(FALSE)
       }
 
       if (self$`start` < 0) {
-        FALSE
+        return(FALSE)
       }
 
       if (!str_detect(self$`id`, "^[0-9]{1,19}$")) {
-        FALSE
+        return(FALSE)
       }
 
       # check if the required `username` is null
       if (is.null(self$`username`)) {
-        FALSE
+        return(FALSE)
       }
 
       if (!str_detect(self$`username`, "^[A-Za-z0-9_]{1,15}$")) {
-        FALSE
+        return(FALSE)
       }
 
       TRUE
@@ -258,36 +258,37 @@ MentionEntity <- R6::R6Class(
       invalid_fields <- list()
       # check if the required `end` is null
       if (is.null(self$`end`)) {
-        invalid_fields["end"] <- "Non-nullable required field `end` cannot be null."
+        invalid_fields["end"] = "Non-nullable required field `end` cannot be null."
       }
 
       if (self$`end` < 0) {
-        invalid_fields["end"] <- "Invalid value for `end`, must be bigger than or equal to 0."
+        invalid_fields["end"] = "Invalid value for `end`, must be bigger than or equal to 0."
       }
 
       # check if the required `start` is null
       if (is.null(self$`start`)) {
-        invalid_fields["start"] <- "Non-nullable required field `start` cannot be null."
+        invalid_fields["start"] = "Non-nullable required field `start` cannot be null."
       }
 
       if (self$`start` < 0) {
-        invalid_fields["start"] <- "Invalid value for `start`, must be bigger than or equal to 0."
+        invalid_fields["start"] = "Invalid value for `start`, must be bigger than or equal to 0."
       }
 
       if (!str_detect(self$`id`, "^[0-9]{1,19}$")) {
-        invalid_fields["id"] <- "Invalid value for `id`, must conform to the pattern ^[0-9]{1,19}$."
+        invalid_fields["id"] = "Invalid value for `id`, must conform to the pattern ^[0-9]{1,19}$."
       }
 
       # check if the required `username` is null
       if (is.null(self$`username`)) {
-        invalid_fields["username"] <- "Non-nullable required field `username` cannot be null."
+        invalid_fields["username"] = "Non-nullable required field `username` cannot be null."
       }
 
       if (!str_detect(self$`username`, "^[A-Za-z0-9_]{1,15}$")) {
-        invalid_fields["username"] <- "Invalid value for `username`, must conform to the pattern ^[A-Za-z0-9_]{1,15}$."
+        invalid_fields["username"] = "Invalid value for `username`, must conform to the pattern ^[A-Za-z0-9_]{1,15}$."
       }
 
       invalid_fields
     }
   )
 )
+

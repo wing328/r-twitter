@@ -378,40 +378,40 @@ UrlEntity <- R6::R6Class(
     isValid = function() {
       # check if the required `end` is null
       if (is.null(self$`end`)) {
-        FALSE
+        return(FALSE)
       }
 
       if (self$`end` < 0) {
-        FALSE
+        return(FALSE)
       }
 
       # check if the required `start` is null
       if (is.null(self$`start`)) {
-        FALSE
+        return(FALSE)
       }
 
       if (self$`start` < 0) {
-        FALSE
+        return(FALSE)
       }
 
       if (length(self$`images`) < 1) {
-        FALSE
+        return(FALSE)
       }
 
       if (!str_detect(self$`media_key`, "^([0-9]+)_([0-9]+)$")) {
-        FALSE
+        return(FALSE)
       }
 
       if (self$`status` > 599) {
-        FALSE
+        return(FALSE)
       }
       if (self$`status` < 100) {
-        FALSE
+        return(FALSE)
       }
 
       # check if the required `url` is null
       if (is.null(self$`url`)) {
-        FALSE
+        return(FALSE)
       }
 
       TRUE
@@ -427,43 +427,44 @@ UrlEntity <- R6::R6Class(
       invalid_fields <- list()
       # check if the required `end` is null
       if (is.null(self$`end`)) {
-        invalid_fields["end"] <- "Non-nullable required field `end` cannot be null."
+        invalid_fields["end"] = "Non-nullable required field `end` cannot be null."
       }
 
       if (self$`end` < 0) {
-        invalid_fields["end"] <- "Invalid value for `end`, must be bigger than or equal to 0."
+        invalid_fields["end"] = "Invalid value for `end`, must be bigger than or equal to 0."
       }
 
       # check if the required `start` is null
       if (is.null(self$`start`)) {
-        invalid_fields["start"] <- "Non-nullable required field `start` cannot be null."
+        invalid_fields["start"] = "Non-nullable required field `start` cannot be null."
       }
 
       if (self$`start` < 0) {
-        invalid_fields["start"] <- "Invalid value for `start`, must be bigger than or equal to 0."
+        invalid_fields["start"] = "Invalid value for `start`, must be bigger than or equal to 0."
       }
 
       if (length(self$`images`) < 1) {
-        invalid_fields["images"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
+        invalid_fields["images"] = "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
       if (!str_detect(self$`media_key`, "^([0-9]+)_([0-9]+)$")) {
-        invalid_fields["media_key"] <- "Invalid value for `media_key`, must conform to the pattern ^([0-9]+)_([0-9]+)$."
+        invalid_fields["media_key"] = "Invalid value for `media_key`, must conform to the pattern ^([0-9]+)_([0-9]+)$."
       }
 
       if (self$`status` > 599) {
-        invalid_fields["status"] <- "Invalid value for `status`, must be smaller than or equal to 599."
+        invalid_fields["status"] = "Invalid value for `status`, must be smaller than or equal to 599."
       }
       if (self$`status` < 100) {
-        invalid_fields["status"] <- "Invalid value for `status`, must be bigger than or equal to 100."
+        invalid_fields["status"] = "Invalid value for `status`, must be bigger than or equal to 100."
       }
 
       # check if the required `url` is null
       if (is.null(self$`url`)) {
-        invalid_fields["url"] <- "Non-nullable required field `url` cannot be null."
+        invalid_fields["url"] = "Non-nullable required field `url` cannot be null."
       }
 
       invalid_fields
     }
   )
 )
+

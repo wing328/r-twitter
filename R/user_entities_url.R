@@ -129,7 +129,7 @@ UserEntitiesUrl <- R6::R6Class(
     #' @export
     isValid = function() {
       if (length(self$`urls`) < 1) {
-        FALSE
+        return(FALSE)
       }
 
       TRUE
@@ -144,10 +144,11 @@ UserEntitiesUrl <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       if (length(self$`urls`) < 1) {
-        invalid_fields["urls"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
+        invalid_fields["urls"] = "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
       invalid_fields
     }
   )
 )
+

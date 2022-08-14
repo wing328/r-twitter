@@ -193,17 +193,17 @@ FieldUnauthorizedProblemAllOf <- R6::R6Class(
     isValid = function() {
       # check if the required `field` is null
       if (is.null(self$`field`)) {
-        FALSE
+        return(FALSE)
       }
 
       # check if the required `resource_type` is null
       if (is.null(self$`resource_type`)) {
-        FALSE
+        return(FALSE)
       }
 
       # check if the required `section` is null
       if (is.null(self$`section`)) {
-        FALSE
+        return(FALSE)
       }
 
       TRUE
@@ -219,20 +219,21 @@ FieldUnauthorizedProblemAllOf <- R6::R6Class(
       invalid_fields <- list()
       # check if the required `field` is null
       if (is.null(self$`field`)) {
-        invalid_fields["field"] <- "Non-nullable required field `field` cannot be null."
+        invalid_fields["field"] = "Non-nullable required field `field` cannot be null."
       }
 
       # check if the required `resource_type` is null
       if (is.null(self$`resource_type`)) {
-        invalid_fields["resource_type"] <- "Non-nullable required field `resource_type` cannot be null."
+        invalid_fields["resource_type"] = "Non-nullable required field `resource_type` cannot be null."
       }
 
       # check if the required `section` is null
       if (is.null(self$`section`)) {
-        invalid_fields["section"] <- "Non-nullable required field `section` cannot be null."
+        invalid_fields["section"] = "Non-nullable required field `section` cannot be null."
       }
 
       invalid_fields
     }
   )
 )
+
