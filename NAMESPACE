@@ -7,6 +7,8 @@ import(httr2)
 import(base64enc)
 import(stringr)
 
+# Wrapper
+export(twitter_api)
 
 # Core
 export(ApiClient)

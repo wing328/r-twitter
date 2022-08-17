@@ -20,11 +20,11 @@ library(twitter)
 
 
 #Returns the OpenAPI Specification document.
-api_instance <- GeneralApi$new()
+api_instance <- twitter_api$new()
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$get_open_api_spec(data_file = "result.txt"),
-             api_instance$get_open_api_spec(),
+             api_instance$general_api$get_open_api_spec(),
              ApiException = function(ex) ex
           )
 # In case of error, print the error object

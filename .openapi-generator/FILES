@@ -208,6 +208,7 @@ R/tweet_undrop_compliance_schema.R
 R/tweet_withheld.R
 R/tweet_withheld_compliance_schema.R
 R/tweets_api.R
+R/twitter_api.R
 R/unsupported_authentication_problem.R
 R/url_entity.R
 R/url_fields.R

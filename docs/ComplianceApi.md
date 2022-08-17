@@ -25,13 +25,13 @@ library(twitter)
 var_create_compliance_job_request <- CreateComplianceJobRequest$new("tweets", "name_example", "resumable_example") # CreateComplianceJobRequest | 
 
 #Create compliance job
-api_instance <- ComplianceApi$new()
+api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$create_batch_compliance_job(var_create_compliance_job_request, data_file = "result.txt"),
-             api_instance$create_batch_compliance_job(var_create_compliance_job_request),
+             api_instance$compliance_api$create_batch_compliance_job(var_create_compliance_job_request),
              ApiException = function(ex) ex
           )
 # In case of error, print the error object
@@ -86,13 +86,13 @@ var_id <- "id_example" # character | The ID of the Compliance Job to retrieve.
 var_compliance_job_fields <- list("created_at") # set[character] | A comma separated list of ComplianceJob fields to display. (Optional)
 
 #Get Compliance Job
-api_instance <- ComplianceApi$new()
+api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$get_batch_compliance_job(var_id, compliance_job_fields = var_compliance_job_fields, data_file = "result.txt"),
-             api_instance$get_batch_compliance_job(var_id, compliance_job_fields = var_compliance_job_fields),
+             api_instance$compliance_api$get_batch_compliance_job(var_id, compliance_job_fields = var_compliance_job_fields),
              ApiException = function(ex) ex
           )
 # In case of error, print the error object
@@ -150,13 +150,13 @@ var_start_time <- "2021-02-01T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ.
 var_end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweet Compliance events will be provided. (Optional)
 
 #Tweets Compliance stream
-api_instance <- ComplianceApi$new()
+api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$get_tweets_compliance_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, data_file = "result.txt"),
-             api_instance$get_tweets_compliance_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time),
+             api_instance$compliance_api$get_tweets_compliance_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time),
              ApiException = function(ex) ex
           )
 # In case of error, print the error object
@@ -216,13 +216,13 @@ var_start_time <- "2021-02-01T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ.
 var_end_time <- "2021-02-01T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp from which the User Compliance events will be provided. (Optional)
 
 #Users Compliance stream
-api_instance <- ComplianceApi$new()
+api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$get_users_compliance_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, data_file = "result.txt"),
-             api_instance$get_users_compliance_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time),
+             api_instance$compliance_api$get_users_compliance_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time),
              ApiException = function(ex) ex
           )
 # In case of error, print the error object
@@ -281,13 +281,13 @@ var_status <- "status_example" # character | Status of Compliance Job to list. (
 var_compliance_job_fields <- list("created_at") # set[character] | A comma separated list of ComplianceJob fields to display. (Optional)
 
 #List Compliance Jobs
-api_instance <- ComplianceApi$new()
+api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$list_batch_compliance_jobs(var_type, status = var_status, compliance_job_fields = var_compliance_job_fields, data_file = "result.txt"),
-             api_instance$list_batch_compliance_jobs(var_type, status = var_status, compliance_job_fields = var_compliance_job_fields),
+             api_instance$compliance_api$list_batch_compliance_jobs(var_type, status = var_status, compliance_job_fields = var_compliance_job_fields),
              ApiException = function(ex) ex
           )
 # In case of error, print the error object
