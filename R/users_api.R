@@ -729,7 +729,7 @@
 #' library(twitter)
 #' var.id <- "id_example" # character | The ID of the List.
 #' var.max_results <- 100 # integer | The maximum number of results.
-#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results.
+#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified page of results.
 #' var.user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
 #' var.expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
 #' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
@@ -766,7 +766,7 @@
 #' library(twitter)
 #' var.id <- "id_example" # character | The ID of the List.
 #' var.max_results <- 100 # integer | The maximum number of results.
-#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results.
+#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified page of results.
 #' var.user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
 #' var.expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
 #' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
@@ -803,7 +803,7 @@
 #' library(twitter)
 #' var.id <- "id_example" # character | A single Tweet ID.
 #' var.max_results <- 100 # integer | The maximum number of results.
-#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results.
+#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get the next page of results.
 #' var.user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
 #' var.expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
 #' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
@@ -840,7 +840,7 @@
 #' library(twitter)
 #' var.id <- "id_example" # character | A single Tweet ID.
 #' var.max_results <- 100 # integer | The maximum number of results.
-#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results.
+#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get the next page of results.
 #' var.user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
 #' var.expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
 #' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
@@ -907,7 +907,7 @@
 #' library(twitter)
 #' var.id <- "id_example" # character | The ID of the authenticated source User for whom to return results.
 #' var.max_results <- 56 # integer | The maximum number of results.
-#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results.
+#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified page of results.
 #' var.user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
 #' var.expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
 #' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
@@ -971,7 +971,7 @@
 #' library(twitter)
 #' var.id <- "2244994945" # character | The ID of the User to lookup.
 #' var.max_results <- 56 # integer | The maximum number of results.
-#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results.
+#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified page of results.
 #' var.user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
 #' var.expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
 #' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
@@ -1008,7 +1008,7 @@
 #' library(twitter)
 #' var.id <- "2244994945" # character | The ID of the User to lookup.
 #' var.max_results <- 56 # integer | The maximum number of results.
-#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results.
+#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified page of results.
 #' var.user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
 #' var.expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
 #' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
@@ -1075,7 +1075,7 @@
 #' library(twitter)
 #' var.id <- "id_example" # character | The ID of the authenticated source User for whom to return results.
 #' var.max_results <- 100 # integer | The maximum number of results.
-#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results.
+#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get the next page of results.
 #' var.user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
 #' var.expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
 #' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
@@ -2023,7 +2023,7 @@ UsersApi <- R6::R6Class(
     #'
     #' @param id The ID of the List.
     #' @param max_results (optional) The maximum number of results. (default value: 100)
-    #' @param pagination_token (optional) This parameter is used to get a specified 'page' of results.
+    #' @param pagination_token (optional) This parameter is used to get a specified page of results.
     #' @param user_fields (optional) A comma separated list of User fields to display.
     #' @param expansions (optional) A comma separated list of fields to expand.
     #' @param tweet_fields (optional) A comma separated list of Tweet fields to display.
@@ -2050,7 +2050,7 @@ UsersApi <- R6::R6Class(
     #'
     #' @param id The ID of the List.
     #' @param max_results (optional) The maximum number of results. (default value: 100)
-    #' @param pagination_token (optional) This parameter is used to get a specified 'page' of results.
+    #' @param pagination_token (optional) This parameter is used to get a specified page of results.
     #' @param user_fields (optional) A comma separated list of User fields to display.
     #' @param expansions (optional) A comma separated list of fields to expand.
     #' @param tweet_fields (optional) A comma separated list of Tweet fields to display.
@@ -2220,7 +2220,7 @@ UsersApi <- R6::R6Class(
     #'
     #' @param id The ID of the List.
     #' @param max_results (optional) The maximum number of results. (default value: 100)
-    #' @param pagination_token (optional) This parameter is used to get a specified 'page' of results.
+    #' @param pagination_token (optional) This parameter is used to get a specified page of results.
     #' @param user_fields (optional) A comma separated list of User fields to display.
     #' @param expansions (optional) A comma separated list of fields to expand.
     #' @param tweet_fields (optional) A comma separated list of Tweet fields to display.
@@ -2247,7 +2247,7 @@ UsersApi <- R6::R6Class(
     #'
     #' @param id The ID of the List.
     #' @param max_results (optional) The maximum number of results. (default value: 100)
-    #' @param pagination_token (optional) This parameter is used to get a specified 'page' of results.
+    #' @param pagination_token (optional) This parameter is used to get a specified page of results.
     #' @param user_fields (optional) A comma separated list of User fields to display.
     #' @param expansions (optional) A comma separated list of fields to expand.
     #' @param tweet_fields (optional) A comma separated list of Tweet fields to display.
@@ -2417,7 +2417,7 @@ UsersApi <- R6::R6Class(
     #'
     #' @param id A single Tweet ID.
     #' @param max_results (optional) The maximum number of results. (default value: 100)
-    #' @param pagination_token (optional) This parameter is used to get the next 'page' of results.
+    #' @param pagination_token (optional) This parameter is used to get the next page of results.
     #' @param user_fields (optional) A comma separated list of User fields to display.
     #' @param expansions (optional) A comma separated list of fields to expand.
     #' @param tweet_fields (optional) A comma separated list of Tweet fields to display.
@@ -2444,7 +2444,7 @@ UsersApi <- R6::R6Class(
     #'
     #' @param id A single Tweet ID.
     #' @param max_results (optional) The maximum number of results. (default value: 100)
-    #' @param pagination_token (optional) This parameter is used to get the next 'page' of results.
+    #' @param pagination_token (optional) This parameter is used to get the next page of results.
     #' @param user_fields (optional) A comma separated list of User fields to display.
     #' @param expansions (optional) A comma separated list of fields to expand.
     #' @param tweet_fields (optional) A comma separated list of Tweet fields to display.
@@ -2608,7 +2608,7 @@ UsersApi <- R6::R6Class(
     #'
     #' @param id A single Tweet ID.
     #' @param max_results (optional) The maximum number of results. (default value: 100)
-    #' @param pagination_token (optional) This parameter is used to get the next 'page' of results.
+    #' @param pagination_token (optional) This parameter is used to get the next page of results.
     #' @param user_fields (optional) A comma separated list of User fields to display.
     #' @param expansions (optional) A comma separated list of fields to expand.
     #' @param tweet_fields (optional) A comma separated list of Tweet fields to display.
@@ -2635,7 +2635,7 @@ UsersApi <- R6::R6Class(
     #'
     #' @param id A single Tweet ID.
     #' @param max_results (optional) The maximum number of results. (default value: 100)
-    #' @param pagination_token (optional) This parameter is used to get the next 'page' of results.
+    #' @param pagination_token (optional) This parameter is used to get the next page of results.
     #' @param user_fields (optional) A comma separated list of User fields to display.
     #' @param expansions (optional) A comma separated list of fields to expand.
     #' @param tweet_fields (optional) A comma separated list of Tweet fields to display.
@@ -2935,7 +2935,7 @@ UsersApi <- R6::R6Class(
     #'
     #' @param id The ID of the authenticated source User for whom to return results.
     #' @param max_results (optional) The maximum number of results.
-    #' @param pagination_token (optional) This parameter is used to get a specified 'page' of results.
+    #' @param pagination_token (optional) This parameter is used to get a specified page of results.
     #' @param user_fields (optional) A comma separated list of User fields to display.
     #' @param expansions (optional) A comma separated list of fields to expand.
     #' @param tweet_fields (optional) A comma separated list of Tweet fields to display.
@@ -2962,7 +2962,7 @@ UsersApi <- R6::R6Class(
     #'
     #' @param id The ID of the authenticated source User for whom to return results.
     #' @param max_results (optional) The maximum number of results.
-    #' @param pagination_token (optional) This parameter is used to get a specified 'page' of results.
+    #' @param pagination_token (optional) This parameter is used to get a specified page of results.
     #' @param user_fields (optional) A comma separated list of User fields to display.
     #' @param expansions (optional) A comma separated list of fields to expand.
     #' @param tweet_fields (optional) A comma separated list of Tweet fields to display.
@@ -3245,7 +3245,7 @@ UsersApi <- R6::R6Class(
     #'
     #' @param id The ID of the User to lookup.
     #' @param max_results (optional) The maximum number of results.
-    #' @param pagination_token (optional) This parameter is used to get a specified 'page' of results.
+    #' @param pagination_token (optional) This parameter is used to get a specified page of results.
     #' @param user_fields (optional) A comma separated list of User fields to display.
     #' @param expansions (optional) A comma separated list of fields to expand.
     #' @param tweet_fields (optional) A comma separated list of Tweet fields to display.
@@ -3272,7 +3272,7 @@ UsersApi <- R6::R6Class(
     #'
     #' @param id The ID of the User to lookup.
     #' @param max_results (optional) The maximum number of results.
-    #' @param pagination_token (optional) This parameter is used to get a specified 'page' of results.
+    #' @param pagination_token (optional) This parameter is used to get a specified page of results.
     #' @param user_fields (optional) A comma separated list of User fields to display.
     #' @param expansions (optional) A comma separated list of fields to expand.
     #' @param tweet_fields (optional) A comma separated list of Tweet fields to display.
@@ -3436,7 +3436,7 @@ UsersApi <- R6::R6Class(
     #'
     #' @param id The ID of the User to lookup.
     #' @param max_results (optional) The maximum number of results.
-    #' @param pagination_token (optional) This parameter is used to get a specified 'page' of results.
+    #' @param pagination_token (optional) This parameter is used to get a specified page of results.
     #' @param user_fields (optional) A comma separated list of User fields to display.
     #' @param expansions (optional) A comma separated list of fields to expand.
     #' @param tweet_fields (optional) A comma separated list of Tweet fields to display.
@@ -3463,7 +3463,7 @@ UsersApi <- R6::R6Class(
     #'
     #' @param id The ID of the User to lookup.
     #' @param max_results (optional) The maximum number of results.
-    #' @param pagination_token (optional) This parameter is used to get a specified 'page' of results.
+    #' @param pagination_token (optional) This parameter is used to get a specified page of results.
     #' @param user_fields (optional) A comma separated list of User fields to display.
     #' @param expansions (optional) A comma separated list of fields to expand.
     #' @param tweet_fields (optional) A comma separated list of Tweet fields to display.
@@ -3756,7 +3756,7 @@ UsersApi <- R6::R6Class(
     #'
     #' @param id The ID of the authenticated source User for whom to return results.
     #' @param max_results (optional) The maximum number of results. (default value: 100)
-    #' @param pagination_token (optional) This parameter is used to get the next 'page' of results.
+    #' @param pagination_token (optional) This parameter is used to get the next page of results.
     #' @param user_fields (optional) A comma separated list of User fields to display.
     #' @param expansions (optional) A comma separated list of fields to expand.
     #' @param tweet_fields (optional) A comma separated list of Tweet fields to display.
@@ -3783,7 +3783,7 @@ UsersApi <- R6::R6Class(
     #'
     #' @param id The ID of the authenticated source User for whom to return results.
     #' @param max_results (optional) The maximum number of results. (default value: 100)
-    #' @param pagination_token (optional) This parameter is used to get the next 'page' of results.
+    #' @param pagination_token (optional) This parameter is used to get the next page of results.
     #' @param user_fields (optional) A comma separated list of User fields to display.
     #' @param expansions (optional) A comma separated list of fields to expand.
     #' @param tweet_fields (optional) A comma separated list of Tweet fields to display.

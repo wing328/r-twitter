@@ -22,7 +22,7 @@ library(twitter)
 
 var_id <- "id_example" # character | The ID of the authenticated source User for whom to return results.
 var_max_results <- 56 # integer | The maximum number of results. (Optional)
-var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. (Optional)
+var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next page of results. (Optional)
 var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 var_expansions <- list("attachments.media_keys") # set[character] | A comma separated list of fields to expand. (Optional)
 var_media_fields <- list("alt_text") # set[character] | A comma separated list of Media fields to display. (Optional)
@@ -58,7 +58,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **character**| The ID of the authenticated source User for whom to return results. | 
  **max_results** | **integer**| The maximum number of results. | [optional] 
- **pagination_token** | **character**| This parameter is used to get the next &#39;page&#39; of results. | [optional] 
+ **pagination_token** | **character**| This parameter is used to get the next page of results. | [optional] 
  **tweet_fields** | Enum [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld] | A comma separated list of Tweet fields to display. | [optional] 
  **expansions** | Enum [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id] | A comma separated list of fields to expand. | [optional] 
  **media_fields** | Enum [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width] | A comma separated list of Media fields to display. | [optional] 
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 
 Add Tweet to Bookmarks
 
-Adds a Tweet (ID in the body) to the requesting User's (in the path) bookmarks
+Adds a Tweet (ID in the body) to the requesting Users (in the path) bookmarks
 
 ### Example
 ```R
@@ -152,7 +152,7 @@ Name | Type | Description  | Notes
 
 Remove a bookmarked Tweet
 
-Removes a Tweet from the requesting User's bookmarked Tweets.
+Removes a Tweet from the requesting Users bookmarked Tweets.
 
 ### Example
 ```R

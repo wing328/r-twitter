@@ -14,7 +14,7 @@
 #' @section Methods:
 #' \describe{
 #' \strong{ add_or_delete_rules } \emph{ Add/Delete rules }
-#' Add or delete rules from a User's active rule set. Users can provide unique, optionally tagged rules to add. Users can delete their entire rule set or a subset specified by rule ids or values.
+#' Add or delete rules from a Users active rule set. Users can provide unique, optionally tagged rules to add. Users can delete their entire rule set or a subset specified by rule ids or values.
 #'
 #' \itemize{
 #' \item \emph{ @param } add_or_delete_rules_request \link{AddOrDeleteRulesRequest}
@@ -186,7 +186,7 @@
 #' }
 #'
 #' \strong{ get_rules } \emph{ Rules lookup }
-#' Returns rules from a User's active rule set. Users can fetch all of their rules or a subset, specified by the provided rule ids.
+#' Returns rules from a Users active rule set. Users can fetch all of their rules or a subset, specified by the provided rule ids.
 #'
 #' \itemize{
 #' \item \emph{ @param } ids list( character )
@@ -371,7 +371,7 @@
 #' }
 #'
 #' \strong{ search_stream } \emph{ Filtered stream }
-#' Streams Tweets matching the stream's active rule set.
+#' Streams Tweets matching the streams active rule set.
 #'
 #' \itemize{
 #' \item \emph{ @param } backfill_minutes integer
@@ -732,7 +732,7 @@
 #' }
 #'
 #' \strong{ users_id_timeline } \emph{ User home timeline by User ID }
-#' Returns Tweet objects that appears in the provided User ID's home timeline
+#' Returns Tweet objects that appears in the provided User IDs home timeline
 #'
 #' \itemize{
 #' \item \emph{ @param } id character
@@ -1032,8 +1032,8 @@
 #' library(twitter)
 #' var.id <- "id_example" # character | A single Tweet ID.
 #' var.max_results <- 10 # integer | The maximum number of results to be returned.
-#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results.
-#' var.exclude <- ["[\"replies\",\"retweets\"]"] # set[character] | The set of entities to exclude (e.g. 'replies' or 'retweets').
+#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified page of results.
+#' var.exclude <- ["[\"replies\",\"retweets\"]"] # set[character] | The set of entities to exclude (e.g. replies or retweets).
 #' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
 #' var.expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
 #' var.media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
@@ -1073,7 +1073,7 @@
 #' library(twitter)
 #' var.ids <- ["ids_example"] # array[character] | A comma-separated list of Rule IDs.
 #' var.max_results <- 1000 # integer | The maximum number of results.
-#' var.pagination_token <- "pagination_token_example" # character | This value is populated by passing the 'next_token' returned in a request to paginate through results.
+#' var.pagination_token <- "pagination_token_example" # character | This value is populated by passing the next_token returned in a request to paginate through results.
 #'
 #' #Rules lookup
 #' api.instance <- TweetsApi$new()
@@ -1207,7 +1207,7 @@
 #' library(twitter)
 #' var.id <- "id_example" # character | The ID of the List.
 #' var.max_results <- 100 # integer | The maximum number of results.
-#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results.
+#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get the next page of results.
 #' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
 #' var.expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
 #' var.media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
@@ -1316,7 +1316,7 @@
 #'
 #' library(twitter)
 #' var.id <- "1YqKDqWqdPLsV" # character | The ID of the Space to be retrieved.
-#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results.
+#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified page of results.
 #' var.max_results <- 100 # integer | The maximum number of results.
 #' var.user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
 #' var.expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
@@ -1391,8 +1391,8 @@
 #' var.end_time <- "end_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The newest, most recent UTC timestamp to which the Tweets will be provided. Timestamp is in second granularity and is exclusive (i.e. 12:00:01 excludes the first second of the minute).
 #' var.since_id <- "since_id_example" # character | Returns results with a Tweet ID greater than (that is, more recent than) the specified ID.
 #' var.until_id <- "until_id_example" # character | Returns results with a Tweet ID less than (that is, older than) the specified ID.
-#' var.next_token <- "next_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
-#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
+#' var.next_token <- "next_token_example" # character | This parameter is used to get the next page of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
+#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get the next page of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
 #' var.granularity <- "hour" # character | The granularity for the search counts results.
 #' var.search_count_fields <- ["[\"end\",\"start\",\"tweet_count\"]"] # set[character] | A comma separated list of SearchCount fields to display.
 #'
@@ -1427,8 +1427,8 @@
 #' var.end_time <- "end_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The newest, most recent UTC timestamp to which the Tweets will be provided. Timestamp is in second granularity and is exclusive (i.e. 12:00:01 excludes the first second of the minute).
 #' var.since_id <- "since_id_example" # character | Returns results with a Tweet ID greater than (that is, more recent than) the specified ID.
 #' var.until_id <- "until_id_example" # character | Returns results with a Tweet ID less than (that is, older than) the specified ID.
-#' var.next_token <- "next_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
-#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
+#' var.next_token <- "next_token_example" # character | This parameter is used to get the next page of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
+#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get the next page of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
 #' var.granularity <- "hour" # character | The granularity for the search counts results.
 #' var.search_count_fields <- ["[\"end\",\"start\",\"tweet_count\"]"] # set[character] | A comma separated list of SearchCount fields to display.
 #'
@@ -1464,8 +1464,8 @@
 #' var.since_id <- "since_id_example" # character | Returns results with a Tweet ID greater than (that is, more recent than) the specified ID.
 #' var.until_id <- "until_id_example" # character | Returns results with a Tweet ID less than (that is, older than) the specified ID.
 #' var.max_results <- 10 # integer | The maximum number of search results to be returned by a request.
-#' var.next_token <- "next_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
-#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
+#' var.next_token <- "next_token_example" # character | This parameter is used to get the next page of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
+#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get the next page of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
 #' var.sort_order <- "sort_order_example" # character | This order in which to return results.
 #' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
 #' var.expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
@@ -1506,8 +1506,8 @@
 #' var.since_id <- "since_id_example" # character | Returns results with a Tweet ID greater than (that is, more recent than) the specified ID.
 #' var.until_id <- "until_id_example" # character | Returns results with a Tweet ID less than (that is, older than) the specified ID.
 #' var.max_results <- 10 # integer | The maximum number of search results to be returned by a request.
-#' var.next_token <- "next_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
-#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
+#' var.next_token <- "next_token_example" # character | This parameter is used to get the next page of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
+#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get the next page of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
 #' var.sort_order <- "sort_order_example" # character | This order in which to return results.
 #' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
 #' var.expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
@@ -1578,7 +1578,7 @@
 #' library(twitter)
 #' var.id <- "2244994945" # character | The ID of the User to lookup.
 #' var.max_results <- 56 # integer | The maximum number of results.
-#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results.
+#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get the next page of results.
 #' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
 #' var.expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
 #' var.media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
@@ -1620,7 +1620,7 @@
 #' var.since_id <- "since_id_example" # character | The minimum Tweet ID to be included in the result set. This parameter takes precedence over start_time if both are specified.
 #' var.until_id <- "1346889436626259968" # character | The maximum Tweet ID to be included in the result set. This parameter takes precedence over end_time if both are specified.
 #' var.max_results <- 56 # integer | The maximum number of results.
-#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results.
+#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get the next page of results.
 #' var.start_time <- "2021-02-01T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweets will be provided. The since_id parameter takes precedence if it is also specified.
 #' var.end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided. The until_id parameter takes precedence if it is also specified.
 #' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
@@ -1694,8 +1694,8 @@
 #' var.since_id <- "791775337160081409" # character | The minimum Tweet ID to be included in the result set. This parameter takes precedence over start_time if both are specified.
 #' var.until_id <- "1346889436626259968" # character | The maximum Tweet ID to be included in the result set. This parameter takes precedence over end_time if both are specified.
 #' var.max_results <- 56 # integer | The maximum number of results.
-#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results.
-#' var.exclude <- ["[\"replies\",\"retweets\"]"] # set[character] | The set of entities to exclude (e.g. 'replies' or 'retweets').
+#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get the next page of results.
+#' var.exclude <- ["[\"replies\",\"retweets\"]"] # set[character] | The set of entities to exclude (e.g. replies or retweets).
 #' var.start_time <- "2021-02-01T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweets will be provided. The since_id parameter takes precedence if it is also specified.
 #' var.end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided. The until_id parameter takes precedence if it is also specified.
 #' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
@@ -1736,8 +1736,8 @@
 #' var.since_id <- "791775337160081409" # character | The minimum Tweet ID to be included in the result set. This parameter takes precedence over start_time if both are specified.
 #' var.until_id <- "1346889436626259968" # character | The maximum Tweet ID to be included in the result set. This parameter takes precedence over end_time if both are specified.
 #' var.max_results <- 56 # integer | The maximum number of results.
-#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results.
-#' var.exclude <- ["[\"replies\",\"retweets\"]"] # set[character] | The set of entities to exclude (e.g. 'replies' or 'retweets').
+#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get the next page of results.
+#' var.exclude <- ["[\"replies\",\"retweets\"]"] # set[character] | The set of entities to exclude (e.g. replies or retweets).
 #' var.start_time <- "2021-02-01T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweets will be provided. The since_id parameter takes precedence if it is also specified.
 #' var.end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided. The until_id parameter takes precedence if it is also specified.
 #' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
@@ -2636,8 +2636,8 @@ TweetsApi <- R6::R6Class(
     #'
     #' @param id A single Tweet ID.
     #' @param max_results (optional) The maximum number of results to be returned. (default value: 10)
-    #' @param pagination_token (optional) This parameter is used to get a specified 'page' of results.
-    #' @param exclude (optional) The set of entities to exclude (e.g. 'replies' or 'retweets').
+    #' @param pagination_token (optional) This parameter is used to get a specified page of results.
+    #' @param exclude (optional) The set of entities to exclude (e.g. replies or retweets).
     #' @param tweet_fields (optional) A comma separated list of Tweet fields to display.
     #' @param expansions (optional) A comma separated list of fields to expand.
     #' @param media_fields (optional) A comma separated list of Media fields to display.
@@ -2667,8 +2667,8 @@ TweetsApi <- R6::R6Class(
     #'
     #' @param id A single Tweet ID.
     #' @param max_results (optional) The maximum number of results to be returned. (default value: 10)
-    #' @param pagination_token (optional) This parameter is used to get a specified 'page' of results.
-    #' @param exclude (optional) The set of entities to exclude (e.g. 'replies' or 'retweets').
+    #' @param pagination_token (optional) This parameter is used to get a specified page of results.
+    #' @param exclude (optional) The set of entities to exclude (e.g. replies or retweets).
     #' @param tweet_fields (optional) A comma separated list of Tweet fields to display.
     #' @param expansions (optional) A comma separated list of fields to expand.
     #' @param media_fields (optional) A comma separated list of Media fields to display.
@@ -2871,7 +2871,7 @@ TweetsApi <- R6::R6Class(
     #'
     #' @param ids (optional) A comma-separated list of Rule IDs.
     #' @param max_results (optional) The maximum number of results. (default value: 1000)
-    #' @param pagination_token (optional) This value is populated by passing the 'next_token' returned in a request to paginate through results.
+    #' @param pagination_token (optional) This value is populated by passing the next_token returned in a request to paginate through results.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @return RulesLookupResponse
@@ -2895,7 +2895,7 @@ TweetsApi <- R6::R6Class(
     #'
     #' @param ids (optional) A comma-separated list of Rule IDs.
     #' @param max_results (optional) The maximum number of results. (default value: 1000)
-    #' @param pagination_token (optional) This value is populated by passing the 'next_token' returned in a request to paginate through results.
+    #' @param pagination_token (optional) This value is populated by passing the next_token returned in a request to paginate through results.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @return API response (RulesLookupResponse) with additional information such as HTTP status code, headers
@@ -3600,7 +3600,7 @@ TweetsApi <- R6::R6Class(
     #'
     #' @param id The ID of the List.
     #' @param max_results (optional) The maximum number of results. (default value: 100)
-    #' @param pagination_token (optional) This parameter is used to get the next 'page' of results.
+    #' @param pagination_token (optional) This parameter is used to get the next page of results.
     #' @param tweet_fields (optional) A comma separated list of Tweet fields to display.
     #' @param expansions (optional) A comma separated list of fields to expand.
     #' @param media_fields (optional) A comma separated list of Media fields to display.
@@ -3630,7 +3630,7 @@ TweetsApi <- R6::R6Class(
     #'
     #' @param id The ID of the List.
     #' @param max_results (optional) The maximum number of results. (default value: 100)
-    #' @param pagination_token (optional) This parameter is used to get the next 'page' of results.
+    #' @param pagination_token (optional) This parameter is used to get the next page of results.
     #' @param tweet_fields (optional) A comma separated list of Tweet fields to display.
     #' @param expansions (optional) A comma separated list of fields to expand.
     #' @param media_fields (optional) A comma separated list of Media fields to display.
@@ -4213,7 +4213,7 @@ TweetsApi <- R6::R6Class(
     #' Retrieve the list of Users who purchased a ticket to the given space
     #'
     #' @param id The ID of the Space to be retrieved.
-    #' @param pagination_token (optional) This parameter is used to get a specified 'page' of results.
+    #' @param pagination_token (optional) This parameter is used to get a specified page of results.
     #' @param max_results (optional) The maximum number of results. (default value: 100)
     #' @param user_fields (optional) A comma separated list of User fields to display.
     #' @param expansions (optional) A comma separated list of fields to expand.
@@ -4240,7 +4240,7 @@ TweetsApi <- R6::R6Class(
     #' Retrieve the list of Users who purchased a ticket to the given space
     #'
     #' @param id The ID of the Space to be retrieved.
-    #' @param pagination_token (optional) This parameter is used to get a specified 'page' of results.
+    #' @param pagination_token (optional) This parameter is used to get a specified page of results.
     #' @param max_results (optional) The maximum number of results. (default value: 100)
     #' @param user_fields (optional) A comma separated list of User fields to display.
     #' @param expansions (optional) A comma separated list of fields to expand.
@@ -4617,8 +4617,8 @@ TweetsApi <- R6::R6Class(
     #' @param end_time (optional) YYYY-MM-DDTHH:mm:ssZ. The newest, most recent UTC timestamp to which the Tweets will be provided. Timestamp is in second granularity and is exclusive (i.e. 12:00:01 excludes the first second of the minute).
     #' @param since_id (optional) Returns results with a Tweet ID greater than (that is, more recent than) the specified ID.
     #' @param until_id (optional) Returns results with a Tweet ID less than (that is, older than) the specified ID.
-    #' @param next_token (optional) This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
-    #' @param pagination_token (optional) This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
+    #' @param next_token (optional) This parameter is used to get the next page of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
+    #' @param pagination_token (optional) This parameter is used to get the next page of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
     #' @param granularity (optional) The granularity for the search counts results. (default value: "hour")
     #' @param search_count_fields (optional) A comma separated list of SearchCount fields to display.
     #' @param data_file (optional) name of the data file to save the result
@@ -4647,8 +4647,8 @@ TweetsApi <- R6::R6Class(
     #' @param end_time (optional) YYYY-MM-DDTHH:mm:ssZ. The newest, most recent UTC timestamp to which the Tweets will be provided. Timestamp is in second granularity and is exclusive (i.e. 12:00:01 excludes the first second of the minute).
     #' @param since_id (optional) Returns results with a Tweet ID greater than (that is, more recent than) the specified ID.
     #' @param until_id (optional) Returns results with a Tweet ID less than (that is, older than) the specified ID.
-    #' @param next_token (optional) This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
-    #' @param pagination_token (optional) This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
+    #' @param next_token (optional) This parameter is used to get the next page of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
+    #' @param pagination_token (optional) This parameter is used to get the next page of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
     #' @param granularity (optional) The granularity for the search counts results. (default value: "hour")
     #' @param search_count_fields (optional) A comma separated list of SearchCount fields to display.
     #' @param data_file (optional) name of the data file to save the result
@@ -4818,8 +4818,8 @@ TweetsApi <- R6::R6Class(
     #' @param end_time (optional) YYYY-MM-DDTHH:mm:ssZ. The newest, most recent UTC timestamp to which the Tweets will be provided. Timestamp is in second granularity and is exclusive (i.e. 12:00:01 excludes the first second of the minute).
     #' @param since_id (optional) Returns results with a Tweet ID greater than (that is, more recent than) the specified ID.
     #' @param until_id (optional) Returns results with a Tweet ID less than (that is, older than) the specified ID.
-    #' @param next_token (optional) This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
-    #' @param pagination_token (optional) This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
+    #' @param next_token (optional) This parameter is used to get the next page of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
+    #' @param pagination_token (optional) This parameter is used to get the next page of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
     #' @param granularity (optional) The granularity for the search counts results. (default value: "hour")
     #' @param search_count_fields (optional) A comma separated list of SearchCount fields to display.
     #' @param data_file (optional) name of the data file to save the result
@@ -4848,8 +4848,8 @@ TweetsApi <- R6::R6Class(
     #' @param end_time (optional) YYYY-MM-DDTHH:mm:ssZ. The newest, most recent UTC timestamp to which the Tweets will be provided. Timestamp is in second granularity and is exclusive (i.e. 12:00:01 excludes the first second of the minute).
     #' @param since_id (optional) Returns results with a Tweet ID greater than (that is, more recent than) the specified ID.
     #' @param until_id (optional) Returns results with a Tweet ID less than (that is, older than) the specified ID.
-    #' @param next_token (optional) This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
-    #' @param pagination_token (optional) This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
+    #' @param next_token (optional) This parameter is used to get the next page of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
+    #' @param pagination_token (optional) This parameter is used to get the next page of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
     #' @param granularity (optional) The granularity for the search counts results. (default value: "hour")
     #' @param search_count_fields (optional) A comma separated list of SearchCount fields to display.
     #' @param data_file (optional) name of the data file to save the result
@@ -5020,8 +5020,8 @@ TweetsApi <- R6::R6Class(
     #' @param since_id (optional) Returns results with a Tweet ID greater than (that is, more recent than) the specified ID.
     #' @param until_id (optional) Returns results with a Tweet ID less than (that is, older than) the specified ID.
     #' @param max_results (optional) The maximum number of search results to be returned by a request. (default value: 10)
-    #' @param next_token (optional) This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
-    #' @param pagination_token (optional) This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
+    #' @param next_token (optional) This parameter is used to get the next page of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
+    #' @param pagination_token (optional) This parameter is used to get the next page of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
     #' @param sort_order (optional) This order in which to return results.
     #' @param tweet_fields (optional) A comma separated list of Tweet fields to display.
     #' @param expansions (optional) A comma separated list of fields to expand.
@@ -5056,8 +5056,8 @@ TweetsApi <- R6::R6Class(
     #' @param since_id (optional) Returns results with a Tweet ID greater than (that is, more recent than) the specified ID.
     #' @param until_id (optional) Returns results with a Tweet ID less than (that is, older than) the specified ID.
     #' @param max_results (optional) The maximum number of search results to be returned by a request. (default value: 10)
-    #' @param next_token (optional) This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
-    #' @param pagination_token (optional) This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
+    #' @param next_token (optional) This parameter is used to get the next page of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
+    #' @param pagination_token (optional) This parameter is used to get the next page of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
     #' @param sort_order (optional) This order in which to return results.
     #' @param tweet_fields (optional) A comma separated list of Tweet fields to display.
     #' @param expansions (optional) A comma separated list of fields to expand.
@@ -5293,8 +5293,8 @@ TweetsApi <- R6::R6Class(
     #' @param since_id (optional) Returns results with a Tweet ID greater than (that is, more recent than) the specified ID.
     #' @param until_id (optional) Returns results with a Tweet ID less than (that is, older than) the specified ID.
     #' @param max_results (optional) The maximum number of search results to be returned by a request. (default value: 10)
-    #' @param next_token (optional) This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
-    #' @param pagination_token (optional) This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
+    #' @param next_token (optional) This parameter is used to get the next page of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
+    #' @param pagination_token (optional) This parameter is used to get the next page of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
     #' @param sort_order (optional) This order in which to return results.
     #' @param tweet_fields (optional) A comma separated list of Tweet fields to display.
     #' @param expansions (optional) A comma separated list of fields to expand.
@@ -5329,8 +5329,8 @@ TweetsApi <- R6::R6Class(
     #' @param since_id (optional) Returns results with a Tweet ID greater than (that is, more recent than) the specified ID.
     #' @param until_id (optional) Returns results with a Tweet ID less than (that is, older than) the specified ID.
     #' @param max_results (optional) The maximum number of search results to be returned by a request. (default value: 10)
-    #' @param next_token (optional) This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
-    #' @param pagination_token (optional) This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
+    #' @param next_token (optional) This parameter is used to get the next page of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
+    #' @param pagination_token (optional) This parameter is used to get the next page of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
     #' @param sort_order (optional) This order in which to return results.
     #' @param tweet_fields (optional) A comma separated list of Tweet fields to display.
     #' @param expansions (optional) A comma separated list of fields to expand.
@@ -5694,7 +5694,7 @@ TweetsApi <- R6::R6Class(
     #'
     #' @param id The ID of the User to lookup.
     #' @param max_results (optional) The maximum number of results.
-    #' @param pagination_token (optional) This parameter is used to get the next 'page' of results.
+    #' @param pagination_token (optional) This parameter is used to get the next page of results.
     #' @param tweet_fields (optional) A comma separated list of Tweet fields to display.
     #' @param expansions (optional) A comma separated list of fields to expand.
     #' @param media_fields (optional) A comma separated list of Media fields to display.
@@ -5724,7 +5724,7 @@ TweetsApi <- R6::R6Class(
     #'
     #' @param id The ID of the User to lookup.
     #' @param max_results (optional) The maximum number of results.
-    #' @param pagination_token (optional) This parameter is used to get the next 'page' of results.
+    #' @param pagination_token (optional) This parameter is used to get the next page of results.
     #' @param tweet_fields (optional) A comma separated list of Tweet fields to display.
     #' @param expansions (optional) A comma separated list of fields to expand.
     #' @param media_fields (optional) A comma separated list of Media fields to display.
@@ -5920,7 +5920,7 @@ TweetsApi <- R6::R6Class(
     #' @param since_id (optional) The minimum Tweet ID to be included in the result set. This parameter takes precedence over start_time if both are specified.
     #' @param until_id (optional) The maximum Tweet ID to be included in the result set. This parameter takes precedence over end_time if both are specified.
     #' @param max_results (optional) The maximum number of results.
-    #' @param pagination_token (optional) This parameter is used to get the next 'page' of results.
+    #' @param pagination_token (optional) This parameter is used to get the next page of results.
     #' @param start_time (optional) YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweets will be provided. The since_id parameter takes precedence if it is also specified.
     #' @param end_time (optional) YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided. The until_id parameter takes precedence if it is also specified.
     #' @param tweet_fields (optional) A comma separated list of Tweet fields to display.
@@ -5954,7 +5954,7 @@ TweetsApi <- R6::R6Class(
     #' @param since_id (optional) The minimum Tweet ID to be included in the result set. This parameter takes precedence over start_time if both are specified.
     #' @param until_id (optional) The maximum Tweet ID to be included in the result set. This parameter takes precedence over end_time if both are specified.
     #' @param max_results (optional) The maximum number of results.
-    #' @param pagination_token (optional) This parameter is used to get the next 'page' of results.
+    #' @param pagination_token (optional) This parameter is used to get the next page of results.
     #' @param start_time (optional) YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweets will be provided. The since_id parameter takes precedence if it is also specified.
     #' @param end_time (optional) YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided. The until_id parameter takes precedence if it is also specified.
     #' @param tweet_fields (optional) A comma separated list of Tweet fields to display.
@@ -6305,8 +6305,8 @@ TweetsApi <- R6::R6Class(
     #' @param since_id (optional) The minimum Tweet ID to be included in the result set. This parameter takes precedence over start_time if both are specified.
     #' @param until_id (optional) The maximum Tweet ID to be included in the result set. This parameter takes precedence over end_time if both are specified.
     #' @param max_results (optional) The maximum number of results.
-    #' @param pagination_token (optional) This parameter is used to get the next 'page' of results.
-    #' @param exclude (optional) The set of entities to exclude (e.g. 'replies' or 'retweets').
+    #' @param pagination_token (optional) This parameter is used to get the next page of results.
+    #' @param exclude (optional) The set of entities to exclude (e.g. replies or retweets).
     #' @param start_time (optional) YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweets will be provided. The since_id parameter takes precedence if it is also specified.
     #' @param end_time (optional) YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided. The until_id parameter takes precedence if it is also specified.
     #' @param tweet_fields (optional) A comma separated list of Tweet fields to display.
@@ -6340,8 +6340,8 @@ TweetsApi <- R6::R6Class(
     #' @param since_id (optional) The minimum Tweet ID to be included in the result set. This parameter takes precedence over start_time if both are specified.
     #' @param until_id (optional) The maximum Tweet ID to be included in the result set. This parameter takes precedence over end_time if both are specified.
     #' @param max_results (optional) The maximum number of results.
-    #' @param pagination_token (optional) This parameter is used to get the next 'page' of results.
-    #' @param exclude (optional) The set of entities to exclude (e.g. 'replies' or 'retweets').
+    #' @param pagination_token (optional) This parameter is used to get the next page of results.
+    #' @param exclude (optional) The set of entities to exclude (e.g. replies or retweets).
     #' @param start_time (optional) YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweets will be provided. The since_id parameter takes precedence if it is also specified.
     #' @param end_time (optional) YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided. The until_id parameter takes precedence if it is also specified.
     #' @param tweet_fields (optional) A comma separated list of Tweet fields to display.
@@ -6556,8 +6556,8 @@ TweetsApi <- R6::R6Class(
     #' @param since_id (optional) The minimum Tweet ID to be included in the result set. This parameter takes precedence over start_time if both are specified.
     #' @param until_id (optional) The maximum Tweet ID to be included in the result set. This parameter takes precedence over end_time if both are specified.
     #' @param max_results (optional) The maximum number of results.
-    #' @param pagination_token (optional) This parameter is used to get the next 'page' of results.
-    #' @param exclude (optional) The set of entities to exclude (e.g. 'replies' or 'retweets').
+    #' @param pagination_token (optional) This parameter is used to get the next page of results.
+    #' @param exclude (optional) The set of entities to exclude (e.g. replies or retweets).
     #' @param start_time (optional) YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweets will be provided. The since_id parameter takes precedence if it is also specified.
     #' @param end_time (optional) YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided. The until_id parameter takes precedence if it is also specified.
     #' @param tweet_fields (optional) A comma separated list of Tweet fields to display.
@@ -6591,8 +6591,8 @@ TweetsApi <- R6::R6Class(
     #' @param since_id (optional) The minimum Tweet ID to be included in the result set. This parameter takes precedence over start_time if both are specified.
     #' @param until_id (optional) The maximum Tweet ID to be included in the result set. This parameter takes precedence over end_time if both are specified.
     #' @param max_results (optional) The maximum number of results.
-    #' @param pagination_token (optional) This parameter is used to get the next 'page' of results.
-    #' @param exclude (optional) The set of entities to exclude (e.g. 'replies' or 'retweets').
+    #' @param pagination_token (optional) This parameter is used to get the next page of results.
+    #' @param exclude (optional) The set of entities to exclude (e.g. replies or retweets).
     #' @param start_time (optional) YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweets will be provided. The since_id parameter takes precedence if it is also specified.
     #' @param end_time (optional) YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided. The until_id parameter takes precedence if it is also specified.
     #' @param tweet_fields (optional) A comma separated list of Tweet fields to display.

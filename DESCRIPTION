@@ -4,8 +4,8 @@ Version: 1.0.0
 Author: person("Twitter Developers", email = "team@openapitools.org", role = c("aut", "cre"))
 Maintainer: Twitter Developers <team@openapitools.org>
 Description: Twitter API v2 available endpoints
-URL: https://github.com/GIT_USER_ID/GIT_REPO_ID
-BugReports: https://github.com/GIT_USER_ID/GIT_REPO_ID/issues
+URL: https://github.com/wing328/r-twitter
+BugReports: https://github.com/wing328/r-twitter/issues
 Depends: R (>= 3.3)
 Encoding: UTF-8
 License: Twitter Developer Agreement and Policy

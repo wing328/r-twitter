@@ -374,7 +374,7 @@ library(twitter)
 
 var_id <- "id_example" # character | The ID of the List.
 var_max_results <- 100 # integer | The maximum number of results. (Optional)
-var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results. (Optional)
+var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified page of results. (Optional)
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
 var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
@@ -409,7 +409,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **character**| The ID of the List. | 
  **max_results** | **integer**| The maximum number of results. | [optional] [default to 100]
- **pagination_token** | **character**| This parameter is used to get a specified &#39;page&#39; of results. | [optional] 
+ **pagination_token** | **character**| This parameter is used to get a specified page of results. | [optional] 
  **user_fields** | Enum [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld] | A comma separated list of User fields to display. | [optional] 
  **expansions** | Enum [pinned_tweet_id] | A comma separated list of fields to expand. | [optional] 
  **tweet_fields** | Enum [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld] | A comma separated list of Tweet fields to display. | [optional] 
@@ -446,7 +446,7 @@ library(twitter)
 
 var_id <- "id_example" # character | The ID of the List.
 var_max_results <- 100 # integer | The maximum number of results. (Optional)
-var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results. (Optional)
+var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified page of results. (Optional)
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
 var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
@@ -481,7 +481,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **character**| The ID of the List. | 
  **max_results** | **integer**| The maximum number of results. | [optional] [default to 100]
- **pagination_token** | **character**| This parameter is used to get a specified &#39;page&#39; of results. | [optional] 
+ **pagination_token** | **character**| This parameter is used to get a specified page of results. | [optional] 
  **user_fields** | Enum [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld] | A comma separated list of User fields to display. | [optional] 
  **expansions** | Enum [pinned_tweet_id] | A comma separated list of fields to expand. | [optional] 
  **tweet_fields** | Enum [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld] | A comma separated list of Tweet fields to display. | [optional] 
@@ -518,7 +518,7 @@ library(twitter)
 
 var_id <- "id_example" # character | A single Tweet ID.
 var_max_results <- 100 # integer | The maximum number of results. (Optional)
-var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. (Optional)
+var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next page of results. (Optional)
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
 var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
@@ -553,7 +553,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **character**| A single Tweet ID. | 
  **max_results** | **integer**| The maximum number of results. | [optional] [default to 100]
- **pagination_token** | **character**| This parameter is used to get the next &#39;page&#39; of results. | [optional] 
+ **pagination_token** | **character**| This parameter is used to get the next page of results. | [optional] 
  **user_fields** | Enum [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld] | A comma separated list of User fields to display. | [optional] 
  **expansions** | Enum [pinned_tweet_id] | A comma separated list of fields to expand. | [optional] 
  **tweet_fields** | Enum [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld] | A comma separated list of Tweet fields to display. | [optional] 
@@ -590,7 +590,7 @@ library(twitter)
 
 var_id <- "id_example" # character | A single Tweet ID.
 var_max_results <- 100 # integer | The maximum number of results. (Optional)
-var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. (Optional)
+var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next page of results. (Optional)
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
 var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
@@ -625,7 +625,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **character**| A single Tweet ID. | 
  **max_results** | **integer**| The maximum number of results. | [optional] [default to 100]
- **pagination_token** | **character**| This parameter is used to get the next &#39;page&#39; of results. | [optional] 
+ **pagination_token** | **character**| This parameter is used to get the next page of results. | [optional] 
  **user_fields** | Enum [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld] | A comma separated list of User fields to display. | [optional] 
  **expansions** | Enum [pinned_tweet_id] | A comma separated list of fields to expand. | [optional] 
  **tweet_fields** | Enum [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld] | A comma separated list of Tweet fields to display. | [optional] 
@@ -724,7 +724,7 @@ library(twitter)
 
 var_id <- "id_example" # character | The ID of the authenticated source User for whom to return results.
 var_max_results <- 56 # integer | The maximum number of results. (Optional)
-var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results. (Optional)
+var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified page of results. (Optional)
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
 var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
@@ -757,7 +757,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **character**| The ID of the authenticated source User for whom to return results. | 
  **max_results** | **integer**| The maximum number of results. | [optional] 
- **pagination_token** | **character**| This parameter is used to get a specified &#39;page&#39; of results. | [optional] 
+ **pagination_token** | **character**| This parameter is used to get a specified page of results. | [optional] 
  **user_fields** | Enum [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld] | A comma separated list of User fields to display. | [optional] 
  **expansions** | Enum [pinned_tweet_id] | A comma separated list of fields to expand. | [optional] 
  **tweet_fields** | Enum [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld] | A comma separated list of Tweet fields to display. | [optional] 
@@ -856,7 +856,7 @@ library(twitter)
 
 var_id <- "2244994945" # character | The ID of the User to lookup.
 var_max_results <- 56 # integer | The maximum number of results. (Optional)
-var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results. (Optional)
+var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified page of results. (Optional)
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
 var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
@@ -891,7 +891,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **character**| The ID of the User to lookup. | 
  **max_results** | **integer**| The maximum number of results. | [optional] 
- **pagination_token** | **character**| This parameter is used to get a specified &#39;page&#39; of results. | [optional] 
+ **pagination_token** | **character**| This parameter is used to get a specified page of results. | [optional] 
  **user_fields** | Enum [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld] | A comma separated list of User fields to display. | [optional] 
  **expansions** | Enum [pinned_tweet_id] | A comma separated list of fields to expand. | [optional] 
  **tweet_fields** | Enum [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld] | A comma separated list of Tweet fields to display. | [optional] 
@@ -928,7 +928,7 @@ library(twitter)
 
 var_id <- "2244994945" # character | The ID of the User to lookup.
 var_max_results <- 56 # integer | The maximum number of results. (Optional)
-var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results. (Optional)
+var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified page of results. (Optional)
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
 var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
@@ -963,7 +963,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **character**| The ID of the User to lookup. | 
  **max_results** | **integer**| The maximum number of results. | [optional] 
- **pagination_token** | **character**| This parameter is used to get a specified &#39;page&#39; of results. | [optional] 
+ **pagination_token** | **character**| This parameter is used to get a specified page of results. | [optional] 
  **user_fields** | Enum [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld] | A comma separated list of User fields to display. | [optional] 
  **expansions** | Enum [pinned_tweet_id] | A comma separated list of fields to expand. | [optional] 
  **tweet_fields** | Enum [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld] | A comma separated list of Tweet fields to display. | [optional] 
@@ -1062,7 +1062,7 @@ library(twitter)
 
 var_id <- "id_example" # character | The ID of the authenticated source User for whom to return results.
 var_max_results <- 100 # integer | The maximum number of results. (Optional)
-var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. (Optional)
+var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next page of results. (Optional)
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
 var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
@@ -1095,7 +1095,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **character**| The ID of the authenticated source User for whom to return results. | 
  **max_results** | **integer**| The maximum number of results. | [optional] [default to 100]
- **pagination_token** | **character**| This parameter is used to get the next &#39;page&#39; of results. | [optional] 
+ **pagination_token** | **character**| This parameter is used to get the next page of results. | [optional] 
  **user_fields** | Enum [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld] | A comma separated list of User fields to display. | [optional] 
  **expansions** | Enum [pinned_tweet_id] | A comma separated list of fields to expand. | [optional] 
  **tweet_fields** | Enum [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld] | A comma separated list of Tweet fields to display. | [optional] 

@@ -25,8 +25,8 @@ install.packages("base64enc")
 ### Build the package
 
 ```sh
-git clone https://github.com/GIT_USER_ID/GIT_REPO_ID
-cd GIT_REPO_ID
+git clone https://github.com/wing328/r-twitter
+cd r-twitter
 R CMD build .
 R CMD check twitter_1.0.0.tar.gz --no-manual
 R CMD INSTALL --preclean twitter_1.0.0.tar.gz
@@ -42,7 +42,7 @@ To install directly from Github, use `devtools`:
 ```R
 install.packages("devtools")
 library(devtools)
-install_github("GIT_USER_ID/GIT_REPO_ID")
+install_github("wing328/r-twitter")
 ```
 
 To install the package from a local file:
@@ -71,7 +71,7 @@ Class | Method | HTTP request | Description
 *ComplianceApi* | [**get_users_compliance_stream**](docs/ComplianceApi.md#get_users_compliance_stream) | **GET** /2/users/compliance/stream | Users Compliance stream
 *ComplianceApi* | [**list_batch_compliance_jobs**](docs/ComplianceApi.md#list_batch_compliance_jobs) | **GET** /2/compliance/jobs | List Compliance Jobs
 *GeneralApi* | [**get_open_api_spec**](docs/GeneralApi.md#get_open_api_spec) | **GET** /2/openapi.json | Returns the OpenAPI Specification document.
-*ListsApi* | [**get_user_list_memberships**](docs/ListsApi.md#get_user_list_memberships) | **GET** /2/users/{id}/list_memberships | Get a User's List Memberships
+*ListsApi* | [**get_user_list_memberships**](docs/ListsApi.md#get_user_list_memberships) | **GET** /2/users/{id}/list_memberships | Get a Users List Memberships
 *ListsApi* | [**list_add_member**](docs/ListsApi.md#list_add_member) | **POST** /2/lists/{id}/members | Add a List member
 *ListsApi* | [**list_id_create**](docs/ListsApi.md#list_id_create) | **POST** /2/lists | Create List
 *ListsApi* | [**list_id_delete**](docs/ListsApi.md#list_id_delete) | **DELETE** /2/lists/{id} | Delete List
@@ -79,12 +79,12 @@ Class | Method | HTTP request | Description
 *ListsApi* | [**list_id_update**](docs/ListsApi.md#list_id_update) | **PUT** /2/lists/{id} | Update List.
 *ListsApi* | [**list_remove_member**](docs/ListsApi.md#list_remove_member) | **DELETE** /2/lists/{id}/members/{user_id} | Remove a List member
 *ListsApi* | [**list_user_follow**](docs/ListsApi.md#list_user_follow) | **POST** /2/users/{id}/followed_lists | Follow a List
-*ListsApi* | [**list_user_owned_lists**](docs/ListsApi.md#list_user_owned_lists) | **GET** /2/users/{id}/owned_lists | Get a User's Owned Lists.
+*ListsApi* | [**list_user_owned_lists**](docs/ListsApi.md#list_user_owned_lists) | **GET** /2/users/{id}/owned_lists | Get a Users Owned Lists.
 *ListsApi* | [**list_user_pin**](docs/ListsApi.md#list_user_pin) | **POST** /2/users/{id}/pinned_lists | Pin a List
-*ListsApi* | [**list_user_pinned_lists**](docs/ListsApi.md#list_user_pinned_lists) | **GET** /2/users/{id}/pinned_lists | Get a User's Pinned Lists
+*ListsApi* | [**list_user_pinned_lists**](docs/ListsApi.md#list_user_pinned_lists) | **GET** /2/users/{id}/pinned_lists | Get a Users Pinned Lists
 *ListsApi* | [**list_user_unfollow**](docs/ListsApi.md#list_user_unfollow) | **DELETE** /2/users/{id}/followed_lists/{list_id} | Unfollow a List
 *ListsApi* | [**list_user_unpin**](docs/ListsApi.md#list_user_unpin) | **DELETE** /2/users/{id}/pinned_lists/{list_id} | Unpin a List
-*ListsApi* | [**user_followed_lists**](docs/ListsApi.md#user_followed_lists) | **GET** /2/users/{id}/followed_lists | Get User's Followed Lists
+*ListsApi* | [**user_followed_lists**](docs/ListsApi.md#user_followed_lists) | **GET** /2/users/{id}/followed_lists | Get Users Followed Lists
 *SpacesApi* | [**find_space_by_id**](docs/SpacesApi.md#find_space_by_id) | **GET** /2/spaces/{id} | Space lookup by Space ID
 *SpacesApi* | [**find_spaces_by_creator_ids**](docs/SpacesApi.md#find_spaces_by_creator_ids) | **GET** /2/spaces/by/creator_ids | Space lookup by their creators
 *SpacesApi* | [**find_spaces_by_ids**](docs/SpacesApi.md#find_spaces_by_ids) | **GET** /2/spaces | Space lookup up Space IDs

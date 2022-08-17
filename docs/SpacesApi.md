@@ -308,7 +308,7 @@ Retrieves the list of Users who purchased a ticket to the given space
 library(twitter)
 
 var_id <- "1YqKDqWqdPLsV" # character | The ID of the Space to be retrieved.
-var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results. (Optional)
+var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified page of results. (Optional)
 var_max_results <- 100 # integer | The maximum number of results. (Optional)
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
@@ -341,7 +341,7 @@ if (!is.null(result$ApiException)) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **character**| The ID of the Space to be retrieved. | 
- **pagination_token** | **character**| This parameter is used to get a specified &#39;page&#39; of results. | [optional] 
+ **pagination_token** | **character**| This parameter is used to get a specified page of results. | [optional] 
  **max_results** | **integer**| The maximum number of results. | [optional] [default to 100]
  **user_fields** | Enum [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld] | A comma separated list of User fields to display. | [optional] 
  **expansions** | Enum [pinned_tweet_id] | A comma separated list of fields to expand. | [optional] 

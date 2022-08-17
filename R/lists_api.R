@@ -13,8 +13,8 @@
 #'
 #' @section Methods:
 #' \describe{
-#' \strong{ get_user_list_memberships } \emph{ Get a User&#39;s List Memberships }
-#' Get a User's List Memberships.
+#' \strong{ get_user_list_memberships } \emph{ Get a Users List Memberships }
+#' Get a Users List Memberships.
 #'
 #' \itemize{
 #' \item \emph{ @param } id character
@@ -225,8 +225,8 @@
 #' }
 #' }
 #'
-#' \strong{ list_user_owned_lists } \emph{ Get a User&#39;s Owned Lists. }
-#' Get a User's Owned Lists.
+#' \strong{ list_user_owned_lists } \emph{ Get a Users Owned Lists. }
+#' Get a Users Owned Lists.
 #'
 #' \itemize{
 #' \item \emph{ @param } id character
@@ -281,8 +281,8 @@
 #' }
 #' }
 #'
-#' \strong{ list_user_pinned_lists } \emph{ Get a User&#39;s Pinned Lists }
-#' Get a User's Pinned Lists.
+#' \strong{ list_user_pinned_lists } \emph{ Get a Users Pinned Lists }
+#' Get a Users Pinned Lists.
 #'
 #' \itemize{
 #' \item \emph{ @param } id character
@@ -361,8 +361,8 @@
 #' }
 #' }
 #'
-#' \strong{ user_followed_lists } \emph{ Get User&#39;s Followed Lists }
-#' Returns a User's followed Lists.
+#' \strong{ user_followed_lists } \emph{ Get Users Followed Lists }
+#' Returns a Users followed Lists.
 #'
 #' \itemize{
 #' \item \emph{ @param } id character
@@ -401,12 +401,12 @@
 #' library(twitter)
 #' var.id <- "2244994945" # character | The ID of the User to lookup.
 #' var.max_results <- 100 # integer | The maximum number of results.
-#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results.
+#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified page of results.
 #' var.list_fields <- ["[\"created_at\",\"description\",\"follower_count\",\"id\",\"member_count\",\"name\",\"owner_id\",\"private\"]"] # set[character] | A comma separated list of List fields to display.
 #' var.expansions <- ["[\"owner_id\"]"] # set[character] | A comma separated list of fields to expand.
 #' var.user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
 #'
-#' #Get a User's List Memberships
+#' #Get a Users List Memberships
 #' api.instance <- ListsApi$new()
 #'
 #' #Configure HTTP bearer authorization: BearerToken
@@ -651,12 +651,12 @@
 #' library(twitter)
 #' var.id <- "2244994945" # character | The ID of the User to lookup.
 #' var.max_results <- 100 # integer | The maximum number of results.
-#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results.
+#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified page of results.
 #' var.list_fields <- ["[\"created_at\",\"description\",\"follower_count\",\"id\",\"member_count\",\"name\",\"owner_id\",\"private\"]"] # set[character] | A comma separated list of List fields to display.
 #' var.expansions <- ["[\"owner_id\"]"] # set[character] | A comma separated list of fields to expand.
 #' var.user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
 #'
-#' #Get a User's Owned Lists.
+#' #Get a Users Owned Lists.
 #' api.instance <- ListsApi$new()
 #'
 #' #Configure HTTP bearer authorization: BearerToken
@@ -721,7 +721,7 @@
 #' var.expansions <- ["[\"owner_id\"]"] # set[character] | A comma separated list of fields to expand.
 #' var.user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
 #'
-#' #Get a User's Pinned Lists
+#' #Get a Users Pinned Lists
 #' api.instance <- ListsApi$new()
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
@@ -810,12 +810,12 @@
 #' library(twitter)
 #' var.id <- "2244994945" # character | The ID of the User to lookup.
 #' var.max_results <- 100 # integer | The maximum number of results.
-#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results.
+#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified page of results.
 #' var.list_fields <- ["[\"created_at\",\"description\",\"follower_count\",\"id\",\"member_count\",\"name\",\"owner_id\",\"private\"]"] # set[character] | A comma separated list of List fields to display.
 #' var.expansions <- ["[\"owner_id\"]"] # set[character] | A comma separated list of fields to expand.
 #' var.user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
 #'
-#' #Get User's Followed Lists
+#' #Get Users Followed Lists
 #' api.instance <- ListsApi$new()
 #'
 #' #Configure HTTP bearer authorization: BearerToken
@@ -865,14 +865,14 @@ ListsApi <- R6::R6Class(
         self$api_client <- ApiClient$new()
       }
     },
-    #' Get a User's List Memberships
+    #' Get a Users List Memberships
     #'
     #' @description
-    #' Get a User's List Memberships
+    #' Get a Users List Memberships
     #'
     #' @param id The ID of the User to lookup.
     #' @param max_results (optional) The maximum number of results. (default value: 100)
-    #' @param pagination_token (optional) This parameter is used to get a specified 'page' of results.
+    #' @param pagination_token (optional) This parameter is used to get a specified page of results.
     #' @param list_fields (optional) A comma separated list of List fields to display.
     #' @param expansions (optional) A comma separated list of fields to expand.
     #' @param user_fields (optional) A comma separated list of User fields to display.
@@ -892,14 +892,14 @@ ListsApi <- R6::R6Class(
         local_var_response
       }
     },
-    #' Get a User's List Memberships
+    #' Get a Users List Memberships
     #'
     #' @description
-    #' Get a User's List Memberships
+    #' Get a Users List Memberships
     #'
     #' @param id The ID of the User to lookup.
     #' @param max_results (optional) The maximum number of results. (default value: 100)
-    #' @param pagination_token (optional) This parameter is used to get a specified 'page' of results.
+    #' @param pagination_token (optional) This parameter is used to get a specified page of results.
     #' @param list_fields (optional) A comma separated list of List fields to display.
     #' @param expansions (optional) A comma separated list of fields to expand.
     #' @param user_fields (optional) A comma separated list of User fields to display.
@@ -2011,14 +2011,14 @@ ListsApi <- R6::R6Class(
                      ApiException = ApiException$new(http_response = local_var_resp))
       }
     },
-    #' Get a User's Owned Lists.
+    #' Get a Users Owned Lists.
     #'
     #' @description
-    #' Get a User's Owned Lists.
+    #' Get a Users Owned Lists.
     #'
     #' @param id The ID of the User to lookup.
     #' @param max_results (optional) The maximum number of results. (default value: 100)
-    #' @param pagination_token (optional) This parameter is used to get a specified 'page' of results.
+    #' @param pagination_token (optional) This parameter is used to get a specified page of results.
     #' @param list_fields (optional) A comma separated list of List fields to display.
     #' @param expansions (optional) A comma separated list of fields to expand.
     #' @param user_fields (optional) A comma separated list of User fields to display.
@@ -2038,14 +2038,14 @@ ListsApi <- R6::R6Class(
         local_var_response
       }
     },
-    #' Get a User's Owned Lists.
+    #' Get a Users Owned Lists.
     #'
     #' @description
-    #' Get a User's Owned Lists.
+    #' Get a Users Owned Lists.
     #'
     #' @param id The ID of the User to lookup.
     #' @param max_results (optional) The maximum number of results. (default value: 100)
-    #' @param pagination_token (optional) This parameter is used to get a specified 'page' of results.
+    #' @param pagination_token (optional) This parameter is used to get a specified page of results.
     #' @param list_fields (optional) A comma separated list of List fields to display.
     #' @param expansions (optional) A comma separated list of fields to expand.
     #' @param user_fields (optional) A comma separated list of User fields to display.
@@ -2344,10 +2344,10 @@ ListsApi <- R6::R6Class(
                      ApiException = ApiException$new(http_response = local_var_resp))
       }
     },
-    #' Get a User's Pinned Lists
+    #' Get a Users Pinned Lists
     #'
     #' @description
-    #' Get a User's Pinned Lists
+    #' Get a Users Pinned Lists
     #'
     #' @param id The ID of the authenticated source User for whom to return results.
     #' @param list_fields (optional) A comma separated list of List fields to display.
@@ -2369,10 +2369,10 @@ ListsApi <- R6::R6Class(
         local_var_response
       }
     },
-    #' Get a User's Pinned Lists
+    #' Get a Users Pinned Lists
     #'
     #' @description
-    #' Get a User's Pinned Lists
+    #' Get a Users Pinned Lists
     #'
     #' @param id The ID of the authenticated source User for whom to return results.
     #' @param list_fields (optional) A comma separated list of List fields to display.
@@ -2777,14 +2777,14 @@ ListsApi <- R6::R6Class(
                      ApiException = ApiException$new(http_response = local_var_resp))
       }
     },
-    #' Get User's Followed Lists
+    #' Get Users Followed Lists
     #'
     #' @description
-    #' Get User's Followed Lists
+    #' Get Users Followed Lists
     #'
     #' @param id The ID of the User to lookup.
     #' @param max_results (optional) The maximum number of results. (default value: 100)
-    #' @param pagination_token (optional) This parameter is used to get a specified 'page' of results.
+    #' @param pagination_token (optional) This parameter is used to get a specified page of results.
     #' @param list_fields (optional) A comma separated list of List fields to display.
     #' @param expansions (optional) A comma separated list of fields to expand.
     #' @param user_fields (optional) A comma separated list of User fields to display.
@@ -2804,14 +2804,14 @@ ListsApi <- R6::R6Class(
         local_var_response
       }
     },
-    #' Get User's Followed Lists
+    #' Get Users Followed Lists
     #'
     #' @description
-    #' Get User's Followed Lists
+    #' Get Users Followed Lists
     #'
     #' @param id The ID of the User to lookup.
     #' @param max_results (optional) The maximum number of results. (default value: 100)
-    #' @param pagination_token (optional) This parameter is used to get a specified 'page' of results.
+    #' @param pagination_token (optional) This parameter is used to get a specified page of results.
     #' @param list_fields (optional) A comma separated list of List fields to display.
     #' @param expansions (optional) A comma separated list of fields to expand.
     #' @param user_fields (optional) A comma separated list of User fields to display.

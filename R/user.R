@@ -52,14 +52,14 @@ User <- R6::R6Class(
     #' @param name The friendly name of this User, as shown on their profile.
     #' @param username The Twitter handle (screen name) of this user.
     #' @param created_at Creation time of this User.
-    #' @param description The text of this User's profile description (also known as bio), if the User provided one.
+    #' @param description The text of this Users profile description (also known as bio), if the User provided one.
     #' @param entities entities
-    #' @param location The location specified in the User's profile, if the User provided one. As this is a freeform value, it may not indicate a valid location, but it may be fuzzily evaluated when performing searches with location queries.
+    #' @param location The location specified in the Users profile, if the User provided one. As this is a freeform value, it may not indicate a valid location, but it may be fuzzily evaluated when performing searches with location queries.
     #' @param pinned_tweet_id Unique identifier of this Tweet. This is returned as a string in order to avoid complications with languages and tools that cannot handle large integers.
     #' @param profile_image_url The URL to the profile image for this User.
-    #' @param protected Indicates if this User has chosen to protect their Tweets (in other words, if this User's Tweets are private).
+    #' @param protected Indicates if this User has chosen to protect their Tweets (in other words, if this Users Tweets are private).
     #' @param public_metrics public_metrics
-    #' @param url The URL specified in the User's profile.
+    #' @param url The URL specified in the Users profile.
     #' @param verified Indicate if this User is a verified Twitter User.
     #' @param withheld withheld
     #' @param ... Other optional arguments.
