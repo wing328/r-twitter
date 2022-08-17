@@ -67,15 +67,15 @@ Initialize a new VideoAllOfNonPublicMetrics class.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{playback_0_count}}{Number of users who made it through 0% of the video.}
+\item{\code{playback_0_count}}{Number of users who made it through 0\% of the video.}
 
-\item{\code{playback_100_count}}{Number of users who made it through 100% of the video.}
+\item{\code{playback_100_count}}{Number of users who made it through 100\% of the video.}
 
-\item{\code{playback_25_count}}{Number of users who made it through 25% of the video.}
+\item{\code{playback_25_count}}{Number of users who made it through 25\% of the video.}
 
-\item{\code{playback_50_count}}{Number of users who made it through 50% of the video.}
+\item{\code{playback_50_count}}{Number of users who made it through 50\% of the video.}
 
-\item{\code{playback_75_count}}{Number of users who made it through 75% of the video.}
+\item{\code{playback_75_count}}{Number of users who made it through 75\% of the video.}
 
 \item{\code{...}}{Other optional arguments.}
 }
