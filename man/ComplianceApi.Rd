@@ -73,7 +73,7 @@ Returns a single Compliance Job by ID
 }
 
 \strong{ get_tweets_compliance_stream } \emph{ Tweets Compliance stream }
-Streams 100% of compliance data for Tweets
+Streams 100\% of compliance data for Tweets
 
 \itemize{
 \item \emph{ @param } partition integer
@@ -101,7 +101,7 @@ Streams 100% of compliance data for Tweets
 }
 
 \strong{ get_users_compliance_stream } \emph{ Users Compliance stream }
-Streams 100% of compliance data for Users
+Streams 100\% of compliance data for Users
 
 \itemize{
 \item \emph{ @param } partition integer

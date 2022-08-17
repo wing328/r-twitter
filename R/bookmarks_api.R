@@ -47,7 +47,7 @@
 #' }
 #'
 #' \strong{ post_users_id_bookmarks } \emph{ Add Tweet to Bookmarks }
-#' Adds a Tweet (ID in the body) to the requesting Users (in the path) bookmarks
+#' Adds a Tweet (ID in the body) to the requesting User's (in the path) bookmarks
 #'
 #' \itemize{
 #' \item \emph{ @param } id character
@@ -73,7 +73,7 @@
 #' }
 #'
 #' \strong{ users_id_bookmarks_delete } \emph{ Remove a bookmarked Tweet }
-#' Removes a Tweet from the requesting Users bookmarked Tweets.
+#' Removes a Tweet from the requesting User's bookmarked Tweets.
 #'
 #' \itemize{
 #' \item \emph{ @param } id character
@@ -108,7 +108,7 @@
 #' library(twitter)
 #' var.id <- "id_example" # character | The ID of the authenticated source User for whom to return results.
 #' var.max_results <- 56 # integer | The maximum number of results.
-#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get the next page of results.
+#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results.
 #' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
 #' var.expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
 #' var.media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
@@ -227,7 +227,7 @@ BookmarksApi <- R6::R6Class(
     #'
     #' @param id The ID of the authenticated source User for whom to return results.
     #' @param max_results (optional) The maximum number of results.
-    #' @param pagination_token (optional) This parameter is used to get the next page of results.
+    #' @param pagination_token (optional) This parameter is used to get the next 'page' of results.
     #' @param tweet_fields (optional) A comma separated list of Tweet fields to display.
     #' @param expansions (optional) A comma separated list of fields to expand.
     #' @param media_fields (optional) A comma separated list of Media fields to display.
@@ -257,7 +257,7 @@ BookmarksApi <- R6::R6Class(
     #'
     #' @param id The ID of the authenticated source User for whom to return results.
     #' @param max_results (optional) The maximum number of results.
-    #' @param pagination_token (optional) This parameter is used to get the next page of results.
+    #' @param pagination_token (optional) This parameter is used to get the next 'page' of results.
     #' @param tweet_fields (optional) A comma separated list of Tweet fields to display.
     #' @param expansions (optional) A comma separated list of fields to expand.
     #' @param media_fields (optional) A comma separated list of Media fields to display.

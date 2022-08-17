@@ -4,7 +4,7 @@ All URIs are relative to *https://api.twitter.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_user_list_memberships**](ListsApi.md#get_user_list_memberships) | **GET** /2/users/{id}/list_memberships | Get a Users List Memberships
+[**get_user_list_memberships**](ListsApi.md#get_user_list_memberships) | **GET** /2/users/{id}/list_memberships | Get a User&#39;s List Memberships
 [**list_add_member**](ListsApi.md#list_add_member) | **POST** /2/lists/{id}/members | Add a List member
 [**list_id_create**](ListsApi.md#list_id_create) | **POST** /2/lists | Create List
 [**list_id_delete**](ListsApi.md#list_id_delete) | **DELETE** /2/lists/{id} | Delete List
@@ -12,20 +12,20 @@ Method | HTTP request | Description
 [**list_id_update**](ListsApi.md#list_id_update) | **PUT** /2/lists/{id} | Update List.
 [**list_remove_member**](ListsApi.md#list_remove_member) | **DELETE** /2/lists/{id}/members/{user_id} | Remove a List member
 [**list_user_follow**](ListsApi.md#list_user_follow) | **POST** /2/users/{id}/followed_lists | Follow a List
-[**list_user_owned_lists**](ListsApi.md#list_user_owned_lists) | **GET** /2/users/{id}/owned_lists | Get a Users Owned Lists.
+[**list_user_owned_lists**](ListsApi.md#list_user_owned_lists) | **GET** /2/users/{id}/owned_lists | Get a User&#39;s Owned Lists.
 [**list_user_pin**](ListsApi.md#list_user_pin) | **POST** /2/users/{id}/pinned_lists | Pin a List
-[**list_user_pinned_lists**](ListsApi.md#list_user_pinned_lists) | **GET** /2/users/{id}/pinned_lists | Get a Users Pinned Lists
+[**list_user_pinned_lists**](ListsApi.md#list_user_pinned_lists) | **GET** /2/users/{id}/pinned_lists | Get a User&#39;s Pinned Lists
 [**list_user_unfollow**](ListsApi.md#list_user_unfollow) | **DELETE** /2/users/{id}/followed_lists/{list_id} | Unfollow a List
 [**list_user_unpin**](ListsApi.md#list_user_unpin) | **DELETE** /2/users/{id}/pinned_lists/{list_id} | Unpin a List
-[**user_followed_lists**](ListsApi.md#user_followed_lists) | **GET** /2/users/{id}/followed_lists | Get Users Followed Lists
+[**user_followed_lists**](ListsApi.md#user_followed_lists) | **GET** /2/users/{id}/followed_lists | Get User&#39;s Followed Lists
 
 
 # **get_user_list_memberships**
 > Get2UsersIdListMembershipsResponse get_user_list_memberships(id, max_results = 100, pagination_token = var.pagination_token, list_fields = var.list_fields, expansions = var.expansions, user_fields = var.user_fields)
 
-Get a Users List Memberships
+Get a User's List Memberships
 
-Get a Users List Memberships.
+Get a User's List Memberships.
 
 ### Example
 ```R
@@ -33,12 +33,12 @@ library(twitter)
 
 var_id <- "2244994945" # character | The ID of the User to lookup.
 var_max_results <- 100 # integer | The maximum number of results. (Optional)
-var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified page of results. (Optional)
+var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results. (Optional)
 var_list_fields <- list("created_at") # set[character] | A comma separated list of List fields to display. (Optional)
 var_expansions <- list("owner_id") # set[character] | A comma separated list of fields to expand. (Optional)
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 
-#Get a Users List Memberships
+#Get a User's List Memberships
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **character**| The ID of the User to lookup. | 
  **max_results** | **integer**| The maximum number of results. | [optional] [default to 100]
- **pagination_token** | **character**| This parameter is used to get a specified page of results. | [optional] 
+ **pagination_token** | **character**| This parameter is used to get a specified &#39;page&#39; of results. | [optional] 
  **list_fields** | Enum [created_at, description, follower_count, id, member_count, name, owner_id, private] | A comma separated list of List fields to display. | [optional] 
  **expansions** | Enum [owner_id] | A comma separated list of fields to expand. | [optional] 
  **user_fields** | Enum [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld] | A comma separated list of User fields to display. | [optional] 
@@ -531,9 +531,9 @@ Name | Type | Description  | Notes
 # **list_user_owned_lists**
 > Get2UsersIdOwnedListsResponse list_user_owned_lists(id, max_results = 100, pagination_token = var.pagination_token, list_fields = var.list_fields, expansions = var.expansions, user_fields = var.user_fields)
 
-Get a Users Owned Lists.
+Get a User's Owned Lists.
 
-Get a Users Owned Lists.
+Get a User's Owned Lists.
 
 ### Example
 ```R
@@ -541,12 +541,12 @@ library(twitter)
 
 var_id <- "2244994945" # character | The ID of the User to lookup.
 var_max_results <- 100 # integer | The maximum number of results. (Optional)
-var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified page of results. (Optional)
+var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results. (Optional)
 var_list_fields <- list("created_at") # set[character] | A comma separated list of List fields to display. (Optional)
 var_expansions <- list("owner_id") # set[character] | A comma separated list of fields to expand. (Optional)
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 
-#Get a Users Owned Lists.
+#Get a User's Owned Lists.
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
@@ -576,7 +576,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **character**| The ID of the User to lookup. | 
  **max_results** | **integer**| The maximum number of results. | [optional] [default to 100]
- **pagination_token** | **character**| This parameter is used to get a specified page of results. | [optional] 
+ **pagination_token** | **character**| This parameter is used to get a specified &#39;page&#39; of results. | [optional] 
  **list_fields** | Enum [created_at, description, follower_count, id, member_count, name, owner_id, private] | A comma separated list of List fields to display. | [optional] 
  **expansions** | Enum [owner_id] | A comma separated list of fields to expand. | [optional] 
  **user_fields** | Enum [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld] | A comma separated list of User fields to display. | [optional] 
@@ -665,9 +665,9 @@ Name | Type | Description  | Notes
 # **list_user_pinned_lists**
 > Get2UsersIdPinnedListsResponse list_user_pinned_lists(id, list_fields = var.list_fields, expansions = var.expansions, user_fields = var.user_fields)
 
-Get a Users Pinned Lists
+Get a User's Pinned Lists
 
-Get a Users Pinned Lists.
+Get a User's Pinned Lists.
 
 ### Example
 ```R
@@ -678,7 +678,7 @@ var_list_fields <- list("created_at") # set[character] | A comma separated list 
 var_expansions <- list("owner_id") # set[character] | A comma separated list of fields to expand. (Optional)
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 
-#Get a Users Pinned Lists
+#Get a User's Pinned Lists
 api_instance <- twitter_api$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
@@ -855,9 +855,9 @@ Name | Type | Description  | Notes
 # **user_followed_lists**
 > Get2UsersIdFollowedListsResponse user_followed_lists(id, max_results = 100, pagination_token = var.pagination_token, list_fields = var.list_fields, expansions = var.expansions, user_fields = var.user_fields)
 
-Get Users Followed Lists
+Get User's Followed Lists
 
-Returns a Users followed Lists.
+Returns a User's followed Lists.
 
 ### Example
 ```R
@@ -865,12 +865,12 @@ library(twitter)
 
 var_id <- "2244994945" # character | The ID of the User to lookup.
 var_max_results <- 100 # integer | The maximum number of results. (Optional)
-var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified page of results. (Optional)
+var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results. (Optional)
 var_list_fields <- list("created_at") # set[character] | A comma separated list of List fields to display. (Optional)
 var_expansions <- list("owner_id") # set[character] | A comma separated list of fields to expand. (Optional)
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 
-#Get Users Followed Lists
+#Get User's Followed Lists
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
@@ -900,7 +900,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **character**| The ID of the User to lookup. | 
  **max_results** | **integer**| The maximum number of results. | [optional] [default to 100]
- **pagination_token** | **character**| This parameter is used to get a specified page of results. | [optional] 
+ **pagination_token** | **character**| This parameter is used to get a specified &#39;page&#39; of results. | [optional] 
  **list_fields** | Enum [created_at, description, follower_count, id, member_count, name, owner_id, private] | A comma separated list of List fields to display. | [optional] 
  **expansions** | Enum [owner_id] | A comma separated list of fields to expand. | [optional] 
  **user_fields** | Enum [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld] | A comma separated list of User fields to display. | [optional] 

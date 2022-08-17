@@ -344,7 +344,7 @@
 #'
 #' library(twitter)
 #' var.id <- "1YqKDqWqdPLsV" # character | The ID of the Space to be retrieved.
-#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified page of results.
+#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results.
 #' var.max_results <- 100 # integer | The maximum number of results.
 #' var.user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
 #' var.expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
@@ -1170,7 +1170,7 @@ SpacesApi <- R6::R6Class(
     #' Retrieve the list of Users who purchased a ticket to the given space
     #'
     #' @param id The ID of the Space to be retrieved.
-    #' @param pagination_token (optional) This parameter is used to get a specified page of results.
+    #' @param pagination_token (optional) This parameter is used to get a specified 'page' of results.
     #' @param max_results (optional) The maximum number of results. (default value: 100)
     #' @param user_fields (optional) A comma separated list of User fields to display.
     #' @param expansions (optional) A comma separated list of fields to expand.
@@ -1197,7 +1197,7 @@ SpacesApi <- R6::R6Class(
     #' Retrieve the list of Users who purchased a ticket to the given space
     #'
     #' @param id The ID of the Space to be retrieved.
-    #' @param pagination_token (optional) This parameter is used to get a specified page of results.
+    #' @param pagination_token (optional) This parameter is used to get a specified 'page' of results.
     #' @param max_results (optional) The maximum number of results. (default value: 100)
     #' @param user_fields (optional) A comma separated list of User fields to display.
     #' @param expansions (optional) A comma separated list of fields to expand.

@@ -1,6 +1,6 @@
 # twitter::NonCompliantRulesProblem
 
-A problem that indicates the users rule set is not compliant.
+A problem that indicates the user's rule set is not compliant.
 
 ## Properties
 Name | Type | Description | Notes

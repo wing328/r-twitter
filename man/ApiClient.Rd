@@ -61,6 +61,8 @@ Do not edit the class manually.
 
 \item{\code{oauth_pkce}}{Boolean flag to enable PKCE}
 
+\item{\code{oauth_scopes}}{OAuth scopes}
+
 \item{\code{bearer_token}}{Bearer token}
 
 \item{\code{timeout}}{Default timeout in seconds}
