@@ -184,12 +184,12 @@ Error <- R6::R6Class(
       invalid_fields <- list()
       # check if the required `code` is null
       if (is.null(self$`code`)) {
-        invalid_fields["code"] = "Non-nullable required field `code` cannot be null."
+        invalid_fields["code"] <- "Non-nullable required field `code` cannot be null."
       }
 
       # check if the required `message` is null
       if (is.null(self$`message`)) {
-        invalid_fields["message"] = "Non-nullable required field `message` cannot be null."
+        invalid_fields["message"] <- "Non-nullable required field `message` cannot be null."
       }
 
       invalid_fields

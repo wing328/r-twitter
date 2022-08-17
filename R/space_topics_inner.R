@@ -207,12 +207,12 @@ SpaceTopicsInner <- R6::R6Class(
       invalid_fields <- list()
       # check if the required `id` is null
       if (is.null(self$`id`)) {
-        invalid_fields["id"] = "Non-nullable required field `id` cannot be null."
+        invalid_fields["id"] <- "Non-nullable required field `id` cannot be null."
       }
 
       # check if the required `name` is null
       if (is.null(self$`name`)) {
-        invalid_fields["name"] = "Non-nullable required field `name` cannot be null."
+        invalid_fields["name"] <- "Non-nullable required field `name` cannot be null."
       }
 
       invalid_fields

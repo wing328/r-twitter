@@ -268,27 +268,27 @@ FullTextEntitiesAnnotationsInner <- R6::R6Class(
       invalid_fields <- list()
       # check if the required `end` is null
       if (is.null(self$`end`)) {
-        invalid_fields["end"] = "Non-nullable required field `end` cannot be null."
+        invalid_fields["end"] <- "Non-nullable required field `end` cannot be null."
       }
 
       if (self$`end` < 0) {
-        invalid_fields["end"] = "Invalid value for `end`, must be bigger than or equal to 0."
+        invalid_fields["end"] <- "Invalid value for `end`, must be bigger than or equal to 0."
       }
 
       # check if the required `start` is null
       if (is.null(self$`start`)) {
-        invalid_fields["start"] = "Non-nullable required field `start` cannot be null."
+        invalid_fields["start"] <- "Non-nullable required field `start` cannot be null."
       }
 
       if (self$`start` < 0) {
-        invalid_fields["start"] = "Invalid value for `start`, must be bigger than or equal to 0."
+        invalid_fields["start"] <- "Invalid value for `start`, must be bigger than or equal to 0."
       }
 
       if (self$`probability` > 1) {
-        invalid_fields["probability"] = "Invalid value for `probability`, must be smaller than or equal to 1."
+        invalid_fields["probability"] <- "Invalid value for `probability`, must be smaller than or equal to 1."
       }
       if (self$`probability` < 0) {
-        invalid_fields["probability"] = "Invalid value for `probability`, must be bigger than or equal to 0."
+        invalid_fields["probability"] <- "Invalid value for `probability`, must be bigger than or equal to 0."
       }
 
       invalid_fields

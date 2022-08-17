@@ -252,22 +252,22 @@ RulesRequestSummaryOneOf <- R6::R6Class(
       invalid_fields <- list()
       # check if the required `created` is null
       if (is.null(self$`created`)) {
-        invalid_fields["created"] = "Non-nullable required field `created` cannot be null."
+        invalid_fields["created"] <- "Non-nullable required field `created` cannot be null."
       }
 
       # check if the required `invalid` is null
       if (is.null(self$`invalid`)) {
-        invalid_fields["invalid"] = "Non-nullable required field `invalid` cannot be null."
+        invalid_fields["invalid"] <- "Non-nullable required field `invalid` cannot be null."
       }
 
       # check if the required `not_created` is null
       if (is.null(self$`not_created`)) {
-        invalid_fields["not_created"] = "Non-nullable required field `not_created` cannot be null."
+        invalid_fields["not_created"] <- "Non-nullable required field `not_created` cannot be null."
       }
 
       # check if the required `valid` is null
       if (is.null(self$`valid`)) {
-        invalid_fields["valid"] = "Non-nullable required field `valid` cannot be null."
+        invalid_fields["valid"] <- "Non-nullable required field `valid` cannot be null."
       }
 
       invalid_fields

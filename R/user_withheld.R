@@ -179,11 +179,11 @@ UserWithheld <- R6::R6Class(
       invalid_fields <- list()
       # check if the required `country_codes` is null
       if (is.null(self$`country_codes`)) {
-        invalid_fields["country_codes"] = "Non-nullable required field `country_codes` cannot be null."
+        invalid_fields["country_codes"] <- "Non-nullable required field `country_codes` cannot be null."
       }
 
       if (length(self$`country_codes`) < 1) {
-        invalid_fields["country_codes"] = "Invalid length for ``, number of items must be greater than or equal to 1."
+        invalid_fields["country_codes"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
       invalid_fields

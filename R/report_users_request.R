@@ -200,26 +200,26 @@ ReportUsersRequest <- R6::R6Class(
       invalid_fields <- list()
       # check if the required `description` is null
       if (is.null(self$`description`)) {
-        invalid_fields["description"] = "Non-nullable required field `description` cannot be null."
+        invalid_fields["description"] <- "Non-nullable required field `description` cannot be null."
       }
 
       if (nchar(self$`description`) > 5000) {
-        invalid_fields["description"] = "Invalid length for `description`, must be smaller than or equal to 5000."
+        invalid_fields["description"] <- "Invalid length for `description`, must be smaller than or equal to 5000."
       }
       if (nchar(self$`description`) < 1) {
-        invalid_fields["description"] = "Invalid length for `description`, must be bigger than or equal to 1."
+        invalid_fields["description"] <- "Invalid length for `description`, must be bigger than or equal to 1."
       }
 
       # check if the required `user_ids` is null
       if (is.null(self$`user_ids`)) {
-        invalid_fields["user_ids"] = "Non-nullable required field `user_ids` cannot be null."
+        invalid_fields["user_ids"] <- "Non-nullable required field `user_ids` cannot be null."
       }
 
       if (length(self$`user_ids`) > 10000) {
-        invalid_fields["user_ids"] = "Invalid length for `user_ids`, number of items must be less than or equal to 10000."
+        invalid_fields["user_ids"] <- "Invalid length for `user_ids`, number of items must be less than or equal to 10000."
       }
       if (length(self$`user_ids`) < 1) {
-        invalid_fields["user_ids"] = "Invalid length for ``, number of items must be greater than or equal to 1."
+        invalid_fields["user_ids"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
       invalid_fields

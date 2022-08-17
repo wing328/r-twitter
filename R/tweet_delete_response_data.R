@@ -150,7 +150,7 @@ TweetDeleteResponseData <- R6::R6Class(
       invalid_fields <- list()
       # check if the required `deleted` is null
       if (is.null(self$`deleted`)) {
-        invalid_fields["deleted"] = "Non-nullable required field `deleted` cannot be null."
+        invalid_fields["deleted"] <- "Non-nullable required field `deleted` cannot be null."
       }
 
       invalid_fields

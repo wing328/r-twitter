@@ -401,37 +401,37 @@ ResourceUnauthorizedProblem <- R6::R6Class(
       invalid_fields <- list()
       # check if the required `title` is null
       if (is.null(self$`title`)) {
-        invalid_fields["title"] = "Non-nullable required field `title` cannot be null."
+        invalid_fields["title"] <- "Non-nullable required field `title` cannot be null."
       }
 
       # check if the required `type` is null
       if (is.null(self$`type`)) {
-        invalid_fields["type"] = "Non-nullable required field `type` cannot be null."
+        invalid_fields["type"] <- "Non-nullable required field `type` cannot be null."
       }
 
       # check if the required `parameter` is null
       if (is.null(self$`parameter`)) {
-        invalid_fields["parameter"] = "Non-nullable required field `parameter` cannot be null."
+        invalid_fields["parameter"] <- "Non-nullable required field `parameter` cannot be null."
       }
 
       # check if the required `resource_id` is null
       if (is.null(self$`resource_id`)) {
-        invalid_fields["resource_id"] = "Non-nullable required field `resource_id` cannot be null."
+        invalid_fields["resource_id"] <- "Non-nullable required field `resource_id` cannot be null."
       }
 
       # check if the required `resource_type` is null
       if (is.null(self$`resource_type`)) {
-        invalid_fields["resource_type"] = "Non-nullable required field `resource_type` cannot be null."
+        invalid_fields["resource_type"] <- "Non-nullable required field `resource_type` cannot be null."
       }
 
       # check if the required `section` is null
       if (is.null(self$`section`)) {
-        invalid_fields["section"] = "Non-nullable required field `section` cannot be null."
+        invalid_fields["section"] <- "Non-nullable required field `section` cannot be null."
       }
 
       # check if the required `value` is null
       if (is.null(self$`value`)) {
-        invalid_fields["value"] = "Non-nullable required field `value` cannot be null."
+        invalid_fields["value"] <- "Non-nullable required field `value` cannot be null."
       }
 
       invalid_fields

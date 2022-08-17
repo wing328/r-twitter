@@ -152,7 +152,7 @@ TweetComplianceStreamResponseOneOf <- R6::R6Class(
       invalid_fields <- list()
       # check if the required `data` is null
       if (is.null(self$`data`)) {
-        invalid_fields["data"] = "Non-nullable required field `data` cannot be null."
+        invalid_fields["data"] <- "Non-nullable required field `data` cannot be null."
       }
 
       invalid_fields

@@ -152,7 +152,7 @@ TweetUndropComplianceSchema <- R6::R6Class(
       invalid_fields <- list()
       # check if the required `undrop` is null
       if (is.null(self$`undrop`)) {
-        invalid_fields["undrop"] = "Non-nullable required field `undrop` cannot be null."
+        invalid_fields["undrop"] <- "Non-nullable required field `undrop` cannot be null."
       }
 
       invalid_fields

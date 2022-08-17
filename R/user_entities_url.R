@@ -143,7 +143,7 @@ UserEntitiesUrl <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       if (length(self$`urls`) < 1) {
-        invalid_fields["urls"] = "Invalid length for ``, number of items must be greater than or equal to 1."
+        invalid_fields["urls"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
       invalid_fields

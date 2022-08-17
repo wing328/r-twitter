@@ -193,19 +193,19 @@ Point <- R6::R6Class(
       invalid_fields <- list()
       # check if the required `coordinates` is null
       if (is.null(self$`coordinates`)) {
-        invalid_fields["coordinates"] = "Non-nullable required field `coordinates` cannot be null."
+        invalid_fields["coordinates"] <- "Non-nullable required field `coordinates` cannot be null."
       }
 
       if (length(self$`coordinates`) > 2) {
-        invalid_fields["coordinates"] = "Invalid length for `coordinates`, number of items must be less than or equal to 2."
+        invalid_fields["coordinates"] <- "Invalid length for `coordinates`, number of items must be less than or equal to 2."
       }
       if (length(self$`coordinates`) < 2) {
-        invalid_fields["coordinates"] = "Invalid length for ``, number of items must be greater than or equal to 2."
+        invalid_fields["coordinates"] <- "Invalid length for ``, number of items must be greater than or equal to 2."
       }
 
       # check if the required `type` is null
       if (is.null(self$`type`)) {
-        invalid_fields["type"] = "Non-nullable required field `type` cannot be null."
+        invalid_fields["type"] <- "Non-nullable required field `type` cannot be null."
       }
 
       invalid_fields

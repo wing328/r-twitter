@@ -152,7 +152,7 @@ UserUnsuspendComplianceSchema <- R6::R6Class(
       invalid_fields <- list()
       # check if the required `user_unsuspend` is null
       if (is.null(self$`user_unsuspend`)) {
-        invalid_fields["user_unsuspend"] = "Non-nullable required field `user_unsuspend` cannot be null."
+        invalid_fields["user_unsuspend"] <- "Non-nullable required field `user_unsuspend` cannot be null."
       }
 
       invalid_fields

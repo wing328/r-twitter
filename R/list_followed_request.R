@@ -154,11 +154,11 @@ ListFollowedRequest <- R6::R6Class(
       invalid_fields <- list()
       # check if the required `list_id` is null
       if (is.null(self$`list_id`)) {
-        invalid_fields["list_id"] = "Non-nullable required field `list_id` cannot be null."
+        invalid_fields["list_id"] <- "Non-nullable required field `list_id` cannot be null."
       }
 
       if (!str_detect(self$`list_id`, "^[0-9]{1,19}$")) {
-        invalid_fields["list_id"] = "Invalid value for `list_id`, must conform to the pattern ^[0-9]{1,19}$."
+        invalid_fields["list_id"] <- "Invalid value for `list_id`, must conform to the pattern ^[0-9]{1,19}$."
       }
 
       invalid_fields

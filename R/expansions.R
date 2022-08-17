@@ -283,27 +283,27 @@ Expansions <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       if (length(self$`media`) < 1) {
-        invalid_fields["media"] = "Invalid length for ``, number of items must be greater than or equal to 1."
+        invalid_fields["media"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
       if (length(self$`places`) < 1) {
-        invalid_fields["places"] = "Invalid length for ``, number of items must be greater than or equal to 1."
+        invalid_fields["places"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
       if (length(self$`polls`) < 1) {
-        invalid_fields["polls"] = "Invalid length for ``, number of items must be greater than or equal to 1."
+        invalid_fields["polls"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
       if (length(self$`topics`) < 1) {
-        invalid_fields["topics"] = "Invalid length for ``, number of items must be greater than or equal to 1."
+        invalid_fields["topics"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
       if (length(self$`tweets`) < 1) {
-        invalid_fields["tweets"] = "Invalid length for ``, number of items must be greater than or equal to 1."
+        invalid_fields["tweets"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
       if (length(self$`users`) < 1) {
-        invalid_fields["users"] = "Invalid length for ``, number of items must be greater than or equal to 1."
+        invalid_fields["users"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
       invalid_fields

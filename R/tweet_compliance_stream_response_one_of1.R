@@ -156,11 +156,11 @@ TweetComplianceStreamResponseOneOf1 <- R6::R6Class(
       invalid_fields <- list()
       # check if the required `errors` is null
       if (is.null(self$`errors`)) {
-        invalid_fields["errors"] = "Non-nullable required field `errors` cannot be null."
+        invalid_fields["errors"] <- "Non-nullable required field `errors` cannot be null."
       }
 
       if (length(self$`errors`) < 1) {
-        invalid_fields["errors"] = "Invalid length for ``, number of items must be greater than or equal to 1."
+        invalid_fields["errors"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
       invalid_fields

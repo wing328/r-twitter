@@ -218,17 +218,17 @@ SearchCount <- R6::R6Class(
       invalid_fields <- list()
       # check if the required `end` is null
       if (is.null(self$`end`)) {
-        invalid_fields["end"] = "Non-nullable required field `end` cannot be null."
+        invalid_fields["end"] <- "Non-nullable required field `end` cannot be null."
       }
 
       # check if the required `start` is null
       if (is.null(self$`start`)) {
-        invalid_fields["start"] = "Non-nullable required field `start` cannot be null."
+        invalid_fields["start"] <- "Non-nullable required field `start` cannot be null."
       }
 
       # check if the required `tweet_count` is null
       if (is.null(self$`tweet_count`)) {
-        invalid_fields["tweet_count"] = "Non-nullable required field `tweet_count` cannot be null."
+        invalid_fields["tweet_count"] <- "Non-nullable required field `tweet_count` cannot be null."
       }
 
       invalid_fields

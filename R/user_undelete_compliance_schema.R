@@ -152,7 +152,7 @@ UserUndeleteComplianceSchema <- R6::R6Class(
       invalid_fields <- list()
       # check if the required `user_undelete` is null
       if (is.null(self$`user_undelete`)) {
-        invalid_fields["user_undelete"] = "Non-nullable required field `user_undelete` cannot be null."
+        invalid_fields["user_undelete"] <- "Non-nullable required field `user_undelete` cannot be null."
       }
 
       invalid_fields

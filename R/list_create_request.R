@@ -209,22 +209,22 @@ ListCreateRequest <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       if (nchar(self$`description`) > 100) {
-        invalid_fields["description"] = "Invalid length for `description`, must be smaller than or equal to 100."
+        invalid_fields["description"] <- "Invalid length for `description`, must be smaller than or equal to 100."
       }
       if (nchar(self$`description`) < 0) {
-        invalid_fields["description"] = "Invalid length for `description`, must be bigger than or equal to 0."
+        invalid_fields["description"] <- "Invalid length for `description`, must be bigger than or equal to 0."
       }
 
       # check if the required `name` is null
       if (is.null(self$`name`)) {
-        invalid_fields["name"] = "Non-nullable required field `name` cannot be null."
+        invalid_fields["name"] <- "Non-nullable required field `name` cannot be null."
       }
 
       if (nchar(self$`name`) > 25) {
-        invalid_fields["name"] = "Invalid length for `name`, must be smaller than or equal to 25."
+        invalid_fields["name"] <- "Invalid length for `name`, must be smaller than or equal to 25."
       }
       if (nchar(self$`name`) < 1) {
-        invalid_fields["name"] = "Invalid length for `name`, must be bigger than or equal to 1."
+        invalid_fields["name"] <- "Invalid length for `name`, must be bigger than or equal to 1."
       }
 
       invalid_fields

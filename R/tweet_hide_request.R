@@ -150,7 +150,7 @@ TweetHideRequest <- R6::R6Class(
       invalid_fields <- list()
       # check if the required `hidden` is null
       if (is.null(self$`hidden`)) {
-        invalid_fields["hidden"] = "Non-nullable required field `hidden` cannot be null."
+        invalid_fields["hidden"] <- "Non-nullable required field `hidden` cannot be null."
       }
 
       invalid_fields

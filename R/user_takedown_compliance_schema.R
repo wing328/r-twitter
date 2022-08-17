@@ -226,21 +226,21 @@ UserTakedownComplianceSchema <- R6::R6Class(
       invalid_fields <- list()
       # check if the required `event_at` is null
       if (is.null(self$`event_at`)) {
-        invalid_fields["event_at"] = "Non-nullable required field `event_at` cannot be null."
+        invalid_fields["event_at"] <- "Non-nullable required field `event_at` cannot be null."
       }
 
       # check if the required `user` is null
       if (is.null(self$`user`)) {
-        invalid_fields["user"] = "Non-nullable required field `user` cannot be null."
+        invalid_fields["user"] <- "Non-nullable required field `user` cannot be null."
       }
 
       # check if the required `withheld_in_countries` is null
       if (is.null(self$`withheld_in_countries`)) {
-        invalid_fields["withheld_in_countries"] = "Non-nullable required field `withheld_in_countries` cannot be null."
+        invalid_fields["withheld_in_countries"] <- "Non-nullable required field `withheld_in_countries` cannot be null."
       }
 
       if (length(self$`withheld_in_countries`) < 1) {
-        invalid_fields["withheld_in_countries"] = "Invalid length for ``, number of items must be greater than or equal to 1."
+        invalid_fields["withheld_in_countries"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
       invalid_fields

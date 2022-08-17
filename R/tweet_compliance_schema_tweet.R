@@ -192,20 +192,20 @@ TweetComplianceSchemaTweet <- R6::R6Class(
       invalid_fields <- list()
       # check if the required `author_id` is null
       if (is.null(self$`author_id`)) {
-        invalid_fields["author_id"] = "Non-nullable required field `author_id` cannot be null."
+        invalid_fields["author_id"] <- "Non-nullable required field `author_id` cannot be null."
       }
 
       if (!str_detect(self$`author_id`, "^[0-9]{1,19}$")) {
-        invalid_fields["author_id"] = "Invalid value for `author_id`, must conform to the pattern ^[0-9]{1,19}$."
+        invalid_fields["author_id"] <- "Invalid value for `author_id`, must conform to the pattern ^[0-9]{1,19}$."
       }
 
       # check if the required `id` is null
       if (is.null(self$`id`)) {
-        invalid_fields["id"] = "Non-nullable required field `id` cannot be null."
+        invalid_fields["id"] <- "Non-nullable required field `id` cannot be null."
       }
 
       if (!str_detect(self$`id`, "^[0-9]{1,19}$")) {
-        invalid_fields["id"] = "Invalid value for `id`, must conform to the pattern ^[0-9]{1,19}$."
+        invalid_fields["id"] <- "Invalid value for `id`, must conform to the pattern ^[0-9]{1,19}$."
       }
 
       invalid_fields

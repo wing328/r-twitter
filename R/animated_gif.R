@@ -278,20 +278,20 @@ AnimatedGif <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       if (self$`height` < 0) {
-        invalid_fields["height"] = "Invalid value for `height`, must be bigger than or equal to 0."
+        invalid_fields["height"] <- "Invalid value for `height`, must be bigger than or equal to 0."
       }
 
       if (!str_detect(self$`media_key`, "^([0-9]+)_([0-9]+)$")) {
-        invalid_fields["media_key"] = "Invalid value for `media_key`, must conform to the pattern ^([0-9]+)_([0-9]+)$."
+        invalid_fields["media_key"] <- "Invalid value for `media_key`, must conform to the pattern ^([0-9]+)_([0-9]+)$."
       }
 
       # check if the required `type` is null
       if (is.null(self$`type`)) {
-        invalid_fields["type"] = "Non-nullable required field `type` cannot be null."
+        invalid_fields["type"] <- "Non-nullable required field `type` cannot be null."
       }
 
       if (self$`width` < 0) {
-        invalid_fields["width"] = "Invalid value for `width`, must be bigger than or equal to 0."
+        invalid_fields["width"] <- "Invalid value for `width`, must be bigger than or equal to 0."
       }
 
       invalid_fields

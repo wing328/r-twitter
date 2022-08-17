@@ -171,11 +171,11 @@ TweetAttachments <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       if (length(self$`media_keys`) < 1) {
-        invalid_fields["media_keys"] = "Invalid length for ``, number of items must be greater than or equal to 1."
+        invalid_fields["media_keys"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
       if (length(self$`poll_ids`) < 1) {
-        invalid_fields["poll_ids"] = "Invalid length for ``, number of items must be greater than or equal to 1."
+        invalid_fields["poll_ids"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
       invalid_fields

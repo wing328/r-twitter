@@ -334,21 +334,21 @@ Place <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       if (length(self$`contained_within`) < 1) {
-        invalid_fields["contained_within"] = "Invalid length for ``, number of items must be greater than or equal to 1."
+        invalid_fields["contained_within"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
       if (!str_detect(self$`country_code`, "^[A-Z]{2}$")) {
-        invalid_fields["country_code"] = "Invalid value for `country_code`, must conform to the pattern ^[A-Z]{2}$."
+        invalid_fields["country_code"] <- "Invalid value for `country_code`, must conform to the pattern ^[A-Z]{2}$."
       }
 
       # check if the required `full_name` is null
       if (is.null(self$`full_name`)) {
-        invalid_fields["full_name"] = "Non-nullable required field `full_name` cannot be null."
+        invalid_fields["full_name"] <- "Non-nullable required field `full_name` cannot be null."
       }
 
       # check if the required `id` is null
       if (is.null(self$`id`)) {
-        invalid_fields["id"] = "Non-nullable required field `id` cannot be null."
+        invalid_fields["id"] <- "Non-nullable required field `id` cannot be null."
       }
 
       invalid_fields
