@@ -28,7 +28,7 @@ result <- tryCatch(
 # In case of error, print the error object
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `find_tweet_by_id`:")
-  dput(result$ApiException$toString())
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
