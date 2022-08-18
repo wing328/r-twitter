@@ -9,7 +9,7 @@
 #' @title Place
 #' @description Place Class
 #' @format An \code{R6Class} generator object
-#' @field contained_within  list( character ) [optional]
+#' @field contained_within  list(character) [optional]
 #' @field country  character [optional]
 #' @field country_code  character [optional]
 #' @field full_name  character

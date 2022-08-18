@@ -9,8 +9,8 @@
 #' @title Get2UsersIdMentionsResponse
 #' @description Get2UsersIdMentionsResponse Class
 #' @format An \code{R6Class} generator object
-#' @field data  list( \link{Tweet} ) [optional]
-#' @field errors  list( \link{Problem} ) [optional]
+#' @field data  list(\link{Tweet}) [optional]
+#' @field errors  list(\link{Problem}) [optional]
 #' @field includes  \link{Expansions} [optional]
 #' @field meta  \link{Get2UsersIdMentionsResponseMeta} [optional]
 #' @importFrom R6 R6Class

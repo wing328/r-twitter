@@ -9,7 +9,7 @@
 #' @title Point
 #' @description Point Class
 #' @format An \code{R6Class} generator object
-#' @field coordinates  list( numeric )
+#' @field coordinates  list(numeric)
 #' @field type  character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON

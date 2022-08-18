@@ -9,7 +9,7 @@
 #' @title TweetCreateRequestReply
 #' @description TweetCreateRequestReply Class
 #' @format An \code{R6Class} generator object
-#' @field exclude_reply_user_ids  list( character ) [optional]
+#' @field exclude_reply_user_ids  list(character) [optional]
 #' @field in_reply_to_tweet_id  character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON

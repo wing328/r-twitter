@@ -9,7 +9,7 @@
 #' @title UserEntitiesUrl
 #' @description UserEntitiesUrl Class
 #' @format An \code{R6Class} generator object
-#' @field urls  list( \link{UrlEntity} ) [optional]
+#' @field urls  list(\link{UrlEntity}) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export

@@ -10,7 +10,7 @@
 #' @description Get2UsersMeResponse Class
 #' @format An \code{R6Class} generator object
 #' @field data  \link{User} [optional]
-#' @field errors  list( \link{Problem} ) [optional]
+#' @field errors  list(\link{Problem}) [optional]
 #' @field includes  \link{Expansions} [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON

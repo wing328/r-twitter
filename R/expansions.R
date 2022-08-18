@@ -9,12 +9,12 @@
 #' @title Expansions
 #' @description Expansions Class
 #' @format An \code{R6Class} generator object
-#' @field media  list( \link{Media} ) [optional]
-#' @field places  list( \link{Place} ) [optional]
-#' @field polls  list( \link{Poll} ) [optional]
-#' @field topics  list( \link{Topic} ) [optional]
-#' @field tweets  list( \link{Tweet} ) [optional]
-#' @field users  list( \link{User} ) [optional]
+#' @field media  list(\link{Media}) [optional]
+#' @field places  list(\link{Place}) [optional]
+#' @field polls  list(\link{Poll}) [optional]
+#' @field topics  list(\link{Topic}) [optional]
+#' @field tweets  list(\link{Tweet}) [optional]
+#' @field users  list(\link{User}) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export

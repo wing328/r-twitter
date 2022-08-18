@@ -9,8 +9,8 @@
 #' @title Get2TweetsResponse
 #' @description Get2TweetsResponse Class
 #' @format An \code{R6Class} generator object
-#' @field data  list( \link{Tweet} ) [optional]
-#' @field errors  list( \link{Problem} ) [optional]
+#' @field data  list(\link{Tweet}) [optional]
+#' @field errors  list(\link{Problem}) [optional]
 #' @field includes  \link{Expansions} [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON

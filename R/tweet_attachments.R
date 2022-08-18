@@ -9,8 +9,8 @@
 #' @title TweetAttachments
 #' @description TweetAttachments Class
 #' @format An \code{R6Class} generator object
-#' @field media_keys  list( character ) [optional]
-#' @field poll_ids  list( character ) [optional]
+#' @field media_keys  list(character) [optional]
+#' @field poll_ids  list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export

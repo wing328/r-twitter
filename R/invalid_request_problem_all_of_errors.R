@@ -10,7 +10,7 @@
 #' @description InvalidRequestProblemAllOfErrors Class
 #' @format An \code{R6Class} generator object
 #' @field message  character [optional]
-#' @field parameters  named list( \link{array[character]} ) [optional]
+#' @field parameters  named list(list(character)) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export

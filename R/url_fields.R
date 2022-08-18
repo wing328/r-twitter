@@ -12,7 +12,7 @@
 #' @field description  character [optional]
 #' @field display_url  character [optional]
 #' @field expanded_url  character [optional]
-#' @field images  list( \link{UrlImage} ) [optional]
+#' @field images  list(\link{UrlImage}) [optional]
 #' @field media_key  character [optional]
 #' @field status  integer [optional]
 #' @field title  character [optional]

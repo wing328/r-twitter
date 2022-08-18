@@ -13,7 +13,7 @@
 #' @field status  integer [optional]
 #' @field title  character
 #' @field type  character
-#' @field errors  list( \link{InvalidRequestProblemAllOfErrors} ) [optional]
+#' @field errors  list(\link{InvalidRequestProblemAllOfErrors}) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export

@@ -9,8 +9,8 @@
 #' @title Get2TweetsIdQuoteTweetsResponse
 #' @description Get2TweetsIdQuoteTweetsResponse Class
 #' @format An \code{R6Class} generator object
-#' @field data  list( \link{Tweet} ) [optional]
-#' @field errors  list( \link{Problem} ) [optional]
+#' @field data  list(\link{Tweet}) [optional]
+#' @field errors  list(\link{Problem}) [optional]
 #' @field includes  \link{Expansions} [optional]
 #' @field meta  \link{Get2TweetsIdQuoteTweetsResponseMeta} [optional]
 #' @importFrom R6 R6Class

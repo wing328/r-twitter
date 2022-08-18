@@ -9,8 +9,8 @@
 #' @title Get2ComplianceJobsResponse
 #' @description Get2ComplianceJobsResponse Class
 #' @format An \code{R6Class} generator object
-#' @field data  list( \link{ComplianceJob} ) [optional]
-#' @field errors  list( \link{Problem} ) [optional]
+#' @field data  list(\link{ComplianceJob}) [optional]
+#' @field errors  list(\link{Problem}) [optional]
 #' @field meta  \link{Get2ComplianceJobsResponseMeta} [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON

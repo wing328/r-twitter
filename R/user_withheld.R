@@ -9,7 +9,7 @@
 #' @title UserWithheld
 #' @description UserWithheld Class
 #' @format An \code{R6Class} generator object
-#' @field country_codes  list( character )
+#' @field country_codes  list(character)
 #' @field scope  character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON

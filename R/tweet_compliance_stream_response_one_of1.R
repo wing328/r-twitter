@@ -9,7 +9,7 @@
 #' @title TweetComplianceStreamResponseOneOf1
 #' @description TweetComplianceStreamResponseOneOf1 Class
 #' @format An \code{R6Class} generator object
-#' @field errors  list( \link{Problem} )
+#' @field errors  list(\link{Problem})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export

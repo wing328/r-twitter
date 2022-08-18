@@ -10,7 +10,7 @@
 #' @description ReportUsersRequest Class
 #' @format An \code{R6Class} generator object
 #' @field description  character
-#' @field user_ids  list( character )
+#' @field user_ids  list(character)
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export

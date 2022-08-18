@@ -10,7 +10,7 @@
 #' @description AnimatedGifAllOf Class
 #' @format An \code{R6Class} generator object
 #' @field preview_image_url  character [optional]
-#' @field variants  list( \link{Variant} ) [optional]
+#' @field variants  list(\link{Variant}) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export

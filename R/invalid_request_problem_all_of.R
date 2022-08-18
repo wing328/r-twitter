@@ -9,7 +9,7 @@
 #' @title InvalidRequestProblemAllOf
 #' @description InvalidRequestProblemAllOf Class
 #' @format An \code{R6Class} generator object
-#' @field errors  list( \link{InvalidRequestProblemAllOfErrors} ) [optional]
+#' @field errors  list(\link{InvalidRequestProblemAllOfErrors}) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export

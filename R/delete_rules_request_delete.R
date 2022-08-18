@@ -9,8 +9,8 @@
 #' @title DeleteRulesRequestDelete
 #' @description DeleteRulesRequestDelete Class
 #' @format An \code{R6Class} generator object
-#' @field ids  list( character ) [optional]
-#' @field values  list( character ) [optional]
+#' @field ids  list(character) [optional]
+#' @field values  list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export

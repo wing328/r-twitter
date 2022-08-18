@@ -9,7 +9,7 @@
 #' @title RulesLookupResponse
 #' @description RulesLookupResponse Class
 #' @format An \code{R6Class} generator object
-#' @field data  list( \link{Rule} ) [optional]
+#' @field data  list(\link{Rule}) [optional]
 #' @field meta  \link{RulesResponseMetadata}
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON

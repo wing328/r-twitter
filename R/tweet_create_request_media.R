@@ -9,8 +9,8 @@
 #' @title TweetCreateRequestMedia
 #' @description TweetCreateRequestMedia Class
 #' @format An \code{R6Class} generator object
-#' @field media_ids  list( character )
-#' @field tagged_user_ids  list( character ) [optional]
+#' @field media_ids  list(character)
+#' @field tagged_user_ids  list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export

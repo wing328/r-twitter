@@ -11,7 +11,7 @@
 #' @format An \code{R6Class} generator object
 #' @field attachments  \link{TweetAttachments} [optional]
 #' @field author_id  character [optional]
-#' @field context_annotations  list( \link{ContextAnnotation} ) [optional]
+#' @field context_annotations  list(\link{ContextAnnotation}) [optional]
 #' @field conversation_id  character [optional]
 #' @field created_at  character [optional]
 #' @field entities  \link{FullTextEntities} [optional]
@@ -24,7 +24,7 @@
 #' @field possibly_sensitive  character [optional]
 #' @field promoted_metrics  \link{TweetPromotedMetrics} [optional]
 #' @field public_metrics  \link{TweetPublicMetrics} [optional]
-#' @field referenced_tweets  list( \link{TweetReferencedTweetsInner} ) [optional]
+#' @field referenced_tweets  list(\link{TweetReferencedTweetsInner}) [optional]
 #' @field reply_settings  \link{ReplySettings} [optional]
 #' @field source  character [optional]
 #' @field text  character

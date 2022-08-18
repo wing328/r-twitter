@@ -9,8 +9,8 @@
 #' @title Get2UsersIdFollowersResponse
 #' @description Get2UsersIdFollowersResponse Class
 #' @format An \code{R6Class} generator object
-#' @field data  list( \link{User} ) [optional]
-#' @field errors  list( \link{Problem} ) [optional]
+#' @field data  list(\link{User}) [optional]
+#' @field errors  list(\link{Problem}) [optional]
 #' @field includes  \link{Expansions} [optional]
 #' @field meta  \link{Get2ListsIdFollowersResponseMeta} [optional]
 #' @importFrom R6 R6Class

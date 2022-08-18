@@ -9,8 +9,8 @@
 #' @title AddOrDeleteRulesResponse
 #' @description AddOrDeleteRulesResponse Class
 #' @format An \code{R6Class} generator object
-#' @field data  list( \link{Rule} ) [optional]
-#' @field errors  list( \link{Problem} ) [optional]
+#' @field data  list(\link{Rule}) [optional]
+#' @field errors  list(\link{Problem}) [optional]
 #' @field meta  \link{RulesResponseMetadata}
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON

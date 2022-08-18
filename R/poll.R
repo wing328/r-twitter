@@ -12,7 +12,7 @@
 #' @field duration_minutes  integer [optional]
 #' @field end_datetime  character [optional]
 #' @field id  character
-#' @field options  list( \link{PollOption} )
+#' @field options  list(\link{PollOption})
 #' @field voting_status  character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON

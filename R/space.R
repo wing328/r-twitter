@@ -12,19 +12,19 @@
 #' @field created_at  character [optional]
 #' @field creator_id  character [optional]
 #' @field ended_at  character [optional]
-#' @field host_ids  list( character ) [optional]
+#' @field host_ids  list(character) [optional]
 #' @field id  character
-#' @field invited_user_ids  list( character ) [optional]
+#' @field invited_user_ids  list(character) [optional]
 #' @field is_ticketed  character [optional]
 #' @field lang  character [optional]
 #' @field participant_count  integer [optional]
 #' @field scheduled_start  character [optional]
-#' @field speaker_ids  list( character ) [optional]
+#' @field speaker_ids  list(character) [optional]
 #' @field started_at  character [optional]
 #' @field state  character
 #' @field subscriber_count  integer [optional]
 #' @field title  character [optional]
-#' @field topics  list( \link{SpaceTopicsInner} ) [optional]
+#' @field topics  list(\link{SpaceTopicsInner}) [optional]
 #' @field updated_at  character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON

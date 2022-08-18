@@ -10,7 +10,7 @@
 #' @description TweetCreateRequestPoll Class
 #' @format An \code{R6Class} generator object
 #' @field duration_minutes  integer
-#' @field options  list( character )
+#' @field options  list(character)
 #' @field reply_settings  character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON

@@ -19,7 +19,7 @@
 #' @field preview_image_url  character [optional]
 #' @field promoted_metrics  \link{VideoAllOfPromotedMetrics} [optional]
 #' @field public_metrics  \link{VideoAllOfPublicMetrics} [optional]
-#' @field variants  list( \link{Variant} ) [optional]
+#' @field variants  list(\link{Variant}) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export

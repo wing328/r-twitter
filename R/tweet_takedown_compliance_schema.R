@@ -12,7 +12,7 @@
 #' @field event_at  character
 #' @field quote_tweet_id  character [optional]
 #' @field tweet  \link{TweetComplianceSchemaTweet}
-#' @field withheld_in_countries  list( character )
+#' @field withheld_in_countries  list(character)
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export

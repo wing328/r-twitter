@@ -11,7 +11,7 @@
 #' @format An \code{R6Class} generator object
 #' @field event_at  character
 #' @field user  \link{UserComplianceSchemaUser}
-#' @field withheld_in_countries  list( character )
+#' @field withheld_in_countries  list(character)
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export

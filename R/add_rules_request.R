@@ -9,7 +9,7 @@
 #' @title AddRulesRequest
 #' @description AddRulesRequest Class
 #' @format An \code{R6Class} generator object
-#' @field add  list( \link{RuleNoId} )
+#' @field add  list(\link{RuleNoId})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export

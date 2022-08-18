@@ -10,7 +10,7 @@
 #' @description ListCreateResponse Class
 #' @format An \code{R6Class} generator object
 #' @field data  \link{ListCreateResponseData} [optional]
-#' @field errors  list( \link{Problem} ) [optional]
+#' @field errors  list(\link{Problem}) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export

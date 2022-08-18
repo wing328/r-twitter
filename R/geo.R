@@ -9,7 +9,7 @@
 #' @title Geo
 #' @description Geo Class
 #' @format An \code{R6Class} generator object
-#' @field bbox  list( numeric )
+#' @field bbox  list(numeric)
 #' @field geometry  \link{Point} [optional]
 #' @field properties  object
 #' @field type  character

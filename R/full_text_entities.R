@@ -9,11 +9,11 @@
 #' @title FullTextEntities
 #' @description FullTextEntities Class
 #' @format An \code{R6Class} generator object
-#' @field annotations  list( \link{FullTextEntitiesAnnotationsInner} ) [optional]
-#' @field cashtags  list( \link{CashtagEntity} ) [optional]
-#' @field hashtags  list( \link{HashtagEntity} ) [optional]
-#' @field mentions  list( \link{MentionEntity} ) [optional]
-#' @field urls  list( \link{UrlEntity} ) [optional]
+#' @field annotations  list(\link{FullTextEntitiesAnnotationsInner}) [optional]
+#' @field cashtags  list(\link{CashtagEntity}) [optional]
+#' @field hashtags  list(\link{HashtagEntity}) [optional]
+#' @field mentions  list(\link{MentionEntity}) [optional]
+#' @field urls  list(\link{UrlEntity}) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export

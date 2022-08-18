@@ -9,8 +9,8 @@
 #' @title Get2TweetsCountsAllResponse
 #' @description Get2TweetsCountsAllResponse Class
 #' @format An \code{R6Class} generator object
-#' @field data  list( \link{SearchCount} ) [optional]
-#' @field errors  list( \link{Problem} ) [optional]
+#' @field data  list(\link{SearchCount}) [optional]
+#' @field errors  list(\link{Problem}) [optional]
 #' @field meta  \link{Get2TweetsCountsAllResponseMeta} [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
