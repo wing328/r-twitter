@@ -49,6 +49,18 @@ RulesRequestSummary <- R6::R6Class(
     #'
     #' @description
     #' Deserialize JSON string into an instance of RulesRequestSummary.
+    #' An alias to the method `fromJSON` .
+    #'
+    #' @param input The input JSON.
+    #' @return An instance of RulesRequestSummary.
+    #' @export
+    fromJSONString = function(input) {
+      self$fromJSON(input)
+    },
+    #' Deserialize JSON string into an instance of RulesRequestSummary.
+    #'
+    #' @description
+    #' Deserialize JSON string into an instance of RulesRequestSummary.
     #'
     #' @param input The input JSON.
     #' @return An instance of RulesRequestSummary.
