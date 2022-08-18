@@ -61,6 +61,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `add_or_delete_rules`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -122,6 +124,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `create_tweet`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -182,6 +186,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `delete_tweet_by_id`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -250,6 +256,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `find_tweet_by_id`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -324,6 +332,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `find_tweets_by_id`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -401,6 +411,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `find_tweets_that_quote_a_tweet`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -472,6 +484,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `get_rules`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -543,6 +557,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `get_tweets_firehose_stream`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -621,6 +637,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `get_tweets_sample10_stream`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -691,6 +709,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `hide_reply_by_id`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -762,6 +782,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `lists_id_tweets`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -836,6 +858,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `sample_stream`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -910,6 +934,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `search_stream`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -983,6 +1009,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `space_buyers`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -1057,6 +1085,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `space_tweets`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -1132,6 +1162,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `tweet_counts_full_archive_search`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -1208,6 +1240,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `tweet_counts_recent_search`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -1290,6 +1324,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `tweets_fullarchive_search`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -1380,6 +1416,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `tweets_recent_search`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -1455,6 +1493,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `users_id_like`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -1526,6 +1566,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `users_id_liked_tweets`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -1608,6 +1650,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `users_id_mentions`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -1681,6 +1725,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `users_id_retweets`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -1755,6 +1801,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `users_id_timeline`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -1843,6 +1891,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `users_id_tweets`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -1917,6 +1967,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `users_id_unlike`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -1979,6 +2031,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `users_id_unretweets`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")

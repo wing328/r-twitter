@@ -31,6 +31,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `get_open_api_spec`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")

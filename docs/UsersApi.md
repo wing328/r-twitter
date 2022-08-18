@@ -54,6 +54,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `find_my_user`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -121,6 +123,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `find_user_by_id`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -189,6 +193,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `find_user_by_username`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -257,6 +263,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `find_users_by_id`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -325,6 +333,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `find_users_by_username`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -395,6 +405,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `list_get_followers`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -467,6 +479,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `list_get_members`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -539,6 +553,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `tweets_id_liking_users`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -611,6 +627,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `tweets_id_retweeting_users`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -677,6 +695,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `users_id_block`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -743,6 +763,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `users_id_blocking`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -809,6 +831,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `users_id_follow`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -877,6 +901,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `users_id_followers`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -949,6 +975,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `users_id_following`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -1015,6 +1043,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `users_id_mute`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -1081,6 +1111,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `users_id_muting`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -1147,6 +1179,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `users_id_unblock`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -1209,6 +1243,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `users_id_unfollow`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -1271,6 +1307,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `users_id_unmute`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")

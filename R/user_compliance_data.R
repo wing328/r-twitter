@@ -70,6 +70,18 @@ UserComplianceData <- R6::R6Class(
     #'
     #' @description
     #' Deserialize JSON string into an instance of UserComplianceData.
+    #' An alias to the method `fromJSON` .
+    #'
+    #' @param input The input JSON.
+    #' @return An instance of UserComplianceData.
+    #' @export
+    fromJSONString = function(input) {
+      self$fromJSON(input)
+    },
+    #' Deserialize JSON string into an instance of UserComplianceData.
+    #'
+    #' @description
+    #' Deserialize JSON string into an instance of UserComplianceData.
     #'
     #' @param input The input JSON.
     #' @return An instance of UserComplianceData.
