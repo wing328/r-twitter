@@ -44,6 +44,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `get_users_id_bookmarks`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object)
 } else {
   # deserialized response object
   print("The response is ...")
@@ -113,6 +115,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `post_users_id_bookmarks`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object)
 } else {
   # deserialized response object
   print("The response is ...")
@@ -175,6 +179,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `users_id_bookmarks_delete`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object)
 } else {
   # deserialized response object
   print("The response is ...")

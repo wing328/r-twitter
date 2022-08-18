@@ -54,6 +54,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `get_user_list_memberships`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object)
 } else {
   # deserialized response object
   print("The response is ...")
@@ -120,6 +122,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `list_add_member`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object)
 } else {
   # deserialized response object
   print("The response is ...")
@@ -181,6 +185,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `list_id_create`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object)
 } else {
   # deserialized response object
   print("The response is ...")
@@ -241,6 +247,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `list_id_delete`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object)
 } else {
   # deserialized response object
   print("The response is ...")
@@ -306,6 +314,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `list_id_get`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object)
 } else {
   # deserialized response object
   print("The response is ...")
@@ -370,6 +380,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `list_id_update`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object)
 } else {
   # deserialized response object
   print("The response is ...")
@@ -432,6 +444,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `list_remove_member`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object)
 } else {
   # deserialized response object
   print("The response is ...")
@@ -494,6 +508,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `list_user_follow`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object)
 } else {
   # deserialized response object
   print("The response is ...")
@@ -562,6 +578,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `list_user_owned_lists`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object)
 } else {
   # deserialized response object
   print("The response is ...")
@@ -628,6 +646,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `list_user_pin`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object)
 } else {
   # deserialized response object
   print("The response is ...")
@@ -692,6 +712,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `list_user_pinned_lists`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object)
 } else {
   # deserialized response object
   print("The response is ...")
@@ -756,6 +778,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `list_user_unfollow`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object)
 } else {
   # deserialized response object
   print("The response is ...")
@@ -818,6 +842,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `list_user_unpin`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object)
 } else {
   # deserialized response object
   print("The response is ...")
@@ -886,6 +912,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `user_followed_lists`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object)
 } else {
   # deserialized response object
   print("The response is ...")

@@ -38,6 +38,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `create_batch_compliance_job`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object)
 } else {
   # deserialized response object
   print("The response is ...")
@@ -99,6 +101,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `get_batch_compliance_job`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object)
 } else {
   # deserialized response object
   print("The response is ...")
@@ -163,6 +167,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `get_tweets_compliance_stream`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object)
 } else {
   # deserialized response object
   print("The response is ...")
@@ -229,6 +235,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `get_users_compliance_stream`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object)
 } else {
   # deserialized response object
   print("The response is ...")
@@ -294,6 +302,8 @@ result <- tryCatch(
 if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `list_batch_compliance_jobs`:")
   dput(result$ApiException$toString())
+  # error object
+  dput(result$ApiException$error_object)
 } else {
   # deserialized response object
   print("The response is ...")
