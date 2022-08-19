@@ -30,13 +30,13 @@ var_poll_fields <- list("duration_minutes") # set[character] | A comma separated
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 
-#Bookmarks by User
+# Bookmarks by User
 api_instance <- twitter_api$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-             # api_instance$get_users_id_bookmarks(var_id, max_results = var_max_results, pagination_token = var_pagination_token, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
+             # api_instance$bookmarks_api$get_users_id_bookmarks(var_id, max_results = var_max_results, pagination_token = var_pagination_token, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
              api_instance$bookmarks_api$get_users_id_bookmarks(var_id, max_results = var_max_results, pagination_token = var_pagination_token, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
              ApiException = function(ex) ex
           )
@@ -101,13 +101,13 @@ library(twitter)
 var_id <- "id_example" # character | The ID of the authenticated source User for whom to add bookmarks.
 var_bookmark_add_request <- BookmarkAddRequest$new("tweet_id_example") # BookmarkAddRequest | 
 
-#Add Tweet to Bookmarks
+# Add Tweet to Bookmarks
 api_instance <- twitter_api$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-             # api_instance$post_users_id_bookmarks(var_id, var_bookmark_add_request, data_file = "result.txt"),
+             # api_instance$bookmarks_api$post_users_id_bookmarks(var_id, var_bookmark_add_request, data_file = "result.txt"),
              api_instance$bookmarks_api$post_users_id_bookmarks(var_id, var_bookmark_add_request),
              ApiException = function(ex) ex
           )
@@ -165,13 +165,13 @@ library(twitter)
 var_id <- "id_example" # character | The ID of the authenticated source User whose bookmark is to be removed.
 var_tweet_id <- "tweet_id_example" # character | The ID of the Tweet that the source User is removing from bookmarks.
 
-#Remove a bookmarked Tweet
+# Remove a bookmarked Tweet
 api_instance <- twitter_api$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-             # api_instance$users_id_bookmarks_delete(var_id, var_tweet_id, data_file = "result.txt"),
+             # api_instance$bookmarks_api$users_id_bookmarks_delete(var_id, var_tweet_id, data_file = "result.txt"),
              api_instance$bookmarks_api$users_id_bookmarks_delete(var_id, var_tweet_id),
              ApiException = function(ex) ex
           )

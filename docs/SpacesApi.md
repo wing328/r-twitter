@@ -29,7 +29,7 @@ var_expansions <- list("creator_id") # set[character] | A comma separated list o
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 var_topic_fields <- list("description") # set[character] | A comma separated list of Topic fields to display. (Optional)
 
-#Space lookup by Space ID
+# Space lookup by Space ID
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
@@ -37,7 +37,7 @@ api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-             # api_instance$find_space_by_id(var_id, space_fields = var_space_fields, expansions = var_expansions, user_fields = var_user_fields, topic_fields = var_topic_fields, data_file = "result.txt"),
+             # api_instance$spaces_api$find_space_by_id(var_id, space_fields = var_space_fields, expansions = var_expansions, user_fields = var_user_fields, topic_fields = var_topic_fields, data_file = "result.txt"),
              api_instance$spaces_api$find_space_by_id(var_id, space_fields = var_space_fields, expansions = var_expansions, user_fields = var_user_fields, topic_fields = var_topic_fields),
              ApiException = function(ex) ex
           )
@@ -101,7 +101,7 @@ var_expansions <- list("creator_id") # set[character] | A comma separated list o
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 var_topic_fields <- list("description") # set[character] | A comma separated list of Topic fields to display. (Optional)
 
-#Space lookup by their creators
+# Space lookup by their creators
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
@@ -109,7 +109,7 @@ api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-             # api_instance$find_spaces_by_creator_ids(var_user_ids, space_fields = var_space_fields, expansions = var_expansions, user_fields = var_user_fields, topic_fields = var_topic_fields, data_file = "result.txt"),
+             # api_instance$spaces_api$find_spaces_by_creator_ids(var_user_ids, space_fields = var_space_fields, expansions = var_expansions, user_fields = var_user_fields, topic_fields = var_topic_fields, data_file = "result.txt"),
              api_instance$spaces_api$find_spaces_by_creator_ids(var_user_ids, space_fields = var_space_fields, expansions = var_expansions, user_fields = var_user_fields, topic_fields = var_topic_fields),
              ApiException = function(ex) ex
           )
@@ -173,7 +173,7 @@ var_expansions <- list("creator_id") # set[character] | A comma separated list o
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 var_topic_fields <- list("description") # set[character] | A comma separated list of Topic fields to display. (Optional)
 
-#Space lookup up Space IDs
+# Space lookup up Space IDs
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
@@ -181,7 +181,7 @@ api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-             # api_instance$find_spaces_by_ids(var_ids, space_fields = var_space_fields, expansions = var_expansions, user_fields = var_user_fields, topic_fields = var_topic_fields, data_file = "result.txt"),
+             # api_instance$spaces_api$find_spaces_by_ids(var_ids, space_fields = var_space_fields, expansions = var_expansions, user_fields = var_user_fields, topic_fields = var_topic_fields, data_file = "result.txt"),
              api_instance$spaces_api$find_spaces_by_ids(var_ids, space_fields = var_space_fields, expansions = var_expansions, user_fields = var_user_fields, topic_fields = var_topic_fields),
              ApiException = function(ex) ex
           )
@@ -247,7 +247,7 @@ var_expansions <- list("creator_id") # set[character] | A comma separated list o
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 var_topic_fields <- list("description") # set[character] | A comma separated list of Topic fields to display. (Optional)
 
-#Search for Spaces
+# Search for Spaces
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
@@ -255,7 +255,7 @@ api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-             # api_instance$search_spaces(var_query, state = var_state, max_results = var_max_results, space_fields = var_space_fields, expansions = var_expansions, user_fields = var_user_fields, topic_fields = var_topic_fields, data_file = "result.txt"),
+             # api_instance$spaces_api$search_spaces(var_query, state = var_state, max_results = var_max_results, space_fields = var_space_fields, expansions = var_expansions, user_fields = var_user_fields, topic_fields = var_topic_fields, data_file = "result.txt"),
              api_instance$spaces_api$search_spaces(var_query, state = var_state, max_results = var_max_results, space_fields = var_space_fields, expansions = var_expansions, user_fields = var_user_fields, topic_fields = var_topic_fields),
              ApiException = function(ex) ex
           )
@@ -322,13 +322,13 @@ var_user_fields <- list("created_at") # set[character] | A comma separated list 
 var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
 var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 
-#Retrieve the list of Users who purchased a ticket to the given space
+# Retrieve the list of Users who purchased a ticket to the given space
 api_instance <- twitter_api$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-             # api_instance$space_buyers(var_id, pagination_token = var_pagination_token, max_results = var_max_results, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
+             # api_instance$spaces_api$space_buyers(var_id, pagination_token = var_pagination_token, max_results = var_max_results, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
              api_instance$spaces_api$space_buyers(var_id, pagination_token = var_pagination_token, max_results = var_max_results, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
              ApiException = function(ex) ex
           )
@@ -396,7 +396,7 @@ var_poll_fields <- list("duration_minutes") # set[character] | A comma separated
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 
-#Retrieve Tweets from a Space.
+# Retrieve Tweets from a Space.
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
@@ -404,7 +404,7 @@ api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-             # api_instance$space_tweets(var_id, max_results = var_max_results, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
+             # api_instance$spaces_api$space_tweets(var_id, max_results = var_max_results, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
              api_instance$spaces_api$space_tweets(var_id, max_results = var_max_results, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
              ApiException = function(ex) ex
           )

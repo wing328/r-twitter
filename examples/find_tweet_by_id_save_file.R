@@ -1,7 +1,8 @@
 # 1. follow the installation instruction in the README to build the Twitter R module
 # 2. put the bearer token obtained from Twitter developer portal (https://developer.twitter.com/) in the environment variable BEARER_TOKEN
 # 3. run the script:
-#    Rscript examples/find_tweet_by_id.R
+#    Rscript examples/find_tweet_by_id_save_file.R
+# 4. find_tweet_by_id_save_file_result.txt created to store to the result
 library(twitter)
 
 var_id <- "1543815912545226752" # character | A single Tweet ID.
@@ -20,8 +21,8 @@ api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-             # api_instance$find_tweet_by_id(var_id, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
-             api_instance$tweets_api$find_tweet_by_id(var_id, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
+             api_instance$tweets_api$find_tweet_by_id(var_id, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "find_tweet_by_id_save_file_result.txt"),
+             #api_instance$tweets_api$find_tweet_by_id(var_id, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
              ApiException = function(ex) ex
           )
 # In case of error, print the error object

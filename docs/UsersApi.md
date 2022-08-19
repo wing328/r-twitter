@@ -40,13 +40,13 @@ var_user_fields <- list("created_at") # set[character] | A comma separated list 
 var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
 var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 
-#User lookup me
+# User lookup me
 api_instance <- twitter_api$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-             # api_instance$find_my_user(user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
+             # api_instance$users_api$find_my_user(user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
              api_instance$users_api$find_my_user(user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
              ApiException = function(ex) ex
           )
@@ -107,7 +107,7 @@ var_user_fields <- list("created_at") # set[character] | A comma separated list 
 var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
 var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 
-#User lookup by ID
+# User lookup by ID
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
@@ -115,7 +115,7 @@ api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-             # api_instance$find_user_by_id(var_id, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
+             # api_instance$users_api$find_user_by_id(var_id, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
              api_instance$users_api$find_user_by_id(var_id, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
              ApiException = function(ex) ex
           )
@@ -177,7 +177,7 @@ var_user_fields <- list("created_at") # set[character] | A comma separated list 
 var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
 var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 
-#User lookup by username
+# User lookup by username
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
@@ -185,7 +185,7 @@ api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-             # api_instance$find_user_by_username(var_username, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
+             # api_instance$users_api$find_user_by_username(var_username, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
              api_instance$users_api$find_user_by_username(var_username, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
              ApiException = function(ex) ex
           )
@@ -247,7 +247,7 @@ var_user_fields <- list("created_at") # set[character] | A comma separated list 
 var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
 var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 
-#User lookup by IDs
+# User lookup by IDs
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
@@ -255,7 +255,7 @@ api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-             # api_instance$find_users_by_id(var_ids, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
+             # api_instance$users_api$find_users_by_id(var_ids, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
              api_instance$users_api$find_users_by_id(var_ids, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
              ApiException = function(ex) ex
           )
@@ -317,7 +317,7 @@ var_user_fields <- list("created_at") # set[character] | A comma separated list 
 var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
 var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 
-#User lookup by usernames
+# User lookup by usernames
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
@@ -325,7 +325,7 @@ api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-             # api_instance$find_users_by_username(var_usernames, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
+             # api_instance$users_api$find_users_by_username(var_usernames, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
              api_instance$users_api$find_users_by_username(var_usernames, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
              ApiException = function(ex) ex
           )
@@ -389,7 +389,7 @@ var_user_fields <- list("created_at") # set[character] | A comma separated list 
 var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
 var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 
-#Returns User objects that follow a List by the provided List ID
+# Returns User objects that follow a List by the provided List ID
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
@@ -397,7 +397,7 @@ api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-             # api_instance$list_get_followers(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
+             # api_instance$users_api$list_get_followers(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
              api_instance$users_api$list_get_followers(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
              ApiException = function(ex) ex
           )
@@ -463,7 +463,7 @@ var_user_fields <- list("created_at") # set[character] | A comma separated list 
 var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
 var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 
-#Returns User objects that are members of a List by the provided List ID.
+# Returns User objects that are members of a List by the provided List ID.
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
@@ -471,7 +471,7 @@ api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-             # api_instance$list_get_members(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
+             # api_instance$users_api$list_get_members(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
              api_instance$users_api$list_get_members(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
              ApiException = function(ex) ex
           )
@@ -537,7 +537,7 @@ var_user_fields <- list("created_at") # set[character] | A comma separated list 
 var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
 var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 
-#Returns User objects that have liked the provided Tweet ID
+# Returns User objects that have liked the provided Tweet ID
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
@@ -545,7 +545,7 @@ api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-             # api_instance$tweets_id_liking_users(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
+             # api_instance$users_api$tweets_id_liking_users(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
              api_instance$users_api$tweets_id_liking_users(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
              ApiException = function(ex) ex
           )
@@ -611,7 +611,7 @@ var_user_fields <- list("created_at") # set[character] | A comma separated list 
 var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
 var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 
-#Returns User objects that have retweeted the provided Tweet ID
+# Returns User objects that have retweeted the provided Tweet ID
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
@@ -619,7 +619,7 @@ api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-             # api_instance$tweets_id_retweeting_users(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
+             # api_instance$users_api$tweets_id_retweeting_users(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
              api_instance$users_api$tweets_id_retweeting_users(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
              ApiException = function(ex) ex
           )
@@ -681,13 +681,13 @@ library(twitter)
 var_id <- "id_example" # character | The ID of the authenticated source User that is requesting to block the target User.
 var_block_user_request <- BlockUserRequest$new("target_user_id_example") # BlockUserRequest | 
 
-#Block User by User ID
+# Block User by User ID
 api_instance <- twitter_api$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-             # api_instance$users_id_block(var_id, var_block_user_request, data_file = "result.txt"),
+             # api_instance$users_api$users_id_block(var_id, var_block_user_request, data_file = "result.txt"),
              api_instance$users_api$users_id_block(var_id, var_block_user_request),
              ApiException = function(ex) ex
           )
@@ -749,13 +749,13 @@ var_user_fields <- list("created_at") # set[character] | A comma separated list 
 var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
 var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 
-#Returns User objects that are blocked by provided User ID
+# Returns User objects that are blocked by provided User ID
 api_instance <- twitter_api$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-             # api_instance$users_id_blocking(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
+             # api_instance$users_api$users_id_blocking(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
              api_instance$users_api$users_id_blocking(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
              ApiException = function(ex) ex
           )
@@ -817,13 +817,13 @@ library(twitter)
 var_id <- "id_example" # character | The ID of the authenticated source User that is requesting to follow the target User.
 var_users_following_create_request <- UsersFollowingCreateRequest$new("target_user_id_example") # UsersFollowingCreateRequest |  (Optional)
 
-#Follow User
+# Follow User
 api_instance <- twitter_api$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-             # api_instance$users_id_follow(var_id, users_following_create_request = var_users_following_create_request, data_file = "result.txt"),
+             # api_instance$users_api$users_id_follow(var_id, users_following_create_request = var_users_following_create_request, data_file = "result.txt"),
              api_instance$users_api$users_id_follow(var_id, users_following_create_request = var_users_following_create_request),
              ApiException = function(ex) ex
           )
@@ -885,7 +885,7 @@ var_user_fields <- list("created_at") # set[character] | A comma separated list 
 var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
 var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 
-#Returns User objects that follow a List by the provided User ID
+# Returns User objects that follow a List by the provided User ID
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
@@ -893,7 +893,7 @@ api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-             # api_instance$users_id_followers(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
+             # api_instance$users_api$users_id_followers(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
              api_instance$users_api$users_id_followers(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
              ApiException = function(ex) ex
           )
@@ -959,7 +959,7 @@ var_user_fields <- list("created_at") # set[character] | A comma separated list 
 var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
 var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 
-#Following by User ID
+# Following by User ID
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
@@ -967,7 +967,7 @@ api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-             # api_instance$users_id_following(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
+             # api_instance$users_api$users_id_following(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
              api_instance$users_api$users_id_following(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
              ApiException = function(ex) ex
           )
@@ -1029,13 +1029,13 @@ library(twitter)
 var_id <- "id_example" # character | The ID of the authenticated source User that is requesting to mute the target User.
 var_mute_user_request <- MuteUserRequest$new("target_user_id_example") # MuteUserRequest |  (Optional)
 
-#Mute User by User ID.
+# Mute User by User ID.
 api_instance <- twitter_api$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-             # api_instance$users_id_mute(var_id, mute_user_request = var_mute_user_request, data_file = "result.txt"),
+             # api_instance$users_api$users_id_mute(var_id, mute_user_request = var_mute_user_request, data_file = "result.txt"),
              api_instance$users_api$users_id_mute(var_id, mute_user_request = var_mute_user_request),
              ApiException = function(ex) ex
           )
@@ -1097,13 +1097,13 @@ var_user_fields <- list("created_at") # set[character] | A comma separated list 
 var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
 var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 
-#Returns User objects that are muted by the provided User ID
+# Returns User objects that are muted by the provided User ID
 api_instance <- twitter_api$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-             # api_instance$users_id_muting(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
+             # api_instance$users_api$users_id_muting(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
              api_instance$users_api$users_id_muting(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
              ApiException = function(ex) ex
           )
@@ -1165,13 +1165,13 @@ library(twitter)
 var_source_user_id <- "source_user_id_example" # character | The ID of the authenticated source User that is requesting to unblock the target User.
 var_target_user_id <- "target_user_id_example" # character | The ID of the User that the source User is requesting to unblock.
 
-#Unblock User by User ID
+# Unblock User by User ID
 api_instance <- twitter_api$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-             # api_instance$users_id_unblock(var_source_user_id, var_target_user_id, data_file = "result.txt"),
+             # api_instance$users_api$users_id_unblock(var_source_user_id, var_target_user_id, data_file = "result.txt"),
              api_instance$users_api$users_id_unblock(var_source_user_id, var_target_user_id),
              ApiException = function(ex) ex
           )
@@ -1229,13 +1229,13 @@ library(twitter)
 var_source_user_id <- "source_user_id_example" # character | The ID of the authenticated source User that is requesting to unfollow the target User.
 var_target_user_id <- "target_user_id_example" # character | The ID of the User that the source User is requesting to unfollow.
 
-#Unfollow User
+# Unfollow User
 api_instance <- twitter_api$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-             # api_instance$users_id_unfollow(var_source_user_id, var_target_user_id, data_file = "result.txt"),
+             # api_instance$users_api$users_id_unfollow(var_source_user_id, var_target_user_id, data_file = "result.txt"),
              api_instance$users_api$users_id_unfollow(var_source_user_id, var_target_user_id),
              ApiException = function(ex) ex
           )
@@ -1293,13 +1293,13 @@ library(twitter)
 var_source_user_id <- "source_user_id_example" # character | The ID of the authenticated source User that is requesting to unmute the target User.
 var_target_user_id <- "target_user_id_example" # character | The ID of the User that the source User is requesting to unmute.
 
-#Unmute User by User ID
+# Unmute User by User ID
 api_instance <- twitter_api$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-             # api_instance$users_id_unmute(var_source_user_id, var_target_user_id, data_file = "result.txt"),
+             # api_instance$users_api$users_id_unmute(var_source_user_id, var_target_user_id, data_file = "result.txt"),
              api_instance$users_api$users_id_unmute(var_source_user_id, var_target_user_id),
              ApiException = function(ex) ex
           )
