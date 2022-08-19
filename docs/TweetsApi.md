@@ -550,6 +550,8 @@ api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$get_tweets_firehose_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
+             # this endpoint supports data streaming via a callback function using the optional `stream_callback` parameter, e.g.
+             # api_instance$get_tweets_firehose_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, stream_callback = function(x){ print(length(x)) }),
              api_instance$tweets_api$get_tweets_firehose_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
              ApiException = function(ex) ex
           )
@@ -630,6 +632,8 @@ api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$get_tweets_sample10_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
+             # this endpoint supports data streaming via a callback function using the optional `stream_callback` parameter, e.g.
+             # api_instance$get_tweets_sample10_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, stream_callback = function(x){ print(length(x)) }),
              api_instance$tweets_api$get_tweets_sample10_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
              ApiException = function(ex) ex
           )
@@ -851,6 +855,8 @@ api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$sample_stream(backfill_minutes = var_backfill_minutes, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
+             # this endpoint supports data streaming via a callback function using the optional `stream_callback` parameter, e.g.
+             # api_instance$sample_stream(backfill_minutes = var_backfill_minutes, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, stream_callback = function(x){ print(length(x)) }),
              api_instance$tweets_api$sample_stream(backfill_minutes = var_backfill_minutes, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
              ApiException = function(ex) ex
           )
@@ -927,6 +933,8 @@ api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$search_stream(backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
+             # this endpoint supports data streaming via a callback function using the optional `stream_callback` parameter, e.g.
+             # api_instance$search_stream(backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, stream_callback = function(x){ print(length(x)) }),
              api_instance$tweets_api$search_stream(backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
              ApiException = function(ex) ex
           )

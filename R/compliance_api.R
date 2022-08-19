@@ -594,12 +594,17 @@ ComplianceApi <- R6::R6Class(
     #' @param backfill_minutes (optional) The number of minutes of backfill requested.
     #' @param start_time (optional) YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweet Compliance events will be provided.
     #' @param end_time (optional) YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweet Compliance events will be provided.
+    #' @param stream_callback (optional) callback function to process the data stream
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @return TweetComplianceStreamResponse
     #' @export
-    get_tweets_compliance_stream = function(partition, backfill_minutes = NULL, start_time = NULL, end_time = NULL, data_file = NULL, ...) {
-      local_var_response <- self$get_tweets_compliance_stream_with_http_info(partition, backfill_minutes, start_time, end_time, data_file = data_file, ...)
+    get_tweets_compliance_stream = function(partition, backfill_minutes = NULL, start_time = NULL, end_time = NULL, stream_callback = NULL, data_file = NULL, ...) {
+      local_var_response <- self$get_tweets_compliance_stream_with_http_info(partition, backfill_minutes, start_time, end_time, stream_callback = stream_callback, data_file = data_file, ...)
+      if (typeof(stream_callback) == "closure") { # return void if streaming is enabled
+        return(invisible(NULL))
+      }
+
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         local_var_response$content
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -619,11 +624,12 @@ ComplianceApi <- R6::R6Class(
     #' @param backfill_minutes (optional) The number of minutes of backfill requested.
     #' @param start_time (optional) YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweet Compliance events will be provided.
     #' @param end_time (optional) YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweet Compliance events will be provided.
+    #' @param stream_callback (optional) callback function to process the data stream
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @return API response (TweetComplianceStreamResponse) with additional information such as HTTP status code, headers
     #' @export
-    get_tweets_compliance_stream_with_http_info = function(partition, backfill_minutes = NULL, start_time = NULL, end_time = NULL, data_file = NULL, ...) {
+    get_tweets_compliance_stream_with_http_info = function(partition, backfill_minutes = NULL, start_time = NULL, end_time = NULL, stream_callback = NULL, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -699,7 +705,12 @@ ComplianceApi <- R6::R6Class(
                                  body = local_var_body,
                                  is_oauth = is_oauth,
                                  oauth_scopes = oauth_scopes,
+                                 stream_callback = stream_callback,
                                  ...)
+
+      if (typeof(stream_callback) == "closure") { # return void if streaming is enabled
+        return(invisible(NULL))
+      }
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -752,12 +763,17 @@ ComplianceApi <- R6::R6Class(
     #' @param backfill_minutes (optional) The number of minutes of backfill requested.
     #' @param start_time (optional) YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the User Compliance events will be provided.
     #' @param end_time (optional) YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp from which the User Compliance events will be provided.
+    #' @param stream_callback (optional) callback function to process the data stream
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @return UserComplianceStreamResponse
     #' @export
-    get_users_compliance_stream = function(partition, backfill_minutes = NULL, start_time = NULL, end_time = NULL, data_file = NULL, ...) {
-      local_var_response <- self$get_users_compliance_stream_with_http_info(partition, backfill_minutes, start_time, end_time, data_file = data_file, ...)
+    get_users_compliance_stream = function(partition, backfill_minutes = NULL, start_time = NULL, end_time = NULL, stream_callback = NULL, data_file = NULL, ...) {
+      local_var_response <- self$get_users_compliance_stream_with_http_info(partition, backfill_minutes, start_time, end_time, stream_callback = stream_callback, data_file = data_file, ...)
+      if (typeof(stream_callback) == "closure") { # return void if streaming is enabled
+        return(invisible(NULL))
+      }
+
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         local_var_response$content
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -777,11 +793,12 @@ ComplianceApi <- R6::R6Class(
     #' @param backfill_minutes (optional) The number of minutes of backfill requested.
     #' @param start_time (optional) YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the User Compliance events will be provided.
     #' @param end_time (optional) YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp from which the User Compliance events will be provided.
+    #' @param stream_callback (optional) callback function to process the data stream
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @return API response (UserComplianceStreamResponse) with additional information such as HTTP status code, headers
     #' @export
-    get_users_compliance_stream_with_http_info = function(partition, backfill_minutes = NULL, start_time = NULL, end_time = NULL, data_file = NULL, ...) {
+    get_users_compliance_stream_with_http_info = function(partition, backfill_minutes = NULL, start_time = NULL, end_time = NULL, stream_callback = NULL, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -857,7 +874,12 @@ ComplianceApi <- R6::R6Class(
                                  body = local_var_body,
                                  is_oauth = is_oauth,
                                  oauth_scopes = oauth_scopes,
+                                 stream_callback = stream_callback,
                                  ...)
+
+      if (typeof(stream_callback) == "closure") { # return void if streaming is enabled
+        return(invisible(NULL))
+      }
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file

@@ -160,6 +160,8 @@ api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$get_tweets_compliance_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, data_file = "result.txt"),
+             # this endpoint supports data streaming via a callback function using the optional `stream_callback` parameter, e.g.
+             # api_instance$get_tweets_compliance_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, stream_callback = function(x){ print(length(x)) }),
              api_instance$compliance_api$get_tweets_compliance_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time),
              ApiException = function(ex) ex
           )
@@ -228,6 +230,8 @@ api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$get_users_compliance_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, data_file = "result.txt"),
+             # this endpoint supports data streaming via a callback function using the optional `stream_callback` parameter, e.g.
+             # api_instance$get_users_compliance_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, stream_callback = function(x){ print(length(x)) }),
              api_instance$compliance_api$get_users_compliance_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time),
              ApiException = function(ex) ex
           )

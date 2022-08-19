@@ -3025,12 +3025,17 @@ TweetsApi <- R6::R6Class(
     #' @param poll_fields (optional) A comma separated list of Poll fields to display.
     #' @param user_fields (optional) A comma separated list of User fields to display.
     #' @param place_fields (optional) A comma separated list of Place fields to display.
+    #' @param stream_callback (optional) callback function to process the data stream
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @return StreamingTweetResponse
     #' @export
-    get_tweets_firehose_stream = function(partition, backfill_minutes = NULL, start_time = NULL, end_time = NULL, tweet_fields = NULL, expansions = NULL, media_fields = NULL, poll_fields = NULL, user_fields = NULL, place_fields = NULL, data_file = NULL, ...) {
-      local_var_response <- self$get_tweets_firehose_stream_with_http_info(partition, backfill_minutes, start_time, end_time, tweet_fields, expansions, media_fields, poll_fields, user_fields, place_fields, data_file = data_file, ...)
+    get_tweets_firehose_stream = function(partition, backfill_minutes = NULL, start_time = NULL, end_time = NULL, tweet_fields = NULL, expansions = NULL, media_fields = NULL, poll_fields = NULL, user_fields = NULL, place_fields = NULL, stream_callback = NULL, data_file = NULL, ...) {
+      local_var_response <- self$get_tweets_firehose_stream_with_http_info(partition, backfill_minutes, start_time, end_time, tweet_fields, expansions, media_fields, poll_fields, user_fields, place_fields, stream_callback = stream_callback, data_file = data_file, ...)
+      if (typeof(stream_callback) == "closure") { # return void if streaming is enabled
+        return(invisible(NULL))
+      }
+
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         local_var_response$content
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -3056,11 +3061,12 @@ TweetsApi <- R6::R6Class(
     #' @param poll_fields (optional) A comma separated list of Poll fields to display.
     #' @param user_fields (optional) A comma separated list of User fields to display.
     #' @param place_fields (optional) A comma separated list of Place fields to display.
+    #' @param stream_callback (optional) callback function to process the data stream
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @return API response (StreamingTweetResponse) with additional information such as HTTP status code, headers
     #' @export
-    get_tweets_firehose_stream_with_http_info = function(partition, backfill_minutes = NULL, start_time = NULL, end_time = NULL, tweet_fields = NULL, expansions = NULL, media_fields = NULL, poll_fields = NULL, user_fields = NULL, place_fields = NULL, data_file = NULL, ...) {
+    get_tweets_firehose_stream_with_http_info = function(partition, backfill_minutes = NULL, start_time = NULL, end_time = NULL, tweet_fields = NULL, expansions = NULL, media_fields = NULL, poll_fields = NULL, user_fields = NULL, place_fields = NULL, stream_callback = NULL, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -3190,7 +3196,12 @@ TweetsApi <- R6::R6Class(
                                  body = local_var_body,
                                  is_oauth = is_oauth,
                                  oauth_scopes = oauth_scopes,
+                                 stream_callback = stream_callback,
                                  ...)
+
+      if (typeof(stream_callback) == "closure") { # return void if streaming is enabled
+        return(invisible(NULL))
+      }
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -3249,12 +3260,17 @@ TweetsApi <- R6::R6Class(
     #' @param poll_fields (optional) A comma separated list of Poll fields to display.
     #' @param user_fields (optional) A comma separated list of User fields to display.
     #' @param place_fields (optional) A comma separated list of Place fields to display.
+    #' @param stream_callback (optional) callback function to process the data stream
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @return Get2TweetsSample10StreamResponse
     #' @export
-    get_tweets_sample10_stream = function(partition, backfill_minutes = NULL, start_time = NULL, end_time = NULL, tweet_fields = NULL, expansions = NULL, media_fields = NULL, poll_fields = NULL, user_fields = NULL, place_fields = NULL, data_file = NULL, ...) {
-      local_var_response <- self$get_tweets_sample10_stream_with_http_info(partition, backfill_minutes, start_time, end_time, tweet_fields, expansions, media_fields, poll_fields, user_fields, place_fields, data_file = data_file, ...)
+    get_tweets_sample10_stream = function(partition, backfill_minutes = NULL, start_time = NULL, end_time = NULL, tweet_fields = NULL, expansions = NULL, media_fields = NULL, poll_fields = NULL, user_fields = NULL, place_fields = NULL, stream_callback = NULL, data_file = NULL, ...) {
+      local_var_response <- self$get_tweets_sample10_stream_with_http_info(partition, backfill_minutes, start_time, end_time, tweet_fields, expansions, media_fields, poll_fields, user_fields, place_fields, stream_callback = stream_callback, data_file = data_file, ...)
+      if (typeof(stream_callback) == "closure") { # return void if streaming is enabled
+        return(invisible(NULL))
+      }
+
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         local_var_response$content
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -3280,11 +3296,12 @@ TweetsApi <- R6::R6Class(
     #' @param poll_fields (optional) A comma separated list of Poll fields to display.
     #' @param user_fields (optional) A comma separated list of User fields to display.
     #' @param place_fields (optional) A comma separated list of Place fields to display.
+    #' @param stream_callback (optional) callback function to process the data stream
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @return API response (Get2TweetsSample10StreamResponse) with additional information such as HTTP status code, headers
     #' @export
-    get_tweets_sample10_stream_with_http_info = function(partition, backfill_minutes = NULL, start_time = NULL, end_time = NULL, tweet_fields = NULL, expansions = NULL, media_fields = NULL, poll_fields = NULL, user_fields = NULL, place_fields = NULL, data_file = NULL, ...) {
+    get_tweets_sample10_stream_with_http_info = function(partition, backfill_minutes = NULL, start_time = NULL, end_time = NULL, tweet_fields = NULL, expansions = NULL, media_fields = NULL, poll_fields = NULL, user_fields = NULL, place_fields = NULL, stream_callback = NULL, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -3414,7 +3431,12 @@ TweetsApi <- R6::R6Class(
                                  body = local_var_body,
                                  is_oauth = is_oauth,
                                  oauth_scopes = oauth_scopes,
+                                 stream_callback = stream_callback,
                                  ...)
+
+      if (typeof(stream_callback) == "closure") { # return void if streaming is enabled
+        return(invisible(NULL))
+      }
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -3829,12 +3851,17 @@ TweetsApi <- R6::R6Class(
     #' @param poll_fields (optional) A comma separated list of Poll fields to display.
     #' @param user_fields (optional) A comma separated list of User fields to display.
     #' @param place_fields (optional) A comma separated list of Place fields to display.
+    #' @param stream_callback (optional) callback function to process the data stream
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @return StreamingTweetResponse
     #' @export
-    sample_stream = function(backfill_minutes = NULL, tweet_fields = NULL, expansions = NULL, media_fields = NULL, poll_fields = NULL, user_fields = NULL, place_fields = NULL, data_file = NULL, ...) {
-      local_var_response <- self$sample_stream_with_http_info(backfill_minutes, tweet_fields, expansions, media_fields, poll_fields, user_fields, place_fields, data_file = data_file, ...)
+    sample_stream = function(backfill_minutes = NULL, tweet_fields = NULL, expansions = NULL, media_fields = NULL, poll_fields = NULL, user_fields = NULL, place_fields = NULL, stream_callback = NULL, data_file = NULL, ...) {
+      local_var_response <- self$sample_stream_with_http_info(backfill_minutes, tweet_fields, expansions, media_fields, poll_fields, user_fields, place_fields, stream_callback = stream_callback, data_file = data_file, ...)
+      if (typeof(stream_callback) == "closure") { # return void if streaming is enabled
+        return(invisible(NULL))
+      }
+
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         local_var_response$content
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -3857,11 +3884,12 @@ TweetsApi <- R6::R6Class(
     #' @param poll_fields (optional) A comma separated list of Poll fields to display.
     #' @param user_fields (optional) A comma separated list of User fields to display.
     #' @param place_fields (optional) A comma separated list of Place fields to display.
+    #' @param stream_callback (optional) callback function to process the data stream
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @return API response (StreamingTweetResponse) with additional information such as HTTP status code, headers
     #' @export
-    sample_stream_with_http_info = function(backfill_minutes = NULL, tweet_fields = NULL, expansions = NULL, media_fields = NULL, poll_fields = NULL, user_fields = NULL, place_fields = NULL, data_file = NULL, ...) {
+    sample_stream_with_http_info = function(backfill_minutes = NULL, tweet_fields = NULL, expansions = NULL, media_fields = NULL, poll_fields = NULL, user_fields = NULL, place_fields = NULL, stream_callback = NULL, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -3963,7 +3991,12 @@ TweetsApi <- R6::R6Class(
                                  body = local_var_body,
                                  is_oauth = is_oauth,
                                  oauth_scopes = oauth_scopes,
+                                 stream_callback = stream_callback,
                                  ...)
+
+      if (typeof(stream_callback) == "closure") { # return void if streaming is enabled
+        return(invisible(NULL))
+      }
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -4021,12 +4054,17 @@ TweetsApi <- R6::R6Class(
     #' @param poll_fields (optional) A comma separated list of Poll fields to display.
     #' @param user_fields (optional) A comma separated list of User fields to display.
     #' @param place_fields (optional) A comma separated list of Place fields to display.
+    #' @param stream_callback (optional) callback function to process the data stream
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @return FilteredStreamingTweetResponse
     #' @export
-    search_stream = function(backfill_minutes = NULL, start_time = NULL, end_time = NULL, tweet_fields = NULL, expansions = NULL, media_fields = NULL, poll_fields = NULL, user_fields = NULL, place_fields = NULL, data_file = NULL, ...) {
-      local_var_response <- self$search_stream_with_http_info(backfill_minutes, start_time, end_time, tweet_fields, expansions, media_fields, poll_fields, user_fields, place_fields, data_file = data_file, ...)
+    search_stream = function(backfill_minutes = NULL, start_time = NULL, end_time = NULL, tweet_fields = NULL, expansions = NULL, media_fields = NULL, poll_fields = NULL, user_fields = NULL, place_fields = NULL, stream_callback = NULL, data_file = NULL, ...) {
+      local_var_response <- self$search_stream_with_http_info(backfill_minutes, start_time, end_time, tweet_fields, expansions, media_fields, poll_fields, user_fields, place_fields, stream_callback = stream_callback, data_file = data_file, ...)
+      if (typeof(stream_callback) == "closure") { # return void if streaming is enabled
+        return(invisible(NULL))
+      }
+
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         local_var_response$content
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -4051,11 +4089,12 @@ TweetsApi <- R6::R6Class(
     #' @param poll_fields (optional) A comma separated list of Poll fields to display.
     #' @param user_fields (optional) A comma separated list of User fields to display.
     #' @param place_fields (optional) A comma separated list of Place fields to display.
+    #' @param stream_callback (optional) callback function to process the data stream
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @return API response (FilteredStreamingTweetResponse) with additional information such as HTTP status code, headers
     #' @export
-    search_stream_with_http_info = function(backfill_minutes = NULL, start_time = NULL, end_time = NULL, tweet_fields = NULL, expansions = NULL, media_fields = NULL, poll_fields = NULL, user_fields = NULL, place_fields = NULL, data_file = NULL, ...) {
+    search_stream_with_http_info = function(backfill_minutes = NULL, start_time = NULL, end_time = NULL, tweet_fields = NULL, expansions = NULL, media_fields = NULL, poll_fields = NULL, user_fields = NULL, place_fields = NULL, stream_callback = NULL, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -4163,7 +4202,12 @@ TweetsApi <- R6::R6Class(
                                  body = local_var_body,
                                  is_oauth = is_oauth,
                                  oauth_scopes = oauth_scopes,
+                                 stream_callback = stream_callback,
                                  ...)
+
+      if (typeof(stream_callback) == "closure") { # return void if streaming is enabled
+        return(invisible(NULL))
+      }
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
