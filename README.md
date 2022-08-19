@@ -398,31 +398,26 @@ Class | Method | HTTP request | Description
 - **Authorization URL**: https://api.twitter.com/2/oauth2/authorize
 - **Token URL**: https://api.twitter.com/2/oauth2/token
 - **Scopes**: 
-  - block.read: Accounts you’ve blocked.
-  - block.write: Block and unblock accounts for you.
-  - bookmark.read: Allows an app to read bookmarked Tweets
-  - bookmark.write: Allows an app to create and delete bookmarks
-  - follows.read: People who follow you and people who you follow.
-  - follows.write: Follow and unfollow people for you.
-  - like.read: Tweets you’ve liked and likes you can view.
-  - like.write: Like and un-like Tweets for you.
-  - list.read: Lists, list members, and list followers of lists you’ve created or are a member of, including private lists.
-  - list.write: Create and manage Lists for you.
-  - mute.read: Accounts you’ve muted.
-  - mute.write: Mute and unmute accounts for you.
-  - offline.access: App can request refresh token.
-  - space.read: Access all of the Spaces you can see.
-  - tweet.moderate.write: Hide and unhide replies to your Tweets.
-  - tweet.read: All the Tweets you can see, including Tweets from protected accounts.
-  - tweet.write: Tweet and retweet for you.
-  - users.read: Any account you can see, including protected accounts. Any account you can see, including protected accounts.
+  - `block.read`: Accounts you’ve blocked.
+  - `block.write`: Block and unblock accounts for you.
+  - `bookmark.read`: Allows an app to read bookmarked Tweets
+  - `bookmark.write`: Allows an app to create and delete bookmarks
+  - `follows.read`: People who follow you and people who you follow.
+  - `follows.write`: Follow and unfollow people for you.
+  - `like.read`: Tweets you’ve liked and likes you can view.
+  - `like.write`: Like and un-like Tweets for you.
+  - `list.read`: Lists, list members, and list followers of lists you’ve created or are a member of, including private lists.
+  - `list.write`: Create and manage Lists for you.
+  - `mute.read`: Accounts you’ve muted.
+  - `mute.write`: Mute and unmute accounts for you.
+  - `offline.access`: App can request refresh token.
+  - `space.read`: Access all of the Spaces you can see.
+  - `tweet.moderate.write`: Hide and unhide replies to your Tweets.
+  - `tweet.read`: All the Tweets you can see, including Tweets from protected accounts.
+  - `tweet.write`: Tweet and retweet for you.
+  - `users.read`: Any account you can see, including protected accounts. Any account you can see, including protected accounts.
 
 ### UserToken
-
-
-
-
-## Author
 
 
 

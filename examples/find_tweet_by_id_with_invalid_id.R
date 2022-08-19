@@ -1,7 +1,7 @@
 # 1. follow the installation instruction in the README to build the Twitter R module
 # 2. put the bearer token obtained from Twitter developer portal (https://developer.twitter.com/) in the environment variable BEARER_TOKEN
 # 3. run the script:
-#    Rscript examples/script_name.R
+#    Rscript examples/find_tweet_by_id_with_invalid_id.R
 library(twitter)
 
 # provide a invalid tweet ID and we should get an exception
