@@ -46,7 +46,7 @@ if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `find_space_by_id`:")
   dput(result$ApiException$toString())
   # error object
-  dput(result$ApiException$error_object)
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -118,7 +118,7 @@ if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `find_spaces_by_creator_ids`:")
   dput(result$ApiException$toString())
   # error object
-  dput(result$ApiException$error_object)
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -190,7 +190,7 @@ if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `find_spaces_by_ids`:")
   dput(result$ApiException$toString())
   # error object
-  dput(result$ApiException$error_object)
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -264,7 +264,7 @@ if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `search_spaces`:")
   dput(result$ApiException$toString())
   # error object
-  dput(result$ApiException$error_object)
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -337,7 +337,7 @@ if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `space_buyers`:")
   dput(result$ApiException$toString())
   # error object
-  dput(result$ApiException$error_object)
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")
@@ -413,7 +413,7 @@ if (!is.null(result$ApiException)) {
   print("Exception occurs when calling `space_tweets`:")
   dput(result$ApiException$toString())
   # error object
-  dput(result$ApiException$error_object)
+  dput(result$ApiException$error_object$toJSONString())
 } else {
   # deserialized response object
   print("The response is ...")

@@ -49,6 +49,18 @@ TweetComplianceStreamResponse <- R6::R6Class(
     #'
     #' @description
     #' Deserialize JSON string into an instance of TweetComplianceStreamResponse.
+    #' An alias to the method `fromJSON` .
+    #'
+    #' @param input The input JSON.
+    #' @return An instance of TweetComplianceStreamResponse.
+    #' @export
+    fromJSONString = function(input) {
+      self$fromJSON(input)
+    },
+    #' Deserialize JSON string into an instance of TweetComplianceStreamResponse.
+    #'
+    #' @description
+    #' Deserialize JSON string into an instance of TweetComplianceStreamResponse.
     #'
     #' @param input The input JSON.
     #' @return An instance of TweetComplianceStreamResponse.

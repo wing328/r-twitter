@@ -49,6 +49,18 @@ AddOrDeleteRulesRequest <- R6::R6Class(
     #'
     #' @description
     #' Deserialize JSON string into an instance of AddOrDeleteRulesRequest.
+    #' An alias to the method `fromJSON` .
+    #'
+    #' @param input The input JSON.
+    #' @return An instance of AddOrDeleteRulesRequest.
+    #' @export
+    fromJSONString = function(input) {
+      self$fromJSON(input)
+    },
+    #' Deserialize JSON string into an instance of AddOrDeleteRulesRequest.
+    #'
+    #' @description
+    #' Deserialize JSON string into an instance of AddOrDeleteRulesRequest.
     #'
     #' @param input The input JSON.
     #' @return An instance of AddOrDeleteRulesRequest.
