@@ -7,7 +7,7 @@
 #'
 #' @docType class
 #' @title General operations
-#' @description twitter.General
+#' @description 
 #' @format An \code{R6Class} generator object
 #' @field api_client Handles the client-server communication.
 #'
@@ -39,23 +39,31 @@
 #' library(twitter)
 #'
 #' #Returns the OpenAPI Specification document.
-#' api.instance <- GeneralApi$new()
+#' api_instance <- twitter_api$new()
 #'
-#'result <- tryCatch(
-#'             api.instance$get_open_api_spec(),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$general_api$get_open_api_spec(data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$general_api$get_open_api_spec(),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `get_open_api_spec`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' }

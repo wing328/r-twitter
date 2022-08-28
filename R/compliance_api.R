@@ -7,7 +7,7 @@
 #'
 #' @docType class
 #' @title Compliance operations
-#' @description twitter.Compliance
+#' @description 
 #' @format An \code{R6Class} generator object
 #' @field api_client Handles the client-server communication.
 #'
@@ -155,150 +155,196 @@
 #' ####################  create_batch_compliance_job  ####################
 #'
 #' library(twitter)
-#' var.create_compliance_job_request <- CreateComplianceJobRequest$new() # CreateComplianceJobRequest | 
+#' var_create_compliance_job_request <- CreateComplianceJobRequest$new() # CreateComplianceJobRequest | 
 #'
 #' #Create compliance job
-#' api.instance <- ComplianceApi$new()
+#' api_instance <- twitter_api$new()
 #'
-#' #Configure HTTP bearer authorization: BearerToken
-#' api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+#' # Configure HTTP bearer authorization: BearerToken
+#' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
-#'result <- tryCatch(
-#'             api.instance$create_batch_compliance_job(var.create_compliance_job_request),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$compliance_api$create_batch_compliance_job(var_create_compliance_job_request, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$compliance_api$create_batch_compliance_job(var_create_compliance_job_request),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `create_batch_compliance_job`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  get_batch_compliance_job  ####################
 #'
 #' library(twitter)
-#' var.id <- "id_example" # character | The ID of the Compliance Job to retrieve.
-#' var.compliance_job_fields <- ["[\"created_at\",\"download_expires_at\",\"download_url\",\"id\",\"name\",\"resumable\",\"status\",\"type\",\"upload_expires_at\",\"upload_url\"]"] # set[character] | A comma separated list of ComplianceJob fields to display.
+#' var_id <- "id_example" # character | The ID of the Compliance Job to retrieve.
+#' var_compliance_job_fields <- ["[\"created_at\",\"download_expires_at\",\"download_url\",\"id\",\"name\",\"resumable\",\"status\",\"type\",\"upload_expires_at\",\"upload_url\"]"] # set[character] | A comma separated list of ComplianceJob fields to display.
 #'
 #' #Get Compliance Job
-#' api.instance <- ComplianceApi$new()
+#' api_instance <- twitter_api$new()
 #'
-#' #Configure HTTP bearer authorization: BearerToken
-#' api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+#' # Configure HTTP bearer authorization: BearerToken
+#' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
-#'result <- tryCatch(
-#'             api.instance$get_batch_compliance_job(var.id, compliance_job_fields=var.compliance_job_fields),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$compliance_api$get_batch_compliance_job(var_id, compliance_job_fields = var_compliance_job_fields, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$compliance_api$get_batch_compliance_job(var_id, compliance_job_fields = var_compliance_job_fields),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `get_batch_compliance_job`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  get_tweets_compliance_stream  ####################
 #'
 #' library(twitter)
-#' var.partition <- 56 # integer | The partition number.
-#' var.backfill_minutes <- 56 # integer | The number of minutes of backfill requested.
-#' var.start_time <- "2021-02-01T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweet Compliance events will be provided.
-#' var.end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweet Compliance events will be provided.
+#' var_partition <- 56 # integer | The partition number.
+#' var_backfill_minutes <- 56 # integer | The number of minutes of backfill requested.
+#' var_start_time <- "2021-02-01T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweet Compliance events will be provided.
+#' var_end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweet Compliance events will be provided.
 #'
 #' #Tweets Compliance stream
-#' api.instance <- ComplianceApi$new()
+#' api_instance <- twitter_api$new()
 #'
-#' #Configure HTTP bearer authorization: BearerToken
-#' api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+#' # Configure HTTP bearer authorization: BearerToken
+#' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
-#'result <- tryCatch(
-#'             api.instance$get_tweets_compliance_stream(var.partition, backfill_minutes=var.backfill_minutes, start_time=var.start_time, end_time=var.end_time),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$compliance_api$get_tweets_compliance_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, data_file = "result.txt"),
+#'              
+#'              # this endpoint supports data streaming via a callback function using the optional `stream_callback` parameter, e.g.
+#'              # api_instance$compliance_api$get_tweets_compliance_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, stream_callback = function(x){ print(length(x)) }),
+#'              
+#'              
+#'              api_instance$compliance_api$get_tweets_compliance_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `get_tweets_compliance_stream`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  get_users_compliance_stream  ####################
 #'
 #' library(twitter)
-#' var.partition <- 56 # integer | The partition number.
-#' var.backfill_minutes <- 56 # integer | The number of minutes of backfill requested.
-#' var.start_time <- "2021-02-01T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the User Compliance events will be provided.
-#' var.end_time <- "2021-02-01T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp from which the User Compliance events will be provided.
+#' var_partition <- 56 # integer | The partition number.
+#' var_backfill_minutes <- 56 # integer | The number of minutes of backfill requested.
+#' var_start_time <- "2021-02-01T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the User Compliance events will be provided.
+#' var_end_time <- "2021-02-01T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp from which the User Compliance events will be provided.
 #'
 #' #Users Compliance stream
-#' api.instance <- ComplianceApi$new()
+#' api_instance <- twitter_api$new()
 #'
-#' #Configure HTTP bearer authorization: BearerToken
-#' api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+#' # Configure HTTP bearer authorization: BearerToken
+#' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
-#'result <- tryCatch(
-#'             api.instance$get_users_compliance_stream(var.partition, backfill_minutes=var.backfill_minutes, start_time=var.start_time, end_time=var.end_time),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$compliance_api$get_users_compliance_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, data_file = "result.txt"),
+#'              
+#'              # this endpoint supports data streaming via a callback function using the optional `stream_callback` parameter, e.g.
+#'              # api_instance$compliance_api$get_users_compliance_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, stream_callback = function(x){ print(length(x)) }),
+#'              
+#'              
+#'              api_instance$compliance_api$get_users_compliance_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `get_users_compliance_stream`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  list_batch_compliance_jobs  ####################
 #'
 #' library(twitter)
-#' var.type <- "type_example" # character | Type of Compliance Job to list.
-#' var.status <- "status_example" # character | Status of Compliance Job to list.
-#' var.compliance_job_fields <- ["[\"created_at\",\"download_expires_at\",\"download_url\",\"id\",\"name\",\"resumable\",\"status\",\"type\",\"upload_expires_at\",\"upload_url\"]"] # set[character] | A comma separated list of ComplianceJob fields to display.
+#' var_type <- "type_example" # character | Type of Compliance Job to list.
+#' var_status <- "status_example" # character | Status of Compliance Job to list.
+#' var_compliance_job_fields <- ["[\"created_at\",\"download_expires_at\",\"download_url\",\"id\",\"name\",\"resumable\",\"status\",\"type\",\"upload_expires_at\",\"upload_url\"]"] # set[character] | A comma separated list of ComplianceJob fields to display.
 #'
 #' #List Compliance Jobs
-#' api.instance <- ComplianceApi$new()
+#' api_instance <- twitter_api$new()
 #'
-#' #Configure HTTP bearer authorization: BearerToken
-#' api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+#' # Configure HTTP bearer authorization: BearerToken
+#' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
-#'result <- tryCatch(
-#'             api.instance$list_batch_compliance_jobs(var.type, status=var.status, compliance_job_fields=var.compliance_job_fields),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$compliance_api$list_batch_compliance_jobs(var_type, status = var_status, compliance_job_fields = var_compliance_job_fields, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$compliance_api$list_batch_compliance_jobs(var_type, status = var_status, compliance_job_fields = var_compliance_job_fields),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `list_batch_compliance_jobs`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' }

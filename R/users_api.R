@@ -7,7 +7,7 @@
 #'
 #' @docType class
 #' @title Users operations
-#' @description twitter.Users
+#' @description 
 #' @format An \code{R6Class} generator object
 #' @field api_client Handles the client-server communication.
 #'
@@ -556,642 +556,794 @@
 #' ####################  find_my_user  ####################
 #'
 #' library(twitter)
-#' var.user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var.expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
+#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
+#' var_expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
+#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
 #'
 #' #User lookup me
-#' api.instance <- UsersApi$new()
+#' api_instance <- twitter_api$new()
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
-#' api.instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+#' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #'
-#'result <- tryCatch(
-#'             api.instance$find_my_user(user_fields=var.user_fields, expansions=var.expansions, tweet_fields=var.tweet_fields),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$users_api$find_my_user(user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$users_api$find_my_user(user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `find_my_user`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  find_user_by_id  ####################
 #'
 #' library(twitter)
-#' var.id <- "2244994945" # character | The ID of the User to lookup.
-#' var.user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var.expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
+#' var_id <- "2244994945" # character | The ID of the User to lookup.
+#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
+#' var_expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
+#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
 #'
 #' #User lookup by ID
-#' api.instance <- UsersApi$new()
+#' api_instance <- twitter_api$new()
 #'
-#' #Configure HTTP bearer authorization: BearerToken
-#' api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+#' # Configure HTTP bearer authorization: BearerToken
+#' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
-#' api.instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+#' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #'
-#'result <- tryCatch(
-#'             api.instance$find_user_by_id(var.id, user_fields=var.user_fields, expansions=var.expansions, tweet_fields=var.tweet_fields),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$users_api$find_user_by_id(var_id, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$users_api$find_user_by_id(var_id, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `find_user_by_id`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  find_user_by_username  ####################
 #'
 #' library(twitter)
-#' var.username <- "TwitterDev" # character | A username.
-#' var.user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var.expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
+#' var_username <- "TwitterDev" # character | A username.
+#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
+#' var_expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
+#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
 #'
 #' #User lookup by username
-#' api.instance <- UsersApi$new()
+#' api_instance <- twitter_api$new()
 #'
-#' #Configure HTTP bearer authorization: BearerToken
-#' api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+#' # Configure HTTP bearer authorization: BearerToken
+#' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
-#' api.instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+#' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #'
-#'result <- tryCatch(
-#'             api.instance$find_user_by_username(var.username, user_fields=var.user_fields, expansions=var.expansions, tweet_fields=var.tweet_fields),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$users_api$find_user_by_username(var_username, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$users_api$find_user_by_username(var_username, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `find_user_by_username`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  find_users_by_id  ####################
 #'
 #' library(twitter)
-#' var.ids <- ["2244994945,6253282,12"] # array[character] | A list of User IDs, comma-separated. You can specify up to 100 IDs.
-#' var.user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var.expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
+#' var_ids <- ["2244994945,6253282,12"] # array[character] | A list of User IDs, comma-separated. You can specify up to 100 IDs.
+#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
+#' var_expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
+#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
 #'
 #' #User lookup by IDs
-#' api.instance <- UsersApi$new()
+#' api_instance <- twitter_api$new()
 #'
-#' #Configure HTTP bearer authorization: BearerToken
-#' api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+#' # Configure HTTP bearer authorization: BearerToken
+#' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
-#' api.instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+#' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #'
-#'result <- tryCatch(
-#'             api.instance$find_users_by_id(var.ids, user_fields=var.user_fields, expansions=var.expansions, tweet_fields=var.tweet_fields),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$users_api$find_users_by_id(var_ids, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$users_api$find_users_by_id(var_ids, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `find_users_by_id`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  find_users_by_username  ####################
 #'
 #' library(twitter)
-#' var.usernames <- ["TwitterDev,TwitterAPI"] # array[character] | A list of usernames, comma-separated.
-#' var.user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var.expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
+#' var_usernames <- ["TwitterDev,TwitterAPI"] # array[character] | A list of usernames, comma-separated.
+#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
+#' var_expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
+#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
 #'
 #' #User lookup by usernames
-#' api.instance <- UsersApi$new()
+#' api_instance <- twitter_api$new()
 #'
-#' #Configure HTTP bearer authorization: BearerToken
-#' api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+#' # Configure HTTP bearer authorization: BearerToken
+#' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
-#' api.instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+#' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #'
-#'result <- tryCatch(
-#'             api.instance$find_users_by_username(var.usernames, user_fields=var.user_fields, expansions=var.expansions, tweet_fields=var.tweet_fields),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$users_api$find_users_by_username(var_usernames, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$users_api$find_users_by_username(var_usernames, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `find_users_by_username`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  list_get_followers  ####################
 #'
 #' library(twitter)
-#' var.id <- "id_example" # character | The ID of the List.
-#' var.max_results <- 100 # integer | The maximum number of results.
-#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results.
-#' var.user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var.expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
+#' var_id <- "id_example" # character | The ID of the List.
+#' var_max_results <- 100 # integer | The maximum number of results.
+#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results.
+#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
+#' var_expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
+#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
 #'
 #' #Returns User objects that follow a List by the provided List ID
-#' api.instance <- UsersApi$new()
+#' api_instance <- twitter_api$new()
 #'
-#' #Configure HTTP bearer authorization: BearerToken
-#' api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+#' # Configure HTTP bearer authorization: BearerToken
+#' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
-#' api.instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+#' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #'
-#'result <- tryCatch(
-#'             api.instance$list_get_followers(var.id, max_results=var.max_results, pagination_token=var.pagination_token, user_fields=var.user_fields, expansions=var.expansions, tweet_fields=var.tweet_fields),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$users_api$list_get_followers(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$users_api$list_get_followers(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `list_get_followers`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  list_get_members  ####################
 #'
 #' library(twitter)
-#' var.id <- "id_example" # character | The ID of the List.
-#' var.max_results <- 100 # integer | The maximum number of results.
-#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results.
-#' var.user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var.expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
+#' var_id <- "id_example" # character | The ID of the List.
+#' var_max_results <- 100 # integer | The maximum number of results.
+#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results.
+#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
+#' var_expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
+#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
 #'
 #' #Returns User objects that are members of a List by the provided List ID.
-#' api.instance <- UsersApi$new()
+#' api_instance <- twitter_api$new()
 #'
-#' #Configure HTTP bearer authorization: BearerToken
-#' api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+#' # Configure HTTP bearer authorization: BearerToken
+#' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
-#' api.instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+#' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #'
-#'result <- tryCatch(
-#'             api.instance$list_get_members(var.id, max_results=var.max_results, pagination_token=var.pagination_token, user_fields=var.user_fields, expansions=var.expansions, tweet_fields=var.tweet_fields),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$users_api$list_get_members(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$users_api$list_get_members(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `list_get_members`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  tweets_id_liking_users  ####################
 #'
 #' library(twitter)
-#' var.id <- "id_example" # character | A single Tweet ID.
-#' var.max_results <- 100 # integer | The maximum number of results.
-#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results.
-#' var.user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var.expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
+#' var_id <- "id_example" # character | A single Tweet ID.
+#' var_max_results <- 100 # integer | The maximum number of results.
+#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results.
+#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
+#' var_expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
+#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
 #'
 #' #Returns User objects that have liked the provided Tweet ID
-#' api.instance <- UsersApi$new()
+#' api_instance <- twitter_api$new()
 #'
-#' #Configure HTTP bearer authorization: BearerToken
-#' api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+#' # Configure HTTP bearer authorization: BearerToken
+#' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
-#' api.instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+#' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #'
-#'result <- tryCatch(
-#'             api.instance$tweets_id_liking_users(var.id, max_results=var.max_results, pagination_token=var.pagination_token, user_fields=var.user_fields, expansions=var.expansions, tweet_fields=var.tweet_fields),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$users_api$tweets_id_liking_users(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$users_api$tweets_id_liking_users(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `tweets_id_liking_users`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  tweets_id_retweeting_users  ####################
 #'
 #' library(twitter)
-#' var.id <- "id_example" # character | A single Tweet ID.
-#' var.max_results <- 100 # integer | The maximum number of results.
-#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results.
-#' var.user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var.expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
+#' var_id <- "id_example" # character | A single Tweet ID.
+#' var_max_results <- 100 # integer | The maximum number of results.
+#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results.
+#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
+#' var_expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
+#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
 #'
 #' #Returns User objects that have retweeted the provided Tweet ID
-#' api.instance <- UsersApi$new()
+#' api_instance <- twitter_api$new()
 #'
-#' #Configure HTTP bearer authorization: BearerToken
-#' api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+#' # Configure HTTP bearer authorization: BearerToken
+#' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
-#' api.instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+#' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #'
-#'result <- tryCatch(
-#'             api.instance$tweets_id_retweeting_users(var.id, max_results=var.max_results, pagination_token=var.pagination_token, user_fields=var.user_fields, expansions=var.expansions, tweet_fields=var.tweet_fields),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$users_api$tweets_id_retweeting_users(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$users_api$tweets_id_retweeting_users(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `tweets_id_retweeting_users`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  users_id_block  ####################
 #'
 #' library(twitter)
-#' var.id <- "id_example" # character | The ID of the authenticated source User that is requesting to block the target User.
-#' var.block_user_request <- BlockUserRequest$new() # BlockUserRequest | 
+#' var_id <- "id_example" # character | The ID of the authenticated source User that is requesting to block the target User.
+#' var_block_user_request <- BlockUserRequest$new() # BlockUserRequest | 
 #'
 #' #Block User by User ID
-#' api.instance <- UsersApi$new()
+#' api_instance <- twitter_api$new()
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
-#' api.instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+#' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #'
-#'result <- tryCatch(
-#'             api.instance$users_id_block(var.id, var.block_user_request),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$users_api$users_id_block(var_id, var_block_user_request, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$users_api$users_id_block(var_id, var_block_user_request),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `users_id_block`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  users_id_blocking  ####################
 #'
 #' library(twitter)
-#' var.id <- "id_example" # character | The ID of the authenticated source User for whom to return results.
-#' var.max_results <- 56 # integer | The maximum number of results.
-#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results.
-#' var.user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var.expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
+#' var_id <- "id_example" # character | The ID of the authenticated source User for whom to return results.
+#' var_max_results <- 56 # integer | The maximum number of results.
+#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results.
+#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
+#' var_expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
+#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
 #'
 #' #Returns User objects that are blocked by provided User ID
-#' api.instance <- UsersApi$new()
+#' api_instance <- twitter_api$new()
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
-#' api.instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+#' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #'
-#'result <- tryCatch(
-#'             api.instance$users_id_blocking(var.id, max_results=var.max_results, pagination_token=var.pagination_token, user_fields=var.user_fields, expansions=var.expansions, tweet_fields=var.tweet_fields),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$users_api$users_id_blocking(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$users_api$users_id_blocking(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `users_id_blocking`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  users_id_follow  ####################
 #'
 #' library(twitter)
-#' var.id <- "id_example" # character | The ID of the authenticated source User that is requesting to follow the target User.
-#' var.users_following_create_request <- UsersFollowingCreateRequest$new() # UsersFollowingCreateRequest | 
+#' var_id <- "id_example" # character | The ID of the authenticated source User that is requesting to follow the target User.
+#' var_users_following_create_request <- UsersFollowingCreateRequest$new() # UsersFollowingCreateRequest | 
 #'
 #' #Follow User
-#' api.instance <- UsersApi$new()
+#' api_instance <- twitter_api$new()
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
-#' api.instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+#' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #'
-#'result <- tryCatch(
-#'             api.instance$users_id_follow(var.id, users_following_create_request=var.users_following_create_request),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$users_api$users_id_follow(var_id, users_following_create_request = var_users_following_create_request, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$users_api$users_id_follow(var_id, users_following_create_request = var_users_following_create_request),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `users_id_follow`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  users_id_followers  ####################
 #'
 #' library(twitter)
-#' var.id <- "2244994945" # character | The ID of the User to lookup.
-#' var.max_results <- 56 # integer | The maximum number of results.
-#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results.
-#' var.user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var.expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
+#' var_id <- "2244994945" # character | The ID of the User to lookup.
+#' var_max_results <- 56 # integer | The maximum number of results.
+#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results.
+#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
+#' var_expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
+#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
 #'
 #' #Returns User objects that follow a List by the provided User ID
-#' api.instance <- UsersApi$new()
+#' api_instance <- twitter_api$new()
 #'
-#' #Configure HTTP bearer authorization: BearerToken
-#' api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+#' # Configure HTTP bearer authorization: BearerToken
+#' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
-#' api.instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+#' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #'
-#'result <- tryCatch(
-#'             api.instance$users_id_followers(var.id, max_results=var.max_results, pagination_token=var.pagination_token, user_fields=var.user_fields, expansions=var.expansions, tweet_fields=var.tweet_fields),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$users_api$users_id_followers(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$users_api$users_id_followers(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `users_id_followers`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  users_id_following  ####################
 #'
 #' library(twitter)
-#' var.id <- "2244994945" # character | The ID of the User to lookup.
-#' var.max_results <- 56 # integer | The maximum number of results.
-#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results.
-#' var.user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var.expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
+#' var_id <- "2244994945" # character | The ID of the User to lookup.
+#' var_max_results <- 56 # integer | The maximum number of results.
+#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results.
+#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
+#' var_expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
+#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
 #'
 #' #Following by User ID
-#' api.instance <- UsersApi$new()
+#' api_instance <- twitter_api$new()
 #'
-#' #Configure HTTP bearer authorization: BearerToken
-#' api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+#' # Configure HTTP bearer authorization: BearerToken
+#' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
-#' api.instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+#' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #'
-#'result <- tryCatch(
-#'             api.instance$users_id_following(var.id, max_results=var.max_results, pagination_token=var.pagination_token, user_fields=var.user_fields, expansions=var.expansions, tweet_fields=var.tweet_fields),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$users_api$users_id_following(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$users_api$users_id_following(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `users_id_following`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  users_id_mute  ####################
 #'
 #' library(twitter)
-#' var.id <- "id_example" # character | The ID of the authenticated source User that is requesting to mute the target User.
-#' var.mute_user_request <- MuteUserRequest$new() # MuteUserRequest | 
+#' var_id <- "id_example" # character | The ID of the authenticated source User that is requesting to mute the target User.
+#' var_mute_user_request <- MuteUserRequest$new() # MuteUserRequest | 
 #'
 #' #Mute User by User ID.
-#' api.instance <- UsersApi$new()
+#' api_instance <- twitter_api$new()
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
-#' api.instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+#' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #'
-#'result <- tryCatch(
-#'             api.instance$users_id_mute(var.id, mute_user_request=var.mute_user_request),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$users_api$users_id_mute(var_id, mute_user_request = var_mute_user_request, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$users_api$users_id_mute(var_id, mute_user_request = var_mute_user_request),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `users_id_mute`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  users_id_muting  ####################
 #'
 #' library(twitter)
-#' var.id <- "id_example" # character | The ID of the authenticated source User for whom to return results.
-#' var.max_results <- 100 # integer | The maximum number of results.
-#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results.
-#' var.user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var.expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
+#' var_id <- "id_example" # character | The ID of the authenticated source User for whom to return results.
+#' var_max_results <- 100 # integer | The maximum number of results.
+#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results.
+#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
+#' var_expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
+#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
 #'
 #' #Returns User objects that are muted by the provided User ID
-#' api.instance <- UsersApi$new()
+#' api_instance <- twitter_api$new()
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
-#' api.instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+#' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #'
-#'result <- tryCatch(
-#'             api.instance$users_id_muting(var.id, max_results=var.max_results, pagination_token=var.pagination_token, user_fields=var.user_fields, expansions=var.expansions, tweet_fields=var.tweet_fields),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$users_api$users_id_muting(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$users_api$users_id_muting(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `users_id_muting`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  users_id_unblock  ####################
 #'
 #' library(twitter)
-#' var.source_user_id <- "source_user_id_example" # character | The ID of the authenticated source User that is requesting to unblock the target User.
-#' var.target_user_id <- "target_user_id_example" # character | The ID of the User that the source User is requesting to unblock.
+#' var_source_user_id <- "source_user_id_example" # character | The ID of the authenticated source User that is requesting to unblock the target User.
+#' var_target_user_id <- "target_user_id_example" # character | The ID of the User that the source User is requesting to unblock.
 #'
 #' #Unblock User by User ID
-#' api.instance <- UsersApi$new()
+#' api_instance <- twitter_api$new()
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
-#' api.instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+#' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #'
-#'result <- tryCatch(
-#'             api.instance$users_id_unblock(var.source_user_id, var.target_user_id),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$users_api$users_id_unblock(var_source_user_id, var_target_user_id, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$users_api$users_id_unblock(var_source_user_id, var_target_user_id),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `users_id_unblock`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  users_id_unfollow  ####################
 #'
 #' library(twitter)
-#' var.source_user_id <- "source_user_id_example" # character | The ID of the authenticated source User that is requesting to unfollow the target User.
-#' var.target_user_id <- "target_user_id_example" # character | The ID of the User that the source User is requesting to unfollow.
+#' var_source_user_id <- "source_user_id_example" # character | The ID of the authenticated source User that is requesting to unfollow the target User.
+#' var_target_user_id <- "target_user_id_example" # character | The ID of the User that the source User is requesting to unfollow.
 #'
 #' #Unfollow User
-#' api.instance <- UsersApi$new()
+#' api_instance <- twitter_api$new()
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
-#' api.instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+#' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #'
-#'result <- tryCatch(
-#'             api.instance$users_id_unfollow(var.source_user_id, var.target_user_id),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$users_api$users_id_unfollow(var_source_user_id, var_target_user_id, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$users_api$users_id_unfollow(var_source_user_id, var_target_user_id),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `users_id_unfollow`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  users_id_unmute  ####################
 #'
 #' library(twitter)
-#' var.source_user_id <- "source_user_id_example" # character | The ID of the authenticated source User that is requesting to unmute the target User.
-#' var.target_user_id <- "target_user_id_example" # character | The ID of the User that the source User is requesting to unmute.
+#' var_source_user_id <- "source_user_id_example" # character | The ID of the authenticated source User that is requesting to unmute the target User.
+#' var_target_user_id <- "target_user_id_example" # character | The ID of the User that the source User is requesting to unmute.
 #'
 #' #Unmute User by User ID
-#' api.instance <- UsersApi$new()
+#' api_instance <- twitter_api$new()
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
-#' api.instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+#' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #'
-#'result <- tryCatch(
-#'             api.instance$users_id_unmute(var.source_user_id, var.target_user_id),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$users_api$users_id_unmute(var_source_user_id, var_target_user_id, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$users_api$users_id_unmute(var_source_user_id, var_target_user_id),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `users_id_unmute`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' }

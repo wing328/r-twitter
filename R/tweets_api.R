@@ -7,7 +7,7 @@
 #'
 #' @docType class
 #' @title Tweets operations
-#' @description twitter.Tweets
+#' @description 
 #' @format An \code{R6Class} generator object
 #' @field api_client Handles the client-server communication.
 #'
@@ -867,971 +867,1199 @@
 #' ####################  add_or_delete_rules  ####################
 #'
 #' library(twitter)
-#' var.add_or_delete_rules_request <- AddOrDeleteRulesRequest$new() # AddOrDeleteRulesRequest | 
-#' var.dry_run <- "dry_run_example" # character | Dry Run can be used with both the add and delete action, with the expected result given, but without actually taking any action in the system (meaning the end state will always be as it was when the request was submitted). This is particularly useful to validate rule changes.
+#' var_add_or_delete_rules_request <- AddOrDeleteRulesRequest$new() # AddOrDeleteRulesRequest | 
+#' var_dry_run <- "dry_run_example" # character | Dry Run can be used with both the add and delete action, with the expected result given, but without actually taking any action in the system (meaning the end state will always be as it was when the request was submitted). This is particularly useful to validate rule changes.
 #'
 #' #Add/Delete rules
-#' api.instance <- TweetsApi$new()
+#' api_instance <- twitter_api$new()
 #'
-#' #Configure HTTP bearer authorization: BearerToken
-#' api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+#' # Configure HTTP bearer authorization: BearerToken
+#' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
-#'result <- tryCatch(
-#'             api.instance$add_or_delete_rules(var.add_or_delete_rules_request, dry_run=var.dry_run),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$tweets_api$add_or_delete_rules(var_add_or_delete_rules_request, dry_run = var_dry_run, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$tweets_api$add_or_delete_rules(var_add_or_delete_rules_request, dry_run = var_dry_run),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `add_or_delete_rules`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  create_tweet  ####################
 #'
 #' library(twitter)
-#' var.tweet_create_request <- TweetCreateRequest$new() # TweetCreateRequest | 
+#' var_tweet_create_request <- TweetCreateRequest$new() # TweetCreateRequest | 
 #'
 #' #Creation of a Tweet
-#' api.instance <- TweetsApi$new()
+#' api_instance <- twitter_api$new()
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
-#' api.instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+#' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #'
-#'result <- tryCatch(
-#'             api.instance$create_tweet(var.tweet_create_request),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$tweets_api$create_tweet(var_tweet_create_request, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$tweets_api$create_tweet(var_tweet_create_request),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `create_tweet`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  delete_tweet_by_id  ####################
 #'
 #' library(twitter)
-#' var.id <- "id_example" # character | The ID of the Tweet to be deleted.
+#' var_id <- "id_example" # character | The ID of the Tweet to be deleted.
 #'
 #' #Tweet delete by Tweet ID
-#' api.instance <- TweetsApi$new()
+#' api_instance <- twitter_api$new()
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
-#' api.instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+#' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #'
-#'result <- tryCatch(
-#'             api.instance$delete_tweet_by_id(var.id),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$tweets_api$delete_tweet_by_id(var_id, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$tweets_api$delete_tweet_by_id(var_id),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `delete_tweet_by_id`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  find_tweet_by_id  ####################
 #'
 #' library(twitter)
-#' var.id <- "id_example" # character | A single Tweet ID.
-#' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
-#' var.expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var.media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
-#' var.poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
-#' var.user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var.place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
+#' var_id <- "id_example" # character | A single Tweet ID.
+#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
+#' var_expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
+#' var_media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
+#' var_poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
+#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
+#' var_place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
 #'
 #' #Tweet lookup by Tweet ID
-#' api.instance <- TweetsApi$new()
+#' api_instance <- twitter_api$new()
 #'
-#' #Configure HTTP bearer authorization: BearerToken
-#' api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+#' # Configure HTTP bearer authorization: BearerToken
+#' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
-#' api.instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+#' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #'
-#'result <- tryCatch(
-#'             api.instance$find_tweet_by_id(var.id, tweet_fields=var.tweet_fields, expansions=var.expansions, media_fields=var.media_fields, poll_fields=var.poll_fields, user_fields=var.user_fields, place_fields=var.place_fields),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$tweets_api$find_tweet_by_id(var_id, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$tweets_api$find_tweet_by_id(var_id, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `find_tweet_by_id`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  find_tweets_by_id  ####################
 #'
 #' library(twitter)
-#' var.ids <- ["ids_example"] # array[character] | A comma separated list of Tweet IDs. Up to 100 are allowed in a single request.
-#' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
-#' var.expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var.media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
-#' var.poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
-#' var.user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var.place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
+#' var_ids <- ["ids_example"] # array[character] | A comma separated list of Tweet IDs. Up to 100 are allowed in a single request.
+#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
+#' var_expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
+#' var_media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
+#' var_poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
+#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
+#' var_place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
 #'
 #' #Tweet lookup by Tweet IDs
-#' api.instance <- TweetsApi$new()
+#' api_instance <- twitter_api$new()
 #'
-#' #Configure HTTP bearer authorization: BearerToken
-#' api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+#' # Configure HTTP bearer authorization: BearerToken
+#' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
-#' api.instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+#' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #'
-#'result <- tryCatch(
-#'             api.instance$find_tweets_by_id(var.ids, tweet_fields=var.tweet_fields, expansions=var.expansions, media_fields=var.media_fields, poll_fields=var.poll_fields, user_fields=var.user_fields, place_fields=var.place_fields),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$tweets_api$find_tweets_by_id(var_ids, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$tweets_api$find_tweets_by_id(var_ids, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `find_tweets_by_id`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  find_tweets_that_quote_a_tweet  ####################
 #'
 #' library(twitter)
-#' var.id <- "id_example" # character | A single Tweet ID.
-#' var.max_results <- 10 # integer | The maximum number of results to be returned.
-#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results.
-#' var.exclude <- ["[\"replies\",\"retweets\"]"] # set[character] | The set of entities to exclude (e.g. 'replies' or 'retweets').
-#' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
-#' var.expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var.media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
-#' var.poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
-#' var.user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var.place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
+#' var_id <- "id_example" # character | A single Tweet ID.
+#' var_max_results <- 10 # integer | The maximum number of results to be returned.
+#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results.
+#' var_exclude <- ["[\"replies\",\"retweets\"]"] # set[character] | The set of entities to exclude (e.g. 'replies' or 'retweets').
+#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
+#' var_expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
+#' var_media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
+#' var_poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
+#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
+#' var_place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
 #'
 #' #Retrieve Tweets that quote a Tweet.
-#' api.instance <- TweetsApi$new()
+#' api_instance <- twitter_api$new()
 #'
-#' #Configure HTTP bearer authorization: BearerToken
-#' api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+#' # Configure HTTP bearer authorization: BearerToken
+#' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
-#' api.instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+#' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #'
-#'result <- tryCatch(
-#'             api.instance$find_tweets_that_quote_a_tweet(var.id, max_results=var.max_results, pagination_token=var.pagination_token, exclude=var.exclude, tweet_fields=var.tweet_fields, expansions=var.expansions, media_fields=var.media_fields, poll_fields=var.poll_fields, user_fields=var.user_fields, place_fields=var.place_fields),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$tweets_api$find_tweets_that_quote_a_tweet(var_id, max_results = var_max_results, pagination_token = var_pagination_token, exclude = var_exclude, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$tweets_api$find_tweets_that_quote_a_tweet(var_id, max_results = var_max_results, pagination_token = var_pagination_token, exclude = var_exclude, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `find_tweets_that_quote_a_tweet`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  get_rules  ####################
 #'
 #' library(twitter)
-#' var.ids <- ["ids_example"] # array[character] | A comma-separated list of Rule IDs.
-#' var.max_results <- 1000 # integer | The maximum number of results.
-#' var.pagination_token <- "pagination_token_example" # character | This value is populated by passing the 'next_token' returned in a request to paginate through results.
+#' var_ids <- ["ids_example"] # array[character] | A comma-separated list of Rule IDs.
+#' var_max_results <- 1000 # integer | The maximum number of results.
+#' var_pagination_token <- "pagination_token_example" # character | This value is populated by passing the 'next_token' returned in a request to paginate through results.
 #'
 #' #Rules lookup
-#' api.instance <- TweetsApi$new()
+#' api_instance <- twitter_api$new()
 #'
-#' #Configure HTTP bearer authorization: BearerToken
-#' api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+#' # Configure HTTP bearer authorization: BearerToken
+#' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
-#'result <- tryCatch(
-#'             api.instance$get_rules(ids=var.ids, max_results=var.max_results, pagination_token=var.pagination_token),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$tweets_api$get_rules(ids = var_ids, max_results = var_max_results, pagination_token = var_pagination_token, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$tweets_api$get_rules(ids = var_ids, max_results = var_max_results, pagination_token = var_pagination_token),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `get_rules`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  get_tweets_firehose_stream  ####################
 #'
 #' library(twitter)
-#' var.partition <- 56 # integer | The partition number.
-#' var.backfill_minutes <- 56 # integer | The number of minutes of backfill requested.
-#' var.start_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp to which the Tweets will be provided.
-#' var.end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided.
-#' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
-#' var.expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var.media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
-#' var.poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
-#' var.user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var.place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
+#' var_partition <- 56 # integer | The partition number.
+#' var_backfill_minutes <- 56 # integer | The number of minutes of backfill requested.
+#' var_start_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp to which the Tweets will be provided.
+#' var_end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided.
+#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
+#' var_expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
+#' var_media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
+#' var_poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
+#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
+#' var_place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
 #'
 #' #Firehose stream
-#' api.instance <- TweetsApi$new()
+#' api_instance <- twitter_api$new()
 #'
-#' #Configure HTTP bearer authorization: BearerToken
-#' api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+#' # Configure HTTP bearer authorization: BearerToken
+#' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
-#'result <- tryCatch(
-#'             api.instance$get_tweets_firehose_stream(var.partition, backfill_minutes=var.backfill_minutes, start_time=var.start_time, end_time=var.end_time, tweet_fields=var.tweet_fields, expansions=var.expansions, media_fields=var.media_fields, poll_fields=var.poll_fields, user_fields=var.user_fields, place_fields=var.place_fields),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$tweets_api$get_tweets_firehose_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
+#'              
+#'              # this endpoint supports data streaming via a callback function using the optional `stream_callback` parameter, e.g.
+#'              # api_instance$tweets_api$get_tweets_firehose_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, stream_callback = function(x){ print(length(x)) }),
+#'              
+#'              
+#'              api_instance$tweets_api$get_tweets_firehose_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `get_tweets_firehose_stream`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  get_tweets_sample10_stream  ####################
 #'
 #' library(twitter)
-#' var.partition <- 56 # integer | The partition number.
-#' var.backfill_minutes <- 56 # integer | The number of minutes of backfill requested.
-#' var.start_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp to which the Tweets will be provided.
-#' var.end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided.
-#' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
-#' var.expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var.media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
-#' var.poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
-#' var.user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var.place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
+#' var_partition <- 56 # integer | The partition number.
+#' var_backfill_minutes <- 56 # integer | The number of minutes of backfill requested.
+#' var_start_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp to which the Tweets will be provided.
+#' var_end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided.
+#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
+#' var_expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
+#' var_media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
+#' var_poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
+#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
+#' var_place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
 #'
 #' #Sample 10% stream
-#' api.instance <- TweetsApi$new()
+#' api_instance <- twitter_api$new()
 #'
-#' #Configure HTTP bearer authorization: BearerToken
-#' api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+#' # Configure HTTP bearer authorization: BearerToken
+#' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
-#'result <- tryCatch(
-#'             api.instance$get_tweets_sample10_stream(var.partition, backfill_minutes=var.backfill_minutes, start_time=var.start_time, end_time=var.end_time, tweet_fields=var.tweet_fields, expansions=var.expansions, media_fields=var.media_fields, poll_fields=var.poll_fields, user_fields=var.user_fields, place_fields=var.place_fields),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$tweets_api$get_tweets_sample10_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
+#'              
+#'              # this endpoint supports data streaming via a callback function using the optional `stream_callback` parameter, e.g.
+#'              # api_instance$tweets_api$get_tweets_sample10_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, stream_callback = function(x){ print(length(x)) }),
+#'              
+#'              
+#'              api_instance$tweets_api$get_tweets_sample10_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `get_tweets_sample10_stream`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  hide_reply_by_id  ####################
 #'
 #' library(twitter)
-#' var.tweet_id <- "tweet_id_example" # character | The ID of the reply that you want to hide or unhide.
-#' var.tweet_hide_request <- TweetHideRequest$new() # TweetHideRequest | 
+#' var_tweet_id <- "tweet_id_example" # character | The ID of the reply that you want to hide or unhide.
+#' var_tweet_hide_request <- TweetHideRequest$new() # TweetHideRequest | 
 #'
 #' #Hide replies
-#' api.instance <- TweetsApi$new()
+#' api_instance <- twitter_api$new()
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
-#' api.instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+#' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #'
-#'result <- tryCatch(
-#'             api.instance$hide_reply_by_id(var.tweet_id, tweet_hide_request=var.tweet_hide_request),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$tweets_api$hide_reply_by_id(var_tweet_id, tweet_hide_request = var_tweet_hide_request, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$tweets_api$hide_reply_by_id(var_tweet_id, tweet_hide_request = var_tweet_hide_request),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `hide_reply_by_id`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  lists_id_tweets  ####################
 #'
 #' library(twitter)
-#' var.id <- "id_example" # character | The ID of the List.
-#' var.max_results <- 100 # integer | The maximum number of results.
-#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results.
-#' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
-#' var.expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var.media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
-#' var.poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
-#' var.user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var.place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
+#' var_id <- "id_example" # character | The ID of the List.
+#' var_max_results <- 100 # integer | The maximum number of results.
+#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results.
+#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
+#' var_expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
+#' var_media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
+#' var_poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
+#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
+#' var_place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
 #'
 #' #List Tweets timeline by List ID.
-#' api.instance <- TweetsApi$new()
+#' api_instance <- twitter_api$new()
 #'
-#' #Configure HTTP bearer authorization: BearerToken
-#' api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+#' # Configure HTTP bearer authorization: BearerToken
+#' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
-#' api.instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+#' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #'
-#'result <- tryCatch(
-#'             api.instance$lists_id_tweets(var.id, max_results=var.max_results, pagination_token=var.pagination_token, tweet_fields=var.tweet_fields, expansions=var.expansions, media_fields=var.media_fields, poll_fields=var.poll_fields, user_fields=var.user_fields, place_fields=var.place_fields),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$tweets_api$lists_id_tweets(var_id, max_results = var_max_results, pagination_token = var_pagination_token, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$tweets_api$lists_id_tweets(var_id, max_results = var_max_results, pagination_token = var_pagination_token, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `lists_id_tweets`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  sample_stream  ####################
 #'
 #' library(twitter)
-#' var.backfill_minutes <- 56 # integer | The number of minutes of backfill requested.
-#' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
-#' var.expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var.media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
-#' var.poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
-#' var.user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var.place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
+#' var_backfill_minutes <- 56 # integer | The number of minutes of backfill requested.
+#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
+#' var_expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
+#' var_media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
+#' var_poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
+#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
+#' var_place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
 #'
 #' #Sample stream
-#' api.instance <- TweetsApi$new()
+#' api_instance <- twitter_api$new()
 #'
-#' #Configure HTTP bearer authorization: BearerToken
-#' api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+#' # Configure HTTP bearer authorization: BearerToken
+#' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
-#'result <- tryCatch(
-#'             api.instance$sample_stream(backfill_minutes=var.backfill_minutes, tweet_fields=var.tweet_fields, expansions=var.expansions, media_fields=var.media_fields, poll_fields=var.poll_fields, user_fields=var.user_fields, place_fields=var.place_fields),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$tweets_api$sample_stream(backfill_minutes = var_backfill_minutes, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
+#'              
+#'              # this endpoint supports data streaming via a callback function using the optional `stream_callback` parameter, e.g.
+#'              # api_instance$tweets_api$sample_stream(backfill_minutes = var_backfill_minutes, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, stream_callback = function(x){ print(length(x)) }),
+#'              
+#'              
+#'              api_instance$tweets_api$sample_stream(backfill_minutes = var_backfill_minutes, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `sample_stream`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  search_stream  ####################
 #'
 #' library(twitter)
-#' var.backfill_minutes <- 56 # integer | The number of minutes of backfill requested.
-#' var.start_time <- "2021-02-01T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweets will be provided.
-#' var.end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided.
-#' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
-#' var.expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var.media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
-#' var.poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
-#' var.user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var.place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
+#' var_backfill_minutes <- 56 # integer | The number of minutes of backfill requested.
+#' var_start_time <- "2021-02-01T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweets will be provided.
+#' var_end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided.
+#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
+#' var_expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
+#' var_media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
+#' var_poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
+#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
+#' var_place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
 #'
 #' #Filtered stream
-#' api.instance <- TweetsApi$new()
+#' api_instance <- twitter_api$new()
 #'
-#' #Configure HTTP bearer authorization: BearerToken
-#' api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+#' # Configure HTTP bearer authorization: BearerToken
+#' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
-#'result <- tryCatch(
-#'             api.instance$search_stream(backfill_minutes=var.backfill_minutes, start_time=var.start_time, end_time=var.end_time, tweet_fields=var.tweet_fields, expansions=var.expansions, media_fields=var.media_fields, poll_fields=var.poll_fields, user_fields=var.user_fields, place_fields=var.place_fields),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$tweets_api$search_stream(backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
+#'              
+#'              # this endpoint supports data streaming via a callback function using the optional `stream_callback` parameter, e.g.
+#'              # api_instance$tweets_api$search_stream(backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, stream_callback = function(x){ print(length(x)) }),
+#'              
+#'              
+#'              api_instance$tweets_api$search_stream(backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `search_stream`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  space_buyers  ####################
 #'
 #' library(twitter)
-#' var.id <- "1YqKDqWqdPLsV" # character | The ID of the Space to be retrieved.
-#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results.
-#' var.max_results <- 100 # integer | The maximum number of results.
-#' var.user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var.expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
+#' var_id <- "1YqKDqWqdPLsV" # character | The ID of the Space to be retrieved.
+#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results.
+#' var_max_results <- 100 # integer | The maximum number of results.
+#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
+#' var_expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
+#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
 #'
 #' #Retrieve the list of Users who purchased a ticket to the given space
-#' api.instance <- TweetsApi$new()
+#' api_instance <- twitter_api$new()
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
-#' api.instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+#' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
-#'result <- tryCatch(
-#'             api.instance$space_buyers(var.id, pagination_token=var.pagination_token, max_results=var.max_results, user_fields=var.user_fields, expansions=var.expansions, tweet_fields=var.tweet_fields),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$tweets_api$space_buyers(var_id, pagination_token = var_pagination_token, max_results = var_max_results, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$tweets_api$space_buyers(var_id, pagination_token = var_pagination_token, max_results = var_max_results, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `space_buyers`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  space_tweets  ####################
 #'
 #' library(twitter)
-#' var.id <- "1YqKDqWqdPLsV" # character | The ID of the Space to be retrieved.
-#' var.max_results <- 100 # integer | The number of Tweets to fetch from the provided space. If not provided, the value will default to the maximum of 100.
-#' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
-#' var.expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var.media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
-#' var.poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
-#' var.user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var.place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
+#' var_id <- "1YqKDqWqdPLsV" # character | The ID of the Space to be retrieved.
+#' var_max_results <- 100 # integer | The number of Tweets to fetch from the provided space. If not provided, the value will default to the maximum of 100.
+#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
+#' var_expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
+#' var_media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
+#' var_poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
+#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
+#' var_place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
 #'
 #' #Retrieve Tweets from a Space.
-#' api.instance <- TweetsApi$new()
+#' api_instance <- twitter_api$new()
 #'
-#' #Configure HTTP bearer authorization: BearerToken
-#' api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+#' # Configure HTTP bearer authorization: BearerToken
+#' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
-#' api.instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+#' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
-#'result <- tryCatch(
-#'             api.instance$space_tweets(var.id, max_results=var.max_results, tweet_fields=var.tweet_fields, expansions=var.expansions, media_fields=var.media_fields, poll_fields=var.poll_fields, user_fields=var.user_fields, place_fields=var.place_fields),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$tweets_api$space_tweets(var_id, max_results = var_max_results, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$tweets_api$space_tweets(var_id, max_results = var_max_results, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `space_tweets`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  tweet_counts_full_archive_search  ####################
 #'
 #' library(twitter)
-#' var.query <- "(from:TwitterDev OR from:TwitterAPI) has:media -is:retweet" # character | One query/rule/filter for matching Tweets. Refer to https://t.co/rulelength to identify the max query length.
-#' var.start_time <- "start_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The oldest UTC timestamp (from most recent 7 days) from which the Tweets will be provided. Timestamp is in second granularity and is inclusive (i.e. 12:00:01 includes the first second of the minute).
-#' var.end_time <- "end_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The newest, most recent UTC timestamp to which the Tweets will be provided. Timestamp is in second granularity and is exclusive (i.e. 12:00:01 excludes the first second of the minute).
-#' var.since_id <- "since_id_example" # character | Returns results with a Tweet ID greater than (that is, more recent than) the specified ID.
-#' var.until_id <- "until_id_example" # character | Returns results with a Tweet ID less than (that is, older than) the specified ID.
-#' var.next_token <- "next_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
-#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
-#' var.granularity <- "hour" # character | The granularity for the search counts results.
-#' var.search_count_fields <- ["[\"end\",\"start\",\"tweet_count\"]"] # set[character] | A comma separated list of SearchCount fields to display.
+#' var_query <- "(from:TwitterDev OR from:TwitterAPI) has:media -is:retweet" # character | One query/rule/filter for matching Tweets. Refer to https://t.co/rulelength to identify the max query length.
+#' var_start_time <- "start_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The oldest UTC timestamp (from most recent 7 days) from which the Tweets will be provided. Timestamp is in second granularity and is inclusive (i.e. 12:00:01 includes the first second of the minute).
+#' var_end_time <- "end_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The newest, most recent UTC timestamp to which the Tweets will be provided. Timestamp is in second granularity and is exclusive (i.e. 12:00:01 excludes the first second of the minute).
+#' var_since_id <- "since_id_example" # character | Returns results with a Tweet ID greater than (that is, more recent than) the specified ID.
+#' var_until_id <- "until_id_example" # character | Returns results with a Tweet ID less than (that is, older than) the specified ID.
+#' var_next_token <- "next_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
+#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
+#' var_granularity <- "hour" # character | The granularity for the search counts results.
+#' var_search_count_fields <- ["[\"end\",\"start\",\"tweet_count\"]"] # set[character] | A comma separated list of SearchCount fields to display.
 #'
 #' #Full archive search counts
-#' api.instance <- TweetsApi$new()
+#' api_instance <- twitter_api$new()
 #'
-#' #Configure HTTP bearer authorization: BearerToken
-#' api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+#' # Configure HTTP bearer authorization: BearerToken
+#' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
-#'result <- tryCatch(
-#'             api.instance$tweet_counts_full_archive_search(var.query, start_time=var.start_time, end_time=var.end_time, since_id=var.since_id, until_id=var.until_id, next_token=var.next_token, pagination_token=var.pagination_token, granularity=var.granularity, search_count_fields=var.search_count_fields),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$tweets_api$tweet_counts_full_archive_search(var_query, start_time = var_start_time, end_time = var_end_time, since_id = var_since_id, until_id = var_until_id, next_token = var_next_token, pagination_token = var_pagination_token, granularity = var_granularity, search_count_fields = var_search_count_fields, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$tweets_api$tweet_counts_full_archive_search(var_query, start_time = var_start_time, end_time = var_end_time, since_id = var_since_id, until_id = var_until_id, next_token = var_next_token, pagination_token = var_pagination_token, granularity = var_granularity, search_count_fields = var_search_count_fields),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `tweet_counts_full_archive_search`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  tweet_counts_recent_search  ####################
 #'
 #' library(twitter)
-#' var.query <- "(from:TwitterDev OR from:TwitterAPI) has:media -is:retweet" # character | One query/rule/filter for matching Tweets. Refer to https://t.co/rulelength to identify the max query length.
-#' var.start_time <- "start_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The oldest UTC timestamp (from most recent 7 days) from which the Tweets will be provided. Timestamp is in second granularity and is inclusive (i.e. 12:00:01 includes the first second of the minute).
-#' var.end_time <- "end_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The newest, most recent UTC timestamp to which the Tweets will be provided. Timestamp is in second granularity and is exclusive (i.e. 12:00:01 excludes the first second of the minute).
-#' var.since_id <- "since_id_example" # character | Returns results with a Tweet ID greater than (that is, more recent than) the specified ID.
-#' var.until_id <- "until_id_example" # character | Returns results with a Tweet ID less than (that is, older than) the specified ID.
-#' var.next_token <- "next_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
-#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
-#' var.granularity <- "hour" # character | The granularity for the search counts results.
-#' var.search_count_fields <- ["[\"end\",\"start\",\"tweet_count\"]"] # set[character] | A comma separated list of SearchCount fields to display.
+#' var_query <- "(from:TwitterDev OR from:TwitterAPI) has:media -is:retweet" # character | One query/rule/filter for matching Tweets. Refer to https://t.co/rulelength to identify the max query length.
+#' var_start_time <- "start_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The oldest UTC timestamp (from most recent 7 days) from which the Tweets will be provided. Timestamp is in second granularity and is inclusive (i.e. 12:00:01 includes the first second of the minute).
+#' var_end_time <- "end_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The newest, most recent UTC timestamp to which the Tweets will be provided. Timestamp is in second granularity and is exclusive (i.e. 12:00:01 excludes the first second of the minute).
+#' var_since_id <- "since_id_example" # character | Returns results with a Tweet ID greater than (that is, more recent than) the specified ID.
+#' var_until_id <- "until_id_example" # character | Returns results with a Tweet ID less than (that is, older than) the specified ID.
+#' var_next_token <- "next_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
+#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
+#' var_granularity <- "hour" # character | The granularity for the search counts results.
+#' var_search_count_fields <- ["[\"end\",\"start\",\"tweet_count\"]"] # set[character] | A comma separated list of SearchCount fields to display.
 #'
 #' #Recent search counts
-#' api.instance <- TweetsApi$new()
+#' api_instance <- twitter_api$new()
 #'
-#' #Configure HTTP bearer authorization: BearerToken
-#' api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+#' # Configure HTTP bearer authorization: BearerToken
+#' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
-#'result <- tryCatch(
-#'             api.instance$tweet_counts_recent_search(var.query, start_time=var.start_time, end_time=var.end_time, since_id=var.since_id, until_id=var.until_id, next_token=var.next_token, pagination_token=var.pagination_token, granularity=var.granularity, search_count_fields=var.search_count_fields),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$tweets_api$tweet_counts_recent_search(var_query, start_time = var_start_time, end_time = var_end_time, since_id = var_since_id, until_id = var_until_id, next_token = var_next_token, pagination_token = var_pagination_token, granularity = var_granularity, search_count_fields = var_search_count_fields, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$tweets_api$tweet_counts_recent_search(var_query, start_time = var_start_time, end_time = var_end_time, since_id = var_since_id, until_id = var_until_id, next_token = var_next_token, pagination_token = var_pagination_token, granularity = var_granularity, search_count_fields = var_search_count_fields),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `tweet_counts_recent_search`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  tweets_fullarchive_search  ####################
 #'
 #' library(twitter)
-#' var.query <- "(from:TwitterDev OR from:TwitterAPI) has:media -is:retweet" # character | One query/rule/filter for matching Tweets. Refer to https://t.co/rulelength to identify the max query length.
-#' var.start_time <- "start_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The oldest UTC timestamp from which the Tweets will be provided. Timestamp is in second granularity and is inclusive (i.e. 12:00:01 includes the first second of the minute).
-#' var.end_time <- "end_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The newest, most recent UTC timestamp to which the Tweets will be provided. Timestamp is in second granularity and is exclusive (i.e. 12:00:01 excludes the first second of the minute).
-#' var.since_id <- "since_id_example" # character | Returns results with a Tweet ID greater than (that is, more recent than) the specified ID.
-#' var.until_id <- "until_id_example" # character | Returns results with a Tweet ID less than (that is, older than) the specified ID.
-#' var.max_results <- 10 # integer | The maximum number of search results to be returned by a request.
-#' var.next_token <- "next_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
-#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
-#' var.sort_order <- "sort_order_example" # character | This order in which to return results.
-#' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
-#' var.expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var.media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
-#' var.poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
-#' var.user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var.place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
+#' var_query <- "(from:TwitterDev OR from:TwitterAPI) has:media -is:retweet" # character | One query/rule/filter for matching Tweets. Refer to https://t.co/rulelength to identify the max query length.
+#' var_start_time <- "start_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The oldest UTC timestamp from which the Tweets will be provided. Timestamp is in second granularity and is inclusive (i.e. 12:00:01 includes the first second of the minute).
+#' var_end_time <- "end_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The newest, most recent UTC timestamp to which the Tweets will be provided. Timestamp is in second granularity and is exclusive (i.e. 12:00:01 excludes the first second of the minute).
+#' var_since_id <- "since_id_example" # character | Returns results with a Tweet ID greater than (that is, more recent than) the specified ID.
+#' var_until_id <- "until_id_example" # character | Returns results with a Tweet ID less than (that is, older than) the specified ID.
+#' var_max_results <- 10 # integer | The maximum number of search results to be returned by a request.
+#' var_next_token <- "next_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
+#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
+#' var_sort_order <- "sort_order_example" # character | This order in which to return results.
+#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
+#' var_expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
+#' var_media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
+#' var_poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
+#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
+#' var_place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
 #'
 #' #Full-archive search
-#' api.instance <- TweetsApi$new()
+#' api_instance <- twitter_api$new()
 #'
-#' #Configure HTTP bearer authorization: BearerToken
-#' api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+#' # Configure HTTP bearer authorization: BearerToken
+#' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
-#'result <- tryCatch(
-#'             api.instance$tweets_fullarchive_search(var.query, start_time=var.start_time, end_time=var.end_time, since_id=var.since_id, until_id=var.until_id, max_results=var.max_results, next_token=var.next_token, pagination_token=var.pagination_token, sort_order=var.sort_order, tweet_fields=var.tweet_fields, expansions=var.expansions, media_fields=var.media_fields, poll_fields=var.poll_fields, user_fields=var.user_fields, place_fields=var.place_fields),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$tweets_api$tweets_fullarchive_search(var_query, start_time = var_start_time, end_time = var_end_time, since_id = var_since_id, until_id = var_until_id, max_results = var_max_results, next_token = var_next_token, pagination_token = var_pagination_token, sort_order = var_sort_order, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$tweets_api$tweets_fullarchive_search(var_query, start_time = var_start_time, end_time = var_end_time, since_id = var_since_id, until_id = var_until_id, max_results = var_max_results, next_token = var_next_token, pagination_token = var_pagination_token, sort_order = var_sort_order, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `tweets_fullarchive_search`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  tweets_recent_search  ####################
 #'
 #' library(twitter)
-#' var.query <- "(from:TwitterDev OR from:TwitterAPI) has:media -is:retweet" # character | One query/rule/filter for matching Tweets. Refer to https://t.co/rulelength to identify the max query length.
-#' var.start_time <- "start_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The oldest UTC timestamp from which the Tweets will be provided. Timestamp is in second granularity and is inclusive (i.e. 12:00:01 includes the first second of the minute).
-#' var.end_time <- "end_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The newest, most recent UTC timestamp to which the Tweets will be provided. Timestamp is in second granularity and is exclusive (i.e. 12:00:01 excludes the first second of the minute).
-#' var.since_id <- "since_id_example" # character | Returns results with a Tweet ID greater than (that is, more recent than) the specified ID.
-#' var.until_id <- "until_id_example" # character | Returns results with a Tweet ID less than (that is, older than) the specified ID.
-#' var.max_results <- 10 # integer | The maximum number of search results to be returned by a request.
-#' var.next_token <- "next_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
-#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
-#' var.sort_order <- "sort_order_example" # character | This order in which to return results.
-#' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
-#' var.expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var.media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
-#' var.poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
-#' var.user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var.place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
+#' var_query <- "(from:TwitterDev OR from:TwitterAPI) has:media -is:retweet" # character | One query/rule/filter for matching Tweets. Refer to https://t.co/rulelength to identify the max query length.
+#' var_start_time <- "start_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The oldest UTC timestamp from which the Tweets will be provided. Timestamp is in second granularity and is inclusive (i.e. 12:00:01 includes the first second of the minute).
+#' var_end_time <- "end_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The newest, most recent UTC timestamp to which the Tweets will be provided. Timestamp is in second granularity and is exclusive (i.e. 12:00:01 excludes the first second of the minute).
+#' var_since_id <- "since_id_example" # character | Returns results with a Tweet ID greater than (that is, more recent than) the specified ID.
+#' var_until_id <- "until_id_example" # character | Returns results with a Tweet ID less than (that is, older than) the specified ID.
+#' var_max_results <- 10 # integer | The maximum number of search results to be returned by a request.
+#' var_next_token <- "next_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
+#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
+#' var_sort_order <- "sort_order_example" # character | This order in which to return results.
+#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
+#' var_expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
+#' var_media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
+#' var_poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
+#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
+#' var_place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
 #'
 #' #Recent search
-#' api.instance <- TweetsApi$new()
+#' api_instance <- twitter_api$new()
 #'
-#' #Configure HTTP bearer authorization: BearerToken
-#' api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+#' # Configure HTTP bearer authorization: BearerToken
+#' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
-#' api.instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+#' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #'
-#'result <- tryCatch(
-#'             api.instance$tweets_recent_search(var.query, start_time=var.start_time, end_time=var.end_time, since_id=var.since_id, until_id=var.until_id, max_results=var.max_results, next_token=var.next_token, pagination_token=var.pagination_token, sort_order=var.sort_order, tweet_fields=var.tweet_fields, expansions=var.expansions, media_fields=var.media_fields, poll_fields=var.poll_fields, user_fields=var.user_fields, place_fields=var.place_fields),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$tweets_api$tweets_recent_search(var_query, start_time = var_start_time, end_time = var_end_time, since_id = var_since_id, until_id = var_until_id, max_results = var_max_results, next_token = var_next_token, pagination_token = var_pagination_token, sort_order = var_sort_order, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$tweets_api$tweets_recent_search(var_query, start_time = var_start_time, end_time = var_end_time, since_id = var_since_id, until_id = var_until_id, max_results = var_max_results, next_token = var_next_token, pagination_token = var_pagination_token, sort_order = var_sort_order, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `tweets_recent_search`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  users_id_like  ####################
 #'
 #' library(twitter)
-#' var.id <- "id_example" # character | The ID of the authenticated source User that is requesting to like the Tweet.
-#' var.users_likes_create_request <- UsersLikesCreateRequest$new() # UsersLikesCreateRequest | 
+#' var_id <- "id_example" # character | The ID of the authenticated source User that is requesting to like the Tweet.
+#' var_users_likes_create_request <- UsersLikesCreateRequest$new() # UsersLikesCreateRequest | 
 #'
 #' #Causes the User (in the path) to like the specified Tweet
-#' api.instance <- TweetsApi$new()
+#' api_instance <- twitter_api$new()
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
-#' api.instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+#' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #'
-#'result <- tryCatch(
-#'             api.instance$users_id_like(var.id, users_likes_create_request=var.users_likes_create_request),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$tweets_api$users_id_like(var_id, users_likes_create_request = var_users_likes_create_request, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$tweets_api$users_id_like(var_id, users_likes_create_request = var_users_likes_create_request),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `users_id_like`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  users_id_liked_tweets  ####################
 #'
 #' library(twitter)
-#' var.id <- "2244994945" # character | The ID of the User to lookup.
-#' var.max_results <- 56 # integer | The maximum number of results.
-#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results.
-#' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
-#' var.expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var.media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
-#' var.poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
-#' var.user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var.place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
+#' var_id <- "2244994945" # character | The ID of the User to lookup.
+#' var_max_results <- 56 # integer | The maximum number of results.
+#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results.
+#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
+#' var_expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
+#' var_media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
+#' var_poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
+#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
+#' var_place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
 #'
 #' #Returns Tweet objects liked by the provided User ID
-#' api.instance <- TweetsApi$new()
+#' api_instance <- twitter_api$new()
 #'
-#' #Configure HTTP bearer authorization: BearerToken
-#' api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+#' # Configure HTTP bearer authorization: BearerToken
+#' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
-#' api.instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+#' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #'
-#'result <- tryCatch(
-#'             api.instance$users_id_liked_tweets(var.id, max_results=var.max_results, pagination_token=var.pagination_token, tweet_fields=var.tweet_fields, expansions=var.expansions, media_fields=var.media_fields, poll_fields=var.poll_fields, user_fields=var.user_fields, place_fields=var.place_fields),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$tweets_api$users_id_liked_tweets(var_id, max_results = var_max_results, pagination_token = var_pagination_token, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$tweets_api$users_id_liked_tweets(var_id, max_results = var_max_results, pagination_token = var_pagination_token, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `users_id_liked_tweets`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  users_id_mentions  ####################
 #'
 #' library(twitter)
-#' var.id <- "2244994945" # character | The ID of the User to lookup.
-#' var.since_id <- "since_id_example" # character | The minimum Tweet ID to be included in the result set. This parameter takes precedence over start_time if both are specified.
-#' var.until_id <- "1346889436626259968" # character | The maximum Tweet ID to be included in the result set. This parameter takes precedence over end_time if both are specified.
-#' var.max_results <- 56 # integer | The maximum number of results.
-#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results.
-#' var.start_time <- "2021-02-01T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweets will be provided. The since_id parameter takes precedence if it is also specified.
-#' var.end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided. The until_id parameter takes precedence if it is also specified.
-#' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
-#' var.expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var.media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
-#' var.poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
-#' var.user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var.place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
+#' var_id <- "2244994945" # character | The ID of the User to lookup.
+#' var_since_id <- "since_id_example" # character | The minimum Tweet ID to be included in the result set. This parameter takes precedence over start_time if both are specified.
+#' var_until_id <- "1346889436626259968" # character | The maximum Tweet ID to be included in the result set. This parameter takes precedence over end_time if both are specified.
+#' var_max_results <- 56 # integer | The maximum number of results.
+#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results.
+#' var_start_time <- "2021-02-01T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweets will be provided. The since_id parameter takes precedence if it is also specified.
+#' var_end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided. The until_id parameter takes precedence if it is also specified.
+#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
+#' var_expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
+#' var_media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
+#' var_poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
+#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
+#' var_place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
 #'
 #' #User mention timeline by User ID
-#' api.instance <- TweetsApi$new()
+#' api_instance <- twitter_api$new()
 #'
-#' #Configure HTTP bearer authorization: BearerToken
-#' api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+#' # Configure HTTP bearer authorization: BearerToken
+#' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
-#' api.instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+#' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #'
-#'result <- tryCatch(
-#'             api.instance$users_id_mentions(var.id, since_id=var.since_id, until_id=var.until_id, max_results=var.max_results, pagination_token=var.pagination_token, start_time=var.start_time, end_time=var.end_time, tweet_fields=var.tweet_fields, expansions=var.expansions, media_fields=var.media_fields, poll_fields=var.poll_fields, user_fields=var.user_fields, place_fields=var.place_fields),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$tweets_api$users_id_mentions(var_id, since_id = var_since_id, until_id = var_until_id, max_results = var_max_results, pagination_token = var_pagination_token, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$tweets_api$users_id_mentions(var_id, since_id = var_since_id, until_id = var_until_id, max_results = var_max_results, pagination_token = var_pagination_token, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `users_id_mentions`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  users_id_retweets  ####################
 #'
 #' library(twitter)
-#' var.id <- "id_example" # character | The ID of the authenticated source User that is requesting to retweet the Tweet.
-#' var.users_retweets_create_request <- UsersRetweetsCreateRequest$new() # UsersRetweetsCreateRequest | 
+#' var_id <- "id_example" # character | The ID of the authenticated source User that is requesting to retweet the Tweet.
+#' var_users_retweets_create_request <- UsersRetweetsCreateRequest$new() # UsersRetweetsCreateRequest | 
 #'
 #' #Causes the User (in the path) to retweet the specified Tweet.
-#' api.instance <- TweetsApi$new()
+#' api_instance <- twitter_api$new()
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
-#' api.instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+#' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #'
-#'result <- tryCatch(
-#'             api.instance$users_id_retweets(var.id, users_retweets_create_request=var.users_retweets_create_request),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$tweets_api$users_id_retweets(var_id, users_retweets_create_request = var_users_retweets_create_request, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$tweets_api$users_id_retweets(var_id, users_retweets_create_request = var_users_retweets_create_request),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `users_id_retweets`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  users_id_timeline  ####################
 #'
 #' library(twitter)
-#' var.id <- "id_example" # character | The ID of the authenticated source User to list Reverse Chronological Timeline Tweets of.
-#' var.since_id <- "791775337160081409" # character | The minimum Tweet ID to be included in the result set. This parameter takes precedence over start_time if both are specified.
-#' var.until_id <- "1346889436626259968" # character | The maximum Tweet ID to be included in the result set. This parameter takes precedence over end_time if both are specified.
-#' var.max_results <- 56 # integer | The maximum number of results.
-#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results.
-#' var.exclude <- ["[\"replies\",\"retweets\"]"] # set[character] | The set of entities to exclude (e.g. 'replies' or 'retweets').
-#' var.start_time <- "2021-02-01T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweets will be provided. The since_id parameter takes precedence if it is also specified.
-#' var.end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided. The until_id parameter takes precedence if it is also specified.
-#' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
-#' var.expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var.media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
-#' var.poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
-#' var.user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var.place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
+#' var_id <- "id_example" # character | The ID of the authenticated source User to list Reverse Chronological Timeline Tweets of.
+#' var_since_id <- "791775337160081409" # character | The minimum Tweet ID to be included in the result set. This parameter takes precedence over start_time if both are specified.
+#' var_until_id <- "1346889436626259968" # character | The maximum Tweet ID to be included in the result set. This parameter takes precedence over end_time if both are specified.
+#' var_max_results <- 56 # integer | The maximum number of results.
+#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results.
+#' var_exclude <- ["[\"replies\",\"retweets\"]"] # set[character] | The set of entities to exclude (e.g. 'replies' or 'retweets').
+#' var_start_time <- "2021-02-01T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweets will be provided. The since_id parameter takes precedence if it is also specified.
+#' var_end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided. The until_id parameter takes precedence if it is also specified.
+#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
+#' var_expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
+#' var_media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
+#' var_poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
+#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
+#' var_place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
 #'
 #' #User home timeline by User ID
-#' api.instance <- TweetsApi$new()
+#' api_instance <- twitter_api$new()
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
-#' api.instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+#' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #'
-#'result <- tryCatch(
-#'             api.instance$users_id_timeline(var.id, since_id=var.since_id, until_id=var.until_id, max_results=var.max_results, pagination_token=var.pagination_token, exclude=var.exclude, start_time=var.start_time, end_time=var.end_time, tweet_fields=var.tweet_fields, expansions=var.expansions, media_fields=var.media_fields, poll_fields=var.poll_fields, user_fields=var.user_fields, place_fields=var.place_fields),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$tweets_api$users_id_timeline(var_id, since_id = var_since_id, until_id = var_until_id, max_results = var_max_results, pagination_token = var_pagination_token, exclude = var_exclude, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$tweets_api$users_id_timeline(var_id, since_id = var_since_id, until_id = var_until_id, max_results = var_max_results, pagination_token = var_pagination_token, exclude = var_exclude, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `users_id_timeline`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  users_id_tweets  ####################
 #'
 #' library(twitter)
-#' var.id <- "2244994945" # character | The ID of the User to lookup.
-#' var.since_id <- "791775337160081409" # character | The minimum Tweet ID to be included in the result set. This parameter takes precedence over start_time if both are specified.
-#' var.until_id <- "1346889436626259968" # character | The maximum Tweet ID to be included in the result set. This parameter takes precedence over end_time if both are specified.
-#' var.max_results <- 56 # integer | The maximum number of results.
-#' var.pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results.
-#' var.exclude <- ["[\"replies\",\"retweets\"]"] # set[character] | The set of entities to exclude (e.g. 'replies' or 'retweets').
-#' var.start_time <- "2021-02-01T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweets will be provided. The since_id parameter takes precedence if it is also specified.
-#' var.end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided. The until_id parameter takes precedence if it is also specified.
-#' var.tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
-#' var.expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var.media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
-#' var.poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
-#' var.user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var.place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
+#' var_id <- "2244994945" # character | The ID of the User to lookup.
+#' var_since_id <- "791775337160081409" # character | The minimum Tweet ID to be included in the result set. This parameter takes precedence over start_time if both are specified.
+#' var_until_id <- "1346889436626259968" # character | The maximum Tweet ID to be included in the result set. This parameter takes precedence over end_time if both are specified.
+#' var_max_results <- 56 # integer | The maximum number of results.
+#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results.
+#' var_exclude <- ["[\"replies\",\"retweets\"]"] # set[character] | The set of entities to exclude (e.g. 'replies' or 'retweets').
+#' var_start_time <- "2021-02-01T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweets will be provided. The since_id parameter takes precedence if it is also specified.
+#' var_end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided. The until_id parameter takes precedence if it is also specified.
+#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
+#' var_expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
+#' var_media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
+#' var_poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
+#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
+#' var_place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
 #'
 #' #User Tweets timeline by User ID
-#' api.instance <- TweetsApi$new()
+#' api_instance <- twitter_api$new()
 #'
-#' #Configure HTTP bearer authorization: BearerToken
-#' api.instance$api_client$bearer_token <- 'TODO_YOUR_BEARER_TOKEN';
+#' # Configure HTTP bearer authorization: BearerToken
+#' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
-#' api.instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+#' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #'
-#'result <- tryCatch(
-#'             api.instance$users_id_tweets(var.id, since_id=var.since_id, until_id=var.until_id, max_results=var.max_results, pagination_token=var.pagination_token, exclude=var.exclude, start_time=var.start_time, end_time=var.end_time, tweet_fields=var.tweet_fields, expansions=var.expansions, media_fields=var.media_fields, poll_fields=var.poll_fields, user_fields=var.user_fields, place_fields=var.place_fields),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$tweets_api$users_id_tweets(var_id, since_id = var_since_id, until_id = var_until_id, max_results = var_max_results, pagination_token = var_pagination_token, exclude = var_exclude, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$tweets_api$users_id_tweets(var_id, since_id = var_since_id, until_id = var_until_id, max_results = var_max_results, pagination_token = var_pagination_token, exclude = var_exclude, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `users_id_tweets`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  users_id_unlike  ####################
 #'
 #' library(twitter)
-#' var.id <- "id_example" # character | The ID of the authenticated source User that is requesting to unlike the Tweet.
-#' var.tweet_id <- "tweet_id_example" # character | The ID of the Tweet that the User is requesting to unlike.
+#' var_id <- "id_example" # character | The ID of the authenticated source User that is requesting to unlike the Tweet.
+#' var_tweet_id <- "tweet_id_example" # character | The ID of the Tweet that the User is requesting to unlike.
 #'
 #' #Causes the User (in the path) to unlike the specified Tweet
-#' api.instance <- TweetsApi$new()
+#' api_instance <- twitter_api$new()
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
-#' api.instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+#' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #'
-#'result <- tryCatch(
-#'             api.instance$users_id_unlike(var.id, var.tweet_id),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$tweets_api$users_id_unlike(var_id, var_tweet_id, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$tweets_api$users_id_unlike(var_id, var_tweet_id),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `users_id_unlike`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' ####################  users_id_unretweets  ####################
 #'
 #' library(twitter)
-#' var.id <- "id_example" # character | The ID of the authenticated source User that is requesting to retweet the Tweet.
-#' var.source_tweet_id <- "source_tweet_id_example" # character | The ID of the Tweet that the User is requesting to unretweet.
+#' var_id <- "id_example" # character | The ID of the authenticated source User that is requesting to retweet the Tweet.
+#' var_source_tweet_id <- "source_tweet_id_example" # character | The ID of the Tweet that the User is requesting to unretweet.
 #'
 #' #Causes the User (in the path) to unretweet the specified Tweet
-#' api.instance <- TweetsApi$new()
+#' api_instance <- twitter_api$new()
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
-#' api.instance$api_client$access_token <- 'TODO_YOUR_ACCESS_TOKEN';
+#' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #'
-#'result <- tryCatch(
-#'             api.instance$users_id_unretweets(var.id, var.source_tweet_id),
-#'             ApiException = function(ex) ex
-#'          )
+#' result <- tryCatch(
+#'              
+#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'              # api_instance$tweets_api$users_id_unretweets(var_id, var_source_tweet_id, data_file = "result.txt"),
+#'              
+#'              
+#'              api_instance$tweets_api$users_id_unretweets(var_id, var_source_tweet_id),
+#'              ApiException = function(ex) ex
+#'           )
 #' # In case of error, print the error object
-#' if(!is.null(result$ApiException)) {
-#'   cat(result$ApiException$toString())
+#' if (!is.null(result$ApiException)) {
+#'   print("Exception occurs when calling `users_id_unretweets`:")
+#'   dput(result$ApiException$toString())
+#'   
+#'   # error object
+#'   dput(result$ApiException$error_object$toJSONString())
+#'   
 #' } else {
-#' # deserialized response object
-#' response.object <- result$content
-#' # response headers
-#' response.headers <- result$response$headers
-#' # response status code
-#' response.status.code <- result$response$status_code
+#'   # deserialized response object
+#'   print("The response is ...")
+#'   dput(result$toString())
 #' }
+#'
 #'
 #'
 #' }
