@@ -274,6 +274,25 @@ FullTextEntities <- R6::R6Class(
 
       invalid_fields
     }
-  )
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
+
+# Unlock the class to allow modifications of the method or field
+FullTextEntities$unlock()
+
+#' Print the object
+#'
+#' @description
+#' Print the object
+#'
+#' @export
+FullTextEntities$set("public", "print", function(...) {
+  print(jsonlite::prettify(self$toJSONString()))
+  invisible(self)
+})
+
+# Lock the class to prevent modifications to the method or field
+FullTextEntities$lock()
 

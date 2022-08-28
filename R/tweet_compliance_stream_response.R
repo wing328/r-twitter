@@ -173,5 +173,25 @@ TweetComplianceStreamResponse <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       as.character(jsonlite::prettify(paste("{", jsoncontent, "}", sep = "")))
     }
-  )
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
+
+# Unlock the class to allow modifications of the method or field
+TweetComplianceStreamResponse$unlock()
+
+#' Print the object
+#'
+#' @description
+#' Print the object
+#'
+#' @export
+TweetComplianceStreamResponse$set("public", "print", function(...) {
+  print(jsonlite::prettify(self$toJSONString()))
+  invisible(self)
+})
+
+# Lock the class to prevent modifications to the method or field
+TweetComplianceStreamResponse$lock()
+
