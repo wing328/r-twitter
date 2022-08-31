@@ -8,6 +8,7 @@
 #' @description AddRulesRequest Class
 #' @format An \code{R6Class} generator object
 #' @field add  list(\link{RuleNoId})
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -15,21 +16,28 @@ AddRulesRequest <- R6::R6Class(
   "AddRulesRequest",
   public = list(
     `add` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new AddRulesRequest class.
     #'
     #' @description
     #' Initialize a new AddRulesRequest class.
     #'
     #' @param add add
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `add`, ...
+        `add`, additional_properties = NULL, ...
     ) {
       if (!missing(`add`)) {
         stopifnot(is.vector(`add`), length(`add`) != 0)
         sapply(`add`, function(x) stopifnot(R6::is.R6(x)))
         self$`add` <- `add`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -44,6 +52,9 @@ AddRulesRequest <- R6::R6Class(
       if (!is.null(self$`add`)) {
         AddRulesRequestObject[["add"]] <-
           lapply(self$`add`, function(x) x$toJSON())
+      }
+      for (key in names(self$additional_properties)) {
+        AddRulesRequestObject[[key]] <- self$additional_properties[[key]]
       }
 
       AddRulesRequestObject
@@ -82,7 +93,12 @@ AddRulesRequest <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of AddRulesRequest
     #'

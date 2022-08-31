@@ -13,6 +13,7 @@
 #' @field type  character
 #' @field id  character [optional]
 #' @field value  character [optional]
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -26,6 +27,7 @@ DuplicateRuleProblem <- R6::R6Class(
     `type` = NULL,
     `id` = NULL,
     `value` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new DuplicateRuleProblem class.
     #'
     #' @description
@@ -37,10 +39,11 @@ DuplicateRuleProblem <- R6::R6Class(
     #' @param status status
     #' @param id id
     #' @param value value
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `title`, `type`, `detail` = NULL, `status` = NULL, `id` = NULL, `value` = NULL, ...
+        `title`, `type`, `detail` = NULL, `status` = NULL, `id` = NULL, `value` = NULL, additional_properties = NULL, ...
     ) {
       if (!missing(`title`)) {
         stopifnot(is.character(`title`), length(`title`) == 1)
@@ -65,6 +68,11 @@ DuplicateRuleProblem <- R6::R6Class(
       if (!is.null(`value`)) {
         stopifnot(is.character(`value`), length(`value`) == 1)
         self$`value` <- `value`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -99,6 +107,9 @@ DuplicateRuleProblem <- R6::R6Class(
       if (!is.null(self$`value`)) {
         DuplicateRuleProblemObject[["value"]] <-
           self$`value`
+      }
+      for (key in names(self$additional_properties)) {
+        DuplicateRuleProblemObject[[key]] <- self$additional_properties[[key]]
       }
 
       DuplicateRuleProblemObject
@@ -192,7 +203,12 @@ DuplicateRuleProblem <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of DuplicateRuleProblem
     #'

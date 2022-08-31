@@ -10,6 +10,7 @@
 #' @field end  character
 #' @field start  character
 #' @field tweet_count  integer
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -19,6 +20,7 @@ SearchCount <- R6::R6Class(
     `end` = NULL,
     `start` = NULL,
     `tweet_count` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new SearchCount class.
     #'
     #' @description
@@ -27,10 +29,11 @@ SearchCount <- R6::R6Class(
     #' @param end The end time of the bucket.
     #' @param start The start time of the bucket.
     #' @param tweet_count The count for the bucket.
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `end`, `start`, `tweet_count`, ...
+        `end`, `start`, `tweet_count`, additional_properties = NULL, ...
     ) {
       if (!missing(`end`)) {
         stopifnot(is.character(`end`), length(`end`) == 1)
@@ -43,6 +46,11 @@ SearchCount <- R6::R6Class(
       if (!missing(`tweet_count`)) {
         stopifnot(is.numeric(`tweet_count`), length(`tweet_count`) == 1)
         self$`tweet_count` <- `tweet_count`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -65,6 +73,9 @@ SearchCount <- R6::R6Class(
       if (!is.null(self$`tweet_count`)) {
         SearchCountObject[["tweet_count"]] <-
           self$`tweet_count`
+      }
+      for (key in names(self$additional_properties)) {
+        SearchCountObject[[key]] <- self$additional_properties[[key]]
       }
 
       SearchCountObject
@@ -125,7 +136,12 @@ SearchCount <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of SearchCount
     #'

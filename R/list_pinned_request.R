@@ -8,6 +8,7 @@
 #' @description ListPinnedRequest Class
 #' @format An \code{R6Class} generator object
 #' @field list_id  character
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -15,20 +16,27 @@ ListPinnedRequest <- R6::R6Class(
   "ListPinnedRequest",
   public = list(
     `list_id` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new ListPinnedRequest class.
     #'
     #' @description
     #' Initialize a new ListPinnedRequest class.
     #'
     #' @param list_id The unique identifier of this List.
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `list_id`, ...
+        `list_id`, additional_properties = NULL, ...
     ) {
       if (!missing(`list_id`)) {
         stopifnot(is.character(`list_id`), length(`list_id`) == 1)
         self$`list_id` <- `list_id`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -43,6 +51,9 @@ ListPinnedRequest <- R6::R6Class(
       if (!is.null(self$`list_id`)) {
         ListPinnedRequestObject[["list_id"]] <-
           self$`list_id`
+      }
+      for (key in names(self$additional_properties)) {
+        ListPinnedRequestObject[[key]] <- self$additional_properties[[key]]
       }
 
       ListPinnedRequestObject
@@ -81,7 +92,12 @@ ListPinnedRequest <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of ListPinnedRequest
     #'

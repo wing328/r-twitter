@@ -12,6 +12,7 @@
 #' @field hashtags  list(\link{HashtagEntity}) [optional]
 #' @field mentions  list(\link{MentionEntity}) [optional]
 #' @field urls  list(\link{UrlEntity}) [optional]
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -23,6 +24,7 @@ FullTextEntities <- R6::R6Class(
     `hashtags` = NULL,
     `mentions` = NULL,
     `urls` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new FullTextEntities class.
     #'
     #' @description
@@ -33,10 +35,11 @@ FullTextEntities <- R6::R6Class(
     #' @param hashtags hashtags
     #' @param mentions mentions
     #' @param urls urls
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `annotations` = NULL, `cashtags` = NULL, `hashtags` = NULL, `mentions` = NULL, `urls` = NULL, ...
+        `annotations` = NULL, `cashtags` = NULL, `hashtags` = NULL, `mentions` = NULL, `urls` = NULL, additional_properties = NULL, ...
     ) {
       if (!is.null(`annotations`)) {
         stopifnot(is.vector(`annotations`), length(`annotations`) != 0)
@@ -62,6 +65,11 @@ FullTextEntities <- R6::R6Class(
         stopifnot(is.vector(`urls`), length(`urls`) != 0)
         sapply(`urls`, function(x) stopifnot(R6::is.R6(x)))
         self$`urls` <- `urls`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -92,6 +100,9 @@ FullTextEntities <- R6::R6Class(
       if (!is.null(self$`urls`)) {
         FullTextEntitiesObject[["urls"]] <-
           lapply(self$`urls`, function(x) x$toJSON())
+      }
+      for (key in names(self$additional_properties)) {
+        FullTextEntitiesObject[[key]] <- self$additional_properties[[key]]
       }
 
       FullTextEntitiesObject
@@ -174,7 +185,12 @@ FullTextEntities <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of FullTextEntities
     #'

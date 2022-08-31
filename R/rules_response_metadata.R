@@ -11,6 +11,7 @@
 #' @field result_count  integer [optional]
 #' @field sent  character
 #' @field summary  \link{RulesRequestSummary} [optional]
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -21,6 +22,7 @@ RulesResponseMetadata <- R6::R6Class(
     `result_count` = NULL,
     `sent` = NULL,
     `summary` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new RulesResponseMetadata class.
     #'
     #' @description
@@ -30,10 +32,11 @@ RulesResponseMetadata <- R6::R6Class(
     #' @param next_token The next token.
     #' @param result_count Number of Rules in result set.
     #' @param summary summary
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `sent`, `next_token` = NULL, `result_count` = NULL, `summary` = NULL, ...
+        `sent`, `next_token` = NULL, `result_count` = NULL, `summary` = NULL, additional_properties = NULL, ...
     ) {
       if (!missing(`sent`)) {
         stopifnot(is.character(`sent`), length(`sent`) == 1)
@@ -50,6 +53,11 @@ RulesResponseMetadata <- R6::R6Class(
       if (!is.null(`summary`)) {
         stopifnot(R6::is.R6(`summary`))
         self$`summary` <- `summary`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -76,6 +84,9 @@ RulesResponseMetadata <- R6::R6Class(
       if (!is.null(self$`summary`)) {
         RulesResponseMetadataObject[["summary"]] <-
           self$`summary`$toJSON()
+      }
+      for (key in names(self$additional_properties)) {
+        RulesResponseMetadataObject[[key]] <- self$additional_properties[[key]]
       }
 
       RulesResponseMetadataObject
@@ -149,7 +160,12 @@ RulesResponseMetadata <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of RulesResponseMetadata
     #'

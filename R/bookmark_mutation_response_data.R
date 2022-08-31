@@ -8,6 +8,7 @@
 #' @description BookmarkMutationResponseData Class
 #' @format An \code{R6Class} generator object
 #' @field bookmarked  character [optional]
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -15,20 +16,27 @@ BookmarkMutationResponseData <- R6::R6Class(
   "BookmarkMutationResponseData",
   public = list(
     `bookmarked` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new BookmarkMutationResponseData class.
     #'
     #' @description
     #' Initialize a new BookmarkMutationResponseData class.
     #'
     #' @param bookmarked bookmarked
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `bookmarked` = NULL, ...
+        `bookmarked` = NULL, additional_properties = NULL, ...
     ) {
       if (!is.null(`bookmarked`)) {
         stopifnot(is.logical(`bookmarked`), length(`bookmarked`) == 1)
         self$`bookmarked` <- `bookmarked`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -43,6 +51,9 @@ BookmarkMutationResponseData <- R6::R6Class(
       if (!is.null(self$`bookmarked`)) {
         BookmarkMutationResponseDataObject[["bookmarked"]] <-
           self$`bookmarked`
+      }
+      for (key in names(self$additional_properties)) {
+        BookmarkMutationResponseDataObject[[key]] <- self$additional_properties[[key]]
       }
 
       BookmarkMutationResponseDataObject
@@ -81,7 +92,12 @@ BookmarkMutationResponseData <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of BookmarkMutationResponseData
     #'

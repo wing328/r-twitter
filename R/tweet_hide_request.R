@@ -8,6 +8,7 @@
 #' @description TweetHideRequest Class
 #' @format An \code{R6Class} generator object
 #' @field hidden  character
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -15,20 +16,27 @@ TweetHideRequest <- R6::R6Class(
   "TweetHideRequest",
   public = list(
     `hidden` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new TweetHideRequest class.
     #'
     #' @description
     #' Initialize a new TweetHideRequest class.
     #'
     #' @param hidden hidden
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `hidden`, ...
+        `hidden`, additional_properties = NULL, ...
     ) {
       if (!missing(`hidden`)) {
         stopifnot(is.logical(`hidden`), length(`hidden`) == 1)
         self$`hidden` <- `hidden`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -43,6 +51,9 @@ TweetHideRequest <- R6::R6Class(
       if (!is.null(self$`hidden`)) {
         TweetHideRequestObject[["hidden"]] <-
           self$`hidden`
+      }
+      for (key in names(self$additional_properties)) {
+        TweetHideRequestObject[[key]] <- self$additional_properties[[key]]
       }
 
       TweetHideRequestObject
@@ -81,7 +92,12 @@ TweetHideRequest <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of TweetHideRequest
     #'

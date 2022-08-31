@@ -13,6 +13,7 @@
 #' @field type  character
 #' @field period  character [optional]
 #' @field scope  character [optional]
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -26,6 +27,7 @@ UsageCapExceededProblem <- R6::R6Class(
     `type` = NULL,
     `period` = NULL,
     `scope` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new UsageCapExceededProblem class.
     #'
     #' @description
@@ -37,10 +39,11 @@ UsageCapExceededProblem <- R6::R6Class(
     #' @param status status
     #' @param period period
     #' @param scope scope
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `title`, `type`, `detail` = NULL, `status` = NULL, `period` = NULL, `scope` = NULL, ...
+        `title`, `type`, `detail` = NULL, `status` = NULL, `period` = NULL, `scope` = NULL, additional_properties = NULL, ...
     ) {
       if (!missing(`title`)) {
         stopifnot(is.character(`title`), length(`title`) == 1)
@@ -65,6 +68,11 @@ UsageCapExceededProblem <- R6::R6Class(
       if (!is.null(`scope`)) {
         stopifnot(is.character(`scope`), length(`scope`) == 1)
         self$`scope` <- `scope`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -99,6 +107,9 @@ UsageCapExceededProblem <- R6::R6Class(
       if (!is.null(self$`scope`)) {
         UsageCapExceededProblemObject[["scope"]] <-
           self$`scope`
+      }
+      for (key in names(self$additional_properties)) {
+        UsageCapExceededProblemObject[[key]] <- self$additional_properties[[key]]
       }
 
       UsageCapExceededProblemObject
@@ -192,7 +203,12 @@ UsageCapExceededProblem <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of UsageCapExceededProblem
     #'

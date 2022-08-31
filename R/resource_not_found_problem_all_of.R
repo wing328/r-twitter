@@ -11,6 +11,7 @@
 #' @field resource_id  character
 #' @field resource_type  character
 #' @field value  character
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -21,6 +22,7 @@ ResourceNotFoundProblemAllOf <- R6::R6Class(
     `resource_id` = NULL,
     `resource_type` = NULL,
     `value` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new ResourceNotFoundProblemAllOf class.
     #'
     #' @description
@@ -30,10 +32,11 @@ ResourceNotFoundProblemAllOf <- R6::R6Class(
     #' @param resource_id resource_id
     #' @param resource_type resource_type
     #' @param value Value will match the schema of the field.
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `parameter`, `resource_id`, `resource_type`, `value`, ...
+        `parameter`, `resource_id`, `resource_type`, `value`, additional_properties = NULL, ...
     ) {
       if (!missing(`parameter`)) {
         stopifnot(is.character(`parameter`), length(`parameter`) == 1)
@@ -50,6 +53,11 @@ ResourceNotFoundProblemAllOf <- R6::R6Class(
       if (!missing(`value`)) {
         stopifnot(is.character(`value`), length(`value`) == 1)
         self$`value` <- `value`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -76,6 +84,9 @@ ResourceNotFoundProblemAllOf <- R6::R6Class(
       if (!is.null(self$`value`)) {
         ResourceNotFoundProblemAllOfObject[["value"]] <-
           self$`value`
+      }
+      for (key in names(self$additional_properties)) {
+        ResourceNotFoundProblemAllOfObject[[key]] <- self$additional_properties[[key]]
       }
 
       ResourceNotFoundProblemAllOfObject
@@ -147,7 +158,12 @@ ResourceNotFoundProblemAllOf <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of ResourceNotFoundProblemAllOf
     #'

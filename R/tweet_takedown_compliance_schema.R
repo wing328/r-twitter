@@ -11,6 +11,7 @@
 #' @field quote_tweet_id  character [optional]
 #' @field tweet  \link{TweetComplianceSchemaTweet}
 #' @field withheld_in_countries  list(character)
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -21,6 +22,7 @@ TweetTakedownComplianceSchema <- R6::R6Class(
     `quote_tweet_id` = NULL,
     `tweet` = NULL,
     `withheld_in_countries` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new TweetTakedownComplianceSchema class.
     #'
     #' @description
@@ -30,10 +32,11 @@ TweetTakedownComplianceSchema <- R6::R6Class(
     #' @param tweet tweet
     #' @param withheld_in_countries withheld_in_countries
     #' @param quote_tweet_id Unique identifier of this Tweet. This is returned as a string in order to avoid complications with languages and tools that cannot handle large integers.
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `event_at`, `tweet`, `withheld_in_countries`, `quote_tweet_id` = NULL, ...
+        `event_at`, `tweet`, `withheld_in_countries`, `quote_tweet_id` = NULL, additional_properties = NULL, ...
     ) {
       if (!missing(`event_at`)) {
         stopifnot(is.character(`event_at`), length(`event_at`) == 1)
@@ -51,6 +54,11 @@ TweetTakedownComplianceSchema <- R6::R6Class(
       if (!is.null(`quote_tweet_id`)) {
         stopifnot(is.character(`quote_tweet_id`), length(`quote_tweet_id`) == 1)
         self$`quote_tweet_id` <- `quote_tweet_id`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -77,6 +85,9 @@ TweetTakedownComplianceSchema <- R6::R6Class(
       if (!is.null(self$`withheld_in_countries`)) {
         TweetTakedownComplianceSchemaObject[["withheld_in_countries"]] <-
           self$`withheld_in_countries`
+      }
+      for (key in names(self$additional_properties)) {
+        TweetTakedownComplianceSchemaObject[[key]] <- self$additional_properties[[key]]
       }
 
       TweetTakedownComplianceSchemaObject
@@ -150,7 +161,12 @@ TweetTakedownComplianceSchema <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of TweetTakedownComplianceSchema
     #'

@@ -10,6 +10,7 @@
 #' @field description  character [optional]
 #' @field name  character [optional]
 #' @field item_private  character [optional]
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -19,6 +20,7 @@ ListUpdateRequest <- R6::R6Class(
     `description` = NULL,
     `name` = NULL,
     `item_private` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new ListUpdateRequest class.
     #'
     #' @description
@@ -27,10 +29,11 @@ ListUpdateRequest <- R6::R6Class(
     #' @param description description
     #' @param name name
     #' @param item_private item_private
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `description` = NULL, `name` = NULL, `item_private` = NULL, ...
+        `description` = NULL, `name` = NULL, `item_private` = NULL, additional_properties = NULL, ...
     ) {
       if (!is.null(`description`)) {
         stopifnot(is.character(`description`), length(`description`) == 1)
@@ -43,6 +46,11 @@ ListUpdateRequest <- R6::R6Class(
       if (!is.null(`item_private`)) {
         stopifnot(is.logical(`item_private`), length(`item_private`) == 1)
         self$`item_private` <- `item_private`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -65,6 +73,9 @@ ListUpdateRequest <- R6::R6Class(
       if (!is.null(self$`item_private`)) {
         ListUpdateRequestObject[["private"]] <-
           self$`item_private`
+      }
+      for (key in names(self$additional_properties)) {
+        ListUpdateRequestObject[[key]] <- self$additional_properties[[key]]
       }
 
       ListUpdateRequestObject
@@ -125,7 +136,12 @@ ListUpdateRequest <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of ListUpdateRequest
     #'

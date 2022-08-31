@@ -9,6 +9,7 @@
 #' @format An \code{R6Class} generator object
 #' @field country_codes  list(character)
 #' @field scope  character [optional]
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -17,6 +18,7 @@ UserWithheld <- R6::R6Class(
   public = list(
     `country_codes` = NULL,
     `scope` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new UserWithheld class.
     #'
     #' @description
@@ -24,10 +26,11 @@ UserWithheld <- R6::R6Class(
     #'
     #' @param country_codes Provides a list of countries where this content is not available.
     #' @param scope Indicates that the content being withheld is a `user`.
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `country_codes`, `scope` = NULL, ...
+        `country_codes`, `scope` = NULL, additional_properties = NULL, ...
     ) {
       if (!missing(`country_codes`)) {
         stopifnot(is.vector(`country_codes`), length(`country_codes`) != 0)
@@ -37,6 +40,11 @@ UserWithheld <- R6::R6Class(
       if (!is.null(`scope`)) {
         stopifnot(is.character(`scope`), length(`scope`) == 1)
         self$`scope` <- `scope`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -55,6 +63,9 @@ UserWithheld <- R6::R6Class(
       if (!is.null(self$`scope`)) {
         UserWithheldObject[["scope"]] <-
           self$`scope`
+      }
+      for (key in names(self$additional_properties)) {
+        UserWithheldObject[[key]] <- self$additional_properties[[key]]
       }
 
       UserWithheldObject
@@ -104,7 +115,12 @@ UserWithheld <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of UserWithheld
     #'

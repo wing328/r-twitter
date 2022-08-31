@@ -16,6 +16,7 @@
 #' @field title  character [optional]
 #' @field unwound_url  character [optional]
 #' @field url  character
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -31,6 +32,7 @@ UrlFields <- R6::R6Class(
     `title` = NULL,
     `unwound_url` = NULL,
     `url` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new UrlFields class.
     #'
     #' @description
@@ -45,10 +47,11 @@ UrlFields <- R6::R6Class(
     #' @param status HTTP Status Code.
     #' @param title Title of the page the URL points to.
     #' @param unwound_url Fully resolved url.
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `url`, `description` = NULL, `display_url` = NULL, `expanded_url` = NULL, `images` = NULL, `media_key` = NULL, `status` = NULL, `title` = NULL, `unwound_url` = NULL, ...
+        `url`, `description` = NULL, `display_url` = NULL, `expanded_url` = NULL, `images` = NULL, `media_key` = NULL, `status` = NULL, `title` = NULL, `unwound_url` = NULL, additional_properties = NULL, ...
     ) {
       if (!missing(`url`)) {
         stopifnot(is.character(`url`), length(`url`) == 1)
@@ -86,6 +89,11 @@ UrlFields <- R6::R6Class(
       if (!is.null(`unwound_url`)) {
         stopifnot(is.character(`unwound_url`), length(`unwound_url`) == 1)
         self$`unwound_url` <- `unwound_url`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -132,6 +140,9 @@ UrlFields <- R6::R6Class(
       if (!is.null(self$`url`)) {
         UrlFieldsObject[["url"]] <-
           self$`url`
+      }
+      for (key in names(self$additional_properties)) {
+        UrlFieldsObject[[key]] <- self$additional_properties[[key]]
       }
 
       UrlFieldsObject
@@ -258,7 +269,12 @@ UrlFields <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of UrlFields
     #'

@@ -8,6 +8,7 @@
 #' @description TweetHideResponseData Class
 #' @format An \code{R6Class} generator object
 #' @field hidden  character [optional]
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -15,20 +16,27 @@ TweetHideResponseData <- R6::R6Class(
   "TweetHideResponseData",
   public = list(
     `hidden` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new TweetHideResponseData class.
     #'
     #' @description
     #' Initialize a new TweetHideResponseData class.
     #'
     #' @param hidden hidden
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `hidden` = NULL, ...
+        `hidden` = NULL, additional_properties = NULL, ...
     ) {
       if (!is.null(`hidden`)) {
         stopifnot(is.logical(`hidden`), length(`hidden`) == 1)
         self$`hidden` <- `hidden`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -43,6 +51,9 @@ TweetHideResponseData <- R6::R6Class(
       if (!is.null(self$`hidden`)) {
         TweetHideResponseDataObject[["hidden"]] <-
           self$`hidden`
+      }
+      for (key in names(self$additional_properties)) {
+        TweetHideResponseDataObject[[key]] <- self$additional_properties[[key]]
       }
 
       TweetHideResponseDataObject
@@ -81,7 +92,12 @@ TweetHideResponseData <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of TweetHideResponseData
     #'

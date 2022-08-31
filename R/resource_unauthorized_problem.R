@@ -16,6 +16,7 @@
 #' @field resource_type  character
 #' @field section  character
 #' @field value  character
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -32,6 +33,7 @@ ResourceUnauthorizedProblem <- R6::R6Class(
     `resource_type` = NULL,
     `section` = NULL,
     `value` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new ResourceUnauthorizedProblem class.
     #'
     #' @description
@@ -46,10 +48,11 @@ ResourceUnauthorizedProblem <- R6::R6Class(
     #' @param value value
     #' @param detail detail
     #' @param status status
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `title`, `type`, `parameter`, `resource_id`, `resource_type`, `section`, `value`, `detail` = NULL, `status` = NULL, ...
+        `title`, `type`, `parameter`, `resource_id`, `resource_type`, `section`, `value`, `detail` = NULL, `status` = NULL, additional_properties = NULL, ...
     ) {
       if (!missing(`title`)) {
         stopifnot(is.character(`title`), length(`title`) == 1)
@@ -86,6 +89,11 @@ ResourceUnauthorizedProblem <- R6::R6Class(
       if (!is.null(`status`)) {
         stopifnot(is.numeric(`status`), length(`status`) == 1)
         self$`status` <- `status`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -132,6 +140,9 @@ ResourceUnauthorizedProblem <- R6::R6Class(
       if (!is.null(self$`value`)) {
         ResourceUnauthorizedProblemObject[["value"]] <-
           self$`value`
+      }
+      for (key in names(self$additional_properties)) {
+        ResourceUnauthorizedProblemObject[[key]] <- self$additional_properties[[key]]
       }
 
       ResourceUnauthorizedProblemObject
@@ -258,7 +269,12 @@ ResourceUnauthorizedProblem <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of ResourceUnauthorizedProblem
     #'

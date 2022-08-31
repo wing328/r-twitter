@@ -13,6 +13,7 @@
 #' @field width  integer [optional]
 #' @field alt_text  character [optional]
 #' @field url  character [optional]
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -26,6 +27,7 @@ Photo <- R6::R6Class(
     `width` = NULL,
     `alt_text` = NULL,
     `url` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new Photo class.
     #'
     #' @description
@@ -37,10 +39,11 @@ Photo <- R6::R6Class(
     #' @param width The width of the media in pixels.
     #' @param alt_text alt_text
     #' @param url url
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `type`, `height` = NULL, `media_key` = NULL, `width` = NULL, `alt_text` = NULL, `url` = NULL, ...
+        `type`, `height` = NULL, `media_key` = NULL, `width` = NULL, `alt_text` = NULL, `url` = NULL, additional_properties = NULL, ...
     ) {
       if (!missing(`type`)) {
         stopifnot(is.character(`type`), length(`type`) == 1)
@@ -65,6 +68,11 @@ Photo <- R6::R6Class(
       if (!is.null(`url`)) {
         stopifnot(is.character(`url`), length(`url`) == 1)
         self$`url` <- `url`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -99,6 +107,9 @@ Photo <- R6::R6Class(
       if (!is.null(self$`url`)) {
         PhotoObject[["url"]] <-
           self$`url`
+      }
+      for (key in names(self$additional_properties)) {
+        PhotoObject[[key]] <- self$additional_properties[[key]]
       }
 
       PhotoObject
@@ -192,7 +203,12 @@ Photo <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of Photo
     #'

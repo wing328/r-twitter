@@ -11,6 +11,7 @@
 #' @field new_value  character
 #' @field profile_field  character
 #' @field user  \link{UserComplianceSchemaUser}
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -21,6 +22,7 @@ UserProfileModificationObjectSchema <- R6::R6Class(
     `new_value` = NULL,
     `profile_field` = NULL,
     `user` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new UserProfileModificationObjectSchema class.
     #'
     #' @description
@@ -30,10 +32,11 @@ UserProfileModificationObjectSchema <- R6::R6Class(
     #' @param new_value new_value
     #' @param profile_field profile_field
     #' @param user user
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `event_at`, `new_value`, `profile_field`, `user`, ...
+        `event_at`, `new_value`, `profile_field`, `user`, additional_properties = NULL, ...
     ) {
       if (!missing(`event_at`)) {
         stopifnot(is.character(`event_at`), length(`event_at`) == 1)
@@ -50,6 +53,11 @@ UserProfileModificationObjectSchema <- R6::R6Class(
       if (!missing(`user`)) {
         stopifnot(R6::is.R6(`user`))
         self$`user` <- `user`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -76,6 +84,9 @@ UserProfileModificationObjectSchema <- R6::R6Class(
       if (!is.null(self$`user`)) {
         UserProfileModificationObjectSchemaObject[["user"]] <-
           self$`user`$toJSON()
+      }
+      for (key in names(self$additional_properties)) {
+        UserProfileModificationObjectSchemaObject[[key]] <- self$additional_properties[[key]]
       }
 
       UserProfileModificationObjectSchemaObject
@@ -149,7 +160,12 @@ UserProfileModificationObjectSchema <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of UserProfileModificationObjectSchema
     #'

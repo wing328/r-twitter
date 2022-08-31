@@ -10,6 +10,7 @@
 #' @field copyright  character
 #' @field country_codes  list(character)
 #' @field scope  character [optional]
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -19,6 +20,7 @@ TweetWithheld <- R6::R6Class(
     `copyright` = NULL,
     `country_codes` = NULL,
     `scope` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new TweetWithheld class.
     #'
     #' @description
@@ -27,10 +29,11 @@ TweetWithheld <- R6::R6Class(
     #' @param copyright Indicates if the content is being withheld for on the basis of copyright infringement.
     #' @param country_codes Provides a list of countries where this content is not available.
     #' @param scope Indicates whether the content being withheld is the `tweet` or a `user`.
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `copyright`, `country_codes`, `scope` = NULL, ...
+        `copyright`, `country_codes`, `scope` = NULL, additional_properties = NULL, ...
     ) {
       if (!missing(`copyright`)) {
         stopifnot(is.logical(`copyright`), length(`copyright`) == 1)
@@ -44,6 +47,11 @@ TweetWithheld <- R6::R6Class(
       if (!is.null(`scope`)) {
         stopifnot(is.character(`scope`), length(`scope`) == 1)
         self$`scope` <- `scope`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -66,6 +74,9 @@ TweetWithheld <- R6::R6Class(
       if (!is.null(self$`scope`)) {
         TweetWithheldObject[["scope"]] <-
           self$`scope`
+      }
+      for (key in names(self$additional_properties)) {
+        TweetWithheldObject[[key]] <- self$additional_properties[[key]]
       }
 
       TweetWithheldObject
@@ -126,7 +137,12 @@ TweetWithheld <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of TweetWithheld
     #'

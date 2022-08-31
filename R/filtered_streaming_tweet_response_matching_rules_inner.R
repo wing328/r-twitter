@@ -9,6 +9,7 @@
 #' @format An \code{R6Class} generator object
 #' @field id  character
 #' @field tag  character [optional]
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -17,6 +18,7 @@ FilteredStreamingTweetResponseMatchingRulesInner <- R6::R6Class(
   public = list(
     `id` = NULL,
     `tag` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new FilteredStreamingTweetResponseMatchingRulesInner class.
     #'
     #' @description
@@ -24,10 +26,11 @@ FilteredStreamingTweetResponseMatchingRulesInner <- R6::R6Class(
     #'
     #' @param id Unique identifier of this rule.
     #' @param tag A tag meant for the labeling of user provided rules.
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `id`, `tag` = NULL, ...
+        `id`, `tag` = NULL, additional_properties = NULL, ...
     ) {
       if (!missing(`id`)) {
         stopifnot(is.character(`id`), length(`id`) == 1)
@@ -36,6 +39,11 @@ FilteredStreamingTweetResponseMatchingRulesInner <- R6::R6Class(
       if (!is.null(`tag`)) {
         stopifnot(is.character(`tag`), length(`tag`) == 1)
         self$`tag` <- `tag`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -54,6 +62,9 @@ FilteredStreamingTweetResponseMatchingRulesInner <- R6::R6Class(
       if (!is.null(self$`tag`)) {
         FilteredStreamingTweetResponseMatchingRulesInnerObject[["tag"]] <-
           self$`tag`
+      }
+      for (key in names(self$additional_properties)) {
+        FilteredStreamingTweetResponseMatchingRulesInnerObject[[key]] <- self$additional_properties[[key]]
       }
 
       FilteredStreamingTweetResponseMatchingRulesInnerObject
@@ -103,7 +114,12 @@ FilteredStreamingTweetResponseMatchingRulesInner <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of FilteredStreamingTweetResponseMatchingRulesInner
     #'

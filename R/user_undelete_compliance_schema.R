@@ -8,6 +8,7 @@
 #' @description UserUndeleteComplianceSchema Class
 #' @format An \code{R6Class} generator object
 #' @field user_undelete  \link{UserComplianceSchema}
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -15,20 +16,27 @@ UserUndeleteComplianceSchema <- R6::R6Class(
   "UserUndeleteComplianceSchema",
   public = list(
     `user_undelete` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new UserUndeleteComplianceSchema class.
     #'
     #' @description
     #' Initialize a new UserUndeleteComplianceSchema class.
     #'
     #' @param user_undelete user_undelete
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `user_undelete`, ...
+        `user_undelete`, additional_properties = NULL, ...
     ) {
       if (!missing(`user_undelete`)) {
         stopifnot(R6::is.R6(`user_undelete`))
         self$`user_undelete` <- `user_undelete`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -43,6 +51,9 @@ UserUndeleteComplianceSchema <- R6::R6Class(
       if (!is.null(self$`user_undelete`)) {
         UserUndeleteComplianceSchemaObject[["user_undelete"]] <-
           self$`user_undelete`$toJSON()
+      }
+      for (key in names(self$additional_properties)) {
+        UserUndeleteComplianceSchemaObject[[key]] <- self$additional_properties[[key]]
       }
 
       UserUndeleteComplianceSchemaObject
@@ -83,7 +94,12 @@ UserUndeleteComplianceSchema <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of UserUndeleteComplianceSchema
     #'

@@ -8,6 +8,7 @@
 #' @description MuteUserRequest Class
 #' @format An \code{R6Class} generator object
 #' @field target_user_id  character
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -15,20 +16,27 @@ MuteUserRequest <- R6::R6Class(
   "MuteUserRequest",
   public = list(
     `target_user_id` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new MuteUserRequest class.
     #'
     #' @description
     #' Initialize a new MuteUserRequest class.
     #'
     #' @param target_user_id Unique identifier of this User. This is returned as a string in order to avoid complications with languages and tools that cannot handle large integers.
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `target_user_id`, ...
+        `target_user_id`, additional_properties = NULL, ...
     ) {
       if (!missing(`target_user_id`)) {
         stopifnot(is.character(`target_user_id`), length(`target_user_id`) == 1)
         self$`target_user_id` <- `target_user_id`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -43,6 +51,9 @@ MuteUserRequest <- R6::R6Class(
       if (!is.null(self$`target_user_id`)) {
         MuteUserRequestObject[["target_user_id"]] <-
           self$`target_user_id`
+      }
+      for (key in names(self$additional_properties)) {
+        MuteUserRequestObject[[key]] <- self$additional_properties[[key]]
       }
 
       MuteUserRequestObject
@@ -81,7 +92,12 @@ MuteUserRequest <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of MuteUserRequest
     #'

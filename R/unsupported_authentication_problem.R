@@ -11,6 +11,7 @@
 #' @field status  integer [optional]
 #' @field title  character
 #' @field type  character
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -22,6 +23,7 @@ UnsupportedAuthenticationProblem <- R6::R6Class(
     `status` = NULL,
     `title` = NULL,
     `type` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new UnsupportedAuthenticationProblem class.
     #'
     #' @description
@@ -31,10 +33,11 @@ UnsupportedAuthenticationProblem <- R6::R6Class(
     #' @param type type
     #' @param detail detail
     #' @param status status
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `title`, `type`, `detail` = NULL, `status` = NULL, ...
+        `title`, `type`, `detail` = NULL, `status` = NULL, additional_properties = NULL, ...
     ) {
       if (!missing(`title`)) {
         stopifnot(is.character(`title`), length(`title`) == 1)
@@ -51,6 +54,11 @@ UnsupportedAuthenticationProblem <- R6::R6Class(
       if (!is.null(`status`)) {
         stopifnot(is.numeric(`status`), length(`status`) == 1)
         self$`status` <- `status`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -77,6 +85,9 @@ UnsupportedAuthenticationProblem <- R6::R6Class(
       if (!is.null(self$`type`)) {
         UnsupportedAuthenticationProblemObject[["type"]] <-
           self$`type`
+      }
+      for (key in names(self$additional_properties)) {
+        UnsupportedAuthenticationProblemObject[[key]] <- self$additional_properties[[key]]
       }
 
       UnsupportedAuthenticationProblemObject
@@ -148,7 +159,12 @@ UnsupportedAuthenticationProblem <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of UnsupportedAuthenticationProblem
     #'

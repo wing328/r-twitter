@@ -9,6 +9,7 @@
 #' @format An \code{R6Class} generator object
 #' @field data  \link{UsersLikesCreateResponseData} [optional]
 #' @field errors  list(\link{Problem}) [optional]
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -17,6 +18,7 @@ UsersLikesCreateResponse <- R6::R6Class(
   public = list(
     `data` = NULL,
     `errors` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new UsersLikesCreateResponse class.
     #'
     #' @description
@@ -24,10 +26,11 @@ UsersLikesCreateResponse <- R6::R6Class(
     #'
     #' @param data data
     #' @param errors errors
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `data` = NULL, `errors` = NULL, ...
+        `data` = NULL, `errors` = NULL, additional_properties = NULL, ...
     ) {
       if (!is.null(`data`)) {
         stopifnot(R6::is.R6(`data`))
@@ -37,6 +40,11 @@ UsersLikesCreateResponse <- R6::R6Class(
         stopifnot(is.vector(`errors`), length(`errors`) != 0)
         sapply(`errors`, function(x) stopifnot(R6::is.R6(x)))
         self$`errors` <- `errors`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -55,6 +63,9 @@ UsersLikesCreateResponse <- R6::R6Class(
       if (!is.null(self$`errors`)) {
         UsersLikesCreateResponseObject[["errors"]] <-
           lapply(self$`errors`, function(x) x$toJSON())
+      }
+      for (key in names(self$additional_properties)) {
+        UsersLikesCreateResponseObject[[key]] <- self$additional_properties[[key]]
       }
 
       UsersLikesCreateResponseObject
@@ -106,7 +117,12 @@ UsersLikesCreateResponse <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of UsersLikesCreateResponse
     #'

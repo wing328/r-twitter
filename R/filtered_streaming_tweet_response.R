@@ -11,6 +11,7 @@
 #' @field errors  list(\link{Problem}) [optional]
 #' @field includes  \link{Expansions} [optional]
 #' @field matching_rules  list(\link{FilteredStreamingTweetResponseMatchingRulesInner}) [optional]
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -21,6 +22,7 @@ FilteredStreamingTweetResponse <- R6::R6Class(
     `errors` = NULL,
     `includes` = NULL,
     `matching_rules` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new FilteredStreamingTweetResponse class.
     #'
     #' @description
@@ -30,10 +32,11 @@ FilteredStreamingTweetResponse <- R6::R6Class(
     #' @param errors errors
     #' @param includes includes
     #' @param matching_rules The list of rules which matched the Tweet
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `data` = NULL, `errors` = NULL, `includes` = NULL, `matching_rules` = NULL, ...
+        `data` = NULL, `errors` = NULL, `includes` = NULL, `matching_rules` = NULL, additional_properties = NULL, ...
     ) {
       if (!is.null(`data`)) {
         stopifnot(R6::is.R6(`data`))
@@ -52,6 +55,11 @@ FilteredStreamingTweetResponse <- R6::R6Class(
         stopifnot(is.vector(`matching_rules`), length(`matching_rules`) != 0)
         sapply(`matching_rules`, function(x) stopifnot(R6::is.R6(x)))
         self$`matching_rules` <- `matching_rules`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -78,6 +86,9 @@ FilteredStreamingTweetResponse <- R6::R6Class(
       if (!is.null(self$`matching_rules`)) {
         FilteredStreamingTweetResponseObject[["matching_rules"]] <-
           lapply(self$`matching_rules`, function(x) x$toJSON())
+      }
+      for (key in names(self$additional_properties)) {
+        FilteredStreamingTweetResponseObject[[key]] <- self$additional_properties[[key]]
       }
 
       FilteredStreamingTweetResponseObject
@@ -153,7 +164,12 @@ FilteredStreamingTweetResponse <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of FilteredStreamingTweetResponse
     #'

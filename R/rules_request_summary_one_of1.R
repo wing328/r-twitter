@@ -9,6 +9,7 @@
 #' @format An \code{R6Class} generator object
 #' @field deleted  integer
 #' @field not_deleted  integer
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -17,6 +18,7 @@ RulesRequestSummaryOneOf1 <- R6::R6Class(
   public = list(
     `deleted` = NULL,
     `not_deleted` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new RulesRequestSummaryOneOf1 class.
     #'
     #' @description
@@ -24,10 +26,11 @@ RulesRequestSummaryOneOf1 <- R6::R6Class(
     #'
     #' @param deleted Number of user-specified stream filtering rules that were deleted.
     #' @param not_deleted Number of user-specified stream filtering rules that were not deleted.
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `deleted`, `not_deleted`, ...
+        `deleted`, `not_deleted`, additional_properties = NULL, ...
     ) {
       if (!missing(`deleted`)) {
         stopifnot(is.numeric(`deleted`), length(`deleted`) == 1)
@@ -36,6 +39,11 @@ RulesRequestSummaryOneOf1 <- R6::R6Class(
       if (!missing(`not_deleted`)) {
         stopifnot(is.numeric(`not_deleted`), length(`not_deleted`) == 1)
         self$`not_deleted` <- `not_deleted`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -54,6 +62,9 @@ RulesRequestSummaryOneOf1 <- R6::R6Class(
       if (!is.null(self$`not_deleted`)) {
         RulesRequestSummaryOneOf1Object[["not_deleted"]] <-
           self$`not_deleted`
+      }
+      for (key in names(self$additional_properties)) {
+        RulesRequestSummaryOneOf1Object[[key]] <- self$additional_properties[[key]]
       }
 
       RulesRequestSummaryOneOf1Object
@@ -103,7 +114,12 @@ RulesRequestSummaryOneOf1 <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of RulesRequestSummaryOneOf1
     #'

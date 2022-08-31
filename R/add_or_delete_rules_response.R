@@ -10,6 +10,7 @@
 #' @field data  list(\link{Rule}) [optional]
 #' @field errors  list(\link{Problem}) [optional]
 #' @field meta  \link{RulesResponseMetadata}
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -19,6 +20,7 @@ AddOrDeleteRulesResponse <- R6::R6Class(
     `data` = NULL,
     `errors` = NULL,
     `meta` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new AddOrDeleteRulesResponse class.
     #'
     #' @description
@@ -27,10 +29,11 @@ AddOrDeleteRulesResponse <- R6::R6Class(
     #' @param meta meta
     #' @param data All user-specified stream filtering rules that were created.
     #' @param errors errors
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `meta`, `data` = NULL, `errors` = NULL, ...
+        `meta`, `data` = NULL, `errors` = NULL, additional_properties = NULL, ...
     ) {
       if (!missing(`meta`)) {
         stopifnot(R6::is.R6(`meta`))
@@ -45,6 +48,11 @@ AddOrDeleteRulesResponse <- R6::R6Class(
         stopifnot(is.vector(`errors`), length(`errors`) != 0)
         sapply(`errors`, function(x) stopifnot(R6::is.R6(x)))
         self$`errors` <- `errors`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -67,6 +75,9 @@ AddOrDeleteRulesResponse <- R6::R6Class(
       if (!is.null(self$`meta`)) {
         AddOrDeleteRulesResponseObject[["meta"]] <-
           self$`meta`$toJSON()
+      }
+      for (key in names(self$additional_properties)) {
+        AddOrDeleteRulesResponseObject[[key]] <- self$additional_properties[[key]]
       }
 
       AddOrDeleteRulesResponseObject
@@ -129,7 +140,12 @@ AddOrDeleteRulesResponse <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of AddOrDeleteRulesResponse
     #'

@@ -16,6 +16,7 @@
 #' @field reply  \link{TweetCreateRequestReply} [optional]
 #' @field reply_settings  character [optional]
 #' @field text  character [optional]
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -31,6 +32,7 @@ TweetCreateRequest <- R6::R6Class(
     `reply` = NULL,
     `reply_settings` = NULL,
     `text` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new TweetCreateRequest class.
     #'
     #' @description
@@ -45,10 +47,11 @@ TweetCreateRequest <- R6::R6Class(
     #' @param reply reply
     #' @param reply_settings Settings to indicate who can reply to the Tweet.
     #' @param text The content of the Tweet.
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `direct_message_deep_link` = NULL, `for_super_followers_only` = FALSE, `geo` = NULL, `media` = NULL, `poll` = NULL, `quote_tweet_id` = NULL, `reply` = NULL, `reply_settings` = NULL, `text` = NULL, ...
+        `direct_message_deep_link` = NULL, `for_super_followers_only` = FALSE, `geo` = NULL, `media` = NULL, `poll` = NULL, `quote_tweet_id` = NULL, `reply` = NULL, `reply_settings` = NULL, `text` = NULL, additional_properties = NULL, ...
     ) {
       if (!is.null(`direct_message_deep_link`)) {
         stopifnot(is.character(`direct_message_deep_link`), length(`direct_message_deep_link`) == 1)
@@ -85,6 +88,11 @@ TweetCreateRequest <- R6::R6Class(
       if (!is.null(`text`)) {
         stopifnot(is.character(`text`), length(`text`) == 1)
         self$`text` <- `text`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -131,6 +139,9 @@ TweetCreateRequest <- R6::R6Class(
       if (!is.null(self$`text`)) {
         TweetCreateRequestObject[["text"]] <-
           self$`text`
+      }
+      for (key in names(self$additional_properties)) {
+        TweetCreateRequestObject[[key]] <- self$additional_properties[[key]]
       }
 
       TweetCreateRequestObject
@@ -265,7 +276,12 @@ TweetCreateRequest <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of TweetCreateRequest
     #'

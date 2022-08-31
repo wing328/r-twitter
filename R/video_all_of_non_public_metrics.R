@@ -12,6 +12,7 @@
 #' @field playback_25_count  integer [optional]
 #' @field playback_50_count  integer [optional]
 #' @field playback_75_count  integer [optional]
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -23,6 +24,7 @@ VideoAllOfNonPublicMetrics <- R6::R6Class(
     `playback_25_count` = NULL,
     `playback_50_count` = NULL,
     `playback_75_count` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new VideoAllOfNonPublicMetrics class.
     #'
     #' @description
@@ -33,10 +35,11 @@ VideoAllOfNonPublicMetrics <- R6::R6Class(
     #' @param playback_25_count Number of users who made it through 25\% of the video.
     #' @param playback_50_count Number of users who made it through 50\% of the video.
     #' @param playback_75_count Number of users who made it through 75\% of the video.
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `playback_0_count` = NULL, `playback_100_count` = NULL, `playback_25_count` = NULL, `playback_50_count` = NULL, `playback_75_count` = NULL, ...
+        `playback_0_count` = NULL, `playback_100_count` = NULL, `playback_25_count` = NULL, `playback_50_count` = NULL, `playback_75_count` = NULL, additional_properties = NULL, ...
     ) {
       if (!is.null(`playback_0_count`)) {
         stopifnot(is.numeric(`playback_0_count`), length(`playback_0_count`) == 1)
@@ -57,6 +60,11 @@ VideoAllOfNonPublicMetrics <- R6::R6Class(
       if (!is.null(`playback_75_count`)) {
         stopifnot(is.numeric(`playback_75_count`), length(`playback_75_count`) == 1)
         self$`playback_75_count` <- `playback_75_count`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -87,6 +95,9 @@ VideoAllOfNonPublicMetrics <- R6::R6Class(
       if (!is.null(self$`playback_75_count`)) {
         VideoAllOfNonPublicMetricsObject[["playback_75_count"]] <-
           self$`playback_75_count`
+      }
+      for (key in names(self$additional_properties)) {
+        VideoAllOfNonPublicMetricsObject[[key]] <- self$additional_properties[[key]]
       }
 
       VideoAllOfNonPublicMetricsObject
@@ -169,7 +180,12 @@ VideoAllOfNonPublicMetrics <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of VideoAllOfNonPublicMetrics
     #'

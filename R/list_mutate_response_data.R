@@ -8,6 +8,7 @@
 #' @description ListMutateResponseData Class
 #' @format An \code{R6Class} generator object
 #' @field is_member  character [optional]
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -15,20 +16,27 @@ ListMutateResponseData <- R6::R6Class(
   "ListMutateResponseData",
   public = list(
     `is_member` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new ListMutateResponseData class.
     #'
     #' @description
     #' Initialize a new ListMutateResponseData class.
     #'
     #' @param is_member is_member
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `is_member` = NULL, ...
+        `is_member` = NULL, additional_properties = NULL, ...
     ) {
       if (!is.null(`is_member`)) {
         stopifnot(is.logical(`is_member`), length(`is_member`) == 1)
         self$`is_member` <- `is_member`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -43,6 +51,9 @@ ListMutateResponseData <- R6::R6Class(
       if (!is.null(self$`is_member`)) {
         ListMutateResponseDataObject[["is_member"]] <-
           self$`is_member`
+      }
+      for (key in names(self$additional_properties)) {
+        ListMutateResponseDataObject[[key]] <- self$additional_properties[[key]]
       }
 
       ListMutateResponseDataObject
@@ -81,7 +92,12 @@ ListMutateResponseData <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of ListMutateResponseData
     #'

@@ -8,6 +8,7 @@
 #' @description UserComplianceSchemaUser Class
 #' @format An \code{R6Class} generator object
 #' @field id  character
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -15,20 +16,27 @@ UserComplianceSchemaUser <- R6::R6Class(
   "UserComplianceSchemaUser",
   public = list(
     `id` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new UserComplianceSchemaUser class.
     #'
     #' @description
     #' Initialize a new UserComplianceSchemaUser class.
     #'
     #' @param id Unique identifier of this User. This is returned as a string in order to avoid complications with languages and tools that cannot handle large integers.
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `id`, ...
+        `id`, additional_properties = NULL, ...
     ) {
       if (!missing(`id`)) {
         stopifnot(is.character(`id`), length(`id`) == 1)
         self$`id` <- `id`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -43,6 +51,9 @@ UserComplianceSchemaUser <- R6::R6Class(
       if (!is.null(self$`id`)) {
         UserComplianceSchemaUserObject[["id"]] <-
           self$`id`
+      }
+      for (key in names(self$additional_properties)) {
+        UserComplianceSchemaUserObject[[key]] <- self$additional_properties[[key]]
       }
 
       UserComplianceSchemaUserObject
@@ -81,7 +92,12 @@ UserComplianceSchemaUser <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of UserComplianceSchemaUser
     #'

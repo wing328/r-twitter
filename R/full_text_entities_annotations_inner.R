@@ -12,6 +12,7 @@
 #' @field normalized_text  character [optional]
 #' @field probability  numeric [optional]
 #' @field type  character [optional]
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -23,6 +24,7 @@ FullTextEntitiesAnnotationsInner <- R6::R6Class(
     `normalized_text` = NULL,
     `probability` = NULL,
     `type` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new FullTextEntitiesAnnotationsInner class.
     #'
     #' @description
@@ -33,10 +35,11 @@ FullTextEntitiesAnnotationsInner <- R6::R6Class(
     #' @param normalized_text Text used to determine annotation.
     #' @param probability Confidence factor for annotation type.
     #' @param type Annotation type.
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `end`, `start`, `normalized_text` = NULL, `probability` = NULL, `type` = NULL, ...
+        `end`, `start`, `normalized_text` = NULL, `probability` = NULL, `type` = NULL, additional_properties = NULL, ...
     ) {
       if (!missing(`end`)) {
         stopifnot(is.numeric(`end`), length(`end`) == 1)
@@ -57,6 +60,11 @@ FullTextEntitiesAnnotationsInner <- R6::R6Class(
       if (!is.null(`type`)) {
         stopifnot(is.character(`type`), length(`type`) == 1)
         self$`type` <- `type`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -87,6 +95,9 @@ FullTextEntitiesAnnotationsInner <- R6::R6Class(
       if (!is.null(self$`type`)) {
         FullTextEntitiesAnnotationsInnerObject[["type"]] <-
           self$`type`
+      }
+      for (key in names(self$additional_properties)) {
+        FullTextEntitiesAnnotationsInnerObject[[key]] <- self$additional_properties[[key]]
       }
 
       FullTextEntitiesAnnotationsInnerObject
@@ -169,7 +180,12 @@ FullTextEntitiesAnnotationsInner <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of FullTextEntitiesAnnotationsInner
     #'

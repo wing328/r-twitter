@@ -12,6 +12,7 @@
 #' @field id  character
 #' @field options  list(\link{PollOption})
 #' @field voting_status  character [optional]
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -23,6 +24,7 @@ Poll <- R6::R6Class(
     `id` = NULL,
     `options` = NULL,
     `voting_status` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new Poll class.
     #'
     #' @description
@@ -33,10 +35,11 @@ Poll <- R6::R6Class(
     #' @param duration_minutes duration_minutes
     #' @param end_datetime end_datetime
     #' @param voting_status voting_status
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `id`, `options`, `duration_minutes` = NULL, `end_datetime` = NULL, `voting_status` = NULL, ...
+        `id`, `options`, `duration_minutes` = NULL, `end_datetime` = NULL, `voting_status` = NULL, additional_properties = NULL, ...
     ) {
       if (!missing(`id`)) {
         stopifnot(is.character(`id`), length(`id`) == 1)
@@ -58,6 +61,11 @@ Poll <- R6::R6Class(
       if (!is.null(`voting_status`)) {
         stopifnot(is.character(`voting_status`), length(`voting_status`) == 1)
         self$`voting_status` <- `voting_status`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -88,6 +96,9 @@ Poll <- R6::R6Class(
       if (!is.null(self$`voting_status`)) {
         PollObject[["voting_status"]] <-
           self$`voting_status`
+      }
+      for (key in names(self$additional_properties)) {
+        PollObject[[key]] <- self$additional_properties[[key]]
       }
 
       PollObject
@@ -170,7 +181,12 @@ Poll <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of Poll
     #'

@@ -8,6 +8,7 @@
 #' @description Get2ComplianceJobsResponseMeta Class
 #' @format An \code{R6Class} generator object
 #' @field result_count  integer [optional]
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -15,20 +16,27 @@ Get2ComplianceJobsResponseMeta <- R6::R6Class(
   "Get2ComplianceJobsResponseMeta",
   public = list(
     `result_count` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new Get2ComplianceJobsResponseMeta class.
     #'
     #' @description
     #' Initialize a new Get2ComplianceJobsResponseMeta class.
     #'
     #' @param result_count The number of results returned in this response.
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `result_count` = NULL, ...
+        `result_count` = NULL, additional_properties = NULL, ...
     ) {
       if (!is.null(`result_count`)) {
         stopifnot(is.numeric(`result_count`), length(`result_count`) == 1)
         self$`result_count` <- `result_count`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -43,6 +51,9 @@ Get2ComplianceJobsResponseMeta <- R6::R6Class(
       if (!is.null(self$`result_count`)) {
         Get2ComplianceJobsResponseMetaObject[["result_count"]] <-
           self$`result_count`
+      }
+      for (key in names(self$additional_properties)) {
+        Get2ComplianceJobsResponseMetaObject[[key]] <- self$additional_properties[[key]]
       }
 
       Get2ComplianceJobsResponseMetaObject
@@ -81,7 +92,12 @@ Get2ComplianceJobsResponseMeta <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of Get2ComplianceJobsResponseMeta
     #'

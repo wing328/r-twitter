@@ -10,6 +10,7 @@
 #' @field end  integer
 #' @field start  integer
 #' @field tag  character
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -19,6 +20,7 @@ CashtagEntity <- R6::R6Class(
     `end` = NULL,
     `start` = NULL,
     `tag` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new CashtagEntity class.
     #'
     #' @description
@@ -27,10 +29,11 @@ CashtagEntity <- R6::R6Class(
     #' @param end Index (zero-based) at which position this entity ends.  The index is exclusive.
     #' @param start Index (zero-based) at which position this entity starts.  The index is inclusive.
     #' @param tag tag
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `end`, `start`, `tag`, ...
+        `end`, `start`, `tag`, additional_properties = NULL, ...
     ) {
       if (!missing(`end`)) {
         stopifnot(is.numeric(`end`), length(`end`) == 1)
@@ -43,6 +46,11 @@ CashtagEntity <- R6::R6Class(
       if (!missing(`tag`)) {
         stopifnot(is.character(`tag`), length(`tag`) == 1)
         self$`tag` <- `tag`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -65,6 +73,9 @@ CashtagEntity <- R6::R6Class(
       if (!is.null(self$`tag`)) {
         CashtagEntityObject[["tag"]] <-
           self$`tag`
+      }
+      for (key in names(self$additional_properties)) {
+        CashtagEntityObject[[key]] <- self$additional_properties[[key]]
       }
 
       CashtagEntityObject
@@ -125,7 +136,12 @@ CashtagEntity <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of CashtagEntity
     #'

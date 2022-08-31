@@ -8,6 +8,7 @@
 #' @description ListDeleteResponseData Class
 #' @format An \code{R6Class} generator object
 #' @field deleted  character [optional]
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -15,20 +16,27 @@ ListDeleteResponseData <- R6::R6Class(
   "ListDeleteResponseData",
   public = list(
     `deleted` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new ListDeleteResponseData class.
     #'
     #' @description
     #' Initialize a new ListDeleteResponseData class.
     #'
     #' @param deleted deleted
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `deleted` = NULL, ...
+        `deleted` = NULL, additional_properties = NULL, ...
     ) {
       if (!is.null(`deleted`)) {
         stopifnot(is.logical(`deleted`), length(`deleted`) == 1)
         self$`deleted` <- `deleted`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -43,6 +51,9 @@ ListDeleteResponseData <- R6::R6Class(
       if (!is.null(self$`deleted`)) {
         ListDeleteResponseDataObject[["deleted"]] <-
           self$`deleted`
+      }
+      for (key in names(self$additional_properties)) {
+        ListDeleteResponseDataObject[[key]] <- self$additional_properties[[key]]
       }
 
       ListDeleteResponseDataObject
@@ -81,7 +92,12 @@ ListDeleteResponseData <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of ListDeleteResponseData
     #'

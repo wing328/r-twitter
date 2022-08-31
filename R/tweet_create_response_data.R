@@ -9,6 +9,7 @@
 #' @format An \code{R6Class} generator object
 #' @field id  character
 #' @field text  character
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -17,6 +18,7 @@ TweetCreateResponseData <- R6::R6Class(
   public = list(
     `id` = NULL,
     `text` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new TweetCreateResponseData class.
     #'
     #' @description
@@ -24,10 +26,11 @@ TweetCreateResponseData <- R6::R6Class(
     #'
     #' @param id Unique identifier of this Tweet. This is returned as a string in order to avoid complications with languages and tools that cannot handle large integers.
     #' @param text The content of the Tweet.
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `id`, `text`, ...
+        `id`, `text`, additional_properties = NULL, ...
     ) {
       if (!missing(`id`)) {
         stopifnot(is.character(`id`), length(`id`) == 1)
@@ -36,6 +39,11 @@ TweetCreateResponseData <- R6::R6Class(
       if (!missing(`text`)) {
         stopifnot(is.character(`text`), length(`text`) == 1)
         self$`text` <- `text`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -54,6 +62,9 @@ TweetCreateResponseData <- R6::R6Class(
       if (!is.null(self$`text`)) {
         TweetCreateResponseDataObject[["text"]] <-
           self$`text`
+      }
+      for (key in names(self$additional_properties)) {
+        TweetCreateResponseDataObject[[key]] <- self$additional_properties[[key]]
       }
 
       TweetCreateResponseDataObject
@@ -103,7 +114,12 @@ TweetCreateResponseData <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of TweetCreateResponseData
     #'

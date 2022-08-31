@@ -11,6 +11,7 @@
 #' @field start  integer
 #' @field id  character [optional]
 #' @field username  character
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -21,6 +22,7 @@ MentionEntity <- R6::R6Class(
     `start` = NULL,
     `id` = NULL,
     `username` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new MentionEntity class.
     #'
     #' @description
@@ -30,10 +32,11 @@ MentionEntity <- R6::R6Class(
     #' @param start Index (zero-based) at which position this entity starts.  The index is inclusive.
     #' @param username The Twitter handle (screen name) of this user.
     #' @param id Unique identifier of this User. This is returned as a string in order to avoid complications with languages and tools that cannot handle large integers.
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `end`, `start`, `username`, `id` = NULL, ...
+        `end`, `start`, `username`, `id` = NULL, additional_properties = NULL, ...
     ) {
       if (!missing(`end`)) {
         stopifnot(is.numeric(`end`), length(`end`) == 1)
@@ -50,6 +53,11 @@ MentionEntity <- R6::R6Class(
       if (!is.null(`id`)) {
         stopifnot(is.character(`id`), length(`id`) == 1)
         self$`id` <- `id`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -76,6 +84,9 @@ MentionEntity <- R6::R6Class(
       if (!is.null(self$`username`)) {
         MentionEntityObject[["username"]] <-
           self$`username`
+      }
+      for (key in names(self$additional_properties)) {
+        MentionEntityObject[[key]] <- self$additional_properties[[key]]
       }
 
       MentionEntityObject
@@ -147,7 +158,12 @@ MentionEntity <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of MentionEntity
     #'

@@ -27,6 +27,7 @@
 #' @field source  character [optional]
 #' @field text  character
 #' @field withheld  \link{TweetWithheld} [optional]
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -53,6 +54,7 @@ Tweet <- R6::R6Class(
     `source` = NULL,
     `text` = NULL,
     `withheld` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new Tweet class.
     #'
     #' @description
@@ -78,10 +80,11 @@ Tweet <- R6::R6Class(
     #' @param reply_settings reply_settings
     #' @param source The name of the app the user Tweeted from.
     #' @param withheld withheld
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `id`, `text`, `attachments` = NULL, `author_id` = NULL, `context_annotations` = NULL, `conversation_id` = NULL, `created_at` = NULL, `entities` = NULL, `geo` = NULL, `in_reply_to_user_id` = NULL, `lang` = NULL, `non_public_metrics` = NULL, `organic_metrics` = NULL, `possibly_sensitive` = NULL, `promoted_metrics` = NULL, `public_metrics` = NULL, `referenced_tweets` = NULL, `reply_settings` = NULL, `source` = NULL, `withheld` = NULL, ...
+        `id`, `text`, `attachments` = NULL, `author_id` = NULL, `context_annotations` = NULL, `conversation_id` = NULL, `created_at` = NULL, `entities` = NULL, `geo` = NULL, `in_reply_to_user_id` = NULL, `lang` = NULL, `non_public_metrics` = NULL, `organic_metrics` = NULL, `possibly_sensitive` = NULL, `promoted_metrics` = NULL, `public_metrics` = NULL, `referenced_tweets` = NULL, `reply_settings` = NULL, `source` = NULL, `withheld` = NULL, additional_properties = NULL, ...
     ) {
       if (!missing(`id`)) {
         stopifnot(is.character(`id`), length(`id`) == 1)
@@ -164,6 +167,11 @@ Tweet <- R6::R6Class(
       if (!is.null(`withheld`)) {
         stopifnot(R6::is.R6(`withheld`))
         self$`withheld` <- `withheld`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -254,6 +262,9 @@ Tweet <- R6::R6Class(
       if (!is.null(self$`withheld`)) {
         TweetObject[["withheld"]] <-
           self$`withheld`$toJSON()
+      }
+      for (key in names(self$additional_properties)) {
+        TweetObject[[key]] <- self$additional_properties[[key]]
       }
 
       TweetObject
@@ -519,7 +530,12 @@ Tweet <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of Tweet
     #'

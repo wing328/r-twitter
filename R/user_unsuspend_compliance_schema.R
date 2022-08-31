@@ -8,6 +8,7 @@
 #' @description UserUnsuspendComplianceSchema Class
 #' @format An \code{R6Class} generator object
 #' @field user_unsuspend  \link{UserComplianceSchema}
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -15,20 +16,27 @@ UserUnsuspendComplianceSchema <- R6::R6Class(
   "UserUnsuspendComplianceSchema",
   public = list(
     `user_unsuspend` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new UserUnsuspendComplianceSchema class.
     #'
     #' @description
     #' Initialize a new UserUnsuspendComplianceSchema class.
     #'
     #' @param user_unsuspend user_unsuspend
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `user_unsuspend`, ...
+        `user_unsuspend`, additional_properties = NULL, ...
     ) {
       if (!missing(`user_unsuspend`)) {
         stopifnot(R6::is.R6(`user_unsuspend`))
         self$`user_unsuspend` <- `user_unsuspend`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -43,6 +51,9 @@ UserUnsuspendComplianceSchema <- R6::R6Class(
       if (!is.null(self$`user_unsuspend`)) {
         UserUnsuspendComplianceSchemaObject[["user_unsuspend"]] <-
           self$`user_unsuspend`$toJSON()
+      }
+      for (key in names(self$additional_properties)) {
+        UserUnsuspendComplianceSchemaObject[[key]] <- self$additional_properties[[key]]
       }
 
       UserUnsuspendComplianceSchemaObject
@@ -83,7 +94,12 @@ UserUnsuspendComplianceSchema <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of UserUnsuspendComplianceSchema
     #'

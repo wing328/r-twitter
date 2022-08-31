@@ -10,6 +10,7 @@
 #' @field event_at  character
 #' @field up_to_tweet_id  character
 #' @field user  \link{UserComplianceSchemaUser}
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -19,6 +20,7 @@ UserScrubGeoObjectSchema <- R6::R6Class(
     `event_at` = NULL,
     `up_to_tweet_id` = NULL,
     `user` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new UserScrubGeoObjectSchema class.
     #'
     #' @description
@@ -27,10 +29,11 @@ UserScrubGeoObjectSchema <- R6::R6Class(
     #' @param event_at Event time.
     #' @param up_to_tweet_id Unique identifier of this Tweet. This is returned as a string in order to avoid complications with languages and tools that cannot handle large integers.
     #' @param user user
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `event_at`, `up_to_tweet_id`, `user`, ...
+        `event_at`, `up_to_tweet_id`, `user`, additional_properties = NULL, ...
     ) {
       if (!missing(`event_at`)) {
         stopifnot(is.character(`event_at`), length(`event_at`) == 1)
@@ -43,6 +46,11 @@ UserScrubGeoObjectSchema <- R6::R6Class(
       if (!missing(`user`)) {
         stopifnot(R6::is.R6(`user`))
         self$`user` <- `user`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -65,6 +73,9 @@ UserScrubGeoObjectSchema <- R6::R6Class(
       if (!is.null(self$`user`)) {
         UserScrubGeoObjectSchemaObject[["user"]] <-
           self$`user`$toJSON()
+      }
+      for (key in names(self$additional_properties)) {
+        UserScrubGeoObjectSchemaObject[[key]] <- self$additional_properties[[key]]
       }
 
       UserScrubGeoObjectSchemaObject
@@ -127,7 +138,12 @@ UserScrubGeoObjectSchema <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of UserScrubGeoObjectSchema
     #'

@@ -9,6 +9,7 @@
 #' @format An \code{R6Class} generator object
 #' @field following  character [optional]
 #' @field pending_follow  character [optional]
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -17,6 +18,7 @@ UsersFollowingCreateResponseData <- R6::R6Class(
   public = list(
     `following` = NULL,
     `pending_follow` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new UsersFollowingCreateResponseData class.
     #'
     #' @description
@@ -24,10 +26,11 @@ UsersFollowingCreateResponseData <- R6::R6Class(
     #'
     #' @param following following
     #' @param pending_follow pending_follow
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `following` = NULL, `pending_follow` = NULL, ...
+        `following` = NULL, `pending_follow` = NULL, additional_properties = NULL, ...
     ) {
       if (!is.null(`following`)) {
         stopifnot(is.logical(`following`), length(`following`) == 1)
@@ -36,6 +39,11 @@ UsersFollowingCreateResponseData <- R6::R6Class(
       if (!is.null(`pending_follow`)) {
         stopifnot(is.logical(`pending_follow`), length(`pending_follow`) == 1)
         self$`pending_follow` <- `pending_follow`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -54,6 +62,9 @@ UsersFollowingCreateResponseData <- R6::R6Class(
       if (!is.null(self$`pending_follow`)) {
         UsersFollowingCreateResponseDataObject[["pending_follow"]] <-
           self$`pending_follow`
+      }
+      for (key in names(self$additional_properties)) {
+        UsersFollowingCreateResponseDataObject[[key]] <- self$additional_properties[[key]]
       }
 
       UsersFollowingCreateResponseDataObject
@@ -103,7 +114,12 @@ UsersFollowingCreateResponseData <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of UsersFollowingCreateResponseData
     #'

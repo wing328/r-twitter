@@ -10,6 +10,7 @@
 #' @field id  character [optional]
 #' @field tag  character [optional]
 #' @field value  character
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -19,6 +20,7 @@ Rule <- R6::R6Class(
     `id` = NULL,
     `tag` = NULL,
     `value` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new Rule class.
     #'
     #' @description
@@ -27,10 +29,11 @@ Rule <- R6::R6Class(
     #' @param value The filterlang value of the rule.
     #' @param id Unique identifier of this rule.
     #' @param tag A tag meant for the labeling of user provided rules.
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `value`, `id` = NULL, `tag` = NULL, ...
+        `value`, `id` = NULL, `tag` = NULL, additional_properties = NULL, ...
     ) {
       if (!missing(`value`)) {
         stopifnot(is.character(`value`), length(`value`) == 1)
@@ -43,6 +46,11 @@ Rule <- R6::R6Class(
       if (!is.null(`tag`)) {
         stopifnot(is.character(`tag`), length(`tag`) == 1)
         self$`tag` <- `tag`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -65,6 +73,9 @@ Rule <- R6::R6Class(
       if (!is.null(self$`value`)) {
         RuleObject[["value"]] <-
           self$`value`
+      }
+      for (key in names(self$additional_properties)) {
+        RuleObject[[key]] <- self$additional_properties[[key]]
       }
 
       RuleObject
@@ -125,7 +136,12 @@ Rule <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of Rule
     #'

@@ -10,6 +10,7 @@
 #' @field description  character [optional]
 #' @field id  character
 #' @field name  character
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -19,6 +20,7 @@ SpaceTopicsInner <- R6::R6Class(
     `description` = NULL,
     `id` = NULL,
     `name` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new SpaceTopicsInner class.
     #'
     #' @description
@@ -27,10 +29,11 @@ SpaceTopicsInner <- R6::R6Class(
     #' @param id An ID suitable for use in the REST API.
     #' @param name The name of the given topic.
     #' @param description The description of the given topic.
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `id`, `name`, `description` = NULL, ...
+        `id`, `name`, `description` = NULL, additional_properties = NULL, ...
     ) {
       if (!missing(`id`)) {
         stopifnot(is.character(`id`), length(`id`) == 1)
@@ -43,6 +46,11 @@ SpaceTopicsInner <- R6::R6Class(
       if (!is.null(`description`)) {
         stopifnot(is.character(`description`), length(`description`) == 1)
         self$`description` <- `description`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -65,6 +73,9 @@ SpaceTopicsInner <- R6::R6Class(
       if (!is.null(self$`name`)) {
         SpaceTopicsInnerObject[["name"]] <-
           self$`name`
+      }
+      for (key in names(self$additional_properties)) {
+        SpaceTopicsInnerObject[[key]] <- self$additional_properties[[key]]
       }
 
       SpaceTopicsInnerObject
@@ -125,7 +136,12 @@ SpaceTopicsInner <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of SpaceTopicsInner
     #'

@@ -16,6 +16,7 @@
 #' @field type  \link{ComplianceJobType}
 #' @field upload_expires_at  character
 #' @field upload_url  character
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -31,6 +32,7 @@ ComplianceJob <- R6::R6Class(
     `type` = NULL,
     `upload_expires_at` = NULL,
     `upload_url` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new ComplianceJob class.
     #'
     #' @description
@@ -45,10 +47,11 @@ ComplianceJob <- R6::R6Class(
     #' @param upload_expires_at Expiration time of the upload URL.
     #' @param upload_url URL to which the user will upload their Tweet or user IDs.
     #' @param name User-provided name for a compliance job.
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `created_at`, `download_expires_at`, `download_url`, `id`, `status`, `type`, `upload_expires_at`, `upload_url`, `name` = NULL, ...
+        `created_at`, `download_expires_at`, `download_url`, `id`, `status`, `type`, `upload_expires_at`, `upload_url`, `name` = NULL, additional_properties = NULL, ...
     ) {
       if (!missing(`created_at`)) {
         stopifnot(is.character(`created_at`), length(`created_at`) == 1)
@@ -85,6 +88,11 @@ ComplianceJob <- R6::R6Class(
       if (!is.null(`name`)) {
         stopifnot(is.character(`name`), length(`name`) == 1)
         self$`name` <- `name`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -131,6 +139,9 @@ ComplianceJob <- R6::R6Class(
       if (!is.null(self$`upload_url`)) {
         ComplianceJobObject[["upload_url"]] <-
           self$`upload_url`
+      }
+      for (key in names(self$additional_properties)) {
+        ComplianceJobObject[[key]] <- self$additional_properties[[key]]
       }
 
       ComplianceJobObject
@@ -261,7 +272,12 @@ ComplianceJob <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of ComplianceJob
     #'

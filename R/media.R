@@ -11,6 +11,7 @@
 #' @field media_key  character [optional]
 #' @field type  character
 #' @field width  integer [optional]
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -21,6 +22,7 @@ Media <- R6::R6Class(
     `media_key` = NULL,
     `type` = NULL,
     `width` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new Media class.
     #'
     #' @description
@@ -30,10 +32,11 @@ Media <- R6::R6Class(
     #' @param height The height of the media in pixels.
     #' @param media_key The Media Key identifier for this attachment.
     #' @param width The width of the media in pixels.
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `type`, `height` = NULL, `media_key` = NULL, `width` = NULL, ...
+        `type`, `height` = NULL, `media_key` = NULL, `width` = NULL, additional_properties = NULL, ...
     ) {
       if (!missing(`type`)) {
         stopifnot(is.character(`type`), length(`type`) == 1)
@@ -50,6 +53,11 @@ Media <- R6::R6Class(
       if (!is.null(`width`)) {
         stopifnot(is.numeric(`width`), length(`width`) == 1)
         self$`width` <- `width`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -76,6 +84,9 @@ Media <- R6::R6Class(
       if (!is.null(self$`width`)) {
         MediaObject[["width"]] <-
           self$`width`
+      }
+      for (key in names(self$additional_properties)) {
+        MediaObject[[key]] <- self$additional_properties[[key]]
       }
 
       MediaObject
@@ -147,7 +158,12 @@ Media <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of Media
     #'

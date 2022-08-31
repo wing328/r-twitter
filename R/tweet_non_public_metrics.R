@@ -8,6 +8,7 @@
 #' @description TweetNonPublicMetrics Class
 #' @format An \code{R6Class} generator object
 #' @field impression_count  integer [optional]
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -15,20 +16,27 @@ TweetNonPublicMetrics <- R6::R6Class(
   "TweetNonPublicMetrics",
   public = list(
     `impression_count` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new TweetNonPublicMetrics class.
     #'
     #' @description
     #' Initialize a new TweetNonPublicMetrics class.
     #'
     #' @param impression_count Number of times this Tweet has been viewed.
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `impression_count` = NULL, ...
+        `impression_count` = NULL, additional_properties = NULL, ...
     ) {
       if (!is.null(`impression_count`)) {
         stopifnot(is.numeric(`impression_count`), length(`impression_count`) == 1)
         self$`impression_count` <- `impression_count`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -43,6 +51,9 @@ TweetNonPublicMetrics <- R6::R6Class(
       if (!is.null(self$`impression_count`)) {
         TweetNonPublicMetricsObject[["impression_count"]] <-
           self$`impression_count`
+      }
+      for (key in names(self$additional_properties)) {
+        TweetNonPublicMetricsObject[[key]] <- self$additional_properties[[key]]
       }
 
       TweetNonPublicMetricsObject
@@ -81,7 +92,12 @@ TweetNonPublicMetrics <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of TweetNonPublicMetrics
     #'

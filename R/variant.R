@@ -10,6 +10,7 @@
 #' @field bit_rate  integer [optional]
 #' @field content_type  character [optional]
 #' @field url  character [optional]
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -19,6 +20,7 @@ Variant <- R6::R6Class(
     `bit_rate` = NULL,
     `content_type` = NULL,
     `url` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new Variant class.
     #'
     #' @description
@@ -27,10 +29,11 @@ Variant <- R6::R6Class(
     #' @param bit_rate The bit rate of the media.
     #' @param content_type The content type of the media.
     #' @param url The url to the media.
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `bit_rate` = NULL, `content_type` = NULL, `url` = NULL, ...
+        `bit_rate` = NULL, `content_type` = NULL, `url` = NULL, additional_properties = NULL, ...
     ) {
       if (!is.null(`bit_rate`)) {
         stopifnot(is.numeric(`bit_rate`), length(`bit_rate`) == 1)
@@ -43,6 +46,11 @@ Variant <- R6::R6Class(
       if (!is.null(`url`)) {
         stopifnot(is.character(`url`), length(`url`) == 1)
         self$`url` <- `url`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -65,6 +73,9 @@ Variant <- R6::R6Class(
       if (!is.null(self$`url`)) {
         VariantObject[["url"]] <-
           self$`url`
+      }
+      for (key in names(self$additional_properties)) {
+        VariantObject[[key]] <- self$additional_properties[[key]]
       }
 
       VariantObject
@@ -125,7 +136,12 @@ Variant <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of Variant
     #'

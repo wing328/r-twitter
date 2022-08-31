@@ -11,6 +11,7 @@
 #' @field quote_count  integer [optional]
 #' @field reply_count  integer
 #' @field retweet_count  integer
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -21,6 +22,7 @@ TweetPublicMetrics <- R6::R6Class(
     `quote_count` = NULL,
     `reply_count` = NULL,
     `retweet_count` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new TweetPublicMetrics class.
     #'
     #' @description
@@ -30,10 +32,11 @@ TweetPublicMetrics <- R6::R6Class(
     #' @param reply_count Number of times this Tweet has been replied to.
     #' @param retweet_count Number of times this Tweet has been Retweeted.
     #' @param quote_count Number of times this Tweet has been quoted.
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `like_count`, `reply_count`, `retweet_count`, `quote_count` = NULL, ...
+        `like_count`, `reply_count`, `retweet_count`, `quote_count` = NULL, additional_properties = NULL, ...
     ) {
       if (!missing(`like_count`)) {
         stopifnot(is.numeric(`like_count`), length(`like_count`) == 1)
@@ -50,6 +53,11 @@ TweetPublicMetrics <- R6::R6Class(
       if (!is.null(`quote_count`)) {
         stopifnot(is.numeric(`quote_count`), length(`quote_count`) == 1)
         self$`quote_count` <- `quote_count`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -76,6 +84,9 @@ TweetPublicMetrics <- R6::R6Class(
       if (!is.null(self$`retweet_count`)) {
         TweetPublicMetricsObject[["retweet_count"]] <-
           self$`retweet_count`
+      }
+      for (key in names(self$additional_properties)) {
+        TweetPublicMetricsObject[[key]] <- self$additional_properties[[key]]
       }
 
       TweetPublicMetricsObject
@@ -147,7 +158,12 @@ TweetPublicMetrics <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of TweetPublicMetrics
     #'

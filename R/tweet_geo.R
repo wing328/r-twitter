@@ -9,6 +9,7 @@
 #' @format An \code{R6Class} generator object
 #' @field coordinates  \link{Point} [optional]
 #' @field place_id  character [optional]
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -17,6 +18,7 @@ TweetGeo <- R6::R6Class(
   public = list(
     `coordinates` = NULL,
     `place_id` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new TweetGeo class.
     #'
     #' @description
@@ -24,10 +26,11 @@ TweetGeo <- R6::R6Class(
     #'
     #' @param coordinates coordinates
     #' @param place_id The identifier for this place.
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `coordinates` = NULL, `place_id` = NULL, ...
+        `coordinates` = NULL, `place_id` = NULL, additional_properties = NULL, ...
     ) {
       if (!is.null(`coordinates`)) {
         stopifnot(R6::is.R6(`coordinates`))
@@ -36,6 +39,11 @@ TweetGeo <- R6::R6Class(
       if (!is.null(`place_id`)) {
         stopifnot(is.character(`place_id`), length(`place_id`) == 1)
         self$`place_id` <- `place_id`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -54,6 +62,9 @@ TweetGeo <- R6::R6Class(
       if (!is.null(self$`place_id`)) {
         TweetGeoObject[["place_id"]] <-
           self$`place_id`
+      }
+      for (key in names(self$additional_properties)) {
+        TweetGeoObject[[key]] <- self$additional_properties[[key]]
       }
 
       TweetGeoObject
@@ -105,7 +116,12 @@ TweetGeo <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of TweetGeo
     #'

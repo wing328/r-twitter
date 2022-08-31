@@ -9,6 +9,7 @@
 #' @format An \code{R6Class} generator object
 #' @field coordinates  list(numeric)
 #' @field type  character
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -17,6 +18,7 @@ Point <- R6::R6Class(
   public = list(
     `coordinates` = NULL,
     `type` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new Point class.
     #'
     #' @description
@@ -24,10 +26,11 @@ Point <- R6::R6Class(
     #'
     #' @param coordinates A [GeoJson Position](https://tools.ietf.org/html/rfc7946#section-3.1.1) in the format `[longitude,latitude]`.
     #' @param type type
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `coordinates`, `type`, ...
+        `coordinates`, `type`, additional_properties = NULL, ...
     ) {
       if (!missing(`coordinates`)) {
         stopifnot(is.vector(`coordinates`), length(`coordinates`) != 0)
@@ -37,6 +40,11 @@ Point <- R6::R6Class(
       if (!missing(`type`)) {
         stopifnot(is.character(`type`), length(`type`) == 1)
         self$`type` <- `type`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -55,6 +63,9 @@ Point <- R6::R6Class(
       if (!is.null(self$`type`)) {
         PointObject[["type"]] <-
           self$`type`
+      }
+      for (key in names(self$additional_properties)) {
+        PointObject[[key]] <- self$additional_properties[[key]]
       }
 
       PointObject
@@ -104,7 +115,12 @@ Point <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of Point
     #'

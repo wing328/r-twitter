@@ -9,6 +9,7 @@
 #' @format An \code{R6Class} generator object
 #' @field description  \link{FullTextEntities} [optional]
 #' @field url  \link{UserEntitiesUrl} [optional]
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -17,6 +18,7 @@ UserEntities <- R6::R6Class(
   public = list(
     `description` = NULL,
     `url` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new UserEntities class.
     #'
     #' @description
@@ -24,10 +26,11 @@ UserEntities <- R6::R6Class(
     #'
     #' @param description description
     #' @param url url
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `description` = NULL, `url` = NULL, ...
+        `description` = NULL, `url` = NULL, additional_properties = NULL, ...
     ) {
       if (!is.null(`description`)) {
         stopifnot(R6::is.R6(`description`))
@@ -36,6 +39,11 @@ UserEntities <- R6::R6Class(
       if (!is.null(`url`)) {
         stopifnot(R6::is.R6(`url`))
         self$`url` <- `url`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -54,6 +62,9 @@ UserEntities <- R6::R6Class(
       if (!is.null(self$`url`)) {
         UserEntitiesObject[["url"]] <-
           self$`url`$toJSON()
+      }
+      for (key in names(self$additional_properties)) {
+        UserEntitiesObject[[key]] <- self$additional_properties[[key]]
       }
 
       UserEntitiesObject
@@ -107,7 +118,12 @@ UserEntities <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of UserEntities
     #'

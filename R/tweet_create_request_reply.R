@@ -56,7 +56,6 @@ TweetCreateRequestReply <- R6::R6Class(
         TweetCreateRequestReplyObject[["in_reply_to_tweet_id"]] <-
           self$`in_reply_to_tweet_id`
       }
-
       TweetCreateRequestReplyObject
     },
     #' Deserialize JSON string into an instance of TweetCreateRequestReply
@@ -104,7 +103,7 @@ TweetCreateRequestReply <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
     #' Deserialize JSON string into an instance of TweetCreateRequestReply
     #'

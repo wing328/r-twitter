@@ -8,6 +8,7 @@
 #' @description TweetComplianceStreamResponseOneOf1 Class
 #' @format An \code{R6Class} generator object
 #' @field errors  list(\link{Problem})
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -15,21 +16,28 @@ TweetComplianceStreamResponseOneOf1 <- R6::R6Class(
   "TweetComplianceStreamResponseOneOf1",
   public = list(
     `errors` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new TweetComplianceStreamResponseOneOf1 class.
     #'
     #' @description
     #' Initialize a new TweetComplianceStreamResponseOneOf1 class.
     #'
     #' @param errors errors
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `errors`, ...
+        `errors`, additional_properties = NULL, ...
     ) {
       if (!missing(`errors`)) {
         stopifnot(is.vector(`errors`), length(`errors`) != 0)
         sapply(`errors`, function(x) stopifnot(R6::is.R6(x)))
         self$`errors` <- `errors`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -44,6 +52,9 @@ TweetComplianceStreamResponseOneOf1 <- R6::R6Class(
       if (!is.null(self$`errors`)) {
         TweetComplianceStreamResponseOneOf1Object[["errors"]] <-
           lapply(self$`errors`, function(x) x$toJSON())
+      }
+      for (key in names(self$additional_properties)) {
+        TweetComplianceStreamResponseOneOf1Object[[key]] <- self$additional_properties[[key]]
       }
 
       TweetComplianceStreamResponseOneOf1Object
@@ -82,7 +93,12 @@ TweetComplianceStreamResponseOneOf1 <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of TweetComplianceStreamResponseOneOf1
     #'

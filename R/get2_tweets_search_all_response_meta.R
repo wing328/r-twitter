@@ -11,6 +11,7 @@
 #' @field next_token  character [optional]
 #' @field oldest_id  character [optional]
 #' @field result_count  integer [optional]
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -21,6 +22,7 @@ Get2TweetsSearchAllResponseMeta <- R6::R6Class(
     `next_token` = NULL,
     `oldest_id` = NULL,
     `result_count` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new Get2TweetsSearchAllResponseMeta class.
     #'
     #' @description
@@ -30,10 +32,11 @@ Get2TweetsSearchAllResponseMeta <- R6::R6Class(
     #' @param next_token The next token.
     #' @param oldest_id The oldest id in this response.
     #' @param result_count The number of results returned in this response.
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `newest_id` = NULL, `next_token` = NULL, `oldest_id` = NULL, `result_count` = NULL, ...
+        `newest_id` = NULL, `next_token` = NULL, `oldest_id` = NULL, `result_count` = NULL, additional_properties = NULL, ...
     ) {
       if (!is.null(`newest_id`)) {
         stopifnot(is.character(`newest_id`), length(`newest_id`) == 1)
@@ -50,6 +53,11 @@ Get2TweetsSearchAllResponseMeta <- R6::R6Class(
       if (!is.null(`result_count`)) {
         stopifnot(is.numeric(`result_count`), length(`result_count`) == 1)
         self$`result_count` <- `result_count`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -76,6 +84,9 @@ Get2TweetsSearchAllResponseMeta <- R6::R6Class(
       if (!is.null(self$`result_count`)) {
         Get2TweetsSearchAllResponseMetaObject[["result_count"]] <-
           self$`result_count`
+      }
+      for (key in names(self$additional_properties)) {
+        Get2TweetsSearchAllResponseMetaObject[[key]] <- self$additional_properties[[key]]
       }
 
       Get2TweetsSearchAllResponseMetaObject
@@ -147,7 +158,12 @@ Get2TweetsSearchAllResponseMeta <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of Get2TweetsSearchAllResponseMeta
     #'

@@ -9,6 +9,7 @@
 #' @format An \code{R6Class} generator object
 #' @field id  character
 #' @field type  character
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -17,6 +18,7 @@ TweetReferencedTweetsInner <- R6::R6Class(
   public = list(
     `id` = NULL,
     `type` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new TweetReferencedTweetsInner class.
     #'
     #' @description
@@ -24,10 +26,11 @@ TweetReferencedTweetsInner <- R6::R6Class(
     #'
     #' @param id Unique identifier of this Tweet. This is returned as a string in order to avoid complications with languages and tools that cannot handle large integers.
     #' @param type type
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `id`, `type`, ...
+        `id`, `type`, additional_properties = NULL, ...
     ) {
       if (!missing(`id`)) {
         stopifnot(is.character(`id`), length(`id`) == 1)
@@ -36,6 +39,11 @@ TweetReferencedTweetsInner <- R6::R6Class(
       if (!missing(`type`)) {
         stopifnot(is.character(`type`), length(`type`) == 1)
         self$`type` <- `type`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -54,6 +62,9 @@ TweetReferencedTweetsInner <- R6::R6Class(
       if (!is.null(self$`type`)) {
         TweetReferencedTweetsInnerObject[["type"]] <-
           self$`type`
+      }
+      for (key in names(self$additional_properties)) {
+        TweetReferencedTweetsInnerObject[[key]] <- self$additional_properties[[key]]
       }
 
       TweetReferencedTweetsInnerObject
@@ -103,7 +114,12 @@ TweetReferencedTweetsInner <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of TweetReferencedTweetsInner
     #'

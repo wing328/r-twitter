@@ -11,6 +11,7 @@
 #' @field following_count  integer
 #' @field listed_count  integer
 #' @field tweet_count  integer
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -21,6 +22,7 @@ UserPublicMetrics <- R6::R6Class(
     `following_count` = NULL,
     `listed_count` = NULL,
     `tweet_count` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new UserPublicMetrics class.
     #'
     #' @description
@@ -30,10 +32,11 @@ UserPublicMetrics <- R6::R6Class(
     #' @param following_count Number of Users this User is following.
     #' @param listed_count The number of lists that include this User.
     #' @param tweet_count The number of Tweets (including Retweets) posted by this User.
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `followers_count`, `following_count`, `listed_count`, `tweet_count`, ...
+        `followers_count`, `following_count`, `listed_count`, `tweet_count`, additional_properties = NULL, ...
     ) {
       if (!missing(`followers_count`)) {
         stopifnot(is.numeric(`followers_count`), length(`followers_count`) == 1)
@@ -50,6 +53,11 @@ UserPublicMetrics <- R6::R6Class(
       if (!missing(`tweet_count`)) {
         stopifnot(is.numeric(`tweet_count`), length(`tweet_count`) == 1)
         self$`tweet_count` <- `tweet_count`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -76,6 +84,9 @@ UserPublicMetrics <- R6::R6Class(
       if (!is.null(self$`tweet_count`)) {
         UserPublicMetricsObject[["tweet_count"]] <-
           self$`tweet_count`
+      }
+      for (key in names(self$additional_properties)) {
+        UserPublicMetricsObject[[key]] <- self$additional_properties[[key]]
       }
 
       UserPublicMetricsObject
@@ -147,7 +158,12 @@ UserPublicMetrics <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of UserPublicMetrics
     #'

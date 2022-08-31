@@ -15,6 +15,7 @@
 #' @field id  character
 #' @field name  character [optional]
 #' @field place_type  \link{PlaceType} [optional]
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -29,6 +30,7 @@ Place <- R6::R6Class(
     `id` = NULL,
     `name` = NULL,
     `place_type` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new Place class.
     #'
     #' @description
@@ -42,10 +44,11 @@ Place <- R6::R6Class(
     #' @param geo geo
     #' @param name The human readable name of this place.
     #' @param place_type place_type
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `full_name`, `id`, `contained_within` = NULL, `country` = NULL, `country_code` = NULL, `geo` = NULL, `name` = NULL, `place_type` = NULL, ...
+        `full_name`, `id`, `contained_within` = NULL, `country` = NULL, `country_code` = NULL, `geo` = NULL, `name` = NULL, `place_type` = NULL, additional_properties = NULL, ...
     ) {
       if (!missing(`full_name`)) {
         stopifnot(is.character(`full_name`), length(`full_name`) == 1)
@@ -79,6 +82,11 @@ Place <- R6::R6Class(
       if (!is.null(`place_type`)) {
         stopifnot(R6::is.R6(`place_type`))
         self$`place_type` <- `place_type`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -121,6 +129,9 @@ Place <- R6::R6Class(
       if (!is.null(self$`place_type`)) {
         PlaceObject[["place_type"]] <-
           self$`place_type`$toJSON()
+      }
+      for (key in names(self$additional_properties)) {
+        PlaceObject[[key]] <- self$additional_properties[[key]]
       }
 
       PlaceObject
@@ -240,7 +251,12 @@ Place <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of Place
     #'

@@ -10,6 +10,7 @@
 #' @field height  integer [optional]
 #' @field url  character [optional]
 #' @field width  integer [optional]
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -19,6 +20,7 @@ UrlImage <- R6::R6Class(
     `height` = NULL,
     `url` = NULL,
     `width` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new UrlImage class.
     #'
     #' @description
@@ -27,10 +29,11 @@ UrlImage <- R6::R6Class(
     #' @param height The height of the media in pixels.
     #' @param url A validly formatted URL.
     #' @param width The width of the media in pixels.
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `height` = NULL, `url` = NULL, `width` = NULL, ...
+        `height` = NULL, `url` = NULL, `width` = NULL, additional_properties = NULL, ...
     ) {
       if (!is.null(`height`)) {
         stopifnot(is.numeric(`height`), length(`height`) == 1)
@@ -43,6 +46,11 @@ UrlImage <- R6::R6Class(
       if (!is.null(`width`)) {
         stopifnot(is.numeric(`width`), length(`width`) == 1)
         self$`width` <- `width`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -65,6 +73,9 @@ UrlImage <- R6::R6Class(
       if (!is.null(self$`width`)) {
         UrlImageObject[["width"]] <-
           self$`width`
+      }
+      for (key in names(self$additional_properties)) {
+        UrlImageObject[[key]] <- self$additional_properties[[key]]
       }
 
       UrlImageObject
@@ -125,7 +136,12 @@ UrlImage <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of UrlImage
     #'

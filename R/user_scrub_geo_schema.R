@@ -8,6 +8,7 @@
 #' @description UserScrubGeoSchema Class
 #' @format An \code{R6Class} generator object
 #' @field scrub_geo  \link{UserScrubGeoObjectSchema}
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -15,20 +16,27 @@ UserScrubGeoSchema <- R6::R6Class(
   "UserScrubGeoSchema",
   public = list(
     `scrub_geo` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new UserScrubGeoSchema class.
     #'
     #' @description
     #' Initialize a new UserScrubGeoSchema class.
     #'
     #' @param scrub_geo scrub_geo
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `scrub_geo`, ...
+        `scrub_geo`, additional_properties = NULL, ...
     ) {
       if (!missing(`scrub_geo`)) {
         stopifnot(R6::is.R6(`scrub_geo`))
         self$`scrub_geo` <- `scrub_geo`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -43,6 +51,9 @@ UserScrubGeoSchema <- R6::R6Class(
       if (!is.null(self$`scrub_geo`)) {
         UserScrubGeoSchemaObject[["scrub_geo"]] <-
           self$`scrub_geo`$toJSON()
+      }
+      for (key in names(self$additional_properties)) {
+        UserScrubGeoSchemaObject[[key]] <- self$additional_properties[[key]]
       }
 
       UserScrubGeoSchemaObject
@@ -83,7 +94,12 @@ UserScrubGeoSchema <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of UserScrubGeoSchema
     #'

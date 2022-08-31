@@ -8,6 +8,7 @@
 #' @description UsersLikesCreateRequest Class
 #' @format An \code{R6Class} generator object
 #' @field tweet_id  character
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -15,20 +16,27 @@ UsersLikesCreateRequest <- R6::R6Class(
   "UsersLikesCreateRequest",
   public = list(
     `tweet_id` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new UsersLikesCreateRequest class.
     #'
     #' @description
     #' Initialize a new UsersLikesCreateRequest class.
     #'
     #' @param tweet_id Unique identifier of this Tweet. This is returned as a string in order to avoid complications with languages and tools that cannot handle large integers.
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `tweet_id`, ...
+        `tweet_id`, additional_properties = NULL, ...
     ) {
       if (!missing(`tweet_id`)) {
         stopifnot(is.character(`tweet_id`), length(`tweet_id`) == 1)
         self$`tweet_id` <- `tweet_id`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -43,6 +51,9 @@ UsersLikesCreateRequest <- R6::R6Class(
       if (!is.null(self$`tweet_id`)) {
         UsersLikesCreateRequestObject[["tweet_id"]] <-
           self$`tweet_id`
+      }
+      for (key in names(self$additional_properties)) {
+        UsersLikesCreateRequestObject[[key]] <- self$additional_properties[[key]]
       }
 
       UsersLikesCreateRequestObject
@@ -81,7 +92,12 @@ UsersLikesCreateRequest <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of UsersLikesCreateRequest
     #'

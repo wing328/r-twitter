@@ -24,6 +24,7 @@
 #' @field title  character [optional]
 #' @field topics  list(\link{SpaceTopicsInner}) [optional]
 #' @field updated_at  character [optional]
+#' @field additional_properties named list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -47,6 +48,7 @@ Space <- R6::R6Class(
     `title` = NULL,
     `topics` = NULL,
     `updated_at` = NULL,
+    `additional_properties` = NULL,
     #' Initialize a new Space class.
     #'
     #' @description
@@ -69,10 +71,11 @@ Space <- R6::R6Class(
     #' @param title The title of the Space.
     #' @param topics The topics of a Space, as selected by its creator.
     #' @param updated_at When the Space was last updated.
+    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `id`, `state`, `created_at` = NULL, `creator_id` = NULL, `ended_at` = NULL, `host_ids` = NULL, `invited_user_ids` = NULL, `is_ticketed` = NULL, `lang` = NULL, `participant_count` = NULL, `scheduled_start` = NULL, `speaker_ids` = NULL, `started_at` = NULL, `subscriber_count` = NULL, `title` = NULL, `topics` = NULL, `updated_at` = NULL, ...
+        `id`, `state`, `created_at` = NULL, `creator_id` = NULL, `ended_at` = NULL, `host_ids` = NULL, `invited_user_ids` = NULL, `is_ticketed` = NULL, `lang` = NULL, `participant_count` = NULL, `scheduled_start` = NULL, `speaker_ids` = NULL, `started_at` = NULL, `subscriber_count` = NULL, `title` = NULL, `topics` = NULL, `updated_at` = NULL, additional_properties = NULL, ...
     ) {
       if (!missing(`id`)) {
         stopifnot(is.character(`id`), length(`id`) == 1)
@@ -145,6 +148,11 @@ Space <- R6::R6Class(
       if (!is.null(`updated_at`)) {
         stopifnot(is.character(`updated_at`), length(`updated_at`) == 1)
         self$`updated_at` <- `updated_at`
+      }
+      if (!is.null(additional_properties)) {
+        for (key in names(additional_properties)) {
+          self$additional_properties[[key]] <- additional_properties[[key]]
+        }
       }
     },
     #' To JSON string
@@ -223,6 +231,9 @@ Space <- R6::R6Class(
       if (!is.null(self$`updated_at`)) {
         SpaceObject[["updated_at"]] <-
           self$`updated_at`
+      }
+      for (key in names(self$additional_properties)) {
+        SpaceObject[[key]] <- self$additional_properties[[key]]
       }
 
       SpaceObject
@@ -437,7 +448,12 @@ Space <- R6::R6Class(
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
-      as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+      json_obj <- jsonlite::fromJSON(json_string)
+      for (key in names(self$additional_properties)) {
+        json_obj[[key]] <- self$additional_properties[[key]]
+      }
+      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of Space
     #'
