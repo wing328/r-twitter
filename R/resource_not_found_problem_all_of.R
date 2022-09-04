@@ -10,8 +10,9 @@
 #' @field parameter  character
 #' @field resource_id  character
 #' @field resource_type  character
-#' @field value  character
-#' @field additional_properties named list(character) [optional]
+#' @field value Value will match the schema of the field. character
+#' @field _field_list a list of fields list(character)
+#' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -22,7 +23,8 @@ ResourceNotFoundProblemAllOf <- R6::R6Class(
     `resource_id` = NULL,
     `resource_type` = NULL,
     `value` = NULL,
-    `additional_properties` = NULL,
+    `_field_list` = c("parameter", "resource_id", "resource_type", "value"),
+    `additional_properties` = list(),
     #' Initialize a new ResourceNotFoundProblemAllOf class.
     #'
     #' @description
@@ -113,6 +115,13 @@ ResourceNotFoundProblemAllOf <- R6::R6Class(
       if (!is.null(this_object$`value`)) {
         self$`value` <- this_object$`value`
       }
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' To JSON string
@@ -179,6 +188,13 @@ ResourceNotFoundProblemAllOf <- R6::R6Class(
       self$`resource_id` <- this_object$`resource_id`
       self$`resource_type` <- this_object$`resource_type`
       self$`value` <- this_object$`value`
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' Validate JSON input with respect to ResourceNotFoundProblemAllOf
@@ -293,26 +309,28 @@ ResourceNotFoundProblemAllOf <- R6::R6Class(
       }
 
       invalid_fields
-    }
-  ),
-  # Lock the class to prevent modifications to the method or field
-  lock_class = TRUE
+    },
+    #' Print the object
+    #'
+    #' @description
+    #' Print the object
+    #'
+    #' @export
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }),
+    # Lock the class to prevent modifications to the method or field
+    lock_class = TRUE
 )
-
-# Unlock the class to allow modifications of the method or field
-ResourceNotFoundProblemAllOf$unlock()
-
-#' Print the object
-#'
-#' @description
-#' Print the object
-#'
-#' @export
-ResourceNotFoundProblemAllOf$set("public", "print", function(...) {
-  print(jsonlite::prettify(self$toJSONString()))
-  invisible(self)
-})
-
-# Lock the class to prevent modifications to the method or field
-ResourceNotFoundProblemAllOf$lock()
+## Uncomment below to unlock the class to allow modifications of the method or field
+#ResourceNotFoundProblemAllOf$unlock()
+#
+## Below is an example to define the print fnuction
+#ResourceNotFoundProblemAllOf$set("public", "print", function(...) {
+#  print(jsonlite::prettify(self$toJSONString()))
+#  invisible(self)
+#})
+## Uncomment below to lock the class to prevent modifications to the method or field
+#ResourceNotFoundProblemAllOf$lock()
 

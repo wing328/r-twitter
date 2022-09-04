@@ -7,9 +7,10 @@
 #' @title Get2TweetsIdQuoteTweetsResponseMeta
 #' @description Get2TweetsIdQuoteTweetsResponseMeta Class
 #' @format An \code{R6Class} generator object
-#' @field next_token  character [optional]
-#' @field result_count  integer [optional]
-#' @field additional_properties named list(character) [optional]
+#' @field next_token The next token. character [optional]
+#' @field result_count The number of results returned in this response. integer [optional]
+#' @field _field_list a list of fields list(character)
+#' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -18,7 +19,8 @@ Get2TweetsIdQuoteTweetsResponseMeta <- R6::R6Class(
   public = list(
     `next_token` = NULL,
     `result_count` = NULL,
-    `additional_properties` = NULL,
+    `_field_list` = c("next_token", "result_count"),
+    `additional_properties` = list(),
     #' Initialize a new Get2TweetsIdQuoteTweetsResponseMeta class.
     #'
     #' @description
@@ -85,6 +87,13 @@ Get2TweetsIdQuoteTweetsResponseMeta <- R6::R6Class(
       if (!is.null(this_object$`result_count`)) {
         self$`result_count` <- this_object$`result_count`
       }
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' To JSON string
@@ -133,6 +142,13 @@ Get2TweetsIdQuoteTweetsResponseMeta <- R6::R6Class(
       this_object <- jsonlite::fromJSON(input_json)
       self$`next_token` <- this_object$`next_token`
       self$`result_count` <- this_object$`result_count`
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' Validate JSON input with respect to Get2TweetsIdQuoteTweetsResponseMeta
@@ -183,26 +199,28 @@ Get2TweetsIdQuoteTweetsResponseMeta <- R6::R6Class(
       }
 
       invalid_fields
-    }
-  ),
-  # Lock the class to prevent modifications to the method or field
-  lock_class = TRUE
+    },
+    #' Print the object
+    #'
+    #' @description
+    #' Print the object
+    #'
+    #' @export
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }),
+    # Lock the class to prevent modifications to the method or field
+    lock_class = TRUE
 )
-
-# Unlock the class to allow modifications of the method or field
-Get2TweetsIdQuoteTweetsResponseMeta$unlock()
-
-#' Print the object
-#'
-#' @description
-#' Print the object
-#'
-#' @export
-Get2TweetsIdQuoteTweetsResponseMeta$set("public", "print", function(...) {
-  print(jsonlite::prettify(self$toJSONString()))
-  invisible(self)
-})
-
-# Lock the class to prevent modifications to the method or field
-Get2TweetsIdQuoteTweetsResponseMeta$lock()
+## Uncomment below to unlock the class to allow modifications of the method or field
+#Get2TweetsIdQuoteTweetsResponseMeta$unlock()
+#
+## Below is an example to define the print fnuction
+#Get2TweetsIdQuoteTweetsResponseMeta$set("public", "print", function(...) {
+#  print(jsonlite::prettify(self$toJSONString()))
+#  invisible(self)
+#})
+## Uncomment below to lock the class to prevent modifications to the method or field
+#Get2TweetsIdQuoteTweetsResponseMeta$lock()
 

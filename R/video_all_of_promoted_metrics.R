@@ -7,13 +7,14 @@
 #' @title VideoAllOfPromotedMetrics
 #' @description VideoAllOfPromotedMetrics Class
 #' @format An \code{R6Class} generator object
-#' @field playback_0_count  integer [optional]
-#' @field playback_100_count  integer [optional]
-#' @field playback_25_count  integer [optional]
-#' @field playback_50_count  integer [optional]
-#' @field playback_75_count  integer [optional]
-#' @field view_count  integer [optional]
-#' @field additional_properties named list(character) [optional]
+#' @field playback_0_count Number of users who made it through 0% of the video. integer [optional]
+#' @field playback_100_count Number of users who made it through 100% of the video. integer [optional]
+#' @field playback_25_count Number of users who made it through 25% of the video. integer [optional]
+#' @field playback_50_count Number of users who made it through 50% of the video. integer [optional]
+#' @field playback_75_count Number of users who made it through 75% of the video. integer [optional]
+#' @field view_count Number of times this video has been viewed. integer [optional]
+#' @field _field_list a list of fields list(character)
+#' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -26,7 +27,8 @@ VideoAllOfPromotedMetrics <- R6::R6Class(
     `playback_50_count` = NULL,
     `playback_75_count` = NULL,
     `view_count` = NULL,
-    `additional_properties` = NULL,
+    `_field_list` = c("playback_0_count", "playback_100_count", "playback_25_count", "playback_50_count", "playback_75_count", "view_count"),
+    `additional_properties` = list(),
     #' Initialize a new VideoAllOfPromotedMetrics class.
     #'
     #' @description
@@ -141,6 +143,13 @@ VideoAllOfPromotedMetrics <- R6::R6Class(
       if (!is.null(this_object$`view_count`)) {
         self$`view_count` <- this_object$`view_count`
       }
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' To JSON string
@@ -225,6 +234,13 @@ VideoAllOfPromotedMetrics <- R6::R6Class(
       self$`playback_50_count` <- this_object$`playback_50_count`
       self$`playback_75_count` <- this_object$`playback_75_count`
       self$`view_count` <- this_object$`view_count`
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' Validate JSON input with respect to VideoAllOfPromotedMetrics
@@ -267,26 +283,28 @@ VideoAllOfPromotedMetrics <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
-    }
-  ),
-  # Lock the class to prevent modifications to the method or field
-  lock_class = TRUE
+    },
+    #' Print the object
+    #'
+    #' @description
+    #' Print the object
+    #'
+    #' @export
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }),
+    # Lock the class to prevent modifications to the method or field
+    lock_class = TRUE
 )
-
-# Unlock the class to allow modifications of the method or field
-VideoAllOfPromotedMetrics$unlock()
-
-#' Print the object
-#'
-#' @description
-#' Print the object
-#'
-#' @export
-VideoAllOfPromotedMetrics$set("public", "print", function(...) {
-  print(jsonlite::prettify(self$toJSONString()))
-  invisible(self)
-})
-
-# Lock the class to prevent modifications to the method or field
-VideoAllOfPromotedMetrics$lock()
+## Uncomment below to unlock the class to allow modifications of the method or field
+#VideoAllOfPromotedMetrics$unlock()
+#
+## Below is an example to define the print fnuction
+#VideoAllOfPromotedMetrics$set("public", "print", function(...) {
+#  print(jsonlite::prettify(self$toJSONString()))
+#  invisible(self)
+#})
+## Uncomment below to lock the class to prevent modifications to the method or field
+#VideoAllOfPromotedMetrics$lock()
 

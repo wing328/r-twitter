@@ -7,9 +7,9 @@
 #' @title TweetCreateRequestPoll
 #' @description TweetCreateRequestPoll Class
 #' @format An \code{R6Class} generator object
-#' @field duration_minutes  integer
+#' @field duration_minutes Duration of the poll in minutes. integer
 #' @field options  list(character)
-#' @field reply_settings  character [optional]
+#' @field reply_settings Settings to indicate who can reply to the Tweet. character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -243,26 +243,28 @@ TweetCreateRequestPoll <- R6::R6Class(
       }
 
       invalid_fields
-    }
-  ),
-  # Lock the class to prevent modifications to the method or field
-  lock_class = TRUE
+    },
+    #' Print the object
+    #'
+    #' @description
+    #' Print the object
+    #'
+    #' @export
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }),
+    # Lock the class to prevent modifications to the method or field
+    lock_class = TRUE
 )
-
-# Unlock the class to allow modifications of the method or field
-TweetCreateRequestPoll$unlock()
-
-#' Print the object
-#'
-#' @description
-#' Print the object
-#'
-#' @export
-TweetCreateRequestPoll$set("public", "print", function(...) {
-  print(jsonlite::prettify(self$toJSONString()))
-  invisible(self)
-})
-
-# Lock the class to prevent modifications to the method or field
-TweetCreateRequestPoll$lock()
+## Uncomment below to unlock the class to allow modifications of the method or field
+#TweetCreateRequestPoll$unlock()
+#
+## Below is an example to define the print fnuction
+#TweetCreateRequestPoll$set("public", "print", function(...) {
+#  print(jsonlite::prettify(self$toJSONString()))
+#  invisible(self)
+#})
+## Uncomment below to lock the class to prevent modifications to the method or field
+#TweetCreateRequestPoll$lock()
 

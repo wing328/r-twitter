@@ -7,8 +7,8 @@
 #' @title TweetCreateRequestReply
 #' @description TweetCreateRequestReply Class
 #' @format An \code{R6Class} generator object
-#' @field exclude_reply_user_ids  list(character) [optional]
-#' @field in_reply_to_tweet_id  character
+#' @field exclude_reply_user_ids A list of User Ids to be excluded from the reply Tweet. list(character) [optional]
+#' @field in_reply_to_tweet_id Unique identifier of this Tweet. This is returned as a string in order to avoid complications with languages and tools that cannot handle large integers. character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -183,26 +183,28 @@ TweetCreateRequestReply <- R6::R6Class(
       }
 
       invalid_fields
-    }
-  ),
-  # Lock the class to prevent modifications to the method or field
-  lock_class = TRUE
+    },
+    #' Print the object
+    #'
+    #' @description
+    #' Print the object
+    #'
+    #' @export
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }),
+    # Lock the class to prevent modifications to the method or field
+    lock_class = TRUE
 )
-
-# Unlock the class to allow modifications of the method or field
-TweetCreateRequestReply$unlock()
-
-#' Print the object
-#'
-#' @description
-#' Print the object
-#'
-#' @export
-TweetCreateRequestReply$set("public", "print", function(...) {
-  print(jsonlite::prettify(self$toJSONString()))
-  invisible(self)
-})
-
-# Lock the class to prevent modifications to the method or field
-TweetCreateRequestReply$lock()
+## Uncomment below to unlock the class to allow modifications of the method or field
+#TweetCreateRequestReply$unlock()
+#
+## Below is an example to define the print fnuction
+#TweetCreateRequestReply$set("public", "print", function(...) {
+#  print(jsonlite::prettify(self$toJSONString()))
+#  invisible(self)
+#})
+## Uncomment below to lock the class to prevent modifications to the method or field
+#TweetCreateRequestReply$lock()
 

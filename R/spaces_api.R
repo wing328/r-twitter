@@ -7,7 +7,7 @@
 #'
 #' @docType class
 #' @title Spaces operations
-#' @description 
+#' @description SpacesApi
 #' @format An \code{R6Class} generator object
 #' @field api_client Handles the client-server communication.
 #'
@@ -574,13 +574,21 @@ SpacesApi <- R6::R6Class(
                                                      reason = "Invalid length for `topic_fields` when calling SpacesApi$find_space_by_id, number of items must be greater than or equal to 1."))
       }
 
-      query_params["space.fields"] <- `space_fields`
+      for (query_item in `space_fields`) {
+        query_params[["space.fields"]] <- c(query_params[["space.fields"]], list(`space.fields` = query_item))
+      }
 
-      query_params["expansions"] <- `expansions`
+      for (query_item in `expansions`) {
+        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
+      }
 
-      query_params["user.fields"] <- `user_fields`
+      for (query_item in `user_fields`) {
+        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
+      }
 
-      query_params["topic.fields"] <- `topic_fields`
+      for (query_item in `topic_fields`) {
+        query_params[["topic.fields"]] <- c(query_params[["topic.fields"]], list(`topic.fields` = query_item))
+      }
 
       local_var_url_path <- "/2/spaces/{id}"
       if (!missing(`id`)) {
@@ -754,15 +762,25 @@ SpacesApi <- R6::R6Class(
                                                      reason = "Invalid length for `topic_fields` when calling SpacesApi$find_spaces_by_creator_ids, number of items must be greater than or equal to 1."))
       }
 
-      query_params["user_ids"] <- `user_ids`
+      for (query_item in `user_ids`) {
+        query_params[["user_ids"]] <- c(query_params[["user_ids"]], list(`user_ids` = query_item))
+      }
 
-      query_params["space.fields"] <- `space_fields`
+      for (query_item in `space_fields`) {
+        query_params[["space.fields"]] <- c(query_params[["space.fields"]], list(`space.fields` = query_item))
+      }
 
-      query_params["expansions"] <- `expansions`
+      for (query_item in `expansions`) {
+        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
+      }
 
-      query_params["user.fields"] <- `user_fields`
+      for (query_item in `user_fields`) {
+        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
+      }
 
-      query_params["topic.fields"] <- `topic_fields`
+      for (query_item in `topic_fields`) {
+        query_params[["topic.fields"]] <- c(query_params[["topic.fields"]], list(`topic.fields` = query_item))
+      }
 
       local_var_url_path <- "/2/spaces/by/creator_ids"
       # Bearer token
@@ -932,15 +950,25 @@ SpacesApi <- R6::R6Class(
                                                      reason = "Invalid length for `topic_fields` when calling SpacesApi$find_spaces_by_ids, number of items must be greater than or equal to 1."))
       }
 
-      query_params["ids"] <- `ids`
+      for (query_item in `ids`) {
+        query_params[["ids"]] <- c(query_params[["ids"]], list(`ids` = query_item))
+      }
 
-      query_params["space.fields"] <- `space_fields`
+      for (query_item in `space_fields`) {
+        query_params[["space.fields"]] <- c(query_params[["space.fields"]], list(`space.fields` = query_item))
+      }
 
-      query_params["expansions"] <- `expansions`
+      for (query_item in `expansions`) {
+        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
+      }
 
-      query_params["user.fields"] <- `user_fields`
+      for (query_item in `user_fields`) {
+        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
+      }
 
-      query_params["topic.fields"] <- `topic_fields`
+      for (query_item in `topic_fields`) {
+        query_params[["topic.fields"]] <- c(query_params[["topic.fields"]], list(`topic.fields` = query_item))
+      }
 
       local_var_url_path <- "/2/spaces"
       # Bearer token
@@ -1134,13 +1162,21 @@ SpacesApi <- R6::R6Class(
 
       query_params["max_results"] <- `max_results`
 
-      query_params["space.fields"] <- `space_fields`
+      for (query_item in `space_fields`) {
+        query_params[["space.fields"]] <- c(query_params[["space.fields"]], list(`space.fields` = query_item))
+      }
 
-      query_params["expansions"] <- `expansions`
+      for (query_item in `expansions`) {
+        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
+      }
 
-      query_params["user.fields"] <- `user_fields`
+      for (query_item in `user_fields`) {
+        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
+      }
 
-      query_params["topic.fields"] <- `topic_fields`
+      for (query_item in `topic_fields`) {
+        query_params[["topic.fields"]] <- c(query_params[["topic.fields"]], list(`topic.fields` = query_item))
+      }
 
       local_var_url_path <- "/2/spaces/search"
       # Bearer token
@@ -1323,11 +1359,17 @@ SpacesApi <- R6::R6Class(
 
       query_params["max_results"] <- `max_results`
 
-      query_params["user.fields"] <- `user_fields`
+      for (query_item in `user_fields`) {
+        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
+      }
 
-      query_params["expansions"] <- `expansions`
+      for (query_item in `expansions`) {
+        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
+      }
 
-      query_params["tweet.fields"] <- `tweet_fields`
+      for (query_item in `tweet_fields`) {
+        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
+      }
 
       local_var_url_path <- "/2/spaces/{id}/buyers"
       if (!missing(`id`)) {
@@ -1526,17 +1568,29 @@ SpacesApi <- R6::R6Class(
 
       query_params["max_results"] <- `max_results`
 
-      query_params["tweet.fields"] <- `tweet_fields`
+      for (query_item in `tweet_fields`) {
+        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
+      }
 
-      query_params["expansions"] <- `expansions`
+      for (query_item in `expansions`) {
+        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
+      }
 
-      query_params["media.fields"] <- `media_fields`
+      for (query_item in `media_fields`) {
+        query_params[["media.fields"]] <- c(query_params[["media.fields"]], list(`media.fields` = query_item))
+      }
 
-      query_params["poll.fields"] <- `poll_fields`
+      for (query_item in `poll_fields`) {
+        query_params[["poll.fields"]] <- c(query_params[["poll.fields"]], list(`poll.fields` = query_item))
+      }
 
-      query_params["user.fields"] <- `user_fields`
+      for (query_item in `user_fields`) {
+        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
+      }
 
-      query_params["place.fields"] <- `place_fields`
+      for (query_item in `place_fields`) {
+        query_params[["place.fields"]] <- c(query_params[["place.fields"]], list(`place.fields` = query_item))
+      }
 
       local_var_url_path <- "/2/spaces/{id}/tweets"
       if (!missing(`id`)) {

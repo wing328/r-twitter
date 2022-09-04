@@ -7,8 +7,9 @@
 #' @title UserComplianceSchemaUser
 #' @description UserComplianceSchemaUser Class
 #' @format An \code{R6Class} generator object
-#' @field id  character
-#' @field additional_properties named list(character) [optional]
+#' @field id Unique identifier of this User. This is returned as a string in order to avoid complications with languages and tools that cannot handle large integers. character
+#' @field _field_list a list of fields list(character)
+#' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -16,7 +17,8 @@ UserComplianceSchemaUser <- R6::R6Class(
   "UserComplianceSchemaUser",
   public = list(
     `id` = NULL,
-    `additional_properties` = NULL,
+    `_field_list` = c("id"),
+    `additional_properties` = list(),
     #' Initialize a new UserComplianceSchemaUser class.
     #'
     #' @description
@@ -71,6 +73,13 @@ UserComplianceSchemaUser <- R6::R6Class(
       if (!is.null(this_object$`id`)) {
         self$`id` <- this_object$`id`
       }
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' To JSON string
@@ -110,6 +119,13 @@ UserComplianceSchemaUser <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`id` <- this_object$`id`
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' Validate JSON input with respect to UserComplianceSchemaUser
@@ -176,26 +192,28 @@ UserComplianceSchemaUser <- R6::R6Class(
       }
 
       invalid_fields
-    }
-  ),
-  # Lock the class to prevent modifications to the method or field
-  lock_class = TRUE
+    },
+    #' Print the object
+    #'
+    #' @description
+    #' Print the object
+    #'
+    #' @export
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }),
+    # Lock the class to prevent modifications to the method or field
+    lock_class = TRUE
 )
-
-# Unlock the class to allow modifications of the method or field
-UserComplianceSchemaUser$unlock()
-
-#' Print the object
-#'
-#' @description
-#' Print the object
-#'
-#' @export
-UserComplianceSchemaUser$set("public", "print", function(...) {
-  print(jsonlite::prettify(self$toJSONString()))
-  invisible(self)
-})
-
-# Lock the class to prevent modifications to the method or field
-UserComplianceSchemaUser$lock()
+## Uncomment below to unlock the class to allow modifications of the method or field
+#UserComplianceSchemaUser$unlock()
+#
+## Below is an example to define the print fnuction
+#UserComplianceSchemaUser$set("public", "print", function(...) {
+#  print(jsonlite::prettify(self$toJSONString()))
+#  invisible(self)
+#})
+## Uncomment below to lock the class to prevent modifications to the method or field
+#UserComplianceSchemaUser$lock()
 

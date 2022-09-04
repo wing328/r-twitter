@@ -7,11 +7,12 @@
 #' @title RulesRequestSummaryOneOf
 #' @description RulesRequestSummaryOneOf Class
 #' @format An \code{R6Class} generator object
-#' @field created  integer
-#' @field invalid  integer
-#' @field not_created  integer
-#' @field valid  integer
-#' @field additional_properties named list(character) [optional]
+#' @field created Number of user-specified stream filtering rules that were created. integer
+#' @field invalid Number of invalid user-specified stream filtering rules. integer
+#' @field not_created Number of user-specified stream filtering rules that were not created. integer
+#' @field valid Number of valid user-specified stream filtering rules. integer
+#' @field _field_list a list of fields list(character)
+#' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -22,7 +23,8 @@ RulesRequestSummaryOneOf <- R6::R6Class(
     `invalid` = NULL,
     `not_created` = NULL,
     `valid` = NULL,
-    `additional_properties` = NULL,
+    `_field_list` = c("created", "invalid", "not_created", "valid"),
+    `additional_properties` = list(),
     #' Initialize a new RulesRequestSummaryOneOf class.
     #'
     #' @description
@@ -113,6 +115,13 @@ RulesRequestSummaryOneOf <- R6::R6Class(
       if (!is.null(this_object$`valid`)) {
         self$`valid` <- this_object$`valid`
       }
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' To JSON string
@@ -179,6 +188,13 @@ RulesRequestSummaryOneOf <- R6::R6Class(
       self$`invalid` <- this_object$`invalid`
       self$`not_created` <- this_object$`not_created`
       self$`valid` <- this_object$`valid`
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' Validate JSON input with respect to RulesRequestSummaryOneOf
@@ -285,26 +301,28 @@ RulesRequestSummaryOneOf <- R6::R6Class(
       }
 
       invalid_fields
-    }
-  ),
-  # Lock the class to prevent modifications to the method or field
-  lock_class = TRUE
+    },
+    #' Print the object
+    #'
+    #' @description
+    #' Print the object
+    #'
+    #' @export
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }),
+    # Lock the class to prevent modifications to the method or field
+    lock_class = TRUE
 )
-
-# Unlock the class to allow modifications of the method or field
-RulesRequestSummaryOneOf$unlock()
-
-#' Print the object
-#'
-#' @description
-#' Print the object
-#'
-#' @export
-RulesRequestSummaryOneOf$set("public", "print", function(...) {
-  print(jsonlite::prettify(self$toJSONString()))
-  invisible(self)
-})
-
-# Lock the class to prevent modifications to the method or field
-RulesRequestSummaryOneOf$lock()
+## Uncomment below to unlock the class to allow modifications of the method or field
+#RulesRequestSummaryOneOf$unlock()
+#
+## Below is an example to define the print fnuction
+#RulesRequestSummaryOneOf$set("public", "print", function(...) {
+#  print(jsonlite::prettify(self$toJSONString()))
+#  invisible(self)
+#})
+## Uncomment below to lock the class to prevent modifications to the method or field
+#RulesRequestSummaryOneOf$lock()
 

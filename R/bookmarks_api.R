@@ -7,7 +7,7 @@
 #'
 #' @docType class
 #' @title Bookmarks operations
-#' @description 
+#' @description BookmarksApi
 #' @format An \code{R6Class} generator object
 #' @field api_client Handles the client-server communication.
 #'
@@ -376,17 +376,29 @@ BookmarksApi <- R6::R6Class(
 
       query_params["pagination_token"] <- `pagination_token`
 
-      query_params["tweet.fields"] <- `tweet_fields`
+      for (query_item in `tweet_fields`) {
+        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
+      }
 
-      query_params["expansions"] <- `expansions`
+      for (query_item in `expansions`) {
+        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
+      }
 
-      query_params["media.fields"] <- `media_fields`
+      for (query_item in `media_fields`) {
+        query_params[["media.fields"]] <- c(query_params[["media.fields"]], list(`media.fields` = query_item))
+      }
 
-      query_params["poll.fields"] <- `poll_fields`
+      for (query_item in `poll_fields`) {
+        query_params[["poll.fields"]] <- c(query_params[["poll.fields"]], list(`poll.fields` = query_item))
+      }
 
-      query_params["user.fields"] <- `user_fields`
+      for (query_item in `user_fields`) {
+        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
+      }
 
-      query_params["place.fields"] <- `place_fields`
+      for (query_item in `place_fields`) {
+        query_params[["place.fields"]] <- c(query_params[["place.fields"]], list(`place.fields` = query_item))
+      }
 
       local_var_url_path <- "/2/users/{id}/bookmarks"
       if (!missing(`id`)) {

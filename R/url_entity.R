@@ -7,18 +7,19 @@
 #' @title UrlEntity
 #' @description UrlEntity Class
 #' @format An \code{R6Class} generator object
-#' @field end  integer
-#' @field start  integer
-#' @field description  character [optional]
-#' @field display_url  character [optional]
-#' @field expanded_url  character [optional]
+#' @field end Index (zero-based) at which position this entity ends.  The index is exclusive. integer
+#' @field start Index (zero-based) at which position this entity starts.  The index is inclusive. integer
+#' @field description Description of the URL landing page. character [optional]
+#' @field display_url The URL as displayed in the Twitter client. character [optional]
+#' @field expanded_url A validly formatted URL. character [optional]
 #' @field images  list(\link{UrlImage}) [optional]
-#' @field media_key  character [optional]
-#' @field status  integer [optional]
-#' @field title  character [optional]
-#' @field unwound_url  character [optional]
-#' @field url  character
-#' @field additional_properties named list(character) [optional]
+#' @field media_key The Media Key identifier for this attachment. character [optional]
+#' @field status HTTP Status Code. integer [optional]
+#' @field title Title of the page the URL points to. character [optional]
+#' @field unwound_url Fully resolved url. character [optional]
+#' @field url A validly formatted URL. character
+#' @field _field_list a list of fields list(character)
+#' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -36,7 +37,8 @@ UrlEntity <- R6::R6Class(
     `title` = NULL,
     `unwound_url` = NULL,
     `url` = NULL,
-    `additional_properties` = NULL,
+    `_field_list` = c("end", "start", "description", "display_url", "expanded_url", "images", "media_key", "status", "title", "unwound_url", "url"),
+    `additional_properties` = list(),
     #' Initialize a new UrlEntity class.
     #'
     #' @description
@@ -212,6 +214,13 @@ UrlEntity <- R6::R6Class(
       if (!is.null(this_object$`url`)) {
         self$`url` <- this_object$`url`
       }
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' To JSON string
@@ -341,6 +350,13 @@ UrlEntity <- R6::R6Class(
       self$`title` <- this_object$`title`
       self$`unwound_url` <- this_object$`unwound_url`
       self$`url` <- this_object$`url`
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' Validate JSON input with respect to UrlEntity
@@ -477,26 +493,28 @@ UrlEntity <- R6::R6Class(
       }
 
       invalid_fields
-    }
-  ),
-  # Lock the class to prevent modifications to the method or field
-  lock_class = TRUE
+    },
+    #' Print the object
+    #'
+    #' @description
+    #' Print the object
+    #'
+    #' @export
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }),
+    # Lock the class to prevent modifications to the method or field
+    lock_class = TRUE
 )
-
-# Unlock the class to allow modifications of the method or field
-UrlEntity$unlock()
-
-#' Print the object
-#'
-#' @description
-#' Print the object
-#'
-#' @export
-UrlEntity$set("public", "print", function(...) {
-  print(jsonlite::prettify(self$toJSONString()))
-  invisible(self)
-})
-
-# Lock the class to prevent modifications to the method or field
-UrlEntity$lock()
+## Uncomment below to unlock the class to allow modifications of the method or field
+#UrlEntity$unlock()
+#
+## Below is an example to define the print fnuction
+#UrlEntity$set("public", "print", function(...) {
+#  print(jsonlite::prettify(self$toJSONString()))
+#  invisible(self)
+#})
+## Uncomment below to lock the class to prevent modifications to the method or field
+#UrlEntity$lock()
 

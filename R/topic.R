@@ -7,10 +7,11 @@
 #' @title Topic
 #' @description Topic Class
 #' @format An \code{R6Class} generator object
-#' @field description  character [optional]
-#' @field id  character
-#' @field name  character
-#' @field additional_properties named list(character) [optional]
+#' @field description The description of the given topic. character [optional]
+#' @field id Unique identifier of this Topic. character
+#' @field name The name of the given topic. character
+#' @field _field_list a list of fields list(character)
+#' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -20,7 +21,8 @@ Topic <- R6::R6Class(
     `description` = NULL,
     `id` = NULL,
     `name` = NULL,
-    `additional_properties` = NULL,
+    `_field_list` = c("description", "id", "name"),
+    `additional_properties` = list(),
     #' Initialize a new Topic class.
     #'
     #' @description
@@ -99,6 +101,13 @@ Topic <- R6::R6Class(
       if (!is.null(this_object$`name`)) {
         self$`name` <- this_object$`name`
       }
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' To JSON string
@@ -156,6 +165,13 @@ Topic <- R6::R6Class(
       self$`description` <- this_object$`description`
       self$`id` <- this_object$`id`
       self$`name` <- this_object$`name`
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' Validate JSON input with respect to Topic
@@ -230,26 +246,28 @@ Topic <- R6::R6Class(
       }
 
       invalid_fields
-    }
-  ),
-  # Lock the class to prevent modifications to the method or field
-  lock_class = TRUE
+    },
+    #' Print the object
+    #'
+    #' @description
+    #' Print the object
+    #'
+    #' @export
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }),
+    # Lock the class to prevent modifications to the method or field
+    lock_class = TRUE
 )
-
-# Unlock the class to allow modifications of the method or field
-Topic$unlock()
-
-#' Print the object
-#'
-#' @description
-#' Print the object
-#'
-#' @export
-Topic$set("public", "print", function(...) {
-  print(jsonlite::prettify(self$toJSONString()))
-  invisible(self)
-})
-
-# Lock the class to prevent modifications to the method or field
-Topic$lock()
+## Uncomment below to unlock the class to allow modifications of the method or field
+#Topic$unlock()
+#
+## Below is an example to define the print fnuction
+#Topic$set("public", "print", function(...) {
+#  print(jsonlite::prettify(self$toJSONString()))
+#  invisible(self)
+#})
+## Uncomment below to lock the class to prevent modifications to the method or field
+#Topic$lock()
 

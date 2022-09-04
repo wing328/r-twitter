@@ -8,8 +8,9 @@
 #' @description AnimatedGifAllOf Class
 #' @format An \code{R6Class} generator object
 #' @field preview_image_url  character [optional]
-#' @field variants  list(\link{Variant}) [optional]
-#' @field additional_properties named list(character) [optional]
+#' @field variants An array of all available variants of the media. list(\link{Variant}) [optional]
+#' @field _field_list a list of fields list(character)
+#' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -18,7 +19,8 @@ AnimatedGifAllOf <- R6::R6Class(
   public = list(
     `preview_image_url` = NULL,
     `variants` = NULL,
-    `additional_properties` = NULL,
+    `_field_list` = c("preview_image_url", "variants"),
+    `additional_properties` = list(),
     #' Initialize a new AnimatedGifAllOf class.
     #'
     #' @description
@@ -86,6 +88,13 @@ AnimatedGifAllOf <- R6::R6Class(
       if (!is.null(this_object$`variants`)) {
         self$`variants` <- ApiClient$new()$deserializeObj(this_object$`variants`, "array[Variant]", loadNamespace("twitter"))
       }
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' To JSON string
@@ -134,6 +143,13 @@ AnimatedGifAllOf <- R6::R6Class(
       this_object <- jsonlite::fromJSON(input_json)
       self$`preview_image_url` <- this_object$`preview_image_url`
       self$`variants` <- ApiClient$new()$deserializeObj(this_object$`variants`, "array[Variant]", loadNamespace("twitter"))
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' Validate JSON input with respect to AnimatedGifAllOf
@@ -176,26 +192,28 @@ AnimatedGifAllOf <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
-    }
-  ),
-  # Lock the class to prevent modifications to the method or field
-  lock_class = TRUE
+    },
+    #' Print the object
+    #'
+    #' @description
+    #' Print the object
+    #'
+    #' @export
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }),
+    # Lock the class to prevent modifications to the method or field
+    lock_class = TRUE
 )
-
-# Unlock the class to allow modifications of the method or field
-AnimatedGifAllOf$unlock()
-
-#' Print the object
-#'
-#' @description
-#' Print the object
-#'
-#' @export
-AnimatedGifAllOf$set("public", "print", function(...) {
-  print(jsonlite::prettify(self$toJSONString()))
-  invisible(self)
-})
-
-# Lock the class to prevent modifications to the method or field
-AnimatedGifAllOf$lock()
+## Uncomment below to unlock the class to allow modifications of the method or field
+#AnimatedGifAllOf$unlock()
+#
+## Below is an example to define the print fnuction
+#AnimatedGifAllOf$set("public", "print", function(...) {
+#  print(jsonlite::prettify(self$toJSONString()))
+#  invisible(self)
+#})
+## Uncomment below to lock the class to prevent modifications to the method or field
+#AnimatedGifAllOf$lock()
 

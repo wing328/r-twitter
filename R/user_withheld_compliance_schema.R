@@ -8,7 +8,8 @@
 #' @description UserWithheldComplianceSchema Class
 #' @format An \code{R6Class} generator object
 #' @field user_withheld  \link{UserTakedownComplianceSchema}
-#' @field additional_properties named list(character) [optional]
+#' @field _field_list a list of fields list(character)
+#' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -16,7 +17,8 @@ UserWithheldComplianceSchema <- R6::R6Class(
   "UserWithheldComplianceSchema",
   public = list(
     `user_withheld` = NULL,
-    `additional_properties` = NULL,
+    `_field_list` = c("user_withheld"),
+    `additional_properties` = list(),
     #' Initialize a new UserWithheldComplianceSchema class.
     #'
     #' @description
@@ -73,6 +75,13 @@ UserWithheldComplianceSchema <- R6::R6Class(
         user_withheld_object$fromJSON(jsonlite::toJSON(this_object$user_withheld, auto_unbox = TRUE, digits = NA))
         self$`user_withheld` <- user_withheld_object
       }
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' To JSON string
@@ -112,6 +121,13 @@ UserWithheldComplianceSchema <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`user_withheld` <- UserTakedownComplianceSchema$new()$fromJSON(jsonlite::toJSON(this_object$user_withheld, auto_unbox = TRUE, digits = NA))
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' Validate JSON input with respect to UserWithheldComplianceSchema
@@ -170,26 +186,28 @@ UserWithheldComplianceSchema <- R6::R6Class(
       }
 
       invalid_fields
-    }
-  ),
-  # Lock the class to prevent modifications to the method or field
-  lock_class = TRUE
+    },
+    #' Print the object
+    #'
+    #' @description
+    #' Print the object
+    #'
+    #' @export
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }),
+    # Lock the class to prevent modifications to the method or field
+    lock_class = TRUE
 )
-
-# Unlock the class to allow modifications of the method or field
-UserWithheldComplianceSchema$unlock()
-
-#' Print the object
-#'
-#' @description
-#' Print the object
-#'
-#' @export
-UserWithheldComplianceSchema$set("public", "print", function(...) {
-  print(jsonlite::prettify(self$toJSONString()))
-  invisible(self)
-})
-
-# Lock the class to prevent modifications to the method or field
-UserWithheldComplianceSchema$lock()
+## Uncomment below to unlock the class to allow modifications of the method or field
+#UserWithheldComplianceSchema$unlock()
+#
+## Below is an example to define the print fnuction
+#UserWithheldComplianceSchema$set("public", "print", function(...) {
+#  print(jsonlite::prettify(self$toJSONString()))
+#  invisible(self)
+#})
+## Uncomment below to lock the class to prevent modifications to the method or field
+#UserWithheldComplianceSchema$lock()
 

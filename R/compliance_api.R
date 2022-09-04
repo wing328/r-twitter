@@ -7,7 +7,7 @@
 #'
 #' @docType class
 #' @title Compliance operations
-#' @description 
+#' @description ComplianceApi
 #' @format An \code{R6Class} generator object
 #' @field api_client Handles the client-server communication.
 #'
@@ -558,7 +558,9 @@ ComplianceApi <- R6::R6Class(
                                                      reason = "Invalid length for `compliance_job_fields` when calling ComplianceApi$get_batch_compliance_job, number of items must be greater than or equal to 1."))
       }
 
-      query_params["compliance_job.fields"] <- `compliance_job_fields`
+      for (query_item in `compliance_job_fields`) {
+        query_params[["compliance_job.fields"]] <- c(query_params[["compliance_job.fields"]], list(`compliance_job.fields` = query_item))
+      }
 
       local_var_url_path <- "/2/compliance/jobs/{id}"
       if (!missing(`id`)) {
@@ -1035,7 +1037,9 @@ ComplianceApi <- R6::R6Class(
 
       query_params["status"] <- `status`
 
-      query_params["compliance_job.fields"] <- `compliance_job_fields`
+      for (query_item in `compliance_job_fields`) {
+        query_params[["compliance_job.fields"]] <- c(query_params[["compliance_job.fields"]], list(`compliance_job.fields` = query_item))
+      }
 
       local_var_url_path <- "/2/compliance/jobs"
       # Bearer token

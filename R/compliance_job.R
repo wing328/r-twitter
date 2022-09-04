@@ -7,16 +7,17 @@
 #' @title ComplianceJob
 #' @description ComplianceJob Class
 #' @format An \code{R6Class} generator object
-#' @field created_at  character
-#' @field download_expires_at  character
-#' @field download_url  character
-#' @field id  character
-#' @field name  character [optional]
+#' @field created_at Creation time of the compliance job. character
+#' @field download_expires_at Expiration time of the download URL. character
+#' @field download_url URL from which the user will retrieve their compliance results. character
+#' @field id Compliance Job ID. character
+#' @field name User-provided name for a compliance job. character [optional]
 #' @field status  \link{ComplianceJobStatus}
 #' @field type  \link{ComplianceJobType}
-#' @field upload_expires_at  character
-#' @field upload_url  character
-#' @field additional_properties named list(character) [optional]
+#' @field upload_expires_at Expiration time of the upload URL. character
+#' @field upload_url URL to which the user will upload their Tweet or user IDs. character
+#' @field _field_list a list of fields list(character)
+#' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -32,7 +33,8 @@ ComplianceJob <- R6::R6Class(
     `type` = NULL,
     `upload_expires_at` = NULL,
     `upload_url` = NULL,
-    `additional_properties` = NULL,
+    `_field_list` = c("created_at", "download_expires_at", "download_url", "id", "name", "status", "type", "upload_expires_at", "upload_url"),
+    `additional_properties` = list(),
     #' Initialize a new ComplianceJob class.
     #'
     #' @description
@@ -187,6 +189,13 @@ ComplianceJob <- R6::R6Class(
       if (!is.null(this_object$`upload_url`)) {
         self$`upload_url` <- this_object$`upload_url`
       }
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' To JSON string
@@ -298,6 +307,13 @@ ComplianceJob <- R6::R6Class(
       self$`type` <- ComplianceJobType$new()$fromJSON(jsonlite::toJSON(this_object$type, auto_unbox = TRUE, digits = NA))
       self$`upload_expires_at` <- this_object$`upload_expires_at`
       self$`upload_url` <- this_object$`upload_url`
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' Validate JSON input with respect to ComplianceJob
@@ -484,26 +500,28 @@ ComplianceJob <- R6::R6Class(
       }
 
       invalid_fields
-    }
-  ),
-  # Lock the class to prevent modifications to the method or field
-  lock_class = TRUE
+    },
+    #' Print the object
+    #'
+    #' @description
+    #' Print the object
+    #'
+    #' @export
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }),
+    # Lock the class to prevent modifications to the method or field
+    lock_class = TRUE
 )
-
-# Unlock the class to allow modifications of the method or field
-ComplianceJob$unlock()
-
-#' Print the object
-#'
-#' @description
-#' Print the object
-#'
-#' @export
-ComplianceJob$set("public", "print", function(...) {
-  print(jsonlite::prettify(self$toJSONString()))
-  invisible(self)
-})
-
-# Lock the class to prevent modifications to the method or field
-ComplianceJob$lock()
+## Uncomment below to unlock the class to allow modifications of the method or field
+#ComplianceJob$unlock()
+#
+## Below is an example to define the print fnuction
+#ComplianceJob$set("public", "print", function(...) {
+#  print(jsonlite::prettify(self$toJSONString()))
+#  invisible(self)
+#})
+## Uncomment below to lock the class to prevent modifications to the method or field
+#ComplianceJob$lock()
 

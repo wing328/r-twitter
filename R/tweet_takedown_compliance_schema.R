@@ -7,11 +7,12 @@
 #' @title TweetTakedownComplianceSchema
 #' @description TweetTakedownComplianceSchema Class
 #' @format An \code{R6Class} generator object
-#' @field event_at  character
-#' @field quote_tweet_id  character [optional]
+#' @field event_at Event time. character
+#' @field quote_tweet_id Unique identifier of this Tweet. This is returned as a string in order to avoid complications with languages and tools that cannot handle large integers. character [optional]
 #' @field tweet  \link{TweetComplianceSchemaTweet}
 #' @field withheld_in_countries  list(character)
-#' @field additional_properties named list(character) [optional]
+#' @field _field_list a list of fields list(character)
+#' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -22,7 +23,8 @@ TweetTakedownComplianceSchema <- R6::R6Class(
     `quote_tweet_id` = NULL,
     `tweet` = NULL,
     `withheld_in_countries` = NULL,
-    `additional_properties` = NULL,
+    `_field_list` = c("event_at", "quote_tweet_id", "tweet", "withheld_in_countries"),
+    `additional_properties` = list(),
     #' Initialize a new TweetTakedownComplianceSchema class.
     #'
     #' @description
@@ -116,6 +118,13 @@ TweetTakedownComplianceSchema <- R6::R6Class(
       if (!is.null(this_object$`withheld_in_countries`)) {
         self$`withheld_in_countries` <- ApiClient$new()$deserializeObj(this_object$`withheld_in_countries`, "array[character]", loadNamespace("twitter"))
       }
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' To JSON string
@@ -182,6 +191,13 @@ TweetTakedownComplianceSchema <- R6::R6Class(
       self$`quote_tweet_id` <- this_object$`quote_tweet_id`
       self$`tweet` <- TweetComplianceSchemaTweet$new()$fromJSON(jsonlite::toJSON(this_object$tweet, auto_unbox = TRUE, digits = NA))
       self$`withheld_in_countries` <- ApiClient$new()$deserializeObj(this_object$`withheld_in_countries`, "array[character]", loadNamespace("twitter"))
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' Validate JSON input with respect to TweetTakedownComplianceSchema
@@ -289,26 +305,28 @@ TweetTakedownComplianceSchema <- R6::R6Class(
       }
 
       invalid_fields
-    }
-  ),
-  # Lock the class to prevent modifications to the method or field
-  lock_class = TRUE
+    },
+    #' Print the object
+    #'
+    #' @description
+    #' Print the object
+    #'
+    #' @export
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }),
+    # Lock the class to prevent modifications to the method or field
+    lock_class = TRUE
 )
-
-# Unlock the class to allow modifications of the method or field
-TweetTakedownComplianceSchema$unlock()
-
-#' Print the object
-#'
-#' @description
-#' Print the object
-#'
-#' @export
-TweetTakedownComplianceSchema$set("public", "print", function(...) {
-  print(jsonlite::prettify(self$toJSONString()))
-  invisible(self)
-})
-
-# Lock the class to prevent modifications to the method or field
-TweetTakedownComplianceSchema$lock()
+## Uncomment below to unlock the class to allow modifications of the method or field
+#TweetTakedownComplianceSchema$unlock()
+#
+## Below is an example to define the print fnuction
+#TweetTakedownComplianceSchema$set("public", "print", function(...) {
+#  print(jsonlite::prettify(self$toJSONString()))
+#  invisible(self)
+#})
+## Uncomment below to lock the class to prevent modifications to the method or field
+#TweetTakedownComplianceSchema$lock()
 

@@ -7,7 +7,7 @@
 #'
 #' @docType class
 #' @title Users operations
-#' @description 
+#' @description UsersApi
 #' @format An \code{R6Class} generator object
 #' @field api_client Handles the client-server communication.
 #'
@@ -1436,11 +1436,17 @@ UsersApi <- R6::R6Class(
                                                      reason = "Invalid length for `tweet_fields` when calling UsersApi$find_my_user, number of items must be greater than or equal to 1."))
       }
 
-      query_params["user.fields"] <- `user_fields`
+      for (query_item in `user_fields`) {
+        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
+      }
 
-      query_params["expansions"] <- `expansions`
+      for (query_item in `expansions`) {
+        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
+      }
 
-      query_params["tweet.fields"] <- `tweet_fields`
+      for (query_item in `tweet_fields`) {
+        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
+      }
 
       local_var_url_path <- "/2/users/me"
       # OAuth-related settings
@@ -1591,11 +1597,17 @@ UsersApi <- R6::R6Class(
                                                      reason = "Invalid length for `tweet_fields` when calling UsersApi$find_user_by_id, number of items must be greater than or equal to 1."))
       }
 
-      query_params["user.fields"] <- `user_fields`
+      for (query_item in `user_fields`) {
+        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
+      }
 
-      query_params["expansions"] <- `expansions`
+      for (query_item in `expansions`) {
+        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
+      }
 
-      query_params["tweet.fields"] <- `tweet_fields`
+      for (query_item in `tweet_fields`) {
+        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
+      }
 
       local_var_url_path <- "/2/users/{id}"
       if (!missing(`id`)) {
@@ -1754,11 +1766,17 @@ UsersApi <- R6::R6Class(
                                                      reason = "Invalid length for `tweet_fields` when calling UsersApi$find_user_by_username, number of items must be greater than or equal to 1."))
       }
 
-      query_params["user.fields"] <- `user_fields`
+      for (query_item in `user_fields`) {
+        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
+      }
 
-      query_params["expansions"] <- `expansions`
+      for (query_item in `expansions`) {
+        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
+      }
 
-      query_params["tweet.fields"] <- `tweet_fields`
+      for (query_item in `tweet_fields`) {
+        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
+      }
 
       local_var_url_path <- "/2/users/by/username/{username}"
       if (!missing(`username`)) {
@@ -1923,13 +1941,21 @@ UsersApi <- R6::R6Class(
                                                      reason = "Invalid length for `tweet_fields` when calling UsersApi$find_users_by_id, number of items must be greater than or equal to 1."))
       }
 
-      query_params["ids"] <- `ids`
+      for (query_item in `ids`) {
+        query_params[["ids"]] <- c(query_params[["ids"]], list(`ids` = query_item))
+      }
 
-      query_params["user.fields"] <- `user_fields`
+      for (query_item in `user_fields`) {
+        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
+      }
 
-      query_params["expansions"] <- `expansions`
+      for (query_item in `expansions`) {
+        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
+      }
 
-      query_params["tweet.fields"] <- `tweet_fields`
+      for (query_item in `tweet_fields`) {
+        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
+      }
 
       local_var_url_path <- "/2/users"
       # Bearer token
@@ -2090,13 +2116,21 @@ UsersApi <- R6::R6Class(
                                                      reason = "Invalid length for `tweet_fields` when calling UsersApi$find_users_by_username, number of items must be greater than or equal to 1."))
       }
 
-      query_params["usernames"] <- `usernames`
+      for (query_item in `usernames`) {
+        query_params[["usernames"]] <- c(query_params[["usernames"]], list(`usernames` = query_item))
+      }
 
-      query_params["user.fields"] <- `user_fields`
+      for (query_item in `user_fields`) {
+        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
+      }
 
-      query_params["expansions"] <- `expansions`
+      for (query_item in `expansions`) {
+        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
+      }
 
-      query_params["tweet.fields"] <- `tweet_fields`
+      for (query_item in `tweet_fields`) {
+        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
+      }
 
       local_var_url_path <- "/2/users/by"
       # Bearer token
@@ -2285,11 +2319,17 @@ UsersApi <- R6::R6Class(
 
       query_params["pagination_token"] <- `pagination_token`
 
-      query_params["user.fields"] <- `user_fields`
+      for (query_item in `user_fields`) {
+        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
+      }
 
-      query_params["expansions"] <- `expansions`
+      for (query_item in `expansions`) {
+        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
+      }
 
-      query_params["tweet.fields"] <- `tweet_fields`
+      for (query_item in `tweet_fields`) {
+        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
+      }
 
       local_var_url_path <- "/2/lists/{id}/followers"
       if (!missing(`id`)) {
@@ -2482,11 +2522,17 @@ UsersApi <- R6::R6Class(
 
       query_params["pagination_token"] <- `pagination_token`
 
-      query_params["user.fields"] <- `user_fields`
+      for (query_item in `user_fields`) {
+        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
+      }
 
-      query_params["expansions"] <- `expansions`
+      for (query_item in `expansions`) {
+        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
+      }
 
-      query_params["tweet.fields"] <- `tweet_fields`
+      for (query_item in `tweet_fields`) {
+        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
+      }
 
       local_var_url_path <- "/2/lists/{id}/members"
       if (!missing(`id`)) {
@@ -2673,11 +2719,17 @@ UsersApi <- R6::R6Class(
 
       query_params["pagination_token"] <- `pagination_token`
 
-      query_params["user.fields"] <- `user_fields`
+      for (query_item in `user_fields`) {
+        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
+      }
 
-      query_params["expansions"] <- `expansions`
+      for (query_item in `expansions`) {
+        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
+      }
 
-      query_params["tweet.fields"] <- `tweet_fields`
+      for (query_item in `tweet_fields`) {
+        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
+      }
 
       local_var_url_path <- "/2/tweets/{id}/liking_users"
       if (!missing(`id`)) {
@@ -2864,11 +2916,17 @@ UsersApi <- R6::R6Class(
 
       query_params["pagination_token"] <- `pagination_token`
 
-      query_params["user.fields"] <- `user_fields`
+      for (query_item in `user_fields`) {
+        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
+      }
 
-      query_params["expansions"] <- `expansions`
+      for (query_item in `expansions`) {
+        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
+      }
 
-      query_params["tweet.fields"] <- `tweet_fields`
+      for (query_item in `tweet_fields`) {
+        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
+      }
 
       local_var_url_path <- "/2/tweets/{id}/retweeted_by"
       if (!missing(`id`)) {
@@ -3185,11 +3243,17 @@ UsersApi <- R6::R6Class(
 
       query_params["pagination_token"] <- `pagination_token`
 
-      query_params["user.fields"] <- `user_fields`
+      for (query_item in `user_fields`) {
+        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
+      }
 
-      query_params["expansions"] <- `expansions`
+      for (query_item in `expansions`) {
+        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
+      }
 
-      query_params["tweet.fields"] <- `tweet_fields`
+      for (query_item in `tweet_fields`) {
+        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
+      }
 
       local_var_url_path <- "/2/users/{id}/blocking"
       if (!missing(`id`)) {
@@ -3501,11 +3565,17 @@ UsersApi <- R6::R6Class(
 
       query_params["pagination_token"] <- `pagination_token`
 
-      query_params["user.fields"] <- `user_fields`
+      for (query_item in `user_fields`) {
+        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
+      }
 
-      query_params["expansions"] <- `expansions`
+      for (query_item in `expansions`) {
+        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
+      }
 
-      query_params["tweet.fields"] <- `tweet_fields`
+      for (query_item in `tweet_fields`) {
+        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
+      }
 
       local_var_url_path <- "/2/users/{id}/followers"
       if (!missing(`id`)) {
@@ -3692,11 +3762,17 @@ UsersApi <- R6::R6Class(
 
       query_params["pagination_token"] <- `pagination_token`
 
-      query_params["user.fields"] <- `user_fields`
+      for (query_item in `user_fields`) {
+        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
+      }
 
-      query_params["expansions"] <- `expansions`
+      for (query_item in `expansions`) {
+        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
+      }
 
-      query_params["tweet.fields"] <- `tweet_fields`
+      for (query_item in `tweet_fields`) {
+        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
+      }
 
       local_var_url_path <- "/2/users/{id}/following"
       if (!missing(`id`)) {
@@ -4012,11 +4088,17 @@ UsersApi <- R6::R6Class(
 
       query_params["pagination_token"] <- `pagination_token`
 
-      query_params["user.fields"] <- `user_fields`
+      for (query_item in `user_fields`) {
+        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
+      }
 
-      query_params["expansions"] <- `expansions`
+      for (query_item in `expansions`) {
+        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
+      }
 
-      query_params["tweet.fields"] <- `tweet_fields`
+      for (query_item in `tweet_fields`) {
+        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
+      }
 
       local_var_url_path <- "/2/users/{id}/muting"
       if (!missing(`id`)) {

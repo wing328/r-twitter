@@ -7,10 +7,11 @@
 #' @title FullTextEntitiesAnnotationsInnerAllOf
 #' @description FullTextEntitiesAnnotationsInnerAllOf Class
 #' @format An \code{R6Class} generator object
-#' @field normalized_text  character [optional]
-#' @field probability  numeric [optional]
-#' @field type  character [optional]
-#' @field additional_properties named list(character) [optional]
+#' @field normalized_text Text used to determine annotation. character [optional]
+#' @field probability Confidence factor for annotation type. numeric [optional]
+#' @field type Annotation type. character [optional]
+#' @field _field_list a list of fields list(character)
+#' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -20,7 +21,8 @@ FullTextEntitiesAnnotationsInnerAllOf <- R6::R6Class(
     `normalized_text` = NULL,
     `probability` = NULL,
     `type` = NULL,
-    `additional_properties` = NULL,
+    `_field_list` = c("normalized_text", "probability", "type"),
+    `additional_properties` = list(),
     #' Initialize a new FullTextEntitiesAnnotationsInnerAllOf class.
     #'
     #' @description
@@ -99,6 +101,13 @@ FullTextEntitiesAnnotationsInnerAllOf <- R6::R6Class(
       if (!is.null(this_object$`type`)) {
         self$`type` <- this_object$`type`
       }
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' To JSON string
@@ -156,6 +165,13 @@ FullTextEntitiesAnnotationsInnerAllOf <- R6::R6Class(
       self$`normalized_text` <- this_object$`normalized_text`
       self$`probability` <- this_object$`probability`
       self$`type` <- this_object$`type`
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' Validate JSON input with respect to FullTextEntitiesAnnotationsInnerAllOf
@@ -212,26 +228,28 @@ FullTextEntitiesAnnotationsInnerAllOf <- R6::R6Class(
       }
 
       invalid_fields
-    }
-  ),
-  # Lock the class to prevent modifications to the method or field
-  lock_class = TRUE
+    },
+    #' Print the object
+    #'
+    #' @description
+    #' Print the object
+    #'
+    #' @export
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }),
+    # Lock the class to prevent modifications to the method or field
+    lock_class = TRUE
 )
-
-# Unlock the class to allow modifications of the method or field
-FullTextEntitiesAnnotationsInnerAllOf$unlock()
-
-#' Print the object
-#'
-#' @description
-#' Print the object
-#'
-#' @export
-FullTextEntitiesAnnotationsInnerAllOf$set("public", "print", function(...) {
-  print(jsonlite::prettify(self$toJSONString()))
-  invisible(self)
-})
-
-# Lock the class to prevent modifications to the method or field
-FullTextEntitiesAnnotationsInnerAllOf$lock()
+## Uncomment below to unlock the class to allow modifications of the method or field
+#FullTextEntitiesAnnotationsInnerAllOf$unlock()
+#
+## Below is an example to define the print fnuction
+#FullTextEntitiesAnnotationsInnerAllOf$set("public", "print", function(...) {
+#  print(jsonlite::prettify(self$toJSONString()))
+#  invisible(self)
+#})
+## Uncomment below to lock the class to prevent modifications to the method or field
+#FullTextEntitiesAnnotationsInnerAllOf$lock()
 

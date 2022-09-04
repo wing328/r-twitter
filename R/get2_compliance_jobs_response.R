@@ -10,7 +10,8 @@
 #' @field data  list(\link{ComplianceJob}) [optional]
 #' @field errors  list(\link{Problem}) [optional]
 #' @field meta  \link{Get2ComplianceJobsResponseMeta} [optional]
-#' @field additional_properties named list(character) [optional]
+#' @field _field_list a list of fields list(character)
+#' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -20,7 +21,8 @@ Get2ComplianceJobsResponse <- R6::R6Class(
     `data` = NULL,
     `errors` = NULL,
     `meta` = NULL,
-    `additional_properties` = NULL,
+    `_field_list` = c("data", "errors", "meta"),
+    `additional_properties` = list(),
     #' Initialize a new Get2ComplianceJobsResponse class.
     #'
     #' @description
@@ -103,6 +105,13 @@ Get2ComplianceJobsResponse <- R6::R6Class(
         meta_object$fromJSON(jsonlite::toJSON(this_object$meta, auto_unbox = TRUE, digits = NA))
         self$`meta` <- meta_object
       }
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' To JSON string
@@ -160,6 +169,13 @@ Get2ComplianceJobsResponse <- R6::R6Class(
       self$`data` <- ApiClient$new()$deserializeObj(this_object$`data`, "array[ComplianceJob]", loadNamespace("twitter"))
       self$`errors` <- ApiClient$new()$deserializeObj(this_object$`errors`, "array[Problem]", loadNamespace("twitter"))
       self$`meta` <- Get2ComplianceJobsResponseMeta$new()$fromJSON(jsonlite::toJSON(this_object$meta, auto_unbox = TRUE, digits = NA))
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' Validate JSON input with respect to Get2ComplianceJobsResponse
@@ -218,26 +234,28 @@ Get2ComplianceJobsResponse <- R6::R6Class(
       }
 
       invalid_fields
-    }
-  ),
-  # Lock the class to prevent modifications to the method or field
-  lock_class = TRUE
+    },
+    #' Print the object
+    #'
+    #' @description
+    #' Print the object
+    #'
+    #' @export
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }),
+    # Lock the class to prevent modifications to the method or field
+    lock_class = TRUE
 )
-
-# Unlock the class to allow modifications of the method or field
-Get2ComplianceJobsResponse$unlock()
-
-#' Print the object
-#'
-#' @description
-#' Print the object
-#'
-#' @export
-Get2ComplianceJobsResponse$set("public", "print", function(...) {
-  print(jsonlite::prettify(self$toJSONString()))
-  invisible(self)
-})
-
-# Lock the class to prevent modifications to the method or field
-Get2ComplianceJobsResponse$lock()
+## Uncomment below to unlock the class to allow modifications of the method or field
+#Get2ComplianceJobsResponse$unlock()
+#
+## Below is an example to define the print fnuction
+#Get2ComplianceJobsResponse$set("public", "print", function(...) {
+#  print(jsonlite::prettify(self$toJSONString()))
+#  invisible(self)
+#})
+## Uncomment below to lock the class to prevent modifications to the method or field
+#Get2ComplianceJobsResponse$lock()
 

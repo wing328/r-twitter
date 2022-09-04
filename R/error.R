@@ -9,7 +9,8 @@
 #' @format An \code{R6Class} generator object
 #' @field code  integer
 #' @field message  character
-#' @field additional_properties named list(character) [optional]
+#' @field _field_list a list of fields list(character)
+#' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -18,7 +19,8 @@ Error <- R6::R6Class(
   public = list(
     `code` = NULL,
     `message` = NULL,
-    `additional_properties` = NULL,
+    `_field_list` = c("code", "message"),
+    `additional_properties` = list(),
     #' Initialize a new Error class.
     #'
     #' @description
@@ -85,6 +87,13 @@ Error <- R6::R6Class(
       if (!is.null(this_object$`message`)) {
         self$`message` <- this_object$`message`
       }
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' To JSON string
@@ -133,6 +142,13 @@ Error <- R6::R6Class(
       this_object <- jsonlite::fromJSON(input_json)
       self$`code` <- this_object$`code`
       self$`message` <- this_object$`message`
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' Validate JSON input with respect to Error
@@ -207,26 +223,28 @@ Error <- R6::R6Class(
       }
 
       invalid_fields
-    }
-  ),
-  # Lock the class to prevent modifications to the method or field
-  lock_class = TRUE
+    },
+    #' Print the object
+    #'
+    #' @description
+    #' Print the object
+    #'
+    #' @export
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }),
+    # Lock the class to prevent modifications to the method or field
+    lock_class = TRUE
 )
-
-# Unlock the class to allow modifications of the method or field
-Error$unlock()
-
-#' Print the object
-#'
-#' @description
-#' Print the object
-#'
-#' @export
-Error$set("public", "print", function(...) {
-  print(jsonlite::prettify(self$toJSONString()))
-  invisible(self)
-})
-
-# Lock the class to prevent modifications to the method or field
-Error$lock()
+## Uncomment below to unlock the class to allow modifications of the method or field
+#Error$unlock()
+#
+## Below is an example to define the print fnuction
+#Error$set("public", "print", function(...) {
+#  print(jsonlite::prettify(self$toJSONString()))
+#  invisible(self)
+#})
+## Uncomment below to lock the class to prevent modifications to the method or field
+#Error$lock()
 

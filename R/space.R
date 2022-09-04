@@ -7,24 +7,25 @@
 #' @title Space
 #' @description Space Class
 #' @format An \code{R6Class} generator object
-#' @field created_at  character [optional]
-#' @field creator_id  character [optional]
-#' @field ended_at  character [optional]
-#' @field host_ids  list(character) [optional]
-#' @field id  character
-#' @field invited_user_ids  list(character) [optional]
-#' @field is_ticketed  character [optional]
-#' @field lang  character [optional]
-#' @field participant_count  integer [optional]
-#' @field scheduled_start  character [optional]
-#' @field speaker_ids  list(character) [optional]
-#' @field started_at  character [optional]
-#' @field state  character
-#' @field subscriber_count  integer [optional]
-#' @field title  character [optional]
-#' @field topics  list(\link{SpaceTopicsInner}) [optional]
-#' @field updated_at  character [optional]
-#' @field additional_properties named list(character) [optional]
+#' @field created_at Creation time of the Space. character [optional]
+#' @field creator_id Unique identifier of this User. This is returned as a string in order to avoid complications with languages and tools that cannot handle large integers. character [optional]
+#' @field ended_at End time of the Space. character [optional]
+#' @field host_ids The user ids for the hosts of the Space. list(character) [optional]
+#' @field id The unique identifier of this Space. character
+#' @field invited_user_ids An array of user ids for people who were invited to a Space. list(character) [optional]
+#' @field is_ticketed Denotes if the Space is a ticketed Space. character [optional]
+#' @field lang The language of the Space. character [optional]
+#' @field participant_count The number of participants in a Space. integer [optional]
+#' @field scheduled_start A date time stamp for when a Space is scheduled to begin. character [optional]
+#' @field speaker_ids An array of user ids for people who were speakers in a Space. list(character) [optional]
+#' @field started_at When the Space was started as a date string. character [optional]
+#' @field state The current state of the Space. character
+#' @field subscriber_count The number of people who have either purchased a ticket or set a reminder for this Space. integer [optional]
+#' @field title The title of the Space. character [optional]
+#' @field topics The topics of a Space, as selected by its creator. list(\link{SpaceTopicsInner}) [optional]
+#' @field updated_at When the Space was last updated. character [optional]
+#' @field _field_list a list of fields list(character)
+#' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -48,7 +49,8 @@ Space <- R6::R6Class(
     `title` = NULL,
     `topics` = NULL,
     `updated_at` = NULL,
-    `additional_properties` = NULL,
+    `_field_list` = c("created_at", "creator_id", "ended_at", "host_ids", "id", "invited_user_ids", "is_ticketed", "lang", "participant_count", "scheduled_start", "speaker_ids", "started_at", "state", "subscriber_count", "title", "topics", "updated_at"),
+    `additional_properties` = list(),
     #' Initialize a new Space class.
     #'
     #' @description
@@ -299,6 +301,13 @@ Space <- R6::R6Class(
       if (!is.null(this_object$`updated_at`)) {
         self$`updated_at` <- this_object$`updated_at`
       }
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' To JSON string
@@ -482,6 +491,13 @@ Space <- R6::R6Class(
       self$`title` <- this_object$`title`
       self$`topics` <- ApiClient$new()$deserializeObj(this_object$`topics`, "array[SpaceTopicsInner]", loadNamespace("twitter"))
       self$`updated_at` <- this_object$`updated_at`
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' Validate JSON input with respect to Space
@@ -572,26 +588,28 @@ Space <- R6::R6Class(
       }
 
       invalid_fields
-    }
-  ),
-  # Lock the class to prevent modifications to the method or field
-  lock_class = TRUE
+    },
+    #' Print the object
+    #'
+    #' @description
+    #' Print the object
+    #'
+    #' @export
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }),
+    # Lock the class to prevent modifications to the method or field
+    lock_class = TRUE
 )
-
-# Unlock the class to allow modifications of the method or field
-Space$unlock()
-
-#' Print the object
-#'
-#' @description
-#' Print the object
-#'
-#' @export
-Space$set("public", "print", function(...) {
-  print(jsonlite::prettify(self$toJSONString()))
-  invisible(self)
-})
-
-# Lock the class to prevent modifications to the method or field
-Space$lock()
+## Uncomment below to unlock the class to allow modifications of the method or field
+#Space$unlock()
+#
+## Below is an example to define the print fnuction
+#Space$set("public", "print", function(...) {
+#  print(jsonlite::prettify(self$toJSONString()))
+#  invisible(self)
+#})
+## Uncomment below to lock the class to prevent modifications to the method or field
+#Space$lock()
 

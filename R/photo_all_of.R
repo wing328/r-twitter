@@ -9,7 +9,8 @@
 #' @format An \code{R6Class} generator object
 #' @field alt_text  character [optional]
 #' @field url  character [optional]
-#' @field additional_properties named list(character) [optional]
+#' @field _field_list a list of fields list(character)
+#' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -18,7 +19,8 @@ PhotoAllOf <- R6::R6Class(
   public = list(
     `alt_text` = NULL,
     `url` = NULL,
-    `additional_properties` = NULL,
+    `_field_list` = c("alt_text", "url"),
+    `additional_properties` = list(),
     #' Initialize a new PhotoAllOf class.
     #'
     #' @description
@@ -85,6 +87,13 @@ PhotoAllOf <- R6::R6Class(
       if (!is.null(this_object$`url`)) {
         self$`url` <- this_object$`url`
       }
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' To JSON string
@@ -133,6 +142,13 @@ PhotoAllOf <- R6::R6Class(
       this_object <- jsonlite::fromJSON(input_json)
       self$`alt_text` <- this_object$`alt_text`
       self$`url` <- this_object$`url`
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' Validate JSON input with respect to PhotoAllOf
@@ -175,26 +191,28 @@ PhotoAllOf <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
-    }
-  ),
-  # Lock the class to prevent modifications to the method or field
-  lock_class = TRUE
+    },
+    #' Print the object
+    #'
+    #' @description
+    #' Print the object
+    #'
+    #' @export
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }),
+    # Lock the class to prevent modifications to the method or field
+    lock_class = TRUE
 )
-
-# Unlock the class to allow modifications of the method or field
-PhotoAllOf$unlock()
-
-#' Print the object
-#'
-#' @description
-#' Print the object
-#'
-#' @export
-PhotoAllOf$set("public", "print", function(...) {
-  print(jsonlite::prettify(self$toJSONString()))
-  invisible(self)
-})
-
-# Lock the class to prevent modifications to the method or field
-PhotoAllOf$lock()
+## Uncomment below to unlock the class to allow modifications of the method or field
+#PhotoAllOf$unlock()
+#
+## Below is an example to define the print fnuction
+#PhotoAllOf$set("public", "print", function(...) {
+#  print(jsonlite::prettify(self$toJSONString()))
+#  invisible(self)
+#})
+## Uncomment below to lock the class to prevent modifications to the method or field
+#PhotoAllOf$lock()
 

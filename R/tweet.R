@@ -8,26 +8,27 @@
 #' @description Tweet Class
 #' @format An \code{R6Class} generator object
 #' @field attachments  \link{TweetAttachments} [optional]
-#' @field author_id  character [optional]
+#' @field author_id Unique identifier of this User. This is returned as a string in order to avoid complications with languages and tools that cannot handle large integers. character [optional]
 #' @field context_annotations  list(\link{ContextAnnotation}) [optional]
-#' @field conversation_id  character [optional]
-#' @field created_at  character [optional]
+#' @field conversation_id Unique identifier of this Tweet. This is returned as a string in order to avoid complications with languages and tools that cannot handle large integers. character [optional]
+#' @field created_at Creation time of the Tweet. character [optional]
 #' @field entities  \link{FullTextEntities} [optional]
 #' @field geo  \link{TweetGeo} [optional]
-#' @field id  character
-#' @field in_reply_to_user_id  character [optional]
-#' @field lang  character [optional]
+#' @field id Unique identifier of this Tweet. This is returned as a string in order to avoid complications with languages and tools that cannot handle large integers. character
+#' @field in_reply_to_user_id Unique identifier of this User. This is returned as a string in order to avoid complications with languages and tools that cannot handle large integers. character [optional]
+#' @field lang Language of the Tweet, if detected by Twitter. Returned as a BCP47 language tag. character [optional]
 #' @field non_public_metrics  \link{TweetNonPublicMetrics} [optional]
 #' @field organic_metrics  \link{TweetOrganicMetrics} [optional]
-#' @field possibly_sensitive  character [optional]
+#' @field possibly_sensitive Indicates if this Tweet contains URLs marked as sensitive, for example content suitable for mature audiences. character [optional]
 #' @field promoted_metrics  \link{TweetPromotedMetrics} [optional]
 #' @field public_metrics  \link{TweetPublicMetrics} [optional]
-#' @field referenced_tweets  list(\link{TweetReferencedTweetsInner}) [optional]
+#' @field referenced_tweets A list of Tweets this Tweet refers to. For example, if the parent Tweet is a Retweet, a Quoted Tweet or a Reply, it will include the related Tweet referenced to by its parent. list(\link{TweetReferencedTweetsInner}) [optional]
 #' @field reply_settings  \link{ReplySettings} [optional]
-#' @field source  character [optional]
-#' @field text  character
+#' @field source The name of the app the user Tweeted from. character [optional]
+#' @field text The content of the Tweet. character
 #' @field withheld  \link{TweetWithheld} [optional]
-#' @field additional_properties named list(character) [optional]
+#' @field _field_list a list of fields list(character)
+#' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -54,7 +55,8 @@ Tweet <- R6::R6Class(
     `source` = NULL,
     `text` = NULL,
     `withheld` = NULL,
-    `additional_properties` = NULL,
+    `_field_list` = c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"),
+    `additional_properties` = list(),
     #' Initialize a new Tweet class.
     #'
     #' @description
@@ -357,6 +359,13 @@ Tweet <- R6::R6Class(
         withheld_object$fromJSON(jsonlite::toJSON(this_object$withheld, auto_unbox = TRUE, digits = NA))
         self$`withheld` <- withheld_object
       }
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' To JSON string
@@ -567,6 +576,13 @@ Tweet <- R6::R6Class(
       self$`source` <- this_object$`source`
       self$`text` <- this_object$`text`
       self$`withheld` <- TweetWithheld$new()$fromJSON(jsonlite::toJSON(this_object$withheld, auto_unbox = TRUE, digits = NA))
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' Validate JSON input with respect to Tweet
@@ -689,26 +705,28 @@ Tweet <- R6::R6Class(
       }
 
       invalid_fields
-    }
-  ),
-  # Lock the class to prevent modifications to the method or field
-  lock_class = TRUE
+    },
+    #' Print the object
+    #'
+    #' @description
+    #' Print the object
+    #'
+    #' @export
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }),
+    # Lock the class to prevent modifications to the method or field
+    lock_class = TRUE
 )
-
-# Unlock the class to allow modifications of the method or field
-Tweet$unlock()
-
-#' Print the object
-#'
-#' @description
-#' Print the object
-#'
-#' @export
-Tweet$set("public", "print", function(...) {
-  print(jsonlite::prettify(self$toJSONString()))
-  invisible(self)
-})
-
-# Lock the class to prevent modifications to the method or field
-Tweet$lock()
+## Uncomment below to unlock the class to allow modifications of the method or field
+#Tweet$unlock()
+#
+## Below is an example to define the print fnuction
+#Tweet$set("public", "print", function(...) {
+#  print(jsonlite::prettify(self$toJSONString()))
+#  invisible(self)
+#})
+## Uncomment below to lock the class to prevent modifications to the method or field
+#Tweet$lock()
 

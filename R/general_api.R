@@ -7,7 +7,7 @@
 #'
 #' @docType class
 #' @title General operations
-#' @description 
+#' @description GeneralApi
 #' @format An \code{R6Class} generator object
 #' @field api_client Handles the client-server communication.
 #'

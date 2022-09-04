@@ -7,8 +7,9 @@
 #' @title VideoAllOfPublicMetrics
 #' @description VideoAllOfPublicMetrics Class
 #' @format An \code{R6Class} generator object
-#' @field view_count  integer [optional]
-#' @field additional_properties named list(character) [optional]
+#' @field view_count Number of times this video has been viewed. integer [optional]
+#' @field _field_list a list of fields list(character)
+#' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -16,7 +17,8 @@ VideoAllOfPublicMetrics <- R6::R6Class(
   "VideoAllOfPublicMetrics",
   public = list(
     `view_count` = NULL,
-    `additional_properties` = NULL,
+    `_field_list` = c("view_count"),
+    `additional_properties` = list(),
     #' Initialize a new VideoAllOfPublicMetrics class.
     #'
     #' @description
@@ -71,6 +73,13 @@ VideoAllOfPublicMetrics <- R6::R6Class(
       if (!is.null(this_object$`view_count`)) {
         self$`view_count` <- this_object$`view_count`
       }
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' To JSON string
@@ -110,6 +119,13 @@ VideoAllOfPublicMetrics <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`view_count` <- this_object$`view_count`
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' Validate JSON input with respect to VideoAllOfPublicMetrics
@@ -152,26 +168,28 @@ VideoAllOfPublicMetrics <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
-    }
-  ),
-  # Lock the class to prevent modifications to the method or field
-  lock_class = TRUE
+    },
+    #' Print the object
+    #'
+    #' @description
+    #' Print the object
+    #'
+    #' @export
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }),
+    # Lock the class to prevent modifications to the method or field
+    lock_class = TRUE
 )
-
-# Unlock the class to allow modifications of the method or field
-VideoAllOfPublicMetrics$unlock()
-
-#' Print the object
-#'
-#' @description
-#' Print the object
-#'
-#' @export
-VideoAllOfPublicMetrics$set("public", "print", function(...) {
-  print(jsonlite::prettify(self$toJSONString()))
-  invisible(self)
-})
-
-# Lock the class to prevent modifications to the method or field
-VideoAllOfPublicMetrics$lock()
+## Uncomment below to unlock the class to allow modifications of the method or field
+#VideoAllOfPublicMetrics$unlock()
+#
+## Below is an example to define the print fnuction
+#VideoAllOfPublicMetrics$set("public", "print", function(...) {
+#  print(jsonlite::prettify(self$toJSONString()))
+#  invisible(self)
+#})
+## Uncomment below to lock the class to prevent modifications to the method or field
+#VideoAllOfPublicMetrics$lock()
 

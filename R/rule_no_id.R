@@ -7,9 +7,10 @@
 #' @title RuleNoId
 #' @description RuleNoId Class
 #' @format An \code{R6Class} generator object
-#' @field tag  character [optional]
-#' @field value  character
-#' @field additional_properties named list(character) [optional]
+#' @field tag A tag meant for the labeling of user provided rules. character [optional]
+#' @field value The filterlang value of the rule. character
+#' @field _field_list a list of fields list(character)
+#' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -18,7 +19,8 @@ RuleNoId <- R6::R6Class(
   public = list(
     `tag` = NULL,
     `value` = NULL,
-    `additional_properties` = NULL,
+    `_field_list` = c("tag", "value"),
+    `additional_properties` = list(),
     #' Initialize a new RuleNoId class.
     #'
     #' @description
@@ -85,6 +87,13 @@ RuleNoId <- R6::R6Class(
       if (!is.null(this_object$`value`)) {
         self$`value` <- this_object$`value`
       }
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' To JSON string
@@ -133,6 +142,13 @@ RuleNoId <- R6::R6Class(
       this_object <- jsonlite::fromJSON(input_json)
       self$`tag` <- this_object$`tag`
       self$`value` <- this_object$`value`
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' Validate JSON input with respect to RuleNoId
@@ -191,26 +207,28 @@ RuleNoId <- R6::R6Class(
       }
 
       invalid_fields
-    }
-  ),
-  # Lock the class to prevent modifications to the method or field
-  lock_class = TRUE
+    },
+    #' Print the object
+    #'
+    #' @description
+    #' Print the object
+    #'
+    #' @export
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }),
+    # Lock the class to prevent modifications to the method or field
+    lock_class = TRUE
 )
-
-# Unlock the class to allow modifications of the method or field
-RuleNoId$unlock()
-
-#' Print the object
-#'
-#' @description
-#' Print the object
-#'
-#' @export
-RuleNoId$set("public", "print", function(...) {
-  print(jsonlite::prettify(self$toJSONString()))
-  invisible(self)
-})
-
-# Lock the class to prevent modifications to the method or field
-RuleNoId$lock()
+## Uncomment below to unlock the class to allow modifications of the method or field
+#RuleNoId$unlock()
+#
+## Below is an example to define the print fnuction
+#RuleNoId$set("public", "print", function(...) {
+#  print(jsonlite::prettify(self$toJSONString()))
+#  invisible(self)
+#})
+## Uncomment below to lock the class to prevent modifications to the method or field
+#RuleNoId$lock()
 

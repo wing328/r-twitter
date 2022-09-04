@@ -12,7 +12,8 @@
 #' @field resource_type  character
 #' @field section  character
 #' @field value  character
-#' @field additional_properties named list(character) [optional]
+#' @field _field_list a list of fields list(character)
+#' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -24,7 +25,8 @@ ResourceUnauthorizedProblemAllOf <- R6::R6Class(
     `resource_type` = NULL,
     `section` = NULL,
     `value` = NULL,
-    `additional_properties` = NULL,
+    `_field_list` = c("parameter", "resource_id", "resource_type", "section", "value"),
+    `additional_properties` = list(),
     #' Initialize a new ResourceUnauthorizedProblemAllOf class.
     #'
     #' @description
@@ -127,6 +129,13 @@ ResourceUnauthorizedProblemAllOf <- R6::R6Class(
       if (!is.null(this_object$`value`)) {
         self$`value` <- this_object$`value`
       }
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' To JSON string
@@ -202,6 +211,13 @@ ResourceUnauthorizedProblemAllOf <- R6::R6Class(
       self$`resource_type` <- this_object$`resource_type`
       self$`section` <- this_object$`section`
       self$`value` <- this_object$`value`
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' Validate JSON input with respect to ResourceUnauthorizedProblemAllOf
@@ -324,26 +340,28 @@ ResourceUnauthorizedProblemAllOf <- R6::R6Class(
       }
 
       invalid_fields
-    }
-  ),
-  # Lock the class to prevent modifications to the method or field
-  lock_class = TRUE
+    },
+    #' Print the object
+    #'
+    #' @description
+    #' Print the object
+    #'
+    #' @export
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }),
+    # Lock the class to prevent modifications to the method or field
+    lock_class = TRUE
 )
-
-# Unlock the class to allow modifications of the method or field
-ResourceUnauthorizedProblemAllOf$unlock()
-
-#' Print the object
-#'
-#' @description
-#' Print the object
-#'
-#' @export
-ResourceUnauthorizedProblemAllOf$set("public", "print", function(...) {
-  print(jsonlite::prettify(self$toJSONString()))
-  invisible(self)
-})
-
-# Lock the class to prevent modifications to the method or field
-ResourceUnauthorizedProblemAllOf$lock()
+## Uncomment below to unlock the class to allow modifications of the method or field
+#ResourceUnauthorizedProblemAllOf$unlock()
+#
+## Below is an example to define the print fnuction
+#ResourceUnauthorizedProblemAllOf$set("public", "print", function(...) {
+#  print(jsonlite::prettify(self$toJSONString()))
+#  invisible(self)
+#})
+## Uncomment below to lock the class to prevent modifications to the method or field
+#ResourceUnauthorizedProblemAllOf$lock()
 

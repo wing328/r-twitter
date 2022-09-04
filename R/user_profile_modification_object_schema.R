@@ -7,11 +7,12 @@
 #' @title UserProfileModificationObjectSchema
 #' @description UserProfileModificationObjectSchema Class
 #' @format An \code{R6Class} generator object
-#' @field event_at  character
+#' @field event_at Event time. character
 #' @field new_value  character
 #' @field profile_field  character
 #' @field user  \link{UserComplianceSchemaUser}
-#' @field additional_properties named list(character) [optional]
+#' @field _field_list a list of fields list(character)
+#' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -22,7 +23,8 @@ UserProfileModificationObjectSchema <- R6::R6Class(
     `new_value` = NULL,
     `profile_field` = NULL,
     `user` = NULL,
-    `additional_properties` = NULL,
+    `_field_list` = c("event_at", "new_value", "profile_field", "user"),
+    `additional_properties` = list(),
     #' Initialize a new UserProfileModificationObjectSchema class.
     #'
     #' @description
@@ -115,6 +117,13 @@ UserProfileModificationObjectSchema <- R6::R6Class(
         user_object$fromJSON(jsonlite::toJSON(this_object$user, auto_unbox = TRUE, digits = NA))
         self$`user` <- user_object
       }
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' To JSON string
@@ -181,6 +190,13 @@ UserProfileModificationObjectSchema <- R6::R6Class(
       self$`new_value` <- this_object$`new_value`
       self$`profile_field` <- this_object$`profile_field`
       self$`user` <- UserComplianceSchemaUser$new()$fromJSON(jsonlite::toJSON(this_object$user, auto_unbox = TRUE, digits = NA))
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' Validate JSON input with respect to UserProfileModificationObjectSchema
@@ -287,26 +303,28 @@ UserProfileModificationObjectSchema <- R6::R6Class(
       }
 
       invalid_fields
-    }
-  ),
-  # Lock the class to prevent modifications to the method or field
-  lock_class = TRUE
+    },
+    #' Print the object
+    #'
+    #' @description
+    #' Print the object
+    #'
+    #' @export
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }),
+    # Lock the class to prevent modifications to the method or field
+    lock_class = TRUE
 )
-
-# Unlock the class to allow modifications of the method or field
-UserProfileModificationObjectSchema$unlock()
-
-#' Print the object
-#'
-#' @description
-#' Print the object
-#'
-#' @export
-UserProfileModificationObjectSchema$set("public", "print", function(...) {
-  print(jsonlite::prettify(self$toJSONString()))
-  invisible(self)
-})
-
-# Lock the class to prevent modifications to the method or field
-UserProfileModificationObjectSchema$lock()
+## Uncomment below to unlock the class to allow modifications of the method or field
+#UserProfileModificationObjectSchema$unlock()
+#
+## Below is an example to define the print fnuction
+#UserProfileModificationObjectSchema$set("public", "print", function(...) {
+#  print(jsonlite::prettify(self$toJSONString()))
+#  invisible(self)
+#})
+## Uncomment below to lock the class to prevent modifications to the method or field
+#UserProfileModificationObjectSchema$lock()
 

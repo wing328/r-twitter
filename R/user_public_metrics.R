@@ -7,11 +7,12 @@
 #' @title UserPublicMetrics
 #' @description UserPublicMetrics Class
 #' @format An \code{R6Class} generator object
-#' @field followers_count  integer
-#' @field following_count  integer
-#' @field listed_count  integer
-#' @field tweet_count  integer
-#' @field additional_properties named list(character) [optional]
+#' @field followers_count Number of Users who are following this User. integer
+#' @field following_count Number of Users this User is following. integer
+#' @field listed_count The number of lists that include this User. integer
+#' @field tweet_count The number of Tweets (including Retweets) posted by this User. integer
+#' @field _field_list a list of fields list(character)
+#' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -22,7 +23,8 @@ UserPublicMetrics <- R6::R6Class(
     `following_count` = NULL,
     `listed_count` = NULL,
     `tweet_count` = NULL,
-    `additional_properties` = NULL,
+    `_field_list` = c("followers_count", "following_count", "listed_count", "tweet_count"),
+    `additional_properties` = list(),
     #' Initialize a new UserPublicMetrics class.
     #'
     #' @description
@@ -113,6 +115,13 @@ UserPublicMetrics <- R6::R6Class(
       if (!is.null(this_object$`tweet_count`)) {
         self$`tweet_count` <- this_object$`tweet_count`
       }
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' To JSON string
@@ -179,6 +188,13 @@ UserPublicMetrics <- R6::R6Class(
       self$`following_count` <- this_object$`following_count`
       self$`listed_count` <- this_object$`listed_count`
       self$`tweet_count` <- this_object$`tweet_count`
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' Validate JSON input with respect to UserPublicMetrics
@@ -285,26 +301,28 @@ UserPublicMetrics <- R6::R6Class(
       }
 
       invalid_fields
-    }
-  ),
-  # Lock the class to prevent modifications to the method or field
-  lock_class = TRUE
+    },
+    #' Print the object
+    #'
+    #' @description
+    #' Print the object
+    #'
+    #' @export
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }),
+    # Lock the class to prevent modifications to the method or field
+    lock_class = TRUE
 )
-
-# Unlock the class to allow modifications of the method or field
-UserPublicMetrics$unlock()
-
-#' Print the object
-#'
-#' @description
-#' Print the object
-#'
-#' @export
-UserPublicMetrics$set("public", "print", function(...) {
-  print(jsonlite::prettify(self$toJSONString()))
-  invisible(self)
-})
-
-# Lock the class to prevent modifications to the method or field
-UserPublicMetrics$lock()
+## Uncomment below to unlock the class to allow modifications of the method or field
+#UserPublicMetrics$unlock()
+#
+## Below is an example to define the print fnuction
+#UserPublicMetrics$set("public", "print", function(...) {
+#  print(jsonlite::prettify(self$toJSONString()))
+#  invisible(self)
+#})
+## Uncomment below to lock the class to prevent modifications to the method or field
+#UserPublicMetrics$lock()
 

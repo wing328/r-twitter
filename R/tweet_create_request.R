@@ -7,16 +7,17 @@
 #' @title TweetCreateRequest
 #' @description TweetCreateRequest Class
 #' @format An \code{R6Class} generator object
-#' @field direct_message_deep_link  character [optional]
-#' @field for_super_followers_only  character [optional]
+#' @field direct_message_deep_link Link to take the conversation from the public timeline to a private Direct Message. character [optional]
+#' @field for_super_followers_only Exclusive Tweet for super followers. character [optional]
 #' @field geo  \link{TweetCreateRequestGeo} [optional]
 #' @field media  \link{TweetCreateRequestMedia} [optional]
 #' @field poll  \link{TweetCreateRequestPoll} [optional]
-#' @field quote_tweet_id  character [optional]
+#' @field quote_tweet_id Unique identifier of this Tweet. This is returned as a string in order to avoid complications with languages and tools that cannot handle large integers. character [optional]
 #' @field reply  \link{TweetCreateRequestReply} [optional]
-#' @field reply_settings  character [optional]
-#' @field text  character [optional]
-#' @field additional_properties named list(character) [optional]
+#' @field reply_settings Settings to indicate who can reply to the Tweet. character [optional]
+#' @field text The content of the Tweet. character [optional]
+#' @field _field_list a list of fields list(character)
+#' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -32,7 +33,8 @@ TweetCreateRequest <- R6::R6Class(
     `reply` = NULL,
     `reply_settings` = NULL,
     `text` = NULL,
-    `additional_properties` = NULL,
+    `_field_list` = c("direct_message_deep_link", "for_super_followers_only", "geo", "media", "poll", "quote_tweet_id", "reply", "reply_settings", "text"),
+    `additional_properties` = list(),
     #' Initialize a new TweetCreateRequest class.
     #'
     #' @description
@@ -191,6 +193,13 @@ TweetCreateRequest <- R6::R6Class(
       if (!is.null(this_object$`text`)) {
         self$`text` <- this_object$`text`
       }
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' To JSON string
@@ -302,6 +311,13 @@ TweetCreateRequest <- R6::R6Class(
       self$`reply` <- TweetCreateRequestReply$new()$fromJSON(jsonlite::toJSON(this_object$reply, auto_unbox = TRUE, digits = NA))
       self$`reply_settings` <- this_object$`reply_settings`
       self$`text` <- this_object$`text`
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' Validate JSON input with respect to TweetCreateRequest
@@ -352,26 +368,28 @@ TweetCreateRequest <- R6::R6Class(
       }
 
       invalid_fields
-    }
-  ),
-  # Lock the class to prevent modifications to the method or field
-  lock_class = TRUE
+    },
+    #' Print the object
+    #'
+    #' @description
+    #' Print the object
+    #'
+    #' @export
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }),
+    # Lock the class to prevent modifications to the method or field
+    lock_class = TRUE
 )
-
-# Unlock the class to allow modifications of the method or field
-TweetCreateRequest$unlock()
-
-#' Print the object
-#'
-#' @description
-#' Print the object
-#'
-#' @export
-TweetCreateRequest$set("public", "print", function(...) {
-  print(jsonlite::prettify(self$toJSONString()))
-  invisible(self)
-})
-
-# Lock the class to prevent modifications to the method or field
-TweetCreateRequest$lock()
+## Uncomment below to unlock the class to allow modifications of the method or field
+#TweetCreateRequest$unlock()
+#
+## Below is an example to define the print fnuction
+#TweetCreateRequest$set("public", "print", function(...) {
+#  print(jsonlite::prettify(self$toJSONString()))
+#  invisible(self)
+#})
+## Uncomment below to lock the class to prevent modifications to the method or field
+#TweetCreateRequest$lock()
 

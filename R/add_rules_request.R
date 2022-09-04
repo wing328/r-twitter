@@ -8,7 +8,8 @@
 #' @description AddRulesRequest Class
 #' @format An \code{R6Class} generator object
 #' @field add  list(\link{RuleNoId})
-#' @field additional_properties named list(character) [optional]
+#' @field _field_list a list of fields list(character)
+#' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -16,7 +17,8 @@ AddRulesRequest <- R6::R6Class(
   "AddRulesRequest",
   public = list(
     `add` = NULL,
-    `additional_properties` = NULL,
+    `_field_list` = c("add"),
+    `additional_properties` = list(),
     #' Initialize a new AddRulesRequest class.
     #'
     #' @description
@@ -72,6 +74,13 @@ AddRulesRequest <- R6::R6Class(
       if (!is.null(this_object$`add`)) {
         self$`add` <- ApiClient$new()$deserializeObj(this_object$`add`, "array[RuleNoId]", loadNamespace("twitter"))
       }
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' To JSON string
@@ -111,6 +120,13 @@ AddRulesRequest <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`add` <- ApiClient$new()$deserializeObj(this_object$`add`, "array[RuleNoId]", loadNamespace("twitter"))
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' Validate JSON input with respect to AddRulesRequest
@@ -170,26 +186,28 @@ AddRulesRequest <- R6::R6Class(
       }
 
       invalid_fields
-    }
-  ),
-  # Lock the class to prevent modifications to the method or field
-  lock_class = TRUE
+    },
+    #' Print the object
+    #'
+    #' @description
+    #' Print the object
+    #'
+    #' @export
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }),
+    # Lock the class to prevent modifications to the method or field
+    lock_class = TRUE
 )
-
-# Unlock the class to allow modifications of the method or field
-AddRulesRequest$unlock()
-
-#' Print the object
-#'
-#' @description
-#' Print the object
-#'
-#' @export
-AddRulesRequest$set("public", "print", function(...) {
-  print(jsonlite::prettify(self$toJSONString()))
-  invisible(self)
-})
-
-# Lock the class to prevent modifications to the method or field
-AddRulesRequest$lock()
+## Uncomment below to unlock the class to allow modifications of the method or field
+#AddRulesRequest$unlock()
+#
+## Below is an example to define the print fnuction
+#AddRulesRequest$set("public", "print", function(...) {
+#  print(jsonlite::prettify(self$toJSONString()))
+#  invisible(self)
+#})
+## Uncomment below to lock the class to prevent modifications to the method or field
+#AddRulesRequest$lock()
 

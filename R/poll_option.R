@@ -7,10 +7,11 @@
 #' @title PollOption
 #' @description PollOption Class
 #' @format An \code{R6Class} generator object
-#' @field label  character
-#' @field position  integer
-#' @field votes  integer
-#' @field additional_properties named list(character) [optional]
+#' @field label The text of a poll choice. character
+#' @field position Position of this choice in the poll. integer
+#' @field votes Number of users who voted for this choice. integer
+#' @field _field_list a list of fields list(character)
+#' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -20,7 +21,8 @@ PollOption <- R6::R6Class(
     `label` = NULL,
     `position` = NULL,
     `votes` = NULL,
-    `additional_properties` = NULL,
+    `_field_list` = c("label", "position", "votes"),
+    `additional_properties` = list(),
     #' Initialize a new PollOption class.
     #'
     #' @description
@@ -99,6 +101,13 @@ PollOption <- R6::R6Class(
       if (!is.null(this_object$`votes`)) {
         self$`votes` <- this_object$`votes`
       }
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' To JSON string
@@ -156,6 +165,13 @@ PollOption <- R6::R6Class(
       self$`label` <- this_object$`label`
       self$`position` <- this_object$`position`
       self$`votes` <- this_object$`votes`
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' Validate JSON input with respect to PollOption
@@ -260,26 +276,28 @@ PollOption <- R6::R6Class(
       }
 
       invalid_fields
-    }
-  ),
-  # Lock the class to prevent modifications to the method or field
-  lock_class = TRUE
+    },
+    #' Print the object
+    #'
+    #' @description
+    #' Print the object
+    #'
+    #' @export
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }),
+    # Lock the class to prevent modifications to the method or field
+    lock_class = TRUE
 )
-
-# Unlock the class to allow modifications of the method or field
-PollOption$unlock()
-
-#' Print the object
-#'
-#' @description
-#' Print the object
-#'
-#' @export
-PollOption$set("public", "print", function(...) {
-  print(jsonlite::prettify(self$toJSONString()))
-  invisible(self)
-})
-
-# Lock the class to prevent modifications to the method or field
-PollOption$lock()
+## Uncomment below to unlock the class to allow modifications of the method or field
+#PollOption$unlock()
+#
+## Below is an example to define the print fnuction
+#PollOption$set("public", "print", function(...) {
+#  print(jsonlite::prettify(self$toJSONString()))
+#  invisible(self)
+#})
+## Uncomment below to lock the class to prevent modifications to the method or field
+#PollOption$lock()
 

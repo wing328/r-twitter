@@ -7,11 +7,12 @@
 #' @title TweetPromotedMetrics
 #' @description TweetPromotedMetrics Class
 #' @format An \code{R6Class} generator object
-#' @field impression_count  integer [optional]
-#' @field like_count  integer [optional]
-#' @field reply_count  integer [optional]
-#' @field retweet_count  integer [optional]
-#' @field additional_properties named list(character) [optional]
+#' @field impression_count Number of times this Tweet has been viewed. integer [optional]
+#' @field like_count Number of times this Tweet has been liked. integer [optional]
+#' @field reply_count Number of times this Tweet has been replied to. integer [optional]
+#' @field retweet_count Number of times this Tweet has been Retweeted. integer [optional]
+#' @field _field_list a list of fields list(character)
+#' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -22,7 +23,8 @@ TweetPromotedMetrics <- R6::R6Class(
     `like_count` = NULL,
     `reply_count` = NULL,
     `retweet_count` = NULL,
-    `additional_properties` = NULL,
+    `_field_list` = c("impression_count", "like_count", "reply_count", "retweet_count"),
+    `additional_properties` = list(),
     #' Initialize a new TweetPromotedMetrics class.
     #'
     #' @description
@@ -113,6 +115,13 @@ TweetPromotedMetrics <- R6::R6Class(
       if (!is.null(this_object$`retweet_count`)) {
         self$`retweet_count` <- this_object$`retweet_count`
       }
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' To JSON string
@@ -179,6 +188,13 @@ TweetPromotedMetrics <- R6::R6Class(
       self$`like_count` <- this_object$`like_count`
       self$`reply_count` <- this_object$`reply_count`
       self$`retweet_count` <- this_object$`retweet_count`
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' Validate JSON input with respect to TweetPromotedMetrics
@@ -221,26 +237,28 @@ TweetPromotedMetrics <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
-    }
-  ),
-  # Lock the class to prevent modifications to the method or field
-  lock_class = TRUE
+    },
+    #' Print the object
+    #'
+    #' @description
+    #' Print the object
+    #'
+    #' @export
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }),
+    # Lock the class to prevent modifications to the method or field
+    lock_class = TRUE
 )
-
-# Unlock the class to allow modifications of the method or field
-TweetPromotedMetrics$unlock()
-
-#' Print the object
-#'
-#' @description
-#' Print the object
-#'
-#' @export
-TweetPromotedMetrics$set("public", "print", function(...) {
-  print(jsonlite::prettify(self$toJSONString()))
-  invisible(self)
-})
-
-# Lock the class to prevent modifications to the method or field
-TweetPromotedMetrics$lock()
+## Uncomment below to unlock the class to allow modifications of the method or field
+#TweetPromotedMetrics$unlock()
+#
+## Below is an example to define the print fnuction
+#TweetPromotedMetrics$set("public", "print", function(...) {
+#  print(jsonlite::prettify(self$toJSONString()))
+#  invisible(self)
+#})
+## Uncomment below to lock the class to prevent modifications to the method or field
+#TweetPromotedMetrics$lock()
 

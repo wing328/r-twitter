@@ -7,12 +7,13 @@
 #' @title Get2UsersIdMentionsResponseMeta
 #' @description Get2UsersIdMentionsResponseMeta Class
 #' @format An \code{R6Class} generator object
-#' @field newest_id  character [optional]
-#' @field next_token  character [optional]
-#' @field oldest_id  character [optional]
-#' @field previous_token  character [optional]
-#' @field result_count  integer [optional]
-#' @field additional_properties named list(character) [optional]
+#' @field newest_id The newest id in this response. character [optional]
+#' @field next_token The next token. character [optional]
+#' @field oldest_id The oldest id in this response. character [optional]
+#' @field previous_token The previous token. character [optional]
+#' @field result_count The number of results returned in this response. integer [optional]
+#' @field _field_list a list of fields list(character)
+#' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -24,7 +25,8 @@ Get2UsersIdMentionsResponseMeta <- R6::R6Class(
     `oldest_id` = NULL,
     `previous_token` = NULL,
     `result_count` = NULL,
-    `additional_properties` = NULL,
+    `_field_list` = c("newest_id", "next_token", "oldest_id", "previous_token", "result_count"),
+    `additional_properties` = list(),
     #' Initialize a new Get2UsersIdMentionsResponseMeta class.
     #'
     #' @description
@@ -127,6 +129,13 @@ Get2UsersIdMentionsResponseMeta <- R6::R6Class(
       if (!is.null(this_object$`result_count`)) {
         self$`result_count` <- this_object$`result_count`
       }
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' To JSON string
@@ -202,6 +211,13 @@ Get2UsersIdMentionsResponseMeta <- R6::R6Class(
       self$`oldest_id` <- this_object$`oldest_id`
       self$`previous_token` <- this_object$`previous_token`
       self$`result_count` <- this_object$`result_count`
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' Validate JSON input with respect to Get2UsersIdMentionsResponseMeta
@@ -260,26 +276,28 @@ Get2UsersIdMentionsResponseMeta <- R6::R6Class(
       }
 
       invalid_fields
-    }
-  ),
-  # Lock the class to prevent modifications to the method or field
-  lock_class = TRUE
+    },
+    #' Print the object
+    #'
+    #' @description
+    #' Print the object
+    #'
+    #' @export
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }),
+    # Lock the class to prevent modifications to the method or field
+    lock_class = TRUE
 )
-
-# Unlock the class to allow modifications of the method or field
-Get2UsersIdMentionsResponseMeta$unlock()
-
-#' Print the object
-#'
-#' @description
-#' Print the object
-#'
-#' @export
-Get2UsersIdMentionsResponseMeta$set("public", "print", function(...) {
-  print(jsonlite::prettify(self$toJSONString()))
-  invisible(self)
-})
-
-# Lock the class to prevent modifications to the method or field
-Get2UsersIdMentionsResponseMeta$lock()
+## Uncomment below to unlock the class to allow modifications of the method or field
+#Get2UsersIdMentionsResponseMeta$unlock()
+#
+## Below is an example to define the print fnuction
+#Get2UsersIdMentionsResponseMeta$set("public", "print", function(...) {
+#  print(jsonlite::prettify(self$toJSONString()))
+#  invisible(self)
+#})
+## Uncomment below to lock the class to prevent modifications to the method or field
+#Get2UsersIdMentionsResponseMeta$lock()
 

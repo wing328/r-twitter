@@ -8,14 +8,15 @@
 #' @description Place Class
 #' @format An \code{R6Class} generator object
 #' @field contained_within  list(character) [optional]
-#' @field country  character [optional]
-#' @field country_code  character [optional]
-#' @field full_name  character
+#' @field country The full name of the county in which this place exists. character [optional]
+#' @field country_code A two-letter ISO 3166-1 alpha-2 country code. character [optional]
+#' @field full_name The full name of this place. character
 #' @field geo  \link{Geo} [optional]
-#' @field id  character
-#' @field name  character [optional]
+#' @field id The identifier for this place. character
+#' @field name The human readable name of this place. character [optional]
 #' @field place_type  \link{PlaceType} [optional]
-#' @field additional_properties named list(character) [optional]
+#' @field _field_list a list of fields list(character)
+#' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -30,7 +31,8 @@ Place <- R6::R6Class(
     `id` = NULL,
     `name` = NULL,
     `place_type` = NULL,
-    `additional_properties` = NULL,
+    `_field_list` = c("contained_within", "country", "country_code", "full_name", "geo", "id", "name", "place_type"),
+    `additional_properties` = list(),
     #' Initialize a new Place class.
     #'
     #' @description
@@ -174,6 +176,13 @@ Place <- R6::R6Class(
         place_type_object$fromJSON(jsonlite::toJSON(this_object$place_type, auto_unbox = TRUE, digits = NA))
         self$`place_type` <- place_type_object
       }
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' To JSON string
@@ -276,6 +285,13 @@ Place <- R6::R6Class(
       self$`id` <- this_object$`id`
       self$`name` <- this_object$`name`
       self$`place_type` <- PlaceType$new()$fromJSON(jsonlite::toJSON(this_object$place_type, auto_unbox = TRUE, digits = NA))
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' Validate JSON input with respect to Place
@@ -366,26 +382,28 @@ Place <- R6::R6Class(
       }
 
       invalid_fields
-    }
-  ),
-  # Lock the class to prevent modifications to the method or field
-  lock_class = TRUE
+    },
+    #' Print the object
+    #'
+    #' @description
+    #' Print the object
+    #'
+    #' @export
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }),
+    # Lock the class to prevent modifications to the method or field
+    lock_class = TRUE
 )
-
-# Unlock the class to allow modifications of the method or field
-Place$unlock()
-
-#' Print the object
-#'
-#' @description
-#' Print the object
-#'
-#' @export
-Place$set("public", "print", function(...) {
-  print(jsonlite::prettify(self$toJSONString()))
-  invisible(self)
-})
-
-# Lock the class to prevent modifications to the method or field
-Place$lock()
+## Uncomment below to unlock the class to allow modifications of the method or field
+#Place$unlock()
+#
+## Below is an example to define the print fnuction
+#Place$set("public", "print", function(...) {
+#  print(jsonlite::prettify(self$toJSONString()))
+#  invisible(self)
+#})
+## Uncomment below to lock the class to prevent modifications to the method or field
+#Place$lock()
 

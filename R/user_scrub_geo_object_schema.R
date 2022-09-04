@@ -7,10 +7,11 @@
 #' @title UserScrubGeoObjectSchema
 #' @description UserScrubGeoObjectSchema Class
 #' @format An \code{R6Class} generator object
-#' @field event_at  character
-#' @field up_to_tweet_id  character
+#' @field event_at Event time. character
+#' @field up_to_tweet_id Unique identifier of this Tweet. This is returned as a string in order to avoid complications with languages and tools that cannot handle large integers. character
 #' @field user  \link{UserComplianceSchemaUser}
-#' @field additional_properties named list(character) [optional]
+#' @field _field_list a list of fields list(character)
+#' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -20,7 +21,8 @@ UserScrubGeoObjectSchema <- R6::R6Class(
     `event_at` = NULL,
     `up_to_tweet_id` = NULL,
     `user` = NULL,
-    `additional_properties` = NULL,
+    `_field_list` = c("event_at", "up_to_tweet_id", "user"),
+    `additional_properties` = list(),
     #' Initialize a new UserScrubGeoObjectSchema class.
     #'
     #' @description
@@ -101,6 +103,13 @@ UserScrubGeoObjectSchema <- R6::R6Class(
         user_object$fromJSON(jsonlite::toJSON(this_object$user, auto_unbox = TRUE, digits = NA))
         self$`user` <- user_object
       }
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' To JSON string
@@ -158,6 +167,13 @@ UserScrubGeoObjectSchema <- R6::R6Class(
       self$`event_at` <- this_object$`event_at`
       self$`up_to_tweet_id` <- this_object$`up_to_tweet_id`
       self$`user` <- UserComplianceSchemaUser$new()$fromJSON(jsonlite::toJSON(this_object$user, auto_unbox = TRUE, digits = NA))
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' Validate JSON input with respect to UserScrubGeoObjectSchema
@@ -256,26 +272,28 @@ UserScrubGeoObjectSchema <- R6::R6Class(
       }
 
       invalid_fields
-    }
-  ),
-  # Lock the class to prevent modifications to the method or field
-  lock_class = TRUE
+    },
+    #' Print the object
+    #'
+    #' @description
+    #' Print the object
+    #'
+    #' @export
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }),
+    # Lock the class to prevent modifications to the method or field
+    lock_class = TRUE
 )
-
-# Unlock the class to allow modifications of the method or field
-UserScrubGeoObjectSchema$unlock()
-
-#' Print the object
-#'
-#' @description
-#' Print the object
-#'
-#' @export
-UserScrubGeoObjectSchema$set("public", "print", function(...) {
-  print(jsonlite::prettify(self$toJSONString()))
-  invisible(self)
-})
-
-# Lock the class to prevent modifications to the method or field
-UserScrubGeoObjectSchema$lock()
+## Uncomment below to unlock the class to allow modifications of the method or field
+#UserScrubGeoObjectSchema$unlock()
+#
+## Below is an example to define the print fnuction
+#UserScrubGeoObjectSchema$set("public", "print", function(...) {
+#  print(jsonlite::prettify(self$toJSONString()))
+#  invisible(self)
+#})
+## Uncomment below to lock the class to prevent modifications to the method or field
+#UserScrubGeoObjectSchema$lock()
 

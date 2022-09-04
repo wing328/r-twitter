@@ -7,21 +7,22 @@
 #' @title User
 #' @description User Class
 #' @format An \code{R6Class} generator object
-#' @field created_at  character [optional]
-#' @field description  character [optional]
+#' @field created_at Creation time of this User. character [optional]
+#' @field description The text of this User's profile description (also known as bio), if the User provided one. character [optional]
 #' @field entities  \link{UserEntities} [optional]
-#' @field id  character
-#' @field location  character [optional]
-#' @field name  character
-#' @field pinned_tweet_id  character [optional]
-#' @field profile_image_url  character [optional]
-#' @field protected  character [optional]
+#' @field id Unique identifier of this User. This is returned as a string in order to avoid complications with languages and tools that cannot handle large integers. character
+#' @field location The location specified in the User's profile, if the User provided one. As this is a freeform value, it may not indicate a valid location, but it may be fuzzily evaluated when performing searches with location queries. character [optional]
+#' @field name The friendly name of this User, as shown on their profile. character
+#' @field pinned_tweet_id Unique identifier of this Tweet. This is returned as a string in order to avoid complications with languages and tools that cannot handle large integers. character [optional]
+#' @field profile_image_url The URL to the profile image for this User. character [optional]
+#' @field protected Indicates if this User has chosen to protect their Tweets (in other words, if this User's Tweets are private). character [optional]
 #' @field public_metrics  \link{UserPublicMetrics} [optional]
-#' @field url  character [optional]
-#' @field username  character
-#' @field verified  character [optional]
+#' @field url The URL specified in the User's profile. character [optional]
+#' @field username The Twitter handle (screen name) of this user. character
+#' @field verified Indicate if this User is a verified Twitter User. character [optional]
 #' @field withheld  \link{UserWithheld} [optional]
-#' @field additional_properties named list(character) [optional]
+#' @field _field_list a list of fields list(character)
+#' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -42,7 +43,8 @@ User <- R6::R6Class(
     `username` = NULL,
     `verified` = NULL,
     `withheld` = NULL,
-    `additional_properties` = NULL,
+    `_field_list` = c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"),
+    `additional_properties` = list(),
     #' Initialize a new User class.
     #'
     #' @description
@@ -259,6 +261,13 @@ User <- R6::R6Class(
         withheld_object$fromJSON(jsonlite::toJSON(this_object$withheld, auto_unbox = TRUE, digits = NA))
         self$`withheld` <- withheld_object
       }
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' To JSON string
@@ -415,6 +424,13 @@ User <- R6::R6Class(
       self$`username` <- this_object$`username`
       self$`verified` <- this_object$`verified`
       self$`withheld` <- UserWithheld$new()$fromJSON(jsonlite::toJSON(this_object$withheld, auto_unbox = TRUE, digits = NA))
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' Validate JSON input with respect to User
@@ -529,26 +545,28 @@ User <- R6::R6Class(
       }
 
       invalid_fields
-    }
-  ),
-  # Lock the class to prevent modifications to the method or field
-  lock_class = TRUE
+    },
+    #' Print the object
+    #'
+    #' @description
+    #' Print the object
+    #'
+    #' @export
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }),
+    # Lock the class to prevent modifications to the method or field
+    lock_class = TRUE
 )
-
-# Unlock the class to allow modifications of the method or field
-User$unlock()
-
-#' Print the object
-#'
-#' @description
-#' Print the object
-#'
-#' @export
-User$set("public", "print", function(...) {
-  print(jsonlite::prettify(self$toJSONString()))
-  invisible(self)
-})
-
-# Lock the class to prevent modifications to the method or field
-User$lock()
+## Uncomment below to unlock the class to allow modifications of the method or field
+#User$unlock()
+#
+## Below is an example to define the print fnuction
+#User$set("public", "print", function(...) {
+#  print(jsonlite::prettify(self$toJSONString()))
+#  invisible(self)
+#})
+## Uncomment below to lock the class to prevent modifications to the method or field
+#User$lock()
 

@@ -7,18 +7,19 @@
 #' @title Video
 #' @description Video Class
 #' @format An \code{R6Class} generator object
-#' @field height  integer [optional]
-#' @field media_key  character [optional]
+#' @field height The height of the media in pixels. integer [optional]
+#' @field media_key The Media Key identifier for this attachment. character [optional]
 #' @field type  character
-#' @field width  integer [optional]
+#' @field width The width of the media in pixels. integer [optional]
 #' @field duration_ms  integer [optional]
 #' @field non_public_metrics  \link{VideoAllOfNonPublicMetrics} [optional]
 #' @field organic_metrics  \link{VideoAllOfOrganicMetrics} [optional]
 #' @field preview_image_url  character [optional]
 #' @field promoted_metrics  \link{VideoAllOfPromotedMetrics} [optional]
 #' @field public_metrics  \link{VideoAllOfPublicMetrics} [optional]
-#' @field variants  list(\link{Variant}) [optional]
-#' @field additional_properties named list(character) [optional]
+#' @field variants An array of all available variants of the media. list(\link{Variant}) [optional]
+#' @field _field_list a list of fields list(character)
+#' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -37,7 +38,8 @@ Video <- R6::R6Class(
     `promoted_metrics` = NULL,
     `public_metrics` = NULL,
     `variants` = NULL,
-    `additional_properties` = NULL,
+    `_field_list` = c("height", "media_key", "type", "width", "duration_ms", "non_public_metrics", "organic_metrics", "preview_image_url", "promoted_metrics", "public_metrics", "variants"),
+    `additional_properties` = list(),
     #' Initialize a new Video class.
     #'
     #' @description
@@ -221,6 +223,13 @@ Video <- R6::R6Class(
       if (!is.null(this_object$`variants`)) {
         self$`variants` <- ApiClient$new()$deserializeObj(this_object$`variants`, "array[Variant]", loadNamespace("twitter"))
       }
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' To JSON string
@@ -350,6 +359,13 @@ Video <- R6::R6Class(
       self$`promoted_metrics` <- VideoAllOfPromotedMetrics$new()$fromJSON(jsonlite::toJSON(this_object$promoted_metrics, auto_unbox = TRUE, digits = NA))
       self$`public_metrics` <- VideoAllOfPublicMetrics$new()$fromJSON(jsonlite::toJSON(this_object$public_metrics, auto_unbox = TRUE, digits = NA))
       self$`variants` <- ApiClient$new()$deserializeObj(this_object$`variants`, "array[Variant]", loadNamespace("twitter"))
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' Validate JSON input with respect to Video
@@ -432,26 +448,28 @@ Video <- R6::R6Class(
       }
 
       invalid_fields
-    }
-  ),
-  # Lock the class to prevent modifications to the method or field
-  lock_class = TRUE
+    },
+    #' Print the object
+    #'
+    #' @description
+    #' Print the object
+    #'
+    #' @export
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }),
+    # Lock the class to prevent modifications to the method or field
+    lock_class = TRUE
 )
-
-# Unlock the class to allow modifications of the method or field
-Video$unlock()
-
-#' Print the object
-#'
-#' @description
-#' Print the object
-#'
-#' @export
-Video$set("public", "print", function(...) {
-  print(jsonlite::prettify(self$toJSONString()))
-  invisible(self)
-})
-
-# Lock the class to prevent modifications to the method or field
-Video$lock()
+## Uncomment below to unlock the class to allow modifications of the method or field
+#Video$unlock()
+#
+## Below is an example to define the print fnuction
+#Video$set("public", "print", function(...) {
+#  print(jsonlite::prettify(self$toJSONString()))
+#  invisible(self)
+#})
+## Uncomment below to lock the class to prevent modifications to the method or field
+#Video$lock()
 

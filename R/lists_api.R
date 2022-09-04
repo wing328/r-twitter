@@ -7,7 +7,7 @@
 #'
 #' @docType class
 #' @title Lists operations
-#' @description 
+#' @description ListsApi
 #' @format An \code{R6Class} generator object
 #' @field api_client Handles the client-server communication.
 #'
@@ -1094,11 +1094,17 @@ ListsApi <- R6::R6Class(
 
       query_params["pagination_token"] <- `pagination_token`
 
-      query_params["list.fields"] <- `list_fields`
+      for (query_item in `list_fields`) {
+        query_params[["list.fields"]] <- c(query_params[["list.fields"]], list(`list.fields` = query_item))
+      }
 
-      query_params["expansions"] <- `expansions`
+      for (query_item in `expansions`) {
+        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
+      }
 
-      query_params["user.fields"] <- `user_fields`
+      for (query_item in `user_fields`) {
+        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
+      }
 
       local_var_url_path <- "/2/users/{id}/list_memberships"
       if (!missing(`id`)) {
@@ -1633,11 +1639,17 @@ ListsApi <- R6::R6Class(
                                                      reason = "Invalid length for `user_fields` when calling ListsApi$list_id_get, number of items must be greater than or equal to 1."))
       }
 
-      query_params["list.fields"] <- `list_fields`
+      for (query_item in `list_fields`) {
+        query_params[["list.fields"]] <- c(query_params[["list.fields"]], list(`list.fields` = query_item))
+      }
 
-      query_params["expansions"] <- `expansions`
+      for (query_item in `expansions`) {
+        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
+      }
 
-      query_params["user.fields"] <- `user_fields`
+      for (query_item in `user_fields`) {
+        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
+      }
 
       local_var_url_path <- "/2/lists/{id}"
       if (!missing(`id`)) {
@@ -2240,11 +2252,17 @@ ListsApi <- R6::R6Class(
 
       query_params["pagination_token"] <- `pagination_token`
 
-      query_params["list.fields"] <- `list_fields`
+      for (query_item in `list_fields`) {
+        query_params[["list.fields"]] <- c(query_params[["list.fields"]], list(`list.fields` = query_item))
+      }
 
-      query_params["expansions"] <- `expansions`
+      for (query_item in `expansions`) {
+        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
+      }
 
-      query_params["user.fields"] <- `user_fields`
+      for (query_item in `user_fields`) {
+        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
+      }
 
       local_var_url_path <- "/2/users/{id}/owned_lists"
       if (!missing(`id`)) {
@@ -2533,11 +2551,17 @@ ListsApi <- R6::R6Class(
                                                      reason = "Invalid length for `user_fields` when calling ListsApi$list_user_pinned_lists, number of items must be greater than or equal to 1."))
       }
 
-      query_params["list.fields"] <- `list_fields`
+      for (query_item in `list_fields`) {
+        query_params[["list.fields"]] <- c(query_params[["list.fields"]], list(`list.fields` = query_item))
+      }
 
-      query_params["expansions"] <- `expansions`
+      for (query_item in `expansions`) {
+        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
+      }
 
-      query_params["user.fields"] <- `user_fields`
+      for (query_item in `user_fields`) {
+        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
+      }
 
       local_var_url_path <- "/2/users/{id}/pinned_lists"
       if (!missing(`id`)) {
@@ -3006,11 +3030,17 @@ ListsApi <- R6::R6Class(
 
       query_params["pagination_token"] <- `pagination_token`
 
-      query_params["list.fields"] <- `list_fields`
+      for (query_item in `list_fields`) {
+        query_params[["list.fields"]] <- c(query_params[["list.fields"]], list(`list.fields` = query_item))
+      }
 
-      query_params["expansions"] <- `expansions`
+      for (query_item in `expansions`) {
+        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
+      }
 
-      query_params["user.fields"] <- `user_fields`
+      for (query_item in `user_fields`) {
+        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
+      }
 
       local_var_url_path <- "/2/users/{id}/followed_lists"
       if (!missing(`id`)) {

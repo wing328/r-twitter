@@ -7,8 +7,8 @@
 #' @title TweetCreateRequestMedia
 #' @description TweetCreateRequestMedia Class
 #' @format An \code{R6Class} generator object
-#' @field media_ids  list(character)
-#' @field tagged_user_ids  list(character) [optional]
+#' @field media_ids A list of Media Ids to be attached to a created Tweet. list(character)
+#' @field tagged_user_ids A list of User Ids to be tagged in the media for created Tweet. list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -205,26 +205,28 @@ TweetCreateRequestMedia <- R6::R6Class(
       }
 
       invalid_fields
-    }
-  ),
-  # Lock the class to prevent modifications to the method or field
-  lock_class = TRUE
+    },
+    #' Print the object
+    #'
+    #' @description
+    #' Print the object
+    #'
+    #' @export
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }),
+    # Lock the class to prevent modifications to the method or field
+    lock_class = TRUE
 )
-
-# Unlock the class to allow modifications of the method or field
-TweetCreateRequestMedia$unlock()
-
-#' Print the object
-#'
-#' @description
-#' Print the object
-#'
-#' @export
-TweetCreateRequestMedia$set("public", "print", function(...) {
-  print(jsonlite::prettify(self$toJSONString()))
-  invisible(self)
-})
-
-# Lock the class to prevent modifications to the method or field
-TweetCreateRequestMedia$lock()
+## Uncomment below to unlock the class to allow modifications of the method or field
+#TweetCreateRequestMedia$unlock()
+#
+## Below is an example to define the print fnuction
+#TweetCreateRequestMedia$set("public", "print", function(...) {
+#  print(jsonlite::prettify(self$toJSONString()))
+#  invisible(self)
+#})
+## Uncomment below to lock the class to prevent modifications to the method or field
+#TweetCreateRequestMedia$lock()
 

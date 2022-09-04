@@ -11,7 +11,8 @@
 #' @field geometry  \link{Point} [optional]
 #' @field properties  object
 #' @field type  character
-#' @field additional_properties named list(character) [optional]
+#' @field _field_list a list of fields list(character)
+#' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -22,7 +23,8 @@ Geo <- R6::R6Class(
     `geometry` = NULL,
     `properties` = NULL,
     `type` = NULL,
-    `additional_properties` = NULL,
+    `_field_list` = c("bbox", "geometry", "properties", "type"),
+    `additional_properties` = list(),
     #' Initialize a new Geo class.
     #'
     #' @description
@@ -115,6 +117,13 @@ Geo <- R6::R6Class(
       if (!is.null(this_object$`type`)) {
         self$`type` <- this_object$`type`
       }
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' To JSON string
@@ -181,6 +190,13 @@ Geo <- R6::R6Class(
       self$`geometry` <- Point$new()$fromJSON(jsonlite::toJSON(this_object$geometry, auto_unbox = TRUE, digits = NA))
       self$`properties` <- this_object$`properties`
       self$`type` <- this_object$`type`
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' Validate JSON input with respect to Geo
@@ -285,26 +301,28 @@ Geo <- R6::R6Class(
       }
 
       invalid_fields
-    }
-  ),
-  # Lock the class to prevent modifications to the method or field
-  lock_class = TRUE
+    },
+    #' Print the object
+    #'
+    #' @description
+    #' Print the object
+    #'
+    #' @export
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }),
+    # Lock the class to prevent modifications to the method or field
+    lock_class = TRUE
 )
-
-# Unlock the class to allow modifications of the method or field
-Geo$unlock()
-
-#' Print the object
-#'
-#' @description
-#' Print the object
-#'
-#' @export
-Geo$set("public", "print", function(...) {
-  print(jsonlite::prettify(self$toJSONString()))
-  invisible(self)
-})
-
-# Lock the class to prevent modifications to the method or field
-Geo$lock()
+## Uncomment below to unlock the class to allow modifications of the method or field
+#Geo$unlock()
+#
+## Below is an example to define the print fnuction
+#Geo$set("public", "print", function(...) {
+#  print(jsonlite::prettify(self$toJSONString()))
+#  invisible(self)
+#})
+## Uncomment below to lock the class to prevent modifications to the method or field
+#Geo$lock()
 

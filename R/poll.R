@@ -9,10 +9,11 @@
 #' @format An \code{R6Class} generator object
 #' @field duration_minutes  integer [optional]
 #' @field end_datetime  character [optional]
-#' @field id  character
+#' @field id Unique identifier of this poll. character
 #' @field options  list(\link{PollOption})
 #' @field voting_status  character [optional]
-#' @field additional_properties named list(character) [optional]
+#' @field _field_list a list of fields list(character)
+#' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -24,7 +25,8 @@ Poll <- R6::R6Class(
     `id` = NULL,
     `options` = NULL,
     `voting_status` = NULL,
-    `additional_properties` = NULL,
+    `_field_list` = c("duration_minutes", "end_datetime", "id", "options", "voting_status"),
+    `additional_properties` = list(),
     #' Initialize a new Poll class.
     #'
     #' @description
@@ -128,6 +130,13 @@ Poll <- R6::R6Class(
       if (!is.null(this_object$`voting_status`)) {
         self$`voting_status` <- this_object$`voting_status`
       }
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' To JSON string
@@ -203,6 +212,13 @@ Poll <- R6::R6Class(
       self$`id` <- this_object$`id`
       self$`options` <- ApiClient$new()$deserializeObj(this_object$`options`, "array[PollOption]", loadNamespace("twitter"))
       self$`voting_status` <- this_object$`voting_status`
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' Validate JSON input with respect to Poll
@@ -314,26 +330,28 @@ Poll <- R6::R6Class(
       }
 
       invalid_fields
-    }
-  ),
-  # Lock the class to prevent modifications to the method or field
-  lock_class = TRUE
+    },
+    #' Print the object
+    #'
+    #' @description
+    #' Print the object
+    #'
+    #' @export
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }),
+    # Lock the class to prevent modifications to the method or field
+    lock_class = TRUE
 )
-
-# Unlock the class to allow modifications of the method or field
-Poll$unlock()
-
-#' Print the object
-#'
-#' @description
-#' Print the object
-#'
-#' @export
-Poll$set("public", "print", function(...) {
-  print(jsonlite::prettify(self$toJSONString()))
-  invisible(self)
-})
-
-# Lock the class to prevent modifications to the method or field
-Poll$lock()
+## Uncomment below to unlock the class to allow modifications of the method or field
+#Poll$unlock()
+#
+## Below is an example to define the print fnuction
+#Poll$set("public", "print", function(...) {
+#  print(jsonlite::prettify(self$toJSONString()))
+#  invisible(self)
+#})
+## Uncomment below to lock the class to prevent modifications to the method or field
+#Poll$lock()
 

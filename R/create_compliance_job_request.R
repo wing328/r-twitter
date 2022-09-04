@@ -7,10 +7,11 @@
 #' @title CreateComplianceJobRequest
 #' @description CreateComplianceJobRequest Class
 #' @format An \code{R6Class} generator object
-#' @field name  character [optional]
-#' @field resumable  character [optional]
-#' @field type  character
-#' @field additional_properties named list(character) [optional]
+#' @field name User-provided name for a compliance job. character [optional]
+#' @field resumable If true, this endpoint will return a pre-signed URL with resumable uploads enabled. character [optional]
+#' @field type Type of compliance job to list. character
+#' @field _field_list a list of fields list(character)
+#' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -20,7 +21,8 @@ CreateComplianceJobRequest <- R6::R6Class(
     `name` = NULL,
     `resumable` = NULL,
     `type` = NULL,
-    `additional_properties` = NULL,
+    `_field_list` = c("name", "resumable", "type"),
+    `additional_properties` = list(),
     #' Initialize a new CreateComplianceJobRequest class.
     #'
     #' @description
@@ -99,6 +101,13 @@ CreateComplianceJobRequest <- R6::R6Class(
       if (!is.null(this_object$`type`)) {
         self$`type` <- this_object$`type`
       }
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' To JSON string
@@ -156,6 +165,13 @@ CreateComplianceJobRequest <- R6::R6Class(
       self$`name` <- this_object$`name`
       self$`resumable` <- this_object$`resumable`
       self$`type` <- this_object$`type`
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' Validate JSON input with respect to CreateComplianceJobRequest
@@ -222,26 +238,28 @@ CreateComplianceJobRequest <- R6::R6Class(
       }
 
       invalid_fields
-    }
-  ),
-  # Lock the class to prevent modifications to the method or field
-  lock_class = TRUE
+    },
+    #' Print the object
+    #'
+    #' @description
+    #' Print the object
+    #'
+    #' @export
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }),
+    # Lock the class to prevent modifications to the method or field
+    lock_class = TRUE
 )
-
-# Unlock the class to allow modifications of the method or field
-CreateComplianceJobRequest$unlock()
-
-#' Print the object
-#'
-#' @description
-#' Print the object
-#'
-#' @export
-CreateComplianceJobRequest$set("public", "print", function(...) {
-  print(jsonlite::prettify(self$toJSONString()))
-  invisible(self)
-})
-
-# Lock the class to prevent modifications to the method or field
-CreateComplianceJobRequest$lock()
+## Uncomment below to unlock the class to allow modifications of the method or field
+#CreateComplianceJobRequest$unlock()
+#
+## Below is an example to define the print fnuction
+#CreateComplianceJobRequest$set("public", "print", function(...) {
+#  print(jsonlite::prettify(self$toJSONString()))
+#  invisible(self)
+#})
+## Uncomment below to lock the class to prevent modifications to the method or field
+#CreateComplianceJobRequest$lock()
 

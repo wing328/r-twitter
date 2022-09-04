@@ -7,10 +7,11 @@
 #' @title Variant
 #' @description Variant Class
 #' @format An \code{R6Class} generator object
-#' @field bit_rate  integer [optional]
-#' @field content_type  character [optional]
-#' @field url  character [optional]
-#' @field additional_properties named list(character) [optional]
+#' @field bit_rate The bit rate of the media. integer [optional]
+#' @field content_type The content type of the media. character [optional]
+#' @field url The url to the media. character [optional]
+#' @field _field_list a list of fields list(character)
+#' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -20,7 +21,8 @@ Variant <- R6::R6Class(
     `bit_rate` = NULL,
     `content_type` = NULL,
     `url` = NULL,
-    `additional_properties` = NULL,
+    `_field_list` = c("bit_rate", "content_type", "url"),
+    `additional_properties` = list(),
     #' Initialize a new Variant class.
     #'
     #' @description
@@ -99,6 +101,13 @@ Variant <- R6::R6Class(
       if (!is.null(this_object$`url`)) {
         self$`url` <- this_object$`url`
       }
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' To JSON string
@@ -156,6 +165,13 @@ Variant <- R6::R6Class(
       self$`bit_rate` <- this_object$`bit_rate`
       self$`content_type` <- this_object$`content_type`
       self$`url` <- this_object$`url`
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' Validate JSON input with respect to Variant
@@ -198,26 +214,28 @@ Variant <- R6::R6Class(
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
-    }
-  ),
-  # Lock the class to prevent modifications to the method or field
-  lock_class = TRUE
+    },
+    #' Print the object
+    #'
+    #' @description
+    #' Print the object
+    #'
+    #' @export
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }),
+    # Lock the class to prevent modifications to the method or field
+    lock_class = TRUE
 )
-
-# Unlock the class to allow modifications of the method or field
-Variant$unlock()
-
-#' Print the object
-#'
-#' @description
-#' Print the object
-#'
-#' @export
-Variant$set("public", "print", function(...) {
-  print(jsonlite::prettify(self$toJSONString()))
-  invisible(self)
-})
-
-# Lock the class to prevent modifications to the method or field
-Variant$lock()
+## Uncomment below to unlock the class to allow modifications of the method or field
+#Variant$unlock()
+#
+## Below is an example to define the print fnuction
+#Variant$set("public", "print", function(...) {
+#  print(jsonlite::prettify(self$toJSONString()))
+#  invisible(self)
+#})
+## Uncomment below to lock the class to prevent modifications to the method or field
+#Variant$lock()
 

@@ -9,7 +9,8 @@
 #' @format An \code{R6Class} generator object
 #' @field data  list(\link{Rule}) [optional]
 #' @field meta  \link{RulesResponseMetadata}
-#' @field additional_properties named list(character) [optional]
+#' @field _field_list a list of fields list(character)
+#' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -18,7 +19,8 @@ RulesLookupResponse <- R6::R6Class(
   public = list(
     `data` = NULL,
     `meta` = NULL,
-    `additional_properties` = NULL,
+    `_field_list` = c("data", "meta"),
+    `additional_properties` = list(),
     #' Initialize a new RulesLookupResponse class.
     #'
     #' @description
@@ -88,6 +90,13 @@ RulesLookupResponse <- R6::R6Class(
         meta_object$fromJSON(jsonlite::toJSON(this_object$meta, auto_unbox = TRUE, digits = NA))
         self$`meta` <- meta_object
       }
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' To JSON string
@@ -136,6 +145,13 @@ RulesLookupResponse <- R6::R6Class(
       this_object <- jsonlite::fromJSON(input_json)
       self$`data` <- ApiClient$new()$deserializeObj(this_object$`data`, "array[Rule]", loadNamespace("twitter"))
       self$`meta` <- RulesResponseMetadata$new()$fromJSON(jsonlite::toJSON(this_object$meta, auto_unbox = TRUE, digits = NA))
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' Validate JSON input with respect to RulesLookupResponse
@@ -194,26 +210,28 @@ RulesLookupResponse <- R6::R6Class(
       }
 
       invalid_fields
-    }
-  ),
-  # Lock the class to prevent modifications to the method or field
-  lock_class = TRUE
+    },
+    #' Print the object
+    #'
+    #' @description
+    #' Print the object
+    #'
+    #' @export
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }),
+    # Lock the class to prevent modifications to the method or field
+    lock_class = TRUE
 )
-
-# Unlock the class to allow modifications of the method or field
-RulesLookupResponse$unlock()
-
-#' Print the object
-#'
-#' @description
-#' Print the object
-#'
-#' @export
-RulesLookupResponse$set("public", "print", function(...) {
-  print(jsonlite::prettify(self$toJSONString()))
-  invisible(self)
-})
-
-# Lock the class to prevent modifications to the method or field
-RulesLookupResponse$lock()
+## Uncomment below to unlock the class to allow modifications of the method or field
+#RulesLookupResponse$unlock()
+#
+## Below is an example to define the print fnuction
+#RulesLookupResponse$set("public", "print", function(...) {
+#  print(jsonlite::prettify(self$toJSONString()))
+#  invisible(self)
+#})
+## Uncomment below to lock the class to prevent modifications to the method or field
+#RulesLookupResponse$lock()
 

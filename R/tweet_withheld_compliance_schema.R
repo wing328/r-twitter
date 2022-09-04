@@ -8,7 +8,8 @@
 #' @description TweetWithheldComplianceSchema Class
 #' @format An \code{R6Class} generator object
 #' @field withheld  \link{TweetTakedownComplianceSchema}
-#' @field additional_properties named list(character) [optional]
+#' @field _field_list a list of fields list(character)
+#' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -16,7 +17,8 @@ TweetWithheldComplianceSchema <- R6::R6Class(
   "TweetWithheldComplianceSchema",
   public = list(
     `withheld` = NULL,
-    `additional_properties` = NULL,
+    `_field_list` = c("withheld"),
+    `additional_properties` = list(),
     #' Initialize a new TweetWithheldComplianceSchema class.
     #'
     #' @description
@@ -73,6 +75,13 @@ TweetWithheldComplianceSchema <- R6::R6Class(
         withheld_object$fromJSON(jsonlite::toJSON(this_object$withheld, auto_unbox = TRUE, digits = NA))
         self$`withheld` <- withheld_object
       }
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' To JSON string
@@ -112,6 +121,13 @@ TweetWithheldComplianceSchema <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`withheld` <- TweetTakedownComplianceSchema$new()$fromJSON(jsonlite::toJSON(this_object$withheld, auto_unbox = TRUE, digits = NA))
+      # process additional properties/fields in the payload
+      for (key in names(this_object)) {
+        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+          self$additional_properties[[key]] <- this_object[[key]]
+        }
+      }
+
       self
     },
     #' Validate JSON input with respect to TweetWithheldComplianceSchema
@@ -170,26 +186,28 @@ TweetWithheldComplianceSchema <- R6::R6Class(
       }
 
       invalid_fields
-    }
-  ),
-  # Lock the class to prevent modifications to the method or field
-  lock_class = TRUE
+    },
+    #' Print the object
+    #'
+    #' @description
+    #' Print the object
+    #'
+    #' @export
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }),
+    # Lock the class to prevent modifications to the method or field
+    lock_class = TRUE
 )
-
-# Unlock the class to allow modifications of the method or field
-TweetWithheldComplianceSchema$unlock()
-
-#' Print the object
-#'
-#' @description
-#' Print the object
-#'
-#' @export
-TweetWithheldComplianceSchema$set("public", "print", function(...) {
-  print(jsonlite::prettify(self$toJSONString()))
-  invisible(self)
-})
-
-# Lock the class to prevent modifications to the method or field
-TweetWithheldComplianceSchema$lock()
+## Uncomment below to unlock the class to allow modifications of the method or field
+#TweetWithheldComplianceSchema$unlock()
+#
+## Below is an example to define the print fnuction
+#TweetWithheldComplianceSchema$set("public", "print", function(...) {
+#  print(jsonlite::prettify(self$toJSONString()))
+#  invisible(self)
+#})
+## Uncomment below to lock the class to prevent modifications to the method or field
+#TweetWithheldComplianceSchema$lock()
 
