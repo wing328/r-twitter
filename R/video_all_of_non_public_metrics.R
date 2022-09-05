@@ -7,11 +7,11 @@
 #' @title VideoAllOfNonPublicMetrics
 #' @description VideoAllOfNonPublicMetrics Class
 #' @format An \code{R6Class} generator object
-#' @field playback_0_count Number of users who made it through 0% of the video. integer [optional]
-#' @field playback_100_count Number of users who made it through 100% of the video. integer [optional]
-#' @field playback_25_count Number of users who made it through 25% of the video. integer [optional]
-#' @field playback_50_count Number of users who made it through 50% of the video. integer [optional]
-#' @field playback_75_count Number of users who made it through 75% of the video. integer [optional]
+#' @field playback_0_count Number of users who made it through 0\% of the video. integer [optional]
+#' @field playback_100_count Number of users who made it through 100\% of the video. integer [optional]
+#' @field playback_25_count Number of users who made it through 25\% of the video. integer [optional]
+#' @field playback_50_count Number of users who made it through 50\% of the video. integer [optional]
+#' @field playback_75_count Number of users who made it through 75\% of the video. integer [optional]
 #' @field _field_list a list of fields list(character)
 #' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
