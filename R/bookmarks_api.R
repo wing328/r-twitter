@@ -372,33 +372,27 @@ BookmarksApi <- R6::R6Class(
                                                      reason = "Invalid length for `place_fields` when calling BookmarksApi$get_users_id_bookmarks, number of items must be greater than or equal to 1."))
       }
 
-      query_params["max_results"] <- `max_results`
+      query_params[["max_results"]] <- `max_results`
 
-      query_params["pagination_token"] <- `pagination_token`
+      query_params[["pagination_token"]] <- `pagination_token`
 
-      for (query_item in `tweet_fields`) {
-        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
-      }
+      # no explore
+      query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `expansions`) {
-        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
-      }
+      # no explore
+      query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `media_fields`) {
-        query_params[["media.fields"]] <- c(query_params[["media.fields"]], list(`media.fields` = query_item))
-      }
+      # no explore
+      query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `poll_fields`) {
-        query_params[["poll.fields"]] <- c(query_params[["poll.fields"]], list(`poll.fields` = query_item))
-      }
+      # no explore
+      query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `user_fields`) {
-        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
-      }
+      # no explore
+      query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `place_fields`) {
-        query_params[["place.fields"]] <- c(query_params[["place.fields"]], list(`place.fields` = query_item))
-      }
+      # no explore
+      query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/users/{id}/bookmarks"
       if (!missing(`id`)) {
