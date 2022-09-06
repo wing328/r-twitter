@@ -1436,17 +1436,14 @@ UsersApi <- R6::R6Class(
                                                      reason = "Invalid length for `tweet_fields` when calling UsersApi$find_my_user, number of items must be greater than or equal to 1."))
       }
 
-      for (query_item in `user_fields`) {
-        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
-      }
+      # no explore
+      query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `expansions`) {
-        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
-      }
+      # no explore
+      query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `tweet_fields`) {
-        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
-      }
+      # no explore
+      query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/users/me"
       # OAuth-related settings
@@ -1597,17 +1594,14 @@ UsersApi <- R6::R6Class(
                                                      reason = "Invalid length for `tweet_fields` when calling UsersApi$find_user_by_id, number of items must be greater than or equal to 1."))
       }
 
-      for (query_item in `user_fields`) {
-        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
-      }
+      # no explore
+      query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `expansions`) {
-        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
-      }
+      # no explore
+      query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `tweet_fields`) {
-        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
-      }
+      # no explore
+      query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/users/{id}"
       if (!missing(`id`)) {
@@ -1766,17 +1760,14 @@ UsersApi <- R6::R6Class(
                                                      reason = "Invalid length for `tweet_fields` when calling UsersApi$find_user_by_username, number of items must be greater than or equal to 1."))
       }
 
-      for (query_item in `user_fields`) {
-        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
-      }
+      # no explore
+      query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `expansions`) {
-        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
-      }
+      # no explore
+      query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `tweet_fields`) {
-        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
-      }
+      # no explore
+      query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/users/by/username/{username}"
       if (!missing(`username`)) {
@@ -1941,21 +1932,17 @@ UsersApi <- R6::R6Class(
                                                      reason = "Invalid length for `tweet_fields` when calling UsersApi$find_users_by_id, number of items must be greater than or equal to 1."))
       }
 
-      for (query_item in `ids`) {
-        query_params[["ids"]] <- c(query_params[["ids"]], list(`ids` = query_item))
-      }
+      # no explore
+      query_params[["ids"]] <- I(paste(lapply(`ids`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `user_fields`) {
-        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
-      }
+      # no explore
+      query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `expansions`) {
-        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
-      }
+      # no explore
+      query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `tweet_fields`) {
-        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
-      }
+      # no explore
+      query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/users"
       # Bearer token
@@ -2116,21 +2103,17 @@ UsersApi <- R6::R6Class(
                                                      reason = "Invalid length for `tweet_fields` when calling UsersApi$find_users_by_username, number of items must be greater than or equal to 1."))
       }
 
-      for (query_item in `usernames`) {
-        query_params[["usernames"]] <- c(query_params[["usernames"]], list(`usernames` = query_item))
-      }
+      # no explore
+      query_params[["usernames"]] <- I(paste(lapply(`usernames`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `user_fields`) {
-        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
-      }
+      # no explore
+      query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `expansions`) {
-        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
-      }
+      # no explore
+      query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `tweet_fields`) {
-        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
-      }
+      # no explore
+      query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/users/by"
       # Bearer token
@@ -2315,21 +2298,18 @@ UsersApi <- R6::R6Class(
                                                      reason = "Invalid length for `tweet_fields` when calling UsersApi$list_get_followers, number of items must be greater than or equal to 1."))
       }
 
-      query_params["max_results"] <- `max_results`
+      query_params[["max_results"]] <- `max_results`
 
-      query_params["pagination_token"] <- `pagination_token`
+      query_params[["pagination_token"]] <- `pagination_token`
 
-      for (query_item in `user_fields`) {
-        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
-      }
+      # no explore
+      query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `expansions`) {
-        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
-      }
+      # no explore
+      query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `tweet_fields`) {
-        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
-      }
+      # no explore
+      query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/lists/{id}/followers"
       if (!missing(`id`)) {
@@ -2518,21 +2498,18 @@ UsersApi <- R6::R6Class(
                                                      reason = "Invalid length for `tweet_fields` when calling UsersApi$list_get_members, number of items must be greater than or equal to 1."))
       }
 
-      query_params["max_results"] <- `max_results`
+      query_params[["max_results"]] <- `max_results`
 
-      query_params["pagination_token"] <- `pagination_token`
+      query_params[["pagination_token"]] <- `pagination_token`
 
-      for (query_item in `user_fields`) {
-        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
-      }
+      # no explore
+      query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `expansions`) {
-        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
-      }
+      # no explore
+      query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `tweet_fields`) {
-        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
-      }
+      # no explore
+      query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/lists/{id}/members"
       if (!missing(`id`)) {
@@ -2715,21 +2692,18 @@ UsersApi <- R6::R6Class(
                                                      reason = "Invalid length for `tweet_fields` when calling UsersApi$tweets_id_liking_users, number of items must be greater than or equal to 1."))
       }
 
-      query_params["max_results"] <- `max_results`
+      query_params[["max_results"]] <- `max_results`
 
-      query_params["pagination_token"] <- `pagination_token`
+      query_params[["pagination_token"]] <- `pagination_token`
 
-      for (query_item in `user_fields`) {
-        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
-      }
+      # no explore
+      query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `expansions`) {
-        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
-      }
+      # no explore
+      query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `tweet_fields`) {
-        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
-      }
+      # no explore
+      query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/tweets/{id}/liking_users"
       if (!missing(`id`)) {
@@ -2912,21 +2886,18 @@ UsersApi <- R6::R6Class(
                                                      reason = "Invalid length for `tweet_fields` when calling UsersApi$tweets_id_retweeting_users, number of items must be greater than or equal to 1."))
       }
 
-      query_params["max_results"] <- `max_results`
+      query_params[["max_results"]] <- `max_results`
 
-      query_params["pagination_token"] <- `pagination_token`
+      query_params[["pagination_token"]] <- `pagination_token`
 
-      for (query_item in `user_fields`) {
-        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
-      }
+      # no explore
+      query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `expansions`) {
-        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
-      }
+      # no explore
+      query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `tweet_fields`) {
-        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
-      }
+      # no explore
+      query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/tweets/{id}/retweeted_by"
       if (!missing(`id`)) {
@@ -3239,21 +3210,18 @@ UsersApi <- R6::R6Class(
                                                      reason = "Invalid length for `tweet_fields` when calling UsersApi$users_id_blocking, number of items must be greater than or equal to 1."))
       }
 
-      query_params["max_results"] <- `max_results`
+      query_params[["max_results"]] <- `max_results`
 
-      query_params["pagination_token"] <- `pagination_token`
+      query_params[["pagination_token"]] <- `pagination_token`
 
-      for (query_item in `user_fields`) {
-        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
-      }
+      # no explore
+      query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `expansions`) {
-        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
-      }
+      # no explore
+      query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `tweet_fields`) {
-        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
-      }
+      # no explore
+      query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/users/{id}/blocking"
       if (!missing(`id`)) {
@@ -3561,21 +3529,18 @@ UsersApi <- R6::R6Class(
                                                      reason = "Invalid length for `tweet_fields` when calling UsersApi$users_id_followers, number of items must be greater than or equal to 1."))
       }
 
-      query_params["max_results"] <- `max_results`
+      query_params[["max_results"]] <- `max_results`
 
-      query_params["pagination_token"] <- `pagination_token`
+      query_params[["pagination_token"]] <- `pagination_token`
 
-      for (query_item in `user_fields`) {
-        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
-      }
+      # no explore
+      query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `expansions`) {
-        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
-      }
+      # no explore
+      query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `tweet_fields`) {
-        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
-      }
+      # no explore
+      query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/users/{id}/followers"
       if (!missing(`id`)) {
@@ -3758,21 +3723,18 @@ UsersApi <- R6::R6Class(
                                                      reason = "Invalid length for `tweet_fields` when calling UsersApi$users_id_following, number of items must be greater than or equal to 1."))
       }
 
-      query_params["max_results"] <- `max_results`
+      query_params[["max_results"]] <- `max_results`
 
-      query_params["pagination_token"] <- `pagination_token`
+      query_params[["pagination_token"]] <- `pagination_token`
 
-      for (query_item in `user_fields`) {
-        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
-      }
+      # no explore
+      query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `expansions`) {
-        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
-      }
+      # no explore
+      query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `tweet_fields`) {
-        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
-      }
+      # no explore
+      query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/users/{id}/following"
       if (!missing(`id`)) {
@@ -4084,21 +4046,18 @@ UsersApi <- R6::R6Class(
                                                      reason = "Invalid length for `tweet_fields` when calling UsersApi$users_id_muting, number of items must be greater than or equal to 1."))
       }
 
-      query_params["max_results"] <- `max_results`
+      query_params[["max_results"]] <- `max_results`
 
-      query_params["pagination_token"] <- `pagination_token`
+      query_params[["pagination_token"]] <- `pagination_token`
 
-      for (query_item in `user_fields`) {
-        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
-      }
+      # no explore
+      query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `expansions`) {
-        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
-      }
+      # no explore
+      query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `tweet_fields`) {
-        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
-      }
+      # no explore
+      query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/users/{id}/muting"
       if (!missing(`id`)) {

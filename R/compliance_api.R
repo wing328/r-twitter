@@ -558,9 +558,8 @@ ComplianceApi <- R6::R6Class(
                                                      reason = "Invalid length for `compliance_job_fields` when calling ComplianceApi$get_batch_compliance_job, number of items must be greater than or equal to 1."))
       }
 
-      for (query_item in `compliance_job_fields`) {
-        query_params[["compliance_job.fields"]] <- c(query_params[["compliance_job.fields"]], list(`compliance_job.fields` = query_item))
-      }
+      # no explore
+      query_params[["compliance_job.fields"]] <- I(paste(lapply(`compliance_job_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/compliance/jobs/{id}"
       if (!missing(`id`)) {
@@ -722,13 +721,13 @@ ComplianceApi <- R6::R6Class(
 
 
 
-      query_params["backfill_minutes"] <- `backfill_minutes`
+      query_params[["backfill_minutes"]] <- `backfill_minutes`
 
-      query_params["partition"] <- `partition`
+      query_params[["partition"]] <- `partition`
 
-      query_params["start_time"] <- `start_time`
+      query_params[["start_time"]] <- `start_time`
 
-      query_params["end_time"] <- `end_time`
+      query_params[["end_time"]] <- `end_time`
 
       local_var_url_path <- "/2/tweets/compliance/stream"
       # Bearer token
@@ -891,13 +890,13 @@ ComplianceApi <- R6::R6Class(
 
 
 
-      query_params["backfill_minutes"] <- `backfill_minutes`
+      query_params[["backfill_minutes"]] <- `backfill_minutes`
 
-      query_params["partition"] <- `partition`
+      query_params[["partition"]] <- `partition`
 
-      query_params["start_time"] <- `start_time`
+      query_params[["start_time"]] <- `start_time`
 
-      query_params["end_time"] <- `end_time`
+      query_params[["end_time"]] <- `end_time`
 
       local_var_url_path <- "/2/users/compliance/stream"
       # Bearer token
@@ -1033,13 +1032,12 @@ ComplianceApi <- R6::R6Class(
                                                      reason = "Invalid length for `compliance_job_fields` when calling ComplianceApi$list_batch_compliance_jobs, number of items must be greater than or equal to 1."))
       }
 
-      query_params["type"] <- `type`
+      query_params[["type"]] <- `type`
 
-      query_params["status"] <- `status`
+      query_params[["status"]] <- `status`
 
-      for (query_item in `compliance_job_fields`) {
-        query_params[["compliance_job.fields"]] <- c(query_params[["compliance_job.fields"]], list(`compliance_job.fields` = query_item))
-      }
+      # no explore
+      query_params[["compliance_job.fields"]] <- I(paste(lapply(`compliance_job_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/compliance/jobs"
       # Bearer token

@@ -1090,21 +1090,18 @@ ListsApi <- R6::R6Class(
                                                      reason = "Invalid length for `user_fields` when calling ListsApi$get_user_list_memberships, number of items must be greater than or equal to 1."))
       }
 
-      query_params["max_results"] <- `max_results`
+      query_params[["max_results"]] <- `max_results`
 
-      query_params["pagination_token"] <- `pagination_token`
+      query_params[["pagination_token"]] <- `pagination_token`
 
-      for (query_item in `list_fields`) {
-        query_params[["list.fields"]] <- c(query_params[["list.fields"]], list(`list.fields` = query_item))
-      }
+      # no explore
+      query_params[["list.fields"]] <- I(paste(lapply(`list_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `expansions`) {
-        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
-      }
+      # no explore
+      query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `user_fields`) {
-        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
-      }
+      # no explore
+      query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/users/{id}/list_memberships"
       if (!missing(`id`)) {
@@ -1639,17 +1636,14 @@ ListsApi <- R6::R6Class(
                                                      reason = "Invalid length for `user_fields` when calling ListsApi$list_id_get, number of items must be greater than or equal to 1."))
       }
 
-      for (query_item in `list_fields`) {
-        query_params[["list.fields"]] <- c(query_params[["list.fields"]], list(`list.fields` = query_item))
-      }
+      # no explore
+      query_params[["list.fields"]] <- I(paste(lapply(`list_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `expansions`) {
-        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
-      }
+      # no explore
+      query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `user_fields`) {
-        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
-      }
+      # no explore
+      query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/lists/{id}"
       if (!missing(`id`)) {
@@ -2248,21 +2242,18 @@ ListsApi <- R6::R6Class(
                                                      reason = "Invalid length for `user_fields` when calling ListsApi$list_user_owned_lists, number of items must be greater than or equal to 1."))
       }
 
-      query_params["max_results"] <- `max_results`
+      query_params[["max_results"]] <- `max_results`
 
-      query_params["pagination_token"] <- `pagination_token`
+      query_params[["pagination_token"]] <- `pagination_token`
 
-      for (query_item in `list_fields`) {
-        query_params[["list.fields"]] <- c(query_params[["list.fields"]], list(`list.fields` = query_item))
-      }
+      # no explore
+      query_params[["list.fields"]] <- I(paste(lapply(`list_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `expansions`) {
-        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
-      }
+      # no explore
+      query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `user_fields`) {
-        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
-      }
+      # no explore
+      query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/users/{id}/owned_lists"
       if (!missing(`id`)) {
@@ -2551,17 +2542,14 @@ ListsApi <- R6::R6Class(
                                                      reason = "Invalid length for `user_fields` when calling ListsApi$list_user_pinned_lists, number of items must be greater than or equal to 1."))
       }
 
-      for (query_item in `list_fields`) {
-        query_params[["list.fields"]] <- c(query_params[["list.fields"]], list(`list.fields` = query_item))
-      }
+      # no explore
+      query_params[["list.fields"]] <- I(paste(lapply(`list_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `expansions`) {
-        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
-      }
+      # no explore
+      query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `user_fields`) {
-        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
-      }
+      # no explore
+      query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/users/{id}/pinned_lists"
       if (!missing(`id`)) {
@@ -3026,21 +3014,18 @@ ListsApi <- R6::R6Class(
                                                      reason = "Invalid length for `user_fields` when calling ListsApi$user_followed_lists, number of items must be greater than or equal to 1."))
       }
 
-      query_params["max_results"] <- `max_results`
+      query_params[["max_results"]] <- `max_results`
 
-      query_params["pagination_token"] <- `pagination_token`
+      query_params[["pagination_token"]] <- `pagination_token`
 
-      for (query_item in `list_fields`) {
-        query_params[["list.fields"]] <- c(query_params[["list.fields"]], list(`list.fields` = query_item))
-      }
+      # no explore
+      query_params[["list.fields"]] <- I(paste(lapply(`list_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `expansions`) {
-        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
-      }
+      # no explore
+      query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `user_fields`) {
-        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
-      }
+      # no explore
+      query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/users/{id}/followed_lists"
       if (!missing(`id`)) {

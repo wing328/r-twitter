@@ -2138,7 +2138,7 @@ TweetsApi <- R6::R6Class(
 
 
 
-      query_params["dry_run"] <- `dry_run`
+      query_params[["dry_run"]] <- `dry_run`
 
       if (!missing(`add_or_delete_rules_request`)) {
         local_var_body <- `add_or_delete_rules_request`$toJSONString()
@@ -2571,29 +2571,23 @@ TweetsApi <- R6::R6Class(
                                                      reason = "Invalid length for `place_fields` when calling TweetsApi$find_tweet_by_id, number of items must be greater than or equal to 1."))
       }
 
-      for (query_item in `tweet_fields`) {
-        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
-      }
+      # no explore
+      query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `expansions`) {
-        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
-      }
+      # no explore
+      query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `media_fields`) {
-        query_params[["media.fields"]] <- c(query_params[["media.fields"]], list(`media.fields` = query_item))
-      }
+      # no explore
+      query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `poll_fields`) {
-        query_params[["poll.fields"]] <- c(query_params[["poll.fields"]], list(`poll.fields` = query_item))
-      }
+      # no explore
+      query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `user_fields`) {
-        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
-      }
+      # no explore
+      query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `place_fields`) {
-        query_params[["place.fields"]] <- c(query_params[["place.fields"]], list(`place.fields` = query_item))
-      }
+      # no explore
+      query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/tweets/{id}"
       if (!missing(`id`)) {
@@ -2785,33 +2779,26 @@ TweetsApi <- R6::R6Class(
                                                      reason = "Invalid length for `place_fields` when calling TweetsApi$find_tweets_by_id, number of items must be greater than or equal to 1."))
       }
 
-      for (query_item in `ids`) {
-        query_params[["ids"]] <- c(query_params[["ids"]], list(`ids` = query_item))
-      }
+      # no explore
+      query_params[["ids"]] <- I(paste(lapply(`ids`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `tweet_fields`) {
-        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
-      }
+      # no explore
+      query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `expansions`) {
-        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
-      }
+      # no explore
+      query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `media_fields`) {
-        query_params[["media.fields"]] <- c(query_params[["media.fields"]], list(`media.fields` = query_item))
-      }
+      # no explore
+      query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `poll_fields`) {
-        query_params[["poll.fields"]] <- c(query_params[["poll.fields"]], list(`poll.fields` = query_item))
-      }
+      # no explore
+      query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `user_fields`) {
-        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
-      }
+      # no explore
+      query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `place_fields`) {
-        query_params[["place.fields"]] <- c(query_params[["place.fields"]], list(`place.fields` = query_item))
-      }
+      # no explore
+      query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/tweets"
       # Bearer token
@@ -3026,37 +3013,30 @@ TweetsApi <- R6::R6Class(
                                                      reason = "Invalid length for `place_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet, number of items must be greater than or equal to 1."))
       }
 
-      query_params["max_results"] <- `max_results`
+      query_params[["max_results"]] <- `max_results`
 
-      query_params["pagination_token"] <- `pagination_token`
+      query_params[["pagination_token"]] <- `pagination_token`
 
-      for (query_item in `exclude`) {
-        query_params[["exclude"]] <- c(query_params[["exclude"]], list(`exclude` = query_item))
-      }
+      # no explore
+      query_params[["exclude"]] <- I(paste(lapply(`exclude`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `tweet_fields`) {
-        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
-      }
+      # no explore
+      query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `expansions`) {
-        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
-      }
+      # no explore
+      query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `media_fields`) {
-        query_params[["media.fields"]] <- c(query_params[["media.fields"]], list(`media.fields` = query_item))
-      }
+      # no explore
+      query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `poll_fields`) {
-        query_params[["poll.fields"]] <- c(query_params[["poll.fields"]], list(`poll.fields` = query_item))
-      }
+      # no explore
+      query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `user_fields`) {
-        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
-      }
+      # no explore
+      query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `place_fields`) {
-        query_params[["place.fields"]] <- c(query_params[["place.fields"]], list(`place.fields` = query_item))
-      }
+      # no explore
+      query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/tweets/{id}/quote_tweets"
       if (!missing(`id`)) {
@@ -3205,13 +3185,14 @@ TweetsApi <- R6::R6Class(
                                                      reason = "Invalid length for `pagination_token` when calling TweetsApi$get_rules, must be bigger than or equal to 16."))
       }
 
+      # explore
       for (query_item in `ids`) {
         query_params[["ids"]] <- c(query_params[["ids"]], list(`ids` = query_item))
       }
 
-      query_params["max_results"] <- `max_results`
+      query_params[["max_results"]] <- `max_results`
 
-      query_params["pagination_token"] <- `pagination_token`
+      query_params[["pagination_token"]] <- `pagination_token`
 
       local_var_url_path <- "/2/tweets/search/stream/rules"
       # Bearer token
@@ -3423,37 +3404,31 @@ TweetsApi <- R6::R6Class(
                                                      reason = "Invalid length for `place_fields` when calling TweetsApi$get_tweets_firehose_stream, number of items must be greater than or equal to 1."))
       }
 
-      query_params["backfill_minutes"] <- `backfill_minutes`
+      query_params[["backfill_minutes"]] <- `backfill_minutes`
 
-      query_params["partition"] <- `partition`
+      query_params[["partition"]] <- `partition`
 
-      query_params["start_time"] <- `start_time`
+      query_params[["start_time"]] <- `start_time`
 
-      query_params["end_time"] <- `end_time`
+      query_params[["end_time"]] <- `end_time`
 
-      for (query_item in `tweet_fields`) {
-        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
-      }
+      # no explore
+      query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `expansions`) {
-        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
-      }
+      # no explore
+      query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `media_fields`) {
-        query_params[["media.fields"]] <- c(query_params[["media.fields"]], list(`media.fields` = query_item))
-      }
+      # no explore
+      query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `poll_fields`) {
-        query_params[["poll.fields"]] <- c(query_params[["poll.fields"]], list(`poll.fields` = query_item))
-      }
+      # no explore
+      query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `user_fields`) {
-        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
-      }
+      # no explore
+      query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `place_fields`) {
-        query_params[["place.fields"]] <- c(query_params[["place.fields"]], list(`place.fields` = query_item))
-      }
+      # no explore
+      query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/tweets/firehose/stream"
       # Bearer token
@@ -3670,37 +3645,31 @@ TweetsApi <- R6::R6Class(
                                                      reason = "Invalid length for `place_fields` when calling TweetsApi$get_tweets_sample10_stream, number of items must be greater than or equal to 1."))
       }
 
-      query_params["backfill_minutes"] <- `backfill_minutes`
+      query_params[["backfill_minutes"]] <- `backfill_minutes`
 
-      query_params["partition"] <- `partition`
+      query_params[["partition"]] <- `partition`
 
-      query_params["start_time"] <- `start_time`
+      query_params[["start_time"]] <- `start_time`
 
-      query_params["end_time"] <- `end_time`
+      query_params[["end_time"]] <- `end_time`
 
-      for (query_item in `tweet_fields`) {
-        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
-      }
+      # no explore
+      query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `expansions`) {
-        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
-      }
+      # no explore
+      query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `media_fields`) {
-        query_params[["media.fields"]] <- c(query_params[["media.fields"]], list(`media.fields` = query_item))
-      }
+      # no explore
+      query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `poll_fields`) {
-        query_params[["poll.fields"]] <- c(query_params[["poll.fields"]], list(`poll.fields` = query_item))
-      }
+      # no explore
+      query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `user_fields`) {
-        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
-      }
+      # no explore
+      query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `place_fields`) {
-        query_params[["place.fields"]] <- c(query_params[["place.fields"]], list(`place.fields` = query_item))
-      }
+      # no explore
+      query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/tweets/sample10/stream"
       # Bearer token
@@ -4043,33 +4012,27 @@ TweetsApi <- R6::R6Class(
                                                      reason = "Invalid length for `place_fields` when calling TweetsApi$lists_id_tweets, number of items must be greater than or equal to 1."))
       }
 
-      query_params["max_results"] <- `max_results`
+      query_params[["max_results"]] <- `max_results`
 
-      query_params["pagination_token"] <- `pagination_token`
+      query_params[["pagination_token"]] <- `pagination_token`
 
-      for (query_item in `tweet_fields`) {
-        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
-      }
+      # no explore
+      query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `expansions`) {
-        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
-      }
+      # no explore
+      query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `media_fields`) {
-        query_params[["media.fields"]] <- c(query_params[["media.fields"]], list(`media.fields` = query_item))
-      }
+      # no explore
+      query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `poll_fields`) {
-        query_params[["poll.fields"]] <- c(query_params[["poll.fields"]], list(`poll.fields` = query_item))
-      }
+      # no explore
+      query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `user_fields`) {
-        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
-      }
+      # no explore
+      query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `place_fields`) {
-        query_params[["place.fields"]] <- c(query_params[["place.fields"]], list(`place.fields` = query_item))
-      }
+      # no explore
+      query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/lists/{id}/tweets"
       if (!missing(`id`)) {
@@ -4260,31 +4223,25 @@ TweetsApi <- R6::R6Class(
                                                      reason = "Invalid length for `place_fields` when calling TweetsApi$sample_stream, number of items must be greater than or equal to 1."))
       }
 
-      query_params["backfill_minutes"] <- `backfill_minutes`
+      query_params[["backfill_minutes"]] <- `backfill_minutes`
 
-      for (query_item in `tweet_fields`) {
-        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
-      }
+      # no explore
+      query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `expansions`) {
-        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
-      }
+      # no explore
+      query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `media_fields`) {
-        query_params[["media.fields"]] <- c(query_params[["media.fields"]], list(`media.fields` = query_item))
-      }
+      # no explore
+      query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `poll_fields`) {
-        query_params[["poll.fields"]] <- c(query_params[["poll.fields"]], list(`poll.fields` = query_item))
-      }
+      # no explore
+      query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `user_fields`) {
-        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
-      }
+      # no explore
+      query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `place_fields`) {
-        query_params[["place.fields"]] <- c(query_params[["place.fields"]], list(`place.fields` = query_item))
-      }
+      # no explore
+      query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/tweets/sample/stream"
       # Bearer token
@@ -4479,35 +4436,29 @@ TweetsApi <- R6::R6Class(
                                                      reason = "Invalid length for `place_fields` when calling TweetsApi$search_stream, number of items must be greater than or equal to 1."))
       }
 
-      query_params["backfill_minutes"] <- `backfill_minutes`
+      query_params[["backfill_minutes"]] <- `backfill_minutes`
 
-      query_params["start_time"] <- `start_time`
+      query_params[["start_time"]] <- `start_time`
 
-      query_params["end_time"] <- `end_time`
+      query_params[["end_time"]] <- `end_time`
 
-      for (query_item in `tweet_fields`) {
-        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
-      }
+      # no explore
+      query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `expansions`) {
-        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
-      }
+      # no explore
+      query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `media_fields`) {
-        query_params[["media.fields"]] <- c(query_params[["media.fields"]], list(`media.fields` = query_item))
-      }
+      # no explore
+      query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `poll_fields`) {
-        query_params[["poll.fields"]] <- c(query_params[["poll.fields"]], list(`poll.fields` = query_item))
-      }
+      # no explore
+      query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `user_fields`) {
-        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
-      }
+      # no explore
+      query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `place_fields`) {
-        query_params[["place.fields"]] <- c(query_params[["place.fields"]], list(`place.fields` = query_item))
-      }
+      # no explore
+      query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/tweets/search/stream"
       # Bearer token
@@ -4688,21 +4639,18 @@ TweetsApi <- R6::R6Class(
                                                      reason = "Invalid length for `tweet_fields` when calling TweetsApi$space_buyers, number of items must be greater than or equal to 1."))
       }
 
-      query_params["pagination_token"] <- `pagination_token`
+      query_params[["pagination_token"]] <- `pagination_token`
 
-      query_params["max_results"] <- `max_results`
+      query_params[["max_results"]] <- `max_results`
 
-      for (query_item in `user_fields`) {
-        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
-      }
+      # no explore
+      query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `expansions`) {
-        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
-      }
+      # no explore
+      query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `tweet_fields`) {
-        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
-      }
+      # no explore
+      query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/spaces/{id}/buyers"
       if (!missing(`id`)) {
@@ -4899,31 +4847,25 @@ TweetsApi <- R6::R6Class(
                                                      reason = "Invalid length for `place_fields` when calling TweetsApi$space_tweets, number of items must be greater than or equal to 1."))
       }
 
-      query_params["max_results"] <- `max_results`
+      query_params[["max_results"]] <- `max_results`
 
-      for (query_item in `tweet_fields`) {
-        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
-      }
+      # no explore
+      query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `expansions`) {
-        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
-      }
+      # no explore
+      query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `media_fields`) {
-        query_params[["media.fields"]] <- c(query_params[["media.fields"]], list(`media.fields` = query_item))
-      }
+      # no explore
+      query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `poll_fields`) {
-        query_params[["poll.fields"]] <- c(query_params[["poll.fields"]], list(`poll.fields` = query_item))
-      }
+      # no explore
+      query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `user_fields`) {
-        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
-      }
+      # no explore
+      query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `place_fields`) {
-        query_params[["place.fields"]] <- c(query_params[["place.fields"]], list(`place.fields` = query_item))
-      }
+      # no explore
+      query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/spaces/{id}/tweets"
       if (!missing(`id`)) {
@@ -5115,25 +5057,24 @@ TweetsApi <- R6::R6Class(
                                                      reason = "Invalid length for `search_count_fields` when calling TweetsApi$tweet_counts_full_archive_search, number of items must be greater than or equal to 1."))
       }
 
-      query_params["query"] <- `query`
+      query_params[["query"]] <- `query`
 
-      query_params["start_time"] <- `start_time`
+      query_params[["start_time"]] <- `start_time`
 
-      query_params["end_time"] <- `end_time`
+      query_params[["end_time"]] <- `end_time`
 
-      query_params["since_id"] <- `since_id`
+      query_params[["since_id"]] <- `since_id`
 
-      query_params["until_id"] <- `until_id`
+      query_params[["until_id"]] <- `until_id`
 
-      query_params["next_token"] <- `next_token`
+      query_params[["next_token"]] <- `next_token`
 
-      query_params["pagination_token"] <- `pagination_token`
+      query_params[["pagination_token"]] <- `pagination_token`
 
-      query_params["granularity"] <- `granularity`
+      query_params[["granularity"]] <- `granularity`
 
-      for (query_item in `search_count_fields`) {
-        query_params[["search_count.fields"]] <- c(query_params[["search_count.fields"]], list(`search_count.fields` = query_item))
-      }
+      # no explore
+      query_params[["search_count.fields"]] <- I(paste(lapply(`search_count_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/tweets/counts/all"
       # Bearer token
@@ -5318,25 +5259,24 @@ TweetsApi <- R6::R6Class(
                                                      reason = "Invalid length for `search_count_fields` when calling TweetsApi$tweet_counts_recent_search, number of items must be greater than or equal to 1."))
       }
 
-      query_params["query"] <- `query`
+      query_params[["query"]] <- `query`
 
-      query_params["start_time"] <- `start_time`
+      query_params[["start_time"]] <- `start_time`
 
-      query_params["end_time"] <- `end_time`
+      query_params[["end_time"]] <- `end_time`
 
-      query_params["since_id"] <- `since_id`
+      query_params[["since_id"]] <- `since_id`
 
-      query_params["until_id"] <- `until_id`
+      query_params[["until_id"]] <- `until_id`
 
-      query_params["next_token"] <- `next_token`
+      query_params[["next_token"]] <- `next_token`
 
-      query_params["pagination_token"] <- `pagination_token`
+      query_params[["pagination_token"]] <- `pagination_token`
 
-      query_params["granularity"] <- `granularity`
+      query_params[["granularity"]] <- `granularity`
 
-      for (query_item in `search_count_fields`) {
-        query_params[["search_count.fields"]] <- c(query_params[["search_count.fields"]], list(`search_count.fields` = query_item))
-      }
+      # no explore
+      query_params[["search_count.fields"]] <- I(paste(lapply(`search_count_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/tweets/counts/recent"
       # Bearer token
@@ -5581,47 +5521,41 @@ TweetsApi <- R6::R6Class(
                                                      reason = "Invalid length for `place_fields` when calling TweetsApi$tweets_fullarchive_search, number of items must be greater than or equal to 1."))
       }
 
-      query_params["query"] <- `query`
+      query_params[["query"]] <- `query`
 
-      query_params["start_time"] <- `start_time`
+      query_params[["start_time"]] <- `start_time`
 
-      query_params["end_time"] <- `end_time`
+      query_params[["end_time"]] <- `end_time`
 
-      query_params["since_id"] <- `since_id`
+      query_params[["since_id"]] <- `since_id`
 
-      query_params["until_id"] <- `until_id`
+      query_params[["until_id"]] <- `until_id`
 
-      query_params["max_results"] <- `max_results`
+      query_params[["max_results"]] <- `max_results`
 
-      query_params["next_token"] <- `next_token`
+      query_params[["next_token"]] <- `next_token`
 
-      query_params["pagination_token"] <- `pagination_token`
+      query_params[["pagination_token"]] <- `pagination_token`
 
-      query_params["sort_order"] <- `sort_order`
+      query_params[["sort_order"]] <- `sort_order`
 
-      for (query_item in `tweet_fields`) {
-        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
-      }
+      # no explore
+      query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `expansions`) {
-        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
-      }
+      # no explore
+      query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `media_fields`) {
-        query_params[["media.fields"]] <- c(query_params[["media.fields"]], list(`media.fields` = query_item))
-      }
+      # no explore
+      query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `poll_fields`) {
-        query_params[["poll.fields"]] <- c(query_params[["poll.fields"]], list(`poll.fields` = query_item))
-      }
+      # no explore
+      query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `user_fields`) {
-        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
-      }
+      # no explore
+      query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `place_fields`) {
-        query_params[["place.fields"]] <- c(query_params[["place.fields"]], list(`place.fields` = query_item))
-      }
+      # no explore
+      query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/tweets/search/all"
       # Bearer token
@@ -5866,47 +5800,41 @@ TweetsApi <- R6::R6Class(
                                                      reason = "Invalid length for `place_fields` when calling TweetsApi$tweets_recent_search, number of items must be greater than or equal to 1."))
       }
 
-      query_params["query"] <- `query`
+      query_params[["query"]] <- `query`
 
-      query_params["start_time"] <- `start_time`
+      query_params[["start_time"]] <- `start_time`
 
-      query_params["end_time"] <- `end_time`
+      query_params[["end_time"]] <- `end_time`
 
-      query_params["since_id"] <- `since_id`
+      query_params[["since_id"]] <- `since_id`
 
-      query_params["until_id"] <- `until_id`
+      query_params[["until_id"]] <- `until_id`
 
-      query_params["max_results"] <- `max_results`
+      query_params[["max_results"]] <- `max_results`
 
-      query_params["next_token"] <- `next_token`
+      query_params[["next_token"]] <- `next_token`
 
-      query_params["pagination_token"] <- `pagination_token`
+      query_params[["pagination_token"]] <- `pagination_token`
 
-      query_params["sort_order"] <- `sort_order`
+      query_params[["sort_order"]] <- `sort_order`
 
-      for (query_item in `tweet_fields`) {
-        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
-      }
+      # no explore
+      query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `expansions`) {
-        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
-      }
+      # no explore
+      query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `media_fields`) {
-        query_params[["media.fields"]] <- c(query_params[["media.fields"]], list(`media.fields` = query_item))
-      }
+      # no explore
+      query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `poll_fields`) {
-        query_params[["poll.fields"]] <- c(query_params[["poll.fields"]], list(`poll.fields` = query_item))
-      }
+      # no explore
+      query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `user_fields`) {
-        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
-      }
+      # no explore
+      query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `place_fields`) {
-        query_params[["place.fields"]] <- c(query_params[["place.fields"]], list(`place.fields` = query_item))
-      }
+      # no explore
+      query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/tweets/search/recent"
       # Bearer token
@@ -6241,33 +6169,27 @@ TweetsApi <- R6::R6Class(
                                                      reason = "Invalid length for `place_fields` when calling TweetsApi$users_id_liked_tweets, number of items must be greater than or equal to 1."))
       }
 
-      query_params["max_results"] <- `max_results`
+      query_params[["max_results"]] <- `max_results`
 
-      query_params["pagination_token"] <- `pagination_token`
+      query_params[["pagination_token"]] <- `pagination_token`
 
-      for (query_item in `tweet_fields`) {
-        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
-      }
+      # no explore
+      query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `expansions`) {
-        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
-      }
+      # no explore
+      query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `media_fields`) {
-        query_params[["media.fields"]] <- c(query_params[["media.fields"]], list(`media.fields` = query_item))
-      }
+      # no explore
+      query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `poll_fields`) {
-        query_params[["poll.fields"]] <- c(query_params[["poll.fields"]], list(`poll.fields` = query_item))
-      }
+      # no explore
+      query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `user_fields`) {
-        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
-      }
+      # no explore
+      query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `place_fields`) {
-        query_params[["place.fields"]] <- c(query_params[["place.fields"]], list(`place.fields` = query_item))
-      }
+      # no explore
+      query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/users/{id}/liked_tweets"
       if (!missing(`id`)) {
@@ -6501,41 +6423,35 @@ TweetsApi <- R6::R6Class(
                                                      reason = "Invalid length for `place_fields` when calling TweetsApi$users_id_mentions, number of items must be greater than or equal to 1."))
       }
 
-      query_params["since_id"] <- `since_id`
+      query_params[["since_id"]] <- `since_id`
 
-      query_params["until_id"] <- `until_id`
+      query_params[["until_id"]] <- `until_id`
 
-      query_params["max_results"] <- `max_results`
+      query_params[["max_results"]] <- `max_results`
 
-      query_params["pagination_token"] <- `pagination_token`
+      query_params[["pagination_token"]] <- `pagination_token`
 
-      query_params["start_time"] <- `start_time`
+      query_params[["start_time"]] <- `start_time`
 
-      query_params["end_time"] <- `end_time`
+      query_params[["end_time"]] <- `end_time`
 
-      for (query_item in `tweet_fields`) {
-        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
-      }
+      # no explore
+      query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `expansions`) {
-        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
-      }
+      # no explore
+      query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `media_fields`) {
-        query_params[["media.fields"]] <- c(query_params[["media.fields"]], list(`media.fields` = query_item))
-      }
+      # no explore
+      query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `poll_fields`) {
-        query_params[["poll.fields"]] <- c(query_params[["poll.fields"]], list(`poll.fields` = query_item))
-      }
+      # no explore
+      query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `user_fields`) {
-        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
-      }
+      # no explore
+      query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `place_fields`) {
-        query_params[["place.fields"]] <- c(query_params[["place.fields"]], list(`place.fields` = query_item))
-      }
+      # no explore
+      query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/users/{id}/mentions"
       if (!missing(`id`)) {
@@ -6895,45 +6811,38 @@ TweetsApi <- R6::R6Class(
                                                      reason = "Invalid length for `place_fields` when calling TweetsApi$users_id_timeline, number of items must be greater than or equal to 1."))
       }
 
-      query_params["since_id"] <- `since_id`
+      query_params[["since_id"]] <- `since_id`
 
-      query_params["until_id"] <- `until_id`
+      query_params[["until_id"]] <- `until_id`
 
-      query_params["max_results"] <- `max_results`
+      query_params[["max_results"]] <- `max_results`
 
-      query_params["pagination_token"] <- `pagination_token`
+      query_params[["pagination_token"]] <- `pagination_token`
 
-      for (query_item in `exclude`) {
-        query_params[["exclude"]] <- c(query_params[["exclude"]], list(`exclude` = query_item))
-      }
+      # no explore
+      query_params[["exclude"]] <- I(paste(lapply(`exclude`, URLencode, reserved = TRUE), collapse = ","))
 
-      query_params["start_time"] <- `start_time`
+      query_params[["start_time"]] <- `start_time`
 
-      query_params["end_time"] <- `end_time`
+      query_params[["end_time"]] <- `end_time`
 
-      for (query_item in `tweet_fields`) {
-        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
-      }
+      # no explore
+      query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `expansions`) {
-        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
-      }
+      # no explore
+      query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `media_fields`) {
-        query_params[["media.fields"]] <- c(query_params[["media.fields"]], list(`media.fields` = query_item))
-      }
+      # no explore
+      query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `poll_fields`) {
-        query_params[["poll.fields"]] <- c(query_params[["poll.fields"]], list(`poll.fields` = query_item))
-      }
+      # no explore
+      query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `user_fields`) {
-        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
-      }
+      # no explore
+      query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `place_fields`) {
-        query_params[["place.fields"]] <- c(query_params[["place.fields"]], list(`place.fields` = query_item))
-      }
+      # no explore
+      query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/users/{id}/timelines/reverse_chronological"
       if (!missing(`id`)) {
@@ -7172,45 +7081,38 @@ TweetsApi <- R6::R6Class(
                                                      reason = "Invalid length for `place_fields` when calling TweetsApi$users_id_tweets, number of items must be greater than or equal to 1."))
       }
 
-      query_params["since_id"] <- `since_id`
+      query_params[["since_id"]] <- `since_id`
 
-      query_params["until_id"] <- `until_id`
+      query_params[["until_id"]] <- `until_id`
 
-      query_params["max_results"] <- `max_results`
+      query_params[["max_results"]] <- `max_results`
 
-      query_params["pagination_token"] <- `pagination_token`
+      query_params[["pagination_token"]] <- `pagination_token`
 
-      for (query_item in `exclude`) {
-        query_params[["exclude"]] <- c(query_params[["exclude"]], list(`exclude` = query_item))
-      }
+      # no explore
+      query_params[["exclude"]] <- I(paste(lapply(`exclude`, URLencode, reserved = TRUE), collapse = ","))
 
-      query_params["start_time"] <- `start_time`
+      query_params[["start_time"]] <- `start_time`
 
-      query_params["end_time"] <- `end_time`
+      query_params[["end_time"]] <- `end_time`
 
-      for (query_item in `tweet_fields`) {
-        query_params[["tweet.fields"]] <- c(query_params[["tweet.fields"]], list(`tweet.fields` = query_item))
-      }
+      # no explore
+      query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `expansions`) {
-        query_params[["expansions"]] <- c(query_params[["expansions"]], list(`expansions` = query_item))
-      }
+      # no explore
+      query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `media_fields`) {
-        query_params[["media.fields"]] <- c(query_params[["media.fields"]], list(`media.fields` = query_item))
-      }
+      # no explore
+      query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `poll_fields`) {
-        query_params[["poll.fields"]] <- c(query_params[["poll.fields"]], list(`poll.fields` = query_item))
-      }
+      # no explore
+      query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `user_fields`) {
-        query_params[["user.fields"]] <- c(query_params[["user.fields"]], list(`user.fields` = query_item))
-      }
+      # no explore
+      query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
-      for (query_item in `place_fields`) {
-        query_params[["place.fields"]] <- c(query_params[["place.fields"]], list(`place.fields` = query_item))
-      }
+      # no explore
+      query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/users/{id}/tweets"
       if (!missing(`id`)) {
