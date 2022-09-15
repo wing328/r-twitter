@@ -2571,6 +2571,13 @@ TweetsApi <- R6::R6Class(
                                                      reason = "Invalid length for `place_fields` when calling TweetsApi$find_tweet_by_id, number of items must be greater than or equal to 1."))
       }
 
+      # check if items are unique
+      if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
+        rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$find_tweet_by_id. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `tweet_fields` when calling TweetsApi$find_tweet_by_id. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
@@ -2583,6 +2590,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`expansions`, unique(`expansions`))) {
+        rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$find_tweet_by_id. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `expansions` when calling TweetsApi$find_tweet_by_id. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
@@ -2595,6 +2609,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`media_fields`, unique(`media_fields`))) {
+        rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$find_tweet_by_id. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `media_fields` when calling TweetsApi$find_tweet_by_id. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `media_fields`) {
@@ -2607,6 +2628,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`poll_fields`, unique(`poll_fields`))) {
+        rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$find_tweet_by_id. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `poll_fields` when calling TweetsApi$find_tweet_by_id. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `poll_fields`) {
@@ -2619,6 +2647,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`user_fields`, unique(`user_fields`))) {
+        rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$find_tweet_by_id. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `user_fields` when calling TweetsApi$find_tweet_by_id. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
@@ -2631,6 +2666,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`place_fields`, unique(`place_fields`))) {
+        rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$find_tweet_by_id. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `place_fields` when calling TweetsApi$find_tweet_by_id. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `place_fields`) {
@@ -2836,6 +2878,13 @@ TweetsApi <- R6::R6Class(
       # no explore
       query_params[["ids"]] <- I(paste(lapply(`ids`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
+        rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$find_tweets_by_id. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `tweet_fields` when calling TweetsApi$find_tweets_by_id. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
@@ -2848,6 +2897,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`expansions`, unique(`expansions`))) {
+        rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$find_tweets_by_id. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `expansions` when calling TweetsApi$find_tweets_by_id. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
@@ -2860,6 +2916,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`media_fields`, unique(`media_fields`))) {
+        rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$find_tweets_by_id. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `media_fields` when calling TweetsApi$find_tweets_by_id. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `media_fields`) {
@@ -2872,6 +2935,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`poll_fields`, unique(`poll_fields`))) {
+        rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$find_tweets_by_id. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `poll_fields` when calling TweetsApi$find_tweets_by_id. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `poll_fields`) {
@@ -2884,6 +2954,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`user_fields`, unique(`user_fields`))) {
+        rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$find_tweets_by_id. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `user_fields` when calling TweetsApi$find_tweets_by_id. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
@@ -2896,6 +2973,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`place_fields`, unique(`place_fields`))) {
+        rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$find_tweets_by_id. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `place_fields` when calling TweetsApi$find_tweets_by_id. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `place_fields`) {
@@ -3125,6 +3209,13 @@ TweetsApi <- R6::R6Class(
 
       query_params[["pagination_token"]] <- `pagination_token`
 
+      # check if items are unique
+      if (!identical(`exclude`, unique(`exclude`))) {
+        rlang::abort(message = "Invalid value for `exclude` when calling TweetsApi$find_tweets_that_quote_a_tweet. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `exclude` when calling TweetsApi$find_tweets_that_quote_a_tweet. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `exclude`) {
@@ -3137,6 +3228,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["exclude"]] <- I(paste(lapply(`exclude`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
+        rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `tweet_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
@@ -3149,6 +3247,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`expansions`, unique(`expansions`))) {
+        rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$find_tweets_that_quote_a_tweet. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `expansions` when calling TweetsApi$find_tweets_that_quote_a_tweet. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
@@ -3161,6 +3266,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`media_fields`, unique(`media_fields`))) {
+        rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `media_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `media_fields`) {
@@ -3173,6 +3285,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`poll_fields`, unique(`poll_fields`))) {
+        rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `poll_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `poll_fields`) {
@@ -3185,6 +3304,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`user_fields`, unique(`user_fields`))) {
+        rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `user_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
@@ -3197,6 +3323,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`place_fields`, unique(`place_fields`))) {
+        rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `place_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `place_fields`) {
@@ -3583,6 +3716,13 @@ TweetsApi <- R6::R6Class(
 
       query_params[["end_time"]] <- `end_time`
 
+      # check if items are unique
+      if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
+        rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$get_tweets_firehose_stream. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `tweet_fields` when calling TweetsApi$get_tweets_firehose_stream. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
@@ -3595,6 +3735,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`expansions`, unique(`expansions`))) {
+        rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$get_tweets_firehose_stream. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `expansions` when calling TweetsApi$get_tweets_firehose_stream. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
@@ -3607,6 +3754,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`media_fields`, unique(`media_fields`))) {
+        rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$get_tweets_firehose_stream. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `media_fields` when calling TweetsApi$get_tweets_firehose_stream. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `media_fields`) {
@@ -3619,6 +3773,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`poll_fields`, unique(`poll_fields`))) {
+        rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$get_tweets_firehose_stream. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `poll_fields` when calling TweetsApi$get_tweets_firehose_stream. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `poll_fields`) {
@@ -3631,6 +3792,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`user_fields`, unique(`user_fields`))) {
+        rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$get_tweets_firehose_stream. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `user_fields` when calling TweetsApi$get_tweets_firehose_stream. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
@@ -3643,6 +3811,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`place_fields`, unique(`place_fields`))) {
+        rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$get_tweets_firehose_stream. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `place_fields` when calling TweetsApi$get_tweets_firehose_stream. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `place_fields`) {
@@ -3878,6 +4053,13 @@ TweetsApi <- R6::R6Class(
 
       query_params[["end_time"]] <- `end_time`
 
+      # check if items are unique
+      if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
+        rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$get_tweets_sample10_stream. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `tweet_fields` when calling TweetsApi$get_tweets_sample10_stream. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
@@ -3890,6 +4072,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`expansions`, unique(`expansions`))) {
+        rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$get_tweets_sample10_stream. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `expansions` when calling TweetsApi$get_tweets_sample10_stream. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
@@ -3902,6 +4091,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`media_fields`, unique(`media_fields`))) {
+        rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$get_tweets_sample10_stream. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `media_fields` when calling TweetsApi$get_tweets_sample10_stream. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `media_fields`) {
@@ -3914,6 +4110,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`poll_fields`, unique(`poll_fields`))) {
+        rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$get_tweets_sample10_stream. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `poll_fields` when calling TweetsApi$get_tweets_sample10_stream. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `poll_fields`) {
@@ -3926,6 +4129,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`user_fields`, unique(`user_fields`))) {
+        rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$get_tweets_sample10_stream. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `user_fields` when calling TweetsApi$get_tweets_sample10_stream. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
@@ -3938,6 +4148,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`place_fields`, unique(`place_fields`))) {
+        rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$get_tweets_sample10_stream. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `place_fields` when calling TweetsApi$get_tweets_sample10_stream. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `place_fields`) {
@@ -4295,6 +4512,13 @@ TweetsApi <- R6::R6Class(
 
       query_params[["pagination_token"]] <- `pagination_token`
 
+      # check if items are unique
+      if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
+        rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$lists_id_tweets. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `tweet_fields` when calling TweetsApi$lists_id_tweets. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
@@ -4307,6 +4531,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`expansions`, unique(`expansions`))) {
+        rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$lists_id_tweets. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `expansions` when calling TweetsApi$lists_id_tweets. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
@@ -4319,6 +4550,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`media_fields`, unique(`media_fields`))) {
+        rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$lists_id_tweets. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `media_fields` when calling TweetsApi$lists_id_tweets. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `media_fields`) {
@@ -4331,6 +4569,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`poll_fields`, unique(`poll_fields`))) {
+        rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$lists_id_tweets. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `poll_fields` when calling TweetsApi$lists_id_tweets. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `poll_fields`) {
@@ -4343,6 +4588,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`user_fields`, unique(`user_fields`))) {
+        rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$lists_id_tweets. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `user_fields` when calling TweetsApi$lists_id_tweets. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
@@ -4355,6 +4607,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`place_fields`, unique(`place_fields`))) {
+        rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$lists_id_tweets. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `place_fields` when calling TweetsApi$lists_id_tweets. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `place_fields`) {
@@ -4558,6 +4817,13 @@ TweetsApi <- R6::R6Class(
 
       query_params[["backfill_minutes"]] <- `backfill_minutes`
 
+      # check if items are unique
+      if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
+        rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$sample_stream. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `tweet_fields` when calling TweetsApi$sample_stream. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
@@ -4570,6 +4836,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`expansions`, unique(`expansions`))) {
+        rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$sample_stream. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `expansions` when calling TweetsApi$sample_stream. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
@@ -4582,6 +4855,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`media_fields`, unique(`media_fields`))) {
+        rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$sample_stream. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `media_fields` when calling TweetsApi$sample_stream. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `media_fields`) {
@@ -4594,6 +4874,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`poll_fields`, unique(`poll_fields`))) {
+        rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$sample_stream. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `poll_fields` when calling TweetsApi$sample_stream. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `poll_fields`) {
@@ -4606,6 +4893,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`user_fields`, unique(`user_fields`))) {
+        rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$sample_stream. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `user_fields` when calling TweetsApi$sample_stream. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
@@ -4618,6 +4912,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`place_fields`, unique(`place_fields`))) {
+        rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$sample_stream. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `place_fields` when calling TweetsApi$sample_stream. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `place_fields`) {
@@ -4829,6 +5130,13 @@ TweetsApi <- R6::R6Class(
 
       query_params[["end_time"]] <- `end_time`
 
+      # check if items are unique
+      if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
+        rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$search_stream. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `tweet_fields` when calling TweetsApi$search_stream. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
@@ -4841,6 +5149,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`expansions`, unique(`expansions`))) {
+        rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$search_stream. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `expansions` when calling TweetsApi$search_stream. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
@@ -4853,6 +5168,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`media_fields`, unique(`media_fields`))) {
+        rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$search_stream. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `media_fields` when calling TweetsApi$search_stream. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `media_fields`) {
@@ -4865,6 +5187,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`poll_fields`, unique(`poll_fields`))) {
+        rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$search_stream. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `poll_fields` when calling TweetsApi$search_stream. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `poll_fields`) {
@@ -4877,6 +5206,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`user_fields`, unique(`user_fields`))) {
+        rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$search_stream. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `user_fields` when calling TweetsApi$search_stream. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
@@ -4889,6 +5225,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`place_fields`, unique(`place_fields`))) {
+        rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$search_stream. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `place_fields` when calling TweetsApi$search_stream. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `place_fields`) {
@@ -5084,6 +5427,13 @@ TweetsApi <- R6::R6Class(
 
       query_params[["max_results"]] <- `max_results`
 
+      # check if items are unique
+      if (!identical(`user_fields`, unique(`user_fields`))) {
+        rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$space_buyers. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `user_fields` when calling TweetsApi$space_buyers. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
@@ -5096,6 +5446,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`expansions`, unique(`expansions`))) {
+        rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$space_buyers. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `expansions` when calling TweetsApi$space_buyers. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
@@ -5108,6 +5465,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
+        rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$space_buyers. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `tweet_fields` when calling TweetsApi$space_buyers. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
@@ -5317,6 +5681,13 @@ TweetsApi <- R6::R6Class(
 
       query_params[["max_results"]] <- `max_results`
 
+      # check if items are unique
+      if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
+        rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$space_tweets. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `tweet_fields` when calling TweetsApi$space_tweets. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
@@ -5329,6 +5700,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`expansions`, unique(`expansions`))) {
+        rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$space_tweets. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `expansions` when calling TweetsApi$space_tweets. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
@@ -5341,6 +5719,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`media_fields`, unique(`media_fields`))) {
+        rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$space_tweets. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `media_fields` when calling TweetsApi$space_tweets. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `media_fields`) {
@@ -5353,6 +5738,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`poll_fields`, unique(`poll_fields`))) {
+        rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$space_tweets. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `poll_fields` when calling TweetsApi$space_tweets. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `poll_fields`) {
@@ -5365,6 +5757,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`user_fields`, unique(`user_fields`))) {
+        rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$space_tweets. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `user_fields` when calling TweetsApi$space_tweets. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
@@ -5377,6 +5776,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`place_fields`, unique(`place_fields`))) {
+        rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$space_tweets. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `place_fields` when calling TweetsApi$space_tweets. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `place_fields`) {
@@ -5601,6 +6007,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["granularity"]] <- `granularity`
 
+      # check if items are unique
+      if (!identical(`search_count_fields`, unique(`search_count_fields`))) {
+        rlang::abort(message = "Invalid value for `search_count_fields` when calling TweetsApi$tweet_counts_full_archive_search. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `search_count_fields` when calling TweetsApi$tweet_counts_full_archive_search. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `search_count_fields`) {
@@ -5818,6 +6231,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["granularity"]] <- `granularity`
 
+      # check if items are unique
+      if (!identical(`search_count_fields`, unique(`search_count_fields`))) {
+        rlang::abort(message = "Invalid value for `search_count_fields` when calling TweetsApi$tweet_counts_recent_search. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `search_count_fields` when calling TweetsApi$tweet_counts_recent_search. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `search_count_fields`) {
@@ -6097,6 +6517,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["sort_order"]] <- `sort_order`
 
+      # check if items are unique
+      if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
+        rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$tweets_fullarchive_search. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `tweet_fields` when calling TweetsApi$tweets_fullarchive_search. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
@@ -6109,6 +6536,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`expansions`, unique(`expansions`))) {
+        rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$tweets_fullarchive_search. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `expansions` when calling TweetsApi$tweets_fullarchive_search. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
@@ -6121,6 +6555,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`media_fields`, unique(`media_fields`))) {
+        rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$tweets_fullarchive_search. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `media_fields` when calling TweetsApi$tweets_fullarchive_search. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `media_fields`) {
@@ -6133,6 +6574,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`poll_fields`, unique(`poll_fields`))) {
+        rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$tweets_fullarchive_search. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `poll_fields` when calling TweetsApi$tweets_fullarchive_search. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `poll_fields`) {
@@ -6145,6 +6593,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`user_fields`, unique(`user_fields`))) {
+        rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$tweets_fullarchive_search. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `user_fields` when calling TweetsApi$tweets_fullarchive_search. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
@@ -6157,6 +6612,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`place_fields`, unique(`place_fields`))) {
+        rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$tweets_fullarchive_search. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `place_fields` when calling TweetsApi$tweets_fullarchive_search. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `place_fields`) {
@@ -6436,6 +6898,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["sort_order"]] <- `sort_order`
 
+      # check if items are unique
+      if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
+        rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$tweets_recent_search. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `tweet_fields` when calling TweetsApi$tweets_recent_search. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
@@ -6448,6 +6917,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`expansions`, unique(`expansions`))) {
+        rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$tweets_recent_search. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `expansions` when calling TweetsApi$tweets_recent_search. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
@@ -6460,6 +6936,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`media_fields`, unique(`media_fields`))) {
+        rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$tweets_recent_search. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `media_fields` when calling TweetsApi$tweets_recent_search. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `media_fields`) {
@@ -6472,6 +6955,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`poll_fields`, unique(`poll_fields`))) {
+        rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$tweets_recent_search. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `poll_fields` when calling TweetsApi$tweets_recent_search. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `poll_fields`) {
@@ -6484,6 +6974,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`user_fields`, unique(`user_fields`))) {
+        rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$tweets_recent_search. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `user_fields` when calling TweetsApi$tweets_recent_search. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
@@ -6496,6 +6993,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`place_fields`, unique(`place_fields`))) {
+        rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$tweets_recent_search. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `place_fields` when calling TweetsApi$tweets_recent_search. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `place_fields`) {
@@ -6845,6 +7349,13 @@ TweetsApi <- R6::R6Class(
 
       query_params[["pagination_token"]] <- `pagination_token`
 
+      # check if items are unique
+      if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
+        rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_liked_tweets. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_liked_tweets. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
@@ -6857,6 +7368,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`expansions`, unique(`expansions`))) {
+        rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$users_id_liked_tweets. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `expansions` when calling TweetsApi$users_id_liked_tweets. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
@@ -6869,6 +7387,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`media_fields`, unique(`media_fields`))) {
+        rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$users_id_liked_tweets. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `media_fields` when calling TweetsApi$users_id_liked_tweets. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `media_fields`) {
@@ -6881,6 +7406,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`poll_fields`, unique(`poll_fields`))) {
+        rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$users_id_liked_tweets. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `poll_fields` when calling TweetsApi$users_id_liked_tweets. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `poll_fields`) {
@@ -6893,6 +7425,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`user_fields`, unique(`user_fields`))) {
+        rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$users_id_liked_tweets. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `user_fields` when calling TweetsApi$users_id_liked_tweets. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
@@ -6905,6 +7444,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`place_fields`, unique(`place_fields`))) {
+        rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$users_id_liked_tweets. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `place_fields` when calling TweetsApi$users_id_liked_tweets. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `place_fields`) {
@@ -7161,6 +7707,13 @@ TweetsApi <- R6::R6Class(
 
       query_params[["end_time"]] <- `end_time`
 
+      # check if items are unique
+      if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
+        rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_mentions. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_mentions. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
@@ -7173,6 +7726,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`expansions`, unique(`expansions`))) {
+        rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$users_id_mentions. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `expansions` when calling TweetsApi$users_id_mentions. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
@@ -7185,6 +7745,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`media_fields`, unique(`media_fields`))) {
+        rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$users_id_mentions. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `media_fields` when calling TweetsApi$users_id_mentions. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `media_fields`) {
@@ -7197,6 +7764,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`poll_fields`, unique(`poll_fields`))) {
+        rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$users_id_mentions. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `poll_fields` when calling TweetsApi$users_id_mentions. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `poll_fields`) {
@@ -7209,6 +7783,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`user_fields`, unique(`user_fields`))) {
+        rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$users_id_mentions. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `user_fields` when calling TweetsApi$users_id_mentions. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
@@ -7221,6 +7802,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`place_fields`, unique(`place_fields`))) {
+        rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$users_id_mentions. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `place_fields` when calling TweetsApi$users_id_mentions. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `place_fields`) {
@@ -7599,6 +8187,13 @@ TweetsApi <- R6::R6Class(
 
       query_params[["pagination_token"]] <- `pagination_token`
 
+      # check if items are unique
+      if (!identical(`exclude`, unique(`exclude`))) {
+        rlang::abort(message = "Invalid value for `exclude` when calling TweetsApi$users_id_timeline. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `exclude` when calling TweetsApi$users_id_timeline. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `exclude`) {
@@ -7615,6 +8210,13 @@ TweetsApi <- R6::R6Class(
 
       query_params[["end_time"]] <- `end_time`
 
+      # check if items are unique
+      if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
+        rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_timeline. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_timeline. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
@@ -7627,6 +8229,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`expansions`, unique(`expansions`))) {
+        rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$users_id_timeline. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `expansions` when calling TweetsApi$users_id_timeline. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
@@ -7639,6 +8248,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`media_fields`, unique(`media_fields`))) {
+        rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$users_id_timeline. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `media_fields` when calling TweetsApi$users_id_timeline. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `media_fields`) {
@@ -7651,6 +8267,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`poll_fields`, unique(`poll_fields`))) {
+        rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$users_id_timeline. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `poll_fields` when calling TweetsApi$users_id_timeline. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `poll_fields`) {
@@ -7663,6 +8286,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`user_fields`, unique(`user_fields`))) {
+        rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$users_id_timeline. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `user_fields` when calling TweetsApi$users_id_timeline. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
@@ -7675,6 +8305,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`place_fields`, unique(`place_fields`))) {
+        rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$users_id_timeline. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `place_fields` when calling TweetsApi$users_id_timeline. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `place_fields`) {
@@ -7932,6 +8569,13 @@ TweetsApi <- R6::R6Class(
 
       query_params[["pagination_token"]] <- `pagination_token`
 
+      # check if items are unique
+      if (!identical(`exclude`, unique(`exclude`))) {
+        rlang::abort(message = "Invalid value for `exclude` when calling TweetsApi$users_id_tweets. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `exclude` when calling TweetsApi$users_id_tweets. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `exclude`) {
@@ -7948,6 +8592,13 @@ TweetsApi <- R6::R6Class(
 
       query_params[["end_time"]] <- `end_time`
 
+      # check if items are unique
+      if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
+        rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_tweets. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_tweets. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
@@ -7960,6 +8611,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`expansions`, unique(`expansions`))) {
+        rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$users_id_tweets. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `expansions` when calling TweetsApi$users_id_tweets. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
@@ -7972,6 +8630,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`media_fields`, unique(`media_fields`))) {
+        rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$users_id_tweets. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `media_fields` when calling TweetsApi$users_id_tweets. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `media_fields`) {
@@ -7984,6 +8649,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`poll_fields`, unique(`poll_fields`))) {
+        rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$users_id_tweets. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `poll_fields` when calling TweetsApi$users_id_tweets. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `poll_fields`) {
@@ -7996,6 +8668,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`user_fields`, unique(`user_fields`))) {
+        rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$users_id_tweets. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `user_fields` when calling TweetsApi$users_id_tweets. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
@@ -8008,6 +8687,13 @@ TweetsApi <- R6::R6Class(
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`place_fields`, unique(`place_fields`))) {
+        rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$users_id_tweets. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `place_fields` when calling TweetsApi$users_id_tweets. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `place_fields`) {

@@ -1094,6 +1094,13 @@ ListsApi <- R6::R6Class(
 
       query_params[["pagination_token"]] <- `pagination_token`
 
+      # check if items are unique
+      if (!identical(`list_fields`, unique(`list_fields`))) {
+        rlang::abort(message = "Invalid value for `list_fields` when calling ListsApi$get_user_list_memberships. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `list_fields` when calling ListsApi$get_user_list_memberships. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `list_fields`) {
@@ -1106,6 +1113,13 @@ ListsApi <- R6::R6Class(
       }
       query_params[["list.fields"]] <- I(paste(lapply(`list_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`expansions`, unique(`expansions`))) {
+        rlang::abort(message = "Invalid value for `expansions` when calling ListsApi$get_user_list_memberships. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `expansions` when calling ListsApi$get_user_list_memberships. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
@@ -1118,6 +1132,13 @@ ListsApi <- R6::R6Class(
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`user_fields`, unique(`user_fields`))) {
+        rlang::abort(message = "Invalid value for `user_fields` when calling ListsApi$get_user_list_memberships. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `user_fields` when calling ListsApi$get_user_list_memberships. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
@@ -1663,6 +1684,13 @@ ListsApi <- R6::R6Class(
                                                      reason = "Invalid length for `user_fields` when calling ListsApi$list_id_get, number of items must be greater than or equal to 1."))
       }
 
+      # check if items are unique
+      if (!identical(`list_fields`, unique(`list_fields`))) {
+        rlang::abort(message = "Invalid value for `list_fields` when calling ListsApi$list_id_get. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `list_fields` when calling ListsApi$list_id_get. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `list_fields`) {
@@ -1675,6 +1703,13 @@ ListsApi <- R6::R6Class(
       }
       query_params[["list.fields"]] <- I(paste(lapply(`list_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`expansions`, unique(`expansions`))) {
+        rlang::abort(message = "Invalid value for `expansions` when calling ListsApi$list_id_get. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `expansions` when calling ListsApi$list_id_get. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
@@ -1687,6 +1722,13 @@ ListsApi <- R6::R6Class(
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`user_fields`, unique(`user_fields`))) {
+        rlang::abort(message = "Invalid value for `user_fields` when calling ListsApi$list_id_get. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `user_fields` when calling ListsApi$list_id_get. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
@@ -2300,6 +2342,13 @@ ListsApi <- R6::R6Class(
 
       query_params[["pagination_token"]] <- `pagination_token`
 
+      # check if items are unique
+      if (!identical(`list_fields`, unique(`list_fields`))) {
+        rlang::abort(message = "Invalid value for `list_fields` when calling ListsApi$list_user_owned_lists. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `list_fields` when calling ListsApi$list_user_owned_lists. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `list_fields`) {
@@ -2312,6 +2361,13 @@ ListsApi <- R6::R6Class(
       }
       query_params[["list.fields"]] <- I(paste(lapply(`list_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`expansions`, unique(`expansions`))) {
+        rlang::abort(message = "Invalid value for `expansions` when calling ListsApi$list_user_owned_lists. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `expansions` when calling ListsApi$list_user_owned_lists. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
@@ -2324,6 +2380,13 @@ ListsApi <- R6::R6Class(
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`user_fields`, unique(`user_fields`))) {
+        rlang::abort(message = "Invalid value for `user_fields` when calling ListsApi$list_user_owned_lists. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `user_fields` when calling ListsApi$list_user_owned_lists. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
@@ -2623,6 +2686,13 @@ ListsApi <- R6::R6Class(
                                                      reason = "Invalid length for `user_fields` when calling ListsApi$list_user_pinned_lists, number of items must be greater than or equal to 1."))
       }
 
+      # check if items are unique
+      if (!identical(`list_fields`, unique(`list_fields`))) {
+        rlang::abort(message = "Invalid value for `list_fields` when calling ListsApi$list_user_pinned_lists. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `list_fields` when calling ListsApi$list_user_pinned_lists. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `list_fields`) {
@@ -2635,6 +2705,13 @@ ListsApi <- R6::R6Class(
       }
       query_params[["list.fields"]] <- I(paste(lapply(`list_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`expansions`, unique(`expansions`))) {
+        rlang::abort(message = "Invalid value for `expansions` when calling ListsApi$list_user_pinned_lists. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `expansions` when calling ListsApi$list_user_pinned_lists. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
@@ -2647,6 +2724,13 @@ ListsApi <- R6::R6Class(
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`user_fields`, unique(`user_fields`))) {
+        rlang::abort(message = "Invalid value for `user_fields` when calling ListsApi$list_user_pinned_lists. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `user_fields` when calling ListsApi$list_user_pinned_lists. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
@@ -3126,6 +3210,13 @@ ListsApi <- R6::R6Class(
 
       query_params[["pagination_token"]] <- `pagination_token`
 
+      # check if items are unique
+      if (!identical(`list_fields`, unique(`list_fields`))) {
+        rlang::abort(message = "Invalid value for `list_fields` when calling ListsApi$user_followed_lists. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `list_fields` when calling ListsApi$user_followed_lists. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `list_fields`) {
@@ -3138,6 +3229,13 @@ ListsApi <- R6::R6Class(
       }
       query_params[["list.fields"]] <- I(paste(lapply(`list_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`expansions`, unique(`expansions`))) {
+        rlang::abort(message = "Invalid value for `expansions` when calling ListsApi$user_followed_lists. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `expansions` when calling ListsApi$user_followed_lists. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
@@ -3150,6 +3248,13 @@ ListsApi <- R6::R6Class(
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`user_fields`, unique(`user_fields`))) {
+        rlang::abort(message = "Invalid value for `user_fields` when calling ListsApi$user_followed_lists. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `user_fields` when calling ListsApi$user_followed_lists. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
