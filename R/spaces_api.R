@@ -575,15 +575,51 @@ SpacesApi <- R6::R6Class(
       }
 
       # no explore
+      # validate enum values
+      for (query_item in `space_fields`) {
+        if (!(query_item %in% c("created_at", "creator_id", "ended_at", "host_ids", "id", "invited_user_ids", "is_ticketed", "lang", "participant_count", "scheduled_start", "speaker_ids", "started_at", "state", "subscriber_count", "title", "topic_ids", "updated_at"))) {
+          rlang::abort(message = "Invalid value for `space_fields` when calling SpacesApi$find_space_by_id. Must be [created_at, creator_id, ended_at, host_ids, id, invited_user_ids, is_ticketed, lang, participant_count, scheduled_start, speaker_ids, started_at, state, subscriber_count, title, topic_ids, updated_at].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `space_fields` when calling SpacesApi$find_space_by_id. Must be [created_at, creator_id, ended_at, host_ids, id, invited_user_ids, is_ticketed, lang, participant_count, scheduled_start, speaker_ids, started_at, state, subscriber_count, title, topic_ids, updated_at]."))
+        }
+      }
       query_params[["space.fields"]] <- I(paste(lapply(`space_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `expansions`) {
+        if (!(query_item %in% c("creator_id", "host_ids", "invited_user_ids", "speaker_ids", "topic_ids"))) {
+          rlang::abort(message = "Invalid value for `expansions` when calling SpacesApi$find_space_by_id. Must be [creator_id, host_ids, invited_user_ids, speaker_ids, topic_ids].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `expansions` when calling SpacesApi$find_space_by_id. Must be [creator_id, host_ids, invited_user_ids, speaker_ids, topic_ids]."))
+        }
+      }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `user_fields`) {
+        if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
+          rlang::abort(message = "Invalid value for `user_fields` when calling SpacesApi$find_space_by_id. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `user_fields` when calling SpacesApi$find_space_by_id. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+        }
+      }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `topic_fields`) {
+        if (!(query_item %in% c("description", "id", "name"))) {
+          rlang::abort(message = "Invalid value for `topic_fields` when calling SpacesApi$find_space_by_id. Must be [description, id, name].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `topic_fields` when calling SpacesApi$find_space_by_id. Must be [description, id, name]."))
+        }
+      }
       query_params[["topic.fields"]] <- I(paste(lapply(`topic_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/spaces/{id}"
@@ -764,15 +800,51 @@ SpacesApi <- R6::R6Class(
       }
 
       # no explore
+      # validate enum values
+      for (query_item in `space_fields`) {
+        if (!(query_item %in% c("created_at", "creator_id", "ended_at", "host_ids", "id", "invited_user_ids", "is_ticketed", "lang", "participant_count", "scheduled_start", "speaker_ids", "started_at", "state", "subscriber_count", "title", "topic_ids", "updated_at"))) {
+          rlang::abort(message = "Invalid value for `space_fields` when calling SpacesApi$find_spaces_by_creator_ids. Must be [created_at, creator_id, ended_at, host_ids, id, invited_user_ids, is_ticketed, lang, participant_count, scheduled_start, speaker_ids, started_at, state, subscriber_count, title, topic_ids, updated_at].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `space_fields` when calling SpacesApi$find_spaces_by_creator_ids. Must be [created_at, creator_id, ended_at, host_ids, id, invited_user_ids, is_ticketed, lang, participant_count, scheduled_start, speaker_ids, started_at, state, subscriber_count, title, topic_ids, updated_at]."))
+        }
+      }
       query_params[["space.fields"]] <- I(paste(lapply(`space_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `expansions`) {
+        if (!(query_item %in% c("creator_id", "host_ids", "invited_user_ids", "speaker_ids", "topic_ids"))) {
+          rlang::abort(message = "Invalid value for `expansions` when calling SpacesApi$find_spaces_by_creator_ids. Must be [creator_id, host_ids, invited_user_ids, speaker_ids, topic_ids].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `expansions` when calling SpacesApi$find_spaces_by_creator_ids. Must be [creator_id, host_ids, invited_user_ids, speaker_ids, topic_ids]."))
+        }
+      }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `user_fields`) {
+        if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
+          rlang::abort(message = "Invalid value for `user_fields` when calling SpacesApi$find_spaces_by_creator_ids. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `user_fields` when calling SpacesApi$find_spaces_by_creator_ids. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+        }
+      }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `topic_fields`) {
+        if (!(query_item %in% c("description", "id", "name"))) {
+          rlang::abort(message = "Invalid value for `topic_fields` when calling SpacesApi$find_spaces_by_creator_ids. Must be [description, id, name].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `topic_fields` when calling SpacesApi$find_spaces_by_creator_ids. Must be [description, id, name]."))
+        }
+      }
       query_params[["topic.fields"]] <- I(paste(lapply(`topic_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/spaces/by/creator_ids"
@@ -949,15 +1021,51 @@ SpacesApi <- R6::R6Class(
       }
 
       # no explore
+      # validate enum values
+      for (query_item in `space_fields`) {
+        if (!(query_item %in% c("created_at", "creator_id", "ended_at", "host_ids", "id", "invited_user_ids", "is_ticketed", "lang", "participant_count", "scheduled_start", "speaker_ids", "started_at", "state", "subscriber_count", "title", "topic_ids", "updated_at"))) {
+          rlang::abort(message = "Invalid value for `space_fields` when calling SpacesApi$find_spaces_by_ids. Must be [created_at, creator_id, ended_at, host_ids, id, invited_user_ids, is_ticketed, lang, participant_count, scheduled_start, speaker_ids, started_at, state, subscriber_count, title, topic_ids, updated_at].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `space_fields` when calling SpacesApi$find_spaces_by_ids. Must be [created_at, creator_id, ended_at, host_ids, id, invited_user_ids, is_ticketed, lang, participant_count, scheduled_start, speaker_ids, started_at, state, subscriber_count, title, topic_ids, updated_at]."))
+        }
+      }
       query_params[["space.fields"]] <- I(paste(lapply(`space_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `expansions`) {
+        if (!(query_item %in% c("creator_id", "host_ids", "invited_user_ids", "speaker_ids", "topic_ids"))) {
+          rlang::abort(message = "Invalid value for `expansions` when calling SpacesApi$find_spaces_by_ids. Must be [creator_id, host_ids, invited_user_ids, speaker_ids, topic_ids].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `expansions` when calling SpacesApi$find_spaces_by_ids. Must be [creator_id, host_ids, invited_user_ids, speaker_ids, topic_ids]."))
+        }
+      }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `user_fields`) {
+        if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
+          rlang::abort(message = "Invalid value for `user_fields` when calling SpacesApi$find_spaces_by_ids. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `user_fields` when calling SpacesApi$find_spaces_by_ids. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+        }
+      }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `topic_fields`) {
+        if (!(query_item %in% c("description", "id", "name"))) {
+          rlang::abort(message = "Invalid value for `topic_fields` when calling SpacesApi$find_spaces_by_ids. Must be [description, id, name].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `topic_fields` when calling SpacesApi$find_spaces_by_ids. Must be [description, id, name]."))
+        }
+      }
       query_params[["topic.fields"]] <- I(paste(lapply(`topic_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/spaces"
@@ -1148,20 +1256,62 @@ SpacesApi <- R6::R6Class(
 
       query_params[["query"]] <- `query`
 
+      if (!(`state` %in% c("live", "scheduled", "all"))) {
+        rlang::abort(message = "Invalid value for `state` when calling SpacesApi$search_spaces. Must be [live, scheduled, all].",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `state` when calling SpacesApi$search_spaces. Must be [live, scheduled, all]."))
+      }
       query_params[["state"]] <- `state`
 
       query_params[["max_results"]] <- `max_results`
 
       # no explore
+      # validate enum values
+      for (query_item in `space_fields`) {
+        if (!(query_item %in% c("created_at", "creator_id", "ended_at", "host_ids", "id", "invited_user_ids", "is_ticketed", "lang", "participant_count", "scheduled_start", "speaker_ids", "started_at", "state", "subscriber_count", "title", "topic_ids", "updated_at"))) {
+          rlang::abort(message = "Invalid value for `space_fields` when calling SpacesApi$search_spaces. Must be [created_at, creator_id, ended_at, host_ids, id, invited_user_ids, is_ticketed, lang, participant_count, scheduled_start, speaker_ids, started_at, state, subscriber_count, title, topic_ids, updated_at].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `space_fields` when calling SpacesApi$search_spaces. Must be [created_at, creator_id, ended_at, host_ids, id, invited_user_ids, is_ticketed, lang, participant_count, scheduled_start, speaker_ids, started_at, state, subscriber_count, title, topic_ids, updated_at]."))
+        }
+      }
       query_params[["space.fields"]] <- I(paste(lapply(`space_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `expansions`) {
+        if (!(query_item %in% c("creator_id", "host_ids", "invited_user_ids", "speaker_ids", "topic_ids"))) {
+          rlang::abort(message = "Invalid value for `expansions` when calling SpacesApi$search_spaces. Must be [creator_id, host_ids, invited_user_ids, speaker_ids, topic_ids].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `expansions` when calling SpacesApi$search_spaces. Must be [creator_id, host_ids, invited_user_ids, speaker_ids, topic_ids]."))
+        }
+      }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `user_fields`) {
+        if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
+          rlang::abort(message = "Invalid value for `user_fields` when calling SpacesApi$search_spaces. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `user_fields` when calling SpacesApi$search_spaces. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+        }
+      }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `topic_fields`) {
+        if (!(query_item %in% c("description", "id", "name"))) {
+          rlang::abort(message = "Invalid value for `topic_fields` when calling SpacesApi$search_spaces. Must be [description, id, name].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `topic_fields` when calling SpacesApi$search_spaces. Must be [description, id, name]."))
+        }
+      }
       query_params[["topic.fields"]] <- I(paste(lapply(`topic_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/spaces/search"
@@ -1346,12 +1496,39 @@ SpacesApi <- R6::R6Class(
       query_params[["max_results"]] <- `max_results`
 
       # no explore
+      # validate enum values
+      for (query_item in `user_fields`) {
+        if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
+          rlang::abort(message = "Invalid value for `user_fields` when calling SpacesApi$space_buyers. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `user_fields` when calling SpacesApi$space_buyers. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+        }
+      }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `expansions`) {
+        if (!(query_item %in% c("pinned_tweet_id"))) {
+          rlang::abort(message = "Invalid value for `expansions` when calling SpacesApi$space_buyers. Must be [pinned_tweet_id].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `expansions` when calling SpacesApi$space_buyers. Must be [pinned_tweet_id]."))
+        }
+      }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `tweet_fields`) {
+        if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
+          rlang::abort(message = "Invalid value for `tweet_fields` when calling SpacesApi$space_buyers. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `tweet_fields` when calling SpacesApi$space_buyers. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+        }
+      }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/spaces/{id}/buyers"
@@ -1552,21 +1729,75 @@ SpacesApi <- R6::R6Class(
       query_params[["max_results"]] <- `max_results`
 
       # no explore
+      # validate enum values
+      for (query_item in `tweet_fields`) {
+        if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
+          rlang::abort(message = "Invalid value for `tweet_fields` when calling SpacesApi$space_tweets. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `tweet_fields` when calling SpacesApi$space_tweets. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+        }
+      }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `expansions`) {
+        if (!(query_item %in% c("attachments.media_keys", "attachments.poll_ids", "author_id", "entities.mentions.username", "geo.place_id", "in_reply_to_user_id", "referenced_tweets.id", "referenced_tweets.id.author_id"))) {
+          rlang::abort(message = "Invalid value for `expansions` when calling SpacesApi$space_tweets. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `expansions` when calling SpacesApi$space_tweets. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."))
+        }
+      }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `media_fields`) {
+        if (!(query_item %in% c("alt_text", "duration_ms", "height", "media_key", "non_public_metrics", "organic_metrics", "preview_image_url", "promoted_metrics", "public_metrics", "type", "url", "variants", "width"))) {
+          rlang::abort(message = "Invalid value for `media_fields` when calling SpacesApi$space_tweets. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `media_fields` when calling SpacesApi$space_tweets. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."))
+        }
+      }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `poll_fields`) {
+        if (!(query_item %in% c("duration_minutes", "end_datetime", "id", "options", "voting_status"))) {
+          rlang::abort(message = "Invalid value for `poll_fields` when calling SpacesApi$space_tweets. Must be [duration_minutes, end_datetime, id, options, voting_status].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `poll_fields` when calling SpacesApi$space_tweets. Must be [duration_minutes, end_datetime, id, options, voting_status]."))
+        }
+      }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `user_fields`) {
+        if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
+          rlang::abort(message = "Invalid value for `user_fields` when calling SpacesApi$space_tweets. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `user_fields` when calling SpacesApi$space_tweets. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+        }
+      }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `place_fields`) {
+        if (!(query_item %in% c("contained_within", "country", "country_code", "full_name", "geo", "id", "name", "place_type"))) {
+          rlang::abort(message = "Invalid value for `place_fields` when calling SpacesApi$space_tweets. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `place_fields` when calling SpacesApi$space_tweets. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."))
+        }
+      }
       query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/spaces/{id}/tweets"

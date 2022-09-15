@@ -377,21 +377,75 @@ BookmarksApi <- R6::R6Class(
       query_params[["pagination_token"]] <- `pagination_token`
 
       # no explore
+      # validate enum values
+      for (query_item in `tweet_fields`) {
+        if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
+          rlang::abort(message = "Invalid value for `tweet_fields` when calling BookmarksApi$get_users_id_bookmarks. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `tweet_fields` when calling BookmarksApi$get_users_id_bookmarks. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+        }
+      }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `expansions`) {
+        if (!(query_item %in% c("attachments.media_keys", "attachments.poll_ids", "author_id", "entities.mentions.username", "geo.place_id", "in_reply_to_user_id", "referenced_tweets.id", "referenced_tweets.id.author_id"))) {
+          rlang::abort(message = "Invalid value for `expansions` when calling BookmarksApi$get_users_id_bookmarks. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `expansions` when calling BookmarksApi$get_users_id_bookmarks. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."))
+        }
+      }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `media_fields`) {
+        if (!(query_item %in% c("alt_text", "duration_ms", "height", "media_key", "non_public_metrics", "organic_metrics", "preview_image_url", "promoted_metrics", "public_metrics", "type", "url", "variants", "width"))) {
+          rlang::abort(message = "Invalid value for `media_fields` when calling BookmarksApi$get_users_id_bookmarks. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `media_fields` when calling BookmarksApi$get_users_id_bookmarks. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."))
+        }
+      }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `poll_fields`) {
+        if (!(query_item %in% c("duration_minutes", "end_datetime", "id", "options", "voting_status"))) {
+          rlang::abort(message = "Invalid value for `poll_fields` when calling BookmarksApi$get_users_id_bookmarks. Must be [duration_minutes, end_datetime, id, options, voting_status].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `poll_fields` when calling BookmarksApi$get_users_id_bookmarks. Must be [duration_minutes, end_datetime, id, options, voting_status]."))
+        }
+      }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `user_fields`) {
+        if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
+          rlang::abort(message = "Invalid value for `user_fields` when calling BookmarksApi$get_users_id_bookmarks. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `user_fields` when calling BookmarksApi$get_users_id_bookmarks. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+        }
+      }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `place_fields`) {
+        if (!(query_item %in% c("contained_within", "country", "country_code", "full_name", "geo", "id", "name", "place_type"))) {
+          rlang::abort(message = "Invalid value for `place_fields` when calling BookmarksApi$get_users_id_bookmarks. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `place_fields` when calling BookmarksApi$get_users_id_bookmarks. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."))
+        }
+      }
       query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/users/{id}/bookmarks"

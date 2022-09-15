@@ -2572,21 +2572,75 @@ TweetsApi <- R6::R6Class(
       }
 
       # no explore
+      # validate enum values
+      for (query_item in `tweet_fields`) {
+        if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
+          rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$find_tweet_by_id. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `tweet_fields` when calling TweetsApi$find_tweet_by_id. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+        }
+      }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `expansions`) {
+        if (!(query_item %in% c("attachments.media_keys", "attachments.poll_ids", "author_id", "entities.mentions.username", "geo.place_id", "in_reply_to_user_id", "referenced_tweets.id", "referenced_tweets.id.author_id"))) {
+          rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$find_tweet_by_id. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `expansions` when calling TweetsApi$find_tweet_by_id. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."))
+        }
+      }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `media_fields`) {
+        if (!(query_item %in% c("alt_text", "duration_ms", "height", "media_key", "non_public_metrics", "organic_metrics", "preview_image_url", "promoted_metrics", "public_metrics", "type", "url", "variants", "width"))) {
+          rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$find_tweet_by_id. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `media_fields` when calling TweetsApi$find_tweet_by_id. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."))
+        }
+      }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `poll_fields`) {
+        if (!(query_item %in% c("duration_minutes", "end_datetime", "id", "options", "voting_status"))) {
+          rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$find_tweet_by_id. Must be [duration_minutes, end_datetime, id, options, voting_status].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `poll_fields` when calling TweetsApi$find_tweet_by_id. Must be [duration_minutes, end_datetime, id, options, voting_status]."))
+        }
+      }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `user_fields`) {
+        if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
+          rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$find_tweet_by_id. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `user_fields` when calling TweetsApi$find_tweet_by_id. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+        }
+      }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `place_fields`) {
+        if (!(query_item %in% c("contained_within", "country", "country_code", "full_name", "geo", "id", "name", "place_type"))) {
+          rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$find_tweet_by_id. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `place_fields` when calling TweetsApi$find_tweet_by_id. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."))
+        }
+      }
       query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/tweets/{id}"
@@ -2783,21 +2837,75 @@ TweetsApi <- R6::R6Class(
       query_params[["ids"]] <- I(paste(lapply(`ids`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `tweet_fields`) {
+        if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
+          rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$find_tweets_by_id. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `tweet_fields` when calling TweetsApi$find_tweets_by_id. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+        }
+      }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `expansions`) {
+        if (!(query_item %in% c("attachments.media_keys", "attachments.poll_ids", "author_id", "entities.mentions.username", "geo.place_id", "in_reply_to_user_id", "referenced_tweets.id", "referenced_tweets.id.author_id"))) {
+          rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$find_tweets_by_id. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `expansions` when calling TweetsApi$find_tweets_by_id. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."))
+        }
+      }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `media_fields`) {
+        if (!(query_item %in% c("alt_text", "duration_ms", "height", "media_key", "non_public_metrics", "organic_metrics", "preview_image_url", "promoted_metrics", "public_metrics", "type", "url", "variants", "width"))) {
+          rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$find_tweets_by_id. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `media_fields` when calling TweetsApi$find_tweets_by_id. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."))
+        }
+      }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `poll_fields`) {
+        if (!(query_item %in% c("duration_minutes", "end_datetime", "id", "options", "voting_status"))) {
+          rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$find_tweets_by_id. Must be [duration_minutes, end_datetime, id, options, voting_status].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `poll_fields` when calling TweetsApi$find_tweets_by_id. Must be [duration_minutes, end_datetime, id, options, voting_status]."))
+        }
+      }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `user_fields`) {
+        if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
+          rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$find_tweets_by_id. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `user_fields` when calling TweetsApi$find_tweets_by_id. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+        }
+      }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `place_fields`) {
+        if (!(query_item %in% c("contained_within", "country", "country_code", "full_name", "geo", "id", "name", "place_type"))) {
+          rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$find_tweets_by_id. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `place_fields` when calling TweetsApi$find_tweets_by_id. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."))
+        }
+      }
       query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/tweets"
@@ -3018,24 +3126,87 @@ TweetsApi <- R6::R6Class(
       query_params[["pagination_token"]] <- `pagination_token`
 
       # no explore
+      # validate enum values
+      for (query_item in `exclude`) {
+        if (!(query_item %in% c("replies", "retweets"))) {
+          rlang::abort(message = "Invalid value for `exclude` when calling TweetsApi$find_tweets_that_quote_a_tweet. Must be [replies, retweets].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `exclude` when calling TweetsApi$find_tweets_that_quote_a_tweet. Must be [replies, retweets]."))
+        }
+      }
       query_params[["exclude"]] <- I(paste(lapply(`exclude`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `tweet_fields`) {
+        if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
+          rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `tweet_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+        }
+      }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `expansions`) {
+        if (!(query_item %in% c("attachments.media_keys", "attachments.poll_ids", "author_id", "entities.mentions.username", "geo.place_id", "in_reply_to_user_id", "referenced_tweets.id", "referenced_tweets.id.author_id"))) {
+          rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$find_tweets_that_quote_a_tweet. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `expansions` when calling TweetsApi$find_tweets_that_quote_a_tweet. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."))
+        }
+      }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `media_fields`) {
+        if (!(query_item %in% c("alt_text", "duration_ms", "height", "media_key", "non_public_metrics", "organic_metrics", "preview_image_url", "promoted_metrics", "public_metrics", "type", "url", "variants", "width"))) {
+          rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `media_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."))
+        }
+      }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `poll_fields`) {
+        if (!(query_item %in% c("duration_minutes", "end_datetime", "id", "options", "voting_status"))) {
+          rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Must be [duration_minutes, end_datetime, id, options, voting_status].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `poll_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Must be [duration_minutes, end_datetime, id, options, voting_status]."))
+        }
+      }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `user_fields`) {
+        if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
+          rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `user_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+        }
+      }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `place_fields`) {
+        if (!(query_item %in% c("contained_within", "country", "country_code", "full_name", "geo", "id", "name", "place_type"))) {
+          rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `place_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."))
+        }
+      }
       query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/tweets/{id}/quote_tweets"
@@ -3413,21 +3584,75 @@ TweetsApi <- R6::R6Class(
       query_params[["end_time"]] <- `end_time`
 
       # no explore
+      # validate enum values
+      for (query_item in `tweet_fields`) {
+        if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
+          rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$get_tweets_firehose_stream. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `tweet_fields` when calling TweetsApi$get_tweets_firehose_stream. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+        }
+      }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `expansions`) {
+        if (!(query_item %in% c("attachments.media_keys", "attachments.poll_ids", "author_id", "entities.mentions.username", "geo.place_id", "in_reply_to_user_id", "referenced_tweets.id", "referenced_tweets.id.author_id"))) {
+          rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$get_tweets_firehose_stream. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `expansions` when calling TweetsApi$get_tweets_firehose_stream. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."))
+        }
+      }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `media_fields`) {
+        if (!(query_item %in% c("alt_text", "duration_ms", "height", "media_key", "non_public_metrics", "organic_metrics", "preview_image_url", "promoted_metrics", "public_metrics", "type", "url", "variants", "width"))) {
+          rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$get_tweets_firehose_stream. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `media_fields` when calling TweetsApi$get_tweets_firehose_stream. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."))
+        }
+      }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `poll_fields`) {
+        if (!(query_item %in% c("duration_minutes", "end_datetime", "id", "options", "voting_status"))) {
+          rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$get_tweets_firehose_stream. Must be [duration_minutes, end_datetime, id, options, voting_status].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `poll_fields` when calling TweetsApi$get_tweets_firehose_stream. Must be [duration_minutes, end_datetime, id, options, voting_status]."))
+        }
+      }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `user_fields`) {
+        if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
+          rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$get_tweets_firehose_stream. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `user_fields` when calling TweetsApi$get_tweets_firehose_stream. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+        }
+      }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `place_fields`) {
+        if (!(query_item %in% c("contained_within", "country", "country_code", "full_name", "geo", "id", "name", "place_type"))) {
+          rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$get_tweets_firehose_stream. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `place_fields` when calling TweetsApi$get_tweets_firehose_stream. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."))
+        }
+      }
       query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/tweets/firehose/stream"
@@ -3654,21 +3879,75 @@ TweetsApi <- R6::R6Class(
       query_params[["end_time"]] <- `end_time`
 
       # no explore
+      # validate enum values
+      for (query_item in `tweet_fields`) {
+        if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
+          rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$get_tweets_sample10_stream. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `tweet_fields` when calling TweetsApi$get_tweets_sample10_stream. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+        }
+      }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `expansions`) {
+        if (!(query_item %in% c("attachments.media_keys", "attachments.poll_ids", "author_id", "entities.mentions.username", "geo.place_id", "in_reply_to_user_id", "referenced_tweets.id", "referenced_tweets.id.author_id"))) {
+          rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$get_tweets_sample10_stream. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `expansions` when calling TweetsApi$get_tweets_sample10_stream. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."))
+        }
+      }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `media_fields`) {
+        if (!(query_item %in% c("alt_text", "duration_ms", "height", "media_key", "non_public_metrics", "organic_metrics", "preview_image_url", "promoted_metrics", "public_metrics", "type", "url", "variants", "width"))) {
+          rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$get_tweets_sample10_stream. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `media_fields` when calling TweetsApi$get_tweets_sample10_stream. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."))
+        }
+      }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `poll_fields`) {
+        if (!(query_item %in% c("duration_minutes", "end_datetime", "id", "options", "voting_status"))) {
+          rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$get_tweets_sample10_stream. Must be [duration_minutes, end_datetime, id, options, voting_status].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `poll_fields` when calling TweetsApi$get_tweets_sample10_stream. Must be [duration_minutes, end_datetime, id, options, voting_status]."))
+        }
+      }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `user_fields`) {
+        if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
+          rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$get_tweets_sample10_stream. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `user_fields` when calling TweetsApi$get_tweets_sample10_stream. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+        }
+      }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `place_fields`) {
+        if (!(query_item %in% c("contained_within", "country", "country_code", "full_name", "geo", "id", "name", "place_type"))) {
+          rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$get_tweets_sample10_stream. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `place_fields` when calling TweetsApi$get_tweets_sample10_stream. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."))
+        }
+      }
       query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/tweets/sample10/stream"
@@ -4017,21 +4296,75 @@ TweetsApi <- R6::R6Class(
       query_params[["pagination_token"]] <- `pagination_token`
 
       # no explore
+      # validate enum values
+      for (query_item in `tweet_fields`) {
+        if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
+          rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$lists_id_tweets. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `tweet_fields` when calling TweetsApi$lists_id_tweets. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+        }
+      }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `expansions`) {
+        if (!(query_item %in% c("attachments.media_keys", "attachments.poll_ids", "author_id", "entities.mentions.username", "geo.place_id", "in_reply_to_user_id", "referenced_tweets.id", "referenced_tweets.id.author_id"))) {
+          rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$lists_id_tweets. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `expansions` when calling TweetsApi$lists_id_tweets. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."))
+        }
+      }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `media_fields`) {
+        if (!(query_item %in% c("alt_text", "duration_ms", "height", "media_key", "non_public_metrics", "organic_metrics", "preview_image_url", "promoted_metrics", "public_metrics", "type", "url", "variants", "width"))) {
+          rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$lists_id_tweets. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `media_fields` when calling TweetsApi$lists_id_tweets. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."))
+        }
+      }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `poll_fields`) {
+        if (!(query_item %in% c("duration_minutes", "end_datetime", "id", "options", "voting_status"))) {
+          rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$lists_id_tweets. Must be [duration_minutes, end_datetime, id, options, voting_status].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `poll_fields` when calling TweetsApi$lists_id_tweets. Must be [duration_minutes, end_datetime, id, options, voting_status]."))
+        }
+      }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `user_fields`) {
+        if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
+          rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$lists_id_tweets. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `user_fields` when calling TweetsApi$lists_id_tweets. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+        }
+      }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `place_fields`) {
+        if (!(query_item %in% c("contained_within", "country", "country_code", "full_name", "geo", "id", "name", "place_type"))) {
+          rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$lists_id_tweets. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `place_fields` when calling TweetsApi$lists_id_tweets. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."))
+        }
+      }
       query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/lists/{id}/tweets"
@@ -4226,21 +4559,75 @@ TweetsApi <- R6::R6Class(
       query_params[["backfill_minutes"]] <- `backfill_minutes`
 
       # no explore
+      # validate enum values
+      for (query_item in `tweet_fields`) {
+        if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
+          rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$sample_stream. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `tweet_fields` when calling TweetsApi$sample_stream. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+        }
+      }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `expansions`) {
+        if (!(query_item %in% c("attachments.media_keys", "attachments.poll_ids", "author_id", "entities.mentions.username", "geo.place_id", "in_reply_to_user_id", "referenced_tweets.id", "referenced_tweets.id.author_id"))) {
+          rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$sample_stream. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `expansions` when calling TweetsApi$sample_stream. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."))
+        }
+      }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `media_fields`) {
+        if (!(query_item %in% c("alt_text", "duration_ms", "height", "media_key", "non_public_metrics", "organic_metrics", "preview_image_url", "promoted_metrics", "public_metrics", "type", "url", "variants", "width"))) {
+          rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$sample_stream. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `media_fields` when calling TweetsApi$sample_stream. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."))
+        }
+      }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `poll_fields`) {
+        if (!(query_item %in% c("duration_minutes", "end_datetime", "id", "options", "voting_status"))) {
+          rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$sample_stream. Must be [duration_minutes, end_datetime, id, options, voting_status].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `poll_fields` when calling TweetsApi$sample_stream. Must be [duration_minutes, end_datetime, id, options, voting_status]."))
+        }
+      }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `user_fields`) {
+        if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
+          rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$sample_stream. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `user_fields` when calling TweetsApi$sample_stream. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+        }
+      }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `place_fields`) {
+        if (!(query_item %in% c("contained_within", "country", "country_code", "full_name", "geo", "id", "name", "place_type"))) {
+          rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$sample_stream. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `place_fields` when calling TweetsApi$sample_stream. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."))
+        }
+      }
       query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/tweets/sample/stream"
@@ -4443,21 +4830,75 @@ TweetsApi <- R6::R6Class(
       query_params[["end_time"]] <- `end_time`
 
       # no explore
+      # validate enum values
+      for (query_item in `tweet_fields`) {
+        if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
+          rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$search_stream. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `tweet_fields` when calling TweetsApi$search_stream. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+        }
+      }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `expansions`) {
+        if (!(query_item %in% c("attachments.media_keys", "attachments.poll_ids", "author_id", "entities.mentions.username", "geo.place_id", "in_reply_to_user_id", "referenced_tweets.id", "referenced_tweets.id.author_id"))) {
+          rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$search_stream. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `expansions` when calling TweetsApi$search_stream. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."))
+        }
+      }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `media_fields`) {
+        if (!(query_item %in% c("alt_text", "duration_ms", "height", "media_key", "non_public_metrics", "organic_metrics", "preview_image_url", "promoted_metrics", "public_metrics", "type", "url", "variants", "width"))) {
+          rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$search_stream. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `media_fields` when calling TweetsApi$search_stream. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."))
+        }
+      }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `poll_fields`) {
+        if (!(query_item %in% c("duration_minutes", "end_datetime", "id", "options", "voting_status"))) {
+          rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$search_stream. Must be [duration_minutes, end_datetime, id, options, voting_status].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `poll_fields` when calling TweetsApi$search_stream. Must be [duration_minutes, end_datetime, id, options, voting_status]."))
+        }
+      }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `user_fields`) {
+        if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
+          rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$search_stream. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `user_fields` when calling TweetsApi$search_stream. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+        }
+      }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `place_fields`) {
+        if (!(query_item %in% c("contained_within", "country", "country_code", "full_name", "geo", "id", "name", "place_type"))) {
+          rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$search_stream. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `place_fields` when calling TweetsApi$search_stream. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."))
+        }
+      }
       query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/tweets/search/stream"
@@ -4644,12 +5085,39 @@ TweetsApi <- R6::R6Class(
       query_params[["max_results"]] <- `max_results`
 
       # no explore
+      # validate enum values
+      for (query_item in `user_fields`) {
+        if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
+          rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$space_buyers. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `user_fields` when calling TweetsApi$space_buyers. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+        }
+      }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `expansions`) {
+        if (!(query_item %in% c("pinned_tweet_id"))) {
+          rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$space_buyers. Must be [pinned_tweet_id].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `expansions` when calling TweetsApi$space_buyers. Must be [pinned_tweet_id]."))
+        }
+      }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `tweet_fields`) {
+        if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
+          rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$space_buyers. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `tweet_fields` when calling TweetsApi$space_buyers. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+        }
+      }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/spaces/{id}/buyers"
@@ -4850,21 +5318,75 @@ TweetsApi <- R6::R6Class(
       query_params[["max_results"]] <- `max_results`
 
       # no explore
+      # validate enum values
+      for (query_item in `tweet_fields`) {
+        if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
+          rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$space_tweets. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `tweet_fields` when calling TweetsApi$space_tweets. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+        }
+      }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `expansions`) {
+        if (!(query_item %in% c("attachments.media_keys", "attachments.poll_ids", "author_id", "entities.mentions.username", "geo.place_id", "in_reply_to_user_id", "referenced_tweets.id", "referenced_tweets.id.author_id"))) {
+          rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$space_tweets. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `expansions` when calling TweetsApi$space_tweets. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."))
+        }
+      }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `media_fields`) {
+        if (!(query_item %in% c("alt_text", "duration_ms", "height", "media_key", "non_public_metrics", "organic_metrics", "preview_image_url", "promoted_metrics", "public_metrics", "type", "url", "variants", "width"))) {
+          rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$space_tweets. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `media_fields` when calling TweetsApi$space_tweets. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."))
+        }
+      }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `poll_fields`) {
+        if (!(query_item %in% c("duration_minutes", "end_datetime", "id", "options", "voting_status"))) {
+          rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$space_tweets. Must be [duration_minutes, end_datetime, id, options, voting_status].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `poll_fields` when calling TweetsApi$space_tweets. Must be [duration_minutes, end_datetime, id, options, voting_status]."))
+        }
+      }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `user_fields`) {
+        if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
+          rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$space_tweets. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `user_fields` when calling TweetsApi$space_tweets. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+        }
+      }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `place_fields`) {
+        if (!(query_item %in% c("contained_within", "country", "country_code", "full_name", "geo", "id", "name", "place_type"))) {
+          rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$space_tweets. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `place_fields` when calling TweetsApi$space_tweets. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."))
+        }
+      }
       query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/spaces/{id}/tweets"
@@ -5071,9 +5593,24 @@ TweetsApi <- R6::R6Class(
 
       query_params[["pagination_token"]] <- `pagination_token`
 
+      if (!(`granularity` %in% c("minute", "hour", "day"))) {
+        rlang::abort(message = "Invalid value for `granularity` when calling TweetsApi$tweet_counts_full_archive_search. Must be [minute, hour, day].",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `granularity` when calling TweetsApi$tweet_counts_full_archive_search. Must be [minute, hour, day]."))
+      }
       query_params[["granularity"]] <- `granularity`
 
       # no explore
+      # validate enum values
+      for (query_item in `search_count_fields`) {
+        if (!(query_item %in% c("end", "start", "tweet_count"))) {
+          rlang::abort(message = "Invalid value for `search_count_fields` when calling TweetsApi$tweet_counts_full_archive_search. Must be [end, start, tweet_count].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `search_count_fields` when calling TweetsApi$tweet_counts_full_archive_search. Must be [end, start, tweet_count]."))
+        }
+      }
       query_params[["search_count.fields"]] <- I(paste(lapply(`search_count_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/tweets/counts/all"
@@ -5273,9 +5810,24 @@ TweetsApi <- R6::R6Class(
 
       query_params[["pagination_token"]] <- `pagination_token`
 
+      if (!(`granularity` %in% c("minute", "hour", "day"))) {
+        rlang::abort(message = "Invalid value for `granularity` when calling TweetsApi$tweet_counts_recent_search. Must be [minute, hour, day].",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `granularity` when calling TweetsApi$tweet_counts_recent_search. Must be [minute, hour, day]."))
+      }
       query_params[["granularity"]] <- `granularity`
 
       # no explore
+      # validate enum values
+      for (query_item in `search_count_fields`) {
+        if (!(query_item %in% c("end", "start", "tweet_count"))) {
+          rlang::abort(message = "Invalid value for `search_count_fields` when calling TweetsApi$tweet_counts_recent_search. Must be [end, start, tweet_count].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `search_count_fields` when calling TweetsApi$tweet_counts_recent_search. Must be [end, start, tweet_count]."))
+        }
+      }
       query_params[["search_count.fields"]] <- I(paste(lapply(`search_count_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/tweets/counts/recent"
@@ -5537,24 +6089,84 @@ TweetsApi <- R6::R6Class(
 
       query_params[["pagination_token"]] <- `pagination_token`
 
+      if (!(`sort_order` %in% c("recency", "relevancy"))) {
+        rlang::abort(message = "Invalid value for `sort_order` when calling TweetsApi$tweets_fullarchive_search. Must be [recency, relevancy].",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `sort_order` when calling TweetsApi$tweets_fullarchive_search. Must be [recency, relevancy]."))
+      }
       query_params[["sort_order"]] <- `sort_order`
 
       # no explore
+      # validate enum values
+      for (query_item in `tweet_fields`) {
+        if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
+          rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$tweets_fullarchive_search. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `tweet_fields` when calling TweetsApi$tweets_fullarchive_search. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+        }
+      }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `expansions`) {
+        if (!(query_item %in% c("attachments.media_keys", "attachments.poll_ids", "author_id", "entities.mentions.username", "geo.place_id", "in_reply_to_user_id", "referenced_tweets.id", "referenced_tweets.id.author_id"))) {
+          rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$tweets_fullarchive_search. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `expansions` when calling TweetsApi$tweets_fullarchive_search. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."))
+        }
+      }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `media_fields`) {
+        if (!(query_item %in% c("alt_text", "duration_ms", "height", "media_key", "non_public_metrics", "organic_metrics", "preview_image_url", "promoted_metrics", "public_metrics", "type", "url", "variants", "width"))) {
+          rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$tweets_fullarchive_search. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `media_fields` when calling TweetsApi$tweets_fullarchive_search. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."))
+        }
+      }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `poll_fields`) {
+        if (!(query_item %in% c("duration_minutes", "end_datetime", "id", "options", "voting_status"))) {
+          rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$tweets_fullarchive_search. Must be [duration_minutes, end_datetime, id, options, voting_status].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `poll_fields` when calling TweetsApi$tweets_fullarchive_search. Must be [duration_minutes, end_datetime, id, options, voting_status]."))
+        }
+      }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `user_fields`) {
+        if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
+          rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$tweets_fullarchive_search. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `user_fields` when calling TweetsApi$tweets_fullarchive_search. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+        }
+      }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `place_fields`) {
+        if (!(query_item %in% c("contained_within", "country", "country_code", "full_name", "geo", "id", "name", "place_type"))) {
+          rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$tweets_fullarchive_search. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `place_fields` when calling TweetsApi$tweets_fullarchive_search. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."))
+        }
+      }
       query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/tweets/search/all"
@@ -5816,24 +6428,84 @@ TweetsApi <- R6::R6Class(
 
       query_params[["pagination_token"]] <- `pagination_token`
 
+      if (!(`sort_order` %in% c("recency", "relevancy"))) {
+        rlang::abort(message = "Invalid value for `sort_order` when calling TweetsApi$tweets_recent_search. Must be [recency, relevancy].",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `sort_order` when calling TweetsApi$tweets_recent_search. Must be [recency, relevancy]."))
+      }
       query_params[["sort_order"]] <- `sort_order`
 
       # no explore
+      # validate enum values
+      for (query_item in `tweet_fields`) {
+        if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
+          rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$tweets_recent_search. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `tweet_fields` when calling TweetsApi$tweets_recent_search. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+        }
+      }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `expansions`) {
+        if (!(query_item %in% c("attachments.media_keys", "attachments.poll_ids", "author_id", "entities.mentions.username", "geo.place_id", "in_reply_to_user_id", "referenced_tweets.id", "referenced_tweets.id.author_id"))) {
+          rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$tweets_recent_search. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `expansions` when calling TweetsApi$tweets_recent_search. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."))
+        }
+      }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `media_fields`) {
+        if (!(query_item %in% c("alt_text", "duration_ms", "height", "media_key", "non_public_metrics", "organic_metrics", "preview_image_url", "promoted_metrics", "public_metrics", "type", "url", "variants", "width"))) {
+          rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$tweets_recent_search. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `media_fields` when calling TweetsApi$tweets_recent_search. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."))
+        }
+      }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `poll_fields`) {
+        if (!(query_item %in% c("duration_minutes", "end_datetime", "id", "options", "voting_status"))) {
+          rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$tweets_recent_search. Must be [duration_minutes, end_datetime, id, options, voting_status].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `poll_fields` when calling TweetsApi$tweets_recent_search. Must be [duration_minutes, end_datetime, id, options, voting_status]."))
+        }
+      }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `user_fields`) {
+        if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
+          rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$tweets_recent_search. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `user_fields` when calling TweetsApi$tweets_recent_search. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+        }
+      }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `place_fields`) {
+        if (!(query_item %in% c("contained_within", "country", "country_code", "full_name", "geo", "id", "name", "place_type"))) {
+          rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$tweets_recent_search. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `place_fields` when calling TweetsApi$tweets_recent_search. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."))
+        }
+      }
       query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/tweets/search/recent"
@@ -6174,21 +6846,75 @@ TweetsApi <- R6::R6Class(
       query_params[["pagination_token"]] <- `pagination_token`
 
       # no explore
+      # validate enum values
+      for (query_item in `tweet_fields`) {
+        if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
+          rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_liked_tweets. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_liked_tweets. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+        }
+      }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `expansions`) {
+        if (!(query_item %in% c("attachments.media_keys", "attachments.poll_ids", "author_id", "entities.mentions.username", "geo.place_id", "in_reply_to_user_id", "referenced_tweets.id", "referenced_tweets.id.author_id"))) {
+          rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$users_id_liked_tweets. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `expansions` when calling TweetsApi$users_id_liked_tweets. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."))
+        }
+      }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `media_fields`) {
+        if (!(query_item %in% c("alt_text", "duration_ms", "height", "media_key", "non_public_metrics", "organic_metrics", "preview_image_url", "promoted_metrics", "public_metrics", "type", "url", "variants", "width"))) {
+          rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$users_id_liked_tweets. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `media_fields` when calling TweetsApi$users_id_liked_tweets. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."))
+        }
+      }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `poll_fields`) {
+        if (!(query_item %in% c("duration_minutes", "end_datetime", "id", "options", "voting_status"))) {
+          rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$users_id_liked_tweets. Must be [duration_minutes, end_datetime, id, options, voting_status].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `poll_fields` when calling TweetsApi$users_id_liked_tweets. Must be [duration_minutes, end_datetime, id, options, voting_status]."))
+        }
+      }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `user_fields`) {
+        if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
+          rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$users_id_liked_tweets. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `user_fields` when calling TweetsApi$users_id_liked_tweets. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+        }
+      }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `place_fields`) {
+        if (!(query_item %in% c("contained_within", "country", "country_code", "full_name", "geo", "id", "name", "place_type"))) {
+          rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$users_id_liked_tweets. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `place_fields` when calling TweetsApi$users_id_liked_tweets. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."))
+        }
+      }
       query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/users/{id}/liked_tweets"
@@ -6436,21 +7162,75 @@ TweetsApi <- R6::R6Class(
       query_params[["end_time"]] <- `end_time`
 
       # no explore
+      # validate enum values
+      for (query_item in `tweet_fields`) {
+        if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
+          rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_mentions. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_mentions. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+        }
+      }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `expansions`) {
+        if (!(query_item %in% c("attachments.media_keys", "attachments.poll_ids", "author_id", "entities.mentions.username", "geo.place_id", "in_reply_to_user_id", "referenced_tweets.id", "referenced_tweets.id.author_id"))) {
+          rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$users_id_mentions. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `expansions` when calling TweetsApi$users_id_mentions. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."))
+        }
+      }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `media_fields`) {
+        if (!(query_item %in% c("alt_text", "duration_ms", "height", "media_key", "non_public_metrics", "organic_metrics", "preview_image_url", "promoted_metrics", "public_metrics", "type", "url", "variants", "width"))) {
+          rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$users_id_mentions. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `media_fields` when calling TweetsApi$users_id_mentions. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."))
+        }
+      }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `poll_fields`) {
+        if (!(query_item %in% c("duration_minutes", "end_datetime", "id", "options", "voting_status"))) {
+          rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$users_id_mentions. Must be [duration_minutes, end_datetime, id, options, voting_status].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `poll_fields` when calling TweetsApi$users_id_mentions. Must be [duration_minutes, end_datetime, id, options, voting_status]."))
+        }
+      }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `user_fields`) {
+        if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
+          rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$users_id_mentions. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `user_fields` when calling TweetsApi$users_id_mentions. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+        }
+      }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `place_fields`) {
+        if (!(query_item %in% c("contained_within", "country", "country_code", "full_name", "geo", "id", "name", "place_type"))) {
+          rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$users_id_mentions. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `place_fields` when calling TweetsApi$users_id_mentions. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."))
+        }
+      }
       query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/users/{id}/mentions"
@@ -6820,6 +7600,15 @@ TweetsApi <- R6::R6Class(
       query_params[["pagination_token"]] <- `pagination_token`
 
       # no explore
+      # validate enum values
+      for (query_item in `exclude`) {
+        if (!(query_item %in% c("replies", "retweets"))) {
+          rlang::abort(message = "Invalid value for `exclude` when calling TweetsApi$users_id_timeline. Must be [replies, retweets].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `exclude` when calling TweetsApi$users_id_timeline. Must be [replies, retweets]."))
+        }
+      }
       query_params[["exclude"]] <- I(paste(lapply(`exclude`, URLencode, reserved = TRUE), collapse = ","))
 
       query_params[["start_time"]] <- `start_time`
@@ -6827,21 +7616,75 @@ TweetsApi <- R6::R6Class(
       query_params[["end_time"]] <- `end_time`
 
       # no explore
+      # validate enum values
+      for (query_item in `tweet_fields`) {
+        if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
+          rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_timeline. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_timeline. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+        }
+      }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `expansions`) {
+        if (!(query_item %in% c("attachments.media_keys", "attachments.poll_ids", "author_id", "entities.mentions.username", "geo.place_id", "in_reply_to_user_id", "referenced_tweets.id", "referenced_tweets.id.author_id"))) {
+          rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$users_id_timeline. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `expansions` when calling TweetsApi$users_id_timeline. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."))
+        }
+      }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `media_fields`) {
+        if (!(query_item %in% c("alt_text", "duration_ms", "height", "media_key", "non_public_metrics", "organic_metrics", "preview_image_url", "promoted_metrics", "public_metrics", "type", "url", "variants", "width"))) {
+          rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$users_id_timeline. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `media_fields` when calling TweetsApi$users_id_timeline. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."))
+        }
+      }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `poll_fields`) {
+        if (!(query_item %in% c("duration_minutes", "end_datetime", "id", "options", "voting_status"))) {
+          rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$users_id_timeline. Must be [duration_minutes, end_datetime, id, options, voting_status].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `poll_fields` when calling TweetsApi$users_id_timeline. Must be [duration_minutes, end_datetime, id, options, voting_status]."))
+        }
+      }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `user_fields`) {
+        if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
+          rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$users_id_timeline. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `user_fields` when calling TweetsApi$users_id_timeline. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+        }
+      }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `place_fields`) {
+        if (!(query_item %in% c("contained_within", "country", "country_code", "full_name", "geo", "id", "name", "place_type"))) {
+          rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$users_id_timeline. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `place_fields` when calling TweetsApi$users_id_timeline. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."))
+        }
+      }
       query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/users/{id}/timelines/reverse_chronological"
@@ -7090,6 +7933,15 @@ TweetsApi <- R6::R6Class(
       query_params[["pagination_token"]] <- `pagination_token`
 
       # no explore
+      # validate enum values
+      for (query_item in `exclude`) {
+        if (!(query_item %in% c("replies", "retweets"))) {
+          rlang::abort(message = "Invalid value for `exclude` when calling TweetsApi$users_id_tweets. Must be [replies, retweets].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `exclude` when calling TweetsApi$users_id_tweets. Must be [replies, retweets]."))
+        }
+      }
       query_params[["exclude"]] <- I(paste(lapply(`exclude`, URLencode, reserved = TRUE), collapse = ","))
 
       query_params[["start_time"]] <- `start_time`
@@ -7097,21 +7949,75 @@ TweetsApi <- R6::R6Class(
       query_params[["end_time"]] <- `end_time`
 
       # no explore
+      # validate enum values
+      for (query_item in `tweet_fields`) {
+        if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
+          rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_tweets. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_tweets. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+        }
+      }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `expansions`) {
+        if (!(query_item %in% c("attachments.media_keys", "attachments.poll_ids", "author_id", "entities.mentions.username", "geo.place_id", "in_reply_to_user_id", "referenced_tweets.id", "referenced_tweets.id.author_id"))) {
+          rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$users_id_tweets. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `expansions` when calling TweetsApi$users_id_tweets. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."))
+        }
+      }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `media_fields`) {
+        if (!(query_item %in% c("alt_text", "duration_ms", "height", "media_key", "non_public_metrics", "organic_metrics", "preview_image_url", "promoted_metrics", "public_metrics", "type", "url", "variants", "width"))) {
+          rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$users_id_tweets. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `media_fields` when calling TweetsApi$users_id_tweets. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."))
+        }
+      }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `poll_fields`) {
+        if (!(query_item %in% c("duration_minutes", "end_datetime", "id", "options", "voting_status"))) {
+          rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$users_id_tweets. Must be [duration_minutes, end_datetime, id, options, voting_status].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `poll_fields` when calling TweetsApi$users_id_tweets. Must be [duration_minutes, end_datetime, id, options, voting_status]."))
+        }
+      }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `user_fields`) {
+        if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
+          rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$users_id_tweets. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `user_fields` when calling TweetsApi$users_id_tweets. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+        }
+      }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `place_fields`) {
+        if (!(query_item %in% c("contained_within", "country", "country_code", "full_name", "geo", "id", "name", "place_type"))) {
+          rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$users_id_tweets. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `place_fields` when calling TweetsApi$users_id_tweets. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."))
+        }
+      }
       query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/users/{id}/tweets"
