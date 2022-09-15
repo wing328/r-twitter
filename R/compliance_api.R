@@ -559,6 +559,15 @@ ComplianceApi <- R6::R6Class(
       }
 
       # no explore
+      # validate enum values
+      for (query_item in `compliance_job_fields`) {
+        if (!(query_item %in% c("created_at", "download_expires_at", "download_url", "id", "name", "resumable", "status", "type", "upload_expires_at", "upload_url"))) {
+          rlang::abort(message = "Invalid value for `compliance_job_fields` when calling ComplianceApi$get_batch_compliance_job. Must be [created_at, download_expires_at, download_url, id, name, resumable, status, type, upload_expires_at, upload_url].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `compliance_job_fields` when calling ComplianceApi$get_batch_compliance_job. Must be [created_at, download_expires_at, download_url, id, name, resumable, status, type, upload_expires_at, upload_url]."))
+        }
+      }
       query_params[["compliance_job.fields"]] <- I(paste(lapply(`compliance_job_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/compliance/jobs/{id}"
@@ -1032,11 +1041,32 @@ ComplianceApi <- R6::R6Class(
                                                      reason = "Invalid length for `compliance_job_fields` when calling ComplianceApi$list_batch_compliance_jobs, number of items must be greater than or equal to 1."))
       }
 
+      if (!(`type` %in% c("tweets", "users"))) {
+        rlang::abort(message = "Invalid value for `type` when calling ComplianceApi$list_batch_compliance_jobs. Must be [tweets, users].",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `type` when calling ComplianceApi$list_batch_compliance_jobs. Must be [tweets, users]."))
+      }
       query_params[["type"]] <- `type`
 
+      if (!(`status` %in% c("created", "in_progress", "failed", "complete"))) {
+        rlang::abort(message = "Invalid value for `status` when calling ComplianceApi$list_batch_compliance_jobs. Must be [created, in_progress, failed, complete].",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `status` when calling ComplianceApi$list_batch_compliance_jobs. Must be [created, in_progress, failed, complete]."))
+      }
       query_params[["status"]] <- `status`
 
       # no explore
+      # validate enum values
+      for (query_item in `compliance_job_fields`) {
+        if (!(query_item %in% c("created_at", "download_expires_at", "download_url", "id", "name", "resumable", "status", "type", "upload_expires_at", "upload_url"))) {
+          rlang::abort(message = "Invalid value for `compliance_job_fields` when calling ComplianceApi$list_batch_compliance_jobs. Must be [created_at, download_expires_at, download_url, id, name, resumable, status, type, upload_expires_at, upload_url].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `compliance_job_fields` when calling ComplianceApi$list_batch_compliance_jobs. Must be [created_at, download_expires_at, download_url, id, name, resumable, status, type, upload_expires_at, upload_url]."))
+        }
+      }
       query_params[["compliance_job.fields"]] <- I(paste(lapply(`compliance_job_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/compliance/jobs"

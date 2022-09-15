@@ -1095,12 +1095,39 @@ ListsApi <- R6::R6Class(
       query_params[["pagination_token"]] <- `pagination_token`
 
       # no explore
+      # validate enum values
+      for (query_item in `list_fields`) {
+        if (!(query_item %in% c("created_at", "description", "follower_count", "id", "member_count", "name", "owner_id", "private"))) {
+          rlang::abort(message = "Invalid value for `list_fields` when calling ListsApi$get_user_list_memberships. Must be [created_at, description, follower_count, id, member_count, name, owner_id, private].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `list_fields` when calling ListsApi$get_user_list_memberships. Must be [created_at, description, follower_count, id, member_count, name, owner_id, private]."))
+        }
+      }
       query_params[["list.fields"]] <- I(paste(lapply(`list_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `expansions`) {
+        if (!(query_item %in% c("owner_id"))) {
+          rlang::abort(message = "Invalid value for `expansions` when calling ListsApi$get_user_list_memberships. Must be [owner_id].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `expansions` when calling ListsApi$get_user_list_memberships. Must be [owner_id]."))
+        }
+      }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `user_fields`) {
+        if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
+          rlang::abort(message = "Invalid value for `user_fields` when calling ListsApi$get_user_list_memberships. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `user_fields` when calling ListsApi$get_user_list_memberships. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+        }
+      }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/users/{id}/list_memberships"
@@ -1637,12 +1664,39 @@ ListsApi <- R6::R6Class(
       }
 
       # no explore
+      # validate enum values
+      for (query_item in `list_fields`) {
+        if (!(query_item %in% c("created_at", "description", "follower_count", "id", "member_count", "name", "owner_id", "private"))) {
+          rlang::abort(message = "Invalid value for `list_fields` when calling ListsApi$list_id_get. Must be [created_at, description, follower_count, id, member_count, name, owner_id, private].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `list_fields` when calling ListsApi$list_id_get. Must be [created_at, description, follower_count, id, member_count, name, owner_id, private]."))
+        }
+      }
       query_params[["list.fields"]] <- I(paste(lapply(`list_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `expansions`) {
+        if (!(query_item %in% c("owner_id"))) {
+          rlang::abort(message = "Invalid value for `expansions` when calling ListsApi$list_id_get. Must be [owner_id].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `expansions` when calling ListsApi$list_id_get. Must be [owner_id]."))
+        }
+      }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `user_fields`) {
+        if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
+          rlang::abort(message = "Invalid value for `user_fields` when calling ListsApi$list_id_get. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `user_fields` when calling ListsApi$list_id_get. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+        }
+      }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/lists/{id}"
@@ -2247,12 +2301,39 @@ ListsApi <- R6::R6Class(
       query_params[["pagination_token"]] <- `pagination_token`
 
       # no explore
+      # validate enum values
+      for (query_item in `list_fields`) {
+        if (!(query_item %in% c("created_at", "description", "follower_count", "id", "member_count", "name", "owner_id", "private"))) {
+          rlang::abort(message = "Invalid value for `list_fields` when calling ListsApi$list_user_owned_lists. Must be [created_at, description, follower_count, id, member_count, name, owner_id, private].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `list_fields` when calling ListsApi$list_user_owned_lists. Must be [created_at, description, follower_count, id, member_count, name, owner_id, private]."))
+        }
+      }
       query_params[["list.fields"]] <- I(paste(lapply(`list_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `expansions`) {
+        if (!(query_item %in% c("owner_id"))) {
+          rlang::abort(message = "Invalid value for `expansions` when calling ListsApi$list_user_owned_lists. Must be [owner_id].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `expansions` when calling ListsApi$list_user_owned_lists. Must be [owner_id]."))
+        }
+      }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `user_fields`) {
+        if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
+          rlang::abort(message = "Invalid value for `user_fields` when calling ListsApi$list_user_owned_lists. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `user_fields` when calling ListsApi$list_user_owned_lists. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+        }
+      }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/users/{id}/owned_lists"
@@ -2543,12 +2624,39 @@ ListsApi <- R6::R6Class(
       }
 
       # no explore
+      # validate enum values
+      for (query_item in `list_fields`) {
+        if (!(query_item %in% c("created_at", "description", "follower_count", "id", "member_count", "name", "owner_id", "private"))) {
+          rlang::abort(message = "Invalid value for `list_fields` when calling ListsApi$list_user_pinned_lists. Must be [created_at, description, follower_count, id, member_count, name, owner_id, private].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `list_fields` when calling ListsApi$list_user_pinned_lists. Must be [created_at, description, follower_count, id, member_count, name, owner_id, private]."))
+        }
+      }
       query_params[["list.fields"]] <- I(paste(lapply(`list_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `expansions`) {
+        if (!(query_item %in% c("owner_id"))) {
+          rlang::abort(message = "Invalid value for `expansions` when calling ListsApi$list_user_pinned_lists. Must be [owner_id].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `expansions` when calling ListsApi$list_user_pinned_lists. Must be [owner_id]."))
+        }
+      }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `user_fields`) {
+        if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
+          rlang::abort(message = "Invalid value for `user_fields` when calling ListsApi$list_user_pinned_lists. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `user_fields` when calling ListsApi$list_user_pinned_lists. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+        }
+      }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/users/{id}/pinned_lists"
@@ -3019,12 +3127,39 @@ ListsApi <- R6::R6Class(
       query_params[["pagination_token"]] <- `pagination_token`
 
       # no explore
+      # validate enum values
+      for (query_item in `list_fields`) {
+        if (!(query_item %in% c("created_at", "description", "follower_count", "id", "member_count", "name", "owner_id", "private"))) {
+          rlang::abort(message = "Invalid value for `list_fields` when calling ListsApi$user_followed_lists. Must be [created_at, description, follower_count, id, member_count, name, owner_id, private].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `list_fields` when calling ListsApi$user_followed_lists. Must be [created_at, description, follower_count, id, member_count, name, owner_id, private]."))
+        }
+      }
       query_params[["list.fields"]] <- I(paste(lapply(`list_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `expansions`) {
+        if (!(query_item %in% c("owner_id"))) {
+          rlang::abort(message = "Invalid value for `expansions` when calling ListsApi$user_followed_lists. Must be [owner_id].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `expansions` when calling ListsApi$user_followed_lists. Must be [owner_id]."))
+        }
+      }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `user_fields`) {
+        if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
+          rlang::abort(message = "Invalid value for `user_fields` when calling ListsApi$user_followed_lists. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `user_fields` when calling ListsApi$user_followed_lists. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+        }
+      }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/users/{id}/followed_lists"

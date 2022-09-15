@@ -1437,12 +1437,39 @@ UsersApi <- R6::R6Class(
       }
 
       # no explore
+      # validate enum values
+      for (query_item in `user_fields`) {
+        if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
+          rlang::abort(message = "Invalid value for `user_fields` when calling UsersApi$find_my_user. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `user_fields` when calling UsersApi$find_my_user. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+        }
+      }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `expansions`) {
+        if (!(query_item %in% c("pinned_tweet_id"))) {
+          rlang::abort(message = "Invalid value for `expansions` when calling UsersApi$find_my_user. Must be [pinned_tweet_id].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `expansions` when calling UsersApi$find_my_user. Must be [pinned_tweet_id]."))
+        }
+      }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `tweet_fields`) {
+        if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
+          rlang::abort(message = "Invalid value for `tweet_fields` when calling UsersApi$find_my_user. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `tweet_fields` when calling UsersApi$find_my_user. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+        }
+      }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/users/me"
@@ -1595,12 +1622,39 @@ UsersApi <- R6::R6Class(
       }
 
       # no explore
+      # validate enum values
+      for (query_item in `user_fields`) {
+        if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
+          rlang::abort(message = "Invalid value for `user_fields` when calling UsersApi$find_user_by_id. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `user_fields` when calling UsersApi$find_user_by_id. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+        }
+      }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `expansions`) {
+        if (!(query_item %in% c("pinned_tweet_id"))) {
+          rlang::abort(message = "Invalid value for `expansions` when calling UsersApi$find_user_by_id. Must be [pinned_tweet_id].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `expansions` when calling UsersApi$find_user_by_id. Must be [pinned_tweet_id]."))
+        }
+      }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `tweet_fields`) {
+        if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
+          rlang::abort(message = "Invalid value for `tweet_fields` when calling UsersApi$find_user_by_id. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `tweet_fields` when calling UsersApi$find_user_by_id. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+        }
+      }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/users/{id}"
@@ -1761,12 +1815,39 @@ UsersApi <- R6::R6Class(
       }
 
       # no explore
+      # validate enum values
+      for (query_item in `user_fields`) {
+        if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
+          rlang::abort(message = "Invalid value for `user_fields` when calling UsersApi$find_user_by_username. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `user_fields` when calling UsersApi$find_user_by_username. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+        }
+      }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `expansions`) {
+        if (!(query_item %in% c("pinned_tweet_id"))) {
+          rlang::abort(message = "Invalid value for `expansions` when calling UsersApi$find_user_by_username. Must be [pinned_tweet_id].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `expansions` when calling UsersApi$find_user_by_username. Must be [pinned_tweet_id]."))
+        }
+      }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `tweet_fields`) {
+        if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
+          rlang::abort(message = "Invalid value for `tweet_fields` when calling UsersApi$find_user_by_username. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `tweet_fields` when calling UsersApi$find_user_by_username. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+        }
+      }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/users/by/username/{username}"
@@ -1936,12 +2017,39 @@ UsersApi <- R6::R6Class(
       query_params[["ids"]] <- I(paste(lapply(`ids`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `user_fields`) {
+        if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
+          rlang::abort(message = "Invalid value for `user_fields` when calling UsersApi$find_users_by_id. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `user_fields` when calling UsersApi$find_users_by_id. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+        }
+      }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `expansions`) {
+        if (!(query_item %in% c("pinned_tweet_id"))) {
+          rlang::abort(message = "Invalid value for `expansions` when calling UsersApi$find_users_by_id. Must be [pinned_tweet_id].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `expansions` when calling UsersApi$find_users_by_id. Must be [pinned_tweet_id]."))
+        }
+      }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `tweet_fields`) {
+        if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
+          rlang::abort(message = "Invalid value for `tweet_fields` when calling UsersApi$find_users_by_id. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `tweet_fields` when calling UsersApi$find_users_by_id. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+        }
+      }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/users"
@@ -2107,12 +2215,39 @@ UsersApi <- R6::R6Class(
       query_params[["usernames"]] <- I(paste(lapply(`usernames`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `user_fields`) {
+        if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
+          rlang::abort(message = "Invalid value for `user_fields` when calling UsersApi$find_users_by_username. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `user_fields` when calling UsersApi$find_users_by_username. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+        }
+      }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `expansions`) {
+        if (!(query_item %in% c("pinned_tweet_id"))) {
+          rlang::abort(message = "Invalid value for `expansions` when calling UsersApi$find_users_by_username. Must be [pinned_tweet_id].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `expansions` when calling UsersApi$find_users_by_username. Must be [pinned_tweet_id]."))
+        }
+      }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `tweet_fields`) {
+        if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
+          rlang::abort(message = "Invalid value for `tweet_fields` when calling UsersApi$find_users_by_username. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `tweet_fields` when calling UsersApi$find_users_by_username. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+        }
+      }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/users/by"
@@ -2303,12 +2438,39 @@ UsersApi <- R6::R6Class(
       query_params[["pagination_token"]] <- `pagination_token`
 
       # no explore
+      # validate enum values
+      for (query_item in `user_fields`) {
+        if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
+          rlang::abort(message = "Invalid value for `user_fields` when calling UsersApi$list_get_followers. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `user_fields` when calling UsersApi$list_get_followers. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+        }
+      }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `expansions`) {
+        if (!(query_item %in% c("pinned_tweet_id"))) {
+          rlang::abort(message = "Invalid value for `expansions` when calling UsersApi$list_get_followers. Must be [pinned_tweet_id].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `expansions` when calling UsersApi$list_get_followers. Must be [pinned_tweet_id]."))
+        }
+      }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `tweet_fields`) {
+        if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
+          rlang::abort(message = "Invalid value for `tweet_fields` when calling UsersApi$list_get_followers. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `tweet_fields` when calling UsersApi$list_get_followers. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+        }
+      }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/lists/{id}/followers"
@@ -2503,12 +2665,39 @@ UsersApi <- R6::R6Class(
       query_params[["pagination_token"]] <- `pagination_token`
 
       # no explore
+      # validate enum values
+      for (query_item in `user_fields`) {
+        if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
+          rlang::abort(message = "Invalid value for `user_fields` when calling UsersApi$list_get_members. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `user_fields` when calling UsersApi$list_get_members. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+        }
+      }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `expansions`) {
+        if (!(query_item %in% c("pinned_tweet_id"))) {
+          rlang::abort(message = "Invalid value for `expansions` when calling UsersApi$list_get_members. Must be [pinned_tweet_id].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `expansions` when calling UsersApi$list_get_members. Must be [pinned_tweet_id]."))
+        }
+      }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `tweet_fields`) {
+        if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
+          rlang::abort(message = "Invalid value for `tweet_fields` when calling UsersApi$list_get_members. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `tweet_fields` when calling UsersApi$list_get_members. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+        }
+      }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/lists/{id}/members"
@@ -2697,12 +2886,39 @@ UsersApi <- R6::R6Class(
       query_params[["pagination_token"]] <- `pagination_token`
 
       # no explore
+      # validate enum values
+      for (query_item in `user_fields`) {
+        if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
+          rlang::abort(message = "Invalid value for `user_fields` when calling UsersApi$tweets_id_liking_users. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `user_fields` when calling UsersApi$tweets_id_liking_users. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+        }
+      }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `expansions`) {
+        if (!(query_item %in% c("pinned_tweet_id"))) {
+          rlang::abort(message = "Invalid value for `expansions` when calling UsersApi$tweets_id_liking_users. Must be [pinned_tweet_id].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `expansions` when calling UsersApi$tweets_id_liking_users. Must be [pinned_tweet_id]."))
+        }
+      }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `tweet_fields`) {
+        if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
+          rlang::abort(message = "Invalid value for `tweet_fields` when calling UsersApi$tweets_id_liking_users. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `tweet_fields` when calling UsersApi$tweets_id_liking_users. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+        }
+      }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/tweets/{id}/liking_users"
@@ -2891,12 +3107,39 @@ UsersApi <- R6::R6Class(
       query_params[["pagination_token"]] <- `pagination_token`
 
       # no explore
+      # validate enum values
+      for (query_item in `user_fields`) {
+        if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
+          rlang::abort(message = "Invalid value for `user_fields` when calling UsersApi$tweets_id_retweeting_users. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `user_fields` when calling UsersApi$tweets_id_retweeting_users. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+        }
+      }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `expansions`) {
+        if (!(query_item %in% c("pinned_tweet_id"))) {
+          rlang::abort(message = "Invalid value for `expansions` when calling UsersApi$tweets_id_retweeting_users. Must be [pinned_tweet_id].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `expansions` when calling UsersApi$tweets_id_retweeting_users. Must be [pinned_tweet_id]."))
+        }
+      }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `tweet_fields`) {
+        if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
+          rlang::abort(message = "Invalid value for `tweet_fields` when calling UsersApi$tweets_id_retweeting_users. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `tweet_fields` when calling UsersApi$tweets_id_retweeting_users. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+        }
+      }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/tweets/{id}/retweeted_by"
@@ -3215,12 +3458,39 @@ UsersApi <- R6::R6Class(
       query_params[["pagination_token"]] <- `pagination_token`
 
       # no explore
+      # validate enum values
+      for (query_item in `user_fields`) {
+        if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
+          rlang::abort(message = "Invalid value for `user_fields` when calling UsersApi$users_id_blocking. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `user_fields` when calling UsersApi$users_id_blocking. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+        }
+      }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `expansions`) {
+        if (!(query_item %in% c("pinned_tweet_id"))) {
+          rlang::abort(message = "Invalid value for `expansions` when calling UsersApi$users_id_blocking. Must be [pinned_tweet_id].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `expansions` when calling UsersApi$users_id_blocking. Must be [pinned_tweet_id]."))
+        }
+      }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `tweet_fields`) {
+        if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
+          rlang::abort(message = "Invalid value for `tweet_fields` when calling UsersApi$users_id_blocking. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `tweet_fields` when calling UsersApi$users_id_blocking. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+        }
+      }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/users/{id}/blocking"
@@ -3534,12 +3804,39 @@ UsersApi <- R6::R6Class(
       query_params[["pagination_token"]] <- `pagination_token`
 
       # no explore
+      # validate enum values
+      for (query_item in `user_fields`) {
+        if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
+          rlang::abort(message = "Invalid value for `user_fields` when calling UsersApi$users_id_followers. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `user_fields` when calling UsersApi$users_id_followers. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+        }
+      }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `expansions`) {
+        if (!(query_item %in% c("pinned_tweet_id"))) {
+          rlang::abort(message = "Invalid value for `expansions` when calling UsersApi$users_id_followers. Must be [pinned_tweet_id].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `expansions` when calling UsersApi$users_id_followers. Must be [pinned_tweet_id]."))
+        }
+      }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `tweet_fields`) {
+        if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
+          rlang::abort(message = "Invalid value for `tweet_fields` when calling UsersApi$users_id_followers. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `tweet_fields` when calling UsersApi$users_id_followers. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+        }
+      }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/users/{id}/followers"
@@ -3728,12 +4025,39 @@ UsersApi <- R6::R6Class(
       query_params[["pagination_token"]] <- `pagination_token`
 
       # no explore
+      # validate enum values
+      for (query_item in `user_fields`) {
+        if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
+          rlang::abort(message = "Invalid value for `user_fields` when calling UsersApi$users_id_following. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `user_fields` when calling UsersApi$users_id_following. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+        }
+      }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `expansions`) {
+        if (!(query_item %in% c("pinned_tweet_id"))) {
+          rlang::abort(message = "Invalid value for `expansions` when calling UsersApi$users_id_following. Must be [pinned_tweet_id].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `expansions` when calling UsersApi$users_id_following. Must be [pinned_tweet_id]."))
+        }
+      }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `tweet_fields`) {
+        if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
+          rlang::abort(message = "Invalid value for `tweet_fields` when calling UsersApi$users_id_following. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `tweet_fields` when calling UsersApi$users_id_following. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+        }
+      }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/users/{id}/following"
@@ -4051,12 +4375,39 @@ UsersApi <- R6::R6Class(
       query_params[["pagination_token"]] <- `pagination_token`
 
       # no explore
+      # validate enum values
+      for (query_item in `user_fields`) {
+        if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
+          rlang::abort(message = "Invalid value for `user_fields` when calling UsersApi$users_id_muting. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `user_fields` when calling UsersApi$users_id_muting. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+        }
+      }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `expansions`) {
+        if (!(query_item %in% c("pinned_tweet_id"))) {
+          rlang::abort(message = "Invalid value for `expansions` when calling UsersApi$users_id_muting. Must be [pinned_tweet_id].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `expansions` when calling UsersApi$users_id_muting. Must be [pinned_tweet_id]."))
+        }
+      }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # no explore
+      # validate enum values
+      for (query_item in `tweet_fields`) {
+        if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
+          rlang::abort(message = "Invalid value for `tweet_fields` when calling UsersApi$users_id_muting. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+                       .subclass = "ApiException",
+                       ApiException = ApiException$new(status = 0,
+                                                       reason = "Invalid value for `tweet_fields` when calling UsersApi$users_id_muting. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+        }
+      }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       local_var_url_path <- "/2/users/{id}/muting"
