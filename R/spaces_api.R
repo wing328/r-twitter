@@ -574,6 +574,13 @@ SpacesApi <- R6::R6Class(
                                                      reason = "Invalid length for `topic_fields` when calling SpacesApi$find_space_by_id, number of items must be greater than or equal to 1."))
       }
 
+      # check if items are unique
+      if (!identical(`space_fields`, unique(`space_fields`))) {
+        rlang::abort(message = "Invalid value for `space_fields` when calling SpacesApi$find_space_by_id. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `space_fields` when calling SpacesApi$find_space_by_id. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `space_fields`) {
@@ -586,6 +593,13 @@ SpacesApi <- R6::R6Class(
       }
       query_params[["space.fields"]] <- I(paste(lapply(`space_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`expansions`, unique(`expansions`))) {
+        rlang::abort(message = "Invalid value for `expansions` when calling SpacesApi$find_space_by_id. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `expansions` when calling SpacesApi$find_space_by_id. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
@@ -598,6 +612,13 @@ SpacesApi <- R6::R6Class(
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`user_fields`, unique(`user_fields`))) {
+        rlang::abort(message = "Invalid value for `user_fields` when calling SpacesApi$find_space_by_id. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `user_fields` when calling SpacesApi$find_space_by_id. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
@@ -610,6 +631,13 @@ SpacesApi <- R6::R6Class(
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`topic_fields`, unique(`topic_fields`))) {
+        rlang::abort(message = "Invalid value for `topic_fields` when calling SpacesApi$find_space_by_id. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `topic_fields` when calling SpacesApi$find_space_by_id. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `topic_fields`) {
@@ -799,6 +827,13 @@ SpacesApi <- R6::R6Class(
         query_params[["user_ids"]] <- c(query_params[["user_ids"]], list(`user_ids` = query_item))
       }
 
+      # check if items are unique
+      if (!identical(`space_fields`, unique(`space_fields`))) {
+        rlang::abort(message = "Invalid value for `space_fields` when calling SpacesApi$find_spaces_by_creator_ids. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `space_fields` when calling SpacesApi$find_spaces_by_creator_ids. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `space_fields`) {
@@ -811,6 +846,13 @@ SpacesApi <- R6::R6Class(
       }
       query_params[["space.fields"]] <- I(paste(lapply(`space_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`expansions`, unique(`expansions`))) {
+        rlang::abort(message = "Invalid value for `expansions` when calling SpacesApi$find_spaces_by_creator_ids. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `expansions` when calling SpacesApi$find_spaces_by_creator_ids. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
@@ -823,6 +865,13 @@ SpacesApi <- R6::R6Class(
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`user_fields`, unique(`user_fields`))) {
+        rlang::abort(message = "Invalid value for `user_fields` when calling SpacesApi$find_spaces_by_creator_ids. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `user_fields` when calling SpacesApi$find_spaces_by_creator_ids. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
@@ -835,6 +884,13 @@ SpacesApi <- R6::R6Class(
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`topic_fields`, unique(`topic_fields`))) {
+        rlang::abort(message = "Invalid value for `topic_fields` when calling SpacesApi$find_spaces_by_creator_ids. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `topic_fields` when calling SpacesApi$find_spaces_by_creator_ids. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `topic_fields`) {
@@ -1020,6 +1076,13 @@ SpacesApi <- R6::R6Class(
         query_params[["ids"]] <- c(query_params[["ids"]], list(`ids` = query_item))
       }
 
+      # check if items are unique
+      if (!identical(`space_fields`, unique(`space_fields`))) {
+        rlang::abort(message = "Invalid value for `space_fields` when calling SpacesApi$find_spaces_by_ids. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `space_fields` when calling SpacesApi$find_spaces_by_ids. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `space_fields`) {
@@ -1032,6 +1095,13 @@ SpacesApi <- R6::R6Class(
       }
       query_params[["space.fields"]] <- I(paste(lapply(`space_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`expansions`, unique(`expansions`))) {
+        rlang::abort(message = "Invalid value for `expansions` when calling SpacesApi$find_spaces_by_ids. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `expansions` when calling SpacesApi$find_spaces_by_ids. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
@@ -1044,6 +1114,13 @@ SpacesApi <- R6::R6Class(
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`user_fields`, unique(`user_fields`))) {
+        rlang::abort(message = "Invalid value for `user_fields` when calling SpacesApi$find_spaces_by_ids. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `user_fields` when calling SpacesApi$find_spaces_by_ids. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
@@ -1056,6 +1133,13 @@ SpacesApi <- R6::R6Class(
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`topic_fields`, unique(`topic_fields`))) {
+        rlang::abort(message = "Invalid value for `topic_fields` when calling SpacesApi$find_spaces_by_ids. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `topic_fields` when calling SpacesApi$find_spaces_by_ids. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `topic_fields`) {
@@ -1266,6 +1350,13 @@ SpacesApi <- R6::R6Class(
 
       query_params[["max_results"]] <- `max_results`
 
+      # check if items are unique
+      if (!identical(`space_fields`, unique(`space_fields`))) {
+        rlang::abort(message = "Invalid value for `space_fields` when calling SpacesApi$search_spaces. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `space_fields` when calling SpacesApi$search_spaces. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `space_fields`) {
@@ -1278,6 +1369,13 @@ SpacesApi <- R6::R6Class(
       }
       query_params[["space.fields"]] <- I(paste(lapply(`space_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`expansions`, unique(`expansions`))) {
+        rlang::abort(message = "Invalid value for `expansions` when calling SpacesApi$search_spaces. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `expansions` when calling SpacesApi$search_spaces. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
@@ -1290,6 +1388,13 @@ SpacesApi <- R6::R6Class(
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`user_fields`, unique(`user_fields`))) {
+        rlang::abort(message = "Invalid value for `user_fields` when calling SpacesApi$search_spaces. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `user_fields` when calling SpacesApi$search_spaces. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
@@ -1302,6 +1407,13 @@ SpacesApi <- R6::R6Class(
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`topic_fields`, unique(`topic_fields`))) {
+        rlang::abort(message = "Invalid value for `topic_fields` when calling SpacesApi$search_spaces. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `topic_fields` when calling SpacesApi$search_spaces. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `topic_fields`) {
@@ -1495,6 +1607,13 @@ SpacesApi <- R6::R6Class(
 
       query_params[["max_results"]] <- `max_results`
 
+      # check if items are unique
+      if (!identical(`user_fields`, unique(`user_fields`))) {
+        rlang::abort(message = "Invalid value for `user_fields` when calling SpacesApi$space_buyers. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `user_fields` when calling SpacesApi$space_buyers. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
@@ -1507,6 +1626,13 @@ SpacesApi <- R6::R6Class(
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`expansions`, unique(`expansions`))) {
+        rlang::abort(message = "Invalid value for `expansions` when calling SpacesApi$space_buyers. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `expansions` when calling SpacesApi$space_buyers. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
@@ -1519,6 +1645,13 @@ SpacesApi <- R6::R6Class(
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
+        rlang::abort(message = "Invalid value for `tweet_fields` when calling SpacesApi$space_buyers. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `tweet_fields` when calling SpacesApi$space_buyers. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
@@ -1728,6 +1861,13 @@ SpacesApi <- R6::R6Class(
 
       query_params[["max_results"]] <- `max_results`
 
+      # check if items are unique
+      if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
+        rlang::abort(message = "Invalid value for `tweet_fields` when calling SpacesApi$space_tweets. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `tweet_fields` when calling SpacesApi$space_tweets. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
@@ -1740,6 +1880,13 @@ SpacesApi <- R6::R6Class(
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`expansions`, unique(`expansions`))) {
+        rlang::abort(message = "Invalid value for `expansions` when calling SpacesApi$space_tweets. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `expansions` when calling SpacesApi$space_tweets. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
@@ -1752,6 +1899,13 @@ SpacesApi <- R6::R6Class(
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`media_fields`, unique(`media_fields`))) {
+        rlang::abort(message = "Invalid value for `media_fields` when calling SpacesApi$space_tweets. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `media_fields` when calling SpacesApi$space_tweets. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `media_fields`) {
@@ -1764,6 +1918,13 @@ SpacesApi <- R6::R6Class(
       }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`poll_fields`, unique(`poll_fields`))) {
+        rlang::abort(message = "Invalid value for `poll_fields` when calling SpacesApi$space_tweets. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `poll_fields` when calling SpacesApi$space_tweets. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `poll_fields`) {
@@ -1776,6 +1937,13 @@ SpacesApi <- R6::R6Class(
       }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`user_fields`, unique(`user_fields`))) {
+        rlang::abort(message = "Invalid value for `user_fields` when calling SpacesApi$space_tweets. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `user_fields` when calling SpacesApi$space_tweets. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
@@ -1788,6 +1956,13 @@ SpacesApi <- R6::R6Class(
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`place_fields`, unique(`place_fields`))) {
+        rlang::abort(message = "Invalid value for `place_fields` when calling SpacesApi$space_tweets. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `place_fields` when calling SpacesApi$space_tweets. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `place_fields`) {

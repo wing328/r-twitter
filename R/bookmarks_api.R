@@ -376,6 +376,13 @@ BookmarksApi <- R6::R6Class(
 
       query_params[["pagination_token"]] <- `pagination_token`
 
+      # check if items are unique
+      if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
+        rlang::abort(message = "Invalid value for `tweet_fields` when calling BookmarksApi$get_users_id_bookmarks. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `tweet_fields` when calling BookmarksApi$get_users_id_bookmarks. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
@@ -388,6 +395,13 @@ BookmarksApi <- R6::R6Class(
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`expansions`, unique(`expansions`))) {
+        rlang::abort(message = "Invalid value for `expansions` when calling BookmarksApi$get_users_id_bookmarks. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `expansions` when calling BookmarksApi$get_users_id_bookmarks. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
@@ -400,6 +414,13 @@ BookmarksApi <- R6::R6Class(
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`media_fields`, unique(`media_fields`))) {
+        rlang::abort(message = "Invalid value for `media_fields` when calling BookmarksApi$get_users_id_bookmarks. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `media_fields` when calling BookmarksApi$get_users_id_bookmarks. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `media_fields`) {
@@ -412,6 +433,13 @@ BookmarksApi <- R6::R6Class(
       }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`poll_fields`, unique(`poll_fields`))) {
+        rlang::abort(message = "Invalid value for `poll_fields` when calling BookmarksApi$get_users_id_bookmarks. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `poll_fields` when calling BookmarksApi$get_users_id_bookmarks. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `poll_fields`) {
@@ -424,6 +452,13 @@ BookmarksApi <- R6::R6Class(
       }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`user_fields`, unique(`user_fields`))) {
+        rlang::abort(message = "Invalid value for `user_fields` when calling BookmarksApi$get_users_id_bookmarks. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `user_fields` when calling BookmarksApi$get_users_id_bookmarks. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
@@ -436,6 +471,13 @@ BookmarksApi <- R6::R6Class(
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
+      # check if items are unique
+      if (!identical(`place_fields`, unique(`place_fields`))) {
+        rlang::abort(message = "Invalid value for `place_fields` when calling BookmarksApi$get_users_id_bookmarks. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `place_fields` when calling BookmarksApi$get_users_id_bookmarks. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `place_fields`) {

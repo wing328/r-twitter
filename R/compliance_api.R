@@ -558,6 +558,13 @@ ComplianceApi <- R6::R6Class(
                                                      reason = "Invalid length for `compliance_job_fields` when calling ComplianceApi$get_batch_compliance_job, number of items must be greater than or equal to 1."))
       }
 
+      # check if items are unique
+      if (!identical(`compliance_job_fields`, unique(`compliance_job_fields`))) {
+        rlang::abort(message = "Invalid value for `compliance_job_fields` when calling ComplianceApi$get_batch_compliance_job. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `compliance_job_fields` when calling ComplianceApi$get_batch_compliance_job. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `compliance_job_fields`) {
@@ -1057,6 +1064,13 @@ ComplianceApi <- R6::R6Class(
       }
       query_params[["status"]] <- `status`
 
+      # check if items are unique
+      if (!identical(`compliance_job_fields`, unique(`compliance_job_fields`))) {
+        rlang::abort(message = "Invalid value for `compliance_job_fields` when calling ComplianceApi$list_batch_compliance_jobs. Items must be unique.",
+                     .subclass = "ApiException",
+                     ApiException = ApiException$new(status = 0,
+                                                     reason = "Invalid value for `compliance_job_fields` when calling ComplianceApi$list_batch_compliance_jobs. Items must be unique."))
+      }
       # no explore
       # validate enum values
       for (query_item in `compliance_job_fields`) {
