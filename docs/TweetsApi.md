@@ -44,10 +44,12 @@ Add or delete rules from a User's active rule set. Users can provide unique, opt
 ```R
 library(twitter)
 
+# Add/Delete rules
+#
+# prepare function argument(s)
 var_add_or_delete_rules_request <- AddOrDeleteRulesRequest$new(list(RuleNoId$new("value_example", "tag_example")), DeleteRulesRequest_delete$new(list("ids_example"), list("values_example"))) # AddOrDeleteRulesRequest | 
 var_dry_run <- "dry_run_example" # character | Dry Run can be used with both the add and delete action, with the expected result given, but without actually taking any action in the system (meaning the end state will always be as it was when the request was submitted). This is particularly useful to validate rule changes. (Optional)
 
-# Add/Delete rules
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
@@ -108,9 +110,11 @@ Causes the User to create a Tweet under the authorized account.
 ```R
 library(twitter)
 
+# Creation of a Tweet
+#
+# prepare function argument(s)
 var_tweet_create_request <- TweetCreateRequest$new("direct_message_deep_link_example", "for_super_followers_only_example", TweetCreateRequest_geo$new("place_id_example"), TweetCreateRequest_media$new(list("media_ids_example"), list("tagged_user_ids_example")), TweetCreateRequest_poll$new(123, list("options_example"), "following"), "quote_tweet_id_example", TweetCreateRequest_reply$new("in_reply_to_tweet_id_example", list("exclude_reply_user_ids_example")), "following", "text_example") # TweetCreateRequest | 
 
-# Creation of a Tweet
 api_instance <- twitter_api$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
@@ -170,9 +174,11 @@ Delete specified Tweet (in the path) by ID.
 ```R
 library(twitter)
 
+# Tweet delete by Tweet ID
+#
+# prepare function argument(s)
 var_id <- "id_example" # character | The ID of the Tweet to be deleted.
 
-# Tweet delete by Tweet ID
 api_instance <- twitter_api$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
@@ -232,6 +238,9 @@ Returns a variety of information about the Tweet specified by the requested ID.
 ```R
 library(twitter)
 
+# Tweet lookup by Tweet ID
+#
+# prepare function argument(s)
 var_id <- "id_example" # character | A single Tweet ID.
 var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 var_expansions <- list("attachments.media_keys") # set[character] | A comma separated list of fields to expand. (Optional)
@@ -240,12 +249,11 @@ var_poll_fields <- list("duration_minutes") # set[character] | A comma separated
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 
-# Tweet lookup by Tweet ID
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$tweets_api$find_tweet_by_id(var_id, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
@@ -308,6 +316,9 @@ Returns a variety of information about the Tweet specified by the requested ID.
 ```R
 library(twitter)
 
+# Tweet lookup by Tweet IDs
+#
+# prepare function argument(s)
 var_ids <- list("inner_example") # array[character] | A comma separated list of Tweet IDs. Up to 100 are allowed in a single request.
 var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 var_expansions <- list("attachments.media_keys") # set[character] | A comma separated list of fields to expand. (Optional)
@@ -316,12 +327,11 @@ var_poll_fields <- list("duration_minutes") # set[character] | A comma separated
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 
-# Tweet lookup by Tweet IDs
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$tweets_api$find_tweets_by_id(var_ids, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
@@ -384,6 +394,9 @@ Returns a variety of information about each Tweet that quotes the Tweet specifie
 ```R
 library(twitter)
 
+# Retrieve Tweets that quote a Tweet.
+#
+# prepare function argument(s)
 var_id <- "id_example" # character | A single Tweet ID.
 var_max_results <- 10 # integer | The maximum number of results to be returned. (Optional)
 var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results. (Optional)
@@ -395,12 +408,11 @@ var_poll_fields <- list("duration_minutes") # set[character] | A comma separated
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 
-# Retrieve Tweets that quote a Tweet.
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$tweets_api$find_tweets_that_quote_a_tweet(var_id, max_results = var_max_results, pagination_token = var_pagination_token, exclude = var_exclude, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
@@ -466,11 +478,13 @@ Returns rules from a User's active rule set. Users can fetch all of their rules 
 ```R
 library(twitter)
 
+# Rules lookup
+#
+# prepare function argument(s)
 var_ids <- list("inner_example") # array[character] | A comma-separated list of Rule IDs. (Optional)
 var_max_results <- 1000 # integer | The maximum number of results. (Optional)
 var_pagination_token <- "pagination_token_example" # character | This value is populated by passing the 'next_token' returned in a request to paginate through results. (Optional)
 
-# Rules lookup
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
@@ -532,6 +546,9 @@ Streams 100% of public Tweets.
 ```R
 library(twitter)
 
+# Firehose stream
+#
+# prepare function argument(s)
 var_partition <- 56 # integer | The partition number.
 var_backfill_minutes <- 56 # integer | The number of minutes of backfill requested. (Optional)
 var_start_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp to which the Tweets will be provided. (Optional)
@@ -543,7 +560,6 @@ var_poll_fields <- list("duration_minutes") # set[character] | A comma separated
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 
-# Firehose stream
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
@@ -614,6 +630,9 @@ Streams a deterministic 10% of public Tweets.
 ```R
 library(twitter)
 
+# Sample 10% stream
+#
+# prepare function argument(s)
 var_partition <- 56 # integer | The partition number.
 var_backfill_minutes <- 56 # integer | The number of minutes of backfill requested. (Optional)
 var_start_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp to which the Tweets will be provided. (Optional)
@@ -625,7 +644,6 @@ var_poll_fields <- list("duration_minutes") # set[character] | A comma separated
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 
-# Sample 10% stream
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
@@ -696,10 +714,12 @@ Hides or unhides a reply to an owned conversation.
 ```R
 library(twitter)
 
+# Hide replies
+#
+# prepare function argument(s)
 var_tweet_id <- "tweet_id_example" # character | The ID of the reply that you want to hide or unhide.
 var_tweet_hide_request <- TweetHideRequest$new("hidden_example") # TweetHideRequest |  (Optional)
 
-# Hide replies
 api_instance <- twitter_api$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
@@ -760,6 +780,9 @@ Returns a list of Tweets associated with the provided List ID.
 ```R
 library(twitter)
 
+# List Tweets timeline by List ID.
+#
+# prepare function argument(s)
 var_id <- "id_example" # character | The ID of the List.
 var_max_results <- 100 # integer | The maximum number of results. (Optional)
 var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. (Optional)
@@ -770,12 +793,11 @@ var_poll_fields <- list("duration_minutes") # set[character] | A comma separated
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 
-# List Tweets timeline by List ID.
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$tweets_api$lists_id_tweets(var_id, max_results = var_max_results, pagination_token = var_pagination_token, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
@@ -840,6 +862,9 @@ Streams a deterministic 1% of public Tweets.
 ```R
 library(twitter)
 
+# Sample stream
+#
+# prepare function argument(s)
 var_backfill_minutes <- 56 # integer | The number of minutes of backfill requested. (Optional)
 var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 var_expansions <- list("attachments.media_keys") # set[character] | A comma separated list of fields to expand. (Optional)
@@ -848,7 +873,6 @@ var_poll_fields <- list("duration_minutes") # set[character] | A comma separated
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 
-# Sample stream
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
@@ -916,6 +940,9 @@ Streams Tweets matching the stream's active rule set.
 ```R
 library(twitter)
 
+# Filtered stream
+#
+# prepare function argument(s)
 var_backfill_minutes <- 56 # integer | The number of minutes of backfill requested. (Optional)
 var_start_time <- "2021-02-01T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweets will be provided. (Optional)
 var_end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided. (Optional)
@@ -926,7 +953,6 @@ var_poll_fields <- list("duration_minutes") # set[character] | A comma separated
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 
-# Filtered stream
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
@@ -996,6 +1022,9 @@ Retrieves the list of Users who purchased a ticket to the given space
 ```R
 library(twitter)
 
+# Retrieve the list of Users who purchased a ticket to the given space
+#
+# prepare function argument(s)
 var_id <- "1YqKDqWqdPLsV" # character | The ID of the Space to be retrieved.
 var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results. (Optional)
 var_max_results <- 100 # integer | The maximum number of results. (Optional)
@@ -1003,7 +1032,6 @@ var_user_fields <- list("created_at") # set[character] | A comma separated list 
 var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
 var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 
-# Retrieve the list of Users who purchased a ticket to the given space
 api_instance <- twitter_api$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
@@ -1068,6 +1096,9 @@ Retrieves Tweets shared in the specified Space.
 ```R
 library(twitter)
 
+# Retrieve Tweets from a Space.
+#
+# prepare function argument(s)
 var_id <- "1YqKDqWqdPLsV" # character | The ID of the Space to be retrieved.
 var_max_results <- 100 # integer | The number of Tweets to fetch from the provided space. If not provided, the value will default to the maximum of 100. (Optional)
 var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
@@ -1077,12 +1108,11 @@ var_poll_fields <- list("duration_minutes") # set[character] | A comma separated
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 
-# Retrieve Tweets from a Space.
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$tweets_api$space_tweets(var_id, max_results = var_max_results, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
@@ -1146,6 +1176,9 @@ Returns Tweet Counts that match a search query.
 ```R
 library(twitter)
 
+# Full archive search counts
+#
+# prepare function argument(s)
 var_query <- "(from:TwitterDev OR from:TwitterAPI) has:media -is:retweet" # character | One query/rule/filter for matching Tweets. Refer to https://t.co/rulelength to identify the max query length.
 var_start_time <- "start_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The oldest UTC timestamp (from most recent 7 days) from which the Tweets will be provided. Timestamp is in second granularity and is inclusive (i.e. 12:00:01 includes the first second of the minute). (Optional)
 var_end_time <- "end_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The newest, most recent UTC timestamp to which the Tweets will be provided. Timestamp is in second granularity and is exclusive (i.e. 12:00:01 excludes the first second of the minute). (Optional)
@@ -1156,7 +1189,6 @@ var_pagination_token <- "pagination_token_example" # character | This parameter 
 var_granularity <- "hour" # character | The granularity for the search counts results. (Optional)
 var_search_count_fields <- list("end") # set[character] | A comma separated list of SearchCount fields to display. (Optional)
 
-# Full archive search counts
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
@@ -1224,6 +1256,9 @@ Returns Tweet Counts from the last 7 days that match a search query.
 ```R
 library(twitter)
 
+# Recent search counts
+#
+# prepare function argument(s)
 var_query <- "(from:TwitterDev OR from:TwitterAPI) has:media -is:retweet" # character | One query/rule/filter for matching Tweets. Refer to https://t.co/rulelength to identify the max query length.
 var_start_time <- "start_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The oldest UTC timestamp (from most recent 7 days) from which the Tweets will be provided. Timestamp is in second granularity and is inclusive (i.e. 12:00:01 includes the first second of the minute). (Optional)
 var_end_time <- "end_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The newest, most recent UTC timestamp to which the Tweets will be provided. Timestamp is in second granularity and is exclusive (i.e. 12:00:01 excludes the first second of the minute). (Optional)
@@ -1234,7 +1269,6 @@ var_pagination_token <- "pagination_token_example" # character | This parameter 
 var_granularity <- "hour" # character | The granularity for the search counts results. (Optional)
 var_search_count_fields <- list("end") # set[character] | A comma separated list of SearchCount fields to display. (Optional)
 
-# Recent search counts
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
@@ -1302,6 +1336,9 @@ Returns Tweets that match a search query.
 ```R
 library(twitter)
 
+# Full-archive search
+#
+# prepare function argument(s)
 var_query <- "(from:TwitterDev OR from:TwitterAPI) has:media -is:retweet" # character | One query/rule/filter for matching Tweets. Refer to https://t.co/rulelength to identify the max query length.
 var_start_time <- "start_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The oldest UTC timestamp from which the Tweets will be provided. Timestamp is in second granularity and is inclusive (i.e. 12:00:01 includes the first second of the minute). (Optional)
 var_end_time <- "end_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The newest, most recent UTC timestamp to which the Tweets will be provided. Timestamp is in second granularity and is exclusive (i.e. 12:00:01 excludes the first second of the minute). (Optional)
@@ -1318,7 +1355,6 @@ var_poll_fields <- list("duration_minutes") # set[character] | A comma separated
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 
-# Full-archive search
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
@@ -1392,6 +1428,9 @@ Returns Tweets from the last 7 days that match a search query.
 ```R
 library(twitter)
 
+# Recent search
+#
+# prepare function argument(s)
 var_query <- "(from:TwitterDev OR from:TwitterAPI) has:media -is:retweet" # character | One query/rule/filter for matching Tweets. Refer to https://t.co/rulelength to identify the max query length.
 var_start_time <- "start_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The oldest UTC timestamp from which the Tweets will be provided. Timestamp is in second granularity and is inclusive (i.e. 12:00:01 includes the first second of the minute). (Optional)
 var_end_time <- "end_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The newest, most recent UTC timestamp to which the Tweets will be provided. Timestamp is in second granularity and is exclusive (i.e. 12:00:01 excludes the first second of the minute). (Optional)
@@ -1408,12 +1447,11 @@ var_poll_fields <- list("duration_minutes") # set[character] | A comma separated
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 
-# Recent search
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$tweets_api$tweets_recent_search(var_query, start_time = var_start_time, end_time = var_end_time, since_id = var_since_id, until_id = var_until_id, max_results = var_max_results, next_token = var_next_token, pagination_token = var_pagination_token, sort_order = var_sort_order, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
@@ -1484,10 +1522,12 @@ Causes the User (in the path) to like the specified Tweet. The User in the path 
 ```R
 library(twitter)
 
+# Causes the User (in the path) to like the specified Tweet
+#
+# prepare function argument(s)
 var_id <- "id_example" # character | The ID of the authenticated source User that is requesting to like the Tweet.
 var_users_likes_create_request <- UsersLikesCreateRequest$new("tweet_id_example") # UsersLikesCreateRequest |  (Optional)
 
-# Causes the User (in the path) to like the specified Tweet
 api_instance <- twitter_api$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
@@ -1548,6 +1588,9 @@ Returns a list of Tweets liked by the provided User ID
 ```R
 library(twitter)
 
+# Returns Tweet objects liked by the provided User ID
+#
+# prepare function argument(s)
 var_id <- "2244994945" # character | The ID of the User to lookup.
 var_max_results <- 56 # integer | The maximum number of results. (Optional)
 var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. (Optional)
@@ -1558,12 +1601,11 @@ var_poll_fields <- list("duration_minutes") # set[character] | A comma separated
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 
-# Returns Tweet objects liked by the provided User ID
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$tweets_api$users_id_liked_tweets(var_id, max_results = var_max_results, pagination_token = var_pagination_token, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
@@ -1628,6 +1670,9 @@ Returns Tweet objects that mention username associated to the provided User ID
 ```R
 library(twitter)
 
+# User mention timeline by User ID
+#
+# prepare function argument(s)
 var_id <- "2244994945" # character | The ID of the User to lookup.
 var_since_id <- "since_id_example" # character | The minimum Tweet ID to be included in the result set. This parameter takes precedence over start_time if both are specified. (Optional)
 var_until_id <- "1346889436626259968" # character | The maximum Tweet ID to be included in the result set. This parameter takes precedence over end_time if both are specified. (Optional)
@@ -1642,12 +1687,11 @@ var_poll_fields <- list("duration_minutes") # set[character] | A comma separated
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 
-# User mention timeline by User ID
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$tweets_api$users_id_mentions(var_id, since_id = var_since_id, until_id = var_until_id, max_results = var_max_results, pagination_token = var_pagination_token, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
@@ -1716,10 +1760,12 @@ Causes the User (in the path) to retweet the specified Tweet. The User in the pa
 ```R
 library(twitter)
 
+# Causes the User (in the path) to retweet the specified Tweet.
+#
+# prepare function argument(s)
 var_id <- "id_example" # character | The ID of the authenticated source User that is requesting to retweet the Tweet.
 var_users_retweets_create_request <- UsersRetweetsCreateRequest$new("tweet_id_example") # UsersRetweetsCreateRequest |  (Optional)
 
-# Causes the User (in the path) to retweet the specified Tweet.
 api_instance <- twitter_api$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
@@ -1780,6 +1826,9 @@ Returns Tweet objects that appears in the provided User ID's home timeline
 ```R
 library(twitter)
 
+# User home timeline by User ID
+#
+# prepare function argument(s)
 var_id <- "id_example" # character | The ID of the authenticated source User to list Reverse Chronological Timeline Tweets of.
 var_since_id <- "791775337160081409" # character | The minimum Tweet ID to be included in the result set. This parameter takes precedence over start_time if both are specified. (Optional)
 var_until_id <- "1346889436626259968" # character | The maximum Tweet ID to be included in the result set. This parameter takes precedence over end_time if both are specified. (Optional)
@@ -1795,7 +1844,6 @@ var_poll_fields <- list("duration_minutes") # set[character] | A comma separated
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 
-# User home timeline by User ID
 api_instance <- twitter_api$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
@@ -1868,6 +1916,9 @@ Returns a list of Tweets authored by the provided User ID
 ```R
 library(twitter)
 
+# User Tweets timeline by User ID
+#
+# prepare function argument(s)
 var_id <- "2244994945" # character | The ID of the User to lookup.
 var_since_id <- "791775337160081409" # character | The minimum Tweet ID to be included in the result set. This parameter takes precedence over start_time if both are specified. (Optional)
 var_until_id <- "1346889436626259968" # character | The maximum Tweet ID to be included in the result set. This parameter takes precedence over end_time if both are specified. (Optional)
@@ -1883,12 +1934,11 @@ var_poll_fields <- list("duration_minutes") # set[character] | A comma separated
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 
-# User Tweets timeline by User ID
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$tweets_api$users_id_tweets(var_id, since_id = var_since_id, until_id = var_until_id, max_results = var_max_results, pagination_token = var_pagination_token, exclude = var_exclude, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
@@ -1958,10 +2008,12 @@ Causes the User (in the path) to unlike the specified Tweet. The User must match
 ```R
 library(twitter)
 
+# Causes the User (in the path) to unlike the specified Tweet
+#
+# prepare function argument(s)
 var_id <- "id_example" # character | The ID of the authenticated source User that is requesting to unlike the Tweet.
 var_tweet_id <- "tweet_id_example" # character | The ID of the Tweet that the User is requesting to unlike.
 
-# Causes the User (in the path) to unlike the specified Tweet
 api_instance <- twitter_api$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
@@ -2022,10 +2074,12 @@ Causes the User (in the path) to unretweet the specified Tweet. The User must ma
 ```R
 library(twitter)
 
+# Causes the User (in the path) to unretweet the specified Tweet
+#
+# prepare function argument(s)
 var_id <- "id_example" # character | The ID of the authenticated source User that is requesting to retweet the Tweet.
 var_source_tweet_id <- "source_tweet_id_example" # character | The ID of the Tweet that the User is requesting to unretweet.
 
-# Causes the User (in the path) to unretweet the specified Tweet
 api_instance <- twitter_api$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")

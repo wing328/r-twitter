@@ -6,7 +6,7 @@ A Tweet or error that can be returned by the streaming Tweet API. The values ret
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **data** | [**Tweet**](Tweet.md) |  | [optional] 
-**errors** | [**array[Problem]**](Problem.md) |  | [optional] 
+**errors** | [**array[Problem]**](Problem.md) |  | [optional] [Min. items: 1] 
 **includes** | [**Expansions**](Expansions.md) |  | [optional] 
 **matching_rules** | [**array[FilteredStreamingTweetResponseMatchingRulesInner]**](FilteredStreamingTweetResponse_matching_rules_inner.md) | The list of rules which matched the Tweet | [optional] 
 

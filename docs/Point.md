@@ -5,7 +5,7 @@ A [GeoJson Point](https://tools.ietf.org/html/rfc7946#section-3.1.2) geometry ob
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**coordinates** | **array[numeric]** | A [GeoJson Position](https://tools.ietf.org/html/rfc7946#section-3.1.1) in the format &#x60;[longitude,latitude]&#x60;. | 
-**type** | **character** |  | 
+**coordinates** | **array[numeric]** | A [GeoJson Position](https://tools.ietf.org/html/rfc7946#section-3.1.1) in the format &#x60;[longitude,latitude]&#x60;. | [Max. items: 2] [Min. items: 2] 
+**type** | **character** |  | [Enum: [Point]] 
 
 

@@ -9,9 +9,9 @@ Name | Type | Description | Notes
 **status** | **integer** |  | [optional] 
 **title** | **character** |  | 
 **type** | **character** |  | 
-**parameter** | **character** |  | 
+**parameter** | **character** |  | [Min. length: 1] 
 **resource_id** | **character** |  | 
-**resource_type** | **character** |  | 
+**resource_type** | **character** |  | [Enum: [user, tweet, media, list, space]] 
 **value** | **character** | Value will match the schema of the field. | 
 
 

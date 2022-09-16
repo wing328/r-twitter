@@ -9,6 +9,6 @@ Name | Type | Description | Notes
 **status** | **integer** |  | [optional] 
 **title** | **character** |  | 
 **type** | **character** |  | 
-**errors** | [**array[InvalidRequestProblemAllOfErrors]**](InvalidRequestProblem_allOf_errors.md) |  | [optional] 
+**errors** | [**array[InvalidRequestProblemAllOfErrors]**](InvalidRequestProblem_allOf_errors.md) |  | [optional] [Min. items: 1] 
 
 

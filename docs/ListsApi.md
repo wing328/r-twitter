@@ -31,6 +31,9 @@ Get a User's List Memberships.
 ```R
 library(twitter)
 
+# Get a User's List Memberships
+#
+# prepare function argument(s)
 var_id <- "2244994945" # character | The ID of the User to lookup.
 var_max_results <- 100 # integer | The maximum number of results. (Optional)
 var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results. (Optional)
@@ -38,12 +41,11 @@ var_list_fields <- list("created_at") # set[character] | A comma separated list 
 var_expansions <- list("owner_id") # set[character] | A comma separated list of fields to expand. (Optional)
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 
-# Get a User's List Memberships
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$lists_api$get_user_list_memberships(var_id, max_results = var_max_results, pagination_token = var_pagination_token, list_fields = var_list_fields, expansions = var_expansions, user_fields = var_user_fields, data_file = "result.txt"),
@@ -105,10 +107,12 @@ Causes a User to become a member of a List.
 ```R
 library(twitter)
 
+# Add a List member
+#
+# prepare function argument(s)
 var_id <- "id_example" # character | The ID of the List for which to add a member.
 var_list_add_user_request <- ListAddUserRequest$new("user_id_example") # ListAddUserRequest |  (Optional)
 
-# Add a List member
 api_instance <- twitter_api$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
@@ -169,9 +173,11 @@ Creates a new List.
 ```R
 library(twitter)
 
+# Create List
+#
+# prepare function argument(s)
 var_list_create_request <- ListCreateRequest$new("name_example", "description_example", "item_private_example") # ListCreateRequest |  (Optional)
 
-# Create List
 api_instance <- twitter_api$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
@@ -231,9 +237,11 @@ Delete a List that you own.
 ```R
 library(twitter)
 
+# Delete List
+#
+# prepare function argument(s)
 var_id <- "id_example" # character | The ID of the List to delete.
 
-# Delete List
 api_instance <- twitter_api$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
@@ -293,17 +301,19 @@ Returns a List.
 ```R
 library(twitter)
 
+# List lookup by List ID.
+#
+# prepare function argument(s)
 var_id <- "id_example" # character | The ID of the List.
 var_list_fields <- list("created_at") # set[character] | A comma separated list of List fields to display. (Optional)
 var_expansions <- list("owner_id") # set[character] | A comma separated list of fields to expand. (Optional)
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 
-# List lookup by List ID.
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$lists_api$list_id_get(var_id, list_fields = var_list_fields, expansions = var_expansions, user_fields = var_user_fields, data_file = "result.txt"),
@@ -363,10 +373,12 @@ Update a List that you own.
 ```R
 library(twitter)
 
+# Update List.
+#
+# prepare function argument(s)
 var_id <- "id_example" # character | The ID of the List to modify.
 var_list_update_request <- ListUpdateRequest$new("description_example", "name_example", "item_private_example") # ListUpdateRequest |  (Optional)
 
-# Update List.
 api_instance <- twitter_api$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
@@ -427,10 +439,12 @@ Causes a User to be removed from the members of a List.
 ```R
 library(twitter)
 
+# Remove a List member
+#
+# prepare function argument(s)
 var_id <- "id_example" # character | The ID of the List to remove a member.
 var_user_id <- "user_id_example" # character | The ID of User that will be removed from the List.
 
-# Remove a List member
 api_instance <- twitter_api$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
@@ -491,10 +505,12 @@ Causes a User to follow a List.
 ```R
 library(twitter)
 
+# Follow a List
+#
+# prepare function argument(s)
 var_id <- "id_example" # character | The ID of the authenticated source User that will follow the List.
 var_list_followed_request <- ListFollowedRequest$new("list_id_example") # ListFollowedRequest |  (Optional)
 
-# Follow a List
 api_instance <- twitter_api$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
@@ -555,6 +571,9 @@ Get a User's Owned Lists.
 ```R
 library(twitter)
 
+# Get a User's Owned Lists.
+#
+# prepare function argument(s)
 var_id <- "2244994945" # character | The ID of the User to lookup.
 var_max_results <- 100 # integer | The maximum number of results. (Optional)
 var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results. (Optional)
@@ -562,12 +581,11 @@ var_list_fields <- list("created_at") # set[character] | A comma separated list 
 var_expansions <- list("owner_id") # set[character] | A comma separated list of fields to expand. (Optional)
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 
-# Get a User's Owned Lists.
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$lists_api$list_user_owned_lists(var_id, max_results = var_max_results, pagination_token = var_pagination_token, list_fields = var_list_fields, expansions = var_expansions, user_fields = var_user_fields, data_file = "result.txt"),
@@ -629,10 +647,12 @@ Causes a User to pin a List.
 ```R
 library(twitter)
 
+# Pin a List
+#
+# prepare function argument(s)
 var_id <- "id_example" # character | The ID of the authenticated source User that will pin the List.
 var_list_pinned_request <- ListPinnedRequest$new("list_id_example") # ListPinnedRequest | 
 
-# Pin a List
 api_instance <- twitter_api$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
@@ -693,12 +713,14 @@ Get a User's Pinned Lists.
 ```R
 library(twitter)
 
+# Get a User's Pinned Lists
+#
+# prepare function argument(s)
 var_id <- "id_example" # character | The ID of the authenticated source User for whom to return results.
 var_list_fields <- list("created_at") # set[character] | A comma separated list of List fields to display. (Optional)
 var_expansions <- list("owner_id") # set[character] | A comma separated list of fields to expand. (Optional)
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 
-# Get a User's Pinned Lists
 api_instance <- twitter_api$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
@@ -761,10 +783,12 @@ Causes a User to unfollow a List.
 ```R
 library(twitter)
 
+# Unfollow a List
+#
+# prepare function argument(s)
 var_id <- "id_example" # character | The ID of the authenticated source User that will unfollow the List.
 var_list_id <- "list_id_example" # character | The ID of the List to unfollow.
 
-# Unfollow a List
 api_instance <- twitter_api$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
@@ -825,10 +849,12 @@ Causes a User to remove a pinned List.
 ```R
 library(twitter)
 
+# Unpin a List
+#
+# prepare function argument(s)
 var_id <- "id_example" # character | The ID of the authenticated source User for whom to return results.
 var_list_id <- "list_id_example" # character | The ID of the List to unpin.
 
-# Unpin a List
 api_instance <- twitter_api$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
@@ -889,6 +915,9 @@ Returns a User's followed Lists.
 ```R
 library(twitter)
 
+# Get User's Followed Lists
+#
+# prepare function argument(s)
 var_id <- "2244994945" # character | The ID of the User to lookup.
 var_max_results <- 100 # integer | The maximum number of results. (Optional)
 var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results. (Optional)
@@ -896,12 +925,11 @@ var_list_fields <- list("created_at") # set[character] | A comma separated list 
 var_expansions <- list("owner_id") # set[character] | A comma separated list of fields to expand. (Optional)
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 
-# Get User's Followed Lists
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$lists_api$user_followed_lists(var_id, max_results = var_max_results, pagination_token = var_pagination_token, list_fields = var_list_fields, expansions = var_expansions, user_fields = var_user_fields, data_file = "result.txt"),

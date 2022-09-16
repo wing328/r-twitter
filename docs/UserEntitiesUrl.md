@@ -5,6 +5,6 @@ Expanded details for the URL specified in the User's profile, with start and end
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**urls** | [**array[UrlEntity]**](UrlEntity.md) |  | [optional] 
+**urls** | [**array[UrlEntity]**](UrlEntity.md) |  | [optional] [Min. items: 1] 
 
 
