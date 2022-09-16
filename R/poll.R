@@ -238,7 +238,7 @@ Poll <- R6::R6Class(
       }
       # check the required field `options`
       if (!is.null(input_json$`options`)) {
-        stopifnot(is.vector(input_json$`options`), length(json_input$`options`) != 0)
+        stopifnot(is.vector(input_json$`options`), length(input_json$`options`) != 0)
         tmp <- sapply(input_json$`options`, function(x) stopifnot(R6::is.R6(x)))
       } else {
         stop(paste("The JSON input `", input, "` is invalid for Poll: the required field `options` is missing."))
