@@ -140,7 +140,7 @@ ProblemErrors <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `errors`
       if (!is.null(input_json$`errors`)) {
-        stopifnot(is.vector(input_json$`errors`), length(json_input$`errors`) != 0)
+        stopifnot(is.vector(input_json$`errors`), length(input_json$`errors`) != 0)
         tmp <- sapply(input_json$`errors`, function(x) stopifnot(R6::is.R6(x)))
       } else {
         stop(paste("The JSON input `", input, "` is invalid for ProblemErrors: the required field `errors` is missing."))

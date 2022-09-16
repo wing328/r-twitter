@@ -140,7 +140,7 @@ AddRulesRequest <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `add`
       if (!is.null(input_json$`add`)) {
-        stopifnot(is.vector(input_json$`add`), length(json_input$`add`) != 0)
+        stopifnot(is.vector(input_json$`add`), length(input_json$`add`) != 0)
         tmp <- sapply(input_json$`add`, function(x) stopifnot(R6::is.R6(x)))
       } else {
         stop(paste("The JSON input `", input, "` is invalid for AddRulesRequest: the required field `add` is missing."))

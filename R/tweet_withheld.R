@@ -44,6 +44,9 @@ TweetWithheld <- R6::R6Class(
       if (!missing(`country_codes`)) {
         stopifnot(is.vector(`country_codes`), length(`country_codes`) != 0)
         sapply(`country_codes`, function(x) stopifnot(is.character(x)))
+        if (!identical(`country_codes`, unique(`country_codes`))) {
+          stop("Error! Items in `country_codes` are not unique.")
+        }
         self$`country_codes` <- `country_codes`
       }
       if (!is.null(`scope`)) {
@@ -98,6 +101,9 @@ TweetWithheld <- R6::R6Class(
       }
       if (!is.null(this_object$`country_codes`)) {
         self$`country_codes` <- ApiClient$new()$deserializeObj(this_object$`country_codes`, "set[character]", loadNamespace("twitter"))
+        if (!identical(self$`country_codes`, unique(self$`country_codes`))) {
+          stop("Error! Items in `country_codes` are not unique.")
+        }
       }
       if (!is.null(this_object$`scope`)) {
         self$`scope` <- this_object$`scope`
@@ -165,6 +171,9 @@ TweetWithheld <- R6::R6Class(
       this_object <- jsonlite::fromJSON(input_json)
       self$`copyright` <- this_object$`copyright`
       self$`country_codes` <- ApiClient$new()$deserializeObj(this_object$`country_codes`, "set[character]", loadNamespace("twitter"))
+      if (!identical(self$`country_codes`, unique(self$`country_codes`))) {
+        stop("Error! Items in `country_codes` are not unique.")
+      }
       self$`scope` <- this_object$`scope`
       # process additional properties/fields in the payload
       for (key in names(this_object)) {
@@ -193,6 +202,9 @@ TweetWithheld <- R6::R6Class(
       # check the required field `country_codes`
       if (!is.null(input_json$`country_codes`)) {
         stopifnot(is.vector(input_json$`country_codes`), length(input_json$`country_codes`) != 0)
+        if (!identical(input_json$`country_codes`, unique(input_json$`country_codes`))) {
+          stop("Error! Items in `country_codes` are not unique.")
+        }
         tmp <- sapply(input_json$`country_codes`, function(x) stopifnot(is.character(x)))
       } else {
         stop(paste("The JSON input `", input, "` is invalid for TweetWithheld: the required field `country_codes` is missing."))
