@@ -1701,7 +1701,7 @@ UsersApi <- R6::R6Class(
 
       local_var_url_path <- "/2/users/{id}"
       if (!missing(`id`)) {
-        local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
+        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
       # Bearer token
@@ -1915,7 +1915,7 @@ UsersApi <- R6::R6Class(
 
       local_var_url_path <- "/2/users/by/username/{username}"
       if (!missing(`username`)) {
-        local_var_url_path <- gsub(paste0("\\{", "username", "\\}"), URLencode(as.character(`username`), reserved = TRUE), local_var_url_path)
+        local_var_url_path <- gsub("\\{username\\}", URLencode(as.character(`username`), reserved = TRUE), local_var_url_path)
       }
 
       # Bearer token
@@ -2601,7 +2601,7 @@ UsersApi <- R6::R6Class(
 
       local_var_url_path <- "/2/lists/{id}/followers"
       if (!missing(`id`)) {
-        local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
+        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
       # Bearer token
@@ -2849,7 +2849,7 @@ UsersApi <- R6::R6Class(
 
       local_var_url_path <- "/2/lists/{id}/members"
       if (!missing(`id`)) {
-        local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
+        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
       # Bearer token
@@ -3091,7 +3091,7 @@ UsersApi <- R6::R6Class(
 
       local_var_url_path <- "/2/tweets/{id}/liking_users"
       if (!missing(`id`)) {
-        local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
+        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
       # Bearer token
@@ -3333,7 +3333,7 @@ UsersApi <- R6::R6Class(
 
       local_var_url_path <- "/2/tweets/{id}/retweeted_by"
       if (!missing(`id`)) {
-        local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
+        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
       # Bearer token
@@ -3473,7 +3473,7 @@ UsersApi <- R6::R6Class(
 
       local_var_url_path <- "/2/users/{id}/blocking"
       if (!missing(`id`)) {
-        local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
+        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
       # OAuth-related settings
@@ -3705,7 +3705,7 @@ UsersApi <- R6::R6Class(
 
       local_var_url_path <- "/2/users/{id}/blocking"
       if (!missing(`id`)) {
-        local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
+        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
       # OAuth-related settings
@@ -3834,7 +3834,7 @@ UsersApi <- R6::R6Class(
 
       local_var_url_path <- "/2/users/{id}/following"
       if (!missing(`id`)) {
-        local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
+        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
       # OAuth-related settings
@@ -4072,7 +4072,7 @@ UsersApi <- R6::R6Class(
 
       local_var_url_path <- "/2/users/{id}/followers"
       if (!missing(`id`)) {
-        local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
+        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
       # Bearer token
@@ -4314,7 +4314,7 @@ UsersApi <- R6::R6Class(
 
       local_var_url_path <- "/2/users/{id}/following"
       if (!missing(`id`)) {
-        local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
+        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
       # Bearer token
@@ -4447,7 +4447,7 @@ UsersApi <- R6::R6Class(
 
       local_var_url_path <- "/2/users/{id}/muting"
       if (!missing(`id`)) {
-        local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
+        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
       # OAuth-related settings
@@ -4685,7 +4685,7 @@ UsersApi <- R6::R6Class(
 
       local_var_url_path <- "/2/users/{id}/muting"
       if (!missing(`id`)) {
-        local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
+        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
       # OAuth-related settings
@@ -4821,11 +4821,11 @@ UsersApi <- R6::R6Class(
 
       local_var_url_path <- "/2/users/{source_user_id}/blocking/{target_user_id}"
       if (!missing(`source_user_id`)) {
-        local_var_url_path <- gsub(paste0("\\{", "source_user_id", "\\}"), URLencode(as.character(`source_user_id`), reserved = TRUE), local_var_url_path)
+        local_var_url_path <- gsub("\\{source_user_id\\}", URLencode(as.character(`source_user_id`), reserved = TRUE), local_var_url_path)
       }
 
       if (!missing(`target_user_id`)) {
-        local_var_url_path <- gsub(paste0("\\{", "target_user_id", "\\}"), URLencode(as.character(`target_user_id`), reserved = TRUE), local_var_url_path)
+        local_var_url_path <- gsub("\\{target_user_id\\}", URLencode(as.character(`target_user_id`), reserved = TRUE), local_var_url_path)
       }
 
       # OAuth-related settings
@@ -4961,11 +4961,11 @@ UsersApi <- R6::R6Class(
 
       local_var_url_path <- "/2/users/{source_user_id}/following/{target_user_id}"
       if (!missing(`source_user_id`)) {
-        local_var_url_path <- gsub(paste0("\\{", "source_user_id", "\\}"), URLencode(as.character(`source_user_id`), reserved = TRUE), local_var_url_path)
+        local_var_url_path <- gsub("\\{source_user_id\\}", URLencode(as.character(`source_user_id`), reserved = TRUE), local_var_url_path)
       }
 
       if (!missing(`target_user_id`)) {
-        local_var_url_path <- gsub(paste0("\\{", "target_user_id", "\\}"), URLencode(as.character(`target_user_id`), reserved = TRUE), local_var_url_path)
+        local_var_url_path <- gsub("\\{target_user_id\\}", URLencode(as.character(`target_user_id`), reserved = TRUE), local_var_url_path)
       }
 
       # OAuth-related settings
@@ -5101,11 +5101,11 @@ UsersApi <- R6::R6Class(
 
       local_var_url_path <- "/2/users/{source_user_id}/muting/{target_user_id}"
       if (!missing(`source_user_id`)) {
-        local_var_url_path <- gsub(paste0("\\{", "source_user_id", "\\}"), URLencode(as.character(`source_user_id`), reserved = TRUE), local_var_url_path)
+        local_var_url_path <- gsub("\\{source_user_id\\}", URLencode(as.character(`source_user_id`), reserved = TRUE), local_var_url_path)
       }
 
       if (!missing(`target_user_id`)) {
-        local_var_url_path <- gsub(paste0("\\{", "target_user_id", "\\}"), URLencode(as.character(`target_user_id`), reserved = TRUE), local_var_url_path)
+        local_var_url_path <- gsub("\\{target_user_id\\}", URLencode(as.character(`target_user_id`), reserved = TRUE), local_var_url_path)
       }
 
       # OAuth-related settings

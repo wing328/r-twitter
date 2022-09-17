@@ -652,7 +652,7 @@ SpacesApi <- R6::R6Class(
 
       local_var_url_path <- "/2/spaces/{id}"
       if (!missing(`id`)) {
-        local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
+        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
       # Bearer token
@@ -1666,7 +1666,7 @@ SpacesApi <- R6::R6Class(
 
       local_var_url_path <- "/2/spaces/{id}/buyers"
       if (!missing(`id`)) {
-        local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
+        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
       # OAuth-related settings
@@ -1977,7 +1977,7 @@ SpacesApi <- R6::R6Class(
 
       local_var_url_path <- "/2/spaces/{id}/tweets"
       if (!missing(`id`)) {
-        local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
+        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
       # Bearer token
