@@ -5,7 +5,7 @@ Represent a boundary range (start and end index) for a recognized entity (for ex
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**end** | **integer** | Index (zero-based) at which position this entity ends.  The index is inclusive. | 
-**start** | **integer** | Index (zero-based) at which position this entity starts.  The index is inclusive. | 
+**end** | **integer** | Index (zero-based) at which position this entity ends.  The index is inclusive. | [Min: 0] 
+**start** | **integer** | Index (zero-based) at which position this entity starts.  The index is inclusive. | [Min: 0] 
 
 

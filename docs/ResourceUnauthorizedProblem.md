@@ -11,8 +11,8 @@ Name | Type | Description | Notes
 **type** | **character** |  | 
 **parameter** | **character** |  | 
 **resource_id** | **character** |  | 
-**resource_type** | **character** |  | 
-**section** | **character** |  | 
+**resource_type** | **character** |  | [Enum: [user, tweet, media, list, space]] 
+**section** | **character** |  | [Enum: [data, includes]] 
 **value** | **character** |  | 
 
 

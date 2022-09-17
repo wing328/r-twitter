@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **status** | **integer** |  | [optional] 
 **title** | **character** |  | 
 **type** | **character** |  | 
-**reason** | **character** |  | [optional] 
+**reason** | **character** |  | [optional] [Enum: [official-client-forbidden, client-not-enrolled]] 
 **registration_url** | **character** |  | [optional] 
 
 

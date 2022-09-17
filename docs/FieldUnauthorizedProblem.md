@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **title** | **character** |  | 
 **type** | **character** |  | 
 **field** | **character** |  | 
-**resource_type** | **character** |  | 
-**section** | **character** |  | 
+**resource_type** | **character** |  | [Enum: [user, tweet, media, list, space]] 
+**section** | **character** |  | [Enum: [data, includes]] 
 
 

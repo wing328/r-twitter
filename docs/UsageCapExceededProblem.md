@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **status** | **integer** |  | [optional] 
 **title** | **character** |  | 
 **type** | **character** |  | 
-**period** | **character** |  | [optional] 
-**scope** | **character** |  | [optional] 
+**period** | **character** |  | [optional] [Enum: [Daily, Monthly]] 
+**scope** | **character** |  | [optional] [Enum: [Account, Product]] 
 
 

@@ -23,18 +23,20 @@ Returns a variety of information about the Space specified by the requested ID
 ```R
 library(twitter)
 
+# Space lookup by Space ID
+#
+# prepare function argument(s)
 var_id <- "1YqKDqWqdPLsV" # character | The ID of the Space to be retrieved.
 var_space_fields <- list("created_at") # set[character] | A comma separated list of Space fields to display. (Optional)
 var_expansions <- list("creator_id") # set[character] | A comma separated list of fields to expand. (Optional)
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 var_topic_fields <- list("description") # set[character] | A comma separated list of Topic fields to display. (Optional)
 
-# Space lookup by Space ID
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$spaces_api$find_space_by_id(var_id, space_fields = var_space_fields, expansions = var_expansions, user_fields = var_user_fields, topic_fields = var_topic_fields, data_file = "result.txt"),
@@ -95,18 +97,20 @@ Returns a variety of information about the Spaces created by the provided User I
 ```R
 library(twitter)
 
+# Space lookup by their creators
+#
+# prepare function argument(s)
 var_user_ids <- list("inner_example") # array[character] | The IDs of Users to search through.
 var_space_fields <- list("created_at") # set[character] | A comma separated list of Space fields to display. (Optional)
 var_expansions <- list("creator_id") # set[character] | A comma separated list of fields to expand. (Optional)
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 var_topic_fields <- list("description") # set[character] | A comma separated list of Topic fields to display. (Optional)
 
-# Space lookup by their creators
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$spaces_api$find_spaces_by_creator_ids(var_user_ids, space_fields = var_space_fields, expansions = var_expansions, user_fields = var_user_fields, topic_fields = var_topic_fields, data_file = "result.txt"),
@@ -167,18 +171,20 @@ Returns a variety of information about the Spaces specified by the requested IDs
 ```R
 library(twitter)
 
+# Space lookup up Space IDs
+#
+# prepare function argument(s)
 var_ids <- list("inner_example") # array[character] | The list of Space IDs to return.
 var_space_fields <- list("created_at") # set[character] | A comma separated list of Space fields to display. (Optional)
 var_expansions <- list("creator_id") # set[character] | A comma separated list of fields to expand. (Optional)
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 var_topic_fields <- list("description") # set[character] | A comma separated list of Topic fields to display. (Optional)
 
-# Space lookup up Space IDs
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$spaces_api$find_spaces_by_ids(var_ids, space_fields = var_space_fields, expansions = var_expansions, user_fields = var_user_fields, topic_fields = var_topic_fields, data_file = "result.txt"),
@@ -239,6 +245,9 @@ Returns Spaces that match the provided query.
 ```R
 library(twitter)
 
+# Search for Spaces
+#
+# prepare function argument(s)
 var_query <- "crypto" # character | The search query.
 var_state <- "all" # character | The state of Spaces to search for. (Optional)
 var_max_results <- 100 # integer | The number of results to return. (Optional)
@@ -247,12 +256,11 @@ var_expansions <- list("creator_id") # set[character] | A comma separated list o
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 var_topic_fields <- list("description") # set[character] | A comma separated list of Topic fields to display. (Optional)
 
-# Search for Spaces
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$spaces_api$search_spaces(var_query, state = var_state, max_results = var_max_results, space_fields = var_space_fields, expansions = var_expansions, user_fields = var_user_fields, topic_fields = var_topic_fields, data_file = "result.txt"),
@@ -315,6 +323,9 @@ Retrieves the list of Users who purchased a ticket to the given space
 ```R
 library(twitter)
 
+# Retrieve the list of Users who purchased a ticket to the given space
+#
+# prepare function argument(s)
 var_id <- "1YqKDqWqdPLsV" # character | The ID of the Space to be retrieved.
 var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results. (Optional)
 var_max_results <- 100 # integer | The maximum number of results. (Optional)
@@ -322,7 +333,6 @@ var_user_fields <- list("created_at") # set[character] | A comma separated list 
 var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
 var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 
-# Retrieve the list of Users who purchased a ticket to the given space
 api_instance <- twitter_api$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
@@ -387,6 +397,9 @@ Retrieves Tweets shared in the specified Space.
 ```R
 library(twitter)
 
+# Retrieve Tweets from a Space.
+#
+# prepare function argument(s)
 var_id <- "1YqKDqWqdPLsV" # character | The ID of the Space to be retrieved.
 var_max_results <- 100 # integer | The number of Tweets to fetch from the provided space. If not provided, the value will default to the maximum of 100. (Optional)
 var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
@@ -396,12 +409,11 @@ var_poll_fields <- list("duration_minutes") # set[character] | A comma separated
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 
-# Retrieve Tweets from a Space.
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # Configure OAuth2 access token for authorization: OAuth2UserToken
-api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
              # api_instance$spaces_api$space_tweets(var_id, max_results = var_max_results, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),

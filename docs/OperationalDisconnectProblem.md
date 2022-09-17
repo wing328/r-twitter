@@ -9,6 +9,6 @@ Name | Type | Description | Notes
 **status** | **integer** |  | [optional] 
 **title** | **character** |  | 
 **type** | **character** |  | 
-**disconnect_type** | **character** |  | [optional] 
+**disconnect_type** | **character** |  | [optional] [Enum: [OperationalDisconnect, UpstreamOperationalDisconnect, ForceDisconnect, UpstreamUncleanDisconnect, SlowReader, InternalError, ClientApplicationStateDegraded, InvalidRules]] 
 
 

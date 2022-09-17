@@ -18,8 +18,9 @@ Full OpenAPI Specification in JSON format. (See https://github.com/OAI/OpenAPI-S
 ```R
 library(twitter)
 
-
 # Returns the OpenAPI Specification document.
+#
+
 api_instance <- twitter_api$new()
 result <- tryCatch(
              # to save the result into a file, simply add the optional `data_file` parameter, e.g.

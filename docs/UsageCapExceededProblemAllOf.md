@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**period** | **character** |  | [optional] 
-**scope** | **character** |  | [optional] 
+**period** | **character** |  | [optional] [Enum: [Daily, Monthly]] 
+**scope** | **character** |  | [optional] [Enum: [Account, Product]] 
 
 

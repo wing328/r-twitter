@@ -9,6 +9,6 @@ Name | Type | Description | Notes
 **status** | **integer** |  | [optional] 
 **title** | **character** |  | 
 **type** | **character** |  | 
-**connection_issue** | **character** |  | [optional] 
+**connection_issue** | **character** |  | [optional] [Enum: [TooManyConnections, ProvisioningSubscription, RuleConfigurationIssue, RulesInvalidIssue]] 
 
 

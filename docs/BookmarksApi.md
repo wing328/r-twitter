@@ -20,6 +20,9 @@ Returns Tweet objects that have been bookmarked by the requesting User
 ```R
 library(twitter)
 
+# Bookmarks by User
+#
+# prepare function argument(s)
 var_id <- "id_example" # character | The ID of the authenticated source User for whom to return results.
 var_max_results <- 56 # integer | The maximum number of results. (Optional)
 var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. (Optional)
@@ -30,7 +33,6 @@ var_poll_fields <- list("duration_minutes") # set[character] | A comma separated
 var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 
-# Bookmarks by User
 api_instance <- twitter_api$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
@@ -98,10 +100,12 @@ Adds a Tweet (ID in the body) to the requesting User's (in the path) bookmarks
 ```R
 library(twitter)
 
+# Add Tweet to Bookmarks
+#
+# prepare function argument(s)
 var_id <- "id_example" # character | The ID of the authenticated source User for whom to add bookmarks.
 var_bookmark_add_request <- BookmarkAddRequest$new("tweet_id_example") # BookmarkAddRequest | 
 
-# Add Tweet to Bookmarks
 api_instance <- twitter_api$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
@@ -162,10 +166,12 @@ Removes a Tweet from the requesting User's bookmarked Tweets.
 ```R
 library(twitter)
 
+# Remove a bookmarked Tweet
+#
+# prepare function argument(s)
 var_id <- "id_example" # character | The ID of the authenticated source User whose bookmark is to be removed.
 var_tweet_id <- "tweet_id_example" # character | The ID of the Tweet that the source User is removing from bookmarks.
 
-# Remove a bookmarked Tweet
 api_instance <- twitter_api$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")

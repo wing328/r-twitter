@@ -6,6 +6,6 @@ Tweet compliance stream events.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **data** | [**TweetComplianceData**](TweetComplianceData.md) |  | 
-**errors** | [**array[Problem]**](Problem.md) |  | 
+**errors** | [**array[Problem]**](Problem.md) |  | [Min. items: 1] 
 
 
