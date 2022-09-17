@@ -2393,7 +2393,7 @@ TweetsApi <- R6::R6Class(
 
       local_var_url_path <- "/2/tweets/{id}"
       if (!missing(`id`)) {
-        local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
+        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
       # OAuth-related settings
@@ -2687,7 +2687,7 @@ TweetsApi <- R6::R6Class(
 
       local_var_url_path <- "/2/tweets/{id}"
       if (!missing(`id`)) {
-        local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
+        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
       # Bearer token
@@ -3344,7 +3344,7 @@ TweetsApi <- R6::R6Class(
 
       local_var_url_path <- "/2/tweets/{id}/quote_tweets"
       if (!missing(`id`)) {
-        local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
+        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
       # Bearer token
@@ -4306,7 +4306,7 @@ TweetsApi <- R6::R6Class(
 
       local_var_url_path <- "/2/tweets/{tweet_id}/hidden"
       if (!missing(`tweet_id`)) {
-        local_var_url_path <- gsub(paste0("\\{", "tweet_id", "\\}"), URLencode(as.character(`tweet_id`), reserved = TRUE), local_var_url_path)
+        local_var_url_path <- gsub("\\{tweet_id\\}", URLencode(as.character(`tweet_id`), reserved = TRUE), local_var_url_path)
       }
 
       # OAuth-related settings
@@ -4628,7 +4628,7 @@ TweetsApi <- R6::R6Class(
 
       local_var_url_path <- "/2/lists/{id}/tweets"
       if (!missing(`id`)) {
-        local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
+        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
       # Bearer token
@@ -5486,7 +5486,7 @@ TweetsApi <- R6::R6Class(
 
       local_var_url_path <- "/2/spaces/{id}/buyers"
       if (!missing(`id`)) {
-        local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
+        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
       # OAuth-related settings
@@ -5797,7 +5797,7 @@ TweetsApi <- R6::R6Class(
 
       local_var_url_path <- "/2/spaces/{id}/tweets"
       if (!missing(`id`)) {
-        local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
+        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
       # Bearer token
@@ -7143,7 +7143,7 @@ TweetsApi <- R6::R6Class(
 
       local_var_url_path <- "/2/users/{id}/likes"
       if (!missing(`id`)) {
-        local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
+        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
       # OAuth-related settings
@@ -7465,7 +7465,7 @@ TweetsApi <- R6::R6Class(
 
       local_var_url_path <- "/2/users/{id}/liked_tweets"
       if (!missing(`id`)) {
-        local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
+        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
       # Bearer token
@@ -7823,7 +7823,7 @@ TweetsApi <- R6::R6Class(
 
       local_var_url_path <- "/2/users/{id}/mentions"
       if (!missing(`id`)) {
-        local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
+        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
       # Bearer token
@@ -7956,7 +7956,7 @@ TweetsApi <- R6::R6Class(
 
       local_var_url_path <- "/2/users/{id}/retweets"
       if (!missing(`id`)) {
-        local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
+        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
       # OAuth-related settings
@@ -8326,7 +8326,7 @@ TweetsApi <- R6::R6Class(
 
       local_var_url_path <- "/2/users/{id}/timelines/reverse_chronological"
       if (!missing(`id`)) {
-        local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
+        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
       # OAuth-related settings
@@ -8708,7 +8708,7 @@ TweetsApi <- R6::R6Class(
 
       local_var_url_path <- "/2/users/{id}/tweets"
       if (!missing(`id`)) {
-        local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
+        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
       # Bearer token
@@ -8848,11 +8848,11 @@ TweetsApi <- R6::R6Class(
 
       local_var_url_path <- "/2/users/{id}/likes/{tweet_id}"
       if (!missing(`id`)) {
-        local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
+        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
       if (!missing(`tweet_id`)) {
-        local_var_url_path <- gsub(paste0("\\{", "tweet_id", "\\}"), URLencode(as.character(`tweet_id`), reserved = TRUE), local_var_url_path)
+        local_var_url_path <- gsub("\\{tweet_id\\}", URLencode(as.character(`tweet_id`), reserved = TRUE), local_var_url_path)
       }
 
       # OAuth-related settings
@@ -8988,11 +8988,11 @@ TweetsApi <- R6::R6Class(
 
       local_var_url_path <- "/2/users/{id}/retweets/{source_tweet_id}"
       if (!missing(`id`)) {
-        local_var_url_path <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
+        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
       if (!missing(`source_tweet_id`)) {
-        local_var_url_path <- gsub(paste0("\\{", "source_tweet_id", "\\}"), URLencode(as.character(`source_tweet_id`), reserved = TRUE), local_var_url_path)
+        local_var_url_path <- gsub("\\{source_tweet_id\\}", URLencode(as.character(`source_tweet_id`), reserved = TRUE), local_var_url_path)
       }
 
       # OAuth-related settings
