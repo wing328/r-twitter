@@ -9,8 +9,6 @@
 #' @format An \code{R6Class} generator object
 #' @field description  character
 #' @field user_ids  list(character)
-#' @field _field_list a list of fields list(character)
-#' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -19,8 +17,6 @@ ReportUsersRequest <- R6::R6Class(
   public = list(
     `description` = NULL,
     `user_ids` = NULL,
-    `_field_list` = c("description", "user_ids"),
-    `additional_properties` = list(),
     #' Initialize a new ReportUsersRequest class.
     #'
     #' @description
@@ -28,11 +24,10 @@ ReportUsersRequest <- R6::R6Class(
     #'
     #' @param description description
     #' @param user_ids user_ids
-    #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
     initialize = function(
-        `description`, `user_ids`, additional_properties = NULL, ...
+        `description`, `user_ids`, ...
     ) {
       if (!missing(`description`)) {
         stopifnot(is.character(`description`), length(`description`) == 1)
@@ -42,11 +37,6 @@ ReportUsersRequest <- R6::R6Class(
         stopifnot(is.vector(`user_ids`), length(`user_ids`) != 0)
         sapply(`user_ids`, function(x) stopifnot(is.character(x)))
         self$`user_ids` <- `user_ids`
-      }
-      if (!is.null(additional_properties)) {
-        for (key in names(additional_properties)) {
-          self$additional_properties[[key]] <- additional_properties[[key]]
-        }
       }
     },
     #' To JSON string
@@ -66,10 +56,6 @@ ReportUsersRequest <- R6::R6Class(
         ReportUsersRequestObject[["user_ids"]] <-
           self$`user_ids`
       }
-      for (key in names(self$additional_properties)) {
-        ReportUsersRequestObject[[key]] <- self$additional_properties[[key]]
-      }
-
       ReportUsersRequestObject
     },
     #' Deserialize JSON string into an instance of ReportUsersRequest
@@ -88,13 +74,6 @@ ReportUsersRequest <- R6::R6Class(
       if (!is.null(this_object$`user_ids`)) {
         self$`user_ids` <- ApiClient$new()$deserializeObj(this_object$`user_ids`, "array[character]", loadNamespace("twitter"))
       }
-      # process additional properties/fields in the payload
-      for (key in names(this_object)) {
-        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
-          self$additional_properties[[key]] <- this_object[[key]]
-        }
-      }
-
       self
     },
     #' To JSON string
@@ -125,11 +104,6 @@ ReportUsersRequest <- R6::R6Class(
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
-      json_obj <- jsonlite::fromJSON(json_string)
-      for (key in names(self$additional_properties)) {
-        json_obj[[key]] <- self$additional_properties[[key]]
-      }
-      json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
     #' Deserialize JSON string into an instance of ReportUsersRequest
     #'
@@ -143,13 +117,6 @@ ReportUsersRequest <- R6::R6Class(
       this_object <- jsonlite::fromJSON(input_json)
       self$`description` <- this_object$`description`
       self$`user_ids` <- ApiClient$new()$deserializeObj(this_object$`user_ids`, "array[character]", loadNamespace("twitter"))
-      # process additional properties/fields in the payload
-      for (key in names(this_object)) {
-        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
-          self$additional_properties[[key]] <- this_object[[key]]
-        }
-      }
-
       self
     },
     #' Validate JSON input with respect to ReportUsersRequest

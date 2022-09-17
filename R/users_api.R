@@ -354,8 +354,8 @@
 #' }
 #' }
 #'
-#' \strong{ users_id_followers } \emph{ Returns User objects that follow a List by the provided User ID }
-#' Returns a list of Users that follow the provided User ID
+#' \strong{ users_id_followers } \emph{ Followers by User ID }
+#' Returns a list of Users who are followers of the specified User ID.
 #'
 #' \itemize{
 #' \item \emph{ @param } id character
@@ -1072,7 +1072,7 @@
 #' var_expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
 #' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
 #'
-#' #Returns User objects that follow a List by the provided User ID
+#' #Followers by User ID
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure HTTP bearer authorization: BearerToken
@@ -3902,10 +3902,10 @@ UsersApi <- R6::R6Class(
                      ApiException = ApiException$new(http_response = local_var_resp))
       }
     },
-    #' Returns User objects that follow a List by the provided User ID
+    #' Followers by User ID
     #'
     #' @description
-    #' Returns User objects that follow a List by the provided User ID
+    #' Followers by User ID
     #'
     #' @param id The ID of the User to lookup.
     #' @param max_results (optional) The maximum number of results.
@@ -3929,10 +3929,10 @@ UsersApi <- R6::R6Class(
         local_var_response
       }
     },
-    #' Returns User objects that follow a List by the provided User ID
+    #' Followers by User ID
     #'
     #' @description
-    #' Returns User objects that follow a List by the provided User ID
+    #' Followers by User ID
     #'
     #' @param id The ID of the User to lookup.
     #' @param max_results (optional) The maximum number of results.

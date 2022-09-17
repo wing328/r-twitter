@@ -16,7 +16,7 @@ Method | HTTP request | Description
 [**users_id_block**](UsersApi.md#users_id_block) | **POST** /2/users/{id}/blocking | Block User by User ID
 [**users_id_blocking**](UsersApi.md#users_id_blocking) | **GET** /2/users/{id}/blocking | Returns User objects that are blocked by provided User ID
 [**users_id_follow**](UsersApi.md#users_id_follow) | **POST** /2/users/{id}/following | Follow User
-[**users_id_followers**](UsersApi.md#users_id_followers) | **GET** /2/users/{id}/followers | Returns User objects that follow a List by the provided User ID
+[**users_id_followers**](UsersApi.md#users_id_followers) | **GET** /2/users/{id}/followers | Followers by User ID
 [**users_id_following**](UsersApi.md#users_id_following) | **GET** /2/users/{id}/following | Following by User ID
 [**users_id_mute**](UsersApi.md#users_id_mute) | **POST** /2/users/{id}/muting | Mute User by User ID.
 [**users_id_muting**](UsersApi.md#users_id_muting) | **GET** /2/users/{id}/muting | Returns User objects that are muted by the provided User ID
@@ -894,15 +894,15 @@ Name | Type | Description  | Notes
 # **users_id_followers**
 > Get2UsersIdFollowersResponse users_id_followers(id, max_results = var.max_results, pagination_token = var.pagination_token, user_fields = var.user_fields, expansions = var.expansions, tweet_fields = var.tweet_fields)
 
-Returns User objects that follow a List by the provided User ID
+Followers by User ID
 
-Returns a list of Users that follow the provided User ID
+Returns a list of Users who are followers of the specified User ID.
 
 ### Example
 ```R
 library(twitter)
 
-# Returns User objects that follow a List by the provided User ID
+# Followers by User ID
 #
 # prepare function argument(s)
 var_id <- "2244994945" # character | The ID of the User to lookup.

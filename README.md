@@ -130,7 +130,7 @@ Class | Method | HTTP request | Description
 *UsersApi* | [**users_id_block**](docs/UsersApi.md#users_id_block) | **POST** /2/users/{id}/blocking | Block User by User ID
 *UsersApi* | [**users_id_blocking**](docs/UsersApi.md#users_id_blocking) | **GET** /2/users/{id}/blocking | Returns User objects that are blocked by provided User ID
 *UsersApi* | [**users_id_follow**](docs/UsersApi.md#users_id_follow) | **POST** /2/users/{id}/following | Follow User
-*UsersApi* | [**users_id_followers**](docs/UsersApi.md#users_id_followers) | **GET** /2/users/{id}/followers | Returns User objects that follow a List by the provided User ID
+*UsersApi* | [**users_id_followers**](docs/UsersApi.md#users_id_followers) | **GET** /2/users/{id}/followers | Followers by User ID
 *UsersApi* | [**users_id_following**](docs/UsersApi.md#users_id_following) | **GET** /2/users/{id}/following | Following by User ID
 *UsersApi* | [**users_id_mute**](docs/UsersApi.md#users_id_mute) | **POST** /2/users/{id}/muting | Mute User by User ID.
 *UsersApi* | [**users_id_muting**](docs/UsersApi.md#users_id_muting) | **GET** /2/users/{id}/muting | Returns User objects that are muted by the provided User ID
