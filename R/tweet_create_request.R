@@ -84,6 +84,9 @@ TweetCreateRequest <- R6::R6Class(
         self$`reply` <- `reply`
       }
       if (!is.null(`reply_settings`)) {
+        if (!(`reply_settings` %in% c("following", "mentionedUsers"))) {
+          stop(paste("Error! \"", `reply_settings`, "\" cannot be assigned to `reply_settings`. Must be \"following\", \"mentionedUsers\".", sep = ""))
+        }
         stopifnot(is.character(`reply_settings`), length(`reply_settings`) == 1)
         self$`reply_settings` <- `reply_settings`
       }
@@ -188,6 +191,9 @@ TweetCreateRequest <- R6::R6Class(
         self$`reply` <- reply_object
       }
       if (!is.null(this_object$`reply_settings`)) {
+        if (!is.null(this_object$`reply_settings`) && !(this_object$`reply_settings` %in% c("following", "mentionedUsers"))) {
+          stop(paste("Error! \"", this_object$`reply_settings`, "\" cannot be assigned to `reply_settings`. Must be \"following\", \"mentionedUsers\".", sep = ""))
+        }
         self$`reply_settings` <- this_object$`reply_settings`
       }
       if (!is.null(this_object$`text`)) {
@@ -309,6 +315,9 @@ TweetCreateRequest <- R6::R6Class(
       self$`poll` <- TweetCreateRequestPoll$new()$fromJSON(jsonlite::toJSON(this_object$poll, auto_unbox = TRUE, digits = NA))
       self$`quote_tweet_id` <- this_object$`quote_tweet_id`
       self$`reply` <- TweetCreateRequestReply$new()$fromJSON(jsonlite::toJSON(this_object$reply, auto_unbox = TRUE, digits = NA))
+      if (!is.null(this_object$`reply_settings`) && !(this_object$`reply_settings` %in% c("following", "mentionedUsers"))) {
+        stop(paste("Error! \"", this_object$`reply_settings`, "\" cannot be assigned to `reply_settings`. Must be \"following\", \"mentionedUsers\".", sep = ""))
+      }
       self$`reply_settings` <- this_object$`reply_settings`
       self$`text` <- this_object$`text`
       # process additional properties/fields in the payload

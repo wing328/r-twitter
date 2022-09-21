@@ -40,6 +40,9 @@ Point <- R6::R6Class(
         self$`coordinates` <- `coordinates`
       }
       if (!missing(`type`)) {
+        if (!(`type` %in% c("Point"))) {
+          stop(paste("Error! \"", `type`, "\" cannot be assigned to `type`. Must be \"Point\".", sep = ""))
+        }
         stopifnot(is.character(`type`), length(`type`) == 1)
         self$`type` <- `type`
       }
@@ -86,6 +89,9 @@ Point <- R6::R6Class(
         self$`coordinates` <- ApiClient$new()$deserializeObj(this_object$`coordinates`, "array[numeric]", loadNamespace("twitter"))
       }
       if (!is.null(this_object$`type`)) {
+        if (!is.null(this_object$`type`) && !(this_object$`type` %in% c("Point"))) {
+          stop(paste("Error! \"", this_object$`type`, "\" cannot be assigned to `type`. Must be \"Point\".", sep = ""))
+        }
         self$`type` <- this_object$`type`
       }
       # process additional properties/fields in the payload
@@ -142,6 +148,9 @@ Point <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`coordinates` <- ApiClient$new()$deserializeObj(this_object$`coordinates`, "array[numeric]", loadNamespace("twitter"))
+      if (!is.null(this_object$`type`) && !(this_object$`type` %in% c("Point"))) {
+        stop(paste("Error! \"", this_object$`type`, "\" cannot be assigned to `type`. Must be \"Point\".", sep = ""))
+      }
       self$`type` <- this_object$`type`
       # process additional properties/fields in the payload
       for (key in names(this_object)) {
