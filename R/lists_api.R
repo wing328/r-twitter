@@ -1284,7 +1284,7 @@ ListsApi <- R6::R6Class(
       }
 
 
-      if (!missing(`list_add_user_request`)) {
+      if (!is.null(`list_add_user_request`)) {
         local_var_body <- `list_add_user_request`$toJSONString()
       } else {
         body <- NULL
@@ -1403,7 +1403,7 @@ ListsApi <- R6::R6Class(
       is_oauth <- FALSE
 
 
-      if (!missing(`list_create_request`)) {
+      if (!is.null(`list_create_request`)) {
         local_var_body <- `list_create_request`$toJSONString()
       } else {
         body <- NULL
@@ -1874,7 +1874,7 @@ ListsApi <- R6::R6Class(
       }
 
 
-      if (!missing(`list_update_request`)) {
+      if (!is.null(`list_update_request`)) {
         local_var_body <- `list_update_request`$toJSONString()
       } else {
         body <- NULL
@@ -2149,7 +2149,7 @@ ListsApi <- R6::R6Class(
 
 
 
-      if (!missing(`list_followed_request`)) {
+      if (!is.null(`list_followed_request`)) {
         local_var_body <- `list_followed_request`$toJSONString()
       } else {
         body <- NULL
@@ -2533,7 +2533,7 @@ ListsApi <- R6::R6Class(
 
 
 
-      if (!missing(`list_pinned_request`)) {
+      if (!is.null(`list_pinned_request`)) {
         local_var_body <- `list_pinned_request`$toJSONString()
       } else {
         body <- NULL

@@ -3465,7 +3465,7 @@ UsersApi <- R6::R6Class(
 
 
 
-      if (!missing(`block_user_request`)) {
+      if (!is.null(`block_user_request`)) {
         local_var_body <- `block_user_request`$toJSONString()
       } else {
         body <- NULL
@@ -3826,7 +3826,7 @@ UsersApi <- R6::R6Class(
 
 
 
-      if (!missing(`users_following_create_request`)) {
+      if (!is.null(`users_following_create_request`)) {
         local_var_body <- `users_following_create_request`$toJSONString()
       } else {
         body <- NULL
@@ -4439,7 +4439,7 @@ UsersApi <- R6::R6Class(
 
 
 
-      if (!missing(`mute_user_request`)) {
+      if (!is.null(`mute_user_request`)) {
         local_var_body <- `mute_user_request`$toJSONString()
       } else {
         body <- NULL
