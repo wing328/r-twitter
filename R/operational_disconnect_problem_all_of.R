@@ -32,6 +32,9 @@ OperationalDisconnectProblemAllOf <- R6::R6Class(
         `disconnect_type` = NULL, additional_properties = NULL, ...
     ) {
       if (!is.null(`disconnect_type`)) {
+        if (!(`disconnect_type` %in% c("OperationalDisconnect", "UpstreamOperationalDisconnect", "ForceDisconnect", "UpstreamUncleanDisconnect", "SlowReader", "InternalError", "ClientApplicationStateDegraded", "InvalidRules"))) {
+          stop(paste("Error! \"", `disconnect_type`, "\" cannot be assigned to `disconnect_type`. Must be \"OperationalDisconnect\", \"UpstreamOperationalDisconnect\", \"ForceDisconnect\", \"UpstreamUncleanDisconnect\", \"SlowReader\", \"InternalError\", \"ClientApplicationStateDegraded\", \"InvalidRules\".", sep = ""))
+        }
         stopifnot(is.character(`disconnect_type`), length(`disconnect_type`) == 1)
         self$`disconnect_type` <- `disconnect_type`
       }
@@ -71,6 +74,9 @@ OperationalDisconnectProblemAllOf <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`disconnect_type`)) {
+        if (!is.null(this_object$`disconnect_type`) && !(this_object$`disconnect_type` %in% c("OperationalDisconnect", "UpstreamOperationalDisconnect", "ForceDisconnect", "UpstreamUncleanDisconnect", "SlowReader", "InternalError", "ClientApplicationStateDegraded", "InvalidRules"))) {
+          stop(paste("Error! \"", this_object$`disconnect_type`, "\" cannot be assigned to `disconnect_type`. Must be \"OperationalDisconnect\", \"UpstreamOperationalDisconnect\", \"ForceDisconnect\", \"UpstreamUncleanDisconnect\", \"SlowReader\", \"InternalError\", \"ClientApplicationStateDegraded\", \"InvalidRules\".", sep = ""))
+        }
         self$`disconnect_type` <- this_object$`disconnect_type`
       }
       # process additional properties/fields in the payload
@@ -118,6 +124,9 @@ OperationalDisconnectProblemAllOf <- R6::R6Class(
     #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`disconnect_type`) && !(this_object$`disconnect_type` %in% c("OperationalDisconnect", "UpstreamOperationalDisconnect", "ForceDisconnect", "UpstreamUncleanDisconnect", "SlowReader", "InternalError", "ClientApplicationStateDegraded", "InvalidRules"))) {
+        stop(paste("Error! \"", this_object$`disconnect_type`, "\" cannot be assigned to `disconnect_type`. Must be \"OperationalDisconnect\", \"UpstreamOperationalDisconnect\", \"ForceDisconnect\", \"UpstreamUncleanDisconnect\", \"SlowReader\", \"InternalError\", \"ClientApplicationStateDegraded\", \"InvalidRules\".", sep = ""))
+      }
       self$`disconnect_type` <- this_object$`disconnect_type`
       # process additional properties/fields in the payload
       for (key in names(this_object)) {

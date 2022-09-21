@@ -50,6 +50,9 @@ TweetWithheld <- R6::R6Class(
         self$`country_codes` <- `country_codes`
       }
       if (!is.null(`scope`)) {
+        if (!(`scope` %in% c("tweet", "user"))) {
+          stop(paste("Error! \"", `scope`, "\" cannot be assigned to `scope`. Must be \"tweet\", \"user\".", sep = ""))
+        }
         stopifnot(is.character(`scope`), length(`scope`) == 1)
         self$`scope` <- `scope`
       }
@@ -106,6 +109,9 @@ TweetWithheld <- R6::R6Class(
         }
       }
       if (!is.null(this_object$`scope`)) {
+        if (!is.null(this_object$`scope`) && !(this_object$`scope` %in% c("tweet", "user"))) {
+          stop(paste("Error! \"", this_object$`scope`, "\" cannot be assigned to `scope`. Must be \"tweet\", \"user\".", sep = ""))
+        }
         self$`scope` <- this_object$`scope`
       }
       # process additional properties/fields in the payload
@@ -173,6 +179,9 @@ TweetWithheld <- R6::R6Class(
       self$`country_codes` <- ApiClient$new()$deserializeObj(this_object$`country_codes`, "set[character]", loadNamespace("twitter"))
       if (!identical(self$`country_codes`, unique(self$`country_codes`))) {
         stop("Error! Items in `country_codes` are not unique.")
+      }
+      if (!is.null(this_object$`scope`) && !(this_object$`scope` %in% c("tweet", "user"))) {
+        stop(paste("Error! \"", this_object$`scope`, "\" cannot be assigned to `scope`. Must be \"tweet\", \"user\".", sep = ""))
       }
       self$`scope` <- this_object$`scope`
       # process additional properties/fields in the payload

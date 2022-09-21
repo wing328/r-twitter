@@ -35,6 +35,9 @@ ClientForbiddenProblemAllOf <- R6::R6Class(
         `reason` = NULL, `registration_url` = NULL, additional_properties = NULL, ...
     ) {
       if (!is.null(`reason`)) {
+        if (!(`reason` %in% c("official-client-forbidden", "client-not-enrolled"))) {
+          stop(paste("Error! \"", `reason`, "\" cannot be assigned to `reason`. Must be \"official-client-forbidden\", \"client-not-enrolled\".", sep = ""))
+        }
         stopifnot(is.character(`reason`), length(`reason`) == 1)
         self$`reason` <- `reason`
       }
@@ -82,6 +85,9 @@ ClientForbiddenProblemAllOf <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`reason`)) {
+        if (!is.null(this_object$`reason`) && !(this_object$`reason` %in% c("official-client-forbidden", "client-not-enrolled"))) {
+          stop(paste("Error! \"", this_object$`reason`, "\" cannot be assigned to `reason`. Must be \"official-client-forbidden\", \"client-not-enrolled\".", sep = ""))
+        }
         self$`reason` <- this_object$`reason`
       }
       if (!is.null(this_object$`registration_url`)) {
@@ -140,6 +146,9 @@ ClientForbiddenProblemAllOf <- R6::R6Class(
     #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`reason`) && !(this_object$`reason` %in% c("official-client-forbidden", "client-not-enrolled"))) {
+        stop(paste("Error! \"", this_object$`reason`, "\" cannot be assigned to `reason`. Must be \"official-client-forbidden\", \"client-not-enrolled\".", sep = ""))
+      }
       self$`reason` <- this_object$`reason`
       self$`registration_url` <- this_object$`registration_url`
       # process additional properties/fields in the payload

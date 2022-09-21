@@ -61,6 +61,9 @@ OperationalDisconnectProblem <- R6::R6Class(
         self$`status` <- `status`
       }
       if (!is.null(`disconnect_type`)) {
+        if (!(`disconnect_type` %in% c("OperationalDisconnect", "UpstreamOperationalDisconnect", "ForceDisconnect", "UpstreamUncleanDisconnect", "SlowReader", "InternalError", "ClientApplicationStateDegraded", "InvalidRules"))) {
+          stop(paste("Error! \"", `disconnect_type`, "\" cannot be assigned to `disconnect_type`. Must be \"OperationalDisconnect\", \"UpstreamOperationalDisconnect\", \"ForceDisconnect\", \"UpstreamUncleanDisconnect\", \"SlowReader\", \"InternalError\", \"ClientApplicationStateDegraded\", \"InvalidRules\".", sep = ""))
+        }
         stopifnot(is.character(`disconnect_type`), length(`disconnect_type`) == 1)
         self$`disconnect_type` <- `disconnect_type`
       }
@@ -128,6 +131,9 @@ OperationalDisconnectProblem <- R6::R6Class(
         self$`type` <- this_object$`type`
       }
       if (!is.null(this_object$`disconnect_type`)) {
+        if (!is.null(this_object$`disconnect_type`) && !(this_object$`disconnect_type` %in% c("OperationalDisconnect", "UpstreamOperationalDisconnect", "ForceDisconnect", "UpstreamUncleanDisconnect", "SlowReader", "InternalError", "ClientApplicationStateDegraded", "InvalidRules"))) {
+          stop(paste("Error! \"", this_object$`disconnect_type`, "\" cannot be assigned to `disconnect_type`. Must be \"OperationalDisconnect\", \"UpstreamOperationalDisconnect\", \"ForceDisconnect\", \"UpstreamUncleanDisconnect\", \"SlowReader\", \"InternalError\", \"ClientApplicationStateDegraded\", \"InvalidRules\".", sep = ""))
+        }
         self$`disconnect_type` <- this_object$`disconnect_type`
       }
       # process additional properties/fields in the payload
@@ -211,6 +217,9 @@ OperationalDisconnectProblem <- R6::R6Class(
       self$`status` <- this_object$`status`
       self$`title` <- this_object$`title`
       self$`type` <- this_object$`type`
+      if (!is.null(this_object$`disconnect_type`) && !(this_object$`disconnect_type` %in% c("OperationalDisconnect", "UpstreamOperationalDisconnect", "ForceDisconnect", "UpstreamUncleanDisconnect", "SlowReader", "InternalError", "ClientApplicationStateDegraded", "InvalidRules"))) {
+        stop(paste("Error! \"", this_object$`disconnect_type`, "\" cannot be assigned to `disconnect_type`. Must be \"OperationalDisconnect\", \"UpstreamOperationalDisconnect\", \"ForceDisconnect\", \"UpstreamUncleanDisconnect\", \"SlowReader\", \"InternalError\", \"ClientApplicationStateDegraded\", \"InvalidRules\".", sep = ""))
+      }
       self$`disconnect_type` <- this_object$`disconnect_type`
       # process additional properties/fields in the payload
       for (key in names(this_object)) {

@@ -46,6 +46,9 @@ ResourceUnavailableProblemAllOf <- R6::R6Class(
         self$`resource_id` <- `resource_id`
       }
       if (!missing(`resource_type`)) {
+        if (!(`resource_type` %in% c("user", "tweet", "media", "list", "space"))) {
+          stop(paste("Error! \"", `resource_type`, "\" cannot be assigned to `resource_type`. Must be \"user\", \"tweet\", \"media\", \"list\", \"space\".", sep = ""))
+        }
         stopifnot(is.character(`resource_type`), length(`resource_type`) == 1)
         self$`resource_type` <- `resource_type`
       }
@@ -99,6 +102,9 @@ ResourceUnavailableProblemAllOf <- R6::R6Class(
         self$`resource_id` <- this_object$`resource_id`
       }
       if (!is.null(this_object$`resource_type`)) {
+        if (!is.null(this_object$`resource_type`) && !(this_object$`resource_type` %in% c("user", "tweet", "media", "list", "space"))) {
+          stop(paste("Error! \"", this_object$`resource_type`, "\" cannot be assigned to `resource_type`. Must be \"user\", \"tweet\", \"media\", \"list\", \"space\".", sep = ""))
+        }
         self$`resource_type` <- this_object$`resource_type`
       }
       # process additional properties/fields in the payload
@@ -164,6 +170,9 @@ ResourceUnavailableProblemAllOf <- R6::R6Class(
       this_object <- jsonlite::fromJSON(input_json)
       self$`parameter` <- this_object$`parameter`
       self$`resource_id` <- this_object$`resource_id`
+      if (!is.null(this_object$`resource_type`) && !(this_object$`resource_type` %in% c("user", "tweet", "media", "list", "space"))) {
+        stop(paste("Error! \"", this_object$`resource_type`, "\" cannot be assigned to `resource_type`. Must be \"user\", \"tweet\", \"media\", \"list\", \"space\".", sep = ""))
+      }
       self$`resource_type` <- this_object$`resource_type`
       # process additional properties/fields in the payload
       for (key in names(this_object)) {

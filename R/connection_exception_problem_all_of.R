@@ -32,6 +32,9 @@ ConnectionExceptionProblemAllOf <- R6::R6Class(
         `connection_issue` = NULL, additional_properties = NULL, ...
     ) {
       if (!is.null(`connection_issue`)) {
+        if (!(`connection_issue` %in% c("TooManyConnections", "ProvisioningSubscription", "RuleConfigurationIssue", "RulesInvalidIssue"))) {
+          stop(paste("Error! \"", `connection_issue`, "\" cannot be assigned to `connection_issue`. Must be \"TooManyConnections\", \"ProvisioningSubscription\", \"RuleConfigurationIssue\", \"RulesInvalidIssue\".", sep = ""))
+        }
         stopifnot(is.character(`connection_issue`), length(`connection_issue`) == 1)
         self$`connection_issue` <- `connection_issue`
       }
@@ -71,6 +74,9 @@ ConnectionExceptionProblemAllOf <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`connection_issue`)) {
+        if (!is.null(this_object$`connection_issue`) && !(this_object$`connection_issue` %in% c("TooManyConnections", "ProvisioningSubscription", "RuleConfigurationIssue", "RulesInvalidIssue"))) {
+          stop(paste("Error! \"", this_object$`connection_issue`, "\" cannot be assigned to `connection_issue`. Must be \"TooManyConnections\", \"ProvisioningSubscription\", \"RuleConfigurationIssue\", \"RulesInvalidIssue\".", sep = ""))
+        }
         self$`connection_issue` <- this_object$`connection_issue`
       }
       # process additional properties/fields in the payload
@@ -118,6 +124,9 @@ ConnectionExceptionProblemAllOf <- R6::R6Class(
     #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`connection_issue`) && !(this_object$`connection_issue` %in% c("TooManyConnections", "ProvisioningSubscription", "RuleConfigurationIssue", "RulesInvalidIssue"))) {
+        stop(paste("Error! \"", this_object$`connection_issue`, "\" cannot be assigned to `connection_issue`. Must be \"TooManyConnections\", \"ProvisioningSubscription\", \"RuleConfigurationIssue\", \"RulesInvalidIssue\".", sep = ""))
+      }
       self$`connection_issue` <- this_object$`connection_issue`
       # process additional properties/fields in the payload
       for (key in names(this_object)) {

@@ -64,6 +64,9 @@ ClientForbiddenProblem <- R6::R6Class(
         self$`status` <- `status`
       }
       if (!is.null(`reason`)) {
+        if (!(`reason` %in% c("official-client-forbidden", "client-not-enrolled"))) {
+          stop(paste("Error! \"", `reason`, "\" cannot be assigned to `reason`. Must be \"official-client-forbidden\", \"client-not-enrolled\".", sep = ""))
+        }
         stopifnot(is.character(`reason`), length(`reason`) == 1)
         self$`reason` <- `reason`
       }
@@ -139,6 +142,9 @@ ClientForbiddenProblem <- R6::R6Class(
         self$`type` <- this_object$`type`
       }
       if (!is.null(this_object$`reason`)) {
+        if (!is.null(this_object$`reason`) && !(this_object$`reason` %in% c("official-client-forbidden", "client-not-enrolled"))) {
+          stop(paste("Error! \"", this_object$`reason`, "\" cannot be assigned to `reason`. Must be \"official-client-forbidden\", \"client-not-enrolled\".", sep = ""))
+        }
         self$`reason` <- this_object$`reason`
       }
       if (!is.null(this_object$`registration_url`)) {
@@ -233,6 +239,9 @@ ClientForbiddenProblem <- R6::R6Class(
       self$`status` <- this_object$`status`
       self$`title` <- this_object$`title`
       self$`type` <- this_object$`type`
+      if (!is.null(this_object$`reason`) && !(this_object$`reason` %in% c("official-client-forbidden", "client-not-enrolled"))) {
+        stop(paste("Error! \"", this_object$`reason`, "\" cannot be assigned to `reason`. Must be \"official-client-forbidden\", \"client-not-enrolled\".", sep = ""))
+      }
       self$`reason` <- this_object$`reason`
       self$`registration_url` <- this_object$`registration_url`
       # process additional properties/fields in the payload

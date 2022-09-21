@@ -61,6 +61,9 @@ ConnectionExceptionProblem <- R6::R6Class(
         self$`status` <- `status`
       }
       if (!is.null(`connection_issue`)) {
+        if (!(`connection_issue` %in% c("TooManyConnections", "ProvisioningSubscription", "RuleConfigurationIssue", "RulesInvalidIssue"))) {
+          stop(paste("Error! \"", `connection_issue`, "\" cannot be assigned to `connection_issue`. Must be \"TooManyConnections\", \"ProvisioningSubscription\", \"RuleConfigurationIssue\", \"RulesInvalidIssue\".", sep = ""))
+        }
         stopifnot(is.character(`connection_issue`), length(`connection_issue`) == 1)
         self$`connection_issue` <- `connection_issue`
       }
@@ -128,6 +131,9 @@ ConnectionExceptionProblem <- R6::R6Class(
         self$`type` <- this_object$`type`
       }
       if (!is.null(this_object$`connection_issue`)) {
+        if (!is.null(this_object$`connection_issue`) && !(this_object$`connection_issue` %in% c("TooManyConnections", "ProvisioningSubscription", "RuleConfigurationIssue", "RulesInvalidIssue"))) {
+          stop(paste("Error! \"", this_object$`connection_issue`, "\" cannot be assigned to `connection_issue`. Must be \"TooManyConnections\", \"ProvisioningSubscription\", \"RuleConfigurationIssue\", \"RulesInvalidIssue\".", sep = ""))
+        }
         self$`connection_issue` <- this_object$`connection_issue`
       }
       # process additional properties/fields in the payload
@@ -211,6 +217,9 @@ ConnectionExceptionProblem <- R6::R6Class(
       self$`status` <- this_object$`status`
       self$`title` <- this_object$`title`
       self$`type` <- this_object$`type`
+      if (!is.null(this_object$`connection_issue`) && !(this_object$`connection_issue` %in% c("TooManyConnections", "ProvisioningSubscription", "RuleConfigurationIssue", "RulesInvalidIssue"))) {
+        stop(paste("Error! \"", this_object$`connection_issue`, "\" cannot be assigned to `connection_issue`. Must be \"TooManyConnections\", \"ProvisioningSubscription\", \"RuleConfigurationIssue\", \"RulesInvalidIssue\".", sep = ""))
+      }
       self$`connection_issue` <- this_object$`connection_issue`
       # process additional properties/fields in the payload
       for (key in names(this_object)) {

@@ -61,6 +61,9 @@ Poll <- R6::R6Class(
         self$`end_datetime` <- `end_datetime`
       }
       if (!is.null(`voting_status`)) {
+        if (!(`voting_status` %in% c("open", "closed"))) {
+          stop(paste("Error! \"", `voting_status`, "\" cannot be assigned to `voting_status`. Must be \"open\", \"closed\".", sep = ""))
+        }
         stopifnot(is.character(`voting_status`), length(`voting_status`) == 1)
         self$`voting_status` <- `voting_status`
       }
@@ -128,6 +131,9 @@ Poll <- R6::R6Class(
         self$`options` <- ApiClient$new()$deserializeObj(this_object$`options`, "array[PollOption]", loadNamespace("twitter"))
       }
       if (!is.null(this_object$`voting_status`)) {
+        if (!is.null(this_object$`voting_status`) && !(this_object$`voting_status` %in% c("open", "closed"))) {
+          stop(paste("Error! \"", this_object$`voting_status`, "\" cannot be assigned to `voting_status`. Must be \"open\", \"closed\".", sep = ""))
+        }
         self$`voting_status` <- this_object$`voting_status`
       }
       # process additional properties/fields in the payload
@@ -211,6 +217,9 @@ Poll <- R6::R6Class(
       self$`end_datetime` <- this_object$`end_datetime`
       self$`id` <- this_object$`id`
       self$`options` <- ApiClient$new()$deserializeObj(this_object$`options`, "array[PollOption]", loadNamespace("twitter"))
+      if (!is.null(this_object$`voting_status`) && !(this_object$`voting_status` %in% c("open", "closed"))) {
+        stop(paste("Error! \"", this_object$`voting_status`, "\" cannot be assigned to `voting_status`. Must be \"open\", \"closed\".", sep = ""))
+      }
       self$`voting_status` <- this_object$`voting_status`
       # process additional properties/fields in the payload
       for (key in names(this_object)) {

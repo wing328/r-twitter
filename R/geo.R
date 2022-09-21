@@ -49,6 +49,9 @@ Geo <- R6::R6Class(
         self$`properties` <- `properties`
       }
       if (!missing(`type`)) {
+        if (!(`type` %in% c("Feature"))) {
+          stop(paste("Error! \"", `type`, "\" cannot be assigned to `type`. Must be \"Feature\".", sep = ""))
+        }
         stopifnot(is.character(`type`), length(`type`) == 1)
         self$`type` <- `type`
       }
@@ -115,6 +118,9 @@ Geo <- R6::R6Class(
         self$`properties` <- this_object$`properties`
       }
       if (!is.null(this_object$`type`)) {
+        if (!is.null(this_object$`type`) && !(this_object$`type` %in% c("Feature"))) {
+          stop(paste("Error! \"", this_object$`type`, "\" cannot be assigned to `type`. Must be \"Feature\".", sep = ""))
+        }
         self$`type` <- this_object$`type`
       }
       # process additional properties/fields in the payload
@@ -189,6 +195,9 @@ Geo <- R6::R6Class(
       self$`bbox` <- ApiClient$new()$deserializeObj(this_object$`bbox`, "array[numeric]", loadNamespace("twitter"))
       self$`geometry` <- Point$new()$fromJSON(jsonlite::toJSON(this_object$geometry, auto_unbox = TRUE, digits = NA))
       self$`properties` <- this_object$`properties`
+      if (!is.null(this_object$`type`) && !(this_object$`type` %in% c("Feature"))) {
+        stop(paste("Error! \"", this_object$`type`, "\" cannot be assigned to `type`. Must be \"Feature\".", sep = ""))
+      }
       self$`type` <- this_object$`type`
       # process additional properties/fields in the payload
       for (key in names(this_object)) {

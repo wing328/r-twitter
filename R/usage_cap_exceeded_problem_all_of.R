@@ -35,10 +35,16 @@ UsageCapExceededProblemAllOf <- R6::R6Class(
         `period` = NULL, `scope` = NULL, additional_properties = NULL, ...
     ) {
       if (!is.null(`period`)) {
+        if (!(`period` %in% c("Daily", "Monthly"))) {
+          stop(paste("Error! \"", `period`, "\" cannot be assigned to `period`. Must be \"Daily\", \"Monthly\".", sep = ""))
+        }
         stopifnot(is.character(`period`), length(`period`) == 1)
         self$`period` <- `period`
       }
       if (!is.null(`scope`)) {
+        if (!(`scope` %in% c("Account", "Product"))) {
+          stop(paste("Error! \"", `scope`, "\" cannot be assigned to `scope`. Must be \"Account\", \"Product\".", sep = ""))
+        }
         stopifnot(is.character(`scope`), length(`scope`) == 1)
         self$`scope` <- `scope`
       }
@@ -82,9 +88,15 @@ UsageCapExceededProblemAllOf <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`period`)) {
+        if (!is.null(this_object$`period`) && !(this_object$`period` %in% c("Daily", "Monthly"))) {
+          stop(paste("Error! \"", this_object$`period`, "\" cannot be assigned to `period`. Must be \"Daily\", \"Monthly\".", sep = ""))
+        }
         self$`period` <- this_object$`period`
       }
       if (!is.null(this_object$`scope`)) {
+        if (!is.null(this_object$`scope`) && !(this_object$`scope` %in% c("Account", "Product"))) {
+          stop(paste("Error! \"", this_object$`scope`, "\" cannot be assigned to `scope`. Must be \"Account\", \"Product\".", sep = ""))
+        }
         self$`scope` <- this_object$`scope`
       }
       # process additional properties/fields in the payload
@@ -140,7 +152,13 @@ UsageCapExceededProblemAllOf <- R6::R6Class(
     #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`period`) && !(this_object$`period` %in% c("Daily", "Monthly"))) {
+        stop(paste("Error! \"", this_object$`period`, "\" cannot be assigned to `period`. Must be \"Daily\", \"Monthly\".", sep = ""))
+      }
       self$`period` <- this_object$`period`
+      if (!is.null(this_object$`scope`) && !(this_object$`scope` %in% c("Account", "Product"))) {
+        stop(paste("Error! \"", this_object$`scope`, "\" cannot be assigned to `scope`. Must be \"Account\", \"Product\".", sep = ""))
+      }
       self$`scope` <- this_object$`scope`
       # process additional properties/fields in the payload
       for (key in names(this_object)) {

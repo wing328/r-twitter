@@ -38,6 +38,9 @@ CreateComplianceJobRequest <- R6::R6Class(
         `type`, `name` = NULL, `resumable` = NULL, additional_properties = NULL, ...
     ) {
       if (!missing(`type`)) {
+        if (!(`type` %in% c("tweets", "users"))) {
+          stop(paste("Error! \"", `type`, "\" cannot be assigned to `type`. Must be \"tweets\", \"users\".", sep = ""))
+        }
         stopifnot(is.character(`type`), length(`type`) == 1)
         self$`type` <- `type`
       }
@@ -99,6 +102,9 @@ CreateComplianceJobRequest <- R6::R6Class(
         self$`resumable` <- this_object$`resumable`
       }
       if (!is.null(this_object$`type`)) {
+        if (!is.null(this_object$`type`) && !(this_object$`type` %in% c("tweets", "users"))) {
+          stop(paste("Error! \"", this_object$`type`, "\" cannot be assigned to `type`. Must be \"tweets\", \"users\".", sep = ""))
+        }
         self$`type` <- this_object$`type`
       }
       # process additional properties/fields in the payload
@@ -164,6 +170,9 @@ CreateComplianceJobRequest <- R6::R6Class(
       this_object <- jsonlite::fromJSON(input_json)
       self$`name` <- this_object$`name`
       self$`resumable` <- this_object$`resumable`
+      if (!is.null(this_object$`type`) && !(this_object$`type` %in% c("tweets", "users"))) {
+        stop(paste("Error! \"", this_object$`type`, "\" cannot be assigned to `type`. Must be \"tweets\", \"users\".", sep = ""))
+      }
       self$`type` <- this_object$`type`
       # process additional properties/fields in the payload
       for (key in names(this_object)) {

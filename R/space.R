@@ -84,6 +84,9 @@ Space <- R6::R6Class(
         self$`id` <- `id`
       }
       if (!missing(`state`)) {
+        if (!(`state` %in% c("live", "scheduled", "ended"))) {
+          stop(paste("Error! \"", `state`, "\" cannot be assigned to `state`. Must be \"live\", \"scheduled\", \"ended\".", sep = ""))
+        }
         stopifnot(is.character(`state`), length(`state`) == 1)
         self$`state` <- `state`
       }
@@ -287,6 +290,9 @@ Space <- R6::R6Class(
         self$`started_at` <- this_object$`started_at`
       }
       if (!is.null(this_object$`state`)) {
+        if (!is.null(this_object$`state`) && !(this_object$`state` %in% c("live", "scheduled", "ended"))) {
+          stop(paste("Error! \"", this_object$`state`, "\" cannot be assigned to `state`. Must be \"live\", \"scheduled\", \"ended\".", sep = ""))
+        }
         self$`state` <- this_object$`state`
       }
       if (!is.null(this_object$`subscriber_count`)) {
@@ -486,6 +492,9 @@ Space <- R6::R6Class(
       self$`scheduled_start` <- this_object$`scheduled_start`
       self$`speaker_ids` <- ApiClient$new()$deserializeObj(this_object$`speaker_ids`, "array[character]", loadNamespace("twitter"))
       self$`started_at` <- this_object$`started_at`
+      if (!is.null(this_object$`state`) && !(this_object$`state` %in% c("live", "scheduled", "ended"))) {
+        stop(paste("Error! \"", this_object$`state`, "\" cannot be assigned to `state`. Must be \"live\", \"scheduled\", \"ended\".", sep = ""))
+      }
       self$`state` <- this_object$`state`
       self$`subscriber_count` <- this_object$`subscriber_count`
       self$`title` <- this_object$`title`

@@ -42,6 +42,9 @@ TweetCreateRequestPoll <- R6::R6Class(
         self$`options` <- `options`
       }
       if (!is.null(`reply_settings`)) {
+        if (!(`reply_settings` %in% c("following", "mentionedUsers"))) {
+          stop(paste("Error! \"", `reply_settings`, "\" cannot be assigned to `reply_settings`. Must be \"following\", \"mentionedUsers\".", sep = ""))
+        }
         stopifnot(is.character(`reply_settings`), length(`reply_settings`) == 1)
         self$`reply_settings` <- `reply_settings`
       }
@@ -86,6 +89,9 @@ TweetCreateRequestPoll <- R6::R6Class(
         self$`options` <- ApiClient$new()$deserializeObj(this_object$`options`, "array[character]", loadNamespace("twitter"))
       }
       if (!is.null(this_object$`reply_settings`)) {
+        if (!is.null(this_object$`reply_settings`) && !(this_object$`reply_settings` %in% c("following", "mentionedUsers"))) {
+          stop(paste("Error! \"", this_object$`reply_settings`, "\" cannot be assigned to `reply_settings`. Must be \"following\", \"mentionedUsers\".", sep = ""))
+        }
         self$`reply_settings` <- this_object$`reply_settings`
       }
       self
@@ -139,6 +145,9 @@ TweetCreateRequestPoll <- R6::R6Class(
       this_object <- jsonlite::fromJSON(input_json)
       self$`duration_minutes` <- this_object$`duration_minutes`
       self$`options` <- ApiClient$new()$deserializeObj(this_object$`options`, "array[character]", loadNamespace("twitter"))
+      if (!is.null(this_object$`reply_settings`) && !(this_object$`reply_settings` %in% c("following", "mentionedUsers"))) {
+        stop(paste("Error! \"", this_object$`reply_settings`, "\" cannot be assigned to `reply_settings`. Must be \"following\", \"mentionedUsers\".", sep = ""))
+      }
       self$`reply_settings` <- this_object$`reply_settings`
       self
     },

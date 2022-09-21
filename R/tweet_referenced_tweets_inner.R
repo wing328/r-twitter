@@ -39,6 +39,9 @@ TweetReferencedTweetsInner <- R6::R6Class(
         self$`id` <- `id`
       }
       if (!missing(`type`)) {
+        if (!(`type` %in% c("retweeted", "quoted", "replied_to"))) {
+          stop(paste("Error! \"", `type`, "\" cannot be assigned to `type`. Must be \"retweeted\", \"quoted\", \"replied_to\".", sep = ""))
+        }
         stopifnot(is.character(`type`), length(`type`) == 1)
         self$`type` <- `type`
       }
@@ -85,6 +88,9 @@ TweetReferencedTweetsInner <- R6::R6Class(
         self$`id` <- this_object$`id`
       }
       if (!is.null(this_object$`type`)) {
+        if (!is.null(this_object$`type`) && !(this_object$`type` %in% c("retweeted", "quoted", "replied_to"))) {
+          stop(paste("Error! \"", this_object$`type`, "\" cannot be assigned to `type`. Must be \"retweeted\", \"quoted\", \"replied_to\".", sep = ""))
+        }
         self$`type` <- this_object$`type`
       }
       # process additional properties/fields in the payload
@@ -141,6 +147,9 @@ TweetReferencedTweetsInner <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`id` <- this_object$`id`
+      if (!is.null(this_object$`type`) && !(this_object$`type` %in% c("retweeted", "quoted", "replied_to"))) {
+        stop(paste("Error! \"", this_object$`type`, "\" cannot be assigned to `type`. Must be \"retweeted\", \"quoted\", \"replied_to\".", sep = ""))
+      }
       self$`type` <- this_object$`type`
       # process additional properties/fields in the payload
       for (key in names(this_object)) {

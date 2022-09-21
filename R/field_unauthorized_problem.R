@@ -63,10 +63,16 @@ FieldUnauthorizedProblem <- R6::R6Class(
         self$`field` <- `field`
       }
       if (!missing(`resource_type`)) {
+        if (!(`resource_type` %in% c("user", "tweet", "media", "list", "space"))) {
+          stop(paste("Error! \"", `resource_type`, "\" cannot be assigned to `resource_type`. Must be \"user\", \"tweet\", \"media\", \"list\", \"space\".", sep = ""))
+        }
         stopifnot(is.character(`resource_type`), length(`resource_type`) == 1)
         self$`resource_type` <- `resource_type`
       }
       if (!missing(`section`)) {
+        if (!(`section` %in% c("data", "includes"))) {
+          stop(paste("Error! \"", `section`, "\" cannot be assigned to `section`. Must be \"data\", \"includes\".", sep = ""))
+        }
         stopifnot(is.character(`section`), length(`section`) == 1)
         self$`section` <- `section`
       }
@@ -153,9 +159,15 @@ FieldUnauthorizedProblem <- R6::R6Class(
         self$`field` <- this_object$`field`
       }
       if (!is.null(this_object$`resource_type`)) {
+        if (!is.null(this_object$`resource_type`) && !(this_object$`resource_type` %in% c("user", "tweet", "media", "list", "space"))) {
+          stop(paste("Error! \"", this_object$`resource_type`, "\" cannot be assigned to `resource_type`. Must be \"user\", \"tweet\", \"media\", \"list\", \"space\".", sep = ""))
+        }
         self$`resource_type` <- this_object$`resource_type`
       }
       if (!is.null(this_object$`section`)) {
+        if (!is.null(this_object$`section`) && !(this_object$`section` %in% c("data", "includes"))) {
+          stop(paste("Error! \"", this_object$`section`, "\" cannot be assigned to `section`. Must be \"data\", \"includes\".", sep = ""))
+        }
         self$`section` <- this_object$`section`
       }
       # process additional properties/fields in the payload
@@ -256,7 +268,13 @@ FieldUnauthorizedProblem <- R6::R6Class(
       self$`title` <- this_object$`title`
       self$`type` <- this_object$`type`
       self$`field` <- this_object$`field`
+      if (!is.null(this_object$`resource_type`) && !(this_object$`resource_type` %in% c("user", "tweet", "media", "list", "space"))) {
+        stop(paste("Error! \"", this_object$`resource_type`, "\" cannot be assigned to `resource_type`. Must be \"user\", \"tweet\", \"media\", \"list\", \"space\".", sep = ""))
+      }
       self$`resource_type` <- this_object$`resource_type`
+      if (!is.null(this_object$`section`) && !(this_object$`section` %in% c("data", "includes"))) {
+        stop(paste("Error! \"", this_object$`section`, "\" cannot be assigned to `section`. Must be \"data\", \"includes\".", sep = ""))
+      }
       self$`section` <- this_object$`section`
       # process additional properties/fields in the payload
       for (key in names(this_object)) {

@@ -420,7 +420,7 @@ ComplianceApi <- R6::R6Class(
       }
 
 
-      if (!is.null(`create_compliance_job_request`)) {
+      if (!missing(`create_compliance_job_request`)) {
         local_var_body <- `create_compliance_job_request`$toJSONString()
       } else {
         body <- NULL

@@ -2140,7 +2140,7 @@ TweetsApi <- R6::R6Class(
 
       query_params[["dry_run"]] <- `dry_run`
 
-      if (!is.null(`add_or_delete_rules_request`)) {
+      if (!missing(`add_or_delete_rules_request`)) {
         local_var_body <- `add_or_delete_rules_request`$toJSONString()
       } else {
         body <- NULL
@@ -2263,7 +2263,7 @@ TweetsApi <- R6::R6Class(
       }
 
 
-      if (!is.null(`tweet_create_request`)) {
+      if (!missing(`tweet_create_request`)) {
         local_var_body <- `tweet_create_request`$toJSONString()
       } else {
         body <- NULL
@@ -4298,7 +4298,7 @@ TweetsApi <- R6::R6Class(
       }
 
 
-      if (!is.null(`tweet_hide_request`)) {
+      if (!missing(`tweet_hide_request`)) {
         local_var_body <- `tweet_hide_request`$toJSONString()
       } else {
         body <- NULL
@@ -7135,7 +7135,7 @@ TweetsApi <- R6::R6Class(
 
 
 
-      if (!is.null(`users_likes_create_request`)) {
+      if (!missing(`users_likes_create_request`)) {
         local_var_body <- `users_likes_create_request`$toJSONString()
       } else {
         body <- NULL
@@ -7948,7 +7948,7 @@ TweetsApi <- R6::R6Class(
 
 
 
-      if (!is.null(`users_retweets_create_request`)) {
+      if (!missing(`users_retweets_create_request`)) {
         local_var_body <- `users_retweets_create_request`$toJSONString()
       } else {
         body <- NULL
