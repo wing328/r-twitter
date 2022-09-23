@@ -620,7 +620,7 @@ BookmarksApi <- R6::R6Class(
 
 
 
-      if (!missing(`bookmark_add_request`)) {
+      if (!is.null(`bookmark_add_request`)) {
         local_var_body <- `bookmark_add_request`$toJSONString()
       } else {
         body <- NULL
