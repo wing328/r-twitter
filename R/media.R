@@ -25,6 +25,8 @@ Media <- R6::R6Class(
     `width` = NULL,
     `_field_list` = c("height", "media_key", "type", "width"),
     `additional_properties` = list(),
+    `_discriminator_property_name` = 'type',
+    `_discriminator_mapping_name` = c('animated_gif' = 'AnimatedGif','photo' = 'Photo','video' = 'Video'),
     #' Initialize a new Media class.
     #'
     #' @description
