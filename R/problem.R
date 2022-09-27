@@ -25,6 +25,8 @@ Problem <- R6::R6Class(
     `type` = NULL,
     `_field_list` = c("detail", "status", "title", "type"),
     `additional_properties` = list(),
+    `_discriminator_property_name` = 'type',
+    `_discriminator_mapping_name` = c('about:blank' = 'GenericProblem','https://api.twitter.com/2/problems/client-disconnected' = 'ClientDisconnectedProblem','https://api.twitter.com/2/problems/client-forbidden' = 'ClientForbiddenProblem','https://api.twitter.com/2/problems/conflict' = 'ConflictProblem','https://api.twitter.com/2/problems/disallowed-resource' = 'DisallowedResourceProblem','https://api.twitter.com/2/problems/duplicate-rules' = 'DuplicateRuleProblem','https://api.twitter.com/2/problems/invalid-request' = 'InvalidRequestProblem','https://api.twitter.com/2/problems/invalid-rules' = 'InvalidRuleProblem','https://api.twitter.com/2/problems/noncompliant-rules' = 'NonCompliantRulesProblem','https://api.twitter.com/2/problems/not-authorized-for-field' = 'FieldUnauthorizedProblem','https://api.twitter.com/2/problems/not-authorized-for-resource' = 'ResourceUnauthorizedProblem','https://api.twitter.com/2/problems/operational-disconnect' = 'OperationalDisconnectProblem','https://api.twitter.com/2/problems/resource-not-found' = 'ResourceNotFoundProblem','https://api.twitter.com/2/problems/resource-unavailable' = 'ResourceUnavailableProblem','https://api.twitter.com/2/problems/rule-cap' = 'RulesCapProblem','https://api.twitter.com/2/problems/streaming-connection' = 'ConnectionExceptionProblem','https://api.twitter.com/2/problems/unsupported-authentication' = 'UnsupportedAuthenticationProblem','https://api.twitter.com/2/problems/usage-capped' = 'UsageCapExceededProblem'),
     #' Initialize a new Problem class.
     #'
     #' @description
