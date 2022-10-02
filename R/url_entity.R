@@ -71,6 +71,10 @@ UrlEntity <- R6::R6Class(
       }
       if (!missing(`url`)) {
         stopifnot(is.character(`url`), length(`url`) == 1)
+        # validate URL using https://github.com/cran/librarian/blob/master/R/internal_functions.R#L131 credit: Desi Quintans
+        if (!any(grepl("(https?|ftp)://[^\\s/$.?#].[^\\s]*", `url`))) {
+          stop(paste("Error! Invalid URL:", `url`))
+        }
         self$`url` <- `url`
       }
       if (!is.null(`description`)) {
@@ -83,6 +87,10 @@ UrlEntity <- R6::R6Class(
       }
       if (!is.null(`expanded_url`)) {
         stopifnot(is.character(`expanded_url`), length(`expanded_url`) == 1)
+        # validate URL using https://github.com/cran/librarian/blob/master/R/internal_functions.R#L131 credit: Desi Quintans
+        if (!any(grepl("(https?|ftp)://[^\\s/$.?#].[^\\s]*", `expanded_url`))) {
+          stop(paste("Error! Invalid URL:", `expanded_url`))
+        }
         self$`expanded_url` <- `expanded_url`
       }
       if (!is.null(`images`)) {
@@ -104,6 +112,10 @@ UrlEntity <- R6::R6Class(
       }
       if (!is.null(`unwound_url`)) {
         stopifnot(is.character(`unwound_url`), length(`unwound_url`) == 1)
+        # validate URL using https://github.com/cran/librarian/blob/master/R/internal_functions.R#L131 credit: Desi Quintans
+        if (!any(grepl("(https?|ftp)://[^\\s/$.?#].[^\\s]*", `unwound_url`))) {
+          stop(paste("Error! Invalid URL:", `unwound_url`))
+        }
         self$`unwound_url` <- `unwound_url`
       }
       if (!is.null(additional_properties)) {
@@ -194,6 +206,10 @@ UrlEntity <- R6::R6Class(
         self$`display_url` <- this_object$`display_url`
       }
       if (!is.null(this_object$`expanded_url`)) {
+        # validate URL using https://github.com/cran/librarian/blob/master/R/internal_functions.R#L131 credit: Desi Quintans
+        if (!any(grepl("(https?|ftp)://[^\\s/$.?#].[^\\s]*", this_object$`expanded_url`))) {
+          stop(paste("Error! Invalid URL:", this_object$`expanded_url`))
+        }
         self$`expanded_url` <- this_object$`expanded_url`
       }
       if (!is.null(this_object$`images`)) {
@@ -209,9 +225,17 @@ UrlEntity <- R6::R6Class(
         self$`title` <- this_object$`title`
       }
       if (!is.null(this_object$`unwound_url`)) {
+        # validate URL using https://github.com/cran/librarian/blob/master/R/internal_functions.R#L131 credit: Desi Quintans
+        if (!any(grepl("(https?|ftp)://[^\\s/$.?#].[^\\s]*", this_object$`unwound_url`))) {
+          stop(paste("Error! Invalid URL:", this_object$`unwound_url`))
+        }
         self$`unwound_url` <- this_object$`unwound_url`
       }
       if (!is.null(this_object$`url`)) {
+        # validate URL using https://github.com/cran/librarian/blob/master/R/internal_functions.R#L131 credit: Desi Quintans
+        if (!any(grepl("(https?|ftp)://[^\\s/$.?#].[^\\s]*", this_object$`url`))) {
+          stop(paste("Error! Invalid URL:", this_object$`url`))
+        }
         self$`url` <- this_object$`url`
       }
       # process additional properties/fields in the payload
@@ -343,12 +367,24 @@ UrlEntity <- R6::R6Class(
       self$`start` <- this_object$`start`
       self$`description` <- this_object$`description`
       self$`display_url` <- this_object$`display_url`
+      # validate URL using https://github.com/cran/librarian/blob/master/R/internal_functions.R#L131 credit: Desi Quintans
+      if (!any(grepl("(https?|ftp)://[^\\s/$.?#].[^\\s]*", this_object$`expanded_url`))) {
+        stop(paste("Error! Invalid URL:", this_object$`expanded_url`))
+      }
       self$`expanded_url` <- this_object$`expanded_url`
       self$`images` <- ApiClient$new()$deserializeObj(this_object$`images`, "array[UrlImage]", loadNamespace("twitter"))
       self$`media_key` <- this_object$`media_key`
       self$`status` <- this_object$`status`
       self$`title` <- this_object$`title`
+      # validate URL using https://github.com/cran/librarian/blob/master/R/internal_functions.R#L131 credit: Desi Quintans
+      if (!any(grepl("(https?|ftp)://[^\\s/$.?#].[^\\s]*", this_object$`unwound_url`))) {
+        stop(paste("Error! Invalid URL:", this_object$`unwound_url`))
+      }
       self$`unwound_url` <- this_object$`unwound_url`
+      # validate URL using https://github.com/cran/librarian/blob/master/R/internal_functions.R#L131 credit: Desi Quintans
+      if (!any(grepl("(https?|ftp)://[^\\s/$.?#].[^\\s]*", this_object$`url`))) {
+        stop(paste("Error! Invalid URL:", this_object$`url`))
+      }
       self$`url` <- this_object$`url`
       # process additional properties/fields in the payload
       for (key in names(this_object)) {
@@ -383,6 +419,10 @@ UrlEntity <- R6::R6Class(
       # check the required field `url`
       if (!is.null(input_json$`url`)) {
         stopifnot(is.character(input_json$`url`), length(input_json$`url`) == 1)
+        # validate URL using https://github.com/cran/librarian/blob/master/R/internal_functions.R#L131 credit: Desi Quintans
+        if (!any(grepl("(https?|ftp)://[^\\s/$.?#].[^\\s]*", input_json$`url`))) {
+          stop(paste("Error! Invalid URL:", input_json$`url`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for UrlEntity: the required field `url` is missing."))
       }

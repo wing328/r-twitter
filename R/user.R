@@ -104,6 +104,10 @@ User <- R6::R6Class(
       }
       if (!is.null(`profile_image_url`)) {
         stopifnot(is.character(`profile_image_url`), length(`profile_image_url`) == 1)
+        # validate URL using https://github.com/cran/librarian/blob/master/R/internal_functions.R#L131 credit: Desi Quintans
+        if (!any(grepl("(https?|ftp)://[^\\s/$.?#].[^\\s]*", `profile_image_url`))) {
+          stop(paste("Error! Invalid URL:", `profile_image_url`))
+        }
         self$`profile_image_url` <- `profile_image_url`
       }
       if (!is.null(`protected`)) {
@@ -237,6 +241,10 @@ User <- R6::R6Class(
         self$`pinned_tweet_id` <- this_object$`pinned_tweet_id`
       }
       if (!is.null(this_object$`profile_image_url`)) {
+        # validate URL using https://github.com/cran/librarian/blob/master/R/internal_functions.R#L131 credit: Desi Quintans
+        if (!any(grepl("(https?|ftp)://[^\\s/$.?#].[^\\s]*", this_object$`profile_image_url`))) {
+          stop(paste("Error! Invalid URL:", this_object$`profile_image_url`))
+        }
         self$`profile_image_url` <- this_object$`profile_image_url`
       }
       if (!is.null(this_object$`protected`)) {
@@ -417,6 +425,10 @@ User <- R6::R6Class(
       self$`location` <- this_object$`location`
       self$`name` <- this_object$`name`
       self$`pinned_tweet_id` <- this_object$`pinned_tweet_id`
+      # validate URL using https://github.com/cran/librarian/blob/master/R/internal_functions.R#L131 credit: Desi Quintans
+      if (!any(grepl("(https?|ftp)://[^\\s/$.?#].[^\\s]*", this_object$`profile_image_url`))) {
+        stop(paste("Error! Invalid URL:", this_object$`profile_image_url`))
+      }
       self$`profile_image_url` <- this_object$`profile_image_url`
       self$`protected` <- this_object$`protected`
       self$`public_metrics` <- UserPublicMetrics$new()$fromJSON(jsonlite::toJSON(this_object$public_metrics, auto_unbox = TRUE, digits = NA))

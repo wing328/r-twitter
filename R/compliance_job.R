@@ -65,6 +65,10 @@ ComplianceJob <- R6::R6Class(
       }
       if (!missing(`download_url`)) {
         stopifnot(is.character(`download_url`), length(`download_url`) == 1)
+        # validate URL using https://github.com/cran/librarian/blob/master/R/internal_functions.R#L131 credit: Desi Quintans
+        if (!any(grepl("(https?|ftp)://[^\\s/$.?#].[^\\s]*", `download_url`))) {
+          stop(paste("Error! Invalid URL:", `download_url`))
+        }
         self$`download_url` <- `download_url`
       }
       if (!missing(`id`)) {
@@ -85,6 +89,10 @@ ComplianceJob <- R6::R6Class(
       }
       if (!missing(`upload_url`)) {
         stopifnot(is.character(`upload_url`), length(`upload_url`) == 1)
+        # validate URL using https://github.com/cran/librarian/blob/master/R/internal_functions.R#L131 credit: Desi Quintans
+        if (!any(grepl("(https?|ftp)://[^\\s/$.?#].[^\\s]*", `upload_url`))) {
+          stop(paste("Error! Invalid URL:", `upload_url`))
+        }
         self$`upload_url` <- `upload_url`
       }
       if (!is.null(`name`)) {
@@ -165,6 +173,10 @@ ComplianceJob <- R6::R6Class(
         self$`download_expires_at` <- this_object$`download_expires_at`
       }
       if (!is.null(this_object$`download_url`)) {
+        # validate URL using https://github.com/cran/librarian/blob/master/R/internal_functions.R#L131 credit: Desi Quintans
+        if (!any(grepl("(https?|ftp)://[^\\s/$.?#].[^\\s]*", this_object$`download_url`))) {
+          stop(paste("Error! Invalid URL:", this_object$`download_url`))
+        }
         self$`download_url` <- this_object$`download_url`
       }
       if (!is.null(this_object$`id`)) {
@@ -187,6 +199,10 @@ ComplianceJob <- R6::R6Class(
         self$`upload_expires_at` <- this_object$`upload_expires_at`
       }
       if (!is.null(this_object$`upload_url`)) {
+        # validate URL using https://github.com/cran/librarian/blob/master/R/internal_functions.R#L131 credit: Desi Quintans
+        if (!any(grepl("(https?|ftp)://[^\\s/$.?#].[^\\s]*", this_object$`upload_url`))) {
+          stop(paste("Error! Invalid URL:", this_object$`upload_url`))
+        }
         self$`upload_url` <- this_object$`upload_url`
       }
       # process additional properties/fields in the payload
@@ -300,12 +316,20 @@ ComplianceJob <- R6::R6Class(
       this_object <- jsonlite::fromJSON(input_json)
       self$`created_at` <- this_object$`created_at`
       self$`download_expires_at` <- this_object$`download_expires_at`
+      # validate URL using https://github.com/cran/librarian/blob/master/R/internal_functions.R#L131 credit: Desi Quintans
+      if (!any(grepl("(https?|ftp)://[^\\s/$.?#].[^\\s]*", this_object$`download_url`))) {
+        stop(paste("Error! Invalid URL:", this_object$`download_url`))
+      }
       self$`download_url` <- this_object$`download_url`
       self$`id` <- this_object$`id`
       self$`name` <- this_object$`name`
       self$`status` <- ComplianceJobStatus$new()$fromJSON(jsonlite::toJSON(this_object$status, auto_unbox = TRUE, digits = NA))
       self$`type` <- ComplianceJobType$new()$fromJSON(jsonlite::toJSON(this_object$type, auto_unbox = TRUE, digits = NA))
       self$`upload_expires_at` <- this_object$`upload_expires_at`
+      # validate URL using https://github.com/cran/librarian/blob/master/R/internal_functions.R#L131 credit: Desi Quintans
+      if (!any(grepl("(https?|ftp)://[^\\s/$.?#].[^\\s]*", this_object$`upload_url`))) {
+        stop(paste("Error! Invalid URL:", this_object$`upload_url`))
+      }
       self$`upload_url` <- this_object$`upload_url`
       # process additional properties/fields in the payload
       for (key in names(this_object)) {
@@ -340,6 +364,10 @@ ComplianceJob <- R6::R6Class(
       # check the required field `download_url`
       if (!is.null(input_json$`download_url`)) {
         stopifnot(is.character(input_json$`download_url`), length(input_json$`download_url`) == 1)
+        # validate URL using https://github.com/cran/librarian/blob/master/R/internal_functions.R#L131 credit: Desi Quintans
+        if (!any(grepl("(https?|ftp)://[^\\s/$.?#].[^\\s]*", input_json$`download_url`))) {
+          stop(paste("Error! Invalid URL:", input_json$`download_url`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for ComplianceJob: the required field `download_url` is missing."))
       }
@@ -370,6 +398,10 @@ ComplianceJob <- R6::R6Class(
       # check the required field `upload_url`
       if (!is.null(input_json$`upload_url`)) {
         stopifnot(is.character(input_json$`upload_url`), length(input_json$`upload_url`) == 1)
+        # validate URL using https://github.com/cran/librarian/blob/master/R/internal_functions.R#L131 credit: Desi Quintans
+        if (!any(grepl("(https?|ftp)://[^\\s/$.?#].[^\\s]*", input_json$`upload_url`))) {
+          stop(paste("Error! Invalid URL:", input_json$`upload_url`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for ComplianceJob: the required field `upload_url` is missing."))
       }

@@ -1,13 +1,17 @@
 # Test Twitter client
 context("Test Twitter client")
 
+test_that("test URL validation with Media", {
+  ag <- '{"preview_image_url":"invalid_url12312411","type":"animated_gif","height":1,"width":2}'
+  expect_error(ApiClient$new()$deserialize(ag, "Media", loadNamespace("twitter")), '')
+})
 
 test_that("test Media, AnimatedGif with discriminator mapping", {
-  ag <- '{"preview_image_url": "https://something.com","type":"animated_gif","height":1,"width":2}'
+  ag <- '{"preview_image_url":"https://twitter.com/image.gif","type":"animated_gif","height":1,"width":2}'
 
   a <- ApiClient$new()$deserialize(ag, "Media", loadNamespace("twitter"))
   expect_equal(class(a)[1], "AnimatedGif")
-  expect_equal(a$preview_image_url, "https://something.com")
+  expect_equal(a$preview_image_url, "https://twitter.com/image.gif")
   expect_equal(a$type, "animated_gif")
   expect_equal(a$height, 1)
   expect_equal(a$width, 2)
@@ -23,7 +27,7 @@ test_that("test poll with enum validation", {
 })
 
 test_that("test find_tweet_by_id", {
-  var_id <- "1543815912545226752" # character | A single Tweet ID.
+  var_id <- "1223289771813785601" # character | A single Tweet ID.
   var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
   var_expansions <- list("attachments.media_keys") # set[character] | A comma separated list of fields to expand. (Optional)
   var_media_fields <- list("alt_text") # set[character] | A comma separated list of Media fields to display. (Optional)
@@ -44,7 +48,7 @@ test_that("test find_tweet_by_id", {
                ApiException = function(ex) ex
             )
 
-  expect_equal(result$toString(), "{\"data\":{\"id\":\"1543815912545226752\",\"text\":\"Just released #OpenAPI #Generator v6.0.1 with enhancements, bug fixes covering #java #python #PHP #kotlin #Haskell #dart #rlang and more: https://t.co/7MNHdhMJ1y. Please check it out and let us know if you've any question/feedback via https://t.co/NJmr3yWvyP #OSS #REST #API\"}}")
+  expect_equal(result$toString(), "{\"data\":{\"id\":\"1223289771813785601\",\"text\":\"v4.2.3, the first release in 2020, comes with lots of enhancements, bug fixes covering 19 programming languages (#java #kotlin #typescript #dart #go #javascript #python #swift #php #ruby #rust etc) and new generators (swift5, markdown): https://t.co/Ln2Xs7krNb\",\"edit_history_tweet_ids\":\"1223289771813785601\"}}")
 
 })
 
