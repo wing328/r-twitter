@@ -65,6 +65,10 @@ AnimatedGif <- R6::R6Class(
       }
       if (!is.null(`preview_image_url`)) {
         stopifnot(is.character(`preview_image_url`), length(`preview_image_url`) == 1)
+        # validate URL using https://github.com/cran/librarian/blob/master/R/internal_functions.R#L131 credit: Desi Quintans
+        if (!any(grepl("(https?|ftp)://[^\\s/$.?#].[^\\s]*", `preview_image_url`))) {
+          stop(paste("Error! Invalid URL:", `preview_image_url`))
+        }
         self$`preview_image_url` <- `preview_image_url`
       }
       if (!is.null(`variants`)) {
@@ -140,6 +144,10 @@ AnimatedGif <- R6::R6Class(
         self$`width` <- this_object$`width`
       }
       if (!is.null(this_object$`preview_image_url`)) {
+        # validate URL using https://github.com/cran/librarian/blob/master/R/internal_functions.R#L131 credit: Desi Quintans
+        if (!any(grepl("(https?|ftp)://[^\\s/$.?#].[^\\s]*", this_object$`preview_image_url`))) {
+          stop(paste("Error! Invalid URL:", this_object$`preview_image_url`))
+        }
         self$`preview_image_url` <- this_object$`preview_image_url`
       }
       if (!is.null(this_object$`variants`)) {
@@ -234,6 +242,10 @@ AnimatedGif <- R6::R6Class(
       self$`media_key` <- this_object$`media_key`
       self$`type` <- this_object$`type`
       self$`width` <- this_object$`width`
+      # validate URL using https://github.com/cran/librarian/blob/master/R/internal_functions.R#L131 credit: Desi Quintans
+      if (!any(grepl("(https?|ftp)://[^\\s/$.?#].[^\\s]*", this_object$`preview_image_url`))) {
+        stop(paste("Error! Invalid URL:", this_object$`preview_image_url`))
+      }
       self$`preview_image_url` <- this_object$`preview_image_url`
       self$`variants` <- ApiClient$new()$deserializeObj(this_object$`variants`, "array[Variant]", loadNamespace("twitter"))
       # process additional properties/fields in the payload

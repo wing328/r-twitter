@@ -43,6 +43,10 @@ ClientForbiddenProblemAllOf <- R6::R6Class(
       }
       if (!is.null(`registration_url`)) {
         stopifnot(is.character(`registration_url`), length(`registration_url`) == 1)
+        # validate URL using https://github.com/cran/librarian/blob/master/R/internal_functions.R#L131 credit: Desi Quintans
+        if (!any(grepl("(https?|ftp)://[^\\s/$.?#].[^\\s]*", `registration_url`))) {
+          stop(paste("Error! Invalid URL:", `registration_url`))
+        }
         self$`registration_url` <- `registration_url`
       }
       if (!is.null(additional_properties)) {
@@ -91,6 +95,10 @@ ClientForbiddenProblemAllOf <- R6::R6Class(
         self$`reason` <- this_object$`reason`
       }
       if (!is.null(this_object$`registration_url`)) {
+        # validate URL using https://github.com/cran/librarian/blob/master/R/internal_functions.R#L131 credit: Desi Quintans
+        if (!any(grepl("(https?|ftp)://[^\\s/$.?#].[^\\s]*", this_object$`registration_url`))) {
+          stop(paste("Error! Invalid URL:", this_object$`registration_url`))
+        }
         self$`registration_url` <- this_object$`registration_url`
       }
       # process additional properties/fields in the payload
@@ -150,6 +158,10 @@ ClientForbiddenProblemAllOf <- R6::R6Class(
         stop(paste("Error! \"", this_object$`reason`, "\" cannot be assigned to `reason`. Must be \"official-client-forbidden\", \"client-not-enrolled\".", sep = ""))
       }
       self$`reason` <- this_object$`reason`
+      # validate URL using https://github.com/cran/librarian/blob/master/R/internal_functions.R#L131 credit: Desi Quintans
+      if (!any(grepl("(https?|ftp)://[^\\s/$.?#].[^\\s]*", this_object$`registration_url`))) {
+        stop(paste("Error! Invalid URL:", this_object$`registration_url`))
+      }
       self$`registration_url` <- this_object$`registration_url`
       # process additional properties/fields in the payload
       for (key in names(this_object)) {
