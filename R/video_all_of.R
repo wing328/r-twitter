@@ -63,8 +63,8 @@ VideoAllOf <- R6::R6Class(
       }
       if (!is.null(`preview_image_url`)) {
         stopifnot(is.character(`preview_image_url`), length(`preview_image_url`) == 1)
-        # validate URL using https://github.com/cran/librarian/blob/master/R/internal_functions.R#L131 credit: Desi Quintans
-        if (!any(grepl("(https?|ftp)://[^\\s/$.?#].[^\\s]*", `preview_image_url`))) {
+        # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
+        if (!stringr::str_detect(`preview_image_url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
           stop(paste("Error! Invalid URL:", `preview_image_url`))
         }
         self$`preview_image_url` <- `preview_image_url`
@@ -155,8 +155,8 @@ VideoAllOf <- R6::R6Class(
         self$`organic_metrics` <- organic_metrics_object
       }
       if (!is.null(this_object$`preview_image_url`)) {
-        # validate URL using https://github.com/cran/librarian/blob/master/R/internal_functions.R#L131 credit: Desi Quintans
-        if (!any(grepl("(https?|ftp)://[^\\s/$.?#].[^\\s]*", this_object$`preview_image_url`))) {
+        # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
+        if (!stringr::str_detect(this_object$`preview_image_url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
           stop(paste("Error! Invalid URL:", this_object$`preview_image_url`))
         }
         self$`preview_image_url` <- this_object$`preview_image_url`
@@ -270,8 +270,8 @@ VideoAllOf <- R6::R6Class(
       self$`duration_ms` <- this_object$`duration_ms`
       self$`non_public_metrics` <- VideoAllOfNonPublicMetrics$new()$fromJSON(jsonlite::toJSON(this_object$non_public_metrics, auto_unbox = TRUE, digits = NA))
       self$`organic_metrics` <- VideoAllOfOrganicMetrics$new()$fromJSON(jsonlite::toJSON(this_object$organic_metrics, auto_unbox = TRUE, digits = NA))
-      # validate URL using https://github.com/cran/librarian/blob/master/R/internal_functions.R#L131 credit: Desi Quintans
-      if (!any(grepl("(https?|ftp)://[^\\s/$.?#].[^\\s]*", this_object$`preview_image_url`))) {
+      # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
+      if (!stringr::str_detect(this_object$`preview_image_url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
         stop(paste("Error! Invalid URL:", this_object$`preview_image_url`))
       }
       self$`preview_image_url` <- this_object$`preview_image_url`

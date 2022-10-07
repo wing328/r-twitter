@@ -104,8 +104,8 @@ User <- R6::R6Class(
       }
       if (!is.null(`profile_image_url`)) {
         stopifnot(is.character(`profile_image_url`), length(`profile_image_url`) == 1)
-        # validate URL using https://github.com/cran/librarian/blob/master/R/internal_functions.R#L131 credit: Desi Quintans
-        if (!any(grepl("(https?|ftp)://[^\\s/$.?#].[^\\s]*", `profile_image_url`))) {
+        # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
+        if (!stringr::str_detect(`profile_image_url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
           stop(paste("Error! Invalid URL:", `profile_image_url`))
         }
         self$`profile_image_url` <- `profile_image_url`
@@ -241,8 +241,8 @@ User <- R6::R6Class(
         self$`pinned_tweet_id` <- this_object$`pinned_tweet_id`
       }
       if (!is.null(this_object$`profile_image_url`)) {
-        # validate URL using https://github.com/cran/librarian/blob/master/R/internal_functions.R#L131 credit: Desi Quintans
-        if (!any(grepl("(https?|ftp)://[^\\s/$.?#].[^\\s]*", this_object$`profile_image_url`))) {
+        # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
+        if (!stringr::str_detect(this_object$`profile_image_url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
           stop(paste("Error! Invalid URL:", this_object$`profile_image_url`))
         }
         self$`profile_image_url` <- this_object$`profile_image_url`
@@ -425,8 +425,8 @@ User <- R6::R6Class(
       self$`location` <- this_object$`location`
       self$`name` <- this_object$`name`
       self$`pinned_tweet_id` <- this_object$`pinned_tweet_id`
-      # validate URL using https://github.com/cran/librarian/blob/master/R/internal_functions.R#L131 credit: Desi Quintans
-      if (!any(grepl("(https?|ftp)://[^\\s/$.?#].[^\\s]*", this_object$`profile_image_url`))) {
+      # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
+      if (!stringr::str_detect(this_object$`profile_image_url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
         stop(paste("Error! Invalid URL:", this_object$`profile_image_url`))
       }
       self$`profile_image_url` <- this_object$`profile_image_url`
