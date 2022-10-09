@@ -6,6 +6,17 @@ test_that("test URL validation with Media", {
   expect_error(ApiClient$new()$deserialize(ag, "Media", loadNamespace("twitter")), '')
 })
 
+test_that("test Media, AnimatedGif with valid url", {
+  ag <- '{"preview_image_url":"https://stackoverflow.com/image.gif","type":"animated_gif","height":1,"width":2}'
+
+  a <- ApiClient$new()$deserialize(ag, "Media", loadNamespace("twitter"))
+  expect_equal(class(a)[1], "AnimatedGif")
+  expect_equal(a$preview_image_url, "https://stackoverflow.com/image.gif")
+  expect_equal(a$type, "animated_gif")
+  expect_equal(a$height, 1)
+  expect_equal(a$width, 2)
+})
+
 test_that("test Media, AnimatedGif with discriminator mapping", {
   ag <- '{"preview_image_url":"https://twitter.com/image.gif","type":"animated_gif","height":1,"width":2}'
 

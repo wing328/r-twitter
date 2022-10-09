@@ -69,8 +69,8 @@ Photo <- R6::R6Class(
       }
       if (!is.null(`url`)) {
         stopifnot(is.character(`url`), length(`url`) == 1)
-        # validate URL using https://github.com/cran/librarian/blob/master/R/internal_functions.R#L131 credit: Desi Quintans
-        if (!any(grepl("(https?|ftp)://[^\\s/$.?#].[^\\s]*", `url`))) {
+        # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
+        if (!stringr::str_detect(`url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
           stop(paste("Error! Invalid URL:", `url`))
         }
         self$`url` <- `url`
@@ -146,8 +146,8 @@ Photo <- R6::R6Class(
         self$`alt_text` <- this_object$`alt_text`
       }
       if (!is.null(this_object$`url`)) {
-        # validate URL using https://github.com/cran/librarian/blob/master/R/internal_functions.R#L131 credit: Desi Quintans
-        if (!any(grepl("(https?|ftp)://[^\\s/$.?#].[^\\s]*", this_object$`url`))) {
+        # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
+        if (!stringr::str_detect(this_object$`url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
           stop(paste("Error! Invalid URL:", this_object$`url`))
         }
         self$`url` <- this_object$`url`
@@ -242,8 +242,8 @@ Photo <- R6::R6Class(
       self$`type` <- this_object$`type`
       self$`width` <- this_object$`width`
       self$`alt_text` <- this_object$`alt_text`
-      # validate URL using https://github.com/cran/librarian/blob/master/R/internal_functions.R#L131 credit: Desi Quintans
-      if (!any(grepl("(https?|ftp)://[^\\s/$.?#].[^\\s]*", this_object$`url`))) {
+      # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
+      if (!stringr::str_detect(this_object$`url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
         stop(paste("Error! Invalid URL:", this_object$`url`))
       }
       self$`url` <- this_object$`url`
