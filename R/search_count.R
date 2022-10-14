@@ -34,9 +34,7 @@ SearchCount <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `end`, `start`, `tweet_count`, additional_properties = NULL, ...
-    ) {
+    initialize = function(`end`, `start`, `tweet_count`, additional_properties = NULL, ...) {
       if (!missing(`end`)) {
         stopifnot(is.character(`end`), length(`end`) == 1)
         self$`end` <- `end`
@@ -121,26 +119,26 @@ SearchCount <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`end`)) {
           sprintf(
-          '"end":
+            '"end":
             "%s"
                     ',
-          self$`end`
+            self$`end`
           )
         },
         if (!is.null(self$`start`)) {
           sprintf(
-          '"start":
+            '"start":
             "%s"
                     ',
-          self$`start`
+            self$`start`
           )
         },
         if (!is.null(self$`tweet_count`)) {
           sprintf(
-          '"tweet_count":
+            '"tweet_count":
             %d
                     ',
-          self$`tweet_count`
+            self$`tweet_count`
           )
         }
       )
@@ -272,18 +270,18 @@ SearchCount <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#SearchCount$unlock()
+# SearchCount$unlock()
 #
 ## Below is an example to define the print fnuction
-#SearchCount$set("public", "print", function(...) {
+# SearchCount$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#SearchCount$lock()
-
+# SearchCount$lock()

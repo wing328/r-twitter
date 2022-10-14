@@ -10,7 +10,7 @@ test_that("created_at", {
   # Creation time of this User.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`created_at`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`created_at`, "EXPECTED_RESULT")
 })
 
 test_that("description", {
@@ -18,14 +18,14 @@ test_that("description", {
   # The text of this User&#39;s profile description (also known as bio), if the User provided one.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`description`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`description`, "EXPECTED_RESULT")
 })
 
 test_that("entities", {
   # tests for the property `entities` (UserEntities)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`entities`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`entities`, "EXPECTED_RESULT")
 })
 
 test_that("id", {
@@ -33,7 +33,7 @@ test_that("id", {
   # Unique identifier of this User. This is returned as a string in order to avoid complications with languages and tools that cannot handle large integers.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`id`, "EXPECTED_RESULT")
 })
 
 test_that("location", {
@@ -41,7 +41,7 @@ test_that("location", {
   # The location specified in the User&#39;s profile, if the User provided one. As this is a freeform value, it may not indicate a valid location, but it may be fuzzily evaluated when performing searches with location queries.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`location`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`location`, "EXPECTED_RESULT")
 })
 
 test_that("name", {
@@ -49,7 +49,7 @@ test_that("name", {
   # The friendly name of this User, as shown on their profile.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`name`, "EXPECTED_RESULT")
 })
 
 test_that("pinned_tweet_id", {
@@ -57,7 +57,7 @@ test_that("pinned_tweet_id", {
   # Unique identifier of this Tweet. This is returned as a string in order to avoid complications with languages and tools that cannot handle large integers.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`pinned_tweet_id`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`pinned_tweet_id`, "EXPECTED_RESULT")
 })
 
 test_that("profile_image_url", {
@@ -65,7 +65,7 @@ test_that("profile_image_url", {
   # The URL to the profile image for this User.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`profile_image_url`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`profile_image_url`, "EXPECTED_RESULT")
 })
 
 test_that("protected", {
@@ -73,14 +73,14 @@ test_that("protected", {
   # Indicates if this User has chosen to protect their Tweets (in other words, if this User&#39;s Tweets are private).
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`protected`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`protected`, "EXPECTED_RESULT")
 })
 
 test_that("public_metrics", {
   # tests for the property `public_metrics` (UserPublicMetrics)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`public_metrics`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`public_metrics`, "EXPECTED_RESULT")
 })
 
 test_that("url", {
@@ -88,7 +88,7 @@ test_that("url", {
   # The URL specified in the User&#39;s profile.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`url`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`url`, "EXPECTED_RESULT")
 })
 
 test_that("username", {
@@ -96,7 +96,7 @@ test_that("username", {
   # The Twitter handle (screen name) of this user.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`username`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`username`, "EXPECTED_RESULT")
 })
 
 test_that("verified", {
@@ -104,12 +104,12 @@ test_that("verified", {
   # Indicate if this User is a verified Twitter User.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`verified`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`verified`, "EXPECTED_RESULT")
 })
 
 test_that("withheld", {
   # tests for the property `withheld` (UserWithheld)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`withheld`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`withheld`, "EXPECTED_RESULT")
 })

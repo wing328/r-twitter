@@ -9,12 +9,12 @@ test_that("following", {
   # tests for the property `following` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`following`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`following`, "EXPECTED_RESULT")
 })
 
 test_that("pending_follow", {
   # tests for the property `pending_follow` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`pending_follow`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`pending_follow`, "EXPECTED_RESULT")
 })

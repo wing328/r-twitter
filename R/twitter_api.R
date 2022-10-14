@@ -50,7 +50,7 @@ twitter_api <- R6::R6Class(
         self$api_client <- ApiClient$new()
       } else {
         self$api_client <- api_client
-      } 
+      }
 
       self$bookmarks_api <- BookmarksApi$new(self$api_client)
 
@@ -65,7 +65,6 @@ twitter_api <- R6::R6Class(
       self$tweets_api <- TweetsApi$new(self$api_client)
 
       self$users_api <- UsersApi$new(self$api_client)
-
     }
   )
 )

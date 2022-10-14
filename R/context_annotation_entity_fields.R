@@ -34,9 +34,7 @@ ContextAnnotationEntityFields <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `id`, `description` = NULL, `name` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`id`, `description` = NULL, `name` = NULL, additional_properties = NULL, ...) {
       if (!missing(`id`)) {
         stopifnot(is.character(`id`), length(`id`) == 1)
         self$`id` <- `id`
@@ -121,26 +119,26 @@ ContextAnnotationEntityFields <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`description`)) {
           sprintf(
-          '"description":
+            '"description":
             "%s"
                     ',
-          self$`description`
+            self$`description`
           )
         },
         if (!is.null(self$`id`)) {
           sprintf(
-          '"id":
+            '"id":
             "%s"
                     ',
-          self$`id`
+            self$`id`
           )
         },
         if (!is.null(self$`name`)) {
           sprintf(
-          '"name":
+            '"name":
             "%s"
                     ',
-          self$`name`
+            self$`name`
           )
         }
       )
@@ -248,18 +246,18 @@ ContextAnnotationEntityFields <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#ContextAnnotationEntityFields$unlock()
+# ContextAnnotationEntityFields$unlock()
 #
 ## Below is an example to define the print fnuction
-#ContextAnnotationEntityFields$set("public", "print", function(...) {
+# ContextAnnotationEntityFields$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#ContextAnnotationEntityFields$lock()
-
+# ContextAnnotationEntityFields$lock()

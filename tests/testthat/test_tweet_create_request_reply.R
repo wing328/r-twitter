@@ -10,7 +10,7 @@ test_that("exclude_reply_user_ids", {
   # A list of User Ids to be excluded from the reply Tweet.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`exclude_reply_user_ids`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`exclude_reply_user_ids`, "EXPECTED_RESULT")
 })
 
 test_that("in_reply_to_tweet_id", {
@@ -18,5 +18,5 @@ test_that("in_reply_to_tweet_id", {
   # Unique identifier of this Tweet. This is returned as a string in order to avoid complications with languages and tools that cannot handle large integers.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`in_reply_to_tweet_id`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`in_reply_to_tweet_id`, "EXPECTED_RESULT")
 })

@@ -28,9 +28,7 @@ ListDeleteResponseData <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `deleted` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`deleted` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`deleted`)) {
         stopifnot(is.logical(`deleted`), length(`deleted`) == 1)
         self$`deleted` <- `deleted`
@@ -93,10 +91,10 @@ ListDeleteResponseData <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`deleted`)) {
           sprintf(
-          '"deleted":
+            '"deleted":
             %s
                     ',
-          tolower(self$`deleted`)
+            tolower(self$`deleted`)
           )
         }
       )
@@ -178,18 +176,18 @@ ListDeleteResponseData <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#ListDeleteResponseData$unlock()
+# ListDeleteResponseData$unlock()
 #
 ## Below is an example to define the print fnuction
-#ListDeleteResponseData$set("public", "print", function(...) {
+# ListDeleteResponseData$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#ListDeleteResponseData$lock()
-
+# ListDeleteResponseData$lock()

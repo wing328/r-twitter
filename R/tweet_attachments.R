@@ -31,9 +31,7 @@ TweetAttachments <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `media_keys` = NULL, `poll_ids` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`media_keys` = NULL, `poll_ids` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`media_keys`)) {
         stopifnot(is.vector(`media_keys`), length(`media_keys`) != 0)
         sapply(`media_keys`, function(x) stopifnot(is.character(x)))
@@ -109,18 +107,18 @@ TweetAttachments <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`media_keys`)) {
           sprintf(
-          '"media_keys":
+            '"media_keys":
              [%s]
           ',
-          paste(unlist(lapply(self$`media_keys`, function(x) paste0('"', x, '"'))), collapse = ",")
+            paste(unlist(lapply(self$`media_keys`, function(x) paste0('"', x, '"'))), collapse = ",")
           )
         },
         if (!is.null(self$`poll_ids`)) {
           sprintf(
-          '"poll_ids":
+            '"poll_ids":
              [%s]
           ',
-          paste(unlist(lapply(self$`poll_ids`, function(x) paste0('"', x, '"'))), collapse = ",")
+            paste(unlist(lapply(self$`poll_ids`, function(x) paste0('"', x, '"'))), collapse = ",")
           )
         }
       )
@@ -219,18 +217,18 @@ TweetAttachments <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#TweetAttachments$unlock()
+# TweetAttachments$unlock()
 #
 ## Below is an example to define the print fnuction
-#TweetAttachments$set("public", "print", function(...) {
+# TweetAttachments$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#TweetAttachments$lock()
-
+# TweetAttachments$lock()

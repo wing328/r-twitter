@@ -28,9 +28,7 @@ UserEntitiesUrl <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `urls` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`urls` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`urls`)) {
         stopifnot(is.vector(`urls`), length(`urls`) != 0)
         sapply(`urls`, function(x) stopifnot(R6::is.R6(x)))
@@ -94,10 +92,10 @@ UserEntitiesUrl <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`urls`)) {
           sprintf(
-          '"urls":
+            '"urls":
           [%s]
 ',
-          paste(sapply(self$`urls`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
+            paste(sapply(self$`urls`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
           )
         }
       )
@@ -187,18 +185,18 @@ UserEntitiesUrl <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#UserEntitiesUrl$unlock()
+# UserEntitiesUrl$unlock()
 #
 ## Below is an example to define the print fnuction
-#UserEntitiesUrl$set("public", "print", function(...) {
+# UserEntitiesUrl$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#UserEntitiesUrl$lock()
-
+# UserEntitiesUrl$lock()

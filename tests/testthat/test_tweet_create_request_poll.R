@@ -10,14 +10,14 @@ test_that("duration_minutes", {
   # Duration of the poll in minutes.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`duration_minutes`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`duration_minutes`, "EXPECTED_RESULT")
 })
 
 test_that("options", {
   # tests for the property `options` (array[character])
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`options`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`options`, "EXPECTED_RESULT")
 })
 
 test_that("reply_settings", {
@@ -25,5 +25,5 @@ test_that("reply_settings", {
   # Settings to indicate who can reply to the Tweet.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`reply_settings`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`reply_settings`, "EXPECTED_RESULT")
 })

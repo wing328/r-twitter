@@ -10,7 +10,7 @@ test_that("playback_0_count", {
   # Number of users who made it through 0% of the video.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`playback_0_count`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`playback_0_count`, "EXPECTED_RESULT")
 })
 
 test_that("playback_100_count", {
@@ -18,7 +18,7 @@ test_that("playback_100_count", {
   # Number of users who made it through 100% of the video.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`playback_100_count`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`playback_100_count`, "EXPECTED_RESULT")
 })
 
 test_that("playback_25_count", {
@@ -26,7 +26,7 @@ test_that("playback_25_count", {
   # Number of users who made it through 25% of the video.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`playback_25_count`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`playback_25_count`, "EXPECTED_RESULT")
 })
 
 test_that("playback_50_count", {
@@ -34,7 +34,7 @@ test_that("playback_50_count", {
   # Number of users who made it through 50% of the video.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`playback_50_count`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`playback_50_count`, "EXPECTED_RESULT")
 })
 
 test_that("playback_75_count", {
@@ -42,7 +42,7 @@ test_that("playback_75_count", {
   # Number of users who made it through 75% of the video.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`playback_75_count`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`playback_75_count`, "EXPECTED_RESULT")
 })
 
 test_that("view_count", {
@@ -50,5 +50,5 @@ test_that("view_count", {
   # Number of times this video has been viewed.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`view_count`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`view_count`, "EXPECTED_RESULT")
 })

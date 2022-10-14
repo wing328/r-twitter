@@ -9,5 +9,5 @@ test_that("updated", {
   # tests for the property `updated` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`updated`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`updated`, "EXPECTED_RESULT")
 })

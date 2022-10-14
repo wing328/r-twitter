@@ -9,26 +9,26 @@ test_that("bbox", {
   # tests for the property `bbox` (array[numeric])
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`bbox`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`bbox`, "EXPECTED_RESULT")
 })
 
 test_that("geometry", {
   # tests for the property `geometry` (Point)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`geometry`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`geometry`, "EXPECTED_RESULT")
 })
 
 test_that("properties", {
   # tests for the property `properties` (object)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`properties`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`properties`, "EXPECTED_RESULT")
 })
 
 test_that("type", {
   # tests for the property `type` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`type`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`type`, "EXPECTED_RESULT")
 })

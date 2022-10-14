@@ -28,9 +28,7 @@ UsersLikesCreateRequest <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `tweet_id`, additional_properties = NULL, ...
-    ) {
+    initialize = function(`tweet_id`, additional_properties = NULL, ...) {
       if (!missing(`tweet_id`)) {
         stopifnot(is.character(`tweet_id`), length(`tweet_id`) == 1)
         self$`tweet_id` <- `tweet_id`
@@ -93,10 +91,10 @@ UsersLikesCreateRequest <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`tweet_id`)) {
           sprintf(
-          '"tweet_id":
+            '"tweet_id":
             "%s"
                     ',
-          self$`tweet_id`
+            self$`tweet_id`
           )
         }
       )
@@ -202,18 +200,18 @@ UsersLikesCreateRequest <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#UsersLikesCreateRequest$unlock()
+# UsersLikesCreateRequest$unlock()
 #
 ## Below is an example to define the print fnuction
-#UsersLikesCreateRequest$set("public", "print", function(...) {
+# UsersLikesCreateRequest$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#UsersLikesCreateRequest$lock()
-
+# UsersLikesCreateRequest$lock()

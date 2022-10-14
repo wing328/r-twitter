@@ -10,7 +10,7 @@ test_that("end", {
   # Index (zero-based) at which position this entity ends.  The index is exclusive.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`end`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`end`, "EXPECTED_RESULT")
 })
 
 test_that("start", {
@@ -18,7 +18,7 @@ test_that("start", {
   # Index (zero-based) at which position this entity starts.  The index is inclusive.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`start`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`start`, "EXPECTED_RESULT")
 })
 
 test_that("description", {
@@ -26,7 +26,7 @@ test_that("description", {
   # Description of the URL landing page.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`description`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`description`, "EXPECTED_RESULT")
 })
 
 test_that("display_url", {
@@ -34,7 +34,7 @@ test_that("display_url", {
   # The URL as displayed in the Twitter client.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`display_url`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`display_url`, "EXPECTED_RESULT")
 })
 
 test_that("expanded_url", {
@@ -42,14 +42,14 @@ test_that("expanded_url", {
   # A validly formatted URL.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`expanded_url`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`expanded_url`, "EXPECTED_RESULT")
 })
 
 test_that("images", {
   # tests for the property `images` (array[UrlImage])
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`images`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`images`, "EXPECTED_RESULT")
 })
 
 test_that("media_key", {
@@ -57,7 +57,7 @@ test_that("media_key", {
   # The Media Key identifier for this attachment.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`media_key`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`media_key`, "EXPECTED_RESULT")
 })
 
 test_that("status", {
@@ -65,7 +65,7 @@ test_that("status", {
   # HTTP Status Code.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`status`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`status`, "EXPECTED_RESULT")
 })
 
 test_that("title", {
@@ -73,7 +73,7 @@ test_that("title", {
   # Title of the page the URL points to.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`title`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`title`, "EXPECTED_RESULT")
 })
 
 test_that("unwound_url", {
@@ -81,7 +81,7 @@ test_that("unwound_url", {
   # Fully resolved url.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`unwound_url`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`unwound_url`, "EXPECTED_RESULT")
 })
 
 test_that("url", {
@@ -89,5 +89,5 @@ test_that("url", {
   # A validly formatted URL.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`url`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`url`, "EXPECTED_RESULT")
 })

@@ -85,9 +85,7 @@ Tweet <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `id`, `text`, `attachments` = NULL, `author_id` = NULL, `context_annotations` = NULL, `conversation_id` = NULL, `created_at` = NULL, `entities` = NULL, `geo` = NULL, `in_reply_to_user_id` = NULL, `lang` = NULL, `non_public_metrics` = NULL, `organic_metrics` = NULL, `possibly_sensitive` = NULL, `promoted_metrics` = NULL, `public_metrics` = NULL, `referenced_tweets` = NULL, `reply_settings` = NULL, `source` = NULL, `withheld` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`id`, `text`, `attachments` = NULL, `author_id` = NULL, `context_annotations` = NULL, `conversation_id` = NULL, `created_at` = NULL, `entities` = NULL, `geo` = NULL, `in_reply_to_user_id` = NULL, `lang` = NULL, `non_public_metrics` = NULL, `organic_metrics` = NULL, `possibly_sensitive` = NULL, `promoted_metrics` = NULL, `public_metrics` = NULL, `referenced_tweets` = NULL, `reply_settings` = NULL, `source` = NULL, `withheld` = NULL, additional_properties = NULL, ...) {
       if (!missing(`id`)) {
         stopifnot(is.character(`id`), length(`id`) == 1)
         self$`id` <- `id`
@@ -379,162 +377,162 @@ Tweet <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`attachments`)) {
           sprintf(
-          '"attachments":
+            '"attachments":
           %s
           ',
-          jsonlite::toJSON(self$`attachments`$toJSON(), auto_unbox = TRUE, digits = NA)
+            jsonlite::toJSON(self$`attachments`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         },
         if (!is.null(self$`author_id`)) {
           sprintf(
-          '"author_id":
+            '"author_id":
             "%s"
                     ',
-          self$`author_id`
+            self$`author_id`
           )
         },
         if (!is.null(self$`context_annotations`)) {
           sprintf(
-          '"context_annotations":
+            '"context_annotations":
           [%s]
 ',
-          paste(sapply(self$`context_annotations`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
+            paste(sapply(self$`context_annotations`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
           )
         },
         if (!is.null(self$`conversation_id`)) {
           sprintf(
-          '"conversation_id":
+            '"conversation_id":
             "%s"
                     ',
-          self$`conversation_id`
+            self$`conversation_id`
           )
         },
         if (!is.null(self$`created_at`)) {
           sprintf(
-          '"created_at":
+            '"created_at":
             "%s"
                     ',
-          self$`created_at`
+            self$`created_at`
           )
         },
         if (!is.null(self$`entities`)) {
           sprintf(
-          '"entities":
+            '"entities":
           %s
           ',
-          jsonlite::toJSON(self$`entities`$toJSON(), auto_unbox = TRUE, digits = NA)
+            jsonlite::toJSON(self$`entities`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         },
         if (!is.null(self$`geo`)) {
           sprintf(
-          '"geo":
+            '"geo":
           %s
           ',
-          jsonlite::toJSON(self$`geo`$toJSON(), auto_unbox = TRUE, digits = NA)
+            jsonlite::toJSON(self$`geo`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         },
         if (!is.null(self$`id`)) {
           sprintf(
-          '"id":
+            '"id":
             "%s"
                     ',
-          self$`id`
+            self$`id`
           )
         },
         if (!is.null(self$`in_reply_to_user_id`)) {
           sprintf(
-          '"in_reply_to_user_id":
+            '"in_reply_to_user_id":
             "%s"
                     ',
-          self$`in_reply_to_user_id`
+            self$`in_reply_to_user_id`
           )
         },
         if (!is.null(self$`lang`)) {
           sprintf(
-          '"lang":
+            '"lang":
             "%s"
                     ',
-          self$`lang`
+            self$`lang`
           )
         },
         if (!is.null(self$`non_public_metrics`)) {
           sprintf(
-          '"non_public_metrics":
+            '"non_public_metrics":
           %s
           ',
-          jsonlite::toJSON(self$`non_public_metrics`$toJSON(), auto_unbox = TRUE, digits = NA)
+            jsonlite::toJSON(self$`non_public_metrics`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         },
         if (!is.null(self$`organic_metrics`)) {
           sprintf(
-          '"organic_metrics":
+            '"organic_metrics":
           %s
           ',
-          jsonlite::toJSON(self$`organic_metrics`$toJSON(), auto_unbox = TRUE, digits = NA)
+            jsonlite::toJSON(self$`organic_metrics`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         },
         if (!is.null(self$`possibly_sensitive`)) {
           sprintf(
-          '"possibly_sensitive":
+            '"possibly_sensitive":
             %s
                     ',
-          tolower(self$`possibly_sensitive`)
+            tolower(self$`possibly_sensitive`)
           )
         },
         if (!is.null(self$`promoted_metrics`)) {
           sprintf(
-          '"promoted_metrics":
+            '"promoted_metrics":
           %s
           ',
-          jsonlite::toJSON(self$`promoted_metrics`$toJSON(), auto_unbox = TRUE, digits = NA)
+            jsonlite::toJSON(self$`promoted_metrics`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         },
         if (!is.null(self$`public_metrics`)) {
           sprintf(
-          '"public_metrics":
+            '"public_metrics":
           %s
           ',
-          jsonlite::toJSON(self$`public_metrics`$toJSON(), auto_unbox = TRUE, digits = NA)
+            jsonlite::toJSON(self$`public_metrics`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         },
         if (!is.null(self$`referenced_tweets`)) {
           sprintf(
-          '"referenced_tweets":
+            '"referenced_tweets":
           [%s]
 ',
-          paste(sapply(self$`referenced_tweets`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
+            paste(sapply(self$`referenced_tweets`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
           )
         },
         if (!is.null(self$`reply_settings`)) {
           sprintf(
-          '"reply_settings":
+            '"reply_settings":
           %s
           ',
-          jsonlite::toJSON(self$`reply_settings`$toJSON(), auto_unbox = TRUE, digits = NA)
+            jsonlite::toJSON(self$`reply_settings`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         },
         if (!is.null(self$`source`)) {
           sprintf(
-          '"source":
+            '"source":
             "%s"
                     ',
-          self$`source`
+            self$`source`
           )
         },
         if (!is.null(self$`text`)) {
           sprintf(
-          '"text":
+            '"text":
             "%s"
                     ',
-          self$`text`
+            self$`text`
           )
         },
         if (!is.null(self$`withheld`)) {
           sprintf(
-          '"withheld":
+            '"withheld":
           %s
           ',
-          jsonlite::toJSON(self$`withheld`$toJSON(), auto_unbox = TRUE, digits = NA)
+            jsonlite::toJSON(self$`withheld`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         }
       )
@@ -715,18 +713,18 @@ Tweet <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#Tweet$unlock()
+# Tweet$unlock()
 #
 ## Below is an example to define the print fnuction
-#Tweet$set("public", "print", function(...) {
+# Tweet$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#Tweet$lock()
-
+# Tweet$lock()

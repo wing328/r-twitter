@@ -22,7 +22,7 @@ test_that("get_users_id_bookmarks", {
   # @return [Get2UsersIdBookmarksResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("post_users_id_bookmarks", {
@@ -31,11 +31,11 @@ test_that("post_users_id_bookmarks", {
   # Add Tweet to Bookmarks
   # Adds a Tweet (ID in the body) to the requesting User&#39;s (in the path) bookmarks
   # @param id character The ID of the authenticated source User for whom to add bookmarks.
-  # @param bookmark_add_request BookmarkAddRequest 
+  # @param bookmark_add_request BookmarkAddRequest
   # @return [BookmarkMutationResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("users_id_bookmarks_delete", {
@@ -48,5 +48,5 @@ test_that("users_id_bookmarks_delete", {
   # @return [BookmarkMutationResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })

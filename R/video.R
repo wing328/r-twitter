@@ -59,9 +59,7 @@ Video <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `type`, `height` = NULL, `media_key` = NULL, `width` = NULL, `duration_ms` = NULL, `non_public_metrics` = NULL, `organic_metrics` = NULL, `preview_image_url` = NULL, `promoted_metrics` = NULL, `public_metrics` = NULL, `variants` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`type`, `height` = NULL, `media_key` = NULL, `width` = NULL, `duration_ms` = NULL, `non_public_metrics` = NULL, `organic_metrics` = NULL, `preview_image_url` = NULL, `promoted_metrics` = NULL, `public_metrics` = NULL, `variants` = NULL, additional_properties = NULL, ...) {
       if (!missing(`type`)) {
         stopifnot(is.character(`type`), length(`type`) == 1)
         self$`type` <- `type`
@@ -251,90 +249,90 @@ Video <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`height`)) {
           sprintf(
-          '"height":
+            '"height":
             %d
                     ',
-          self$`height`
+            self$`height`
           )
         },
         if (!is.null(self$`media_key`)) {
           sprintf(
-          '"media_key":
+            '"media_key":
             "%s"
                     ',
-          self$`media_key`
+            self$`media_key`
           )
         },
         if (!is.null(self$`type`)) {
           sprintf(
-          '"type":
+            '"type":
             "%s"
                     ',
-          self$`type`
+            self$`type`
           )
         },
         if (!is.null(self$`width`)) {
           sprintf(
-          '"width":
+            '"width":
             %d
                     ',
-          self$`width`
+            self$`width`
           )
         },
         if (!is.null(self$`duration_ms`)) {
           sprintf(
-          '"duration_ms":
+            '"duration_ms":
             %d
                     ',
-          self$`duration_ms`
+            self$`duration_ms`
           )
         },
         if (!is.null(self$`non_public_metrics`)) {
           sprintf(
-          '"non_public_metrics":
+            '"non_public_metrics":
           %s
           ',
-          jsonlite::toJSON(self$`non_public_metrics`$toJSON(), auto_unbox = TRUE, digits = NA)
+            jsonlite::toJSON(self$`non_public_metrics`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         },
         if (!is.null(self$`organic_metrics`)) {
           sprintf(
-          '"organic_metrics":
+            '"organic_metrics":
           %s
           ',
-          jsonlite::toJSON(self$`organic_metrics`$toJSON(), auto_unbox = TRUE, digits = NA)
+            jsonlite::toJSON(self$`organic_metrics`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         },
         if (!is.null(self$`preview_image_url`)) {
           sprintf(
-          '"preview_image_url":
+            '"preview_image_url":
             "%s"
                     ',
-          self$`preview_image_url`
+            self$`preview_image_url`
           )
         },
         if (!is.null(self$`promoted_metrics`)) {
           sprintf(
-          '"promoted_metrics":
+            '"promoted_metrics":
           %s
           ',
-          jsonlite::toJSON(self$`promoted_metrics`$toJSON(), auto_unbox = TRUE, digits = NA)
+            jsonlite::toJSON(self$`promoted_metrics`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         },
         if (!is.null(self$`public_metrics`)) {
           sprintf(
-          '"public_metrics":
+            '"public_metrics":
           %s
           ',
-          jsonlite::toJSON(self$`public_metrics`$toJSON(), auto_unbox = TRUE, digits = NA)
+            jsonlite::toJSON(self$`public_metrics`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         },
         if (!is.null(self$`variants`)) {
           sprintf(
-          '"variants":
+            '"variants":
           [%s]
 ',
-          paste(sapply(self$`variants`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
+            paste(sapply(self$`variants`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
           )
         }
       )
@@ -470,18 +468,18 @@ Video <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#Video$unlock()
+# Video$unlock()
 #
 ## Below is an example to define the print fnuction
-#Video$set("public", "print", function(...) {
+# Video$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#Video$lock()
-
+# Video$lock()

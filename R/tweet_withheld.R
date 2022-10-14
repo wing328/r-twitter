@@ -34,9 +34,7 @@ TweetWithheld <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `copyright`, `country_codes`, `scope` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`copyright`, `country_codes`, `scope` = NULL, additional_properties = NULL, ...) {
       if (!missing(`copyright`)) {
         stopifnot(is.logical(`copyright`), length(`copyright`) == 1)
         self$`copyright` <- `copyright`
@@ -134,26 +132,26 @@ TweetWithheld <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`copyright`)) {
           sprintf(
-          '"copyright":
+            '"copyright":
             %s
                     ',
-          tolower(self$`copyright`)
+            tolower(self$`copyright`)
           )
         },
         if (!is.null(self$`country_codes`)) {
           sprintf(
-          '"country_codes":
+            '"country_codes":
              [%s]
           ',
-          paste(unlist(lapply(self$`country_codes`, function(x) paste0('"', x, '"'))), collapse = ",")
+            paste(unlist(lapply(self$`country_codes`, function(x) paste0('"', x, '"'))), collapse = ",")
           )
         },
         if (!is.null(self$`scope`)) {
           sprintf(
-          '"scope":
+            '"scope":
             "%s"
                     ',
-          self$`scope`
+            self$`scope`
           )
         }
       )
@@ -287,18 +285,18 @@ TweetWithheld <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#TweetWithheld$unlock()
+# TweetWithheld$unlock()
 #
 ## Below is an example to define the print fnuction
-#TweetWithheld$set("public", "print", function(...) {
+# TweetWithheld$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#TweetWithheld$lock()
-
+# TweetWithheld$lock()

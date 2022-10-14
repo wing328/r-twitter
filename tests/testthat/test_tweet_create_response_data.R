@@ -10,7 +10,7 @@ test_that("id", {
   # Unique identifier of this Tweet. This is returned as a string in order to avoid complications with languages and tools that cannot handle large integers.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`id`, "EXPECTED_RESULT")
 })
 
 test_that("text", {
@@ -18,5 +18,5 @@ test_that("text", {
   # The content of the Tweet.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`text`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`text`, "EXPECTED_RESULT")
 })

@@ -16,7 +16,7 @@ test_that("find_my_user", {
   # @return [Get2UsersMeResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("find_user_by_id", {
@@ -31,7 +31,7 @@ test_that("find_user_by_id", {
   # @return [Get2UsersIdResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("find_user_by_username", {
@@ -46,7 +46,7 @@ test_that("find_user_by_username", {
   # @return [Get2UsersByUsernameUsernameResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("find_users_by_id", {
@@ -61,7 +61,7 @@ test_that("find_users_by_id", {
   # @return [Get2UsersResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("find_users_by_username", {
@@ -76,7 +76,7 @@ test_that("find_users_by_username", {
   # @return [Get2UsersByResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("list_get_followers", {
@@ -93,7 +93,7 @@ test_that("list_get_followers", {
   # @return [Get2ListsIdFollowersResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("list_get_members", {
@@ -110,7 +110,7 @@ test_that("list_get_members", {
   # @return [Get2ListsIdMembersResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("tweets_id_liking_users", {
@@ -127,7 +127,7 @@ test_that("tweets_id_liking_users", {
   # @return [Get2TweetsIdLikingUsersResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("tweets_id_retweeting_users", {
@@ -144,7 +144,7 @@ test_that("tweets_id_retweeting_users", {
   # @return [Get2TweetsIdRetweetedByResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("users_id_block", {
@@ -153,11 +153,11 @@ test_that("users_id_block", {
   # Block User by User ID
   # Causes the User (in the path) to block the target User. The User (in the path) must match the User context authorizing the request
   # @param id character The ID of the authenticated source User that is requesting to block the target User.
-  # @param block_user_request BlockUserRequest 
+  # @param block_user_request BlockUserRequest
   # @return [BlockUserMutationResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("users_id_blocking", {
@@ -174,7 +174,7 @@ test_that("users_id_blocking", {
   # @return [Get2UsersIdBlockingResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("users_id_follow", {
@@ -187,7 +187,7 @@ test_that("users_id_follow", {
   # @return [UsersFollowingCreateResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("users_id_followers", {
@@ -204,7 +204,7 @@ test_that("users_id_followers", {
   # @return [Get2UsersIdFollowersResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("users_id_following", {
@@ -221,7 +221,7 @@ test_that("users_id_following", {
   # @return [Get2UsersIdFollowingResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("users_id_mute", {
@@ -234,7 +234,7 @@ test_that("users_id_mute", {
   # @return [MuteUserMutationResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("users_id_muting", {
@@ -251,7 +251,7 @@ test_that("users_id_muting", {
   # @return [Get2UsersIdMutingResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("users_id_unblock", {
@@ -264,7 +264,7 @@ test_that("users_id_unblock", {
   # @return [BlockUserMutationResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("users_id_unfollow", {
@@ -277,7 +277,7 @@ test_that("users_id_unfollow", {
   # @return [UsersFollowingDeleteResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("users_id_unmute", {
@@ -290,5 +290,5 @@ test_that("users_id_unmute", {
   # @return [MuteUserMutationResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })

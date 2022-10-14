@@ -10,7 +10,7 @@ test_that("created_at", {
   # Creation time of the compliance job.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`created_at`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`created_at`, "EXPECTED_RESULT")
 })
 
 test_that("download_expires_at", {
@@ -18,7 +18,7 @@ test_that("download_expires_at", {
   # Expiration time of the download URL.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`download_expires_at`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`download_expires_at`, "EXPECTED_RESULT")
 })
 
 test_that("download_url", {
@@ -26,7 +26,7 @@ test_that("download_url", {
   # URL from which the user will retrieve their compliance results.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`download_url`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`download_url`, "EXPECTED_RESULT")
 })
 
 test_that("id", {
@@ -34,7 +34,7 @@ test_that("id", {
   # Compliance Job ID.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`id`, "EXPECTED_RESULT")
 })
 
 test_that("name", {
@@ -42,21 +42,21 @@ test_that("name", {
   # User-provided name for a compliance job.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`name`, "EXPECTED_RESULT")
 })
 
 test_that("status", {
   # tests for the property `status` (ComplianceJobStatus)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`status`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`status`, "EXPECTED_RESULT")
 })
 
 test_that("type", {
   # tests for the property `type` (ComplianceJobType)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`type`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`type`, "EXPECTED_RESULT")
 })
 
 test_that("upload_expires_at", {
@@ -64,7 +64,7 @@ test_that("upload_expires_at", {
   # Expiration time of the upload URL.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`upload_expires_at`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`upload_expires_at`, "EXPECTED_RESULT")
 })
 
 test_that("upload_url", {
@@ -72,5 +72,5 @@ test_that("upload_url", {
   # URL to which the user will upload their Tweet or user IDs.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`upload_url`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`upload_url`, "EXPECTED_RESULT")
 })

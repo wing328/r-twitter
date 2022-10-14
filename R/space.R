@@ -1,7 +1,7 @@
 #' Create a new Space
 #'
 #' @description
-#' 
+#'
 #'
 #' @docType class
 #' @title Space
@@ -76,9 +76,7 @@ Space <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `id`, `state`, `created_at` = NULL, `creator_id` = NULL, `ended_at` = NULL, `host_ids` = NULL, `invited_user_ids` = NULL, `is_ticketed` = NULL, `lang` = NULL, `participant_count` = NULL, `scheduled_start` = NULL, `speaker_ids` = NULL, `started_at` = NULL, `subscriber_count` = NULL, `title` = NULL, `topics` = NULL, `updated_at` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`id`, `state`, `created_at` = NULL, `creator_id` = NULL, `ended_at` = NULL, `host_ids` = NULL, `invited_user_ids` = NULL, `is_ticketed` = NULL, `lang` = NULL, `participant_count` = NULL, `scheduled_start` = NULL, `speaker_ids` = NULL, `started_at` = NULL, `subscriber_count` = NULL, `title` = NULL, `topics` = NULL, `updated_at` = NULL, additional_properties = NULL, ...) {
       if (!missing(`id`)) {
         stopifnot(is.character(`id`), length(`id`) == 1)
         self$`id` <- `id`
@@ -327,138 +325,138 @@ Space <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`created_at`)) {
           sprintf(
-          '"created_at":
+            '"created_at":
             "%s"
                     ',
-          self$`created_at`
+            self$`created_at`
           )
         },
         if (!is.null(self$`creator_id`)) {
           sprintf(
-          '"creator_id":
+            '"creator_id":
             "%s"
                     ',
-          self$`creator_id`
+            self$`creator_id`
           )
         },
         if (!is.null(self$`ended_at`)) {
           sprintf(
-          '"ended_at":
+            '"ended_at":
             "%s"
                     ',
-          self$`ended_at`
+            self$`ended_at`
           )
         },
         if (!is.null(self$`host_ids`)) {
           sprintf(
-          '"host_ids":
+            '"host_ids":
              [%s]
           ',
-          paste(unlist(lapply(self$`host_ids`, function(x) paste0('"', x, '"'))), collapse = ",")
+            paste(unlist(lapply(self$`host_ids`, function(x) paste0('"', x, '"'))), collapse = ",")
           )
         },
         if (!is.null(self$`id`)) {
           sprintf(
-          '"id":
+            '"id":
             "%s"
                     ',
-          self$`id`
+            self$`id`
           )
         },
         if (!is.null(self$`invited_user_ids`)) {
           sprintf(
-          '"invited_user_ids":
+            '"invited_user_ids":
              [%s]
           ',
-          paste(unlist(lapply(self$`invited_user_ids`, function(x) paste0('"', x, '"'))), collapse = ",")
+            paste(unlist(lapply(self$`invited_user_ids`, function(x) paste0('"', x, '"'))), collapse = ",")
           )
         },
         if (!is.null(self$`is_ticketed`)) {
           sprintf(
-          '"is_ticketed":
+            '"is_ticketed":
             %s
                     ',
-          tolower(self$`is_ticketed`)
+            tolower(self$`is_ticketed`)
           )
         },
         if (!is.null(self$`lang`)) {
           sprintf(
-          '"lang":
+            '"lang":
             "%s"
                     ',
-          self$`lang`
+            self$`lang`
           )
         },
         if (!is.null(self$`participant_count`)) {
           sprintf(
-          '"participant_count":
+            '"participant_count":
             %d
                     ',
-          self$`participant_count`
+            self$`participant_count`
           )
         },
         if (!is.null(self$`scheduled_start`)) {
           sprintf(
-          '"scheduled_start":
+            '"scheduled_start":
             "%s"
                     ',
-          self$`scheduled_start`
+            self$`scheduled_start`
           )
         },
         if (!is.null(self$`speaker_ids`)) {
           sprintf(
-          '"speaker_ids":
+            '"speaker_ids":
              [%s]
           ',
-          paste(unlist(lapply(self$`speaker_ids`, function(x) paste0('"', x, '"'))), collapse = ",")
+            paste(unlist(lapply(self$`speaker_ids`, function(x) paste0('"', x, '"'))), collapse = ",")
           )
         },
         if (!is.null(self$`started_at`)) {
           sprintf(
-          '"started_at":
+            '"started_at":
             "%s"
                     ',
-          self$`started_at`
+            self$`started_at`
           )
         },
         if (!is.null(self$`state`)) {
           sprintf(
-          '"state":
+            '"state":
             "%s"
                     ',
-          self$`state`
+            self$`state`
           )
         },
         if (!is.null(self$`subscriber_count`)) {
           sprintf(
-          '"subscriber_count":
+            '"subscriber_count":
             %d
                     ',
-          self$`subscriber_count`
+            self$`subscriber_count`
           )
         },
         if (!is.null(self$`title`)) {
           sprintf(
-          '"title":
+            '"title":
             "%s"
                     ',
-          self$`title`
+            self$`title`
           )
         },
         if (!is.null(self$`topics`)) {
           sprintf(
-          '"topics":
+            '"topics":
           [%s]
 ',
-          paste(sapply(self$`topics`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
+            paste(sapply(self$`topics`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
           )
         },
         if (!is.null(self$`updated_at`)) {
           sprintf(
-          '"updated_at":
+            '"updated_at":
             "%s"
                     ',
-          self$`updated_at`
+            self$`updated_at`
           )
         }
       )
@@ -607,18 +605,18 @@ Space <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#Space$unlock()
+# Space$unlock()
 #
 ## Below is an example to define the print fnuction
-#Space$set("public", "print", function(...) {
+# Space$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#Space$lock()
-
+# Space$lock()

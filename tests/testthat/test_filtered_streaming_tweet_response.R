@@ -9,21 +9,21 @@ test_that("data", {
   # tests for the property `data` (Tweet)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`data`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`data`, "EXPECTED_RESULT")
 })
 
 test_that("errors", {
   # tests for the property `errors` (array[Problem])
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`errors`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`errors`, "EXPECTED_RESULT")
 })
 
 test_that("includes", {
   # tests for the property `includes` (Expansions)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`includes`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`includes`, "EXPECTED_RESULT")
 })
 
 test_that("matching_rules", {
@@ -31,5 +31,5 @@ test_that("matching_rules", {
   # The list of rules which matched the Tweet
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`matching_rules`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`matching_rules`, "EXPECTED_RESULT")
 })

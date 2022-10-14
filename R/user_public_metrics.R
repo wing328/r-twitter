@@ -37,9 +37,7 @@ UserPublicMetrics <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `followers_count`, `following_count`, `listed_count`, `tweet_count`, additional_properties = NULL, ...
-    ) {
+    initialize = function(`followers_count`, `following_count`, `listed_count`, `tweet_count`, additional_properties = NULL, ...) {
       if (!missing(`followers_count`)) {
         stopifnot(is.numeric(`followers_count`), length(`followers_count`) == 1)
         self$`followers_count` <- `followers_count`
@@ -135,34 +133,34 @@ UserPublicMetrics <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`followers_count`)) {
           sprintf(
-          '"followers_count":
+            '"followers_count":
             %d
                     ',
-          self$`followers_count`
+            self$`followers_count`
           )
         },
         if (!is.null(self$`following_count`)) {
           sprintf(
-          '"following_count":
+            '"following_count":
             %d
                     ',
-          self$`following_count`
+            self$`following_count`
           )
         },
         if (!is.null(self$`listed_count`)) {
           sprintf(
-          '"listed_count":
+            '"listed_count":
             %d
                     ',
-          self$`listed_count`
+            self$`listed_count`
           )
         },
         if (!is.null(self$`tweet_count`)) {
           sprintf(
-          '"tweet_count":
+            '"tweet_count":
             %d
                     ',
-          self$`tweet_count`
+            self$`tweet_count`
           )
         }
       )
@@ -311,18 +309,18 @@ UserPublicMetrics <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#UserPublicMetrics$unlock()
+# UserPublicMetrics$unlock()
 #
 ## Below is an example to define the print fnuction
-#UserPublicMetrics$set("public", "print", function(...) {
+# UserPublicMetrics$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#UserPublicMetrics$lock()
-
+# UserPublicMetrics$lock()

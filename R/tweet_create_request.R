@@ -52,9 +52,7 @@ TweetCreateRequest <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `direct_message_deep_link` = NULL, `for_super_followers_only` = FALSE, `geo` = NULL, `media` = NULL, `poll` = NULL, `quote_tweet_id` = NULL, `reply` = NULL, `reply_settings` = NULL, `text` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`direct_message_deep_link` = NULL, `for_super_followers_only` = FALSE, `geo` = NULL, `media` = NULL, `poll` = NULL, `quote_tweet_id` = NULL, `reply` = NULL, `reply_settings` = NULL, `text` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`direct_message_deep_link`)) {
         stopifnot(is.character(`direct_message_deep_link`), length(`direct_message_deep_link`) == 1)
         self$`direct_message_deep_link` <- `direct_message_deep_link`
@@ -219,74 +217,74 @@ TweetCreateRequest <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`direct_message_deep_link`)) {
           sprintf(
-          '"direct_message_deep_link":
+            '"direct_message_deep_link":
             "%s"
                     ',
-          self$`direct_message_deep_link`
+            self$`direct_message_deep_link`
           )
         },
         if (!is.null(self$`for_super_followers_only`)) {
           sprintf(
-          '"for_super_followers_only":
+            '"for_super_followers_only":
             %s
                     ',
-          tolower(self$`for_super_followers_only`)
+            tolower(self$`for_super_followers_only`)
           )
         },
         if (!is.null(self$`geo`)) {
           sprintf(
-          '"geo":
+            '"geo":
           %s
           ',
-          jsonlite::toJSON(self$`geo`$toJSON(), auto_unbox = TRUE, digits = NA)
+            jsonlite::toJSON(self$`geo`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         },
         if (!is.null(self$`media`)) {
           sprintf(
-          '"media":
+            '"media":
           %s
           ',
-          jsonlite::toJSON(self$`media`$toJSON(), auto_unbox = TRUE, digits = NA)
+            jsonlite::toJSON(self$`media`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         },
         if (!is.null(self$`poll`)) {
           sprintf(
-          '"poll":
+            '"poll":
           %s
           ',
-          jsonlite::toJSON(self$`poll`$toJSON(), auto_unbox = TRUE, digits = NA)
+            jsonlite::toJSON(self$`poll`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         },
         if (!is.null(self$`quote_tweet_id`)) {
           sprintf(
-          '"quote_tweet_id":
+            '"quote_tweet_id":
             "%s"
                     ',
-          self$`quote_tweet_id`
+            self$`quote_tweet_id`
           )
         },
         if (!is.null(self$`reply`)) {
           sprintf(
-          '"reply":
+            '"reply":
           %s
           ',
-          jsonlite::toJSON(self$`reply`$toJSON(), auto_unbox = TRUE, digits = NA)
+            jsonlite::toJSON(self$`reply`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         },
         if (!is.null(self$`reply_settings`)) {
           sprintf(
-          '"reply_settings":
+            '"reply_settings":
             "%s"
                     ',
-          self$`reply_settings`
+            self$`reply_settings`
           )
         },
         if (!is.null(self$`text`)) {
           sprintf(
-          '"text":
+            '"text":
             "%s"
                     ',
-          self$`text`
+            self$`text`
           )
         }
       )
@@ -387,18 +385,18 @@ TweetCreateRequest <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#TweetCreateRequest$unlock()
+# TweetCreateRequest$unlock()
 #
 ## Below is an example to define the print fnuction
-#TweetCreateRequest$set("public", "print", function(...) {
+# TweetCreateRequest$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#TweetCreateRequest$lock()
-
+# TweetCreateRequest$lock()

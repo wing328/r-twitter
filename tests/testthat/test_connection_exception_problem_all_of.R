@@ -9,5 +9,5 @@ test_that("connection_issue", {
   # tests for the property `connection_issue` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`connection_issue`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`connection_issue`, "EXPECTED_RESULT")
 })

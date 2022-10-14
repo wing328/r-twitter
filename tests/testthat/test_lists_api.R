@@ -19,7 +19,7 @@ test_that("get_user_list_memberships", {
   # @return [Get2UsersIdListMembershipsResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("list_add_member", {
@@ -32,7 +32,7 @@ test_that("list_add_member", {
   # @return [ListMutateResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("list_id_create", {
@@ -44,7 +44,7 @@ test_that("list_id_create", {
   # @return [ListCreateResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("list_id_delete", {
@@ -56,7 +56,7 @@ test_that("list_id_delete", {
   # @return [ListDeleteResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("list_id_get", {
@@ -71,7 +71,7 @@ test_that("list_id_get", {
   # @return [Get2ListsIdResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("list_id_update", {
@@ -84,7 +84,7 @@ test_that("list_id_update", {
   # @return [ListUpdateResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("list_remove_member", {
@@ -97,7 +97,7 @@ test_that("list_remove_member", {
   # @return [ListMutateResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("list_user_follow", {
@@ -110,7 +110,7 @@ test_that("list_user_follow", {
   # @return [ListFollowedResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("list_user_owned_lists", {
@@ -127,7 +127,7 @@ test_that("list_user_owned_lists", {
   # @return [Get2UsersIdOwnedListsResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("list_user_pin", {
@@ -136,11 +136,11 @@ test_that("list_user_pin", {
   # Pin a List
   # Causes a User to pin a List.
   # @param id character The ID of the authenticated source User that will pin the List.
-  # @param list_pinned_request ListPinnedRequest 
+  # @param list_pinned_request ListPinnedRequest
   # @return [ListPinnedResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("list_user_pinned_lists", {
@@ -155,7 +155,7 @@ test_that("list_user_pinned_lists", {
   # @return [Get2UsersIdPinnedListsResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("list_user_unfollow", {
@@ -168,7 +168,7 @@ test_that("list_user_unfollow", {
   # @return [ListFollowedResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("list_user_unpin", {
@@ -181,7 +181,7 @@ test_that("list_user_unpin", {
   # @return [ListUnpinResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("user_followed_lists", {
@@ -198,5 +198,5 @@ test_that("user_followed_lists", {
   # @return [Get2UsersIdFollowedListsResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })

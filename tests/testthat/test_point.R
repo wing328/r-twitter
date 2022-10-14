@@ -10,12 +10,12 @@ test_that("coordinates", {
   # A [GeoJson Position](https://tools.ietf.org/html/rfc7946#section-3.1.1) in the format &#x60;[longitude,latitude]&#x60;.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`coordinates`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`coordinates`, "EXPECTED_RESULT")
 })
 
 test_that("type", {
   # tests for the property `type` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`type`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`type`, "EXPECTED_RESULT")
 })

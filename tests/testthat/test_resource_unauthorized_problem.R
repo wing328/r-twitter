@@ -9,61 +9,61 @@ test_that("detail", {
   # tests for the property `detail` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`detail`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`detail`, "EXPECTED_RESULT")
 })
 
 test_that("status", {
   # tests for the property `status` (integer)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`status`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`status`, "EXPECTED_RESULT")
 })
 
 test_that("title", {
   # tests for the property `title` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`title`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`title`, "EXPECTED_RESULT")
 })
 
 test_that("type", {
   # tests for the property `type` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`type`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`type`, "EXPECTED_RESULT")
 })
 
 test_that("parameter", {
   # tests for the property `parameter` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`parameter`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`parameter`, "EXPECTED_RESULT")
 })
 
 test_that("resource_id", {
   # tests for the property `resource_id` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`resource_id`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`resource_id`, "EXPECTED_RESULT")
 })
 
 test_that("resource_type", {
   # tests for the property `resource_type` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`resource_type`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`resource_type`, "EXPECTED_RESULT")
 })
 
 test_that("section", {
   # tests for the property `section` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`section`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`section`, "EXPECTED_RESULT")
 })
 
 test_that("value", {
   # tests for the property `value` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`value`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`value`, "EXPECTED_RESULT")
 })

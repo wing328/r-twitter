@@ -31,9 +31,7 @@ TweetGeo <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `coordinates` = NULL, `place_id` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`coordinates` = NULL, `place_id` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`coordinates`)) {
         stopifnot(R6::is.R6(`coordinates`))
         self$`coordinates` <- `coordinates`
@@ -109,18 +107,18 @@ TweetGeo <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`coordinates`)) {
           sprintf(
-          '"coordinates":
+            '"coordinates":
           %s
           ',
-          jsonlite::toJSON(self$`coordinates`$toJSON(), auto_unbox = TRUE, digits = NA)
+            jsonlite::toJSON(self$`coordinates`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         },
         if (!is.null(self$`place_id`)) {
           sprintf(
-          '"place_id":
+            '"place_id":
             "%s"
                     ',
-          self$`place_id`
+            self$`place_id`
           )
         }
       )
@@ -203,18 +201,18 @@ TweetGeo <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#TweetGeo$unlock()
+# TweetGeo$unlock()
 #
 ## Below is an example to define the print fnuction
-#TweetGeo$set("public", "print", function(...) {
+# TweetGeo$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#TweetGeo$lock()
-
+# TweetGeo$lock()

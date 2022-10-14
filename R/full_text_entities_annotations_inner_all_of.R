@@ -34,9 +34,7 @@ FullTextEntitiesAnnotationsInnerAllOf <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `normalized_text` = NULL, `probability` = NULL, `type` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`normalized_text` = NULL, `probability` = NULL, `type` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`normalized_text`)) {
         stopifnot(is.character(`normalized_text`), length(`normalized_text`) == 1)
         self$`normalized_text` <- `normalized_text`
@@ -121,26 +119,26 @@ FullTextEntitiesAnnotationsInnerAllOf <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`normalized_text`)) {
           sprintf(
-          '"normalized_text":
+            '"normalized_text":
             "%s"
                     ',
-          self$`normalized_text`
+            self$`normalized_text`
           )
         },
         if (!is.null(self$`probability`)) {
           sprintf(
-          '"probability":
+            '"probability":
             %d
                     ',
-          self$`probability`
+            self$`probability`
           )
         },
         if (!is.null(self$`type`)) {
           sprintf(
-          '"type":
+            '"type":
             "%s"
                     ',
-          self$`type`
+            self$`type`
           )
         }
       )
@@ -238,18 +236,18 @@ FullTextEntitiesAnnotationsInnerAllOf <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#FullTextEntitiesAnnotationsInnerAllOf$unlock()
+# FullTextEntitiesAnnotationsInnerAllOf$unlock()
 #
 ## Below is an example to define the print fnuction
-#FullTextEntitiesAnnotationsInnerAllOf$set("public", "print", function(...) {
+# FullTextEntitiesAnnotationsInnerAllOf$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#FullTextEntitiesAnnotationsInnerAllOf$lock()
-
+# FullTextEntitiesAnnotationsInnerAllOf$lock()

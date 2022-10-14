@@ -37,9 +37,7 @@ RulesRequestSummaryOneOf <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `created`, `invalid`, `not_created`, `valid`, additional_properties = NULL, ...
-    ) {
+    initialize = function(`created`, `invalid`, `not_created`, `valid`, additional_properties = NULL, ...) {
       if (!missing(`created`)) {
         stopifnot(is.numeric(`created`), length(`created`) == 1)
         self$`created` <- `created`
@@ -135,34 +133,34 @@ RulesRequestSummaryOneOf <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`created`)) {
           sprintf(
-          '"created":
+            '"created":
             %d
                     ',
-          self$`created`
+            self$`created`
           )
         },
         if (!is.null(self$`invalid`)) {
           sprintf(
-          '"invalid":
+            '"invalid":
             %d
                     ',
-          self$`invalid`
+            self$`invalid`
           )
         },
         if (!is.null(self$`not_created`)) {
           sprintf(
-          '"not_created":
+            '"not_created":
             %d
                     ',
-          self$`not_created`
+            self$`not_created`
           )
         },
         if (!is.null(self$`valid`)) {
           sprintf(
-          '"valid":
+            '"valid":
             %d
                     ',
-          self$`valid`
+            self$`valid`
           )
         }
       )
@@ -311,18 +309,18 @@ RulesRequestSummaryOneOf <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#RulesRequestSummaryOneOf$unlock()
+# RulesRequestSummaryOneOf$unlock()
 #
 ## Below is an example to define the print fnuction
-#RulesRequestSummaryOneOf$set("public", "print", function(...) {
+# RulesRequestSummaryOneOf$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#RulesRequestSummaryOneOf$lock()
-
+# RulesRequestSummaryOneOf$lock()

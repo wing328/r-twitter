@@ -9,12 +9,12 @@ test_that("alt_text", {
   # tests for the property `alt_text` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`alt_text`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`alt_text`, "EXPECTED_RESULT")
 })
 
 test_that("url", {
   # tests for the property `url` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`url`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`url`, "EXPECTED_RESULT")
 })

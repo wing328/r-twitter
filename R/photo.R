@@ -44,9 +44,7 @@ Photo <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `type`, `height` = NULL, `media_key` = NULL, `width` = NULL, `alt_text` = NULL, `url` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`type`, `height` = NULL, `media_key` = NULL, `width` = NULL, `alt_text` = NULL, `url` = NULL, additional_properties = NULL, ...) {
       if (!missing(`type`)) {
         stopifnot(is.character(`type`), length(`type`) == 1)
         self$`type` <- `type`
@@ -172,50 +170,50 @@ Photo <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`height`)) {
           sprintf(
-          '"height":
+            '"height":
             %d
                     ',
-          self$`height`
+            self$`height`
           )
         },
         if (!is.null(self$`media_key`)) {
           sprintf(
-          '"media_key":
+            '"media_key":
             "%s"
                     ',
-          self$`media_key`
+            self$`media_key`
           )
         },
         if (!is.null(self$`type`)) {
           sprintf(
-          '"type":
+            '"type":
             "%s"
                     ',
-          self$`type`
+            self$`type`
           )
         },
         if (!is.null(self$`width`)) {
           sprintf(
-          '"width":
+            '"width":
             %d
                     ',
-          self$`width`
+            self$`width`
           )
         },
         if (!is.null(self$`alt_text`)) {
           sprintf(
-          '"alt_text":
+            '"alt_text":
             "%s"
                     ',
-          self$`alt_text`
+            self$`alt_text`
           )
         },
         if (!is.null(self$`url`)) {
           sprintf(
-          '"url":
+            '"url":
             "%s"
                     ',
-          self$`url`
+            self$`url`
           )
         }
       )
@@ -346,18 +344,18 @@ Photo <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#Photo$unlock()
+# Photo$unlock()
 #
 ## Below is an example to define the print fnuction
-#Photo$set("public", "print", function(...) {
+# Photo$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#Photo$lock()
-
+# Photo$lock()

@@ -10,7 +10,7 @@ test_that("newest_id", {
   # The newest id in this response.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`newest_id`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`newest_id`, "EXPECTED_RESULT")
 })
 
 test_that("next_token", {
@@ -18,7 +18,7 @@ test_that("next_token", {
   # The next token.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`next_token`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`next_token`, "EXPECTED_RESULT")
 })
 
 test_that("oldest_id", {
@@ -26,7 +26,7 @@ test_that("oldest_id", {
   # The oldest id in this response.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`oldest_id`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`oldest_id`, "EXPECTED_RESULT")
 })
 
 test_that("result_count", {
@@ -34,5 +34,5 @@ test_that("result_count", {
   # The number of results returned in this response.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`result_count`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`result_count`, "EXPECTED_RESULT")
 })

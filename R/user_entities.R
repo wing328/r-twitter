@@ -31,9 +31,7 @@ UserEntities <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `description` = NULL, `url` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`description` = NULL, `url` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`description`)) {
         stopifnot(R6::is.R6(`description`))
         self$`description` <- `description`
@@ -111,18 +109,18 @@ UserEntities <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`description`)) {
           sprintf(
-          '"description":
+            '"description":
           %s
           ',
-          jsonlite::toJSON(self$`description`$toJSON(), auto_unbox = TRUE, digits = NA)
+            jsonlite::toJSON(self$`description`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         },
         if (!is.null(self$`url`)) {
           sprintf(
-          '"url":
+            '"url":
           %s
           ',
-          jsonlite::toJSON(self$`url`$toJSON(), auto_unbox = TRUE, digits = NA)
+            jsonlite::toJSON(self$`url`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         }
       )
@@ -205,18 +203,18 @@ UserEntities <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#UserEntities$unlock()
+# UserEntities$unlock()
 #
 ## Below is an example to define the print fnuction
-#UserEntities$set("public", "print", function(...) {
+# UserEntities$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#UserEntities$lock()
-
+# UserEntities$lock()

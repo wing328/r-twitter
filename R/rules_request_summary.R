@@ -27,15 +27,17 @@ RulesRequestSummary <- R6::R6Class(
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "RulesRequestSummaryOneOf") {
+      } else if (get(class(instance)[[1]], pos = -1)$classname == "RulesRequestSummaryOneOf") {
         self$actual_instance <- instance
         self$actual_type <- "RulesRequestSummaryOneOf"
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "RulesRequestSummaryOneOf1") {
+      } else if (get(class(instance)[[1]], pos = -1)$classname == "RulesRequestSummaryOneOf1") {
         self$actual_instance <- instance
         self$actual_type <- "RulesRequestSummaryOneOf1"
       } else {
-        stop(paste("Failed to initialize RulesRequestSummary with oneOf schemas RulesRequestSummaryOneOf, RulesRequestSummaryOneOf1. Provided class name: ",
-                   get(class(instance)[[1]], pos = -1)$classname))
+        stop(paste(
+          "Failed to initialize RulesRequestSummary with oneOf schemas RulesRequestSummaryOneOf, RulesRequestSummaryOneOf1. Provided class name: ",
+          get(class(instance)[[1]], pos = -1)$classname
+        ))
       }
     },
     #' Deserialize JSON string into an instance of RulesRequestSummary.
@@ -60,11 +62,12 @@ RulesRequestSummary <- R6::R6Class(
     #' @export
     fromJSON = function(input) {
       matched <- 0 # match counter
-      matched_schemas <- list() #names of matched schemas
+      matched_schemas <- list() # names of matched schemas
       error_messages <- list()
       instance <- NULL
 
-      RulesRequestSummaryOneOf_result <- tryCatch({
+      RulesRequestSummaryOneOf_result <- tryCatch(
+        {
           RulesRequestSummaryOneOf$public_methods$validateJSON(input)
           RulesRequestSummaryOneOf_instance <- RulesRequestSummaryOneOf$new()
           instance <- RulesRequestSummaryOneOf_instance$fromJSON(input)
@@ -79,7 +82,8 @@ RulesRequestSummary <- R6::R6Class(
         error_messages <- append(error_messages, RulesRequestSummaryOneOf_result["message"])
       }
 
-      RulesRequestSummaryOneOf1_result <- tryCatch({
+      RulesRequestSummaryOneOf1_result <- tryCatch(
+        {
           RulesRequestSummaryOneOf1$public_methods$validateJSON(input)
           RulesRequestSummaryOneOf1_instance <- RulesRequestSummaryOneOf1$new()
           instance <- RulesRequestSummaryOneOf1_instance$fromJSON(input)
@@ -103,8 +107,10 @@ RulesRequestSummary <- R6::R6Class(
         stop("Multiple matches found when deserializing the payload into RulesRequestSummary with oneOf schemas RulesRequestSummaryOneOf, RulesRequestSummaryOneOf1.")
       } else {
         # no match
-        stop(paste("No match found when deserializing the payload into RulesRequestSummary with oneOf schemas RulesRequestSummaryOneOf, RulesRequestSummaryOneOf1. Details: ",
-                   paste(error_messages, collapse = ", ")))
+        stop(paste(
+          "No match found when deserializing the payload into RulesRequestSummary with oneOf schemas RulesRequestSummaryOneOf, RulesRequestSummaryOneOf1. Details: ",
+          paste(error_messages, collapse = ", ")
+        ))
       }
 
       self
@@ -188,13 +194,12 @@ RulesRequestSummary <- R6::R6Class(
   lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#RulesRequestSummary$unlock()
+# RulesRequestSummary$unlock()
 #
 ## Below is an example to define the print fnuction
-#RulesRequestSummary$set("public", "print", function(...) {
+# RulesRequestSummary$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#RulesRequestSummary$lock()
-
+# RulesRequestSummary$lock()

@@ -10,7 +10,7 @@ test_that("event_at", {
   # Event time.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`event_at`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`event_at`, "EXPECTED_RESULT")
 })
 
 test_that("up_to_tweet_id", {
@@ -18,12 +18,12 @@ test_that("up_to_tweet_id", {
   # Unique identifier of this Tweet. This is returned as a string in order to avoid complications with languages and tools that cannot handle large integers.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`up_to_tweet_id`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`up_to_tweet_id`, "EXPECTED_RESULT")
 })
 
 test_that("user", {
   # tests for the property `user` (UserComplianceSchemaUser)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`user`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`user`, "EXPECTED_RESULT")
 })

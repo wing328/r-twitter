@@ -9,12 +9,12 @@ test_that("description", {
   # tests for the property `description` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`description`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`description`, "EXPECTED_RESULT")
 })
 
 test_that("user_ids", {
   # tests for the property `user_ids` (array[character])
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`user_ids`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`user_ids`, "EXPECTED_RESULT")
 })

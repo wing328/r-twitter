@@ -10,11 +10,11 @@ test_that("create_batch_compliance_job", {
   # base path: https://api.twitter.com
   # Create compliance job
   # Creates a compliance for the given job type
-  # @param create_compliance_job_request CreateComplianceJobRequest 
+  # @param create_compliance_job_request CreateComplianceJobRequest
   # @return [CreateComplianceJobResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("get_batch_compliance_job", {
@@ -27,7 +27,7 @@ test_that("get_batch_compliance_job", {
   # @return [Get2ComplianceJobsIdResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("get_tweets_compliance_stream", {
@@ -42,7 +42,7 @@ test_that("get_tweets_compliance_stream", {
   # @return [TweetComplianceStreamResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("get_users_compliance_stream", {
@@ -57,7 +57,7 @@ test_that("get_users_compliance_stream", {
   # @return [UserComplianceStreamResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("list_batch_compliance_jobs", {
@@ -71,5 +71,5 @@ test_that("list_batch_compliance_jobs", {
   # @return [Get2ComplianceJobsResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })

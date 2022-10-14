@@ -10,7 +10,7 @@ test_that("next_token", {
   # The next token.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`next_token`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`next_token`, "EXPECTED_RESULT")
 })
 
 test_that("result_count", {
@@ -18,5 +18,5 @@ test_that("result_count", {
   # The number of results returned in this response.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`result_count`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`result_count`, "EXPECTED_RESULT")
 })

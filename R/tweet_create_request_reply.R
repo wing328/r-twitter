@@ -26,9 +26,7 @@ TweetCreateRequestReply <- R6::R6Class(
     #' @param exclude_reply_user_ids A list of User Ids to be excluded from the reply Tweet.
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `in_reply_to_tweet_id`, `exclude_reply_user_ids` = NULL, ...
-    ) {
+    initialize = function(`in_reply_to_tweet_id`, `exclude_reply_user_ids` = NULL, ...) {
       if (!missing(`in_reply_to_tweet_id`)) {
         stopifnot(is.character(`in_reply_to_tweet_id`), length(`in_reply_to_tweet_id`) == 1)
         self$`in_reply_to_tweet_id` <- `in_reply_to_tweet_id`
@@ -87,18 +85,18 @@ TweetCreateRequestReply <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`exclude_reply_user_ids`)) {
           sprintf(
-          '"exclude_reply_user_ids":
+            '"exclude_reply_user_ids":
              [%s]
           ',
-          paste(unlist(lapply(self$`exclude_reply_user_ids`, function(x) paste0('"', x, '"'))), collapse = ",")
+            paste(unlist(lapply(self$`exclude_reply_user_ids`, function(x) paste0('"', x, '"'))), collapse = ",")
           )
         },
         if (!is.null(self$`in_reply_to_tweet_id`)) {
           sprintf(
-          '"in_reply_to_tweet_id":
+            '"in_reply_to_tweet_id":
             "%s"
                     ',
-          self$`in_reply_to_tweet_id`
+            self$`in_reply_to_tweet_id`
           )
         }
       )
@@ -193,18 +191,18 @@ TweetCreateRequestReply <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#TweetCreateRequestReply$unlock()
+# TweetCreateRequestReply$unlock()
 #
 ## Below is an example to define the print fnuction
-#TweetCreateRequestReply$set("public", "print", function(...) {
+# TweetCreateRequestReply$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#TweetCreateRequestReply$lock()
-
+# TweetCreateRequestReply$lock()

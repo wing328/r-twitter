@@ -31,9 +31,7 @@ AnimatedGifAllOf <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `preview_image_url` = NULL, `variants` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`preview_image_url` = NULL, `variants` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`preview_image_url`)) {
         stopifnot(is.character(`preview_image_url`), length(`preview_image_url`) == 1)
         # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
@@ -116,18 +114,18 @@ AnimatedGifAllOf <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`preview_image_url`)) {
           sprintf(
-          '"preview_image_url":
+            '"preview_image_url":
             "%s"
                     ',
-          self$`preview_image_url`
+            self$`preview_image_url`
           )
         },
         if (!is.null(self$`variants`)) {
           sprintf(
-          '"variants":
+            '"variants":
           [%s]
 ',
-          paste(sapply(self$`variants`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
+            paste(sapply(self$`variants`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
           )
         }
       )
@@ -214,18 +212,18 @@ AnimatedGifAllOf <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#AnimatedGifAllOf$unlock()
+# AnimatedGifAllOf$unlock()
 #
 ## Below is an example to define the print fnuction
-#AnimatedGifAllOf$set("public", "print", function(...) {
+# AnimatedGifAllOf$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#AnimatedGifAllOf$lock()
-
+# AnimatedGifAllOf$lock()

@@ -27,15 +27,17 @@ AddOrDeleteRulesRequest <- R6::R6Class(
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "AddRulesRequest") {
+      } else if (get(class(instance)[[1]], pos = -1)$classname == "AddRulesRequest") {
         self$actual_instance <- instance
         self$actual_type <- "AddRulesRequest"
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "DeleteRulesRequest") {
+      } else if (get(class(instance)[[1]], pos = -1)$classname == "DeleteRulesRequest") {
         self$actual_instance <- instance
         self$actual_type <- "DeleteRulesRequest"
       } else {
-        stop(paste("Failed to initialize AddOrDeleteRulesRequest with oneOf schemas AddRulesRequest, DeleteRulesRequest. Provided class name: ",
-                   get(class(instance)[[1]], pos = -1)$classname))
+        stop(paste(
+          "Failed to initialize AddOrDeleteRulesRequest with oneOf schemas AddRulesRequest, DeleteRulesRequest. Provided class name: ",
+          get(class(instance)[[1]], pos = -1)$classname
+        ))
       }
     },
     #' Deserialize JSON string into an instance of AddOrDeleteRulesRequest.
@@ -60,11 +62,12 @@ AddOrDeleteRulesRequest <- R6::R6Class(
     #' @export
     fromJSON = function(input) {
       matched <- 0 # match counter
-      matched_schemas <- list() #names of matched schemas
+      matched_schemas <- list() # names of matched schemas
       error_messages <- list()
       instance <- NULL
 
-      AddRulesRequest_result <- tryCatch({
+      AddRulesRequest_result <- tryCatch(
+        {
           AddRulesRequest$public_methods$validateJSON(input)
           AddRulesRequest_instance <- AddRulesRequest$new()
           instance <- AddRulesRequest_instance$fromJSON(input)
@@ -79,7 +82,8 @@ AddOrDeleteRulesRequest <- R6::R6Class(
         error_messages <- append(error_messages, AddRulesRequest_result["message"])
       }
 
-      DeleteRulesRequest_result <- tryCatch({
+      DeleteRulesRequest_result <- tryCatch(
+        {
           DeleteRulesRequest$public_methods$validateJSON(input)
           DeleteRulesRequest_instance <- DeleteRulesRequest$new()
           instance <- DeleteRulesRequest_instance$fromJSON(input)
@@ -103,8 +107,10 @@ AddOrDeleteRulesRequest <- R6::R6Class(
         stop("Multiple matches found when deserializing the payload into AddOrDeleteRulesRequest with oneOf schemas AddRulesRequest, DeleteRulesRequest.")
       } else {
         # no match
-        stop(paste("No match found when deserializing the payload into AddOrDeleteRulesRequest with oneOf schemas AddRulesRequest, DeleteRulesRequest. Details: ",
-                   paste(error_messages, collapse = ", ")))
+        stop(paste(
+          "No match found when deserializing the payload into AddOrDeleteRulesRequest with oneOf schemas AddRulesRequest, DeleteRulesRequest. Details: ",
+          paste(error_messages, collapse = ", ")
+        ))
       }
 
       self
@@ -188,13 +194,12 @@ AddOrDeleteRulesRequest <- R6::R6Class(
   lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#AddOrDeleteRulesRequest$unlock()
+# AddOrDeleteRulesRequest$unlock()
 #
 ## Below is an example to define the print fnuction
-#AddOrDeleteRulesRequest$set("public", "print", function(...) {
+# AddOrDeleteRulesRequest$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#AddOrDeleteRulesRequest$lock()
-
+# AddOrDeleteRulesRequest$lock()

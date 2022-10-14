@@ -10,7 +10,7 @@ test_that("height", {
   # The height of the media in pixels.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`height`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`height`, "EXPECTED_RESULT")
 })
 
 test_that("url", {
@@ -18,7 +18,7 @@ test_that("url", {
   # A validly formatted URL.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`url`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`url`, "EXPECTED_RESULT")
 })
 
 test_that("width", {
@@ -26,5 +26,5 @@ test_that("width", {
   # The width of the media in pixels.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`width`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`width`, "EXPECTED_RESULT")
 })

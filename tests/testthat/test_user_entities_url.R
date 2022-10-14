@@ -9,5 +9,5 @@ test_that("urls", {
   # tests for the property `urls` (array[UrlEntity])
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`urls`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`urls`, "EXPECTED_RESULT")
 })

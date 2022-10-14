@@ -26,9 +26,7 @@ ReportUsersRequest <- R6::R6Class(
     #' @param user_ids user_ids
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `description`, `user_ids`, ...
-    ) {
+    initialize = function(`description`, `user_ids`, ...) {
       if (!missing(`description`)) {
         stopifnot(is.character(`description`), length(`description`) == 1)
         self$`description` <- `description`
@@ -87,18 +85,18 @@ ReportUsersRequest <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`description`)) {
           sprintf(
-          '"description":
+            '"description":
             "%s"
                     ',
-          self$`description`
+            self$`description`
           )
         },
         if (!is.null(self$`user_ids`)) {
           sprintf(
-          '"user_ids":
+            '"user_ids":
              [%s]
           ',
-          paste(unlist(lapply(self$`user_ids`, function(x) paste0('"', x, '"'))), collapse = ",")
+            paste(unlist(lapply(self$`user_ids`, function(x) paste0('"', x, '"'))), collapse = ",")
           )
         }
       )
@@ -230,18 +228,18 @@ ReportUsersRequest <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#ReportUsersRequest$unlock()
+# ReportUsersRequest$unlock()
 #
 ## Below is an example to define the print fnuction
-#ReportUsersRequest$set("public", "print", function(...) {
+# ReportUsersRequest$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#ReportUsersRequest$lock()
-
+# ReportUsersRequest$lock()

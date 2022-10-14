@@ -31,9 +31,7 @@ RulesRequestSummaryOneOf1 <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `deleted`, `not_deleted`, additional_properties = NULL, ...
-    ) {
+    initialize = function(`deleted`, `not_deleted`, additional_properties = NULL, ...) {
       if (!missing(`deleted`)) {
         stopifnot(is.numeric(`deleted`), length(`deleted`) == 1)
         self$`deleted` <- `deleted`
@@ -107,18 +105,18 @@ RulesRequestSummaryOneOf1 <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`deleted`)) {
           sprintf(
-          '"deleted":
+            '"deleted":
             %d
                     ',
-          self$`deleted`
+            self$`deleted`
           )
         },
         if (!is.null(self$`not_deleted`)) {
           sprintf(
-          '"not_deleted":
+            '"not_deleted":
             %d
                     ',
-          self$`not_deleted`
+            self$`not_deleted`
           )
         }
       )
@@ -233,18 +231,18 @@ RulesRequestSummaryOneOf1 <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#RulesRequestSummaryOneOf1$unlock()
+# RulesRequestSummaryOneOf1$unlock()
 #
 ## Below is an example to define the print fnuction
-#RulesRequestSummaryOneOf1$set("public", "print", function(...) {
+# RulesRequestSummaryOneOf1$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#RulesRequestSummaryOneOf1$lock()
-
+# RulesRequestSummaryOneOf1$lock()

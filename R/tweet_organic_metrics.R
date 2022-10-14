@@ -37,9 +37,7 @@ TweetOrganicMetrics <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `impression_count`, `like_count`, `reply_count`, `retweet_count`, additional_properties = NULL, ...
-    ) {
+    initialize = function(`impression_count`, `like_count`, `reply_count`, `retweet_count`, additional_properties = NULL, ...) {
       if (!missing(`impression_count`)) {
         stopifnot(is.numeric(`impression_count`), length(`impression_count`) == 1)
         self$`impression_count` <- `impression_count`
@@ -135,34 +133,34 @@ TweetOrganicMetrics <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`impression_count`)) {
           sprintf(
-          '"impression_count":
+            '"impression_count":
             %d
                     ',
-          self$`impression_count`
+            self$`impression_count`
           )
         },
         if (!is.null(self$`like_count`)) {
           sprintf(
-          '"like_count":
+            '"like_count":
             %d
                     ',
-          self$`like_count`
+            self$`like_count`
           )
         },
         if (!is.null(self$`reply_count`)) {
           sprintf(
-          '"reply_count":
+            '"reply_count":
             %d
                     ',
-          self$`reply_count`
+            self$`reply_count`
           )
         },
         if (!is.null(self$`retweet_count`)) {
           sprintf(
-          '"retweet_count":
+            '"retweet_count":
             %d
                     ',
-          self$`retweet_count`
+            self$`retweet_count`
           )
         }
       )
@@ -311,18 +309,18 @@ TweetOrganicMetrics <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#TweetOrganicMetrics$unlock()
+# TweetOrganicMetrics$unlock()
 #
 ## Below is an example to define the print fnuction
-#TweetOrganicMetrics$set("public", "print", function(...) {
+# TweetOrganicMetrics$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#TweetOrganicMetrics$lock()
-
+# TweetOrganicMetrics$lock()

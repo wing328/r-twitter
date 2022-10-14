@@ -40,9 +40,7 @@ Get2UsersIdMentionsResponseMeta <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `newest_id` = NULL, `next_token` = NULL, `oldest_id` = NULL, `previous_token` = NULL, `result_count` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`newest_id` = NULL, `next_token` = NULL, `oldest_id` = NULL, `previous_token` = NULL, `result_count` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`newest_id`)) {
         stopifnot(is.character(`newest_id`), length(`newest_id`) == 1)
         self$`newest_id` <- `newest_id`
@@ -149,42 +147,42 @@ Get2UsersIdMentionsResponseMeta <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`newest_id`)) {
           sprintf(
-          '"newest_id":
+            '"newest_id":
             "%s"
                     ',
-          self$`newest_id`
+            self$`newest_id`
           )
         },
         if (!is.null(self$`next_token`)) {
           sprintf(
-          '"next_token":
+            '"next_token":
             "%s"
                     ',
-          self$`next_token`
+            self$`next_token`
           )
         },
         if (!is.null(self$`oldest_id`)) {
           sprintf(
-          '"oldest_id":
+            '"oldest_id":
             "%s"
                     ',
-          self$`oldest_id`
+            self$`oldest_id`
           )
         },
         if (!is.null(self$`previous_token`)) {
           sprintf(
-          '"previous_token":
+            '"previous_token":
             "%s"
                     ',
-          self$`previous_token`
+            self$`previous_token`
           )
         },
         if (!is.null(self$`result_count`)) {
           sprintf(
-          '"result_count":
+            '"result_count":
             %d
                     ',
-          self$`result_count`
+            self$`result_count`
           )
         }
       )
@@ -286,18 +284,18 @@ Get2UsersIdMentionsResponseMeta <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#Get2UsersIdMentionsResponseMeta$unlock()
+# Get2UsersIdMentionsResponseMeta$unlock()
 #
 ## Below is an example to define the print fnuction
-#Get2UsersIdMentionsResponseMeta$set("public", "print", function(...) {
+# Get2UsersIdMentionsResponseMeta$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#Get2UsersIdMentionsResponseMeta$lock()
-
+# Get2UsersIdMentionsResponseMeta$lock()

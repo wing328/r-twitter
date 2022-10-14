@@ -10,5 +10,5 @@ test_that("user_id", {
   # Unique identifier of this User. This is returned as a string in order to avoid complications with languages and tools that cannot handle large integers.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`user_id`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`user_id`, "EXPECTED_RESULT")
 })

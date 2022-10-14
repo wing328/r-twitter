@@ -34,9 +34,7 @@ ListCreateRequest <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `name`, `description` = NULL, `item_private` = FALSE, additional_properties = NULL, ...
-    ) {
+    initialize = function(`name`, `description` = NULL, `item_private` = FALSE, additional_properties = NULL, ...) {
       if (!missing(`name`)) {
         stopifnot(is.character(`name`), length(`name`) == 1)
         self$`name` <- `name`
@@ -121,26 +119,26 @@ ListCreateRequest <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`description`)) {
           sprintf(
-          '"description":
+            '"description":
             "%s"
                     ',
-          self$`description`
+            self$`description`
           )
         },
         if (!is.null(self$`name`)) {
           sprintf(
-          '"name":
+            '"name":
             "%s"
                     ',
-          self$`name`
+            self$`name`
           )
         },
         if (!is.null(self$`item_private`)) {
           sprintf(
-          '"private":
+            '"private":
             %s
                     ',
-          tolower(self$`item_private`)
+            tolower(self$`item_private`)
           )
         }
       )
@@ -268,18 +266,18 @@ ListCreateRequest <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#ListCreateRequest$unlock()
+# ListCreateRequest$unlock()
 #
 ## Below is an example to define the print fnuction
-#ListCreateRequest$set("public", "print", function(...) {
+# ListCreateRequest$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#ListCreateRequest$lock()
-
+# ListCreateRequest$lock()

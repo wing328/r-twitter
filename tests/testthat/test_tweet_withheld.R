@@ -10,7 +10,7 @@ test_that("copyright", {
   # Indicates if the content is being withheld for on the basis of copyright infringement.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`copyright`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`copyright`, "EXPECTED_RESULT")
 })
 
 test_that("country_codes", {
@@ -18,7 +18,7 @@ test_that("country_codes", {
   # Provides a list of countries where this content is not available.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`country_codes`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`country_codes`, "EXPECTED_RESULT")
 })
 
 test_that("scope", {
@@ -26,5 +26,5 @@ test_that("scope", {
   # Indicates whether the content being withheld is the &#x60;tweet&#x60; or a &#x60;user&#x60;.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`scope`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`scope`, "EXPECTED_RESULT")
 })

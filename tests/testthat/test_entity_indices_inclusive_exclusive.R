@@ -10,7 +10,7 @@ test_that("end", {
   # Index (zero-based) at which position this entity ends.  The index is exclusive.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`end`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`end`, "EXPECTED_RESULT")
 })
 
 test_that("start", {
@@ -18,5 +18,5 @@ test_that("start", {
   # Index (zero-based) at which position this entity starts.  The index is inclusive.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`start`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`start`, "EXPECTED_RESULT")
 })

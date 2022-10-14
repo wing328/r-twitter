@@ -10,12 +10,12 @@ test_that("add_or_delete_rules", {
   # base path: https://api.twitter.com
   # Add/Delete rules
   # Add or delete rules from a User&#39;s active rule set. Users can provide unique, optionally tagged rules to add. Users can delete their entire rule set or a subset specified by rule ids or values.
-  # @param add_or_delete_rules_request AddOrDeleteRulesRequest 
+  # @param add_or_delete_rules_request AddOrDeleteRulesRequest
   # @param dry_run character Dry Run can be used with both the add and delete action, with the expected result given, but without actually taking any action in the system (meaning the end state will always be as it was when the request was submitted). This is particularly useful to validate rule changes. (optional)
   # @return [AddOrDeleteRulesResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("create_tweet", {
@@ -23,11 +23,11 @@ test_that("create_tweet", {
   # base path: https://api.twitter.com
   # Creation of a Tweet
   # Causes the User to create a Tweet under the authorized account.
-  # @param tweet_create_request TweetCreateRequest 
+  # @param tweet_create_request TweetCreateRequest
   # @return [TweetCreateResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("delete_tweet_by_id", {
@@ -39,7 +39,7 @@ test_that("delete_tweet_by_id", {
   # @return [TweetDeleteResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("find_tweet_by_id", {
@@ -57,7 +57,7 @@ test_that("find_tweet_by_id", {
   # @return [Get2TweetsIdResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("find_tweets_by_id", {
@@ -75,7 +75,7 @@ test_that("find_tweets_by_id", {
   # @return [Get2TweetsResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("find_tweets_that_quote_a_tweet", {
@@ -96,7 +96,7 @@ test_that("find_tweets_that_quote_a_tweet", {
   # @return [Get2TweetsIdQuoteTweetsResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("get_rules", {
@@ -110,7 +110,7 @@ test_that("get_rules", {
   # @return [RulesLookupResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("get_tweets_firehose_stream", {
@@ -131,7 +131,7 @@ test_that("get_tweets_firehose_stream", {
   # @return [StreamingTweetResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("get_tweets_sample10_stream", {
@@ -152,7 +152,7 @@ test_that("get_tweets_sample10_stream", {
   # @return [Get2TweetsSample10StreamResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("hide_reply_by_id", {
@@ -165,7 +165,7 @@ test_that("hide_reply_by_id", {
   # @return [TweetHideResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("lists_id_tweets", {
@@ -185,7 +185,7 @@ test_that("lists_id_tweets", {
   # @return [Get2ListsIdTweetsResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("sample_stream", {
@@ -203,7 +203,7 @@ test_that("sample_stream", {
   # @return [StreamingTweetResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("search_stream", {
@@ -223,7 +223,7 @@ test_that("search_stream", {
   # @return [FilteredStreamingTweetResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("space_buyers", {
@@ -240,7 +240,7 @@ test_that("space_buyers", {
   # @return [Get2SpacesIdBuyersResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("space_tweets", {
@@ -259,7 +259,7 @@ test_that("space_tweets", {
   # @return [Get2SpacesIdTweetsResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("tweet_counts_full_archive_search", {
@@ -279,7 +279,7 @@ test_that("tweet_counts_full_archive_search", {
   # @return [Get2TweetsCountsAllResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("tweet_counts_recent_search", {
@@ -299,7 +299,7 @@ test_that("tweet_counts_recent_search", {
   # @return [Get2TweetsCountsRecentResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("tweets_fullarchive_search", {
@@ -325,7 +325,7 @@ test_that("tweets_fullarchive_search", {
   # @return [Get2TweetsSearchAllResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("tweets_recent_search", {
@@ -351,7 +351,7 @@ test_that("tweets_recent_search", {
   # @return [Get2TweetsSearchRecentResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("users_id_like", {
@@ -364,7 +364,7 @@ test_that("users_id_like", {
   # @return [UsersLikesCreateResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("users_id_liked_tweets", {
@@ -384,7 +384,7 @@ test_that("users_id_liked_tweets", {
   # @return [Get2UsersIdLikedTweetsResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("users_id_mentions", {
@@ -408,7 +408,7 @@ test_that("users_id_mentions", {
   # @return [Get2UsersIdMentionsResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("users_id_retweets", {
@@ -421,7 +421,7 @@ test_that("users_id_retweets", {
   # @return [UsersRetweetsCreateResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("users_id_timeline", {
@@ -446,7 +446,7 @@ test_that("users_id_timeline", {
   # @return [Get2UsersIdTimelinesReverseChronologicalResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("users_id_tweets", {
@@ -471,7 +471,7 @@ test_that("users_id_tweets", {
   # @return [Get2UsersIdTweetsResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("users_id_unlike", {
@@ -484,7 +484,7 @@ test_that("users_id_unlike", {
   # @return [UsersLikesDeleteResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("users_id_unretweets", {
@@ -497,5 +497,5 @@ test_that("users_id_unretweets", {
   # @return [UsersRetweetsDeleteResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })

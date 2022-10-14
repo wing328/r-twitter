@@ -27,15 +27,17 @@ ProblemOrError <- R6::R6Class(
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "Error") {
+      } else if (get(class(instance)[[1]], pos = -1)$classname == "Error") {
         self$actual_instance <- instance
         self$actual_type <- "Error"
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "Problem") {
+      } else if (get(class(instance)[[1]], pos = -1)$classname == "Problem") {
         self$actual_instance <- instance
         self$actual_type <- "Problem"
       } else {
-        stop(paste("Failed to initialize ProblemOrError with oneOf schemas Error, Problem. Provided class name: ",
-                   get(class(instance)[[1]], pos = -1)$classname))
+        stop(paste(
+          "Failed to initialize ProblemOrError with oneOf schemas Error, Problem. Provided class name: ",
+          get(class(instance)[[1]], pos = -1)$classname
+        ))
       }
     },
     #' Deserialize JSON string into an instance of ProblemOrError.
@@ -60,11 +62,12 @@ ProblemOrError <- R6::R6Class(
     #' @export
     fromJSON = function(input) {
       matched <- 0 # match counter
-      matched_schemas <- list() #names of matched schemas
+      matched_schemas <- list() # names of matched schemas
       error_messages <- list()
       instance <- NULL
 
-      Error_result <- tryCatch({
+      Error_result <- tryCatch(
+        {
           Error$public_methods$validateJSON(input)
           Error_instance <- Error$new()
           instance <- Error_instance$fromJSON(input)
@@ -79,7 +82,8 @@ ProblemOrError <- R6::R6Class(
         error_messages <- append(error_messages, Error_result["message"])
       }
 
-      Problem_result <- tryCatch({
+      Problem_result <- tryCatch(
+        {
           Problem$public_methods$validateJSON(input)
           Problem_instance <- Problem$new()
           instance <- Problem_instance$fromJSON(input)
@@ -103,8 +107,10 @@ ProblemOrError <- R6::R6Class(
         stop("Multiple matches found when deserializing the payload into ProblemOrError with oneOf schemas Error, Problem.")
       } else {
         # no match
-        stop(paste("No match found when deserializing the payload into ProblemOrError with oneOf schemas Error, Problem. Details: ",
-                   paste(error_messages, collapse = ", ")))
+        stop(paste(
+          "No match found when deserializing the payload into ProblemOrError with oneOf schemas Error, Problem. Details: ",
+          paste(error_messages, collapse = ", ")
+        ))
       }
 
       self
@@ -188,13 +194,12 @@ ProblemOrError <- R6::R6Class(
   lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#ProblemOrError$unlock()
+# ProblemOrError$unlock()
 #
 ## Below is an example to define the print fnuction
-#ProblemOrError$set("public", "print", function(...) {
+# ProblemOrError$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#ProblemOrError$lock()
-
+# ProblemOrError$lock()

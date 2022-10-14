@@ -67,9 +67,7 @@ User <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `id`, `name`, `username`, `created_at` = NULL, `description` = NULL, `entities` = NULL, `location` = NULL, `pinned_tweet_id` = NULL, `profile_image_url` = NULL, `protected` = NULL, `public_metrics` = NULL, `url` = NULL, `verified` = NULL, `withheld` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`id`, `name`, `username`, `created_at` = NULL, `description` = NULL, `entities` = NULL, `location` = NULL, `pinned_tweet_id` = NULL, `profile_image_url` = NULL, `protected` = NULL, `public_metrics` = NULL, `url` = NULL, `verified` = NULL, `withheld` = NULL, additional_properties = NULL, ...) {
       if (!missing(`id`)) {
         stopifnot(is.character(`id`), length(`id`) == 1)
         self$`id` <- `id`
@@ -289,114 +287,114 @@ User <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`created_at`)) {
           sprintf(
-          '"created_at":
+            '"created_at":
             "%s"
                     ',
-          self$`created_at`
+            self$`created_at`
           )
         },
         if (!is.null(self$`description`)) {
           sprintf(
-          '"description":
+            '"description":
             "%s"
                     ',
-          self$`description`
+            self$`description`
           )
         },
         if (!is.null(self$`entities`)) {
           sprintf(
-          '"entities":
+            '"entities":
           %s
           ',
-          jsonlite::toJSON(self$`entities`$toJSON(), auto_unbox = TRUE, digits = NA)
+            jsonlite::toJSON(self$`entities`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         },
         if (!is.null(self$`id`)) {
           sprintf(
-          '"id":
+            '"id":
             "%s"
                     ',
-          self$`id`
+            self$`id`
           )
         },
         if (!is.null(self$`location`)) {
           sprintf(
-          '"location":
+            '"location":
             "%s"
                     ',
-          self$`location`
+            self$`location`
           )
         },
         if (!is.null(self$`name`)) {
           sprintf(
-          '"name":
+            '"name":
             "%s"
                     ',
-          self$`name`
+            self$`name`
           )
         },
         if (!is.null(self$`pinned_tweet_id`)) {
           sprintf(
-          '"pinned_tweet_id":
+            '"pinned_tweet_id":
             "%s"
                     ',
-          self$`pinned_tweet_id`
+            self$`pinned_tweet_id`
           )
         },
         if (!is.null(self$`profile_image_url`)) {
           sprintf(
-          '"profile_image_url":
+            '"profile_image_url":
             "%s"
                     ',
-          self$`profile_image_url`
+            self$`profile_image_url`
           )
         },
         if (!is.null(self$`protected`)) {
           sprintf(
-          '"protected":
+            '"protected":
             %s
                     ',
-          tolower(self$`protected`)
+            tolower(self$`protected`)
           )
         },
         if (!is.null(self$`public_metrics`)) {
           sprintf(
-          '"public_metrics":
+            '"public_metrics":
           %s
           ',
-          jsonlite::toJSON(self$`public_metrics`$toJSON(), auto_unbox = TRUE, digits = NA)
+            jsonlite::toJSON(self$`public_metrics`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         },
         if (!is.null(self$`url`)) {
           sprintf(
-          '"url":
+            '"url":
             "%s"
                     ',
-          self$`url`
+            self$`url`
           )
         },
         if (!is.null(self$`username`)) {
           sprintf(
-          '"username":
+            '"username":
             "%s"
                     ',
-          self$`username`
+            self$`username`
           )
         },
         if (!is.null(self$`verified`)) {
           sprintf(
-          '"verified":
+            '"verified":
             %s
                     ',
-          tolower(self$`verified`)
+            tolower(self$`verified`)
           )
         },
         if (!is.null(self$`withheld`)) {
           sprintf(
-          '"withheld":
+            '"withheld":
           %s
           ',
-          jsonlite::toJSON(self$`withheld`$toJSON(), auto_unbox = TRUE, digits = NA)
+            jsonlite::toJSON(self$`withheld`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         }
       )
@@ -567,18 +565,18 @@ User <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#User$unlock()
+# User$unlock()
 #
 ## Below is an example to define the print fnuction
-#User$set("public", "print", function(...) {
+# User$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#User$lock()
-
+# User$lock()

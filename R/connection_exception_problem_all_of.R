@@ -28,9 +28,7 @@ ConnectionExceptionProblemAllOf <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `connection_issue` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`connection_issue` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`connection_issue`)) {
         if (!(`connection_issue` %in% c("TooManyConnections", "ProvisioningSubscription", "RuleConfigurationIssue", "RulesInvalidIssue"))) {
           stop(paste("Error! \"", `connection_issue`, "\" cannot be assigned to `connection_issue`. Must be \"TooManyConnections\", \"ProvisioningSubscription\", \"RuleConfigurationIssue\", \"RulesInvalidIssue\".", sep = ""))
@@ -99,10 +97,10 @@ ConnectionExceptionProblemAllOf <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`connection_issue`)) {
           sprintf(
-          '"connection_issue":
+            '"connection_issue":
             "%s"
                     ',
-          self$`connection_issue`
+            self$`connection_issue`
           )
         }
       )
@@ -187,18 +185,18 @@ ConnectionExceptionProblemAllOf <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#ConnectionExceptionProblemAllOf$unlock()
+# ConnectionExceptionProblemAllOf$unlock()
 #
 ## Below is an example to define the print fnuction
-#ConnectionExceptionProblemAllOf$set("public", "print", function(...) {
+# ConnectionExceptionProblemAllOf$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#ConnectionExceptionProblemAllOf$lock()
-
+# ConnectionExceptionProblemAllOf$lock()

@@ -28,9 +28,7 @@ BlockUserMutationResponseData <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `blocking` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`blocking` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`blocking`)) {
         stopifnot(is.logical(`blocking`), length(`blocking`) == 1)
         self$`blocking` <- `blocking`
@@ -93,10 +91,10 @@ BlockUserMutationResponseData <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`blocking`)) {
           sprintf(
-          '"blocking":
+            '"blocking":
             %s
                     ',
-          tolower(self$`blocking`)
+            tolower(self$`blocking`)
           )
         }
       )
@@ -178,18 +176,18 @@ BlockUserMutationResponseData <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#BlockUserMutationResponseData$unlock()
+# BlockUserMutationResponseData$unlock()
 #
 ## Below is an example to define the print fnuction
-#BlockUserMutationResponseData$set("public", "print", function(...) {
+# BlockUserMutationResponseData$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#BlockUserMutationResponseData$lock()
-
+# BlockUserMutationResponseData$lock()

@@ -37,9 +37,7 @@ RulesResponseMetadata <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `sent`, `next_token` = NULL, `result_count` = NULL, `summary` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`sent`, `next_token` = NULL, `result_count` = NULL, `summary` = NULL, additional_properties = NULL, ...) {
       if (!missing(`sent`)) {
         stopifnot(is.character(`sent`), length(`sent`) == 1)
         self$`sent` <- `sent`
@@ -137,34 +135,34 @@ RulesResponseMetadata <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`next_token`)) {
           sprintf(
-          '"next_token":
+            '"next_token":
             "%s"
                     ',
-          self$`next_token`
+            self$`next_token`
           )
         },
         if (!is.null(self$`result_count`)) {
           sprintf(
-          '"result_count":
+            '"result_count":
             %d
                     ',
-          self$`result_count`
+            self$`result_count`
           )
         },
         if (!is.null(self$`sent`)) {
           sprintf(
-          '"sent":
+            '"sent":
             "%s"
                     ',
-          self$`sent`
+            self$`sent`
           )
         },
         if (!is.null(self$`summary`)) {
           sprintf(
-          '"summary":
+            '"summary":
           %s
           ',
-          jsonlite::toJSON(self$`summary`$toJSON(), auto_unbox = TRUE, digits = NA)
+            jsonlite::toJSON(self$`summary`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         }
       )
@@ -273,18 +271,18 @@ RulesResponseMetadata <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#RulesResponseMetadata$unlock()
+# RulesResponseMetadata$unlock()
 #
 ## Below is an example to define the print fnuction
-#RulesResponseMetadata$set("public", "print", function(...) {
+# RulesResponseMetadata$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#RulesResponseMetadata$lock()
-
+# RulesResponseMetadata$lock()

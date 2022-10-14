@@ -10,5 +10,5 @@ test_that("view_count", {
   # Number of times this video has been viewed.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`view_count`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`view_count`, "EXPECTED_RESULT")
 })

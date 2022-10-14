@@ -9,5 +9,5 @@ test_that("is_member", {
   # tests for the property `is_member` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`is_member`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`is_member`, "EXPECTED_RESULT")
 })

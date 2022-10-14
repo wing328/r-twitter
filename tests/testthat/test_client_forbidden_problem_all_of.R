@@ -9,12 +9,12 @@ test_that("reason", {
   # tests for the property `reason` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`reason`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`reason`, "EXPECTED_RESULT")
 })
 
 test_that("registration_url", {
   # tests for the property `registration_url` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`registration_url`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`registration_url`, "EXPECTED_RESULT")
 })

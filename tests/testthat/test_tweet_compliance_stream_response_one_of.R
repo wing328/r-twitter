@@ -9,5 +9,5 @@ test_that("data", {
   # tests for the property `data` (TweetComplianceData)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`data`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`data`, "EXPECTED_RESULT")
 })

@@ -26,9 +26,7 @@ TweetCreateRequestMedia <- R6::R6Class(
     #' @param tagged_user_ids A list of User Ids to be tagged in the media for created Tweet.
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `media_ids`, `tagged_user_ids` = NULL, ...
-    ) {
+    initialize = function(`media_ids`, `tagged_user_ids` = NULL, ...) {
       if (!missing(`media_ids`)) {
         stopifnot(is.vector(`media_ids`), length(`media_ids`) != 0)
         sapply(`media_ids`, function(x) stopifnot(is.character(x)))
@@ -88,18 +86,18 @@ TweetCreateRequestMedia <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`media_ids`)) {
           sprintf(
-          '"media_ids":
+            '"media_ids":
              [%s]
           ',
-          paste(unlist(lapply(self$`media_ids`, function(x) paste0('"', x, '"'))), collapse = ",")
+            paste(unlist(lapply(self$`media_ids`, function(x) paste0('"', x, '"'))), collapse = ",")
           )
         },
         if (!is.null(self$`tagged_user_ids`)) {
           sprintf(
-          '"tagged_user_ids":
+            '"tagged_user_ids":
              [%s]
           ',
-          paste(unlist(lapply(self$`tagged_user_ids`, function(x) paste0('"', x, '"'))), collapse = ",")
+            paste(unlist(lapply(self$`tagged_user_ids`, function(x) paste0('"', x, '"'))), collapse = ",")
           )
         }
       )
@@ -215,18 +213,18 @@ TweetCreateRequestMedia <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#TweetCreateRequestMedia$unlock()
+# TweetCreateRequestMedia$unlock()
 #
 ## Below is an example to define the print fnuction
-#TweetCreateRequestMedia$set("public", "print", function(...) {
+# TweetCreateRequestMedia$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#TweetCreateRequestMedia$lock()
-
+# TweetCreateRequestMedia$lock()

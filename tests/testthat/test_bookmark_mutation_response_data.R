@@ -9,5 +9,5 @@ test_that("bookmarked", {
   # tests for the property `bookmarked` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`bookmarked`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`bookmarked`, "EXPECTED_RESULT")
 })

@@ -9,19 +9,19 @@ test_that("data", {
   # tests for the property `data` (array[ComplianceJob])
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`data`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`data`, "EXPECTED_RESULT")
 })
 
 test_that("errors", {
   # tests for the property `errors` (array[Problem])
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`errors`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`errors`, "EXPECTED_RESULT")
 })
 
 test_that("meta", {
   # tests for the property `meta` (Get2ComplianceJobsResponseMeta)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`meta`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`meta`, "EXPECTED_RESULT")
 })

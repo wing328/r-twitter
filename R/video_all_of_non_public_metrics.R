@@ -40,9 +40,7 @@ VideoAllOfNonPublicMetrics <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `playback_0_count` = NULL, `playback_100_count` = NULL, `playback_25_count` = NULL, `playback_50_count` = NULL, `playback_75_count` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`playback_0_count` = NULL, `playback_100_count` = NULL, `playback_25_count` = NULL, `playback_50_count` = NULL, `playback_75_count` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`playback_0_count`)) {
         stopifnot(is.numeric(`playback_0_count`), length(`playback_0_count`) == 1)
         self$`playback_0_count` <- `playback_0_count`
@@ -149,42 +147,42 @@ VideoAllOfNonPublicMetrics <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`playback_0_count`)) {
           sprintf(
-          '"playback_0_count":
+            '"playback_0_count":
             %d
                     ',
-          self$`playback_0_count`
+            self$`playback_0_count`
           )
         },
         if (!is.null(self$`playback_100_count`)) {
           sprintf(
-          '"playback_100_count":
+            '"playback_100_count":
             %d
                     ',
-          self$`playback_100_count`
+            self$`playback_100_count`
           )
         },
         if (!is.null(self$`playback_25_count`)) {
           sprintf(
-          '"playback_25_count":
+            '"playback_25_count":
             %d
                     ',
-          self$`playback_25_count`
+            self$`playback_25_count`
           )
         },
         if (!is.null(self$`playback_50_count`)) {
           sprintf(
-          '"playback_50_count":
+            '"playback_50_count":
             %d
                     ',
-          self$`playback_50_count`
+            self$`playback_50_count`
           )
         },
         if (!is.null(self$`playback_75_count`)) {
           sprintf(
-          '"playback_75_count":
+            '"playback_75_count":
             %d
                     ',
-          self$`playback_75_count`
+            self$`playback_75_count`
           )
         }
       )
@@ -270,18 +268,18 @@ VideoAllOfNonPublicMetrics <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#VideoAllOfNonPublicMetrics$unlock()
+# VideoAllOfNonPublicMetrics$unlock()
 #
 ## Below is an example to define the print fnuction
-#VideoAllOfNonPublicMetrics$set("public", "print", function(...) {
+# VideoAllOfNonPublicMetrics$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#VideoAllOfNonPublicMetrics$lock()
-
+# VideoAllOfNonPublicMetrics$lock()

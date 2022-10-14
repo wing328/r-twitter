@@ -9,12 +9,12 @@ test_that("period", {
   # tests for the property `period` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`period`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`period`, "EXPECTED_RESULT")
 })
 
 test_that("scope", {
   # tests for the property `scope` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`scope`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`scope`, "EXPECTED_RESULT")
 })

@@ -9,5 +9,5 @@ test_that("deleted", {
   # tests for the property `deleted` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`deleted`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`deleted`, "EXPECTED_RESULT")
 })

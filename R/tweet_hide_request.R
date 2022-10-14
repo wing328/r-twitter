@@ -28,9 +28,7 @@ TweetHideRequest <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `hidden`, additional_properties = NULL, ...
-    ) {
+    initialize = function(`hidden`, additional_properties = NULL, ...) {
       if (!missing(`hidden`)) {
         stopifnot(is.logical(`hidden`), length(`hidden`) == 1)
         self$`hidden` <- `hidden`
@@ -93,10 +91,10 @@ TweetHideRequest <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`hidden`)) {
           sprintf(
-          '"hidden":
+            '"hidden":
             %s
                     ',
-          tolower(self$`hidden`)
+            tolower(self$`hidden`)
           )
         }
       )
@@ -194,18 +192,18 @@ TweetHideRequest <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#TweetHideRequest$unlock()
+# TweetHideRequest$unlock()
 #
 ## Below is an example to define the print fnuction
-#TweetHideRequest$set("public", "print", function(...) {
+# TweetHideRequest$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#TweetHideRequest$lock()
-
+# TweetHideRequest$lock()

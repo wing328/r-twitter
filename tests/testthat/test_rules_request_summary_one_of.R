@@ -10,7 +10,7 @@ test_that("created", {
   # Number of user-specified stream filtering rules that were created.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`created`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`created`, "EXPECTED_RESULT")
 })
 
 test_that("invalid", {
@@ -18,7 +18,7 @@ test_that("invalid", {
   # Number of invalid user-specified stream filtering rules.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`invalid`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`invalid`, "EXPECTED_RESULT")
 })
 
 test_that("not_created", {
@@ -26,7 +26,7 @@ test_that("not_created", {
   # Number of user-specified stream filtering rules that were not created.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`not_created`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`not_created`, "EXPECTED_RESULT")
 })
 
 test_that("valid", {
@@ -34,5 +34,5 @@ test_that("valid", {
   # Number of valid user-specified stream filtering rules.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`valid`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`valid`, "EXPECTED_RESULT")
 })

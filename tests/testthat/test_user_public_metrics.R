@@ -10,7 +10,7 @@ test_that("followers_count", {
   # Number of Users who are following this User.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`followers_count`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`followers_count`, "EXPECTED_RESULT")
 })
 
 test_that("following_count", {
@@ -18,7 +18,7 @@ test_that("following_count", {
   # Number of Users this User is following.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`following_count`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`following_count`, "EXPECTED_RESULT")
 })
 
 test_that("listed_count", {
@@ -26,7 +26,7 @@ test_that("listed_count", {
   # The number of lists that include this User.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`listed_count`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`listed_count`, "EXPECTED_RESULT")
 })
 
 test_that("tweet_count", {
@@ -34,5 +34,5 @@ test_that("tweet_count", {
   # The number of Tweets (including Retweets) posted by this User.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`tweet_count`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`tweet_count`, "EXPECTED_RESULT")
 })

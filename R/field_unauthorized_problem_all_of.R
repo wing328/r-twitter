@@ -34,9 +34,7 @@ FieldUnauthorizedProblemAllOf <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `field`, `resource_type`, `section`, additional_properties = NULL, ...
-    ) {
+    initialize = function(`field`, `resource_type`, `section`, additional_properties = NULL, ...) {
       if (!missing(`field`)) {
         stopifnot(is.character(`field`), length(`field`) == 1)
         self$`field` <- `field`
@@ -133,26 +131,26 @@ FieldUnauthorizedProblemAllOf <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`field`)) {
           sprintf(
-          '"field":
+            '"field":
             "%s"
                     ',
-          self$`field`
+            self$`field`
           )
         },
         if (!is.null(self$`resource_type`)) {
           sprintf(
-          '"resource_type":
+            '"resource_type":
             "%s"
                     ',
-          self$`resource_type`
+            self$`resource_type`
           )
         },
         if (!is.null(self$`section`)) {
           sprintf(
-          '"section":
+            '"section":
             "%s"
                     ',
-          self$`section`
+            self$`section`
           )
         }
       )
@@ -290,18 +288,18 @@ FieldUnauthorizedProblemAllOf <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#FieldUnauthorizedProblemAllOf$unlock()
+# FieldUnauthorizedProblemAllOf$unlock()
 #
 ## Below is an example to define the print fnuction
-#FieldUnauthorizedProblemAllOf$set("public", "print", function(...) {
+# FieldUnauthorizedProblemAllOf$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#FieldUnauthorizedProblemAllOf$lock()
-
+# FieldUnauthorizedProblemAllOf$lock()

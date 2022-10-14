@@ -37,9 +37,7 @@ TweetPublicMetrics <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `like_count`, `reply_count`, `retweet_count`, `quote_count` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`like_count`, `reply_count`, `retweet_count`, `quote_count` = NULL, additional_properties = NULL, ...) {
       if (!missing(`like_count`)) {
         stopifnot(is.numeric(`like_count`), length(`like_count`) == 1)
         self$`like_count` <- `like_count`
@@ -135,34 +133,34 @@ TweetPublicMetrics <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`like_count`)) {
           sprintf(
-          '"like_count":
+            '"like_count":
             %d
                     ',
-          self$`like_count`
+            self$`like_count`
           )
         },
         if (!is.null(self$`quote_count`)) {
           sprintf(
-          '"quote_count":
+            '"quote_count":
             %d
                     ',
-          self$`quote_count`
+            self$`quote_count`
           )
         },
         if (!is.null(self$`reply_count`)) {
           sprintf(
-          '"reply_count":
+            '"reply_count":
             %d
                     ',
-          self$`reply_count`
+            self$`reply_count`
           )
         },
         if (!is.null(self$`retweet_count`)) {
           sprintf(
-          '"retweet_count":
+            '"retweet_count":
             %d
                     ',
-          self$`retweet_count`
+            self$`retweet_count`
           )
         }
       )
@@ -295,18 +293,18 @@ TweetPublicMetrics <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#TweetPublicMetrics$unlock()
+# TweetPublicMetrics$unlock()
 #
 ## Below is an example to define the print fnuction
-#TweetPublicMetrics$set("public", "print", function(...) {
+# TweetPublicMetrics$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#TweetPublicMetrics$lock()
-
+# TweetPublicMetrics$lock()

@@ -10,7 +10,7 @@ test_that("country_codes", {
   # Provides a list of countries where this content is not available.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`country_codes`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`country_codes`, "EXPECTED_RESULT")
 })
 
 test_that("scope", {
@@ -18,5 +18,5 @@ test_that("scope", {
   # Indicates that the content being withheld is a &#x60;user&#x60;.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`scope`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`scope`, "EXPECTED_RESULT")
 })

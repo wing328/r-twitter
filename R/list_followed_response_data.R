@@ -28,9 +28,7 @@ ListFollowedResponseData <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `following` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`following` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`following`)) {
         stopifnot(is.logical(`following`), length(`following`) == 1)
         self$`following` <- `following`
@@ -93,10 +91,10 @@ ListFollowedResponseData <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`following`)) {
           sprintf(
-          '"following":
+            '"following":
             %s
                     ',
-          tolower(self$`following`)
+            tolower(self$`following`)
           )
         }
       )
@@ -178,18 +176,18 @@ ListFollowedResponseData <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#ListFollowedResponseData$unlock()
+# ListFollowedResponseData$unlock()
 #
 ## Below is an example to define the print fnuction
-#ListFollowedResponseData$set("public", "print", function(...) {
+# ListFollowedResponseData$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#ListFollowedResponseData$lock()
-
+# ListFollowedResponseData$lock()

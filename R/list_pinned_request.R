@@ -28,9 +28,7 @@ ListPinnedRequest <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `list_id`, additional_properties = NULL, ...
-    ) {
+    initialize = function(`list_id`, additional_properties = NULL, ...) {
       if (!missing(`list_id`)) {
         stopifnot(is.character(`list_id`), length(`list_id`) == 1)
         self$`list_id` <- `list_id`
@@ -93,10 +91,10 @@ ListPinnedRequest <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`list_id`)) {
           sprintf(
-          '"list_id":
+            '"list_id":
             "%s"
                     ',
-          self$`list_id`
+            self$`list_id`
           )
         }
       )
@@ -202,18 +200,18 @@ ListPinnedRequest <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#ListPinnedRequest$unlock()
+# ListPinnedRequest$unlock()
 #
 ## Below is an example to define the print fnuction
-#ListPinnedRequest$set("public", "print", function(...) {
+# ListPinnedRequest$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#ListPinnedRequest$lock()
-
+# ListPinnedRequest$lock()

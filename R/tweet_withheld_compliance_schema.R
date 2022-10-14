@@ -28,9 +28,7 @@ TweetWithheldComplianceSchema <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `withheld`, additional_properties = NULL, ...
-    ) {
+    initialize = function(`withheld`, additional_properties = NULL, ...) {
       if (!missing(`withheld`)) {
         stopifnot(R6::is.R6(`withheld`))
         self$`withheld` <- `withheld`
@@ -95,10 +93,10 @@ TweetWithheldComplianceSchema <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`withheld`)) {
           sprintf(
-          '"withheld":
+            '"withheld":
           %s
           ',
-          jsonlite::toJSON(self$`withheld`$toJSON(), auto_unbox = TRUE, digits = NA)
+            jsonlite::toJSON(self$`withheld`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         }
       )
@@ -196,18 +194,18 @@ TweetWithheldComplianceSchema <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#TweetWithheldComplianceSchema$unlock()
+# TweetWithheldComplianceSchema$unlock()
 #
 ## Below is an example to define the print fnuction
-#TweetWithheldComplianceSchema$set("public", "print", function(...) {
+# TweetWithheldComplianceSchema$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#TweetWithheldComplianceSchema$lock()
-
+# TweetWithheldComplianceSchema$lock()

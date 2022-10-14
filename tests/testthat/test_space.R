@@ -10,7 +10,7 @@ test_that("created_at", {
   # Creation time of the Space.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`created_at`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`created_at`, "EXPECTED_RESULT")
 })
 
 test_that("creator_id", {
@@ -18,7 +18,7 @@ test_that("creator_id", {
   # Unique identifier of this User. This is returned as a string in order to avoid complications with languages and tools that cannot handle large integers.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`creator_id`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`creator_id`, "EXPECTED_RESULT")
 })
 
 test_that("ended_at", {
@@ -26,7 +26,7 @@ test_that("ended_at", {
   # End time of the Space.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`ended_at`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`ended_at`, "EXPECTED_RESULT")
 })
 
 test_that("host_ids", {
@@ -34,7 +34,7 @@ test_that("host_ids", {
   # The user ids for the hosts of the Space.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`host_ids`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`host_ids`, "EXPECTED_RESULT")
 })
 
 test_that("id", {
@@ -42,7 +42,7 @@ test_that("id", {
   # The unique identifier of this Space.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`id`, "EXPECTED_RESULT")
 })
 
 test_that("invited_user_ids", {
@@ -50,7 +50,7 @@ test_that("invited_user_ids", {
   # An array of user ids for people who were invited to a Space.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`invited_user_ids`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`invited_user_ids`, "EXPECTED_RESULT")
 })
 
 test_that("is_ticketed", {
@@ -58,7 +58,7 @@ test_that("is_ticketed", {
   # Denotes if the Space is a ticketed Space.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`is_ticketed`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`is_ticketed`, "EXPECTED_RESULT")
 })
 
 test_that("lang", {
@@ -66,7 +66,7 @@ test_that("lang", {
   # The language of the Space.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`lang`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`lang`, "EXPECTED_RESULT")
 })
 
 test_that("participant_count", {
@@ -74,7 +74,7 @@ test_that("participant_count", {
   # The number of participants in a Space.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`participant_count`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`participant_count`, "EXPECTED_RESULT")
 })
 
 test_that("scheduled_start", {
@@ -82,7 +82,7 @@ test_that("scheduled_start", {
   # A date time stamp for when a Space is scheduled to begin.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`scheduled_start`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`scheduled_start`, "EXPECTED_RESULT")
 })
 
 test_that("speaker_ids", {
@@ -90,7 +90,7 @@ test_that("speaker_ids", {
   # An array of user ids for people who were speakers in a Space.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`speaker_ids`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`speaker_ids`, "EXPECTED_RESULT")
 })
 
 test_that("started_at", {
@@ -98,7 +98,7 @@ test_that("started_at", {
   # When the Space was started as a date string.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`started_at`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`started_at`, "EXPECTED_RESULT")
 })
 
 test_that("state", {
@@ -106,7 +106,7 @@ test_that("state", {
   # The current state of the Space.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`state`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`state`, "EXPECTED_RESULT")
 })
 
 test_that("subscriber_count", {
@@ -114,7 +114,7 @@ test_that("subscriber_count", {
   # The number of people who have either purchased a ticket or set a reminder for this Space.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`subscriber_count`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`subscriber_count`, "EXPECTED_RESULT")
 })
 
 test_that("title", {
@@ -122,7 +122,7 @@ test_that("title", {
   # The title of the Space.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`title`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`title`, "EXPECTED_RESULT")
 })
 
 test_that("topics", {
@@ -130,7 +130,7 @@ test_that("topics", {
   # The topics of a Space, as selected by its creator.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`topics`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`topics`, "EXPECTED_RESULT")
 })
 
 test_that("updated_at", {
@@ -138,5 +138,5 @@ test_that("updated_at", {
   # When the Space was last updated.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`updated_at`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`updated_at`, "EXPECTED_RESULT")
 })

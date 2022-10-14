@@ -29,9 +29,7 @@ TweetCreateRequestPoll <- R6::R6Class(
     #' @param reply_settings Settings to indicate who can reply to the Tweet.
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `duration_minutes`, `options`, `reply_settings` = NULL, ...
-    ) {
+    initialize = function(`duration_minutes`, `options`, `reply_settings` = NULL, ...) {
       if (!missing(`duration_minutes`)) {
         stopifnot(is.numeric(`duration_minutes`), length(`duration_minutes`) == 1)
         self$`duration_minutes` <- `duration_minutes`
@@ -107,26 +105,26 @@ TweetCreateRequestPoll <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`duration_minutes`)) {
           sprintf(
-          '"duration_minutes":
+            '"duration_minutes":
             %d
                     ',
-          self$`duration_minutes`
+            self$`duration_minutes`
           )
         },
         if (!is.null(self$`options`)) {
           sprintf(
-          '"options":
+            '"options":
              [%s]
           ',
-          paste(unlist(lapply(self$`options`, function(x) paste0('"', x, '"'))), collapse = ",")
+            paste(unlist(lapply(self$`options`, function(x) paste0('"', x, '"'))), collapse = ",")
           )
         },
         if (!is.null(self$`reply_settings`)) {
           sprintf(
-          '"reply_settings":
+            '"reply_settings":
             "%s"
                     ',
-          self$`reply_settings`
+            self$`reply_settings`
           )
         }
       )
@@ -262,18 +260,18 @@ TweetCreateRequestPoll <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#TweetCreateRequestPoll$unlock()
+# TweetCreateRequestPoll$unlock()
 #
 ## Below is an example to define the print fnuction
-#TweetCreateRequestPoll$set("public", "print", function(...) {
+# TweetCreateRequestPoll$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#TweetCreateRequestPoll$lock()
-
+# TweetCreateRequestPoll$lock()

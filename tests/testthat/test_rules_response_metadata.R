@@ -10,7 +10,7 @@ test_that("next_token", {
   # The next token.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`next_token`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`next_token`, "EXPECTED_RESULT")
 })
 
 test_that("result_count", {
@@ -18,19 +18,19 @@ test_that("result_count", {
   # Number of Rules in result set.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`result_count`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`result_count`, "EXPECTED_RESULT")
 })
 
 test_that("sent", {
   # tests for the property `sent` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`sent`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`sent`, "EXPECTED_RESULT")
 })
 
 test_that("summary", {
   # tests for the property `summary` (RulesRequestSummary)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`summary`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`summary`, "EXPECTED_RESULT")
 })
