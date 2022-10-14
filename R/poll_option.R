@@ -34,9 +34,7 @@ PollOption <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `label`, `position`, `votes`, additional_properties = NULL, ...
-    ) {
+    initialize = function(`label`, `position`, `votes`, additional_properties = NULL, ...) {
       if (!missing(`label`)) {
         stopifnot(is.character(`label`), length(`label`) == 1)
         self$`label` <- `label`
@@ -121,26 +119,26 @@ PollOption <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`label`)) {
           sprintf(
-          '"label":
+            '"label":
             "%s"
                     ',
-          self$`label`
+            self$`label`
           )
         },
         if (!is.null(self$`position`)) {
           sprintf(
-          '"position":
+            '"position":
             %d
                     ',
-          self$`position`
+            self$`position`
           )
         },
         if (!is.null(self$`votes`)) {
           sprintf(
-          '"votes":
+            '"votes":
             %d
                     ',
-          self$`votes`
+            self$`votes`
           )
         }
       )
@@ -286,18 +284,18 @@ PollOption <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#PollOption$unlock()
+# PollOption$unlock()
 #
 ## Below is an example to define the print fnuction
-#PollOption$set("public", "print", function(...) {
+# PollOption$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#PollOption$lock()
-
+# PollOption$lock()

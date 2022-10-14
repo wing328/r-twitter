@@ -23,9 +23,7 @@ TweetCreateRequestGeo <- R6::R6Class(
     #' @param place_id place_id
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `place_id` = NULL, ...
-    ) {
+    initialize = function(`place_id` = NULL, ...) {
       if (!is.null(`place_id`)) {
         stopifnot(is.character(`place_id`), length(`place_id`) == 1)
         self$`place_id` <- `place_id`
@@ -72,10 +70,10 @@ TweetCreateRequestGeo <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`place_id`)) {
           sprintf(
-          '"place_id":
+            '"place_id":
             "%s"
                     ',
-          self$`place_id`
+            self$`place_id`
           )
         }
       )
@@ -145,18 +143,18 @@ TweetCreateRequestGeo <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#TweetCreateRequestGeo$unlock()
+# TweetCreateRequestGeo$unlock()
 #
 ## Below is an example to define the print fnuction
-#TweetCreateRequestGeo$set("public", "print", function(...) {
+# TweetCreateRequestGeo$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#TweetCreateRequestGeo$lock()
-
+# TweetCreateRequestGeo$lock()

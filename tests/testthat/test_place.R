@@ -9,7 +9,7 @@ test_that("contained_within", {
   # tests for the property `contained_within` (array[character])
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`contained_within`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`contained_within`, "EXPECTED_RESULT")
 })
 
 test_that("country", {
@@ -17,7 +17,7 @@ test_that("country", {
   # The full name of the county in which this place exists.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`country`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`country`, "EXPECTED_RESULT")
 })
 
 test_that("country_code", {
@@ -25,7 +25,7 @@ test_that("country_code", {
   # A two-letter ISO 3166-1 alpha-2 country code.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`country_code`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`country_code`, "EXPECTED_RESULT")
 })
 
 test_that("full_name", {
@@ -33,14 +33,14 @@ test_that("full_name", {
   # The full name of this place.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`full_name`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`full_name`, "EXPECTED_RESULT")
 })
 
 test_that("geo", {
   # tests for the property `geo` (Geo)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`geo`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`geo`, "EXPECTED_RESULT")
 })
 
 test_that("id", {
@@ -48,7 +48,7 @@ test_that("id", {
   # The identifier for this place.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`id`, "EXPECTED_RESULT")
 })
 
 test_that("name", {
@@ -56,12 +56,12 @@ test_that("name", {
   # The human readable name of this place.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`name`, "EXPECTED_RESULT")
 })
 
 test_that("place_type", {
   # tests for the property `place_type` (PlaceType)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`place_type`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`place_type`, "EXPECTED_RESULT")
 })

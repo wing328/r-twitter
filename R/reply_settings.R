@@ -22,9 +22,12 @@ ReplySettings <- R6::R6Class(
 
       stopifnot(length(val) == 1L)
 
-      if (!val %in% enumvec)
-          stop("Use one of the valid values: ",
-              paste0(enumvec, collapse = ", "))
+      if (!val %in% enumvec) {
+        stop(
+          "Use one of the valid values: ",
+          paste0(enumvec, collapse = ", ")
+        )
+      }
       private$value <- val
     },
     #' To JSON string
@@ -35,7 +38,7 @@ ReplySettings <- R6::R6Class(
     #' @return ReplySettings in JSON format
     #' @export
     toJSON = function() {
-        jsonlite::toJSON(private$value, auto_unbox = TRUE)
+      jsonlite::toJSON(private$value, auto_unbox = TRUE)
     },
     #' Deserialize JSON string into an instance of ReplySettings
     #'
@@ -47,7 +50,8 @@ ReplySettings <- R6::R6Class(
     #' @export
     fromJSON = function(input_json) {
       private$value <- jsonlite::fromJSON(input_json,
-          simplifyVector = FALSE)
+        simplifyVector = FALSE
+      )
       self
     },
     #' To JSON string
@@ -59,7 +63,8 @@ ReplySettings <- R6::R6Class(
     #' @export
     toJSONString = function() {
       as.character(jsonlite::toJSON(private$value,
-          auto_unbox = TRUE))
+        auto_unbox = TRUE
+      ))
     },
     #' Deserialize JSON string into an instance of ReplySettings
     #'
@@ -71,7 +76,8 @@ ReplySettings <- R6::R6Class(
     #' @export
     fromJSONString = function(input_json) {
       private$value <- jsonlite::fromJSON(input_json,
-          simplifyVector = FALSE)
+        simplifyVector = FALSE
+      )
       self
     }
   ),
@@ -85,4 +91,3 @@ ReplySettings <- R6::R6Class(
   res <- gsub("^\\[|\\]$", "", "[everyone, mentionedUsers, following, other]")
   unlist(strsplit(res, ", "))
 }
-

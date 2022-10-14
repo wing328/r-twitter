@@ -9,5 +9,5 @@ test_that("following", {
   # tests for the property `following` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`following`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`following`, "EXPECTED_RESULT")
 })

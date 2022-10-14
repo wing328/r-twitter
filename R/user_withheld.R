@@ -31,9 +31,7 @@ UserWithheld <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `country_codes`, `scope` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`country_codes`, `scope` = NULL, additional_properties = NULL, ...) {
       if (!missing(`country_codes`)) {
         stopifnot(is.vector(`country_codes`), length(`country_codes`) != 0)
         sapply(`country_codes`, function(x) stopifnot(is.character(x)))
@@ -120,18 +118,18 @@ UserWithheld <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`country_codes`)) {
           sprintf(
-          '"country_codes":
+            '"country_codes":
              [%s]
           ',
-          paste(unlist(lapply(self$`country_codes`, function(x) paste0('"', x, '"'))), collapse = ",")
+            paste(unlist(lapply(self$`country_codes`, function(x) paste0('"', x, '"'))), collapse = ",")
           )
         },
         if (!is.null(self$`scope`)) {
           sprintf(
-          '"scope":
+            '"scope":
             "%s"
                     ',
-          self$`scope`
+            self$`scope`
           )
         }
       )
@@ -248,18 +246,18 @@ UserWithheld <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#UserWithheld$unlock()
+# UserWithheld$unlock()
 #
 ## Below is an example to define the print fnuction
-#UserWithheld$set("public", "print", function(...) {
+# UserWithheld$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#UserWithheld$lock()
-
+# UserWithheld$lock()

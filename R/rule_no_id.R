@@ -31,9 +31,7 @@ RuleNoId <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `value`, `tag` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`value`, `tag` = NULL, additional_properties = NULL, ...) {
       if (!missing(`value`)) {
         stopifnot(is.character(`value`), length(`value`) == 1)
         self$`value` <- `value`
@@ -107,18 +105,18 @@ RuleNoId <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`tag`)) {
           sprintf(
-          '"tag":
+            '"tag":
             "%s"
                     ',
-          self$`tag`
+            self$`tag`
           )
         },
         if (!is.null(self$`value`)) {
           sprintf(
-          '"value":
+            '"value":
             "%s"
                     ',
-          self$`value`
+            self$`value`
           )
         }
       )
@@ -217,18 +215,18 @@ RuleNoId <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#RuleNoId$unlock()
+# RuleNoId$unlock()
 #
 ## Below is an example to define the print fnuction
-#RuleNoId$set("public", "print", function(...) {
+# RuleNoId$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#RuleNoId$lock()
-
+# RuleNoId$lock()

@@ -9,5 +9,5 @@ test_that("user_protect", {
   # tests for the property `user_protect` (UserComplianceSchema)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`user_protect`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`user_protect`, "EXPECTED_RESULT")
 })

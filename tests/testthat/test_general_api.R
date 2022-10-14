@@ -13,5 +13,5 @@ test_that("get_open_api_spec", {
   # @return [object]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })

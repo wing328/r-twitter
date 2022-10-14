@@ -10,7 +10,7 @@ test_that("bit_rate", {
   # The bit rate of the media.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`bit_rate`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`bit_rate`, "EXPECTED_RESULT")
 })
 
 test_that("content_type", {
@@ -18,7 +18,7 @@ test_that("content_type", {
   # The content type of the media.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`content_type`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`content_type`, "EXPECTED_RESULT")
 })
 
 test_that("url", {
@@ -26,5 +26,5 @@ test_that("url", {
   # The url to the media.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`url`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`url`, "EXPECTED_RESULT")
 })

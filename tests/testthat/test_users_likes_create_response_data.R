@@ -9,5 +9,5 @@ test_that("liked", {
   # tests for the property `liked` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`liked`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`liked`, "EXPECTED_RESULT")
 })

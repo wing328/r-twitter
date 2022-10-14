@@ -10,7 +10,7 @@ test_that("like_count", {
   # Number of times this Tweet has been liked.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`like_count`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`like_count`, "EXPECTED_RESULT")
 })
 
 test_that("quote_count", {
@@ -18,7 +18,7 @@ test_that("quote_count", {
   # Number of times this Tweet has been quoted.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`quote_count`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`quote_count`, "EXPECTED_RESULT")
 })
 
 test_that("reply_count", {
@@ -26,7 +26,7 @@ test_that("reply_count", {
   # Number of times this Tweet has been replied to.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`reply_count`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`reply_count`, "EXPECTED_RESULT")
 })
 
 test_that("retweet_count", {
@@ -34,5 +34,5 @@ test_that("retweet_count", {
   # Number of times this Tweet has been Retweeted.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`retweet_count`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`retweet_count`, "EXPECTED_RESULT")
 })

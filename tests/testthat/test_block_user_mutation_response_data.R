@@ -9,5 +9,5 @@ test_that("blocking", {
   # tests for the property `blocking` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`blocking`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`blocking`, "EXPECTED_RESULT")
 })

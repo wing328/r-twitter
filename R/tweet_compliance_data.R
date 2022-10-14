@@ -27,21 +27,23 @@ TweetComplianceData <- R6::R6Class(
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "TweetDeleteComplianceSchema") {
+      } else if (get(class(instance)[[1]], pos = -1)$classname == "TweetDeleteComplianceSchema") {
         self$actual_instance <- instance
         self$actual_type <- "TweetDeleteComplianceSchema"
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "TweetDropComplianceSchema") {
+      } else if (get(class(instance)[[1]], pos = -1)$classname == "TweetDropComplianceSchema") {
         self$actual_instance <- instance
         self$actual_type <- "TweetDropComplianceSchema"
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "TweetUndropComplianceSchema") {
+      } else if (get(class(instance)[[1]], pos = -1)$classname == "TweetUndropComplianceSchema") {
         self$actual_instance <- instance
         self$actual_type <- "TweetUndropComplianceSchema"
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "TweetWithheldComplianceSchema") {
+      } else if (get(class(instance)[[1]], pos = -1)$classname == "TweetWithheldComplianceSchema") {
         self$actual_instance <- instance
         self$actual_type <- "TweetWithheldComplianceSchema"
       } else {
-        stop(paste("Failed to initialize TweetComplianceData with oneOf schemas TweetDeleteComplianceSchema, TweetDropComplianceSchema, TweetUndropComplianceSchema, TweetWithheldComplianceSchema. Provided class name: ",
-                   get(class(instance)[[1]], pos = -1)$classname))
+        stop(paste(
+          "Failed to initialize TweetComplianceData with oneOf schemas TweetDeleteComplianceSchema, TweetDropComplianceSchema, TweetUndropComplianceSchema, TweetWithheldComplianceSchema. Provided class name: ",
+          get(class(instance)[[1]], pos = -1)$classname
+        ))
       }
     },
     #' Deserialize JSON string into an instance of TweetComplianceData.
@@ -66,11 +68,12 @@ TweetComplianceData <- R6::R6Class(
     #' @export
     fromJSON = function(input) {
       matched <- 0 # match counter
-      matched_schemas <- list() #names of matched schemas
+      matched_schemas <- list() # names of matched schemas
       error_messages <- list()
       instance <- NULL
 
-      TweetDeleteComplianceSchema_result <- tryCatch({
+      TweetDeleteComplianceSchema_result <- tryCatch(
+        {
           TweetDeleteComplianceSchema$public_methods$validateJSON(input)
           TweetDeleteComplianceSchema_instance <- TweetDeleteComplianceSchema$new()
           instance <- TweetDeleteComplianceSchema_instance$fromJSON(input)
@@ -85,7 +88,8 @@ TweetComplianceData <- R6::R6Class(
         error_messages <- append(error_messages, TweetDeleteComplianceSchema_result["message"])
       }
 
-      TweetWithheldComplianceSchema_result <- tryCatch({
+      TweetWithheldComplianceSchema_result <- tryCatch(
+        {
           TweetWithheldComplianceSchema$public_methods$validateJSON(input)
           TweetWithheldComplianceSchema_instance <- TweetWithheldComplianceSchema$new()
           instance <- TweetWithheldComplianceSchema_instance$fromJSON(input)
@@ -100,7 +104,8 @@ TweetComplianceData <- R6::R6Class(
         error_messages <- append(error_messages, TweetWithheldComplianceSchema_result["message"])
       }
 
-      TweetDropComplianceSchema_result <- tryCatch({
+      TweetDropComplianceSchema_result <- tryCatch(
+        {
           TweetDropComplianceSchema$public_methods$validateJSON(input)
           TweetDropComplianceSchema_instance <- TweetDropComplianceSchema$new()
           instance <- TweetDropComplianceSchema_instance$fromJSON(input)
@@ -115,7 +120,8 @@ TweetComplianceData <- R6::R6Class(
         error_messages <- append(error_messages, TweetDropComplianceSchema_result["message"])
       }
 
-      TweetUndropComplianceSchema_result <- tryCatch({
+      TweetUndropComplianceSchema_result <- tryCatch(
+        {
           TweetUndropComplianceSchema$public_methods$validateJSON(input)
           TweetUndropComplianceSchema_instance <- TweetUndropComplianceSchema$new()
           instance <- TweetUndropComplianceSchema_instance$fromJSON(input)
@@ -139,8 +145,10 @@ TweetComplianceData <- R6::R6Class(
         stop("Multiple matches found when deserializing the payload into TweetComplianceData with oneOf schemas TweetDeleteComplianceSchema, TweetDropComplianceSchema, TweetUndropComplianceSchema, TweetWithheldComplianceSchema.")
       } else {
         # no match
-        stop(paste("No match found when deserializing the payload into TweetComplianceData with oneOf schemas TweetDeleteComplianceSchema, TweetDropComplianceSchema, TweetUndropComplianceSchema, TweetWithheldComplianceSchema. Details: ",
-                   paste(error_messages, collapse = ", ")))
+        stop(paste(
+          "No match found when deserializing the payload into TweetComplianceData with oneOf schemas TweetDeleteComplianceSchema, TweetDropComplianceSchema, TweetUndropComplianceSchema, TweetWithheldComplianceSchema. Details: ",
+          paste(error_messages, collapse = ", ")
+        ))
       }
 
       self
@@ -224,13 +232,12 @@ TweetComplianceData <- R6::R6Class(
   lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#TweetComplianceData$unlock()
+# TweetComplianceData$unlock()
 #
 ## Below is an example to define the print fnuction
-#TweetComplianceData$set("public", "print", function(...) {
+# TweetComplianceData$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#TweetComplianceData$lock()
-
+# TweetComplianceData$lock()

@@ -34,9 +34,7 @@ Variant <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `bit_rate` = NULL, `content_type` = NULL, `url` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`bit_rate` = NULL, `content_type` = NULL, `url` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`bit_rate`)) {
         stopifnot(is.numeric(`bit_rate`), length(`bit_rate`) == 1)
         self$`bit_rate` <- `bit_rate`
@@ -129,26 +127,26 @@ Variant <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`bit_rate`)) {
           sprintf(
-          '"bit_rate":
+            '"bit_rate":
             %d
                     ',
-          self$`bit_rate`
+            self$`bit_rate`
           )
         },
         if (!is.null(self$`content_type`)) {
           sprintf(
-          '"content_type":
+            '"content_type":
             "%s"
                     ',
-          self$`content_type`
+            self$`content_type`
           )
         },
         if (!is.null(self$`url`)) {
           sprintf(
-          '"url":
+            '"url":
             "%s"
                     ',
-          self$`url`
+            self$`url`
           )
         }
       )
@@ -236,18 +234,18 @@ Variant <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#Variant$unlock()
+# Variant$unlock()
 #
 ## Below is an example to define the print fnuction
-#Variant$set("public", "print", function(...) {
+# Variant$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#Variant$lock()
-
+# Variant$lock()

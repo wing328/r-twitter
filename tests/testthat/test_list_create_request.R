@@ -9,19 +9,19 @@ test_that("description", {
   # tests for the property `description` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`description`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`description`, "EXPECTED_RESULT")
 })
 
 test_that("name", {
   # tests for the property `name` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`name`, "EXPECTED_RESULT")
 })
 
 test_that("item_private", {
   # tests for the property `item_private` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`item_private`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`item_private`, "EXPECTED_RESULT")
 })

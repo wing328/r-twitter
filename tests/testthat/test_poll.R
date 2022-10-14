@@ -9,14 +9,14 @@ test_that("duration_minutes", {
   # tests for the property `duration_minutes` (integer)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`duration_minutes`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`duration_minutes`, "EXPECTED_RESULT")
 })
 
 test_that("end_datetime", {
   # tests for the property `end_datetime` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`end_datetime`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`end_datetime`, "EXPECTED_RESULT")
 })
 
 test_that("id", {
@@ -24,19 +24,19 @@ test_that("id", {
   # Unique identifier of this poll.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`id`, "EXPECTED_RESULT")
 })
 
 test_that("options", {
   # tests for the property `options` (array[PollOption])
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`options`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`options`, "EXPECTED_RESULT")
 })
 
 test_that("voting_status", {
   # tests for the property `voting_status` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`voting_status`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`voting_status`, "EXPECTED_RESULT")
 })

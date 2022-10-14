@@ -28,9 +28,7 @@ TweetDeleteComplianceSchema <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `delete`, additional_properties = NULL, ...
-    ) {
+    initialize = function(`delete`, additional_properties = NULL, ...) {
       if (!missing(`delete`)) {
         stopifnot(R6::is.R6(`delete`))
         self$`delete` <- `delete`
@@ -95,10 +93,10 @@ TweetDeleteComplianceSchema <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`delete`)) {
           sprintf(
-          '"delete":
+            '"delete":
           %s
           ',
-          jsonlite::toJSON(self$`delete`$toJSON(), auto_unbox = TRUE, digits = NA)
+            jsonlite::toJSON(self$`delete`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         }
       )
@@ -196,18 +194,18 @@ TweetDeleteComplianceSchema <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#TweetDeleteComplianceSchema$unlock()
+# TweetDeleteComplianceSchema$unlock()
 #
 ## Below is an example to define the print fnuction
-#TweetDeleteComplianceSchema$set("public", "print", function(...) {
+# TweetDeleteComplianceSchema$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#TweetDeleteComplianceSchema$lock()
-
+# TweetDeleteComplianceSchema$lock()

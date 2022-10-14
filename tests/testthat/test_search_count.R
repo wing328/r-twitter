@@ -10,7 +10,7 @@ test_that("end", {
   # The end time of the bucket.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`end`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`end`, "EXPECTED_RESULT")
 })
 
 test_that("start", {
@@ -18,7 +18,7 @@ test_that("start", {
   # The start time of the bucket.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`start`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`start`, "EXPECTED_RESULT")
 })
 
 test_that("tweet_count", {
@@ -26,5 +26,5 @@ test_that("tweet_count", {
   # The count for the bucket.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`tweet_count`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`tweet_count`, "EXPECTED_RESULT")
 })

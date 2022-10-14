@@ -40,9 +40,7 @@ Poll <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `id`, `options`, `duration_minutes` = NULL, `end_datetime` = NULL, `voting_status` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`id`, `options`, `duration_minutes` = NULL, `end_datetime` = NULL, `voting_status` = NULL, additional_properties = NULL, ...) {
       if (!missing(`id`)) {
         stopifnot(is.character(`id`), length(`id`) == 1)
         self$`id` <- `id`
@@ -156,42 +154,42 @@ Poll <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`duration_minutes`)) {
           sprintf(
-          '"duration_minutes":
+            '"duration_minutes":
             %d
                     ',
-          self$`duration_minutes`
+            self$`duration_minutes`
           )
         },
         if (!is.null(self$`end_datetime`)) {
           sprintf(
-          '"end_datetime":
+            '"end_datetime":
             "%s"
                     ',
-          self$`end_datetime`
+            self$`end_datetime`
           )
         },
         if (!is.null(self$`id`)) {
           sprintf(
-          '"id":
+            '"id":
             "%s"
                     ',
-          self$`id`
+            self$`id`
           )
         },
         if (!is.null(self$`options`)) {
           sprintf(
-          '"options":
+            '"options":
           [%s]
 ',
-          paste(sapply(self$`options`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
+            paste(sapply(self$`options`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
           )
         },
         if (!is.null(self$`voting_status`)) {
           sprintf(
-          '"voting_status":
+            '"voting_status":
             "%s"
                     ',
-          self$`voting_status`
+            self$`voting_status`
           )
         }
       )
@@ -349,18 +347,18 @@ Poll <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#Poll$unlock()
+# Poll$unlock()
 #
 ## Below is an example to define the print fnuction
-#Poll$set("public", "print", function(...) {
+# Poll$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#Poll$lock()
-
+# Poll$lock()

@@ -47,9 +47,7 @@ ResourceUnavailableProblem <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `title`, `type`, `parameter`, `resource_id`, `resource_type`, `detail` = NULL, `status` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`title`, `type`, `parameter`, `resource_id`, `resource_type`, `detail` = NULL, `status` = NULL, additional_properties = NULL, ...) {
       if (!missing(`title`)) {
         stopifnot(is.character(`title`), length(`title`) == 1)
         self$`title` <- `title`
@@ -184,58 +182,58 @@ ResourceUnavailableProblem <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`detail`)) {
           sprintf(
-          '"detail":
+            '"detail":
             "%s"
                     ',
-          self$`detail`
+            self$`detail`
           )
         },
         if (!is.null(self$`status`)) {
           sprintf(
-          '"status":
+            '"status":
             %d
                     ',
-          self$`status`
+            self$`status`
           )
         },
         if (!is.null(self$`title`)) {
           sprintf(
-          '"title":
+            '"title":
             "%s"
                     ',
-          self$`title`
+            self$`title`
           )
         },
         if (!is.null(self$`type`)) {
           sprintf(
-          '"type":
+            '"type":
             "%s"
                     ',
-          self$`type`
+            self$`type`
           )
         },
         if (!is.null(self$`parameter`)) {
           sprintf(
-          '"parameter":
+            '"parameter":
             "%s"
                     ',
-          self$`parameter`
+            self$`parameter`
           )
         },
         if (!is.null(self$`resource_id`)) {
           sprintf(
-          '"resource_id":
+            '"resource_id":
             "%s"
                     ',
-          self$`resource_id`
+            self$`resource_id`
           )
         },
         if (!is.null(self$`resource_type`)) {
           sprintf(
-          '"resource_type":
+            '"resource_type":
             "%s"
                     ',
-          self$`resource_type`
+            self$`resource_type`
           )
         }
       )
@@ -414,18 +412,18 @@ ResourceUnavailableProblem <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#ResourceUnavailableProblem$unlock()
+# ResourceUnavailableProblem$unlock()
 #
 ## Below is an example to define the print fnuction
-#ResourceUnavailableProblem$set("public", "print", function(...) {
+# ResourceUnavailableProblem$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#ResourceUnavailableProblem$lock()
-
+# ResourceUnavailableProblem$lock()

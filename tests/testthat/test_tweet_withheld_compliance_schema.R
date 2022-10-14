@@ -9,5 +9,5 @@ test_that("withheld", {
   # tests for the property `withheld` (TweetTakedownComplianceSchema)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`withheld`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`withheld`, "EXPECTED_RESULT")
 })

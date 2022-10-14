@@ -9,5 +9,5 @@ test_that("place_id", {
   # tests for the property `place_id` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`place_id`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`place_id`, "EXPECTED_RESULT")
 })

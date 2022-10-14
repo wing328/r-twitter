@@ -37,9 +37,7 @@ TweetTakedownComplianceSchema <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `event_at`, `tweet`, `withheld_in_countries`, `quote_tweet_id` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`event_at`, `tweet`, `withheld_in_countries`, `quote_tweet_id` = NULL, additional_properties = NULL, ...) {
       if (!missing(`event_at`)) {
         stopifnot(is.character(`event_at`), length(`event_at`) == 1)
         self$`event_at` <- `event_at`
@@ -138,34 +136,34 @@ TweetTakedownComplianceSchema <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`event_at`)) {
           sprintf(
-          '"event_at":
+            '"event_at":
             "%s"
                     ',
-          self$`event_at`
+            self$`event_at`
           )
         },
         if (!is.null(self$`quote_tweet_id`)) {
           sprintf(
-          '"quote_tweet_id":
+            '"quote_tweet_id":
             "%s"
                     ',
-          self$`quote_tweet_id`
+            self$`quote_tweet_id`
           )
         },
         if (!is.null(self$`tweet`)) {
           sprintf(
-          '"tweet":
+            '"tweet":
           %s
           ',
-          jsonlite::toJSON(self$`tweet`$toJSON(), auto_unbox = TRUE, digits = NA)
+            jsonlite::toJSON(self$`tweet`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         },
         if (!is.null(self$`withheld_in_countries`)) {
           sprintf(
-          '"withheld_in_countries":
+            '"withheld_in_countries":
              [%s]
           ',
-          paste(unlist(lapply(self$`withheld_in_countries`, function(x) paste0('"', x, '"'))), collapse = ",")
+            paste(unlist(lapply(self$`withheld_in_countries`, function(x) paste0('"', x, '"'))), collapse = ",")
           )
         }
       )
@@ -315,18 +313,18 @@ TweetTakedownComplianceSchema <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#TweetTakedownComplianceSchema$unlock()
+# TweetTakedownComplianceSchema$unlock()
 #
 ## Below is an example to define the print fnuction
-#TweetTakedownComplianceSchema$set("public", "print", function(...) {
+# TweetTakedownComplianceSchema$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#TweetTakedownComplianceSchema$lock()
-
+# TweetTakedownComplianceSchema$lock()

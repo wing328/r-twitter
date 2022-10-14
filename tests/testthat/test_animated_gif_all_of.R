@@ -9,7 +9,7 @@ test_that("preview_image_url", {
   # tests for the property `preview_image_url` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`preview_image_url`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`preview_image_url`, "EXPECTED_RESULT")
 })
 
 test_that("variants", {
@@ -17,5 +17,5 @@ test_that("variants", {
   # An array of all available variants of the media.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`variants`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`variants`, "EXPECTED_RESULT")
 })

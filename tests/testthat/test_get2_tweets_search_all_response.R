@@ -9,26 +9,26 @@ test_that("data", {
   # tests for the property `data` (array[Tweet])
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`data`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`data`, "EXPECTED_RESULT")
 })
 
 test_that("errors", {
   # tests for the property `errors` (array[Problem])
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`errors`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`errors`, "EXPECTED_RESULT")
 })
 
 test_that("includes", {
   # tests for the property `includes` (Expansions)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`includes`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`includes`, "EXPECTED_RESULT")
 })
 
 test_that("meta", {
   # tests for the property `meta` (Get2TweetsSearchAllResponseMeta)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`meta`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`meta`, "EXPECTED_RESULT")
 })

@@ -10,7 +10,7 @@ test_that("event_at", {
   # Event time.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`event_at`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`event_at`, "EXPECTED_RESULT")
 })
 
 test_that("quote_tweet_id", {
@@ -18,19 +18,19 @@ test_that("quote_tweet_id", {
   # Unique identifier of this Tweet. This is returned as a string in order to avoid complications with languages and tools that cannot handle large integers.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`quote_tweet_id`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`quote_tweet_id`, "EXPECTED_RESULT")
 })
 
 test_that("tweet", {
   # tests for the property `tweet` (TweetComplianceSchemaTweet)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`tweet`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`tweet`, "EXPECTED_RESULT")
 })
 
 test_that("withheld_in_countries", {
   # tests for the property `withheld_in_countries` (array[character])
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`withheld_in_countries`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`withheld_in_countries`, "EXPECTED_RESULT")
 })

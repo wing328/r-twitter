@@ -9,21 +9,21 @@ test_that("parameter", {
   # tests for the property `parameter` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`parameter`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`parameter`, "EXPECTED_RESULT")
 })
 
 test_that("resource_id", {
   # tests for the property `resource_id` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`resource_id`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`resource_id`, "EXPECTED_RESULT")
 })
 
 test_that("resource_type", {
   # tests for the property `resource_type` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`resource_type`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`resource_type`, "EXPECTED_RESULT")
 })
 
 test_that("value", {
@@ -31,5 +31,5 @@ test_that("value", {
   # Value will match the schema of the field.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`value`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`value`, "EXPECTED_RESULT")
 })

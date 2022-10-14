@@ -9,5 +9,5 @@ test_that("muting", {
   # tests for the property `muting` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`muting`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`muting`, "EXPECTED_RESULT")
 })

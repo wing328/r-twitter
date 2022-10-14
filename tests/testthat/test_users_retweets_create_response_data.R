@@ -9,5 +9,5 @@ test_that("retweeted", {
   # tests for the property `retweeted` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`retweeted`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`retweeted`, "EXPECTED_RESULT")
 })

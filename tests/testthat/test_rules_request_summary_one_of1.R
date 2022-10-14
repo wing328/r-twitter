@@ -10,7 +10,7 @@ test_that("deleted", {
   # Number of user-specified stream filtering rules that were deleted.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`deleted`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`deleted`, "EXPECTED_RESULT")
 })
 
 test_that("not_deleted", {
@@ -18,5 +18,5 @@ test_that("not_deleted", {
   # Number of user-specified stream filtering rules that were not deleted.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`not_deleted`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`not_deleted`, "EXPECTED_RESULT")
 })

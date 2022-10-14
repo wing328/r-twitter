@@ -27,36 +27,38 @@ UserComplianceData <- R6::R6Class(
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "UserDeleteComplianceSchema") {
+      } else if (get(class(instance)[[1]], pos = -1)$classname == "UserDeleteComplianceSchema") {
         self$actual_instance <- instance
         self$actual_type <- "UserDeleteComplianceSchema"
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "UserProfileModificationComplianceSchema") {
+      } else if (get(class(instance)[[1]], pos = -1)$classname == "UserProfileModificationComplianceSchema") {
         self$actual_instance <- instance
         self$actual_type <- "UserProfileModificationComplianceSchema"
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "UserProtectComplianceSchema") {
+      } else if (get(class(instance)[[1]], pos = -1)$classname == "UserProtectComplianceSchema") {
         self$actual_instance <- instance
         self$actual_type <- "UserProtectComplianceSchema"
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "UserScrubGeoSchema") {
+      } else if (get(class(instance)[[1]], pos = -1)$classname == "UserScrubGeoSchema") {
         self$actual_instance <- instance
         self$actual_type <- "UserScrubGeoSchema"
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "UserSuspendComplianceSchema") {
+      } else if (get(class(instance)[[1]], pos = -1)$classname == "UserSuspendComplianceSchema") {
         self$actual_instance <- instance
         self$actual_type <- "UserSuspendComplianceSchema"
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "UserUndeleteComplianceSchema") {
+      } else if (get(class(instance)[[1]], pos = -1)$classname == "UserUndeleteComplianceSchema") {
         self$actual_instance <- instance
         self$actual_type <- "UserUndeleteComplianceSchema"
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "UserUnprotectComplianceSchema") {
+      } else if (get(class(instance)[[1]], pos = -1)$classname == "UserUnprotectComplianceSchema") {
         self$actual_instance <- instance
         self$actual_type <- "UserUnprotectComplianceSchema"
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "UserUnsuspendComplianceSchema") {
+      } else if (get(class(instance)[[1]], pos = -1)$classname == "UserUnsuspendComplianceSchema") {
         self$actual_instance <- instance
         self$actual_type <- "UserUnsuspendComplianceSchema"
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "UserWithheldComplianceSchema") {
+      } else if (get(class(instance)[[1]], pos = -1)$classname == "UserWithheldComplianceSchema") {
         self$actual_instance <- instance
         self$actual_type <- "UserWithheldComplianceSchema"
       } else {
-        stop(paste("Failed to initialize UserComplianceData with oneOf schemas UserDeleteComplianceSchema, UserProfileModificationComplianceSchema, UserProtectComplianceSchema, UserScrubGeoSchema, UserSuspendComplianceSchema, UserUndeleteComplianceSchema, UserUnprotectComplianceSchema, UserUnsuspendComplianceSchema, UserWithheldComplianceSchema. Provided class name: ",
-                   get(class(instance)[[1]], pos = -1)$classname))
+        stop(paste(
+          "Failed to initialize UserComplianceData with oneOf schemas UserDeleteComplianceSchema, UserProfileModificationComplianceSchema, UserProtectComplianceSchema, UserScrubGeoSchema, UserSuspendComplianceSchema, UserUndeleteComplianceSchema, UserUnprotectComplianceSchema, UserUnsuspendComplianceSchema, UserWithheldComplianceSchema. Provided class name: ",
+          get(class(instance)[[1]], pos = -1)$classname
+        ))
       }
     },
     #' Deserialize JSON string into an instance of UserComplianceData.
@@ -81,11 +83,12 @@ UserComplianceData <- R6::R6Class(
     #' @export
     fromJSON = function(input) {
       matched <- 0 # match counter
-      matched_schemas <- list() #names of matched schemas
+      matched_schemas <- list() # names of matched schemas
       error_messages <- list()
       instance <- NULL
 
-      UserProtectComplianceSchema_result <- tryCatch({
+      UserProtectComplianceSchema_result <- tryCatch(
+        {
           UserProtectComplianceSchema$public_methods$validateJSON(input)
           UserProtectComplianceSchema_instance <- UserProtectComplianceSchema$new()
           instance <- UserProtectComplianceSchema_instance$fromJSON(input)
@@ -100,7 +103,8 @@ UserComplianceData <- R6::R6Class(
         error_messages <- append(error_messages, UserProtectComplianceSchema_result["message"])
       }
 
-      UserUnprotectComplianceSchema_result <- tryCatch({
+      UserUnprotectComplianceSchema_result <- tryCatch(
+        {
           UserUnprotectComplianceSchema$public_methods$validateJSON(input)
           UserUnprotectComplianceSchema_instance <- UserUnprotectComplianceSchema$new()
           instance <- UserUnprotectComplianceSchema_instance$fromJSON(input)
@@ -115,7 +119,8 @@ UserComplianceData <- R6::R6Class(
         error_messages <- append(error_messages, UserUnprotectComplianceSchema_result["message"])
       }
 
-      UserDeleteComplianceSchema_result <- tryCatch({
+      UserDeleteComplianceSchema_result <- tryCatch(
+        {
           UserDeleteComplianceSchema$public_methods$validateJSON(input)
           UserDeleteComplianceSchema_instance <- UserDeleteComplianceSchema$new()
           instance <- UserDeleteComplianceSchema_instance$fromJSON(input)
@@ -130,7 +135,8 @@ UserComplianceData <- R6::R6Class(
         error_messages <- append(error_messages, UserDeleteComplianceSchema_result["message"])
       }
 
-      UserUndeleteComplianceSchema_result <- tryCatch({
+      UserUndeleteComplianceSchema_result <- tryCatch(
+        {
           UserUndeleteComplianceSchema$public_methods$validateJSON(input)
           UserUndeleteComplianceSchema_instance <- UserUndeleteComplianceSchema$new()
           instance <- UserUndeleteComplianceSchema_instance$fromJSON(input)
@@ -145,7 +151,8 @@ UserComplianceData <- R6::R6Class(
         error_messages <- append(error_messages, UserUndeleteComplianceSchema_result["message"])
       }
 
-      UserSuspendComplianceSchema_result <- tryCatch({
+      UserSuspendComplianceSchema_result <- tryCatch(
+        {
           UserSuspendComplianceSchema$public_methods$validateJSON(input)
           UserSuspendComplianceSchema_instance <- UserSuspendComplianceSchema$new()
           instance <- UserSuspendComplianceSchema_instance$fromJSON(input)
@@ -160,7 +167,8 @@ UserComplianceData <- R6::R6Class(
         error_messages <- append(error_messages, UserSuspendComplianceSchema_result["message"])
       }
 
-      UserUnsuspendComplianceSchema_result <- tryCatch({
+      UserUnsuspendComplianceSchema_result <- tryCatch(
+        {
           UserUnsuspendComplianceSchema$public_methods$validateJSON(input)
           UserUnsuspendComplianceSchema_instance <- UserUnsuspendComplianceSchema$new()
           instance <- UserUnsuspendComplianceSchema_instance$fromJSON(input)
@@ -175,7 +183,8 @@ UserComplianceData <- R6::R6Class(
         error_messages <- append(error_messages, UserUnsuspendComplianceSchema_result["message"])
       }
 
-      UserWithheldComplianceSchema_result <- tryCatch({
+      UserWithheldComplianceSchema_result <- tryCatch(
+        {
           UserWithheldComplianceSchema$public_methods$validateJSON(input)
           UserWithheldComplianceSchema_instance <- UserWithheldComplianceSchema$new()
           instance <- UserWithheldComplianceSchema_instance$fromJSON(input)
@@ -190,7 +199,8 @@ UserComplianceData <- R6::R6Class(
         error_messages <- append(error_messages, UserWithheldComplianceSchema_result["message"])
       }
 
-      UserScrubGeoSchema_result <- tryCatch({
+      UserScrubGeoSchema_result <- tryCatch(
+        {
           UserScrubGeoSchema$public_methods$validateJSON(input)
           UserScrubGeoSchema_instance <- UserScrubGeoSchema$new()
           instance <- UserScrubGeoSchema_instance$fromJSON(input)
@@ -205,7 +215,8 @@ UserComplianceData <- R6::R6Class(
         error_messages <- append(error_messages, UserScrubGeoSchema_result["message"])
       }
 
-      UserProfileModificationComplianceSchema_result <- tryCatch({
+      UserProfileModificationComplianceSchema_result <- tryCatch(
+        {
           UserProfileModificationComplianceSchema$public_methods$validateJSON(input)
           UserProfileModificationComplianceSchema_instance <- UserProfileModificationComplianceSchema$new()
           instance <- UserProfileModificationComplianceSchema_instance$fromJSON(input)
@@ -229,8 +240,10 @@ UserComplianceData <- R6::R6Class(
         stop("Multiple matches found when deserializing the payload into UserComplianceData with oneOf schemas UserDeleteComplianceSchema, UserProfileModificationComplianceSchema, UserProtectComplianceSchema, UserScrubGeoSchema, UserSuspendComplianceSchema, UserUndeleteComplianceSchema, UserUnprotectComplianceSchema, UserUnsuspendComplianceSchema, UserWithheldComplianceSchema.")
       } else {
         # no match
-        stop(paste("No match found when deserializing the payload into UserComplianceData with oneOf schemas UserDeleteComplianceSchema, UserProfileModificationComplianceSchema, UserProtectComplianceSchema, UserScrubGeoSchema, UserSuspendComplianceSchema, UserUndeleteComplianceSchema, UserUnprotectComplianceSchema, UserUnsuspendComplianceSchema, UserWithheldComplianceSchema. Details: ",
-                   paste(error_messages, collapse = ", ")))
+        stop(paste(
+          "No match found when deserializing the payload into UserComplianceData with oneOf schemas UserDeleteComplianceSchema, UserProfileModificationComplianceSchema, UserProtectComplianceSchema, UserScrubGeoSchema, UserSuspendComplianceSchema, UserUndeleteComplianceSchema, UserUnprotectComplianceSchema, UserUnsuspendComplianceSchema, UserWithheldComplianceSchema. Details: ",
+          paste(error_messages, collapse = ", ")
+        ))
       }
 
       self
@@ -314,13 +327,12 @@ UserComplianceData <- R6::R6Class(
   lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#UserComplianceData$unlock()
+# UserComplianceData$unlock()
 #
 ## Below is an example to define the print fnuction
-#UserComplianceData$set("public", "print", function(...) {
+# UserComplianceData$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#UserComplianceData$lock()
-
+# UserComplianceData$lock()

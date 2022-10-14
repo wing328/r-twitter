@@ -34,9 +34,7 @@ ListUpdateRequest <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `description` = NULL, `name` = NULL, `item_private` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`description` = NULL, `name` = NULL, `item_private` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`description`)) {
         stopifnot(is.character(`description`), length(`description`) == 1)
         self$`description` <- `description`
@@ -121,26 +119,26 @@ ListUpdateRequest <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`description`)) {
           sprintf(
-          '"description":
+            '"description":
             "%s"
                     ',
-          self$`description`
+            self$`description`
           )
         },
         if (!is.null(self$`name`)) {
           sprintf(
-          '"name":
+            '"name":
             "%s"
                     ',
-          self$`name`
+            self$`name`
           )
         },
         if (!is.null(self$`item_private`)) {
           sprintf(
-          '"private":
+            '"private":
             %s
                     ',
-          tolower(self$`item_private`)
+            tolower(self$`item_private`)
           )
         }
       )
@@ -252,18 +250,18 @@ ListUpdateRequest <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#ListUpdateRequest$unlock()
+# ListUpdateRequest$unlock()
 #
 ## Below is an example to define the print fnuction
-#ListUpdateRequest$set("public", "print", function(...) {
+# ListUpdateRequest$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#ListUpdateRequest$lock()
-
+# ListUpdateRequest$lock()

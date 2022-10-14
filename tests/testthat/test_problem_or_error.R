@@ -9,40 +9,40 @@ test_that("code", {
   # tests for the property `code` (integer)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`code`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`code`, "EXPECTED_RESULT")
 })
 
 test_that("message", {
   # tests for the property `message` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`message`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`message`, "EXPECTED_RESULT")
 })
 
 test_that("detail", {
   # tests for the property `detail` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`detail`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`detail`, "EXPECTED_RESULT")
 })
 
 test_that("status", {
   # tests for the property `status` (integer)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`status`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`status`, "EXPECTED_RESULT")
 })
 
 test_that("title", {
   # tests for the property `title` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`title`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`title`, "EXPECTED_RESULT")
 })
 
 test_that("type", {
   # tests for the property `type` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`type`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`type`, "EXPECTED_RESULT")
 })

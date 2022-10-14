@@ -28,9 +28,7 @@ UserProfileModificationComplianceSchema <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `user_profile_modification`, additional_properties = NULL, ...
-    ) {
+    initialize = function(`user_profile_modification`, additional_properties = NULL, ...) {
       if (!missing(`user_profile_modification`)) {
         stopifnot(R6::is.R6(`user_profile_modification`))
         self$`user_profile_modification` <- `user_profile_modification`
@@ -95,10 +93,10 @@ UserProfileModificationComplianceSchema <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`user_profile_modification`)) {
           sprintf(
-          '"user_profile_modification":
+            '"user_profile_modification":
           %s
           ',
-          jsonlite::toJSON(self$`user_profile_modification`$toJSON(), auto_unbox = TRUE, digits = NA)
+            jsonlite::toJSON(self$`user_profile_modification`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         }
       )
@@ -196,18 +194,18 @@ UserProfileModificationComplianceSchema <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#UserProfileModificationComplianceSchema$unlock()
+# UserProfileModificationComplianceSchema$unlock()
 #
 ## Below is an example to define the print fnuction
-#UserProfileModificationComplianceSchema$set("public", "print", function(...) {
+# UserProfileModificationComplianceSchema$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#UserProfileModificationComplianceSchema$lock()
-
+# UserProfileModificationComplianceSchema$lock()

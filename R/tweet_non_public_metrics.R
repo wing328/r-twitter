@@ -28,9 +28,7 @@ TweetNonPublicMetrics <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `impression_count` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`impression_count` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`impression_count`)) {
         stopifnot(is.numeric(`impression_count`), length(`impression_count`) == 1)
         self$`impression_count` <- `impression_count`
@@ -93,10 +91,10 @@ TweetNonPublicMetrics <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`impression_count`)) {
           sprintf(
-          '"impression_count":
+            '"impression_count":
             %d
                     ',
-          self$`impression_count`
+            self$`impression_count`
           )
         }
       )
@@ -178,18 +176,18 @@ TweetNonPublicMetrics <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#TweetNonPublicMetrics$unlock()
+# TweetNonPublicMetrics$unlock()
 #
 ## Below is an example to define the print fnuction
-#TweetNonPublicMetrics$set("public", "print", function(...) {
+# TweetNonPublicMetrics$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#TweetNonPublicMetrics$lock()
-
+# TweetNonPublicMetrics$lock()

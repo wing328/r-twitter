@@ -10,7 +10,7 @@ test_that("direct_message_deep_link", {
   # Link to take the conversation from the public timeline to a private Direct Message.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`direct_message_deep_link`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`direct_message_deep_link`, "EXPECTED_RESULT")
 })
 
 test_that("for_super_followers_only", {
@@ -18,28 +18,28 @@ test_that("for_super_followers_only", {
   # Exclusive Tweet for super followers.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`for_super_followers_only`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`for_super_followers_only`, "EXPECTED_RESULT")
 })
 
 test_that("geo", {
   # tests for the property `geo` (TweetCreateRequestGeo)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`geo`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`geo`, "EXPECTED_RESULT")
 })
 
 test_that("media", {
   # tests for the property `media` (TweetCreateRequestMedia)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`media`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`media`, "EXPECTED_RESULT")
 })
 
 test_that("poll", {
   # tests for the property `poll` (TweetCreateRequestPoll)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`poll`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`poll`, "EXPECTED_RESULT")
 })
 
 test_that("quote_tweet_id", {
@@ -47,14 +47,14 @@ test_that("quote_tweet_id", {
   # Unique identifier of this Tweet. This is returned as a string in order to avoid complications with languages and tools that cannot handle large integers.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`quote_tweet_id`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`quote_tweet_id`, "EXPECTED_RESULT")
 })
 
 test_that("reply", {
   # tests for the property `reply` (TweetCreateRequestReply)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`reply`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`reply`, "EXPECTED_RESULT")
 })
 
 test_that("reply_settings", {
@@ -62,7 +62,7 @@ test_that("reply_settings", {
   # Settings to indicate who can reply to the Tweet.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`reply_settings`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`reply_settings`, "EXPECTED_RESULT")
 })
 
 test_that("text", {
@@ -70,5 +70,5 @@ test_that("text", {
   # The content of the Tweet.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`text`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`text`, "EXPECTED_RESULT")
 })

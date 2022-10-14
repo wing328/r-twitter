@@ -9,5 +9,5 @@ test_that("user_withheld", {
   # tests for the property `user_withheld` (UserTakedownComplianceSchema)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`user_withheld`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`user_withheld`, "EXPECTED_RESULT")
 })

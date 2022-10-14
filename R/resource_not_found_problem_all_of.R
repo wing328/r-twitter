@@ -37,9 +37,7 @@ ResourceNotFoundProblemAllOf <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `parameter`, `resource_id`, `resource_type`, `value`, additional_properties = NULL, ...
-    ) {
+    initialize = function(`parameter`, `resource_id`, `resource_type`, `value`, additional_properties = NULL, ...) {
       if (!missing(`parameter`)) {
         stopifnot(is.character(`parameter`), length(`parameter`) == 1)
         self$`parameter` <- `parameter`
@@ -141,34 +139,34 @@ ResourceNotFoundProblemAllOf <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`parameter`)) {
           sprintf(
-          '"parameter":
+            '"parameter":
             "%s"
                     ',
-          self$`parameter`
+            self$`parameter`
           )
         },
         if (!is.null(self$`resource_id`)) {
           sprintf(
-          '"resource_id":
+            '"resource_id":
             "%s"
                     ',
-          self$`resource_id`
+            self$`resource_id`
           )
         },
         if (!is.null(self$`resource_type`)) {
           sprintf(
-          '"resource_type":
+            '"resource_type":
             "%s"
                     ',
-          self$`resource_type`
+            self$`resource_type`
           )
         },
         if (!is.null(self$`value`)) {
           sprintf(
-          '"value":
+            '"value":
             "%s"
                     ',
-          self$`value`
+            self$`value`
           )
         }
       )
@@ -328,18 +326,18 @@ ResourceNotFoundProblemAllOf <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#ResourceNotFoundProblemAllOf$unlock()
+# ResourceNotFoundProblemAllOf$unlock()
 #
 ## Below is an example to define the print fnuction
-#ResourceNotFoundProblemAllOf$set("public", "print", function(...) {
+# ResourceNotFoundProblemAllOf$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#ResourceNotFoundProblemAllOf$lock()
-
+# ResourceNotFoundProblemAllOf$lock()

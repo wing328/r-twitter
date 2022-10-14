@@ -52,9 +52,7 @@ UrlFields <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `url`, `description` = NULL, `display_url` = NULL, `expanded_url` = NULL, `images` = NULL, `media_key` = NULL, `status` = NULL, `title` = NULL, `unwound_url` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`url`, `description` = NULL, `display_url` = NULL, `expanded_url` = NULL, `images` = NULL, `media_key` = NULL, `status` = NULL, `title` = NULL, `unwound_url` = NULL, additional_properties = NULL, ...) {
       if (!missing(`url`)) {
         stopifnot(is.character(`url`), length(`url`) == 1)
         # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
@@ -230,74 +228,74 @@ UrlFields <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`description`)) {
           sprintf(
-          '"description":
+            '"description":
             "%s"
                     ',
-          self$`description`
+            self$`description`
           )
         },
         if (!is.null(self$`display_url`)) {
           sprintf(
-          '"display_url":
+            '"display_url":
             "%s"
                     ',
-          self$`display_url`
+            self$`display_url`
           )
         },
         if (!is.null(self$`expanded_url`)) {
           sprintf(
-          '"expanded_url":
+            '"expanded_url":
             "%s"
                     ',
-          self$`expanded_url`
+            self$`expanded_url`
           )
         },
         if (!is.null(self$`images`)) {
           sprintf(
-          '"images":
+            '"images":
           [%s]
 ',
-          paste(sapply(self$`images`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
+            paste(sapply(self$`images`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
           )
         },
         if (!is.null(self$`media_key`)) {
           sprintf(
-          '"media_key":
+            '"media_key":
             "%s"
                     ',
-          self$`media_key`
+            self$`media_key`
           )
         },
         if (!is.null(self$`status`)) {
           sprintf(
-          '"status":
+            '"status":
             %d
                     ',
-          self$`status`
+            self$`status`
           )
         },
         if (!is.null(self$`title`)) {
           sprintf(
-          '"title":
+            '"title":
             "%s"
                     ',
-          self$`title`
+            self$`title`
           )
         },
         if (!is.null(self$`unwound_url`)) {
           sprintf(
-          '"unwound_url":
+            '"unwound_url":
             "%s"
                     ',
-          self$`unwound_url`
+            self$`unwound_url`
           )
         },
         if (!is.null(self$`url`)) {
           sprintf(
-          '"url":
+            '"url":
             "%s"
                     ',
-          self$`url`
+            self$`url`
           )
         }
       )
@@ -449,18 +447,18 @@ UrlFields <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#UrlFields$unlock()
+# UrlFields$unlock()
 #
 ## Below is an example to define the print fnuction
-#UrlFields$set("public", "print", function(...) {
+# UrlFields$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#UrlFields$lock()
-
+# UrlFields$lock()

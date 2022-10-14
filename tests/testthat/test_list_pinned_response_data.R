@@ -9,5 +9,5 @@ test_that("pinned", {
   # tests for the property `pinned` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`pinned`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`pinned`, "EXPECTED_RESULT")
 })

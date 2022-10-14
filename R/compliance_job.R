@@ -52,9 +52,7 @@ ComplianceJob <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `created_at`, `download_expires_at`, `download_url`, `id`, `status`, `type`, `upload_expires_at`, `upload_url`, `name` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`created_at`, `download_expires_at`, `download_url`, `id`, `status`, `type`, `upload_expires_at`, `upload_url`, `name` = NULL, additional_properties = NULL, ...) {
       if (!missing(`created_at`)) {
         stopifnot(is.character(`created_at`), length(`created_at`) == 1)
         self$`created_at` <- `created_at`
@@ -225,74 +223,74 @@ ComplianceJob <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`created_at`)) {
           sprintf(
-          '"created_at":
+            '"created_at":
             "%s"
                     ',
-          self$`created_at`
+            self$`created_at`
           )
         },
         if (!is.null(self$`download_expires_at`)) {
           sprintf(
-          '"download_expires_at":
+            '"download_expires_at":
             "%s"
                     ',
-          self$`download_expires_at`
+            self$`download_expires_at`
           )
         },
         if (!is.null(self$`download_url`)) {
           sprintf(
-          '"download_url":
+            '"download_url":
             "%s"
                     ',
-          self$`download_url`
+            self$`download_url`
           )
         },
         if (!is.null(self$`id`)) {
           sprintf(
-          '"id":
+            '"id":
             "%s"
                     ',
-          self$`id`
+            self$`id`
           )
         },
         if (!is.null(self$`name`)) {
           sprintf(
-          '"name":
+            '"name":
             "%s"
                     ',
-          self$`name`
+            self$`name`
           )
         },
         if (!is.null(self$`status`)) {
           sprintf(
-          '"status":
+            '"status":
           %s
           ',
-          jsonlite::toJSON(self$`status`$toJSON(), auto_unbox = TRUE, digits = NA)
+            jsonlite::toJSON(self$`status`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         },
         if (!is.null(self$`type`)) {
           sprintf(
-          '"type":
+            '"type":
           %s
           ',
-          jsonlite::toJSON(self$`type`$toJSON(), auto_unbox = TRUE, digits = NA)
+            jsonlite::toJSON(self$`type`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         },
         if (!is.null(self$`upload_expires_at`)) {
           sprintf(
-          '"upload_expires_at":
+            '"upload_expires_at":
             "%s"
                     ',
-          self$`upload_expires_at`
+            self$`upload_expires_at`
           )
         },
         if (!is.null(self$`upload_url`)) {
           sprintf(
-          '"upload_url":
+            '"upload_url":
             "%s"
                     ',
-          self$`upload_url`
+            self$`upload_url`
           )
         }
       )
@@ -542,18 +540,18 @@ ComplianceJob <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#ComplianceJob$unlock()
+# ComplianceJob$unlock()
 #
 ## Below is an example to define the print fnuction
-#ComplianceJob$set("public", "print", function(...) {
+# ComplianceJob$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#ComplianceJob$lock()
-
+# ComplianceJob$lock()

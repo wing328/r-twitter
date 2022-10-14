@@ -34,9 +34,7 @@ CreateComplianceJobRequest <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `type`, `name` = NULL, `resumable` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`type`, `name` = NULL, `resumable` = NULL, additional_properties = NULL, ...) {
       if (!missing(`type`)) {
         if (!(`type` %in% c("tweets", "users"))) {
           stop(paste("Error! \"", `type`, "\" cannot be assigned to `type`. Must be \"tweets\", \"users\".", sep = ""))
@@ -127,26 +125,26 @@ CreateComplianceJobRequest <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`name`)) {
           sprintf(
-          '"name":
+            '"name":
             "%s"
                     ',
-          self$`name`
+            self$`name`
           )
         },
         if (!is.null(self$`resumable`)) {
           sprintf(
-          '"resumable":
+            '"resumable":
             %s
                     ',
-          tolower(self$`resumable`)
+            tolower(self$`resumable`)
           )
         },
         if (!is.null(self$`type`)) {
           sprintf(
-          '"type":
+            '"type":
             "%s"
                     ',
-          self$`type`
+            self$`type`
           )
         }
       )
@@ -257,18 +255,18 @@ CreateComplianceJobRequest <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#CreateComplianceJobRequest$unlock()
+# CreateComplianceJobRequest$unlock()
 #
 ## Below is an example to define the print fnuction
-#CreateComplianceJobRequest$set("public", "print", function(...) {
+# CreateComplianceJobRequest$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#CreateComplianceJobRequest$lock()
-
+# CreateComplianceJobRequest$lock()

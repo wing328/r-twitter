@@ -9,7 +9,7 @@ test_that("coordinates", {
   # tests for the property `coordinates` (Point)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`coordinates`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`coordinates`, "EXPECTED_RESULT")
 })
 
 test_that("place_id", {
@@ -17,5 +17,5 @@ test_that("place_id", {
   # The identifier for this place.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`place_id`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`place_id`, "EXPECTED_RESULT")
 })

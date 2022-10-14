@@ -31,9 +31,7 @@ RulesLookupResponse <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `meta`, `data` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`meta`, `data` = NULL, additional_properties = NULL, ...) {
       if (!missing(`meta`)) {
         stopifnot(R6::is.R6(`meta`))
         self$`meta` <- `meta`
@@ -110,18 +108,18 @@ RulesLookupResponse <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`data`)) {
           sprintf(
-          '"data":
+            '"data":
           [%s]
 ',
-          paste(sapply(self$`data`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
+            paste(sapply(self$`data`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
           )
         },
         if (!is.null(self$`meta`)) {
           sprintf(
-          '"meta":
+            '"meta":
           %s
           ',
-          jsonlite::toJSON(self$`meta`$toJSON(), auto_unbox = TRUE, digits = NA)
+            jsonlite::toJSON(self$`meta`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         }
       )
@@ -220,18 +218,18 @@ RulesLookupResponse <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#RulesLookupResponse$unlock()
+# RulesLookupResponse$unlock()
 #
 ## Below is an example to define the print fnuction
-#RulesLookupResponse$set("public", "print", function(...) {
+# RulesLookupResponse$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#RulesLookupResponse$lock()
-
+# RulesLookupResponse$lock()

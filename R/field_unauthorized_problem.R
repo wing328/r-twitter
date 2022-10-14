@@ -47,9 +47,7 @@ FieldUnauthorizedProblem <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `title`, `type`, `field`, `resource_type`, `section`, `detail` = NULL, `status` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`title`, `type`, `field`, `resource_type`, `section`, `detail` = NULL, `status` = NULL, additional_properties = NULL, ...) {
       if (!missing(`title`)) {
         stopifnot(is.character(`title`), length(`title`) == 1)
         self$`title` <- `title`
@@ -190,58 +188,58 @@ FieldUnauthorizedProblem <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`detail`)) {
           sprintf(
-          '"detail":
+            '"detail":
             "%s"
                     ',
-          self$`detail`
+            self$`detail`
           )
         },
         if (!is.null(self$`status`)) {
           sprintf(
-          '"status":
+            '"status":
             %d
                     ',
-          self$`status`
+            self$`status`
           )
         },
         if (!is.null(self$`title`)) {
           sprintf(
-          '"title":
+            '"title":
             "%s"
                     ',
-          self$`title`
+            self$`title`
           )
         },
         if (!is.null(self$`type`)) {
           sprintf(
-          '"type":
+            '"type":
             "%s"
                     ',
-          self$`type`
+            self$`type`
           )
         },
         if (!is.null(self$`field`)) {
           sprintf(
-          '"field":
+            '"field":
             "%s"
                     ',
-          self$`field`
+            self$`field`
           )
         },
         if (!is.null(self$`resource_type`)) {
           sprintf(
-          '"resource_type":
+            '"resource_type":
             "%s"
                     ',
-          self$`resource_type`
+            self$`resource_type`
           )
         },
         if (!is.null(self$`section`)) {
           sprintf(
-          '"section":
+            '"section":
             "%s"
                     ',
-          self$`section`
+            self$`section`
           )
         }
       )
@@ -415,18 +413,18 @@ FieldUnauthorizedProblem <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#FieldUnauthorizedProblem$unlock()
+# FieldUnauthorizedProblem$unlock()
 #
 ## Below is an example to define the print fnuction
-#FieldUnauthorizedProblem$set("public", "print", function(...) {
+# FieldUnauthorizedProblem$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#FieldUnauthorizedProblem$lock()
-
+# FieldUnauthorizedProblem$lock()

@@ -9,5 +9,5 @@ test_that("hidden", {
   # tests for the property `hidden` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`hidden`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`hidden`, "EXPECTED_RESULT")
 })

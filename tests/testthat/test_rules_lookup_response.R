@@ -9,12 +9,12 @@ test_that("data", {
   # tests for the property `data` (array[Rule])
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`data`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`data`, "EXPECTED_RESULT")
 })
 
 test_that("meta", {
   # tests for the property `meta` (RulesResponseMetadata)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`meta`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`meta`, "EXPECTED_RESULT")
 })

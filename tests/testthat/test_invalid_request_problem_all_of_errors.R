@@ -9,12 +9,12 @@ test_that("message", {
   # tests for the property `message` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`message`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`message`, "EXPECTED_RESULT")
 })
 
 test_that("parameters", {
   # tests for the property `parameters` (map(array[character]))
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`parameters`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`parameters`, "EXPECTED_RESULT")
 })

@@ -9,5 +9,5 @@ test_that("scrub_geo", {
   # tests for the property `scrub_geo` (UserScrubGeoObjectSchema)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`scrub_geo`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`scrub_geo`, "EXPECTED_RESULT")
 })

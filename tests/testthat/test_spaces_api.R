@@ -18,7 +18,7 @@ test_that("find_space_by_id", {
   # @return [Get2SpacesIdResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("find_spaces_by_creator_ids", {
@@ -34,7 +34,7 @@ test_that("find_spaces_by_creator_ids", {
   # @return [Get2SpacesByCreatorIdsResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("find_spaces_by_ids", {
@@ -50,7 +50,7 @@ test_that("find_spaces_by_ids", {
   # @return [Get2SpacesResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("search_spaces", {
@@ -68,7 +68,7 @@ test_that("search_spaces", {
   # @return [Get2SpacesSearchResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("space_buyers", {
@@ -85,7 +85,7 @@ test_that("space_buyers", {
   # @return [Get2SpacesIdBuyersResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })
 
 test_that("space_tweets", {
@@ -104,5 +104,5 @@ test_that("space_tweets", {
   # @return [Get2SpacesIdTweetsResponse]
 
   # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  # expect_equal(result, "EXPECTED_RESULT")
 })

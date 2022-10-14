@@ -49,9 +49,7 @@ Place <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `full_name`, `id`, `contained_within` = NULL, `country` = NULL, `country_code` = NULL, `geo` = NULL, `name` = NULL, `place_type` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`full_name`, `id`, `contained_within` = NULL, `country` = NULL, `country_code` = NULL, `geo` = NULL, `name` = NULL, `place_type` = NULL, additional_properties = NULL, ...) {
       if (!missing(`full_name`)) {
         stopifnot(is.character(`full_name`), length(`full_name`) == 1)
         self$`full_name` <- `full_name`
@@ -196,66 +194,66 @@ Place <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`contained_within`)) {
           sprintf(
-          '"contained_within":
+            '"contained_within":
              [%s]
           ',
-          paste(unlist(lapply(self$`contained_within`, function(x) paste0('"', x, '"'))), collapse = ",")
+            paste(unlist(lapply(self$`contained_within`, function(x) paste0('"', x, '"'))), collapse = ",")
           )
         },
         if (!is.null(self$`country`)) {
           sprintf(
-          '"country":
+            '"country":
             "%s"
                     ',
-          self$`country`
+            self$`country`
           )
         },
         if (!is.null(self$`country_code`)) {
           sprintf(
-          '"country_code":
+            '"country_code":
             "%s"
                     ',
-          self$`country_code`
+            self$`country_code`
           )
         },
         if (!is.null(self$`full_name`)) {
           sprintf(
-          '"full_name":
+            '"full_name":
             "%s"
                     ',
-          self$`full_name`
+            self$`full_name`
           )
         },
         if (!is.null(self$`geo`)) {
           sprintf(
-          '"geo":
+            '"geo":
           %s
           ',
-          jsonlite::toJSON(self$`geo`$toJSON(), auto_unbox = TRUE, digits = NA)
+            jsonlite::toJSON(self$`geo`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         },
         if (!is.null(self$`id`)) {
           sprintf(
-          '"id":
+            '"id":
             "%s"
                     ',
-          self$`id`
+            self$`id`
           )
         },
         if (!is.null(self$`name`)) {
           sprintf(
-          '"name":
+            '"name":
             "%s"
                     ',
-          self$`name`
+            self$`name`
           )
         },
         if (!is.null(self$`place_type`)) {
           sprintf(
-          '"place_type":
+            '"place_type":
           %s
           ',
-          jsonlite::toJSON(self$`place_type`$toJSON(), auto_unbox = TRUE, digits = NA)
+            jsonlite::toJSON(self$`place_type`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         }
       )
@@ -392,18 +390,18 @@ Place <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#Place$unlock()
+# Place$unlock()
 #
 ## Below is an example to define the print fnuction
-#Place$set("public", "print", function(...) {
+# Place$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#Place$lock()
-
+# Place$lock()

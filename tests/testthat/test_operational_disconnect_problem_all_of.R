@@ -9,5 +9,5 @@ test_that("disconnect_type", {
   # tests for the property `disconnect_type` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`disconnect_type`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`disconnect_type`, "EXPECTED_RESULT")
 })

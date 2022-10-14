@@ -28,9 +28,7 @@ InvalidRequestProblemAllOf <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `errors` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`errors` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`errors`)) {
         stopifnot(is.vector(`errors`), length(`errors`) != 0)
         sapply(`errors`, function(x) stopifnot(R6::is.R6(x)))
@@ -94,10 +92,10 @@ InvalidRequestProblemAllOf <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`errors`)) {
           sprintf(
-          '"errors":
+            '"errors":
           [%s]
 ',
-          paste(sapply(self$`errors`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
+            paste(sapply(self$`errors`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
           )
         }
       )
@@ -187,18 +185,18 @@ InvalidRequestProblemAllOf <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#InvalidRequestProblemAllOf$unlock()
+# InvalidRequestProblemAllOf$unlock()
 #
 ## Below is an example to define the print fnuction
-#InvalidRequestProblemAllOf$set("public", "print", function(...) {
+# InvalidRequestProblemAllOf$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#InvalidRequestProblemAllOf$lock()
-
+# InvalidRequestProblemAllOf$lock()

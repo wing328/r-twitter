@@ -9,21 +9,21 @@ test_that("created_at", {
   # tests for the property `created_at` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`created_at`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`created_at`, "EXPECTED_RESULT")
 })
 
 test_that("description", {
   # tests for the property `description` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`description`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`description`, "EXPECTED_RESULT")
 })
 
 test_that("follower_count", {
   # tests for the property `follower_count` (integer)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`follower_count`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`follower_count`, "EXPECTED_RESULT")
 })
 
 test_that("id", {
@@ -31,14 +31,14 @@ test_that("id", {
   # The unique identifier of this List.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`id`, "EXPECTED_RESULT")
 })
 
 test_that("member_count", {
   # tests for the property `member_count` (integer)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`member_count`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`member_count`, "EXPECTED_RESULT")
 })
 
 test_that("name", {
@@ -46,7 +46,7 @@ test_that("name", {
   # The name of this List.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`name`, "EXPECTED_RESULT")
 })
 
 test_that("owner_id", {
@@ -54,12 +54,12 @@ test_that("owner_id", {
   # Unique identifier of this User. This is returned as a string in order to avoid complications with languages and tools that cannot handle large integers.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`owner_id`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`owner_id`, "EXPECTED_RESULT")
 })
 
 test_that("item_private", {
   # tests for the property `item_private` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`item_private`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`item_private`, "EXPECTED_RESULT")
 })

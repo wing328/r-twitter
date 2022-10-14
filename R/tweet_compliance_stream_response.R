@@ -27,15 +27,17 @@ TweetComplianceStreamResponse <- R6::R6Class(
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "TweetComplianceStreamResponseOneOf") {
+      } else if (get(class(instance)[[1]], pos = -1)$classname == "TweetComplianceStreamResponseOneOf") {
         self$actual_instance <- instance
         self$actual_type <- "TweetComplianceStreamResponseOneOf"
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "TweetComplianceStreamResponseOneOf1") {
+      } else if (get(class(instance)[[1]], pos = -1)$classname == "TweetComplianceStreamResponseOneOf1") {
         self$actual_instance <- instance
         self$actual_type <- "TweetComplianceStreamResponseOneOf1"
       } else {
-        stop(paste("Failed to initialize TweetComplianceStreamResponse with oneOf schemas TweetComplianceStreamResponseOneOf, TweetComplianceStreamResponseOneOf1. Provided class name: ",
-                   get(class(instance)[[1]], pos = -1)$classname))
+        stop(paste(
+          "Failed to initialize TweetComplianceStreamResponse with oneOf schemas TweetComplianceStreamResponseOneOf, TweetComplianceStreamResponseOneOf1. Provided class name: ",
+          get(class(instance)[[1]], pos = -1)$classname
+        ))
       }
     },
     #' Deserialize JSON string into an instance of TweetComplianceStreamResponse.
@@ -60,11 +62,12 @@ TweetComplianceStreamResponse <- R6::R6Class(
     #' @export
     fromJSON = function(input) {
       matched <- 0 # match counter
-      matched_schemas <- list() #names of matched schemas
+      matched_schemas <- list() # names of matched schemas
       error_messages <- list()
       instance <- NULL
 
-      TweetComplianceStreamResponseOneOf_result <- tryCatch({
+      TweetComplianceStreamResponseOneOf_result <- tryCatch(
+        {
           TweetComplianceStreamResponseOneOf$public_methods$validateJSON(input)
           TweetComplianceStreamResponseOneOf_instance <- TweetComplianceStreamResponseOneOf$new()
           instance <- TweetComplianceStreamResponseOneOf_instance$fromJSON(input)
@@ -79,7 +82,8 @@ TweetComplianceStreamResponse <- R6::R6Class(
         error_messages <- append(error_messages, TweetComplianceStreamResponseOneOf_result["message"])
       }
 
-      TweetComplianceStreamResponseOneOf1_result <- tryCatch({
+      TweetComplianceStreamResponseOneOf1_result <- tryCatch(
+        {
           TweetComplianceStreamResponseOneOf1$public_methods$validateJSON(input)
           TweetComplianceStreamResponseOneOf1_instance <- TweetComplianceStreamResponseOneOf1$new()
           instance <- TweetComplianceStreamResponseOneOf1_instance$fromJSON(input)
@@ -103,8 +107,10 @@ TweetComplianceStreamResponse <- R6::R6Class(
         stop("Multiple matches found when deserializing the payload into TweetComplianceStreamResponse with oneOf schemas TweetComplianceStreamResponseOneOf, TweetComplianceStreamResponseOneOf1.")
       } else {
         # no match
-        stop(paste("No match found when deserializing the payload into TweetComplianceStreamResponse with oneOf schemas TweetComplianceStreamResponseOneOf, TweetComplianceStreamResponseOneOf1. Details: ",
-                   paste(error_messages, collapse = ", ")))
+        stop(paste(
+          "No match found when deserializing the payload into TweetComplianceStreamResponse with oneOf schemas TweetComplianceStreamResponseOneOf, TweetComplianceStreamResponseOneOf1. Details: ",
+          paste(error_messages, collapse = ", ")
+        ))
       }
 
       self
@@ -188,13 +194,12 @@ TweetComplianceStreamResponse <- R6::R6Class(
   lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#TweetComplianceStreamResponse$unlock()
+# TweetComplianceStreamResponse$unlock()
 #
 ## Below is an example to define the print fnuction
-#TweetComplianceStreamResponse$set("public", "print", function(...) {
+# TweetComplianceStreamResponse$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#TweetComplianceStreamResponse$lock()
-
+# TweetComplianceStreamResponse$lock()

@@ -10,7 +10,7 @@ test_that("name", {
   # User-provided name for a compliance job.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`name`, "EXPECTED_RESULT")
 })
 
 test_that("resumable", {
@@ -18,7 +18,7 @@ test_that("resumable", {
   # If true, this endpoint will return a pre-signed URL with resumable uploads enabled.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`resumable`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`resumable`, "EXPECTED_RESULT")
 })
 
 test_that("type", {
@@ -26,5 +26,5 @@ test_that("type", {
   # Type of compliance job to list.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`type`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`type`, "EXPECTED_RESULT")
 })

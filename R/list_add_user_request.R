@@ -28,9 +28,7 @@ ListAddUserRequest <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `user_id`, additional_properties = NULL, ...
-    ) {
+    initialize = function(`user_id`, additional_properties = NULL, ...) {
       if (!missing(`user_id`)) {
         stopifnot(is.character(`user_id`), length(`user_id`) == 1)
         self$`user_id` <- `user_id`
@@ -93,10 +91,10 @@ ListAddUserRequest <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`user_id`)) {
           sprintf(
-          '"user_id":
+            '"user_id":
             "%s"
                     ',
-          self$`user_id`
+            self$`user_id`
           )
         }
       )
@@ -202,18 +200,18 @@ ListAddUserRequest <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#ListAddUserRequest$unlock()
+# ListAddUserRequest$unlock()
 #
 ## Below is an example to define the print fnuction
-#ListAddUserRequest$set("public", "print", function(...) {
+# ListAddUserRequest$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#ListAddUserRequest$lock()
-
+# ListAddUserRequest$lock()

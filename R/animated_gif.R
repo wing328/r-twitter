@@ -44,9 +44,7 @@ AnimatedGif <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `type`, `height` = NULL, `media_key` = NULL, `width` = NULL, `preview_image_url` = NULL, `variants` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`type`, `height` = NULL, `media_key` = NULL, `width` = NULL, `preview_image_url` = NULL, `variants` = NULL, additional_properties = NULL, ...) {
       if (!missing(`type`)) {
         stopifnot(is.character(`type`), length(`type`) == 1)
         self$`type` <- `type`
@@ -173,50 +171,50 @@ AnimatedGif <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`height`)) {
           sprintf(
-          '"height":
+            '"height":
             %d
                     ',
-          self$`height`
+            self$`height`
           )
         },
         if (!is.null(self$`media_key`)) {
           sprintf(
-          '"media_key":
+            '"media_key":
             "%s"
                     ',
-          self$`media_key`
+            self$`media_key`
           )
         },
         if (!is.null(self$`type`)) {
           sprintf(
-          '"type":
+            '"type":
             "%s"
                     ',
-          self$`type`
+            self$`type`
           )
         },
         if (!is.null(self$`width`)) {
           sprintf(
-          '"width":
+            '"width":
             %d
                     ',
-          self$`width`
+            self$`width`
           )
         },
         if (!is.null(self$`preview_image_url`)) {
           sprintf(
-          '"preview_image_url":
+            '"preview_image_url":
             "%s"
                     ',
-          self$`preview_image_url`
+            self$`preview_image_url`
           )
         },
         if (!is.null(self$`variants`)) {
           sprintf(
-          '"variants":
+            '"variants":
           [%s]
 ',
-          paste(sapply(self$`variants`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
+            paste(sapply(self$`variants`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
           )
         }
       )
@@ -347,18 +345,18 @@ AnimatedGif <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#AnimatedGif$unlock()
+# AnimatedGif$unlock()
 #
 ## Below is an example to define the print fnuction
-#AnimatedGif$set("public", "print", function(...) {
+# AnimatedGif$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#AnimatedGif$lock()
-
+# AnimatedGif$lock()

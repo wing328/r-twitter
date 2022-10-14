@@ -10,7 +10,7 @@ test_that("media_keys", {
   # A list of Media Keys for each one of the media attachments (if media are attached).
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`media_keys`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`media_keys`, "EXPECTED_RESULT")
 })
 
 test_that("poll_ids", {
@@ -18,5 +18,5 @@ test_that("poll_ids", {
   # A list of poll IDs (if polls are attached).
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`poll_ids`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`poll_ids`, "EXPECTED_RESULT")
 })

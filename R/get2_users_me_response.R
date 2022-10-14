@@ -34,9 +34,7 @@ Get2UsersMeResponse <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `data` = NULL, `errors` = NULL, `includes` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`data` = NULL, `errors` = NULL, `includes` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`data`)) {
         stopifnot(R6::is.R6(`data`))
         self$`data` <- `data`
@@ -126,26 +124,26 @@ Get2UsersMeResponse <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`data`)) {
           sprintf(
-          '"data":
+            '"data":
           %s
           ',
-          jsonlite::toJSON(self$`data`$toJSON(), auto_unbox = TRUE, digits = NA)
+            jsonlite::toJSON(self$`data`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         },
         if (!is.null(self$`errors`)) {
           sprintf(
-          '"errors":
+            '"errors":
           [%s]
 ',
-          paste(sapply(self$`errors`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
+            paste(sapply(self$`errors`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
           )
         },
         if (!is.null(self$`includes`)) {
           sprintf(
-          '"includes":
+            '"includes":
           %s
           ',
-          jsonlite::toJSON(self$`includes`$toJSON(), auto_unbox = TRUE, digits = NA)
+            jsonlite::toJSON(self$`includes`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         }
       )
@@ -237,18 +235,18 @@ Get2UsersMeResponse <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#Get2UsersMeResponse$unlock()
+# Get2UsersMeResponse$unlock()
 #
 ## Below is an example to define the print fnuction
-#Get2UsersMeResponse$set("public", "print", function(...) {
+# Get2UsersMeResponse$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#Get2UsersMeResponse$lock()
-
+# Get2UsersMeResponse$lock()

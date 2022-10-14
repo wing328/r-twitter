@@ -31,9 +31,7 @@ UserComplianceSchema <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `event_at`, `user`, additional_properties = NULL, ...
-    ) {
+    initialize = function(`event_at`, `user`, additional_properties = NULL, ...) {
       if (!missing(`event_at`)) {
         stopifnot(is.character(`event_at`), length(`event_at`) == 1)
         self$`event_at` <- `event_at`
@@ -109,18 +107,18 @@ UserComplianceSchema <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`event_at`)) {
           sprintf(
-          '"event_at":
+            '"event_at":
             "%s"
                     ',
-          self$`event_at`
+            self$`event_at`
           )
         },
         if (!is.null(self$`user`)) {
           sprintf(
-          '"user":
+            '"user":
           %s
           ',
-          jsonlite::toJSON(self$`user`$toJSON(), auto_unbox = TRUE, digits = NA)
+            jsonlite::toJSON(self$`user`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         }
       )
@@ -235,18 +233,18 @@ UserComplianceSchema <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#UserComplianceSchema$unlock()
+# UserComplianceSchema$unlock()
 #
 ## Below is an example to define the print fnuction
-#UserComplianceSchema$set("public", "print", function(...) {
+# UserComplianceSchema$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#UserComplianceSchema$lock()
-
+# UserComplianceSchema$lock()

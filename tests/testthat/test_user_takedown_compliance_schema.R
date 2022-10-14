@@ -10,19 +10,19 @@ test_that("event_at", {
   # Event time.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`event_at`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`event_at`, "EXPECTED_RESULT")
 })
 
 test_that("user", {
   # tests for the property `user` (UserComplianceSchemaUser)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`user`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`user`, "EXPECTED_RESULT")
 })
 
 test_that("withheld_in_countries", {
   # tests for the property `withheld_in_countries` (array[character])
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`withheld_in_countries`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`withheld_in_countries`, "EXPECTED_RESULT")
 })

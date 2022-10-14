@@ -9,19 +9,19 @@ test_that("field", {
   # tests for the property `field` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`field`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`field`, "EXPECTED_RESULT")
 })
 
 test_that("resource_type", {
   # tests for the property `resource_type` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`resource_type`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`resource_type`, "EXPECTED_RESULT")
 })
 
 test_that("section", {
   # tests for the property `section` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`section`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`section`, "EXPECTED_RESULT")
 })

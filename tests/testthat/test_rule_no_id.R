@@ -10,7 +10,7 @@ test_that("tag", {
   # A tag meant for the labeling of user provided rules.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`tag`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`tag`, "EXPECTED_RESULT")
 })
 
 test_that("value", {
@@ -18,5 +18,5 @@ test_that("value", {
   # The filterlang value of the rule.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`value`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`value`, "EXPECTED_RESULT")
 })

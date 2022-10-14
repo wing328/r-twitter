@@ -10,7 +10,7 @@ test_that("media_ids", {
   # A list of Media Ids to be attached to a created Tweet.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`media_ids`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`media_ids`, "EXPECTED_RESULT")
 })
 
 test_that("tagged_user_ids", {
@@ -18,5 +18,5 @@ test_that("tagged_user_ids", {
   # A list of User Ids to be tagged in the media for created Tweet.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`tagged_user_ids`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`tagged_user_ids`, "EXPECTED_RESULT")
 })

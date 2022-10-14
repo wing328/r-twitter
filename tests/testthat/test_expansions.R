@@ -9,40 +9,40 @@ test_that("media", {
   # tests for the property `media` (array[Media])
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`media`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`media`, "EXPECTED_RESULT")
 })
 
 test_that("places", {
   # tests for the property `places` (array[Place])
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`places`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`places`, "EXPECTED_RESULT")
 })
 
 test_that("polls", {
   # tests for the property `polls` (array[Poll])
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`polls`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`polls`, "EXPECTED_RESULT")
 })
 
 test_that("topics", {
   # tests for the property `topics` (array[Topic])
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`topics`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`topics`, "EXPECTED_RESULT")
 })
 
 test_that("tweets", {
   # tests for the property `tweets` (array[Tweet])
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`tweets`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`tweets`, "EXPECTED_RESULT")
 })
 
 test_that("users", {
   # tests for the property `users` (array[User])
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`users`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`users`, "EXPECTED_RESULT")
 })

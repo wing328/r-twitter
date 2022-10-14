@@ -10,7 +10,7 @@ test_that("description", {
   # Description of the context annotation domain.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`description`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`description`, "EXPECTED_RESULT")
 })
 
 test_that("id", {
@@ -18,7 +18,7 @@ test_that("id", {
   # The unique id for a context annotation domain.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`id`, "EXPECTED_RESULT")
 })
 
 test_that("name", {
@@ -26,5 +26,5 @@ test_that("name", {
   # Name of the context annotation domain.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`name`, "EXPECTED_RESULT")
 })

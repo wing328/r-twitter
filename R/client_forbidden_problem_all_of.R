@@ -31,9 +31,7 @@ ClientForbiddenProblemAllOf <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `reason` = NULL, `registration_url` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`reason` = NULL, `registration_url` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`reason`)) {
         if (!(`reason` %in% c("official-client-forbidden", "client-not-enrolled"))) {
           stop(paste("Error! \"", `reason`, "\" cannot be assigned to `reason`. Must be \"official-client-forbidden\", \"client-not-enrolled\".", sep = ""))
@@ -121,18 +119,18 @@ ClientForbiddenProblemAllOf <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`reason`)) {
           sprintf(
-          '"reason":
+            '"reason":
             "%s"
                     ',
-          self$`reason`
+            self$`reason`
           )
         },
         if (!is.null(self$`registration_url`)) {
           sprintf(
-          '"registration_url":
+            '"registration_url":
             "%s"
                     ',
-          self$`registration_url`
+            self$`registration_url`
           )
         }
       )
@@ -222,18 +220,18 @@ ClientForbiddenProblemAllOf <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#ClientForbiddenProblemAllOf$unlock()
+# ClientForbiddenProblemAllOf$unlock()
 #
 ## Below is an example to define the print fnuction
-#ClientForbiddenProblemAllOf$set("public", "print", function(...) {
+# ClientForbiddenProblemAllOf$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#ClientForbiddenProblemAllOf$lock()
-
+# ClientForbiddenProblemAllOf$lock()

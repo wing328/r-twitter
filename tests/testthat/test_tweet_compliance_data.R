@@ -9,26 +9,26 @@ test_that("delete", {
   # tests for the property `delete` (TweetComplianceSchema)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`delete`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`delete`, "EXPECTED_RESULT")
 })
 
 test_that("withheld", {
   # tests for the property `withheld` (TweetTakedownComplianceSchema)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`withheld`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`withheld`, "EXPECTED_RESULT")
 })
 
 test_that("drop", {
   # tests for the property `drop` (TweetComplianceSchema)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`drop`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`drop`, "EXPECTED_RESULT")
 })
 
 test_that("undrop", {
   # tests for the property `undrop` (TweetComplianceSchema)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`undrop`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`undrop`, "EXPECTED_RESULT")
 })

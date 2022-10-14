@@ -9,7 +9,7 @@ test_that("attachments", {
   # tests for the property `attachments` (TweetAttachments)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`attachments`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`attachments`, "EXPECTED_RESULT")
 })
 
 test_that("author_id", {
@@ -17,14 +17,14 @@ test_that("author_id", {
   # Unique identifier of this User. This is returned as a string in order to avoid complications with languages and tools that cannot handle large integers.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`author_id`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`author_id`, "EXPECTED_RESULT")
 })
 
 test_that("context_annotations", {
   # tests for the property `context_annotations` (array[ContextAnnotation])
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`context_annotations`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`context_annotations`, "EXPECTED_RESULT")
 })
 
 test_that("conversation_id", {
@@ -32,7 +32,7 @@ test_that("conversation_id", {
   # Unique identifier of this Tweet. This is returned as a string in order to avoid complications with languages and tools that cannot handle large integers.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`conversation_id`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`conversation_id`, "EXPECTED_RESULT")
 })
 
 test_that("created_at", {
@@ -40,21 +40,21 @@ test_that("created_at", {
   # Creation time of the Tweet.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`created_at`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`created_at`, "EXPECTED_RESULT")
 })
 
 test_that("entities", {
   # tests for the property `entities` (FullTextEntities)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`entities`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`entities`, "EXPECTED_RESULT")
 })
 
 test_that("geo", {
   # tests for the property `geo` (TweetGeo)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`geo`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`geo`, "EXPECTED_RESULT")
 })
 
 test_that("id", {
@@ -62,7 +62,7 @@ test_that("id", {
   # Unique identifier of this Tweet. This is returned as a string in order to avoid complications with languages and tools that cannot handle large integers.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`id`, "EXPECTED_RESULT")
 })
 
 test_that("in_reply_to_user_id", {
@@ -70,7 +70,7 @@ test_that("in_reply_to_user_id", {
   # Unique identifier of this User. This is returned as a string in order to avoid complications with languages and tools that cannot handle large integers.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`in_reply_to_user_id`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`in_reply_to_user_id`, "EXPECTED_RESULT")
 })
 
 test_that("lang", {
@@ -78,21 +78,21 @@ test_that("lang", {
   # Language of the Tweet, if detected by Twitter. Returned as a BCP47 language tag.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`lang`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`lang`, "EXPECTED_RESULT")
 })
 
 test_that("non_public_metrics", {
   # tests for the property `non_public_metrics` (TweetNonPublicMetrics)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`non_public_metrics`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`non_public_metrics`, "EXPECTED_RESULT")
 })
 
 test_that("organic_metrics", {
   # tests for the property `organic_metrics` (TweetOrganicMetrics)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`organic_metrics`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`organic_metrics`, "EXPECTED_RESULT")
 })
 
 test_that("possibly_sensitive", {
@@ -100,21 +100,21 @@ test_that("possibly_sensitive", {
   # Indicates if this Tweet contains URLs marked as sensitive, for example content suitable for mature audiences.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`possibly_sensitive`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`possibly_sensitive`, "EXPECTED_RESULT")
 })
 
 test_that("promoted_metrics", {
   # tests for the property `promoted_metrics` (TweetPromotedMetrics)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`promoted_metrics`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`promoted_metrics`, "EXPECTED_RESULT")
 })
 
 test_that("public_metrics", {
   # tests for the property `public_metrics` (TweetPublicMetrics)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`public_metrics`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`public_metrics`, "EXPECTED_RESULT")
 })
 
 test_that("referenced_tweets", {
@@ -122,14 +122,14 @@ test_that("referenced_tweets", {
   # A list of Tweets this Tweet refers to. For example, if the parent Tweet is a Retweet, a Quoted Tweet or a Reply, it will include the related Tweet referenced to by its parent.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`referenced_tweets`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`referenced_tweets`, "EXPECTED_RESULT")
 })
 
 test_that("reply_settings", {
   # tests for the property `reply_settings` (ReplySettings)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`reply_settings`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`reply_settings`, "EXPECTED_RESULT")
 })
 
 test_that("source", {
@@ -137,7 +137,7 @@ test_that("source", {
   # The name of the app the user Tweeted from.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`source`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`source`, "EXPECTED_RESULT")
 })
 
 test_that("text", {
@@ -145,12 +145,12 @@ test_that("text", {
   # The content of the Tweet.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`text`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`text`, "EXPECTED_RESULT")
 })
 
 test_that("withheld", {
   # tests for the property `withheld` (TweetWithheld)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`withheld`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`withheld`, "EXPECTED_RESULT")
 })

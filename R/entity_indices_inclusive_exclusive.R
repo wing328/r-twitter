@@ -31,9 +31,7 @@ EntityIndicesInclusiveExclusive <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `end`, `start`, additional_properties = NULL, ...
-    ) {
+    initialize = function(`end`, `start`, additional_properties = NULL, ...) {
       if (!missing(`end`)) {
         stopifnot(is.numeric(`end`), length(`end`) == 1)
         self$`end` <- `end`
@@ -107,18 +105,18 @@ EntityIndicesInclusiveExclusive <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`end`)) {
           sprintf(
-          '"end":
+            '"end":
             %d
                     ',
-          self$`end`
+            self$`end`
           )
         },
         if (!is.null(self$`start`)) {
           sprintf(
-          '"start":
+            '"start":
             %d
                     ',
-          self$`start`
+            self$`start`
           )
         }
       )
@@ -249,18 +247,18 @@ EntityIndicesInclusiveExclusive <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#EntityIndicesInclusiveExclusive$unlock()
+# EntityIndicesInclusiveExclusive$unlock()
 #
 ## Below is an example to define the print fnuction
-#EntityIndicesInclusiveExclusive$set("public", "print", function(...) {
+# EntityIndicesInclusiveExclusive$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#EntityIndicesInclusiveExclusive$lock()
-
+# EntityIndicesInclusiveExclusive$lock()

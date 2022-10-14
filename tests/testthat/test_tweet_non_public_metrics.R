@@ -10,5 +10,5 @@ test_that("impression_count", {
   # Number of times this Tweet has been viewed.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`impression_count`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`impression_count`, "EXPECTED_RESULT")
 })

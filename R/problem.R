@@ -25,8 +25,8 @@ Problem <- R6::R6Class(
     `type` = NULL,
     `_field_list` = c("detail", "status", "title", "type"),
     `additional_properties` = list(),
-    `_discriminator_property_name` = 'type',
-    `_discriminator_mapping_name` = c('about:blank' = 'GenericProblem','https://api.twitter.com/2/problems/client-disconnected' = 'ClientDisconnectedProblem','https://api.twitter.com/2/problems/client-forbidden' = 'ClientForbiddenProblem','https://api.twitter.com/2/problems/conflict' = 'ConflictProblem','https://api.twitter.com/2/problems/disallowed-resource' = 'DisallowedResourceProblem','https://api.twitter.com/2/problems/duplicate-rules' = 'DuplicateRuleProblem','https://api.twitter.com/2/problems/invalid-request' = 'InvalidRequestProblem','https://api.twitter.com/2/problems/invalid-rules' = 'InvalidRuleProblem','https://api.twitter.com/2/problems/noncompliant-rules' = 'NonCompliantRulesProblem','https://api.twitter.com/2/problems/not-authorized-for-field' = 'FieldUnauthorizedProblem','https://api.twitter.com/2/problems/not-authorized-for-resource' = 'ResourceUnauthorizedProblem','https://api.twitter.com/2/problems/operational-disconnect' = 'OperationalDisconnectProblem','https://api.twitter.com/2/problems/resource-not-found' = 'ResourceNotFoundProblem','https://api.twitter.com/2/problems/resource-unavailable' = 'ResourceUnavailableProblem','https://api.twitter.com/2/problems/rule-cap' = 'RulesCapProblem','https://api.twitter.com/2/problems/streaming-connection' = 'ConnectionExceptionProblem','https://api.twitter.com/2/problems/unsupported-authentication' = 'UnsupportedAuthenticationProblem','https://api.twitter.com/2/problems/usage-capped' = 'UsageCapExceededProblem'),
+    `_discriminator_property_name` = "type",
+    `_discriminator_mapping_name` = c("about:blank" = "GenericProblem", "https://api.twitter.com/2/problems/client-disconnected" = "ClientDisconnectedProblem", "https://api.twitter.com/2/problems/client-forbidden" = "ClientForbiddenProblem", "https://api.twitter.com/2/problems/conflict" = "ConflictProblem", "https://api.twitter.com/2/problems/disallowed-resource" = "DisallowedResourceProblem", "https://api.twitter.com/2/problems/duplicate-rules" = "DuplicateRuleProblem", "https://api.twitter.com/2/problems/invalid-request" = "InvalidRequestProblem", "https://api.twitter.com/2/problems/invalid-rules" = "InvalidRuleProblem", "https://api.twitter.com/2/problems/noncompliant-rules" = "NonCompliantRulesProblem", "https://api.twitter.com/2/problems/not-authorized-for-field" = "FieldUnauthorizedProblem", "https://api.twitter.com/2/problems/not-authorized-for-resource" = "ResourceUnauthorizedProblem", "https://api.twitter.com/2/problems/operational-disconnect" = "OperationalDisconnectProblem", "https://api.twitter.com/2/problems/resource-not-found" = "ResourceNotFoundProblem", "https://api.twitter.com/2/problems/resource-unavailable" = "ResourceUnavailableProblem", "https://api.twitter.com/2/problems/rule-cap" = "RulesCapProblem", "https://api.twitter.com/2/problems/streaming-connection" = "ConnectionExceptionProblem", "https://api.twitter.com/2/problems/unsupported-authentication" = "UnsupportedAuthenticationProblem", "https://api.twitter.com/2/problems/usage-capped" = "UsageCapExceededProblem"),
     #' Initialize a new Problem class.
     #'
     #' @description
@@ -39,9 +39,7 @@ Problem <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `title`, `type`, `detail` = NULL, `status` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`title`, `type`, `detail` = NULL, `status` = NULL, additional_properties = NULL, ...) {
       if (!missing(`title`)) {
         stopifnot(is.character(`title`), length(`title`) == 1)
         self$`title` <- `title`
@@ -137,34 +135,34 @@ Problem <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`detail`)) {
           sprintf(
-          '"detail":
+            '"detail":
             "%s"
                     ',
-          self$`detail`
+            self$`detail`
           )
         },
         if (!is.null(self$`status`)) {
           sprintf(
-          '"status":
+            '"status":
             %d
                     ',
-          self$`status`
+            self$`status`
           )
         },
         if (!is.null(self$`title`)) {
           sprintf(
-          '"title":
+            '"title":
             "%s"
                     ',
-          self$`title`
+            self$`title`
           )
         },
         if (!is.null(self$`type`)) {
           sprintf(
-          '"type":
+            '"type":
             "%s"
                     ',
-          self$`type`
+            self$`type`
           )
         }
       )
@@ -281,18 +279,18 @@ Problem <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#Problem$unlock()
+# Problem$unlock()
 #
 ## Below is an example to define the print fnuction
-#Problem$set("public", "print", function(...) {
+# Problem$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#Problem$lock()
-
+# Problem$lock()

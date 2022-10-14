@@ -10,7 +10,7 @@ test_that("label", {
   # The text of a poll choice.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`label`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`label`, "EXPECTED_RESULT")
 })
 
 test_that("position", {
@@ -18,7 +18,7 @@ test_that("position", {
   # Position of this choice in the poll.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`position`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`position`, "EXPECTED_RESULT")
 })
 
 test_that("votes", {
@@ -26,5 +26,5 @@ test_that("votes", {
   # Number of users who voted for this choice.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`votes`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`votes`, "EXPECTED_RESULT")
 })

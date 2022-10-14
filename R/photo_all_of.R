@@ -31,9 +31,7 @@ PhotoAllOf <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `alt_text` = NULL, `url` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`alt_text` = NULL, `url` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`alt_text`)) {
         stopifnot(is.character(`alt_text`), length(`alt_text`) == 1)
         self$`alt_text` <- `alt_text`
@@ -115,18 +113,18 @@ PhotoAllOf <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`alt_text`)) {
           sprintf(
-          '"alt_text":
+            '"alt_text":
             "%s"
                     ',
-          self$`alt_text`
+            self$`alt_text`
           )
         },
         if (!is.null(self$`url`)) {
           sprintf(
-          '"url":
+            '"url":
             "%s"
                     ',
-          self$`url`
+            self$`url`
           )
         }
       )
@@ -213,18 +211,18 @@ PhotoAllOf <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#PhotoAllOf$unlock()
+# PhotoAllOf$unlock()
 #
 ## Below is an example to define the print fnuction
-#PhotoAllOf$set("public", "print", function(...) {
+# PhotoAllOf$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#PhotoAllOf$lock()
-
+# PhotoAllOf$lock()

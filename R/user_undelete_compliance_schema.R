@@ -28,9 +28,7 @@ UserUndeleteComplianceSchema <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `user_undelete`, additional_properties = NULL, ...
-    ) {
+    initialize = function(`user_undelete`, additional_properties = NULL, ...) {
       if (!missing(`user_undelete`)) {
         stopifnot(R6::is.R6(`user_undelete`))
         self$`user_undelete` <- `user_undelete`
@@ -95,10 +93,10 @@ UserUndeleteComplianceSchema <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`user_undelete`)) {
           sprintf(
-          '"user_undelete":
+            '"user_undelete":
           %s
           ',
-          jsonlite::toJSON(self$`user_undelete`$toJSON(), auto_unbox = TRUE, digits = NA)
+            jsonlite::toJSON(self$`user_undelete`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         }
       )
@@ -196,18 +194,18 @@ UserUndeleteComplianceSchema <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#UserUndeleteComplianceSchema$unlock()
+# UserUndeleteComplianceSchema$unlock()
 #
 ## Below is an example to define the print fnuction
-#UserUndeleteComplianceSchema$set("public", "print", function(...) {
+# UserUndeleteComplianceSchema$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#UserUndeleteComplianceSchema$lock()
-
+# UserUndeleteComplianceSchema$lock()

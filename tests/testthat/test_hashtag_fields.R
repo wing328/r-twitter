@@ -10,5 +10,5 @@ test_that("tag", {
   # The text of the Hashtag.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`tag`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`tag`, "EXPECTED_RESULT")
 })

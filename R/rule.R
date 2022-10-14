@@ -34,9 +34,7 @@ Rule <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `value`, `id` = NULL, `tag` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`value`, `id` = NULL, `tag` = NULL, additional_properties = NULL, ...) {
       if (!missing(`value`)) {
         stopifnot(is.character(`value`), length(`value`) == 1)
         self$`value` <- `value`
@@ -121,26 +119,26 @@ Rule <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`id`)) {
           sprintf(
-          '"id":
+            '"id":
             "%s"
                     ',
-          self$`id`
+            self$`id`
           )
         },
         if (!is.null(self$`tag`)) {
           sprintf(
-          '"tag":
+            '"tag":
             "%s"
                     ',
-          self$`tag`
+            self$`tag`
           )
         },
         if (!is.null(self$`value`)) {
           sprintf(
-          '"value":
+            '"value":
             "%s"
                     ',
-          self$`value`
+            self$`value`
           )
         }
       )
@@ -248,18 +246,18 @@ Rule <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#Rule$unlock()
+# Rule$unlock()
 #
 ## Below is an example to define the print fnuction
-#Rule$set("public", "print", function(...) {
+# Rule$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#Rule$lock()
-
+# Rule$lock()

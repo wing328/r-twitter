@@ -10,5 +10,5 @@ test_that("result_count", {
   # The number of results returned in this response.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`result_count`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`result_count`, "EXPECTED_RESULT")
 })

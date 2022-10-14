@@ -42,7 +42,7 @@
 #' @field max_retry_attempts maximum number of retries for the status codes
 #' @importFrom rlang abort
 #' @export
-ApiClient  <- R6::R6Class(
+ApiClient <- R6::R6Class(
   "ApiClient",
   public = list(
     # base path of all requests
@@ -175,13 +175,14 @@ ApiClient  <- R6::R6Class(
     CallApi = function(url, method, query_params, header_params, form_params,
                        file_params, accepts, content_types, body,
                        is_oauth = FALSE, oauth_scopes = NULL, stream_callback = NULL, ...) {
-
       # set the URL
       req <- request(url)
 
       resp <- self$Execute(req, method, query_params, header_params, form_params,
-                           file_params, accepts, content_types, body, is_oauth = is_oauth,
-                           oauth_scopes = oauth_scopes, stream_callback = stream_callback, ...)
+        file_params, accepts, content_types, body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes, stream_callback = stream_callback, ...
+      )
     },
     #' Make an API call
     #'
@@ -206,7 +207,6 @@ ApiClient  <- R6::R6Class(
     Execute = function(req, method, query_params, header_params, form_params,
                        file_params, accepts, content_types, body,
                        is_oauth = FALSE, oauth_scopes = NULL, stream_callback = NULL, ...) {
-
       ## add headers
       req <- req %>% req_headers(!!!header_params)
 
@@ -294,9 +294,11 @@ ApiClient  <- R6::R6Class(
           req_oauth_scopes <- oauth_scopes
         }
 
-        req <- req %>% req_oauth_auth_code(client, scope = req_oauth_scopes,
-                                           pkce = self$oauth_pkce,
-                                           auth_url = self$oauth_authoriziation_url)
+        req <- req %>% req_oauth_auth_code(client,
+          scope = req_oauth_scopes,
+          pkce = self$oauth_pkce,
+          auth_url = self$oauth_authoriziation_url
+        )
       }
 
       # stream data
@@ -350,16 +352,20 @@ ApiClient  <- R6::R6Class(
 
       # To handle the "map" type
       if (startsWith(return_type, "map(")) {
-        inner_return_type <- regmatches(return_type,
-                                        regexec(pattern = "map\\((.*)\\)", return_type))[[1]][2]
+        inner_return_type <- regmatches(
+          return_type,
+          regexec(pattern = "map\\((.*)\\)", return_type)
+        )[[1]][2]
         return_obj <- lapply(names(obj), function(name) {
           self$deserializeObj(obj[[name]], inner_return_type, pkg_env)
         })
         names(return_obj) <- names(obj)
       } else if (startsWith(return_type, "array[")) {
         # To handle the "array" type
-        inner_return_type <- regmatches(return_type,
-                                        regexec(pattern = "array\\[(.*)\\]", return_type))[[1]][2]
+        inner_return_type <- regmatches(
+          return_type,
+          regexec(pattern = "array\\[(.*)\\]", return_type)
+        )[[1]][2]
         if (c(inner_return_type) %in% primitive_types) {
           return_obj <- vector("list", length = length(obj))
           if (length(obj) > 0) {
@@ -372,8 +378,10 @@ ApiClient  <- R6::R6Class(
             return_obj <- vector("list", length = nrow(obj))
             if (nrow(obj) > 0) {
               for (row in 1:nrow(obj)) {
-                return_obj[[row]] <- self$deserializeObj(obj[row, , drop = FALSE],
-                                                         inner_return_type, pkg_env)
+                return_obj[[row]] <- self$deserializeObj(
+                  obj[row, , drop = FALSE],
+                  inner_return_type, pkg_env
+                )
               }
             }
           }

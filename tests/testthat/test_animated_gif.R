@@ -10,7 +10,7 @@ test_that("height", {
   # The height of the media in pixels.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`height`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`height`, "EXPECTED_RESULT")
 })
 
 test_that("media_key", {
@@ -18,14 +18,14 @@ test_that("media_key", {
   # The Media Key identifier for this attachment.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`media_key`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`media_key`, "EXPECTED_RESULT")
 })
 
 test_that("type", {
   # tests for the property `type` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`type`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`type`, "EXPECTED_RESULT")
 })
 
 test_that("width", {
@@ -33,14 +33,14 @@ test_that("width", {
   # The width of the media in pixels.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`width`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`width`, "EXPECTED_RESULT")
 })
 
 test_that("preview_image_url", {
   # tests for the property `preview_image_url` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`preview_image_url`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`preview_image_url`, "EXPECTED_RESULT")
 })
 
 test_that("variants", {
@@ -48,5 +48,5 @@ test_that("variants", {
   # An array of all available variants of the media.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`variants`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`variants`, "EXPECTED_RESULT")
 })

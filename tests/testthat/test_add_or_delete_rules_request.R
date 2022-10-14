@@ -9,12 +9,12 @@ test_that("add", {
   # tests for the property `add` (array[RuleNoId])
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`add`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`add`, "EXPECTED_RESULT")
 })
 
 test_that("delete", {
   # tests for the property `delete` (DeleteRulesRequestDelete)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`delete`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`delete`, "EXPECTED_RESULT")
 })

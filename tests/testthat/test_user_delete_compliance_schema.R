@@ -9,5 +9,5 @@ test_that("user_delete", {
   # tests for the property `user_delete` (UserComplianceSchema)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`user_delete`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`user_delete`, "EXPECTED_RESULT")
 })

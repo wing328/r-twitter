@@ -40,9 +40,7 @@ FullTextEntities <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `annotations` = NULL, `cashtags` = NULL, `hashtags` = NULL, `mentions` = NULL, `urls` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`annotations` = NULL, `cashtags` = NULL, `hashtags` = NULL, `mentions` = NULL, `urls` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`annotations`)) {
         stopifnot(is.vector(`annotations`), length(`annotations`) != 0)
         sapply(`annotations`, function(x) stopifnot(R6::is.R6(x)))
@@ -154,42 +152,42 @@ FullTextEntities <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`annotations`)) {
           sprintf(
-          '"annotations":
+            '"annotations":
           [%s]
 ',
-          paste(sapply(self$`annotations`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
+            paste(sapply(self$`annotations`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
           )
         },
         if (!is.null(self$`cashtags`)) {
           sprintf(
-          '"cashtags":
+            '"cashtags":
           [%s]
 ',
-          paste(sapply(self$`cashtags`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
+            paste(sapply(self$`cashtags`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
           )
         },
         if (!is.null(self$`hashtags`)) {
           sprintf(
-          '"hashtags":
+            '"hashtags":
           [%s]
 ',
-          paste(sapply(self$`hashtags`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
+            paste(sapply(self$`hashtags`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
           )
         },
         if (!is.null(self$`mentions`)) {
           sprintf(
-          '"mentions":
+            '"mentions":
           [%s]
 ',
-          paste(sapply(self$`mentions`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
+            paste(sapply(self$`mentions`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
           )
         },
         if (!is.null(self$`urls`)) {
           sprintf(
-          '"urls":
+            '"urls":
           [%s]
 ',
-          paste(sapply(self$`urls`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
+            paste(sapply(self$`urls`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
           )
         }
       )
@@ -315,18 +313,18 @@ FullTextEntities <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#FullTextEntities$unlock()
+# FullTextEntities$unlock()
 #
 ## Below is an example to define the print fnuction
-#FullTextEntities$set("public", "print", function(...) {
+# FullTextEntities$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#FullTextEntities$lock()
-
+# FullTextEntities$lock()

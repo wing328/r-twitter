@@ -43,9 +43,7 @@ Expansions <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `media` = NULL, `places` = NULL, `polls` = NULL, `topics` = NULL, `tweets` = NULL, `users` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`media` = NULL, `places` = NULL, `polls` = NULL, `topics` = NULL, `tweets` = NULL, `users` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`media`)) {
         stopifnot(is.vector(`media`), length(`media`) != 0)
         sapply(`media`, function(x) stopifnot(R6::is.R6(x)))
@@ -169,50 +167,50 @@ Expansions <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`media`)) {
           sprintf(
-          '"media":
+            '"media":
           [%s]
 ',
-          paste(sapply(self$`media`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
+            paste(sapply(self$`media`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
           )
         },
         if (!is.null(self$`places`)) {
           sprintf(
-          '"places":
+            '"places":
           [%s]
 ',
-          paste(sapply(self$`places`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
+            paste(sapply(self$`places`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
           )
         },
         if (!is.null(self$`polls`)) {
           sprintf(
-          '"polls":
+            '"polls":
           [%s]
 ',
-          paste(sapply(self$`polls`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
+            paste(sapply(self$`polls`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
           )
         },
         if (!is.null(self$`topics`)) {
           sprintf(
-          '"topics":
+            '"topics":
           [%s]
 ',
-          paste(sapply(self$`topics`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
+            paste(sapply(self$`topics`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
           )
         },
         if (!is.null(self$`tweets`)) {
           sprintf(
-          '"tweets":
+            '"tweets":
           [%s]
 ',
-          paste(sapply(self$`tweets`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
+            paste(sapply(self$`tweets`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
           )
         },
         if (!is.null(self$`users`)) {
           sprintf(
-          '"users":
+            '"users":
           [%s]
 ',
-          paste(sapply(self$`users`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
+            paste(sapply(self$`users`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
           )
         }
       )
@@ -347,18 +345,18 @@ Expansions <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#Expansions$unlock()
+# Expansions$unlock()
 #
 ## Below is an example to define the print fnuction
-#Expansions$set("public", "print", function(...) {
+# Expansions$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#Expansions$lock()
-
+# Expansions$lock()

@@ -28,9 +28,7 @@ VideoAllOfPublicMetrics <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `view_count` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`view_count` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`view_count`)) {
         stopifnot(is.numeric(`view_count`), length(`view_count`) == 1)
         self$`view_count` <- `view_count`
@@ -93,10 +91,10 @@ VideoAllOfPublicMetrics <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`view_count`)) {
           sprintf(
-          '"view_count":
+            '"view_count":
             %d
                     ',
-          self$`view_count`
+            self$`view_count`
           )
         }
       )
@@ -178,18 +176,18 @@ VideoAllOfPublicMetrics <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#VideoAllOfPublicMetrics$unlock()
+# VideoAllOfPublicMetrics$unlock()
 #
 ## Below is an example to define the print fnuction
-#VideoAllOfPublicMetrics$set("public", "print", function(...) {
+# VideoAllOfPublicMetrics$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#VideoAllOfPublicMetrics$lock()
-
+# VideoAllOfPublicMetrics$lock()

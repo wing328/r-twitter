@@ -9,5 +9,5 @@ test_that("drop", {
   # tests for the property `drop` (TweetComplianceSchema)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`drop`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`drop`, "EXPECTED_RESULT")
 })

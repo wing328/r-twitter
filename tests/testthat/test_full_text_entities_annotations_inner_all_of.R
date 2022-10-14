@@ -10,7 +10,7 @@ test_that("normalized_text", {
   # Text used to determine annotation.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`normalized_text`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`normalized_text`, "EXPECTED_RESULT")
 })
 
 test_that("probability", {
@@ -18,7 +18,7 @@ test_that("probability", {
   # Confidence factor for annotation type.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`probability`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`probability`, "EXPECTED_RESULT")
 })
 
 test_that("type", {
@@ -26,5 +26,5 @@ test_that("type", {
   # Annotation type.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`type`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`type`, "EXPECTED_RESULT")
 })

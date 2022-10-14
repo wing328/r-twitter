@@ -10,7 +10,7 @@ test_that("end", {
   # Index (zero-based) at which position this entity ends.  The index is exclusive.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`end`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`end`, "EXPECTED_RESULT")
 })
 
 test_that("start", {
@@ -18,7 +18,7 @@ test_that("start", {
   # Index (zero-based) at which position this entity starts.  The index is inclusive.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`start`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`start`, "EXPECTED_RESULT")
 })
 
 test_that("id", {
@@ -26,7 +26,7 @@ test_that("id", {
   # Unique identifier of this User. This is returned as a string in order to avoid complications with languages and tools that cannot handle large integers.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`id`, "EXPECTED_RESULT")
 })
 
 test_that("username", {
@@ -34,5 +34,5 @@ test_that("username", {
   # The Twitter handle (screen name) of this user.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`username`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`username`, "EXPECTED_RESULT")
 })

@@ -9,12 +9,12 @@ test_that("code", {
   # tests for the property `code` (integer)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`code`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`code`, "EXPECTED_RESULT")
 })
 
 test_that("message", {
   # tests for the property `message` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`message`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`message`, "EXPECTED_RESULT")
 })

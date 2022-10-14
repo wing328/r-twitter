@@ -37,9 +37,7 @@ UserProfileModificationObjectSchema <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `event_at`, `new_value`, `profile_field`, `user`, additional_properties = NULL, ...
-    ) {
+    initialize = function(`event_at`, `new_value`, `profile_field`, `user`, additional_properties = NULL, ...) {
       if (!missing(`event_at`)) {
         stopifnot(is.character(`event_at`), length(`event_at`) == 1)
         self$`event_at` <- `event_at`
@@ -137,34 +135,34 @@ UserProfileModificationObjectSchema <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`event_at`)) {
           sprintf(
-          '"event_at":
+            '"event_at":
             "%s"
                     ',
-          self$`event_at`
+            self$`event_at`
           )
         },
         if (!is.null(self$`new_value`)) {
           sprintf(
-          '"new_value":
+            '"new_value":
             "%s"
                     ',
-          self$`new_value`
+            self$`new_value`
           )
         },
         if (!is.null(self$`profile_field`)) {
           sprintf(
-          '"profile_field":
+            '"profile_field":
             "%s"
                     ',
-          self$`profile_field`
+            self$`profile_field`
           )
         },
         if (!is.null(self$`user`)) {
           sprintf(
-          '"user":
+            '"user":
           %s
           ',
-          jsonlite::toJSON(self$`user`$toJSON(), auto_unbox = TRUE, digits = NA)
+            jsonlite::toJSON(self$`user`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         }
       )
@@ -313,18 +311,18 @@ UserProfileModificationObjectSchema <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#UserProfileModificationObjectSchema$unlock()
+# UserProfileModificationObjectSchema$unlock()
 #
 ## Below is an example to define the print fnuction
-#UserProfileModificationObjectSchema$set("public", "print", function(...) {
+# UserProfileModificationObjectSchema$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#UserProfileModificationObjectSchema$lock()
-
+# UserProfileModificationObjectSchema$lock()

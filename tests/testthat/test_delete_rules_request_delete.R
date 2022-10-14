@@ -10,7 +10,7 @@ test_that("ids", {
   # IDs of all deleted user-specified stream filtering rules.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`ids`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`ids`, "EXPECTED_RESULT")
 })
 
 test_that("values", {
@@ -18,5 +18,5 @@ test_that("values", {
   # Values of all deleted user-specified stream filtering rules.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`values`, "EXPECTED_RESULT")
+  # expect_equal(model.instance$`values`, "EXPECTED_RESULT")
 })

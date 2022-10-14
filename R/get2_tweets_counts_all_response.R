@@ -34,9 +34,7 @@ Get2TweetsCountsAllResponse <- R6::R6Class(
     #' @param additional_properties additonal properties (optional)
     #' @param ... Other optional arguments.
     #' @export
-    initialize = function(
-        `data` = NULL, `errors` = NULL, `meta` = NULL, additional_properties = NULL, ...
-    ) {
+    initialize = function(`data` = NULL, `errors` = NULL, `meta` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`data`)) {
         stopifnot(is.vector(`data`), length(`data`) != 0)
         sapply(`data`, function(x) stopifnot(R6::is.R6(x)))
@@ -125,26 +123,26 @@ Get2TweetsCountsAllResponse <- R6::R6Class(
       jsoncontent <- c(
         if (!is.null(self$`data`)) {
           sprintf(
-          '"data":
+            '"data":
           [%s]
 ',
-          paste(sapply(self$`data`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
+            paste(sapply(self$`data`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
           )
         },
         if (!is.null(self$`errors`)) {
           sprintf(
-          '"errors":
+            '"errors":
           [%s]
 ',
-          paste(sapply(self$`errors`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
+            paste(sapply(self$`errors`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
           )
         },
         if (!is.null(self$`meta`)) {
           sprintf(
-          '"meta":
+            '"meta":
           %s
           ',
-          jsonlite::toJSON(self$`meta`$toJSON(), auto_unbox = TRUE, digits = NA)
+            jsonlite::toJSON(self$`meta`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         }
       )
@@ -244,18 +242,18 @@ Get2TweetsCountsAllResponse <- R6::R6Class(
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)
-    }),
-    # Lock the class to prevent modifications to the method or field
-    lock_class = TRUE
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#Get2TweetsCountsAllResponse$unlock()
+# Get2TweetsCountsAllResponse$unlock()
 #
 ## Below is an example to define the print fnuction
-#Get2TweetsCountsAllResponse$set("public", "print", function(...) {
+# Get2TweetsCountsAllResponse$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
-#})
+# })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#Get2TweetsCountsAllResponse$lock()
-
+# Get2TweetsCountsAllResponse$lock()
