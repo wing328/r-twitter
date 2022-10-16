@@ -90,7 +90,7 @@ library(twitter)
 #
 # prepare function argument(s)
 var_id <- "id_example" # character | The ID of the Compliance Job to retrieve.
-var_compliance_job_fields <- list("created_at") # set[character] | A comma separated list of ComplianceJob fields to display. (Optional)
+var_compliance_job_fields <- c("created_at") # set[character] | A comma separated list of ComplianceJob fields to display. (Optional)
 
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
@@ -301,7 +301,7 @@ library(twitter)
 # prepare function argument(s)
 var_type <- "type_example" # character | Type of Compliance Job to list.
 var_status <- "status_example" # character | Status of Compliance Job to list. (Optional)
-var_compliance_job_fields <- list("created_at") # set[character] | A comma separated list of ComplianceJob fields to display. (Optional)
+var_compliance_job_fields <- c("created_at") # set[character] | A comma separated list of ComplianceJob fields to display. (Optional)
 
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken

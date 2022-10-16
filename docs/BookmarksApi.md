@@ -26,12 +26,12 @@ library(twitter)
 var_id <- "id_example" # character | The ID of the authenticated source User for whom to return results.
 var_max_results <- 56 # integer | The maximum number of results. (Optional)
 var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. (Optional)
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
-var_expansions <- list("attachments.media_keys") # set[character] | A comma separated list of fields to expand. (Optional)
-var_media_fields <- list("alt_text") # set[character] | A comma separated list of Media fields to display. (Optional)
-var_poll_fields <- list("duration_minutes") # set[character] | A comma separated list of Poll fields to display. (Optional)
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
-var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
+var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+var_expansions <- c("attachments.media_keys") # set[character] | A comma separated list of fields to expand. (Optional)
+var_media_fields <- c("alt_text") # set[character] | A comma separated list of Media fields to display. (Optional)
+var_poll_fields <- c("duration_minutes") # set[character] | A comma separated list of Poll fields to display. (Optional)
+var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_place_fields <- c("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 
 api_instance <- twitter_api$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken

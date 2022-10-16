@@ -39,9 +39,9 @@ library(twitter)
 # User lookup me
 #
 # prepare function argument(s)
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
-var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_expansions <- c("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
+var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 
 api_instance <- twitter_api$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
@@ -108,9 +108,9 @@ library(twitter)
 #
 # prepare function argument(s)
 var_id <- "2244994945" # character | The ID of the User to lookup.
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
-var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_expansions <- c("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
+var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
@@ -180,9 +180,9 @@ library(twitter)
 #
 # prepare function argument(s)
 var_username <- "TwitterDev" # character | A username.
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
-var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_expansions <- c("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
+var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
@@ -251,10 +251,10 @@ library(twitter)
 # User lookup by IDs
 #
 # prepare function argument(s)
-var_ids <- list("inner_example") # array[character] | A list of User IDs, comma-separated. You can specify up to 100 IDs.
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
-var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+var_ids <- c("inner_example") # array[character] | A list of User IDs, comma-separated. You can specify up to 100 IDs.
+var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_expansions <- c("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
+var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
@@ -323,10 +323,10 @@ library(twitter)
 # User lookup by usernames
 #
 # prepare function argument(s)
-var_usernames <- list("inner_example") # array[character] | A list of usernames, comma-separated.
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
-var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+var_usernames <- c("inner_example") # array[character] | A list of usernames, comma-separated.
+var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_expansions <- c("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
+var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
@@ -398,9 +398,9 @@ library(twitter)
 var_id <- "id_example" # character | The ID of the List.
 var_max_results <- 100 # integer | The maximum number of results. (Optional)
 var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results. (Optional)
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
-var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_expansions <- c("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
+var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
@@ -474,9 +474,9 @@ library(twitter)
 var_id <- "id_example" # character | The ID of the List.
 var_max_results <- 100 # integer | The maximum number of results. (Optional)
 var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results. (Optional)
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
-var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_expansions <- c("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
+var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
@@ -550,9 +550,9 @@ library(twitter)
 var_id <- "id_example" # character | A single Tweet ID.
 var_max_results <- 100 # integer | The maximum number of results. (Optional)
 var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. (Optional)
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
-var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_expansions <- c("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
+var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
@@ -626,9 +626,9 @@ library(twitter)
 var_id <- "id_example" # character | A single Tweet ID.
 var_max_results <- 100 # integer | The maximum number of results. (Optional)
 var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. (Optional)
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
-var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_expansions <- c("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
+var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
@@ -768,9 +768,9 @@ library(twitter)
 var_id <- "id_example" # character | The ID of the authenticated source User for whom to return results.
 var_max_results <- 56 # integer | The maximum number of results. (Optional)
 var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results. (Optional)
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
-var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_expansions <- c("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
+var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 
 api_instance <- twitter_api$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
@@ -908,9 +908,9 @@ library(twitter)
 var_id <- "2244994945" # character | The ID of the User to lookup.
 var_max_results <- 56 # integer | The maximum number of results. (Optional)
 var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results. (Optional)
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
-var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_expansions <- c("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
+var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
@@ -984,9 +984,9 @@ library(twitter)
 var_id <- "2244994945" # character | The ID of the User to lookup.
 var_max_results <- 56 # integer | The maximum number of results. (Optional)
 var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results. (Optional)
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
-var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_expansions <- c("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
+var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
@@ -1126,9 +1126,9 @@ library(twitter)
 var_id <- "id_example" # character | The ID of the authenticated source User for whom to return results.
 var_max_results <- 100 # integer | The maximum number of results. (Optional)
 var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. (Optional)
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
-var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_expansions <- c("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
+var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 
 api_instance <- twitter_api$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken

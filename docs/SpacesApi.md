@@ -27,10 +27,10 @@ library(twitter)
 #
 # prepare function argument(s)
 var_id <- "1YqKDqWqdPLsV" # character | The ID of the Space to be retrieved.
-var_space_fields <- list("created_at") # set[character] | A comma separated list of Space fields to display. (Optional)
-var_expansions <- list("creator_id") # set[character] | A comma separated list of fields to expand. (Optional)
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
-var_topic_fields <- list("description") # set[character] | A comma separated list of Topic fields to display. (Optional)
+var_space_fields <- c("created_at") # set[character] | A comma separated list of Space fields to display. (Optional)
+var_expansions <- c("creator_id") # set[character] | A comma separated list of fields to expand. (Optional)
+var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_topic_fields <- c("description") # set[character] | A comma separated list of Topic fields to display. (Optional)
 
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
@@ -100,11 +100,11 @@ library(twitter)
 # Space lookup by their creators
 #
 # prepare function argument(s)
-var_user_ids <- list("inner_example") # array[character] | The IDs of Users to search through.
-var_space_fields <- list("created_at") # set[character] | A comma separated list of Space fields to display. (Optional)
-var_expansions <- list("creator_id") # set[character] | A comma separated list of fields to expand. (Optional)
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
-var_topic_fields <- list("description") # set[character] | A comma separated list of Topic fields to display. (Optional)
+var_user_ids <- c("inner_example") # array[character] | The IDs of Users to search through.
+var_space_fields <- c("created_at") # set[character] | A comma separated list of Space fields to display. (Optional)
+var_expansions <- c("creator_id") # set[character] | A comma separated list of fields to expand. (Optional)
+var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_topic_fields <- c("description") # set[character] | A comma separated list of Topic fields to display. (Optional)
 
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
@@ -174,11 +174,11 @@ library(twitter)
 # Space lookup up Space IDs
 #
 # prepare function argument(s)
-var_ids <- list("inner_example") # array[character] | The list of Space IDs to return.
-var_space_fields <- list("created_at") # set[character] | A comma separated list of Space fields to display. (Optional)
-var_expansions <- list("creator_id") # set[character] | A comma separated list of fields to expand. (Optional)
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
-var_topic_fields <- list("description") # set[character] | A comma separated list of Topic fields to display. (Optional)
+var_ids <- c("inner_example") # array[character] | The list of Space IDs to return.
+var_space_fields <- c("created_at") # set[character] | A comma separated list of Space fields to display. (Optional)
+var_expansions <- c("creator_id") # set[character] | A comma separated list of fields to expand. (Optional)
+var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_topic_fields <- c("description") # set[character] | A comma separated list of Topic fields to display. (Optional)
 
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
@@ -251,10 +251,10 @@ library(twitter)
 var_query <- "crypto" # character | The search query.
 var_state <- "all" # character | The state of Spaces to search for. (Optional)
 var_max_results <- 100 # integer | The number of results to return. (Optional)
-var_space_fields <- list("created_at") # set[character] | A comma separated list of Space fields to display. (Optional)
-var_expansions <- list("creator_id") # set[character] | A comma separated list of fields to expand. (Optional)
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
-var_topic_fields <- list("description") # set[character] | A comma separated list of Topic fields to display. (Optional)
+var_space_fields <- c("created_at") # set[character] | A comma separated list of Space fields to display. (Optional)
+var_expansions <- c("creator_id") # set[character] | A comma separated list of fields to expand. (Optional)
+var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_topic_fields <- c("description") # set[character] | A comma separated list of Topic fields to display. (Optional)
 
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
@@ -329,9 +329,9 @@ library(twitter)
 var_id <- "1YqKDqWqdPLsV" # character | The ID of the Space to be retrieved.
 var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results. (Optional)
 var_max_results <- 100 # integer | The maximum number of results. (Optional)
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
-var_expansions <- list("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_expansions <- c("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
+var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 
 api_instance <- twitter_api$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
@@ -402,12 +402,12 @@ library(twitter)
 # prepare function argument(s)
 var_id <- "1YqKDqWqdPLsV" # character | The ID of the Space to be retrieved.
 var_max_results <- 100 # integer | The number of Tweets to fetch from the provided space. If not provided, the value will default to the maximum of 100. (Optional)
-var_tweet_fields <- list("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
-var_expansions <- list("attachments.media_keys") # set[character] | A comma separated list of fields to expand. (Optional)
-var_media_fields <- list("alt_text") # set[character] | A comma separated list of Media fields to display. (Optional)
-var_poll_fields <- list("duration_minutes") # set[character] | A comma separated list of Poll fields to display. (Optional)
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
-var_place_fields <- list("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
+var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+var_expansions <- c("attachments.media_keys") # set[character] | A comma separated list of fields to expand. (Optional)
+var_media_fields <- c("alt_text") # set[character] | A comma separated list of Media fields to display. (Optional)
+var_poll_fields <- c("duration_minutes") # set[character] | A comma separated list of Poll fields to display. (Optional)
+var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_place_fields <- c("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken

@@ -867,32 +867,31 @@
 #' ####################  add_or_delete_rules  ####################
 #'
 #' library(twitter)
-#' var_add_or_delete_rules_request <- AddOrDeleteRulesRequest$new() # AddOrDeleteRulesRequest | 
-#' var_dry_run <- "dry_run_example" # character | Dry Run can be used with both the add and delete action, with the expected result given, but without actually taking any action in the system (meaning the end state will always be as it was when the request was submitted). This is particularly useful to validate rule changes.
+#' var_add_or_delete_rules_request <- AddOrDeleteRulesRequest$new(c(RuleNoId$new("value_example", "tag_example")), DeleteRulesRequest_delete$new(c("ids_example"), c("values_example"))) # AddOrDeleteRulesRequest |
+#' var_dry_run <- "dry_run_example" # character | Dry Run can be used with both the add and delete action, with the expected result given, but without actually taking any action in the system (meaning the end state will always be as it was when the request was submitted). This is particularly useful to validate rule changes. (Optional)
 #'
-#' #Add/Delete rules
+#' # Add/Delete rules
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure HTTP bearer authorization: BearerToken
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$tweets_api$add_or_delete_rules(var_add_or_delete_rules_request, dry_run = var_dry_run, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$tweets_api$add_or_delete_rules(var_add_or_delete_rules_request, dry_run = var_dry_run),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$tweets_api$add_or_delete_rules(var_add_or_delete_rules_request, dry_run = var_dry_run, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$tweets_api$add_or_delete_rules(var_add_or_delete_rules_request, dry_run = var_dry_run),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `add_or_delete_rules`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -904,9 +903,9 @@
 #' ####################  create_tweet  ####################
 #'
 #' library(twitter)
-#' var_tweet_create_request <- TweetCreateRequest$new() # TweetCreateRequest | 
+#' var_tweet_create_request <- TweetCreateRequest$new("direct_message_deep_link_example", "for_super_followers_only_example", TweetCreateRequest_geo$new("place_id_example"), TweetCreateRequest_media$new(c("media_ids_example"), c("tagged_user_ids_example")), TweetCreateRequest_poll$new(123, c("options_example"), "following"), "quote_tweet_id_example", TweetCreateRequest_reply$new("in_reply_to_tweet_id_example", c("exclude_reply_user_ids_example")), "following", "text_example") # TweetCreateRequest |
 #'
-#' #Creation of a Tweet
+#' # Creation of a Tweet
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
@@ -914,22 +913,21 @@
 #'
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$tweets_api$create_tweet(var_tweet_create_request, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$tweets_api$create_tweet(var_tweet_create_request),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$tweets_api$create_tweet(var_tweet_create_request, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$tweets_api$create_tweet(var_tweet_create_request),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `create_tweet`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -943,7 +941,7 @@
 #' library(twitter)
 #' var_id <- "id_example" # character | The ID of the Tweet to be deleted.
 #'
-#' #Tweet delete by Tweet ID
+#' # Tweet delete by Tweet ID
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
@@ -951,22 +949,21 @@
 #'
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$tweets_api$delete_tweet_by_id(var_id, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$tweets_api$delete_tweet_by_id(var_id),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$tweets_api$delete_tweet_by_id(var_id, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$tweets_api$delete_tweet_by_id(var_id),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `delete_tweet_by_id`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -979,14 +976,14 @@
 #'
 #' library(twitter)
 #' var_id <- "id_example" # character | A single Tweet ID.
-#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
-#' var_expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var_media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
-#' var_poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
-#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var_place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
+#' var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+#' var_expansions <- c("attachments.media_keys") # set[character] | A comma separated list of fields to expand. (Optional)
+#' var_media_fields <- c("alt_text") # set[character] | A comma separated list of Media fields to display. (Optional)
+#' var_poll_fields <- c("duration_minutes") # set[character] | A comma separated list of Poll fields to display. (Optional)
+#' var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+#' var_place_fields <- c("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 #'
-#' #Tweet lookup by Tweet ID
+#' # Tweet lookup by Tweet ID
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure HTTP bearer authorization: BearerToken
@@ -997,22 +994,21 @@
 #'
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$tweets_api$find_tweet_by_id(var_id, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$tweets_api$find_tweet_by_id(var_id, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$tweets_api$find_tweet_by_id(var_id, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$tweets_api$find_tweet_by_id(var_id, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `find_tweet_by_id`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -1024,15 +1020,15 @@
 #' ####################  find_tweets_by_id  ####################
 #'
 #' library(twitter)
-#' var_ids <- ["ids_example"] # array[character] | A comma separated list of Tweet IDs. Up to 100 are allowed in a single request.
-#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
-#' var_expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var_media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
-#' var_poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
-#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var_place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
+#' var_ids <- c("inner_example") # array[character] | A comma separated list of Tweet IDs. Up to 100 are allowed in a single request.
+#' var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+#' var_expansions <- c("attachments.media_keys") # set[character] | A comma separated list of fields to expand. (Optional)
+#' var_media_fields <- c("alt_text") # set[character] | A comma separated list of Media fields to display. (Optional)
+#' var_poll_fields <- c("duration_minutes") # set[character] | A comma separated list of Poll fields to display. (Optional)
+#' var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+#' var_place_fields <- c("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 #'
-#' #Tweet lookup by Tweet IDs
+#' # Tweet lookup by Tweet IDs
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure HTTP bearer authorization: BearerToken
@@ -1043,22 +1039,21 @@
 #'
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$tweets_api$find_tweets_by_id(var_ids, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$tweets_api$find_tweets_by_id(var_ids, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$tweets_api$find_tweets_by_id(var_ids, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$tweets_api$find_tweets_by_id(var_ids, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `find_tweets_by_id`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -1071,17 +1066,17 @@
 #'
 #' library(twitter)
 #' var_id <- "id_example" # character | A single Tweet ID.
-#' var_max_results <- 10 # integer | The maximum number of results to be returned.
-#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results.
-#' var_exclude <- ["[\"replies\",\"retweets\"]"] # set[character] | The set of entities to exclude (e.g. 'replies' or 'retweets').
-#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
-#' var_expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var_media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
-#' var_poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
-#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var_place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
+#' var_max_results <- 10 # integer | The maximum number of results to be returned. (Optional)
+#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results. (Optional)
+#' var_exclude <- c("replies") # set[character] | The set of entities to exclude (e.g. 'replies' or 'retweets'). (Optional)
+#' var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+#' var_expansions <- c("attachments.media_keys") # set[character] | A comma separated list of fields to expand. (Optional)
+#' var_media_fields <- c("alt_text") # set[character] | A comma separated list of Media fields to display. (Optional)
+#' var_poll_fields <- c("duration_minutes") # set[character] | A comma separated list of Poll fields to display. (Optional)
+#' var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+#' var_place_fields <- c("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 #'
-#' #Retrieve Tweets that quote a Tweet.
+#' # Retrieve Tweets that quote a Tweet.
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure HTTP bearer authorization: BearerToken
@@ -1092,22 +1087,21 @@
 #'
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$tweets_api$find_tweets_that_quote_a_tweet(var_id, max_results = var_max_results, pagination_token = var_pagination_token, exclude = var_exclude, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$tweets_api$find_tweets_that_quote_a_tweet(var_id, max_results = var_max_results, pagination_token = var_pagination_token, exclude = var_exclude, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$tweets_api$find_tweets_that_quote_a_tweet(var_id, max_results = var_max_results, pagination_token = var_pagination_token, exclude = var_exclude, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$tweets_api$find_tweets_that_quote_a_tweet(var_id, max_results = var_max_results, pagination_token = var_pagination_token, exclude = var_exclude, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `find_tweets_that_quote_a_tweet`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -1119,33 +1113,32 @@
 #' ####################  get_rules  ####################
 #'
 #' library(twitter)
-#' var_ids <- ["ids_example"] # array[character] | A comma-separated list of Rule IDs.
-#' var_max_results <- 1000 # integer | The maximum number of results.
-#' var_pagination_token <- "pagination_token_example" # character | This value is populated by passing the 'next_token' returned in a request to paginate through results.
+#' var_ids <- c("inner_example") # array[character] | A comma-separated list of Rule IDs. (Optional)
+#' var_max_results <- 1000 # integer | The maximum number of results. (Optional)
+#' var_pagination_token <- "pagination_token_example" # character | This value is populated by passing the 'next_token' returned in a request to paginate through results. (Optional)
 #'
-#' #Rules lookup
+#' # Rules lookup
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure HTTP bearer authorization: BearerToken
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$tweets_api$get_rules(ids = var_ids, max_results = var_max_results, pagination_token = var_pagination_token, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$tweets_api$get_rules(ids = var_ids, max_results = var_max_results, pagination_token = var_pagination_token),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$tweets_api$get_rules(ids = var_ids, max_results = var_max_results, pagination_token = var_pagination_token, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$tweets_api$get_rules(ids = var_ids, max_results = var_max_results, pagination_token = var_pagination_token),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `get_rules`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -1158,42 +1151,41 @@
 #'
 #' library(twitter)
 #' var_partition <- 56 # integer | The partition number.
-#' var_backfill_minutes <- 56 # integer | The number of minutes of backfill requested.
-#' var_start_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp to which the Tweets will be provided.
-#' var_end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided.
-#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
-#' var_expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var_media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
-#' var_poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
-#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var_place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
+#' var_backfill_minutes <- 56 # integer | The number of minutes of backfill requested. (Optional)
+#' var_start_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp to which the Tweets will be provided. (Optional)
+#' var_end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided. (Optional)
+#' var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+#' var_expansions <- c("attachments.media_keys") # set[character] | A comma separated list of fields to expand. (Optional)
+#' var_media_fields <- c("alt_text") # set[character] | A comma separated list of Media fields to display. (Optional)
+#' var_poll_fields <- c("duration_minutes") # set[character] | A comma separated list of Poll fields to display. (Optional)
+#' var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+#' var_place_fields <- c("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 #'
-#' #Firehose stream
+#' # Firehose stream
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure HTTP bearer authorization: BearerToken
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$tweets_api$get_tweets_firehose_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
-#'              
-#'              # this endpoint supports data streaming via a callback function using the optional `stream_callback` parameter, e.g.
-#'              # api_instance$tweets_api$get_tweets_firehose_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, stream_callback = function(x){ print(length(x)) }),
-#'              
-#'              
-#'              api_instance$tweets_api$get_tweets_firehose_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$tweets_api$get_tweets_firehose_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
+#'
+#'   # this endpoint supports data streaming via a callback function using the optional `stream_callback` parameter, e.g.
+#'   # api_instance$tweets_api$get_tweets_firehose_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, stream_callback = function(x){ print(length(x)) }),
+#'
+#'
+#'   api_instance$tweets_api$get_tweets_firehose_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `get_tweets_firehose_stream`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -1206,42 +1198,41 @@
 #'
 #' library(twitter)
 #' var_partition <- 56 # integer | The partition number.
-#' var_backfill_minutes <- 56 # integer | The number of minutes of backfill requested.
-#' var_start_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp to which the Tweets will be provided.
-#' var_end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided.
-#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
-#' var_expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var_media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
-#' var_poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
-#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var_place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
+#' var_backfill_minutes <- 56 # integer | The number of minutes of backfill requested. (Optional)
+#' var_start_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp to which the Tweets will be provided. (Optional)
+#' var_end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided. (Optional)
+#' var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+#' var_expansions <- c("attachments.media_keys") # set[character] | A comma separated list of fields to expand. (Optional)
+#' var_media_fields <- c("alt_text") # set[character] | A comma separated list of Media fields to display. (Optional)
+#' var_poll_fields <- c("duration_minutes") # set[character] | A comma separated list of Poll fields to display. (Optional)
+#' var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+#' var_place_fields <- c("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 #'
-#' #Sample 10% stream
+#' # Sample 10% stream
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure HTTP bearer authorization: BearerToken
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$tweets_api$get_tweets_sample10_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
-#'              
-#'              # this endpoint supports data streaming via a callback function using the optional `stream_callback` parameter, e.g.
-#'              # api_instance$tweets_api$get_tweets_sample10_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, stream_callback = function(x){ print(length(x)) }),
-#'              
-#'              
-#'              api_instance$tweets_api$get_tweets_sample10_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$tweets_api$get_tweets_sample10_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
+#'
+#'   # this endpoint supports data streaming via a callback function using the optional `stream_callback` parameter, e.g.
+#'   # api_instance$tweets_api$get_tweets_sample10_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, stream_callback = function(x){ print(length(x)) }),
+#'
+#'
+#'   api_instance$tweets_api$get_tweets_sample10_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `get_tweets_sample10_stream`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -1254,9 +1245,9 @@
 #'
 #' library(twitter)
 #' var_tweet_id <- "tweet_id_example" # character | The ID of the reply that you want to hide or unhide.
-#' var_tweet_hide_request <- TweetHideRequest$new() # TweetHideRequest | 
+#' var_tweet_hide_request <- TweetHideRequest$new("hidden_example") # TweetHideRequest |  (Optional)
 #'
-#' #Hide replies
+#' # Hide replies
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
@@ -1264,22 +1255,21 @@
 #'
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$tweets_api$hide_reply_by_id(var_tweet_id, tweet_hide_request = var_tweet_hide_request, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$tweets_api$hide_reply_by_id(var_tweet_id, tweet_hide_request = var_tweet_hide_request),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$tweets_api$hide_reply_by_id(var_tweet_id, tweet_hide_request = var_tweet_hide_request, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$tweets_api$hide_reply_by_id(var_tweet_id, tweet_hide_request = var_tweet_hide_request),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `hide_reply_by_id`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -1292,16 +1282,16 @@
 #'
 #' library(twitter)
 #' var_id <- "id_example" # character | The ID of the List.
-#' var_max_results <- 100 # integer | The maximum number of results.
-#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results.
-#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
-#' var_expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var_media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
-#' var_poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
-#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var_place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
+#' var_max_results <- 100 # integer | The maximum number of results. (Optional)
+#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. (Optional)
+#' var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+#' var_expansions <- c("attachments.media_keys") # set[character] | A comma separated list of fields to expand. (Optional)
+#' var_media_fields <- c("alt_text") # set[character] | A comma separated list of Media fields to display. (Optional)
+#' var_poll_fields <- c("duration_minutes") # set[character] | A comma separated list of Poll fields to display. (Optional)
+#' var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+#' var_place_fields <- c("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 #'
-#' #List Tweets timeline by List ID.
+#' # List Tweets timeline by List ID.
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure HTTP bearer authorization: BearerToken
@@ -1312,22 +1302,21 @@
 #'
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$tweets_api$lists_id_tweets(var_id, max_results = var_max_results, pagination_token = var_pagination_token, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$tweets_api$lists_id_tweets(var_id, max_results = var_max_results, pagination_token = var_pagination_token, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$tweets_api$lists_id_tweets(var_id, max_results = var_max_results, pagination_token = var_pagination_token, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$tweets_api$lists_id_tweets(var_id, max_results = var_max_results, pagination_token = var_pagination_token, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `lists_id_tweets`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -1339,40 +1328,39 @@
 #' ####################  sample_stream  ####################
 #'
 #' library(twitter)
-#' var_backfill_minutes <- 56 # integer | The number of minutes of backfill requested.
-#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
-#' var_expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var_media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
-#' var_poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
-#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var_place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
+#' var_backfill_minutes <- 56 # integer | The number of minutes of backfill requested. (Optional)
+#' var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+#' var_expansions <- c("attachments.media_keys") # set[character] | A comma separated list of fields to expand. (Optional)
+#' var_media_fields <- c("alt_text") # set[character] | A comma separated list of Media fields to display. (Optional)
+#' var_poll_fields <- c("duration_minutes") # set[character] | A comma separated list of Poll fields to display. (Optional)
+#' var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+#' var_place_fields <- c("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 #'
-#' #Sample stream
+#' # Sample stream
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure HTTP bearer authorization: BearerToken
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$tweets_api$sample_stream(backfill_minutes = var_backfill_minutes, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
-#'              
-#'              # this endpoint supports data streaming via a callback function using the optional `stream_callback` parameter, e.g.
-#'              # api_instance$tweets_api$sample_stream(backfill_minutes = var_backfill_minutes, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, stream_callback = function(x){ print(length(x)) }),
-#'              
-#'              
-#'              api_instance$tweets_api$sample_stream(backfill_minutes = var_backfill_minutes, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$tweets_api$sample_stream(backfill_minutes = var_backfill_minutes, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
+#'
+#'   # this endpoint supports data streaming via a callback function using the optional `stream_callback` parameter, e.g.
+#'   # api_instance$tweets_api$sample_stream(backfill_minutes = var_backfill_minutes, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, stream_callback = function(x){ print(length(x)) }),
+#'
+#'
+#'   api_instance$tweets_api$sample_stream(backfill_minutes = var_backfill_minutes, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `sample_stream`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -1384,42 +1372,41 @@
 #' ####################  search_stream  ####################
 #'
 #' library(twitter)
-#' var_backfill_minutes <- 56 # integer | The number of minutes of backfill requested.
-#' var_start_time <- "2021-02-01T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweets will be provided.
-#' var_end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided.
-#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
-#' var_expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var_media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
-#' var_poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
-#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var_place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
+#' var_backfill_minutes <- 56 # integer | The number of minutes of backfill requested. (Optional)
+#' var_start_time <- "2021-02-01T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweets will be provided. (Optional)
+#' var_end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided. (Optional)
+#' var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+#' var_expansions <- c("attachments.media_keys") # set[character] | A comma separated list of fields to expand. (Optional)
+#' var_media_fields <- c("alt_text") # set[character] | A comma separated list of Media fields to display. (Optional)
+#' var_poll_fields <- c("duration_minutes") # set[character] | A comma separated list of Poll fields to display. (Optional)
+#' var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+#' var_place_fields <- c("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 #'
-#' #Filtered stream
+#' # Filtered stream
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure HTTP bearer authorization: BearerToken
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$tweets_api$search_stream(backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
-#'              
-#'              # this endpoint supports data streaming via a callback function using the optional `stream_callback` parameter, e.g.
-#'              # api_instance$tweets_api$search_stream(backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, stream_callback = function(x){ print(length(x)) }),
-#'              
-#'              
-#'              api_instance$tweets_api$search_stream(backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$tweets_api$search_stream(backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
+#'
+#'   # this endpoint supports data streaming via a callback function using the optional `stream_callback` parameter, e.g.
+#'   # api_instance$tweets_api$search_stream(backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, stream_callback = function(x){ print(length(x)) }),
+#'
+#'
+#'   api_instance$tweets_api$search_stream(backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `search_stream`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -1432,35 +1419,34 @@
 #'
 #' library(twitter)
 #' var_id <- "1YqKDqWqdPLsV" # character | The ID of the Space to be retrieved.
-#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results.
-#' var_max_results <- 100 # integer | The maximum number of results.
-#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var_expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
+#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results. (Optional)
+#' var_max_results <- 100 # integer | The maximum number of results. (Optional)
+#' var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+#' var_expansions <- c("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
+#' var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 #'
-#' #Retrieve the list of Users who purchased a ticket to the given space
+#' # Retrieve the list of Users who purchased a ticket to the given space
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
 #' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$tweets_api$space_buyers(var_id, pagination_token = var_pagination_token, max_results = var_max_results, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$tweets_api$space_buyers(var_id, pagination_token = var_pagination_token, max_results = var_max_results, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$tweets_api$space_buyers(var_id, pagination_token = var_pagination_token, max_results = var_max_results, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$tweets_api$space_buyers(var_id, pagination_token = var_pagination_token, max_results = var_max_results, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `space_buyers`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -1473,15 +1459,15 @@
 #'
 #' library(twitter)
 #' var_id <- "1YqKDqWqdPLsV" # character | The ID of the Space to be retrieved.
-#' var_max_results <- 100 # integer | The number of Tweets to fetch from the provided space. If not provided, the value will default to the maximum of 100.
-#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
-#' var_expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var_media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
-#' var_poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
-#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var_place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
+#' var_max_results <- 100 # integer | The number of Tweets to fetch from the provided space. If not provided, the value will default to the maximum of 100. (Optional)
+#' var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+#' var_expansions <- c("attachments.media_keys") # set[character] | A comma separated list of fields to expand. (Optional)
+#' var_media_fields <- c("alt_text") # set[character] | A comma separated list of Media fields to display. (Optional)
+#' var_poll_fields <- c("duration_minutes") # set[character] | A comma separated list of Poll fields to display. (Optional)
+#' var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+#' var_place_fields <- c("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 #'
-#' #Retrieve Tweets from a Space.
+#' # Retrieve Tweets from a Space.
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure HTTP bearer authorization: BearerToken
@@ -1491,22 +1477,21 @@
 #' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$tweets_api$space_tweets(var_id, max_results = var_max_results, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$tweets_api$space_tweets(var_id, max_results = var_max_results, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$tweets_api$space_tweets(var_id, max_results = var_max_results, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$tweets_api$space_tweets(var_id, max_results = var_max_results, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `space_tweets`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -1519,38 +1504,37 @@
 #'
 #' library(twitter)
 #' var_query <- "(from:TwitterDev OR from:TwitterAPI) has:media -is:retweet" # character | One query/rule/filter for matching Tweets. Refer to https://t.co/rulelength to identify the max query length.
-#' var_start_time <- "start_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The oldest UTC timestamp (from most recent 7 days) from which the Tweets will be provided. Timestamp is in second granularity and is inclusive (i.e. 12:00:01 includes the first second of the minute).
-#' var_end_time <- "end_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The newest, most recent UTC timestamp to which the Tweets will be provided. Timestamp is in second granularity and is exclusive (i.e. 12:00:01 excludes the first second of the minute).
-#' var_since_id <- "since_id_example" # character | Returns results with a Tweet ID greater than (that is, more recent than) the specified ID.
-#' var_until_id <- "until_id_example" # character | Returns results with a Tweet ID less than (that is, older than) the specified ID.
-#' var_next_token <- "next_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
-#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
-#' var_granularity <- "hour" # character | The granularity for the search counts results.
-#' var_search_count_fields <- ["[\"end\",\"start\",\"tweet_count\"]"] # set[character] | A comma separated list of SearchCount fields to display.
+#' var_start_time <- "start_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The oldest UTC timestamp (from most recent 7 days) from which the Tweets will be provided. Timestamp is in second granularity and is inclusive (i.e. 12:00:01 includes the first second of the minute). (Optional)
+#' var_end_time <- "end_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The newest, most recent UTC timestamp to which the Tweets will be provided. Timestamp is in second granularity and is exclusive (i.e. 12:00:01 excludes the first second of the minute). (Optional)
+#' var_since_id <- "since_id_example" # character | Returns results with a Tweet ID greater than (that is, more recent than) the specified ID. (Optional)
+#' var_until_id <- "until_id_example" # character | Returns results with a Tweet ID less than (that is, older than) the specified ID. (Optional)
+#' var_next_token <- "next_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified. (Optional)
+#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified. (Optional)
+#' var_granularity <- "hour" # character | The granularity for the search counts results. (Optional)
+#' var_search_count_fields <- c("end") # set[character] | A comma separated list of SearchCount fields to display. (Optional)
 #'
-#' #Full archive search counts
+#' # Full archive search counts
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure HTTP bearer authorization: BearerToken
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$tweets_api$tweet_counts_full_archive_search(var_query, start_time = var_start_time, end_time = var_end_time, since_id = var_since_id, until_id = var_until_id, next_token = var_next_token, pagination_token = var_pagination_token, granularity = var_granularity, search_count_fields = var_search_count_fields, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$tweets_api$tweet_counts_full_archive_search(var_query, start_time = var_start_time, end_time = var_end_time, since_id = var_since_id, until_id = var_until_id, next_token = var_next_token, pagination_token = var_pagination_token, granularity = var_granularity, search_count_fields = var_search_count_fields),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$tweets_api$tweet_counts_full_archive_search(var_query, start_time = var_start_time, end_time = var_end_time, since_id = var_since_id, until_id = var_until_id, next_token = var_next_token, pagination_token = var_pagination_token, granularity = var_granularity, search_count_fields = var_search_count_fields, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$tweets_api$tweet_counts_full_archive_search(var_query, start_time = var_start_time, end_time = var_end_time, since_id = var_since_id, until_id = var_until_id, next_token = var_next_token, pagination_token = var_pagination_token, granularity = var_granularity, search_count_fields = var_search_count_fields),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `tweet_counts_full_archive_search`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -1563,38 +1547,37 @@
 #'
 #' library(twitter)
 #' var_query <- "(from:TwitterDev OR from:TwitterAPI) has:media -is:retweet" # character | One query/rule/filter for matching Tweets. Refer to https://t.co/rulelength to identify the max query length.
-#' var_start_time <- "start_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The oldest UTC timestamp (from most recent 7 days) from which the Tweets will be provided. Timestamp is in second granularity and is inclusive (i.e. 12:00:01 includes the first second of the minute).
-#' var_end_time <- "end_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The newest, most recent UTC timestamp to which the Tweets will be provided. Timestamp is in second granularity and is exclusive (i.e. 12:00:01 excludes the first second of the minute).
-#' var_since_id <- "since_id_example" # character | Returns results with a Tweet ID greater than (that is, more recent than) the specified ID.
-#' var_until_id <- "until_id_example" # character | Returns results with a Tweet ID less than (that is, older than) the specified ID.
-#' var_next_token <- "next_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
-#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
-#' var_granularity <- "hour" # character | The granularity for the search counts results.
-#' var_search_count_fields <- ["[\"end\",\"start\",\"tweet_count\"]"] # set[character] | A comma separated list of SearchCount fields to display.
+#' var_start_time <- "start_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The oldest UTC timestamp (from most recent 7 days) from which the Tweets will be provided. Timestamp is in second granularity and is inclusive (i.e. 12:00:01 includes the first second of the minute). (Optional)
+#' var_end_time <- "end_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The newest, most recent UTC timestamp to which the Tweets will be provided. Timestamp is in second granularity and is exclusive (i.e. 12:00:01 excludes the first second of the minute). (Optional)
+#' var_since_id <- "since_id_example" # character | Returns results with a Tweet ID greater than (that is, more recent than) the specified ID. (Optional)
+#' var_until_id <- "until_id_example" # character | Returns results with a Tweet ID less than (that is, older than) the specified ID. (Optional)
+#' var_next_token <- "next_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified. (Optional)
+#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified. (Optional)
+#' var_granularity <- "hour" # character | The granularity for the search counts results. (Optional)
+#' var_search_count_fields <- c("end") # set[character] | A comma separated list of SearchCount fields to display. (Optional)
 #'
-#' #Recent search counts
+#' # Recent search counts
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure HTTP bearer authorization: BearerToken
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$tweets_api$tweet_counts_recent_search(var_query, start_time = var_start_time, end_time = var_end_time, since_id = var_since_id, until_id = var_until_id, next_token = var_next_token, pagination_token = var_pagination_token, granularity = var_granularity, search_count_fields = var_search_count_fields, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$tweets_api$tweet_counts_recent_search(var_query, start_time = var_start_time, end_time = var_end_time, since_id = var_since_id, until_id = var_until_id, next_token = var_next_token, pagination_token = var_pagination_token, granularity = var_granularity, search_count_fields = var_search_count_fields),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$tweets_api$tweet_counts_recent_search(var_query, start_time = var_start_time, end_time = var_end_time, since_id = var_since_id, until_id = var_until_id, next_token = var_next_token, pagination_token = var_pagination_token, granularity = var_granularity, search_count_fields = var_search_count_fields, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$tweets_api$tweet_counts_recent_search(var_query, start_time = var_start_time, end_time = var_end_time, since_id = var_since_id, until_id = var_until_id, next_token = var_next_token, pagination_token = var_pagination_token, granularity = var_granularity, search_count_fields = var_search_count_fields),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `tweet_counts_recent_search`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -1607,44 +1590,43 @@
 #'
 #' library(twitter)
 #' var_query <- "(from:TwitterDev OR from:TwitterAPI) has:media -is:retweet" # character | One query/rule/filter for matching Tweets. Refer to https://t.co/rulelength to identify the max query length.
-#' var_start_time <- "start_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The oldest UTC timestamp from which the Tweets will be provided. Timestamp is in second granularity and is inclusive (i.e. 12:00:01 includes the first second of the minute).
-#' var_end_time <- "end_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The newest, most recent UTC timestamp to which the Tweets will be provided. Timestamp is in second granularity and is exclusive (i.e. 12:00:01 excludes the first second of the minute).
-#' var_since_id <- "since_id_example" # character | Returns results with a Tweet ID greater than (that is, more recent than) the specified ID.
-#' var_until_id <- "until_id_example" # character | Returns results with a Tweet ID less than (that is, older than) the specified ID.
-#' var_max_results <- 10 # integer | The maximum number of search results to be returned by a request.
-#' var_next_token <- "next_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
-#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
-#' var_sort_order <- "sort_order_example" # character | This order in which to return results.
-#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
-#' var_expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var_media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
-#' var_poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
-#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var_place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
+#' var_start_time <- "start_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The oldest UTC timestamp from which the Tweets will be provided. Timestamp is in second granularity and is inclusive (i.e. 12:00:01 includes the first second of the minute). (Optional)
+#' var_end_time <- "end_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The newest, most recent UTC timestamp to which the Tweets will be provided. Timestamp is in second granularity and is exclusive (i.e. 12:00:01 excludes the first second of the minute). (Optional)
+#' var_since_id <- "since_id_example" # character | Returns results with a Tweet ID greater than (that is, more recent than) the specified ID. (Optional)
+#' var_until_id <- "until_id_example" # character | Returns results with a Tweet ID less than (that is, older than) the specified ID. (Optional)
+#' var_max_results <- 10 # integer | The maximum number of search results to be returned by a request. (Optional)
+#' var_next_token <- "next_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified. (Optional)
+#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified. (Optional)
+#' var_sort_order <- "sort_order_example" # character | This order in which to return results. (Optional)
+#' var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+#' var_expansions <- c("attachments.media_keys") # set[character] | A comma separated list of fields to expand. (Optional)
+#' var_media_fields <- c("alt_text") # set[character] | A comma separated list of Media fields to display. (Optional)
+#' var_poll_fields <- c("duration_minutes") # set[character] | A comma separated list of Poll fields to display. (Optional)
+#' var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+#' var_place_fields <- c("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 #'
-#' #Full-archive search
+#' # Full-archive search
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure HTTP bearer authorization: BearerToken
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$tweets_api$tweets_fullarchive_search(var_query, start_time = var_start_time, end_time = var_end_time, since_id = var_since_id, until_id = var_until_id, max_results = var_max_results, next_token = var_next_token, pagination_token = var_pagination_token, sort_order = var_sort_order, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$tweets_api$tweets_fullarchive_search(var_query, start_time = var_start_time, end_time = var_end_time, since_id = var_since_id, until_id = var_until_id, max_results = var_max_results, next_token = var_next_token, pagination_token = var_pagination_token, sort_order = var_sort_order, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$tweets_api$tweets_fullarchive_search(var_query, start_time = var_start_time, end_time = var_end_time, since_id = var_since_id, until_id = var_until_id, max_results = var_max_results, next_token = var_next_token, pagination_token = var_pagination_token, sort_order = var_sort_order, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$tweets_api$tweets_fullarchive_search(var_query, start_time = var_start_time, end_time = var_end_time, since_id = var_since_id, until_id = var_until_id, max_results = var_max_results, next_token = var_next_token, pagination_token = var_pagination_token, sort_order = var_sort_order, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `tweets_fullarchive_search`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -1657,22 +1639,22 @@
 #'
 #' library(twitter)
 #' var_query <- "(from:TwitterDev OR from:TwitterAPI) has:media -is:retweet" # character | One query/rule/filter for matching Tweets. Refer to https://t.co/rulelength to identify the max query length.
-#' var_start_time <- "start_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The oldest UTC timestamp from which the Tweets will be provided. Timestamp is in second granularity and is inclusive (i.e. 12:00:01 includes the first second of the minute).
-#' var_end_time <- "end_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The newest, most recent UTC timestamp to which the Tweets will be provided. Timestamp is in second granularity and is exclusive (i.e. 12:00:01 excludes the first second of the minute).
-#' var_since_id <- "since_id_example" # character | Returns results with a Tweet ID greater than (that is, more recent than) the specified ID.
-#' var_until_id <- "until_id_example" # character | Returns results with a Tweet ID less than (that is, older than) the specified ID.
-#' var_max_results <- 10 # integer | The maximum number of search results to be returned by a request.
-#' var_next_token <- "next_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
-#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified.
-#' var_sort_order <- "sort_order_example" # character | This order in which to return results.
-#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
-#' var_expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var_media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
-#' var_poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
-#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var_place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
+#' var_start_time <- "start_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The oldest UTC timestamp from which the Tweets will be provided. Timestamp is in second granularity and is inclusive (i.e. 12:00:01 includes the first second of the minute). (Optional)
+#' var_end_time <- "end_time_example" # character | YYYY-MM-DDTHH:mm:ssZ. The newest, most recent UTC timestamp to which the Tweets will be provided. Timestamp is in second granularity and is exclusive (i.e. 12:00:01 excludes the first second of the minute). (Optional)
+#' var_since_id <- "since_id_example" # character | Returns results with a Tweet ID greater than (that is, more recent than) the specified ID. (Optional)
+#' var_until_id <- "until_id_example" # character | Returns results with a Tweet ID less than (that is, older than) the specified ID. (Optional)
+#' var_max_results <- 10 # integer | The maximum number of search results to be returned by a request. (Optional)
+#' var_next_token <- "next_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified. (Optional)
+#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. The value used with the parameter is pulled directly from the response provided by the API, and should not be modified. (Optional)
+#' var_sort_order <- "sort_order_example" # character | This order in which to return results. (Optional)
+#' var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+#' var_expansions <- c("attachments.media_keys") # set[character] | A comma separated list of fields to expand. (Optional)
+#' var_media_fields <- c("alt_text") # set[character] | A comma separated list of Media fields to display. (Optional)
+#' var_poll_fields <- c("duration_minutes") # set[character] | A comma separated list of Poll fields to display. (Optional)
+#' var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+#' var_place_fields <- c("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 #'
-#' #Recent search
+#' # Recent search
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure HTTP bearer authorization: BearerToken
@@ -1683,22 +1665,21 @@
 #'
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$tweets_api$tweets_recent_search(var_query, start_time = var_start_time, end_time = var_end_time, since_id = var_since_id, until_id = var_until_id, max_results = var_max_results, next_token = var_next_token, pagination_token = var_pagination_token, sort_order = var_sort_order, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$tweets_api$tweets_recent_search(var_query, start_time = var_start_time, end_time = var_end_time, since_id = var_since_id, until_id = var_until_id, max_results = var_max_results, next_token = var_next_token, pagination_token = var_pagination_token, sort_order = var_sort_order, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$tweets_api$tweets_recent_search(var_query, start_time = var_start_time, end_time = var_end_time, since_id = var_since_id, until_id = var_until_id, max_results = var_max_results, next_token = var_next_token, pagination_token = var_pagination_token, sort_order = var_sort_order, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$tweets_api$tweets_recent_search(var_query, start_time = var_start_time, end_time = var_end_time, since_id = var_since_id, until_id = var_until_id, max_results = var_max_results, next_token = var_next_token, pagination_token = var_pagination_token, sort_order = var_sort_order, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `tweets_recent_search`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -1711,9 +1692,9 @@
 #'
 #' library(twitter)
 #' var_id <- "id_example" # character | The ID of the authenticated source User that is requesting to like the Tweet.
-#' var_users_likes_create_request <- UsersLikesCreateRequest$new() # UsersLikesCreateRequest | 
+#' var_users_likes_create_request <- UsersLikesCreateRequest$new("tweet_id_example") # UsersLikesCreateRequest |  (Optional)
 #'
-#' #Causes the User (in the path) to like the specified Tweet
+#' # Causes the User (in the path) to like the specified Tweet
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
@@ -1721,22 +1702,21 @@
 #'
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$tweets_api$users_id_like(var_id, users_likes_create_request = var_users_likes_create_request, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$tweets_api$users_id_like(var_id, users_likes_create_request = var_users_likes_create_request),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$tweets_api$users_id_like(var_id, users_likes_create_request = var_users_likes_create_request, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$tweets_api$users_id_like(var_id, users_likes_create_request = var_users_likes_create_request),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `users_id_like`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -1749,16 +1729,16 @@
 #'
 #' library(twitter)
 #' var_id <- "2244994945" # character | The ID of the User to lookup.
-#' var_max_results <- 56 # integer | The maximum number of results.
-#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results.
-#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
-#' var_expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var_media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
-#' var_poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
-#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var_place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
+#' var_max_results <- 56 # integer | The maximum number of results. (Optional)
+#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. (Optional)
+#' var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+#' var_expansions <- c("attachments.media_keys") # set[character] | A comma separated list of fields to expand. (Optional)
+#' var_media_fields <- c("alt_text") # set[character] | A comma separated list of Media fields to display. (Optional)
+#' var_poll_fields <- c("duration_minutes") # set[character] | A comma separated list of Poll fields to display. (Optional)
+#' var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+#' var_place_fields <- c("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 #'
-#' #Returns Tweet objects liked by the provided User ID
+#' # Returns Tweet objects liked by the provided User ID
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure HTTP bearer authorization: BearerToken
@@ -1769,22 +1749,21 @@
 #'
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$tweets_api$users_id_liked_tweets(var_id, max_results = var_max_results, pagination_token = var_pagination_token, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$tweets_api$users_id_liked_tweets(var_id, max_results = var_max_results, pagination_token = var_pagination_token, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$tweets_api$users_id_liked_tweets(var_id, max_results = var_max_results, pagination_token = var_pagination_token, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$tweets_api$users_id_liked_tweets(var_id, max_results = var_max_results, pagination_token = var_pagination_token, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `users_id_liked_tweets`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -1797,20 +1776,20 @@
 #'
 #' library(twitter)
 #' var_id <- "2244994945" # character | The ID of the User to lookup.
-#' var_since_id <- "since_id_example" # character | The minimum Tweet ID to be included in the result set. This parameter takes precedence over start_time if both are specified.
-#' var_until_id <- "1346889436626259968" # character | The maximum Tweet ID to be included in the result set. This parameter takes precedence over end_time if both are specified.
-#' var_max_results <- 56 # integer | The maximum number of results.
-#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results.
-#' var_start_time <- "2021-02-01T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweets will be provided. The since_id parameter takes precedence if it is also specified.
-#' var_end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided. The until_id parameter takes precedence if it is also specified.
-#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
-#' var_expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var_media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
-#' var_poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
-#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var_place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
+#' var_since_id <- "since_id_example" # character | The minimum Tweet ID to be included in the result set. This parameter takes precedence over start_time if both are specified. (Optional)
+#' var_until_id <- "1346889436626259968" # character | The maximum Tweet ID to be included in the result set. This parameter takes precedence over end_time if both are specified. (Optional)
+#' var_max_results <- 56 # integer | The maximum number of results. (Optional)
+#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. (Optional)
+#' var_start_time <- "2021-02-01T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweets will be provided. The since_id parameter takes precedence if it is also specified. (Optional)
+#' var_end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided. The until_id parameter takes precedence if it is also specified. (Optional)
+#' var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+#' var_expansions <- c("attachments.media_keys") # set[character] | A comma separated list of fields to expand. (Optional)
+#' var_media_fields <- c("alt_text") # set[character] | A comma separated list of Media fields to display. (Optional)
+#' var_poll_fields <- c("duration_minutes") # set[character] | A comma separated list of Poll fields to display. (Optional)
+#' var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+#' var_place_fields <- c("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 #'
-#' #User mention timeline by User ID
+#' # User mention timeline by User ID
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure HTTP bearer authorization: BearerToken
@@ -1821,22 +1800,21 @@
 #'
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$tweets_api$users_id_mentions(var_id, since_id = var_since_id, until_id = var_until_id, max_results = var_max_results, pagination_token = var_pagination_token, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$tweets_api$users_id_mentions(var_id, since_id = var_since_id, until_id = var_until_id, max_results = var_max_results, pagination_token = var_pagination_token, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$tweets_api$users_id_mentions(var_id, since_id = var_since_id, until_id = var_until_id, max_results = var_max_results, pagination_token = var_pagination_token, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$tweets_api$users_id_mentions(var_id, since_id = var_since_id, until_id = var_until_id, max_results = var_max_results, pagination_token = var_pagination_token, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `users_id_mentions`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -1849,9 +1827,9 @@
 #'
 #' library(twitter)
 #' var_id <- "id_example" # character | The ID of the authenticated source User that is requesting to retweet the Tweet.
-#' var_users_retweets_create_request <- UsersRetweetsCreateRequest$new() # UsersRetweetsCreateRequest | 
+#' var_users_retweets_create_request <- UsersRetweetsCreateRequest$new("tweet_id_example") # UsersRetweetsCreateRequest |  (Optional)
 #'
-#' #Causes the User (in the path) to retweet the specified Tweet.
+#' # Causes the User (in the path) to retweet the specified Tweet.
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
@@ -1859,22 +1837,21 @@
 #'
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$tweets_api$users_id_retweets(var_id, users_retweets_create_request = var_users_retweets_create_request, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$tweets_api$users_id_retweets(var_id, users_retweets_create_request = var_users_retweets_create_request),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$tweets_api$users_id_retweets(var_id, users_retweets_create_request = var_users_retweets_create_request, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$tweets_api$users_id_retweets(var_id, users_retweets_create_request = var_users_retweets_create_request),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `users_id_retweets`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -1887,21 +1864,21 @@
 #'
 #' library(twitter)
 #' var_id <- "id_example" # character | The ID of the authenticated source User to list Reverse Chronological Timeline Tweets of.
-#' var_since_id <- "791775337160081409" # character | The minimum Tweet ID to be included in the result set. This parameter takes precedence over start_time if both are specified.
-#' var_until_id <- "1346889436626259968" # character | The maximum Tweet ID to be included in the result set. This parameter takes precedence over end_time if both are specified.
-#' var_max_results <- 56 # integer | The maximum number of results.
-#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results.
-#' var_exclude <- ["[\"replies\",\"retweets\"]"] # set[character] | The set of entities to exclude (e.g. 'replies' or 'retweets').
-#' var_start_time <- "2021-02-01T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweets will be provided. The since_id parameter takes precedence if it is also specified.
-#' var_end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided. The until_id parameter takes precedence if it is also specified.
-#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
-#' var_expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var_media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
-#' var_poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
-#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var_place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
+#' var_since_id <- "791775337160081409" # character | The minimum Tweet ID to be included in the result set. This parameter takes precedence over start_time if both are specified. (Optional)
+#' var_until_id <- "1346889436626259968" # character | The maximum Tweet ID to be included in the result set. This parameter takes precedence over end_time if both are specified. (Optional)
+#' var_max_results <- 56 # integer | The maximum number of results. (Optional)
+#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. (Optional)
+#' var_exclude <- c("replies") # set[character] | The set of entities to exclude (e.g. 'replies' or 'retweets'). (Optional)
+#' var_start_time <- "2021-02-01T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweets will be provided. The since_id parameter takes precedence if it is also specified. (Optional)
+#' var_end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided. The until_id parameter takes precedence if it is also specified. (Optional)
+#' var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+#' var_expansions <- c("attachments.media_keys") # set[character] | A comma separated list of fields to expand. (Optional)
+#' var_media_fields <- c("alt_text") # set[character] | A comma separated list of Media fields to display. (Optional)
+#' var_poll_fields <- c("duration_minutes") # set[character] | A comma separated list of Poll fields to display. (Optional)
+#' var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+#' var_place_fields <- c("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 #'
-#' #User home timeline by User ID
+#' # User home timeline by User ID
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
@@ -1909,22 +1886,21 @@
 #'
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$tweets_api$users_id_timeline(var_id, since_id = var_since_id, until_id = var_until_id, max_results = var_max_results, pagination_token = var_pagination_token, exclude = var_exclude, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$tweets_api$users_id_timeline(var_id, since_id = var_since_id, until_id = var_until_id, max_results = var_max_results, pagination_token = var_pagination_token, exclude = var_exclude, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$tweets_api$users_id_timeline(var_id, since_id = var_since_id, until_id = var_until_id, max_results = var_max_results, pagination_token = var_pagination_token, exclude = var_exclude, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$tweets_api$users_id_timeline(var_id, since_id = var_since_id, until_id = var_until_id, max_results = var_max_results, pagination_token = var_pagination_token, exclude = var_exclude, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `users_id_timeline`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -1937,21 +1913,21 @@
 #'
 #' library(twitter)
 #' var_id <- "2244994945" # character | The ID of the User to lookup.
-#' var_since_id <- "791775337160081409" # character | The minimum Tweet ID to be included in the result set. This parameter takes precedence over start_time if both are specified.
-#' var_until_id <- "1346889436626259968" # character | The maximum Tweet ID to be included in the result set. This parameter takes precedence over end_time if both are specified.
-#' var_max_results <- 56 # integer | The maximum number of results.
-#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results.
-#' var_exclude <- ["[\"replies\",\"retweets\"]"] # set[character] | The set of entities to exclude (e.g. 'replies' or 'retweets').
-#' var_start_time <- "2021-02-01T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweets will be provided. The since_id parameter takes precedence if it is also specified.
-#' var_end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided. The until_id parameter takes precedence if it is also specified.
-#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
-#' var_expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var_media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
-#' var_poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
-#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var_place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
+#' var_since_id <- "791775337160081409" # character | The minimum Tweet ID to be included in the result set. This parameter takes precedence over start_time if both are specified. (Optional)
+#' var_until_id <- "1346889436626259968" # character | The maximum Tweet ID to be included in the result set. This parameter takes precedence over end_time if both are specified. (Optional)
+#' var_max_results <- 56 # integer | The maximum number of results. (Optional)
+#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. (Optional)
+#' var_exclude <- c("replies") # set[character] | The set of entities to exclude (e.g. 'replies' or 'retweets'). (Optional)
+#' var_start_time <- "2021-02-01T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweets will be provided. The since_id parameter takes precedence if it is also specified. (Optional)
+#' var_end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided. The until_id parameter takes precedence if it is also specified. (Optional)
+#' var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+#' var_expansions <- c("attachments.media_keys") # set[character] | A comma separated list of fields to expand. (Optional)
+#' var_media_fields <- c("alt_text") # set[character] | A comma separated list of Media fields to display. (Optional)
+#' var_poll_fields <- c("duration_minutes") # set[character] | A comma separated list of Poll fields to display. (Optional)
+#' var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+#' var_place_fields <- c("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 #'
-#' #User Tweets timeline by User ID
+#' # User Tweets timeline by User ID
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure HTTP bearer authorization: BearerToken
@@ -1962,22 +1938,21 @@
 #'
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$tweets_api$users_id_tweets(var_id, since_id = var_since_id, until_id = var_until_id, max_results = var_max_results, pagination_token = var_pagination_token, exclude = var_exclude, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$tweets_api$users_id_tweets(var_id, since_id = var_since_id, until_id = var_until_id, max_results = var_max_results, pagination_token = var_pagination_token, exclude = var_exclude, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$tweets_api$users_id_tweets(var_id, since_id = var_since_id, until_id = var_until_id, max_results = var_max_results, pagination_token = var_pagination_token, exclude = var_exclude, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$tweets_api$users_id_tweets(var_id, since_id = var_since_id, until_id = var_until_id, max_results = var_max_results, pagination_token = var_pagination_token, exclude = var_exclude, start_time = var_start_time, end_time = var_end_time, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `users_id_tweets`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -1992,7 +1967,7 @@
 #' var_id <- "id_example" # character | The ID of the authenticated source User that is requesting to unlike the Tweet.
 #' var_tweet_id <- "tweet_id_example" # character | The ID of the Tweet that the User is requesting to unlike.
 #'
-#' #Causes the User (in the path) to unlike the specified Tweet
+#' # Causes the User (in the path) to unlike the specified Tweet
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
@@ -2000,22 +1975,21 @@
 #'
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$tweets_api$users_id_unlike(var_id, var_tweet_id, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$tweets_api$users_id_unlike(var_id, var_tweet_id),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$tweets_api$users_id_unlike(var_id, var_tweet_id, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$tweets_api$users_id_unlike(var_id, var_tweet_id),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `users_id_unlike`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -2030,7 +2004,7 @@
 #' var_id <- "id_example" # character | The ID of the authenticated source User that is requesting to retweet the Tweet.
 #' var_source_tweet_id <- "source_tweet_id_example" # character | The ID of the Tweet that the User is requesting to unretweet.
 #'
-#' #Causes the User (in the path) to unretweet the specified Tweet
+#' # Causes the User (in the path) to unretweet the specified Tweet
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
@@ -2038,30 +2012,26 @@
 #'
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$tweets_api$users_id_unretweets(var_id, var_source_tweet_id, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$tweets_api$users_id_unretweets(var_id, var_source_tweet_id),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$tweets_api$users_id_unretweets(var_id, var_source_tweet_id, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$tweets_api$users_id_unretweets(var_id, var_source_tweet_id),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `users_id_unretweets`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
 #'   dput(result$toString())
 #' }
-#'
-#'
-#'
 #' }
 #' @importFrom R6 R6Class
 #' @importFrom base64enc base64encode
@@ -2090,7 +2060,7 @@ TweetsApi <- R6::R6Class(
     #' @description
     #' Add/Delete rules
     #'
-    #' @param add_or_delete_rules_request 
+    #' @param add_or_delete_rules_request
     #' @param dry_run (optional) Dry Run can be used with both the add and delete action, with the expected result given, but without actually taking any action in the system (meaning the end state will always be as it was when the request was submitted). This is particularly useful to validate rule changes.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -2113,7 +2083,7 @@ TweetsApi <- R6::R6Class(
     #' @description
     #' Add/Delete rules
     #'
-    #' @param add_or_delete_rules_request 
+    #' @param add_or_delete_rules_request
     #' @param dry_run (optional) Dry Run can be used with both the add and delete action, with the expected result given, but without actually taking any action in the system (meaning the end state will always be as it was when the request was submitted). This is particularly useful to validate rule changes.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -2130,10 +2100,14 @@ TweetsApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`add_or_delete_rules_request`)) {
-        rlang::abort(message = "Missing required parameter `add_or_delete_rules_request`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `add_or_delete_rules_request`."))
+        rlang::abort(
+          message = "Missing required parameter `add_or_delete_rules_request`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `add_or_delete_rules_request`."
+          )
+        )
       }
 
 
@@ -2158,18 +2132,20 @@ TweetsApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list("application/json")
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "POST",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "POST",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -2180,9 +2156,11 @@ TweetsApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "AddOrDeleteRulesResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -2192,25 +2170,31 @@ TweetsApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Creation of a Tweet
@@ -2218,7 +2202,7 @@ TweetsApi <- R6::R6Class(
     #' @description
     #' Creation of a Tweet
     #'
-    #' @param tweet_create_request 
+    #' @param tweet_create_request
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @return TweetCreateResponse
@@ -2240,7 +2224,7 @@ TweetsApi <- R6::R6Class(
     #' @description
     #' Creation of a Tweet
     #'
-    #' @param tweet_create_request 
+    #' @param tweet_create_request
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @return API response (TweetCreateResponse) with additional information such as HTTP status code, headers
@@ -2256,10 +2240,14 @@ TweetsApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`tweet_create_request`)) {
-        rlang::abort(message = "Missing required parameter `tweet_create_request`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `tweet_create_request`."))
+        rlang::abort(
+          message = "Missing required parameter `tweet_create_request`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `tweet_create_request`."
+          )
+        )
       }
 
 
@@ -2280,18 +2268,20 @@ TweetsApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list("application/json")
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "POST",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "POST",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -2302,9 +2292,11 @@ TweetsApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "TweetCreateResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -2314,25 +2306,31 @@ TweetsApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Tweet delete by Tweet ID
@@ -2378,17 +2376,25 @@ TweetsApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`id`)) {
-        rlang::abort(message = "Missing required parameter `id`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `id`."))
+        rlang::abort(
+          message = "Missing required parameter `id`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `id`."
+          )
+        )
       }
 
       if (!str_detect(`id`, "^[0-9]{1,19}$")) {
-        rlang::abort(message = "Invalid value for `id` when calling TweetsApi$delete_tweet_by_id, must conform to the pattern ^[0-9]{1,19}$.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `id` when calling TweetsApi$delete_tweet_by_id, must conform to the pattern ^[0-9]{1,19}$."))
+        rlang::abort(
+          message = "Invalid value for `id` when calling TweetsApi$delete_tweet_by_id, must conform to the pattern ^[0-9]{1,19}$.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `id` when calling TweetsApi$delete_tweet_by_id, must conform to the pattern ^[0-9]{1,19}$."
+          )
+        )
       }
 
       local_var_url_path <- "/2/tweets/{id}"
@@ -2406,18 +2412,20 @@ TweetsApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "DELETE",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "DELETE",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -2428,9 +2436,11 @@ TweetsApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "TweetDeleteResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -2440,25 +2450,31 @@ TweetsApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Tweet lookup by Tweet ID
@@ -2516,171 +2532,251 @@ TweetsApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`id`)) {
-        rlang::abort(message = "Missing required parameter `id`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `id`."))
+        rlang::abort(
+          message = "Missing required parameter `id`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `id`."
+          )
+        )
       }
 
       if (!str_detect(`id`, "^[0-9]{1,19}$")) {
-        rlang::abort(message = "Invalid value for `id` when calling TweetsApi$find_tweet_by_id, must conform to the pattern ^[0-9]{1,19}$.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `id` when calling TweetsApi$find_tweet_by_id, must conform to the pattern ^[0-9]{1,19}$."))
+        rlang::abort(
+          message = "Invalid value for `id` when calling TweetsApi$find_tweet_by_id, must conform to the pattern ^[0-9]{1,19}$.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `id` when calling TweetsApi$find_tweet_by_id, must conform to the pattern ^[0-9]{1,19}$."
+          )
+        )
       }
 
       if (length(`tweet_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `tweet_fields` when calling TweetsApi$find_tweet_by_id, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `tweet_fields` when calling TweetsApi$find_tweet_by_id, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `tweet_fields` when calling TweetsApi$find_tweet_by_id, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `tweet_fields` when calling TweetsApi$find_tweet_by_id, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`expansions`) < 1) {
-        rlang::abort(message = "Invalid length for `expansions` when calling TweetsApi$find_tweet_by_id, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `expansions` when calling TweetsApi$find_tweet_by_id, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `expansions` when calling TweetsApi$find_tweet_by_id, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `expansions` when calling TweetsApi$find_tweet_by_id, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`media_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `media_fields` when calling TweetsApi$find_tweet_by_id, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `media_fields` when calling TweetsApi$find_tweet_by_id, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `media_fields` when calling TweetsApi$find_tweet_by_id, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `media_fields` when calling TweetsApi$find_tweet_by_id, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`poll_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `poll_fields` when calling TweetsApi$find_tweet_by_id, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `poll_fields` when calling TweetsApi$find_tweet_by_id, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `poll_fields` when calling TweetsApi$find_tweet_by_id, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `poll_fields` when calling TweetsApi$find_tweet_by_id, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`user_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `user_fields` when calling TweetsApi$find_tweet_by_id, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `user_fields` when calling TweetsApi$find_tweet_by_id, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `user_fields` when calling TweetsApi$find_tweet_by_id, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `user_fields` when calling TweetsApi$find_tweet_by_id, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`place_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `place_fields` when calling TweetsApi$find_tweet_by_id, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `place_fields` when calling TweetsApi$find_tweet_by_id, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `place_fields` when calling TweetsApi$find_tweet_by_id, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `place_fields` when calling TweetsApi$find_tweet_by_id, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       # check if items are unique
       if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
-        rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$find_tweet_by_id. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `tweet_fields` when calling TweetsApi$find_tweet_by_id. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `tweet_fields` when calling TweetsApi$find_tweet_by_id. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `tweet_fields` when calling TweetsApi$find_tweet_by_id. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
         if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
-          rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$find_tweet_by_id. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `tweet_fields` when calling TweetsApi$find_tweet_by_id. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `tweet_fields` when calling TweetsApi$find_tweet_by_id. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `tweet_fields` when calling TweetsApi$find_tweet_by_id. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."
+            )
+          )
         }
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`expansions`, unique(`expansions`))) {
-        rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$find_tweet_by_id. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `expansions` when calling TweetsApi$find_tweet_by_id. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `expansions` when calling TweetsApi$find_tweet_by_id. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `expansions` when calling TweetsApi$find_tweet_by_id. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
         if (!(query_item %in% c("attachments.media_keys", "attachments.poll_ids", "author_id", "entities.mentions.username", "geo.place_id", "in_reply_to_user_id", "referenced_tweets.id", "referenced_tweets.id.author_id"))) {
-          rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$find_tweet_by_id. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `expansions` when calling TweetsApi$find_tweet_by_id. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."))
+          rlang::abort(
+            message = "Invalid value for `expansions` when calling TweetsApi$find_tweet_by_id. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `expansions` when calling TweetsApi$find_tweet_by_id. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."
+            )
+          )
         }
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`media_fields`, unique(`media_fields`))) {
-        rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$find_tweet_by_id. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `media_fields` when calling TweetsApi$find_tweet_by_id. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `media_fields` when calling TweetsApi$find_tweet_by_id. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `media_fields` when calling TweetsApi$find_tweet_by_id. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `media_fields`) {
         if (!(query_item %in% c("alt_text", "duration_ms", "height", "media_key", "non_public_metrics", "organic_metrics", "preview_image_url", "promoted_metrics", "public_metrics", "type", "url", "variants", "width"))) {
-          rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$find_tweet_by_id. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `media_fields` when calling TweetsApi$find_tweet_by_id. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."))
+          rlang::abort(
+            message = "Invalid value for `media_fields` when calling TweetsApi$find_tweet_by_id. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `media_fields` when calling TweetsApi$find_tweet_by_id. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."
+            )
+          )
         }
       }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`poll_fields`, unique(`poll_fields`))) {
-        rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$find_tweet_by_id. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `poll_fields` when calling TweetsApi$find_tweet_by_id. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `poll_fields` when calling TweetsApi$find_tweet_by_id. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `poll_fields` when calling TweetsApi$find_tweet_by_id. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `poll_fields`) {
         if (!(query_item %in% c("duration_minutes", "end_datetime", "id", "options", "voting_status"))) {
-          rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$find_tweet_by_id. Must be [duration_minutes, end_datetime, id, options, voting_status].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `poll_fields` when calling TweetsApi$find_tweet_by_id. Must be [duration_minutes, end_datetime, id, options, voting_status]."))
+          rlang::abort(
+            message = "Invalid value for `poll_fields` when calling TweetsApi$find_tweet_by_id. Must be [duration_minutes, end_datetime, id, options, voting_status].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `poll_fields` when calling TweetsApi$find_tweet_by_id. Must be [duration_minutes, end_datetime, id, options, voting_status]."
+            )
+          )
         }
       }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`user_fields`, unique(`user_fields`))) {
-        rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$find_tweet_by_id. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `user_fields` when calling TweetsApi$find_tweet_by_id. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `user_fields` when calling TweetsApi$find_tweet_by_id. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `user_fields` when calling TweetsApi$find_tweet_by_id. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
         if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
-          rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$find_tweet_by_id. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `user_fields` when calling TweetsApi$find_tweet_by_id. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `user_fields` when calling TweetsApi$find_tweet_by_id. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `user_fields` when calling TweetsApi$find_tweet_by_id. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."
+            )
+          )
         }
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`place_fields`, unique(`place_fields`))) {
-        rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$find_tweet_by_id. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `place_fields` when calling TweetsApi$find_tweet_by_id. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `place_fields` when calling TweetsApi$find_tweet_by_id. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `place_fields` when calling TweetsApi$find_tweet_by_id. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `place_fields`) {
         if (!(query_item %in% c("contained_within", "country", "country_code", "full_name", "geo", "id", "name", "place_type"))) {
-          rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$find_tweet_by_id. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `place_fields` when calling TweetsApi$find_tweet_by_id. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."))
+          rlang::abort(
+            message = "Invalid value for `place_fields` when calling TweetsApi$find_tweet_by_id. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `place_fields` when calling TweetsApi$find_tweet_by_id. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."
+            )
+          )
         }
       }
       query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
@@ -2704,18 +2800,20 @@ TweetsApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "GET",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -2726,9 +2824,11 @@ TweetsApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "Get2TweetsIdResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -2738,25 +2838,31 @@ TweetsApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Tweet lookup by Tweet IDs
@@ -2814,65 +2920,101 @@ TweetsApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`ids`)) {
-        rlang::abort(message = "Missing required parameter `ids`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `ids`."))
+        rlang::abort(
+          message = "Missing required parameter `ids`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `ids`."
+          )
+        )
       }
 
       if (length(`ids`) > 100) {
-        rlang::abort(message = "Invalid length for `ids` when calling TweetsApi$find_tweets_by_id, number of items must be less than or equal to 100.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `ids` when calling TweetsApi$find_tweets_by_id, number of items must be less than or equal to 100."))
+        rlang::abort(
+          message = "Invalid length for `ids` when calling TweetsApi$find_tweets_by_id, number of items must be less than or equal to 100.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `ids` when calling TweetsApi$find_tweets_by_id, number of items must be less than or equal to 100."
+          )
+        )
       }
       if (length(`ids`) < 1) {
-        rlang::abort(message = "Invalid length for `ids` when calling TweetsApi$find_tweets_by_id, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `ids` when calling TweetsApi$find_tweets_by_id, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `ids` when calling TweetsApi$find_tweets_by_id, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `ids` when calling TweetsApi$find_tweets_by_id, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`tweet_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `tweet_fields` when calling TweetsApi$find_tweets_by_id, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `tweet_fields` when calling TweetsApi$find_tweets_by_id, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `tweet_fields` when calling TweetsApi$find_tweets_by_id, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `tweet_fields` when calling TweetsApi$find_tweets_by_id, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`expansions`) < 1) {
-        rlang::abort(message = "Invalid length for `expansions` when calling TweetsApi$find_tweets_by_id, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `expansions` when calling TweetsApi$find_tweets_by_id, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `expansions` when calling TweetsApi$find_tweets_by_id, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `expansions` when calling TweetsApi$find_tweets_by_id, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`media_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `media_fields` when calling TweetsApi$find_tweets_by_id, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `media_fields` when calling TweetsApi$find_tweets_by_id, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `media_fields` when calling TweetsApi$find_tweets_by_id, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `media_fields` when calling TweetsApi$find_tweets_by_id, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`poll_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `poll_fields` when calling TweetsApi$find_tweets_by_id, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `poll_fields` when calling TweetsApi$find_tweets_by_id, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `poll_fields` when calling TweetsApi$find_tweets_by_id, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `poll_fields` when calling TweetsApi$find_tweets_by_id, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`user_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `user_fields` when calling TweetsApi$find_tweets_by_id, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `user_fields` when calling TweetsApi$find_tweets_by_id, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `user_fields` when calling TweetsApi$find_tweets_by_id, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `user_fields` when calling TweetsApi$find_tweets_by_id, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`place_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `place_fields` when calling TweetsApi$find_tweets_by_id, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `place_fields` when calling TweetsApi$find_tweets_by_id, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `place_fields` when calling TweetsApi$find_tweets_by_id, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `place_fields` when calling TweetsApi$find_tweets_by_id, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       # no explore
@@ -2880,114 +3022,162 @@ TweetsApi <- R6::R6Class(
 
       # check if items are unique
       if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
-        rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$find_tweets_by_id. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `tweet_fields` when calling TweetsApi$find_tweets_by_id. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `tweet_fields` when calling TweetsApi$find_tweets_by_id. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `tweet_fields` when calling TweetsApi$find_tweets_by_id. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
         if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
-          rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$find_tweets_by_id. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `tweet_fields` when calling TweetsApi$find_tweets_by_id. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `tweet_fields` when calling TweetsApi$find_tweets_by_id. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `tweet_fields` when calling TweetsApi$find_tweets_by_id. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."
+            )
+          )
         }
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`expansions`, unique(`expansions`))) {
-        rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$find_tweets_by_id. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `expansions` when calling TweetsApi$find_tweets_by_id. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `expansions` when calling TweetsApi$find_tweets_by_id. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `expansions` when calling TweetsApi$find_tweets_by_id. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
         if (!(query_item %in% c("attachments.media_keys", "attachments.poll_ids", "author_id", "entities.mentions.username", "geo.place_id", "in_reply_to_user_id", "referenced_tweets.id", "referenced_tweets.id.author_id"))) {
-          rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$find_tweets_by_id. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `expansions` when calling TweetsApi$find_tweets_by_id. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."))
+          rlang::abort(
+            message = "Invalid value for `expansions` when calling TweetsApi$find_tweets_by_id. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `expansions` when calling TweetsApi$find_tweets_by_id. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."
+            )
+          )
         }
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`media_fields`, unique(`media_fields`))) {
-        rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$find_tweets_by_id. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `media_fields` when calling TweetsApi$find_tweets_by_id. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `media_fields` when calling TweetsApi$find_tweets_by_id. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `media_fields` when calling TweetsApi$find_tweets_by_id. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `media_fields`) {
         if (!(query_item %in% c("alt_text", "duration_ms", "height", "media_key", "non_public_metrics", "organic_metrics", "preview_image_url", "promoted_metrics", "public_metrics", "type", "url", "variants", "width"))) {
-          rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$find_tweets_by_id. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `media_fields` when calling TweetsApi$find_tweets_by_id. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."))
+          rlang::abort(
+            message = "Invalid value for `media_fields` when calling TweetsApi$find_tweets_by_id. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `media_fields` when calling TweetsApi$find_tweets_by_id. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."
+            )
+          )
         }
       }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`poll_fields`, unique(`poll_fields`))) {
-        rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$find_tweets_by_id. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `poll_fields` when calling TweetsApi$find_tweets_by_id. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `poll_fields` when calling TweetsApi$find_tweets_by_id. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `poll_fields` when calling TweetsApi$find_tweets_by_id. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `poll_fields`) {
         if (!(query_item %in% c("duration_minutes", "end_datetime", "id", "options", "voting_status"))) {
-          rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$find_tweets_by_id. Must be [duration_minutes, end_datetime, id, options, voting_status].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `poll_fields` when calling TweetsApi$find_tweets_by_id. Must be [duration_minutes, end_datetime, id, options, voting_status]."))
+          rlang::abort(
+            message = "Invalid value for `poll_fields` when calling TweetsApi$find_tweets_by_id. Must be [duration_minutes, end_datetime, id, options, voting_status].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `poll_fields` when calling TweetsApi$find_tweets_by_id. Must be [duration_minutes, end_datetime, id, options, voting_status]."
+            )
+          )
         }
       }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`user_fields`, unique(`user_fields`))) {
-        rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$find_tweets_by_id. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `user_fields` when calling TweetsApi$find_tweets_by_id. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `user_fields` when calling TweetsApi$find_tweets_by_id. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `user_fields` when calling TweetsApi$find_tweets_by_id. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
         if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
-          rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$find_tweets_by_id. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `user_fields` when calling TweetsApi$find_tweets_by_id. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `user_fields` when calling TweetsApi$find_tweets_by_id. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `user_fields` when calling TweetsApi$find_tweets_by_id. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."
+            )
+          )
         }
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`place_fields`, unique(`place_fields`))) {
-        rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$find_tweets_by_id. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `place_fields` when calling TweetsApi$find_tweets_by_id. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `place_fields` when calling TweetsApi$find_tweets_by_id. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `place_fields` when calling TweetsApi$find_tweets_by_id. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `place_fields`) {
         if (!(query_item %in% c("contained_within", "country", "country_code", "full_name", "geo", "id", "name", "place_type"))) {
-          rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$find_tweets_by_id. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `place_fields` when calling TweetsApi$find_tweets_by_id. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."))
+          rlang::abort(
+            message = "Invalid value for `place_fields` when calling TweetsApi$find_tweets_by_id. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `place_fields` when calling TweetsApi$find_tweets_by_id. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."
+            )
+          )
         }
       }
       query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
@@ -3007,18 +3197,20 @@ TweetsApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "GET",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -3029,9 +3221,11 @@ TweetsApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "Get2TweetsResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -3041,25 +3235,31 @@ TweetsApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Retrieve Tweets that quote a Tweet.
@@ -3123,86 +3323,134 @@ TweetsApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`id`)) {
-        rlang::abort(message = "Missing required parameter `id`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `id`."))
+        rlang::abort(
+          message = "Missing required parameter `id`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `id`."
+          )
+        )
       }
 
       if (!str_detect(`id`, "^[0-9]{1,19}$")) {
-        rlang::abort(message = "Invalid value for `id` when calling TweetsApi$find_tweets_that_quote_a_tweet, must conform to the pattern ^[0-9]{1,19}$.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `id` when calling TweetsApi$find_tweets_that_quote_a_tweet, must conform to the pattern ^[0-9]{1,19}$."))
+        rlang::abort(
+          message = "Invalid value for `id` when calling TweetsApi$find_tweets_that_quote_a_tweet, must conform to the pattern ^[0-9]{1,19}$.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `id` when calling TweetsApi$find_tweets_that_quote_a_tweet, must conform to the pattern ^[0-9]{1,19}$."
+          )
+        )
       }
 
       if (`max_results` > 100) {
-        rlang::abort(message = "Invalid value for `max_results` when calling TweetsApi$find_tweets_that_quote_a_tweet, must be smaller than or equal to 100.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling TweetsApi$find_tweets_that_quote_a_tweet, must be smaller than or equal to 100."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling TweetsApi$find_tweets_that_quote_a_tweet, must be smaller than or equal to 100.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling TweetsApi$find_tweets_that_quote_a_tweet, must be smaller than or equal to 100."
+          )
+        )
       }
       if (`max_results` < 10) {
-        rlang::abort(message = "Invalid value for `max_results` when calling TweetsApi$find_tweets_that_quote_a_tweet, must be bigger than or equal to 10.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling TweetsApi$find_tweets_that_quote_a_tweet, must be bigger than or equal to 10."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling TweetsApi$find_tweets_that_quote_a_tweet, must be bigger than or equal to 10.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling TweetsApi$find_tweets_that_quote_a_tweet, must be bigger than or equal to 10."
+          )
+        )
       }
 
       if (nchar(`pagination_token`) < 1) {
-        rlang::abort(message = "Invalid length for `pagination_token` when calling TweetsApi$find_tweets_that_quote_a_tweet, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `pagination_token` when calling TweetsApi$find_tweets_that_quote_a_tweet, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `pagination_token` when calling TweetsApi$find_tweets_that_quote_a_tweet, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `pagination_token` when calling TweetsApi$find_tweets_that_quote_a_tweet, must be bigger than or equal to 1."
+          )
+        )
       }
 
       if (length(`exclude`) < 1) {
-        rlang::abort(message = "Invalid length for `exclude` when calling TweetsApi$find_tweets_that_quote_a_tweet, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `exclude` when calling TweetsApi$find_tweets_that_quote_a_tweet, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `exclude` when calling TweetsApi$find_tweets_that_quote_a_tweet, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `exclude` when calling TweetsApi$find_tweets_that_quote_a_tweet, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`tweet_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `tweet_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `tweet_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `tweet_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `tweet_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`expansions`) < 1) {
-        rlang::abort(message = "Invalid length for `expansions` when calling TweetsApi$find_tweets_that_quote_a_tweet, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `expansions` when calling TweetsApi$find_tweets_that_quote_a_tweet, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `expansions` when calling TweetsApi$find_tweets_that_quote_a_tweet, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `expansions` when calling TweetsApi$find_tweets_that_quote_a_tweet, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`media_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `media_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `media_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `media_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `media_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`poll_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `poll_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `poll_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `poll_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `poll_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`user_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `user_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `user_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `user_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `user_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`place_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `place_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `place_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `place_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `place_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       query_params[["max_results"]] <- `max_results`
@@ -3211,133 +3459,189 @@ TweetsApi <- R6::R6Class(
 
       # check if items are unique
       if (!identical(`exclude`, unique(`exclude`))) {
-        rlang::abort(message = "Invalid value for `exclude` when calling TweetsApi$find_tweets_that_quote_a_tweet. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `exclude` when calling TweetsApi$find_tweets_that_quote_a_tweet. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `exclude` when calling TweetsApi$find_tweets_that_quote_a_tweet. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `exclude` when calling TweetsApi$find_tweets_that_quote_a_tweet. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `exclude`) {
         if (!(query_item %in% c("replies", "retweets"))) {
-          rlang::abort(message = "Invalid value for `exclude` when calling TweetsApi$find_tweets_that_quote_a_tweet. Must be [replies, retweets].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `exclude` when calling TweetsApi$find_tweets_that_quote_a_tweet. Must be [replies, retweets]."))
+          rlang::abort(
+            message = "Invalid value for `exclude` when calling TweetsApi$find_tweets_that_quote_a_tweet. Must be [replies, retweets].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `exclude` when calling TweetsApi$find_tweets_that_quote_a_tweet. Must be [replies, retweets]."
+            )
+          )
         }
       }
       query_params[["exclude"]] <- I(paste(lapply(`exclude`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
-        rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `tweet_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `tweet_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `tweet_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
         if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
-          rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `tweet_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `tweet_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `tweet_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."
+            )
+          )
         }
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`expansions`, unique(`expansions`))) {
-        rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$find_tweets_that_quote_a_tweet. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `expansions` when calling TweetsApi$find_tweets_that_quote_a_tweet. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `expansions` when calling TweetsApi$find_tweets_that_quote_a_tweet. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `expansions` when calling TweetsApi$find_tweets_that_quote_a_tweet. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
         if (!(query_item %in% c("attachments.media_keys", "attachments.poll_ids", "author_id", "entities.mentions.username", "geo.place_id", "in_reply_to_user_id", "referenced_tweets.id", "referenced_tweets.id.author_id"))) {
-          rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$find_tweets_that_quote_a_tweet. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `expansions` when calling TweetsApi$find_tweets_that_quote_a_tweet. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."))
+          rlang::abort(
+            message = "Invalid value for `expansions` when calling TweetsApi$find_tweets_that_quote_a_tweet. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `expansions` when calling TweetsApi$find_tweets_that_quote_a_tweet. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."
+            )
+          )
         }
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`media_fields`, unique(`media_fields`))) {
-        rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `media_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `media_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `media_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `media_fields`) {
         if (!(query_item %in% c("alt_text", "duration_ms", "height", "media_key", "non_public_metrics", "organic_metrics", "preview_image_url", "promoted_metrics", "public_metrics", "type", "url", "variants", "width"))) {
-          rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `media_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."))
+          rlang::abort(
+            message = "Invalid value for `media_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `media_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."
+            )
+          )
         }
       }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`poll_fields`, unique(`poll_fields`))) {
-        rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `poll_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `poll_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `poll_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `poll_fields`) {
         if (!(query_item %in% c("duration_minutes", "end_datetime", "id", "options", "voting_status"))) {
-          rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Must be [duration_minutes, end_datetime, id, options, voting_status].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `poll_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Must be [duration_minutes, end_datetime, id, options, voting_status]."))
+          rlang::abort(
+            message = "Invalid value for `poll_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Must be [duration_minutes, end_datetime, id, options, voting_status].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `poll_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Must be [duration_minutes, end_datetime, id, options, voting_status]."
+            )
+          )
         }
       }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`user_fields`, unique(`user_fields`))) {
-        rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `user_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `user_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `user_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
         if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
-          rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `user_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `user_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `user_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."
+            )
+          )
         }
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`place_fields`, unique(`place_fields`))) {
-        rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `place_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `place_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `place_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `place_fields`) {
         if (!(query_item %in% c("contained_within", "country", "country_code", "full_name", "geo", "id", "name", "place_type"))) {
-          rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `place_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."))
+          rlang::abort(
+            message = "Invalid value for `place_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `place_fields` when calling TweetsApi$find_tweets_that_quote_a_tweet. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."
+            )
+          )
         }
       }
       query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
@@ -3361,18 +3665,20 @@ TweetsApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "GET",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -3383,9 +3689,11 @@ TweetsApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "Get2TweetsIdQuoteTweetsResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -3395,25 +3703,31 @@ TweetsApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Rules lookup
@@ -3464,29 +3778,45 @@ TweetsApi <- R6::R6Class(
 
 
       if (`max_results` > 1000) {
-        rlang::abort(message = "Invalid value for `max_results` when calling TweetsApi$get_rules, must be smaller than or equal to 1000.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling TweetsApi$get_rules, must be smaller than or equal to 1000."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling TweetsApi$get_rules, must be smaller than or equal to 1000.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling TweetsApi$get_rules, must be smaller than or equal to 1000."
+          )
+        )
       }
       if (`max_results` < 1) {
-        rlang::abort(message = "Invalid value for `max_results` when calling TweetsApi$get_rules, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling TweetsApi$get_rules, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling TweetsApi$get_rules, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling TweetsApi$get_rules, must be bigger than or equal to 1."
+          )
+        )
       }
 
       if (nchar(`pagination_token`) > 16) {
-        rlang::abort(message = "Invalid length for `pagination_token` when calling TweetsApi$get_rules, must be smaller than or equal to 16.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for $pagination_token when calling TweetsApi.get_rules, must be smaller than or equal to 16."))
+        rlang::abort(
+          message = "Invalid length for `pagination_token` when calling TweetsApi$get_rules, must be smaller than or equal to 16.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for $pagination_token when calling TweetsApi.get_rules, must be smaller than or equal to 16."
+          )
+        )
       }
       if (nchar(`pagination_token`) < 16) {
-        rlang::abort(message = "Invalid length for `pagination_token` when calling TweetsApi$get_rules, must be bigger than or equal to 16.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `pagination_token` when calling TweetsApi$get_rules, must be bigger than or equal to 16."))
+        rlang::abort(
+          message = "Invalid length for `pagination_token` when calling TweetsApi$get_rules, must be bigger than or equal to 16.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `pagination_token` when calling TweetsApi$get_rules, must be bigger than or equal to 16."
+          )
+        )
       }
 
       # explore
@@ -3510,18 +3840,20 @@ TweetsApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "GET",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -3532,9 +3864,11 @@ TweetsApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "RulesLookupResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -3544,25 +3878,31 @@ TweetsApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Firehose stream
@@ -3587,7 +3927,8 @@ TweetsApi <- R6::R6Class(
     #' @export
     get_tweets_firehose_stream = function(partition, backfill_minutes = NULL, start_time = NULL, end_time = NULL, tweet_fields = NULL, expansions = NULL, media_fields = NULL, poll_fields = NULL, user_fields = NULL, place_fields = NULL, stream_callback = NULL, data_file = NULL, ...) {
       local_var_response <- self$get_tweets_firehose_stream_with_http_info(partition, backfill_minutes, start_time, end_time, tweet_fields, expansions, media_fields, poll_fields, user_fields, place_fields, stream_callback = stream_callback, data_file = data_file, ...)
-      if (typeof(stream_callback) == "closure") { # return void if streaming is enabled
+      if (typeof(stream_callback) == "closure") {
+        # return void if streaming is enabled
         return(invisible(NULL))
       }
 
@@ -3632,80 +3973,124 @@ TweetsApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`partition`)) {
-        rlang::abort(message = "Missing required parameter `partition`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `partition`."))
+        rlang::abort(
+          message = "Missing required parameter `partition`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `partition`."
+          )
+        )
       }
 
       if (`partition` > 20) {
-        rlang::abort(message = "Invalid value for `partition` when calling TweetsApi$get_tweets_firehose_stream, must be smaller than or equal to 20.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `partition` when calling TweetsApi$get_tweets_firehose_stream, must be smaller than or equal to 20."))
+        rlang::abort(
+          message = "Invalid value for `partition` when calling TweetsApi$get_tweets_firehose_stream, must be smaller than or equal to 20.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `partition` when calling TweetsApi$get_tweets_firehose_stream, must be smaller than or equal to 20."
+          )
+        )
       }
       if (`partition` < 1) {
-        rlang::abort(message = "Invalid value for `partition` when calling TweetsApi$get_tweets_firehose_stream, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `partition` when calling TweetsApi$get_tweets_firehose_stream, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid value for `partition` when calling TweetsApi$get_tweets_firehose_stream, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `partition` when calling TweetsApi$get_tweets_firehose_stream, must be bigger than or equal to 1."
+          )
+        )
       }
 
       if (`backfill_minutes` > 5) {
-        rlang::abort(message = "Invalid value for `backfill_minutes` when calling TweetsApi$get_tweets_firehose_stream, must be smaller than or equal to 5.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `backfill_minutes` when calling TweetsApi$get_tweets_firehose_stream, must be smaller than or equal to 5."))
+        rlang::abort(
+          message = "Invalid value for `backfill_minutes` when calling TweetsApi$get_tweets_firehose_stream, must be smaller than or equal to 5.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `backfill_minutes` when calling TweetsApi$get_tweets_firehose_stream, must be smaller than or equal to 5."
+          )
+        )
       }
       if (`backfill_minutes` < 0) {
-        rlang::abort(message = "Invalid value for `backfill_minutes` when calling TweetsApi$get_tweets_firehose_stream, must be bigger than or equal to 0.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `backfill_minutes` when calling TweetsApi$get_tweets_firehose_stream, must be bigger than or equal to 0."))
+        rlang::abort(
+          message = "Invalid value for `backfill_minutes` when calling TweetsApi$get_tweets_firehose_stream, must be bigger than or equal to 0.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `backfill_minutes` when calling TweetsApi$get_tweets_firehose_stream, must be bigger than or equal to 0."
+          )
+        )
       }
 
 
 
       if (length(`tweet_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `tweet_fields` when calling TweetsApi$get_tweets_firehose_stream, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `tweet_fields` when calling TweetsApi$get_tweets_firehose_stream, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `tweet_fields` when calling TweetsApi$get_tweets_firehose_stream, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `tweet_fields` when calling TweetsApi$get_tweets_firehose_stream, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`expansions`) < 1) {
-        rlang::abort(message = "Invalid length for `expansions` when calling TweetsApi$get_tweets_firehose_stream, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `expansions` when calling TweetsApi$get_tweets_firehose_stream, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `expansions` when calling TweetsApi$get_tweets_firehose_stream, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `expansions` when calling TweetsApi$get_tweets_firehose_stream, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`media_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `media_fields` when calling TweetsApi$get_tweets_firehose_stream, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `media_fields` when calling TweetsApi$get_tweets_firehose_stream, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `media_fields` when calling TweetsApi$get_tweets_firehose_stream, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `media_fields` when calling TweetsApi$get_tweets_firehose_stream, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`poll_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `poll_fields` when calling TweetsApi$get_tweets_firehose_stream, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `poll_fields` when calling TweetsApi$get_tweets_firehose_stream, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `poll_fields` when calling TweetsApi$get_tweets_firehose_stream, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `poll_fields` when calling TweetsApi$get_tweets_firehose_stream, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`user_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `user_fields` when calling TweetsApi$get_tweets_firehose_stream, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `user_fields` when calling TweetsApi$get_tweets_firehose_stream, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `user_fields` when calling TweetsApi$get_tweets_firehose_stream, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `user_fields` when calling TweetsApi$get_tweets_firehose_stream, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`place_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `place_fields` when calling TweetsApi$get_tweets_firehose_stream, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `place_fields` when calling TweetsApi$get_tweets_firehose_stream, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `place_fields` when calling TweetsApi$get_tweets_firehose_stream, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `place_fields` when calling TweetsApi$get_tweets_firehose_stream, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       query_params[["backfill_minutes"]] <- `backfill_minutes`
@@ -3718,114 +4103,162 @@ TweetsApi <- R6::R6Class(
 
       # check if items are unique
       if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
-        rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$get_tweets_firehose_stream. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `tweet_fields` when calling TweetsApi$get_tweets_firehose_stream. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `tweet_fields` when calling TweetsApi$get_tweets_firehose_stream. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `tweet_fields` when calling TweetsApi$get_tweets_firehose_stream. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
         if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
-          rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$get_tweets_firehose_stream. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `tweet_fields` when calling TweetsApi$get_tweets_firehose_stream. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `tweet_fields` when calling TweetsApi$get_tweets_firehose_stream. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `tweet_fields` when calling TweetsApi$get_tweets_firehose_stream. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."
+            )
+          )
         }
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`expansions`, unique(`expansions`))) {
-        rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$get_tweets_firehose_stream. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `expansions` when calling TweetsApi$get_tweets_firehose_stream. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `expansions` when calling TweetsApi$get_tweets_firehose_stream. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `expansions` when calling TweetsApi$get_tweets_firehose_stream. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
         if (!(query_item %in% c("attachments.media_keys", "attachments.poll_ids", "author_id", "entities.mentions.username", "geo.place_id", "in_reply_to_user_id", "referenced_tweets.id", "referenced_tweets.id.author_id"))) {
-          rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$get_tweets_firehose_stream. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `expansions` when calling TweetsApi$get_tweets_firehose_stream. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."))
+          rlang::abort(
+            message = "Invalid value for `expansions` when calling TweetsApi$get_tweets_firehose_stream. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `expansions` when calling TweetsApi$get_tweets_firehose_stream. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."
+            )
+          )
         }
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`media_fields`, unique(`media_fields`))) {
-        rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$get_tweets_firehose_stream. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `media_fields` when calling TweetsApi$get_tweets_firehose_stream. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `media_fields` when calling TweetsApi$get_tweets_firehose_stream. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `media_fields` when calling TweetsApi$get_tweets_firehose_stream. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `media_fields`) {
         if (!(query_item %in% c("alt_text", "duration_ms", "height", "media_key", "non_public_metrics", "organic_metrics", "preview_image_url", "promoted_metrics", "public_metrics", "type", "url", "variants", "width"))) {
-          rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$get_tweets_firehose_stream. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `media_fields` when calling TweetsApi$get_tweets_firehose_stream. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."))
+          rlang::abort(
+            message = "Invalid value for `media_fields` when calling TweetsApi$get_tweets_firehose_stream. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `media_fields` when calling TweetsApi$get_tweets_firehose_stream. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."
+            )
+          )
         }
       }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`poll_fields`, unique(`poll_fields`))) {
-        rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$get_tweets_firehose_stream. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `poll_fields` when calling TweetsApi$get_tweets_firehose_stream. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `poll_fields` when calling TweetsApi$get_tweets_firehose_stream. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `poll_fields` when calling TweetsApi$get_tweets_firehose_stream. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `poll_fields`) {
         if (!(query_item %in% c("duration_minutes", "end_datetime", "id", "options", "voting_status"))) {
-          rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$get_tweets_firehose_stream. Must be [duration_minutes, end_datetime, id, options, voting_status].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `poll_fields` when calling TweetsApi$get_tweets_firehose_stream. Must be [duration_minutes, end_datetime, id, options, voting_status]."))
+          rlang::abort(
+            message = "Invalid value for `poll_fields` when calling TweetsApi$get_tweets_firehose_stream. Must be [duration_minutes, end_datetime, id, options, voting_status].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `poll_fields` when calling TweetsApi$get_tweets_firehose_stream. Must be [duration_minutes, end_datetime, id, options, voting_status]."
+            )
+          )
         }
       }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`user_fields`, unique(`user_fields`))) {
-        rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$get_tweets_firehose_stream. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `user_fields` when calling TweetsApi$get_tweets_firehose_stream. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `user_fields` when calling TweetsApi$get_tweets_firehose_stream. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `user_fields` when calling TweetsApi$get_tweets_firehose_stream. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
         if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
-          rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$get_tweets_firehose_stream. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `user_fields` when calling TweetsApi$get_tweets_firehose_stream. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `user_fields` when calling TweetsApi$get_tweets_firehose_stream. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `user_fields` when calling TweetsApi$get_tweets_firehose_stream. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."
+            )
+          )
         }
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`place_fields`, unique(`place_fields`))) {
-        rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$get_tweets_firehose_stream. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `place_fields` when calling TweetsApi$get_tweets_firehose_stream. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `place_fields` when calling TweetsApi$get_tweets_firehose_stream. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `place_fields` when calling TweetsApi$get_tweets_firehose_stream. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `place_fields`) {
         if (!(query_item %in% c("contained_within", "country", "country_code", "full_name", "geo", "id", "name", "place_type"))) {
-          rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$get_tweets_firehose_stream. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `place_fields` when calling TweetsApi$get_tweets_firehose_stream. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."))
+          rlang::abort(
+            message = "Invalid value for `place_fields` when calling TweetsApi$get_tweets_firehose_stream. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `place_fields` when calling TweetsApi$get_tweets_firehose_stream. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."
+            )
+          )
         }
       }
       query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
@@ -3842,21 +4275,24 @@ TweetsApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 stream_callback = stream_callback,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "GET",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        stream_callback = stream_callback,
+        ...
+      )
 
-      if (typeof(stream_callback) == "closure") { # return void if streaming is enabled
+      if (typeof(stream_callback) == "closure") {
+        # return void if streaming is enabled
         return(invisible(NULL))
       }
 
@@ -3869,9 +4305,11 @@ TweetsApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "StreamingTweetResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -3881,25 +4319,31 @@ TweetsApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Sample 10% stream
@@ -3924,7 +4368,8 @@ TweetsApi <- R6::R6Class(
     #' @export
     get_tweets_sample10_stream = function(partition, backfill_minutes = NULL, start_time = NULL, end_time = NULL, tweet_fields = NULL, expansions = NULL, media_fields = NULL, poll_fields = NULL, user_fields = NULL, place_fields = NULL, stream_callback = NULL, data_file = NULL, ...) {
       local_var_response <- self$get_tweets_sample10_stream_with_http_info(partition, backfill_minutes, start_time, end_time, tweet_fields, expansions, media_fields, poll_fields, user_fields, place_fields, stream_callback = stream_callback, data_file = data_file, ...)
-      if (typeof(stream_callback) == "closure") { # return void if streaming is enabled
+      if (typeof(stream_callback) == "closure") {
+        # return void if streaming is enabled
         return(invisible(NULL))
       }
 
@@ -3969,80 +4414,124 @@ TweetsApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`partition`)) {
-        rlang::abort(message = "Missing required parameter `partition`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `partition`."))
+        rlang::abort(
+          message = "Missing required parameter `partition`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `partition`."
+          )
+        )
       }
 
       if (`partition` > 2) {
-        rlang::abort(message = "Invalid value for `partition` when calling TweetsApi$get_tweets_sample10_stream, must be smaller than or equal to 2.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `partition` when calling TweetsApi$get_tweets_sample10_stream, must be smaller than or equal to 2."))
+        rlang::abort(
+          message = "Invalid value for `partition` when calling TweetsApi$get_tweets_sample10_stream, must be smaller than or equal to 2.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `partition` when calling TweetsApi$get_tweets_sample10_stream, must be smaller than or equal to 2."
+          )
+        )
       }
       if (`partition` < 1) {
-        rlang::abort(message = "Invalid value for `partition` when calling TweetsApi$get_tweets_sample10_stream, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `partition` when calling TweetsApi$get_tweets_sample10_stream, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid value for `partition` when calling TweetsApi$get_tweets_sample10_stream, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `partition` when calling TweetsApi$get_tweets_sample10_stream, must be bigger than or equal to 1."
+          )
+        )
       }
 
       if (`backfill_minutes` > 5) {
-        rlang::abort(message = "Invalid value for `backfill_minutes` when calling TweetsApi$get_tweets_sample10_stream, must be smaller than or equal to 5.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `backfill_minutes` when calling TweetsApi$get_tweets_sample10_stream, must be smaller than or equal to 5."))
+        rlang::abort(
+          message = "Invalid value for `backfill_minutes` when calling TweetsApi$get_tweets_sample10_stream, must be smaller than or equal to 5.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `backfill_minutes` when calling TweetsApi$get_tweets_sample10_stream, must be smaller than or equal to 5."
+          )
+        )
       }
       if (`backfill_minutes` < 0) {
-        rlang::abort(message = "Invalid value for `backfill_minutes` when calling TweetsApi$get_tweets_sample10_stream, must be bigger than or equal to 0.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `backfill_minutes` when calling TweetsApi$get_tweets_sample10_stream, must be bigger than or equal to 0."))
+        rlang::abort(
+          message = "Invalid value for `backfill_minutes` when calling TweetsApi$get_tweets_sample10_stream, must be bigger than or equal to 0.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `backfill_minutes` when calling TweetsApi$get_tweets_sample10_stream, must be bigger than or equal to 0."
+          )
+        )
       }
 
 
 
       if (length(`tweet_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `tweet_fields` when calling TweetsApi$get_tweets_sample10_stream, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `tweet_fields` when calling TweetsApi$get_tweets_sample10_stream, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `tweet_fields` when calling TweetsApi$get_tweets_sample10_stream, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `tweet_fields` when calling TweetsApi$get_tweets_sample10_stream, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`expansions`) < 1) {
-        rlang::abort(message = "Invalid length for `expansions` when calling TweetsApi$get_tweets_sample10_stream, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `expansions` when calling TweetsApi$get_tweets_sample10_stream, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `expansions` when calling TweetsApi$get_tweets_sample10_stream, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `expansions` when calling TweetsApi$get_tweets_sample10_stream, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`media_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `media_fields` when calling TweetsApi$get_tweets_sample10_stream, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `media_fields` when calling TweetsApi$get_tweets_sample10_stream, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `media_fields` when calling TweetsApi$get_tweets_sample10_stream, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `media_fields` when calling TweetsApi$get_tweets_sample10_stream, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`poll_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `poll_fields` when calling TweetsApi$get_tweets_sample10_stream, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `poll_fields` when calling TweetsApi$get_tweets_sample10_stream, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `poll_fields` when calling TweetsApi$get_tweets_sample10_stream, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `poll_fields` when calling TweetsApi$get_tweets_sample10_stream, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`user_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `user_fields` when calling TweetsApi$get_tweets_sample10_stream, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `user_fields` when calling TweetsApi$get_tweets_sample10_stream, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `user_fields` when calling TweetsApi$get_tweets_sample10_stream, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `user_fields` when calling TweetsApi$get_tweets_sample10_stream, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`place_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `place_fields` when calling TweetsApi$get_tweets_sample10_stream, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `place_fields` when calling TweetsApi$get_tweets_sample10_stream, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `place_fields` when calling TweetsApi$get_tweets_sample10_stream, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `place_fields` when calling TweetsApi$get_tweets_sample10_stream, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       query_params[["backfill_minutes"]] <- `backfill_minutes`
@@ -4055,114 +4544,162 @@ TweetsApi <- R6::R6Class(
 
       # check if items are unique
       if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
-        rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$get_tweets_sample10_stream. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `tweet_fields` when calling TweetsApi$get_tweets_sample10_stream. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `tweet_fields` when calling TweetsApi$get_tweets_sample10_stream. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `tweet_fields` when calling TweetsApi$get_tweets_sample10_stream. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
         if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
-          rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$get_tweets_sample10_stream. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `tweet_fields` when calling TweetsApi$get_tweets_sample10_stream. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `tweet_fields` when calling TweetsApi$get_tweets_sample10_stream. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `tweet_fields` when calling TweetsApi$get_tweets_sample10_stream. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."
+            )
+          )
         }
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`expansions`, unique(`expansions`))) {
-        rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$get_tweets_sample10_stream. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `expansions` when calling TweetsApi$get_tweets_sample10_stream. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `expansions` when calling TweetsApi$get_tweets_sample10_stream. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `expansions` when calling TweetsApi$get_tweets_sample10_stream. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
         if (!(query_item %in% c("attachments.media_keys", "attachments.poll_ids", "author_id", "entities.mentions.username", "geo.place_id", "in_reply_to_user_id", "referenced_tweets.id", "referenced_tweets.id.author_id"))) {
-          rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$get_tweets_sample10_stream. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `expansions` when calling TweetsApi$get_tweets_sample10_stream. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."))
+          rlang::abort(
+            message = "Invalid value for `expansions` when calling TweetsApi$get_tweets_sample10_stream. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `expansions` when calling TweetsApi$get_tweets_sample10_stream. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."
+            )
+          )
         }
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`media_fields`, unique(`media_fields`))) {
-        rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$get_tweets_sample10_stream. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `media_fields` when calling TweetsApi$get_tweets_sample10_stream. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `media_fields` when calling TweetsApi$get_tweets_sample10_stream. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `media_fields` when calling TweetsApi$get_tweets_sample10_stream. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `media_fields`) {
         if (!(query_item %in% c("alt_text", "duration_ms", "height", "media_key", "non_public_metrics", "organic_metrics", "preview_image_url", "promoted_metrics", "public_metrics", "type", "url", "variants", "width"))) {
-          rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$get_tweets_sample10_stream. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `media_fields` when calling TweetsApi$get_tweets_sample10_stream. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."))
+          rlang::abort(
+            message = "Invalid value for `media_fields` when calling TweetsApi$get_tweets_sample10_stream. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `media_fields` when calling TweetsApi$get_tweets_sample10_stream. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."
+            )
+          )
         }
       }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`poll_fields`, unique(`poll_fields`))) {
-        rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$get_tweets_sample10_stream. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `poll_fields` when calling TweetsApi$get_tweets_sample10_stream. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `poll_fields` when calling TweetsApi$get_tweets_sample10_stream. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `poll_fields` when calling TweetsApi$get_tweets_sample10_stream. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `poll_fields`) {
         if (!(query_item %in% c("duration_minutes", "end_datetime", "id", "options", "voting_status"))) {
-          rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$get_tweets_sample10_stream. Must be [duration_minutes, end_datetime, id, options, voting_status].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `poll_fields` when calling TweetsApi$get_tweets_sample10_stream. Must be [duration_minutes, end_datetime, id, options, voting_status]."))
+          rlang::abort(
+            message = "Invalid value for `poll_fields` when calling TweetsApi$get_tweets_sample10_stream. Must be [duration_minutes, end_datetime, id, options, voting_status].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `poll_fields` when calling TweetsApi$get_tweets_sample10_stream. Must be [duration_minutes, end_datetime, id, options, voting_status]."
+            )
+          )
         }
       }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`user_fields`, unique(`user_fields`))) {
-        rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$get_tweets_sample10_stream. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `user_fields` when calling TweetsApi$get_tweets_sample10_stream. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `user_fields` when calling TweetsApi$get_tweets_sample10_stream. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `user_fields` when calling TweetsApi$get_tweets_sample10_stream. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
         if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
-          rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$get_tweets_sample10_stream. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `user_fields` when calling TweetsApi$get_tweets_sample10_stream. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `user_fields` when calling TweetsApi$get_tweets_sample10_stream. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `user_fields` when calling TweetsApi$get_tweets_sample10_stream. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."
+            )
+          )
         }
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`place_fields`, unique(`place_fields`))) {
-        rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$get_tweets_sample10_stream. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `place_fields` when calling TweetsApi$get_tweets_sample10_stream. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `place_fields` when calling TweetsApi$get_tweets_sample10_stream. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `place_fields` when calling TweetsApi$get_tweets_sample10_stream. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `place_fields`) {
         if (!(query_item %in% c("contained_within", "country", "country_code", "full_name", "geo", "id", "name", "place_type"))) {
-          rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$get_tweets_sample10_stream. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `place_fields` when calling TweetsApi$get_tweets_sample10_stream. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."))
+          rlang::abort(
+            message = "Invalid value for `place_fields` when calling TweetsApi$get_tweets_sample10_stream. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `place_fields` when calling TweetsApi$get_tweets_sample10_stream. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."
+            )
+          )
         }
       }
       query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
@@ -4179,21 +4716,24 @@ TweetsApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 stream_callback = stream_callback,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "GET",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        stream_callback = stream_callback,
+        ...
+      )
 
-      if (typeof(stream_callback) == "closure") { # return void if streaming is enabled
+      if (typeof(stream_callback) == "closure") {
+        # return void if streaming is enabled
         return(invisible(NULL))
       }
 
@@ -4206,9 +4746,11 @@ TweetsApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "Get2TweetsSample10StreamResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -4218,25 +4760,31 @@ TweetsApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Hide replies
@@ -4284,17 +4832,25 @@ TweetsApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`tweet_id`)) {
-        rlang::abort(message = "Missing required parameter `tweet_id`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `tweet_id`."))
+        rlang::abort(
+          message = "Missing required parameter `tweet_id`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `tweet_id`."
+          )
+        )
       }
 
       if (!str_detect(`tweet_id`, "^[0-9]{1,19}$")) {
-        rlang::abort(message = "Invalid value for `tweet_id` when calling TweetsApi$hide_reply_by_id, must conform to the pattern ^[0-9]{1,19}$.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `tweet_id` when calling TweetsApi$hide_reply_by_id, must conform to the pattern ^[0-9]{1,19}$."))
+        rlang::abort(
+          message = "Invalid value for `tweet_id` when calling TweetsApi$hide_reply_by_id, must conform to the pattern ^[0-9]{1,19}$.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `tweet_id` when calling TweetsApi$hide_reply_by_id, must conform to the pattern ^[0-9]{1,19}$."
+          )
+        )
       }
 
 
@@ -4319,18 +4875,20 @@ TweetsApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list("application/json")
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "PUT",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "PUT",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -4341,9 +4899,11 @@ TweetsApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "TweetHideResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -4353,25 +4913,31 @@ TweetsApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' List Tweets timeline by List ID.
@@ -4433,79 +4999,123 @@ TweetsApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`id`)) {
-        rlang::abort(message = "Missing required parameter `id`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `id`."))
+        rlang::abort(
+          message = "Missing required parameter `id`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `id`."
+          )
+        )
       }
 
       if (!str_detect(`id`, "^[0-9]{1,19}$")) {
-        rlang::abort(message = "Invalid value for `id` when calling TweetsApi$lists_id_tweets, must conform to the pattern ^[0-9]{1,19}$.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `id` when calling TweetsApi$lists_id_tweets, must conform to the pattern ^[0-9]{1,19}$."))
+        rlang::abort(
+          message = "Invalid value for `id` when calling TweetsApi$lists_id_tweets, must conform to the pattern ^[0-9]{1,19}$.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `id` when calling TweetsApi$lists_id_tweets, must conform to the pattern ^[0-9]{1,19}$."
+          )
+        )
       }
 
       if (`max_results` > 100) {
-        rlang::abort(message = "Invalid value for `max_results` when calling TweetsApi$lists_id_tweets, must be smaller than or equal to 100.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling TweetsApi$lists_id_tweets, must be smaller than or equal to 100."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling TweetsApi$lists_id_tweets, must be smaller than or equal to 100.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling TweetsApi$lists_id_tweets, must be smaller than or equal to 100."
+          )
+        )
       }
       if (`max_results` < 1) {
-        rlang::abort(message = "Invalid value for `max_results` when calling TweetsApi$lists_id_tweets, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling TweetsApi$lists_id_tweets, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling TweetsApi$lists_id_tweets, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling TweetsApi$lists_id_tweets, must be bigger than or equal to 1."
+          )
+        )
       }
 
       if (nchar(`pagination_token`) < 1) {
-        rlang::abort(message = "Invalid length for `pagination_token` when calling TweetsApi$lists_id_tweets, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `pagination_token` when calling TweetsApi$lists_id_tweets, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `pagination_token` when calling TweetsApi$lists_id_tweets, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `pagination_token` when calling TweetsApi$lists_id_tweets, must be bigger than or equal to 1."
+          )
+        )
       }
 
       if (length(`tweet_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `tweet_fields` when calling TweetsApi$lists_id_tweets, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `tweet_fields` when calling TweetsApi$lists_id_tweets, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `tweet_fields` when calling TweetsApi$lists_id_tweets, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `tweet_fields` when calling TweetsApi$lists_id_tweets, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`expansions`) < 1) {
-        rlang::abort(message = "Invalid length for `expansions` when calling TweetsApi$lists_id_tweets, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `expansions` when calling TweetsApi$lists_id_tweets, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `expansions` when calling TweetsApi$lists_id_tweets, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `expansions` when calling TweetsApi$lists_id_tweets, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`media_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `media_fields` when calling TweetsApi$lists_id_tweets, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `media_fields` when calling TweetsApi$lists_id_tweets, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `media_fields` when calling TweetsApi$lists_id_tweets, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `media_fields` when calling TweetsApi$lists_id_tweets, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`poll_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `poll_fields` when calling TweetsApi$lists_id_tweets, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `poll_fields` when calling TweetsApi$lists_id_tweets, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `poll_fields` when calling TweetsApi$lists_id_tweets, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `poll_fields` when calling TweetsApi$lists_id_tweets, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`user_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `user_fields` when calling TweetsApi$lists_id_tweets, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `user_fields` when calling TweetsApi$lists_id_tweets, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `user_fields` when calling TweetsApi$lists_id_tweets, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `user_fields` when calling TweetsApi$lists_id_tweets, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`place_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `place_fields` when calling TweetsApi$lists_id_tweets, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `place_fields` when calling TweetsApi$lists_id_tweets, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `place_fields` when calling TweetsApi$lists_id_tweets, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `place_fields` when calling TweetsApi$lists_id_tweets, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       query_params[["max_results"]] <- `max_results`
@@ -4514,114 +5124,162 @@ TweetsApi <- R6::R6Class(
 
       # check if items are unique
       if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
-        rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$lists_id_tweets. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `tweet_fields` when calling TweetsApi$lists_id_tweets. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `tweet_fields` when calling TweetsApi$lists_id_tweets. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `tweet_fields` when calling TweetsApi$lists_id_tweets. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
         if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
-          rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$lists_id_tweets. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `tweet_fields` when calling TweetsApi$lists_id_tweets. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `tweet_fields` when calling TweetsApi$lists_id_tweets. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `tweet_fields` when calling TweetsApi$lists_id_tweets. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."
+            )
+          )
         }
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`expansions`, unique(`expansions`))) {
-        rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$lists_id_tweets. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `expansions` when calling TweetsApi$lists_id_tweets. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `expansions` when calling TweetsApi$lists_id_tweets. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `expansions` when calling TweetsApi$lists_id_tweets. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
         if (!(query_item %in% c("attachments.media_keys", "attachments.poll_ids", "author_id", "entities.mentions.username", "geo.place_id", "in_reply_to_user_id", "referenced_tweets.id", "referenced_tweets.id.author_id"))) {
-          rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$lists_id_tweets. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `expansions` when calling TweetsApi$lists_id_tweets. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."))
+          rlang::abort(
+            message = "Invalid value for `expansions` when calling TweetsApi$lists_id_tweets. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `expansions` when calling TweetsApi$lists_id_tweets. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."
+            )
+          )
         }
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`media_fields`, unique(`media_fields`))) {
-        rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$lists_id_tweets. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `media_fields` when calling TweetsApi$lists_id_tweets. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `media_fields` when calling TweetsApi$lists_id_tweets. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `media_fields` when calling TweetsApi$lists_id_tweets. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `media_fields`) {
         if (!(query_item %in% c("alt_text", "duration_ms", "height", "media_key", "non_public_metrics", "organic_metrics", "preview_image_url", "promoted_metrics", "public_metrics", "type", "url", "variants", "width"))) {
-          rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$lists_id_tweets. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `media_fields` when calling TweetsApi$lists_id_tweets. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."))
+          rlang::abort(
+            message = "Invalid value for `media_fields` when calling TweetsApi$lists_id_tweets. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `media_fields` when calling TweetsApi$lists_id_tweets. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."
+            )
+          )
         }
       }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`poll_fields`, unique(`poll_fields`))) {
-        rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$lists_id_tweets. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `poll_fields` when calling TweetsApi$lists_id_tweets. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `poll_fields` when calling TweetsApi$lists_id_tweets. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `poll_fields` when calling TweetsApi$lists_id_tweets. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `poll_fields`) {
         if (!(query_item %in% c("duration_minutes", "end_datetime", "id", "options", "voting_status"))) {
-          rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$lists_id_tweets. Must be [duration_minutes, end_datetime, id, options, voting_status].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `poll_fields` when calling TweetsApi$lists_id_tweets. Must be [duration_minutes, end_datetime, id, options, voting_status]."))
+          rlang::abort(
+            message = "Invalid value for `poll_fields` when calling TweetsApi$lists_id_tweets. Must be [duration_minutes, end_datetime, id, options, voting_status].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `poll_fields` when calling TweetsApi$lists_id_tweets. Must be [duration_minutes, end_datetime, id, options, voting_status]."
+            )
+          )
         }
       }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`user_fields`, unique(`user_fields`))) {
-        rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$lists_id_tweets. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `user_fields` when calling TweetsApi$lists_id_tweets. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `user_fields` when calling TweetsApi$lists_id_tweets. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `user_fields` when calling TweetsApi$lists_id_tweets. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
         if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
-          rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$lists_id_tweets. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `user_fields` when calling TweetsApi$lists_id_tweets. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `user_fields` when calling TweetsApi$lists_id_tweets. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `user_fields` when calling TweetsApi$lists_id_tweets. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."
+            )
+          )
         }
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`place_fields`, unique(`place_fields`))) {
-        rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$lists_id_tweets. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `place_fields` when calling TweetsApi$lists_id_tweets. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `place_fields` when calling TweetsApi$lists_id_tweets. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `place_fields` when calling TweetsApi$lists_id_tweets. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `place_fields`) {
         if (!(query_item %in% c("contained_within", "country", "country_code", "full_name", "geo", "id", "name", "place_type"))) {
-          rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$lists_id_tweets. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `place_fields` when calling TweetsApi$lists_id_tweets. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."))
+          rlang::abort(
+            message = "Invalid value for `place_fields` when calling TweetsApi$lists_id_tweets. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `place_fields` when calling TweetsApi$lists_id_tweets. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."
+            )
+          )
         }
       }
       query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
@@ -4645,18 +5303,20 @@ TweetsApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "GET",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -4667,9 +5327,11 @@ TweetsApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "Get2ListsIdTweetsResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -4679,25 +5341,31 @@ TweetsApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Sample stream
@@ -4719,7 +5387,8 @@ TweetsApi <- R6::R6Class(
     #' @export
     sample_stream = function(backfill_minutes = NULL, tweet_fields = NULL, expansions = NULL, media_fields = NULL, poll_fields = NULL, user_fields = NULL, place_fields = NULL, stream_callback = NULL, data_file = NULL, ...) {
       local_var_response <- self$sample_stream_with_http_info(backfill_minutes, tweet_fields, expansions, media_fields, poll_fields, user_fields, place_fields, stream_callback = stream_callback, data_file = data_file, ...)
-      if (typeof(stream_callback) == "closure") { # return void if streaming is enabled
+      if (typeof(stream_callback) == "closure") {
+        # return void if streaming is enabled
         return(invisible(NULL))
       }
 
@@ -4761,172 +5430,252 @@ TweetsApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (`backfill_minutes` > 5) {
-        rlang::abort(message = "Invalid value for `backfill_minutes` when calling TweetsApi$sample_stream, must be smaller than or equal to 5.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `backfill_minutes` when calling TweetsApi$sample_stream, must be smaller than or equal to 5."))
+        rlang::abort(
+          message = "Invalid value for `backfill_minutes` when calling TweetsApi$sample_stream, must be smaller than or equal to 5.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `backfill_minutes` when calling TweetsApi$sample_stream, must be smaller than or equal to 5."
+          )
+        )
       }
       if (`backfill_minutes` < 0) {
-        rlang::abort(message = "Invalid value for `backfill_minutes` when calling TweetsApi$sample_stream, must be bigger than or equal to 0.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `backfill_minutes` when calling TweetsApi$sample_stream, must be bigger than or equal to 0."))
+        rlang::abort(
+          message = "Invalid value for `backfill_minutes` when calling TweetsApi$sample_stream, must be bigger than or equal to 0.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `backfill_minutes` when calling TweetsApi$sample_stream, must be bigger than or equal to 0."
+          )
+        )
       }
 
       if (length(`tweet_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `tweet_fields` when calling TweetsApi$sample_stream, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `tweet_fields` when calling TweetsApi$sample_stream, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `tweet_fields` when calling TweetsApi$sample_stream, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `tweet_fields` when calling TweetsApi$sample_stream, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`expansions`) < 1) {
-        rlang::abort(message = "Invalid length for `expansions` when calling TweetsApi$sample_stream, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `expansions` when calling TweetsApi$sample_stream, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `expansions` when calling TweetsApi$sample_stream, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `expansions` when calling TweetsApi$sample_stream, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`media_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `media_fields` when calling TweetsApi$sample_stream, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `media_fields` when calling TweetsApi$sample_stream, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `media_fields` when calling TweetsApi$sample_stream, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `media_fields` when calling TweetsApi$sample_stream, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`poll_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `poll_fields` when calling TweetsApi$sample_stream, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `poll_fields` when calling TweetsApi$sample_stream, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `poll_fields` when calling TweetsApi$sample_stream, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `poll_fields` when calling TweetsApi$sample_stream, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`user_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `user_fields` when calling TweetsApi$sample_stream, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `user_fields` when calling TweetsApi$sample_stream, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `user_fields` when calling TweetsApi$sample_stream, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `user_fields` when calling TweetsApi$sample_stream, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`place_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `place_fields` when calling TweetsApi$sample_stream, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `place_fields` when calling TweetsApi$sample_stream, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `place_fields` when calling TweetsApi$sample_stream, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `place_fields` when calling TweetsApi$sample_stream, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       query_params[["backfill_minutes"]] <- `backfill_minutes`
 
       # check if items are unique
       if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
-        rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$sample_stream. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `tweet_fields` when calling TweetsApi$sample_stream. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `tweet_fields` when calling TweetsApi$sample_stream. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `tweet_fields` when calling TweetsApi$sample_stream. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
         if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
-          rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$sample_stream. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `tweet_fields` when calling TweetsApi$sample_stream. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `tweet_fields` when calling TweetsApi$sample_stream. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `tweet_fields` when calling TweetsApi$sample_stream. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."
+            )
+          )
         }
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`expansions`, unique(`expansions`))) {
-        rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$sample_stream. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `expansions` when calling TweetsApi$sample_stream. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `expansions` when calling TweetsApi$sample_stream. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `expansions` when calling TweetsApi$sample_stream. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
         if (!(query_item %in% c("attachments.media_keys", "attachments.poll_ids", "author_id", "entities.mentions.username", "geo.place_id", "in_reply_to_user_id", "referenced_tweets.id", "referenced_tweets.id.author_id"))) {
-          rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$sample_stream. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `expansions` when calling TweetsApi$sample_stream. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."))
+          rlang::abort(
+            message = "Invalid value for `expansions` when calling TweetsApi$sample_stream. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `expansions` when calling TweetsApi$sample_stream. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."
+            )
+          )
         }
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`media_fields`, unique(`media_fields`))) {
-        rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$sample_stream. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `media_fields` when calling TweetsApi$sample_stream. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `media_fields` when calling TweetsApi$sample_stream. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `media_fields` when calling TweetsApi$sample_stream. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `media_fields`) {
         if (!(query_item %in% c("alt_text", "duration_ms", "height", "media_key", "non_public_metrics", "organic_metrics", "preview_image_url", "promoted_metrics", "public_metrics", "type", "url", "variants", "width"))) {
-          rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$sample_stream. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `media_fields` when calling TweetsApi$sample_stream. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."))
+          rlang::abort(
+            message = "Invalid value for `media_fields` when calling TweetsApi$sample_stream. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `media_fields` when calling TweetsApi$sample_stream. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."
+            )
+          )
         }
       }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`poll_fields`, unique(`poll_fields`))) {
-        rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$sample_stream. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `poll_fields` when calling TweetsApi$sample_stream. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `poll_fields` when calling TweetsApi$sample_stream. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `poll_fields` when calling TweetsApi$sample_stream. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `poll_fields`) {
         if (!(query_item %in% c("duration_minutes", "end_datetime", "id", "options", "voting_status"))) {
-          rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$sample_stream. Must be [duration_minutes, end_datetime, id, options, voting_status].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `poll_fields` when calling TweetsApi$sample_stream. Must be [duration_minutes, end_datetime, id, options, voting_status]."))
+          rlang::abort(
+            message = "Invalid value for `poll_fields` when calling TweetsApi$sample_stream. Must be [duration_minutes, end_datetime, id, options, voting_status].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `poll_fields` when calling TweetsApi$sample_stream. Must be [duration_minutes, end_datetime, id, options, voting_status]."
+            )
+          )
         }
       }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`user_fields`, unique(`user_fields`))) {
-        rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$sample_stream. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `user_fields` when calling TweetsApi$sample_stream. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `user_fields` when calling TweetsApi$sample_stream. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `user_fields` when calling TweetsApi$sample_stream. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
         if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
-          rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$sample_stream. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `user_fields` when calling TweetsApi$sample_stream. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `user_fields` when calling TweetsApi$sample_stream. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `user_fields` when calling TweetsApi$sample_stream. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."
+            )
+          )
         }
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`place_fields`, unique(`place_fields`))) {
-        rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$sample_stream. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `place_fields` when calling TweetsApi$sample_stream. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `place_fields` when calling TweetsApi$sample_stream. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `place_fields` when calling TweetsApi$sample_stream. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `place_fields`) {
         if (!(query_item %in% c("contained_within", "country", "country_code", "full_name", "geo", "id", "name", "place_type"))) {
-          rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$sample_stream. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `place_fields` when calling TweetsApi$sample_stream. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."))
+          rlang::abort(
+            message = "Invalid value for `place_fields` when calling TweetsApi$sample_stream. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `place_fields` when calling TweetsApi$sample_stream. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."
+            )
+          )
         }
       }
       query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
@@ -4943,21 +5692,24 @@ TweetsApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 stream_callback = stream_callback,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "GET",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        stream_callback = stream_callback,
+        ...
+      )
 
-      if (typeof(stream_callback) == "closure") { # return void if streaming is enabled
+      if (typeof(stream_callback) == "closure") {
+        # return void if streaming is enabled
         return(invisible(NULL))
       }
 
@@ -4970,9 +5722,11 @@ TweetsApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "StreamingTweetResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -4982,25 +5736,31 @@ TweetsApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Filtered stream
@@ -5024,7 +5784,8 @@ TweetsApi <- R6::R6Class(
     #' @export
     search_stream = function(backfill_minutes = NULL, start_time = NULL, end_time = NULL, tweet_fields = NULL, expansions = NULL, media_fields = NULL, poll_fields = NULL, user_fields = NULL, place_fields = NULL, stream_callback = NULL, data_file = NULL, ...) {
       local_var_response <- self$search_stream_with_http_info(backfill_minutes, start_time, end_time, tweet_fields, expansions, media_fields, poll_fields, user_fields, place_fields, stream_callback = stream_callback, data_file = data_file, ...)
-      if (typeof(stream_callback) == "closure") { # return void if streaming is enabled
+      if (typeof(stream_callback) == "closure") {
+        # return void if streaming is enabled
         return(invisible(NULL))
       }
 
@@ -5068,60 +5829,92 @@ TweetsApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (`backfill_minutes` > 5) {
-        rlang::abort(message = "Invalid value for `backfill_minutes` when calling TweetsApi$search_stream, must be smaller than or equal to 5.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `backfill_minutes` when calling TweetsApi$search_stream, must be smaller than or equal to 5."))
+        rlang::abort(
+          message = "Invalid value for `backfill_minutes` when calling TweetsApi$search_stream, must be smaller than or equal to 5.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `backfill_minutes` when calling TweetsApi$search_stream, must be smaller than or equal to 5."
+          )
+        )
       }
       if (`backfill_minutes` < 0) {
-        rlang::abort(message = "Invalid value for `backfill_minutes` when calling TweetsApi$search_stream, must be bigger than or equal to 0.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `backfill_minutes` when calling TweetsApi$search_stream, must be bigger than or equal to 0."))
+        rlang::abort(
+          message = "Invalid value for `backfill_minutes` when calling TweetsApi$search_stream, must be bigger than or equal to 0.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `backfill_minutes` when calling TweetsApi$search_stream, must be bigger than or equal to 0."
+          )
+        )
       }
 
 
 
       if (length(`tweet_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `tweet_fields` when calling TweetsApi$search_stream, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `tweet_fields` when calling TweetsApi$search_stream, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `tweet_fields` when calling TweetsApi$search_stream, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `tweet_fields` when calling TweetsApi$search_stream, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`expansions`) < 1) {
-        rlang::abort(message = "Invalid length for `expansions` when calling TweetsApi$search_stream, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `expansions` when calling TweetsApi$search_stream, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `expansions` when calling TweetsApi$search_stream, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `expansions` when calling TweetsApi$search_stream, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`media_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `media_fields` when calling TweetsApi$search_stream, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `media_fields` when calling TweetsApi$search_stream, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `media_fields` when calling TweetsApi$search_stream, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `media_fields` when calling TweetsApi$search_stream, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`poll_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `poll_fields` when calling TweetsApi$search_stream, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `poll_fields` when calling TweetsApi$search_stream, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `poll_fields` when calling TweetsApi$search_stream, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `poll_fields` when calling TweetsApi$search_stream, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`user_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `user_fields` when calling TweetsApi$search_stream, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `user_fields` when calling TweetsApi$search_stream, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `user_fields` when calling TweetsApi$search_stream, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `user_fields` when calling TweetsApi$search_stream, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`place_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `place_fields` when calling TweetsApi$search_stream, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `place_fields` when calling TweetsApi$search_stream, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `place_fields` when calling TweetsApi$search_stream, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `place_fields` when calling TweetsApi$search_stream, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       query_params[["backfill_minutes"]] <- `backfill_minutes`
@@ -5132,114 +5925,162 @@ TweetsApi <- R6::R6Class(
 
       # check if items are unique
       if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
-        rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$search_stream. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `tweet_fields` when calling TweetsApi$search_stream. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `tweet_fields` when calling TweetsApi$search_stream. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `tweet_fields` when calling TweetsApi$search_stream. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
         if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
-          rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$search_stream. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `tweet_fields` when calling TweetsApi$search_stream. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `tweet_fields` when calling TweetsApi$search_stream. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `tweet_fields` when calling TweetsApi$search_stream. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."
+            )
+          )
         }
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`expansions`, unique(`expansions`))) {
-        rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$search_stream. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `expansions` when calling TweetsApi$search_stream. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `expansions` when calling TweetsApi$search_stream. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `expansions` when calling TweetsApi$search_stream. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
         if (!(query_item %in% c("attachments.media_keys", "attachments.poll_ids", "author_id", "entities.mentions.username", "geo.place_id", "in_reply_to_user_id", "referenced_tweets.id", "referenced_tweets.id.author_id"))) {
-          rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$search_stream. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `expansions` when calling TweetsApi$search_stream. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."))
+          rlang::abort(
+            message = "Invalid value for `expansions` when calling TweetsApi$search_stream. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `expansions` when calling TweetsApi$search_stream. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."
+            )
+          )
         }
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`media_fields`, unique(`media_fields`))) {
-        rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$search_stream. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `media_fields` when calling TweetsApi$search_stream. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `media_fields` when calling TweetsApi$search_stream. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `media_fields` when calling TweetsApi$search_stream. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `media_fields`) {
         if (!(query_item %in% c("alt_text", "duration_ms", "height", "media_key", "non_public_metrics", "organic_metrics", "preview_image_url", "promoted_metrics", "public_metrics", "type", "url", "variants", "width"))) {
-          rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$search_stream. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `media_fields` when calling TweetsApi$search_stream. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."))
+          rlang::abort(
+            message = "Invalid value for `media_fields` when calling TweetsApi$search_stream. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `media_fields` when calling TweetsApi$search_stream. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."
+            )
+          )
         }
       }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`poll_fields`, unique(`poll_fields`))) {
-        rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$search_stream. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `poll_fields` when calling TweetsApi$search_stream. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `poll_fields` when calling TweetsApi$search_stream. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `poll_fields` when calling TweetsApi$search_stream. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `poll_fields`) {
         if (!(query_item %in% c("duration_minutes", "end_datetime", "id", "options", "voting_status"))) {
-          rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$search_stream. Must be [duration_minutes, end_datetime, id, options, voting_status].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `poll_fields` when calling TweetsApi$search_stream. Must be [duration_minutes, end_datetime, id, options, voting_status]."))
+          rlang::abort(
+            message = "Invalid value for `poll_fields` when calling TweetsApi$search_stream. Must be [duration_minutes, end_datetime, id, options, voting_status].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `poll_fields` when calling TweetsApi$search_stream. Must be [duration_minutes, end_datetime, id, options, voting_status]."
+            )
+          )
         }
       }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`user_fields`, unique(`user_fields`))) {
-        rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$search_stream. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `user_fields` when calling TweetsApi$search_stream. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `user_fields` when calling TweetsApi$search_stream. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `user_fields` when calling TweetsApi$search_stream. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
         if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
-          rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$search_stream. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `user_fields` when calling TweetsApi$search_stream. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `user_fields` when calling TweetsApi$search_stream. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `user_fields` when calling TweetsApi$search_stream. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."
+            )
+          )
         }
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`place_fields`, unique(`place_fields`))) {
-        rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$search_stream. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `place_fields` when calling TweetsApi$search_stream. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `place_fields` when calling TweetsApi$search_stream. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `place_fields` when calling TweetsApi$search_stream. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `place_fields`) {
         if (!(query_item %in% c("contained_within", "country", "country_code", "full_name", "geo", "id", "name", "place_type"))) {
-          rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$search_stream. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `place_fields` when calling TweetsApi$search_stream. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."))
+          rlang::abort(
+            message = "Invalid value for `place_fields` when calling TweetsApi$search_stream. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `place_fields` when calling TweetsApi$search_stream. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."
+            )
+          )
         }
       }
       query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
@@ -5256,21 +6097,24 @@ TweetsApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 stream_callback = stream_callback,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "GET",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        stream_callback = stream_callback,
+        ...
+      )
 
-      if (typeof(stream_callback) == "closure") { # return void if streaming is enabled
+      if (typeof(stream_callback) == "closure") {
+        # return void if streaming is enabled
         return(invisible(NULL))
       }
 
@@ -5283,9 +6127,11 @@ TweetsApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "FilteredStreamingTweetResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -5295,25 +6141,31 @@ TweetsApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Retrieve the list of Users who purchased a ticket to the given space
@@ -5369,58 +6221,90 @@ TweetsApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`id`)) {
-        rlang::abort(message = "Missing required parameter `id`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `id`."))
+        rlang::abort(
+          message = "Missing required parameter `id`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `id`."
+          )
+        )
       }
 
       if (!str_detect(`id`, "^[a-zA-Z0-9]{1,13}$")) {
-        rlang::abort(message = "Invalid value for `id` when calling TweetsApi$space_buyers, must conform to the pattern ^[a-zA-Z0-9]{1,13}$.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `id` when calling TweetsApi$space_buyers, must conform to the pattern ^[a-zA-Z0-9]{1,13}$."))
+        rlang::abort(
+          message = "Invalid value for `id` when calling TweetsApi$space_buyers, must conform to the pattern ^[a-zA-Z0-9]{1,13}$.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `id` when calling TweetsApi$space_buyers, must conform to the pattern ^[a-zA-Z0-9]{1,13}$."
+          )
+        )
       }
 
       if (nchar(`pagination_token`) < 16) {
-        rlang::abort(message = "Invalid length for `pagination_token` when calling TweetsApi$space_buyers, must be bigger than or equal to 16.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `pagination_token` when calling TweetsApi$space_buyers, must be bigger than or equal to 16."))
+        rlang::abort(
+          message = "Invalid length for `pagination_token` when calling TweetsApi$space_buyers, must be bigger than or equal to 16.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `pagination_token` when calling TweetsApi$space_buyers, must be bigger than or equal to 16."
+          )
+        )
       }
 
       if (`max_results` > 100) {
-        rlang::abort(message = "Invalid value for `max_results` when calling TweetsApi$space_buyers, must be smaller than or equal to 100.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling TweetsApi$space_buyers, must be smaller than or equal to 100."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling TweetsApi$space_buyers, must be smaller than or equal to 100.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling TweetsApi$space_buyers, must be smaller than or equal to 100."
+          )
+        )
       }
       if (`max_results` < 1) {
-        rlang::abort(message = "Invalid value for `max_results` when calling TweetsApi$space_buyers, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling TweetsApi$space_buyers, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling TweetsApi$space_buyers, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling TweetsApi$space_buyers, must be bigger than or equal to 1."
+          )
+        )
       }
 
       if (length(`user_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `user_fields` when calling TweetsApi$space_buyers, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `user_fields` when calling TweetsApi$space_buyers, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `user_fields` when calling TweetsApi$space_buyers, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `user_fields` when calling TweetsApi$space_buyers, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`expansions`) < 1) {
-        rlang::abort(message = "Invalid length for `expansions` when calling TweetsApi$space_buyers, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `expansions` when calling TweetsApi$space_buyers, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `expansions` when calling TweetsApi$space_buyers, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `expansions` when calling TweetsApi$space_buyers, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`tweet_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `tweet_fields` when calling TweetsApi$space_buyers, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `tweet_fields` when calling TweetsApi$space_buyers, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `tweet_fields` when calling TweetsApi$space_buyers, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `tweet_fields` when calling TweetsApi$space_buyers, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       query_params[["pagination_token"]] <- `pagination_token`
@@ -5429,57 +6313,81 @@ TweetsApi <- R6::R6Class(
 
       # check if items are unique
       if (!identical(`user_fields`, unique(`user_fields`))) {
-        rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$space_buyers. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `user_fields` when calling TweetsApi$space_buyers. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `user_fields` when calling TweetsApi$space_buyers. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `user_fields` when calling TweetsApi$space_buyers. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
         if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
-          rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$space_buyers. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `user_fields` when calling TweetsApi$space_buyers. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `user_fields` when calling TweetsApi$space_buyers. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `user_fields` when calling TweetsApi$space_buyers. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."
+            )
+          )
         }
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`expansions`, unique(`expansions`))) {
-        rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$space_buyers. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `expansions` when calling TweetsApi$space_buyers. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `expansions` when calling TweetsApi$space_buyers. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `expansions` when calling TweetsApi$space_buyers. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
         if (!(query_item %in% c("pinned_tweet_id"))) {
-          rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$space_buyers. Must be [pinned_tweet_id].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `expansions` when calling TweetsApi$space_buyers. Must be [pinned_tweet_id]."))
+          rlang::abort(
+            message = "Invalid value for `expansions` when calling TweetsApi$space_buyers. Must be [pinned_tweet_id].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `expansions` when calling TweetsApi$space_buyers. Must be [pinned_tweet_id]."
+            )
+          )
         }
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
-        rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$space_buyers. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `tweet_fields` when calling TweetsApi$space_buyers. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `tweet_fields` when calling TweetsApi$space_buyers. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `tweet_fields` when calling TweetsApi$space_buyers. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
         if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
-          rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$space_buyers. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `tweet_fields` when calling TweetsApi$space_buyers. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `tweet_fields` when calling TweetsApi$space_buyers. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `tweet_fields` when calling TweetsApi$space_buyers. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."
+            )
+          )
         }
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
@@ -5499,18 +6407,20 @@ TweetsApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "GET",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -5521,9 +6431,11 @@ TweetsApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "Get2SpacesIdBuyersResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -5533,25 +6445,31 @@ TweetsApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Retrieve Tweets from a Space.
@@ -5611,186 +6529,274 @@ TweetsApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`id`)) {
-        rlang::abort(message = "Missing required parameter `id`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `id`."))
+        rlang::abort(
+          message = "Missing required parameter `id`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `id`."
+          )
+        )
       }
 
       if (!str_detect(`id`, "^[a-zA-Z0-9]{1,13}$")) {
-        rlang::abort(message = "Invalid value for `id` when calling TweetsApi$space_tweets, must conform to the pattern ^[a-zA-Z0-9]{1,13}$.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `id` when calling TweetsApi$space_tweets, must conform to the pattern ^[a-zA-Z0-9]{1,13}$."))
+        rlang::abort(
+          message = "Invalid value for `id` when calling TweetsApi$space_tweets, must conform to the pattern ^[a-zA-Z0-9]{1,13}$.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `id` when calling TweetsApi$space_tweets, must conform to the pattern ^[a-zA-Z0-9]{1,13}$."
+          )
+        )
       }
 
       if (`max_results` > 100) {
-        rlang::abort(message = "Invalid value for `max_results` when calling TweetsApi$space_tweets, must be smaller than or equal to 100.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling TweetsApi$space_tweets, must be smaller than or equal to 100."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling TweetsApi$space_tweets, must be smaller than or equal to 100.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling TweetsApi$space_tweets, must be smaller than or equal to 100."
+          )
+        )
       }
       if (`max_results` < 1) {
-        rlang::abort(message = "Invalid value for `max_results` when calling TweetsApi$space_tweets, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling TweetsApi$space_tweets, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling TweetsApi$space_tweets, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling TweetsApi$space_tweets, must be bigger than or equal to 1."
+          )
+        )
       }
 
       if (length(`tweet_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `tweet_fields` when calling TweetsApi$space_tweets, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `tweet_fields` when calling TweetsApi$space_tweets, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `tweet_fields` when calling TweetsApi$space_tweets, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `tweet_fields` when calling TweetsApi$space_tweets, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`expansions`) < 1) {
-        rlang::abort(message = "Invalid length for `expansions` when calling TweetsApi$space_tweets, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `expansions` when calling TweetsApi$space_tweets, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `expansions` when calling TweetsApi$space_tweets, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `expansions` when calling TweetsApi$space_tweets, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`media_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `media_fields` when calling TweetsApi$space_tweets, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `media_fields` when calling TweetsApi$space_tweets, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `media_fields` when calling TweetsApi$space_tweets, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `media_fields` when calling TweetsApi$space_tweets, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`poll_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `poll_fields` when calling TweetsApi$space_tweets, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `poll_fields` when calling TweetsApi$space_tweets, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `poll_fields` when calling TweetsApi$space_tweets, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `poll_fields` when calling TweetsApi$space_tweets, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`user_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `user_fields` when calling TweetsApi$space_tweets, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `user_fields` when calling TweetsApi$space_tweets, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `user_fields` when calling TweetsApi$space_tweets, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `user_fields` when calling TweetsApi$space_tweets, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`place_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `place_fields` when calling TweetsApi$space_tweets, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `place_fields` when calling TweetsApi$space_tweets, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `place_fields` when calling TweetsApi$space_tweets, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `place_fields` when calling TweetsApi$space_tweets, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       query_params[["max_results"]] <- `max_results`
 
       # check if items are unique
       if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
-        rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$space_tweets. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `tweet_fields` when calling TweetsApi$space_tweets. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `tweet_fields` when calling TweetsApi$space_tweets. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `tweet_fields` when calling TweetsApi$space_tweets. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
         if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
-          rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$space_tweets. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `tweet_fields` when calling TweetsApi$space_tweets. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `tweet_fields` when calling TweetsApi$space_tweets. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `tweet_fields` when calling TweetsApi$space_tweets. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."
+            )
+          )
         }
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`expansions`, unique(`expansions`))) {
-        rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$space_tweets. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `expansions` when calling TweetsApi$space_tweets. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `expansions` when calling TweetsApi$space_tweets. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `expansions` when calling TweetsApi$space_tweets. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
         if (!(query_item %in% c("attachments.media_keys", "attachments.poll_ids", "author_id", "entities.mentions.username", "geo.place_id", "in_reply_to_user_id", "referenced_tweets.id", "referenced_tweets.id.author_id"))) {
-          rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$space_tweets. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `expansions` when calling TweetsApi$space_tweets. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."))
+          rlang::abort(
+            message = "Invalid value for `expansions` when calling TweetsApi$space_tweets. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `expansions` when calling TweetsApi$space_tweets. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."
+            )
+          )
         }
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`media_fields`, unique(`media_fields`))) {
-        rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$space_tweets. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `media_fields` when calling TweetsApi$space_tweets. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `media_fields` when calling TweetsApi$space_tweets. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `media_fields` when calling TweetsApi$space_tweets. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `media_fields`) {
         if (!(query_item %in% c("alt_text", "duration_ms", "height", "media_key", "non_public_metrics", "organic_metrics", "preview_image_url", "promoted_metrics", "public_metrics", "type", "url", "variants", "width"))) {
-          rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$space_tweets. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `media_fields` when calling TweetsApi$space_tweets. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."))
+          rlang::abort(
+            message = "Invalid value for `media_fields` when calling TweetsApi$space_tweets. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `media_fields` when calling TweetsApi$space_tweets. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."
+            )
+          )
         }
       }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`poll_fields`, unique(`poll_fields`))) {
-        rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$space_tweets. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `poll_fields` when calling TweetsApi$space_tweets. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `poll_fields` when calling TweetsApi$space_tweets. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `poll_fields` when calling TweetsApi$space_tweets. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `poll_fields`) {
         if (!(query_item %in% c("duration_minutes", "end_datetime", "id", "options", "voting_status"))) {
-          rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$space_tweets. Must be [duration_minutes, end_datetime, id, options, voting_status].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `poll_fields` when calling TweetsApi$space_tweets. Must be [duration_minutes, end_datetime, id, options, voting_status]."))
+          rlang::abort(
+            message = "Invalid value for `poll_fields` when calling TweetsApi$space_tweets. Must be [duration_minutes, end_datetime, id, options, voting_status].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `poll_fields` when calling TweetsApi$space_tweets. Must be [duration_minutes, end_datetime, id, options, voting_status]."
+            )
+          )
         }
       }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`user_fields`, unique(`user_fields`))) {
-        rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$space_tweets. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `user_fields` when calling TweetsApi$space_tweets. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `user_fields` when calling TweetsApi$space_tweets. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `user_fields` when calling TweetsApi$space_tweets. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
         if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
-          rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$space_tweets. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `user_fields` when calling TweetsApi$space_tweets. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `user_fields` when calling TweetsApi$space_tweets. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `user_fields` when calling TweetsApi$space_tweets. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."
+            )
+          )
         }
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`place_fields`, unique(`place_fields`))) {
-        rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$space_tweets. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `place_fields` when calling TweetsApi$space_tweets. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `place_fields` when calling TweetsApi$space_tweets. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `place_fields` when calling TweetsApi$space_tweets. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `place_fields`) {
         if (!(query_item %in% c("contained_within", "country", "country_code", "full_name", "geo", "id", "name", "place_type"))) {
-          rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$space_tweets. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `place_fields` when calling TweetsApi$space_tweets. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."))
+          rlang::abort(
+            message = "Invalid value for `place_fields` when calling TweetsApi$space_tweets. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `place_fields` when calling TweetsApi$space_tweets. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."
+            )
+          )
         }
       }
       query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
@@ -5814,18 +6820,20 @@ TweetsApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "GET",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -5836,9 +6844,11 @@ TweetsApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "Get2SpacesIdTweetsResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -5848,25 +6858,31 @@ TweetsApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Full archive search counts
@@ -5928,61 +6944,93 @@ TweetsApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`query`)) {
-        rlang::abort(message = "Missing required parameter `query`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `query`."))
+        rlang::abort(
+          message = "Missing required parameter `query`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `query`."
+          )
+        )
       }
 
       if (nchar(`query`) > 4096) {
-        rlang::abort(message = "Invalid length for `query` when calling TweetsApi$tweet_counts_full_archive_search, must be smaller than or equal to 4096.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for $query when calling TweetsApi.tweet_counts_full_archive_search, must be smaller than or equal to 4096."))
+        rlang::abort(
+          message = "Invalid length for `query` when calling TweetsApi$tweet_counts_full_archive_search, must be smaller than or equal to 4096.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for $query when calling TweetsApi.tweet_counts_full_archive_search, must be smaller than or equal to 4096."
+          )
+        )
       }
       if (nchar(`query`) < 1) {
-        rlang::abort(message = "Invalid length for `query` when calling TweetsApi$tweet_counts_full_archive_search, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `query` when calling TweetsApi$tweet_counts_full_archive_search, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `query` when calling TweetsApi$tweet_counts_full_archive_search, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `query` when calling TweetsApi$tweet_counts_full_archive_search, must be bigger than or equal to 1."
+          )
+        )
       }
 
 
 
       if (!str_detect(`since_id`, "^[0-9]{1,19}$")) {
-        rlang::abort(message = "Invalid value for `since_id` when calling TweetsApi$tweet_counts_full_archive_search, must conform to the pattern ^[0-9]{1,19}$.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `since_id` when calling TweetsApi$tweet_counts_full_archive_search, must conform to the pattern ^[0-9]{1,19}$."))
+        rlang::abort(
+          message = "Invalid value for `since_id` when calling TweetsApi$tweet_counts_full_archive_search, must conform to the pattern ^[0-9]{1,19}$.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `since_id` when calling TweetsApi$tweet_counts_full_archive_search, must conform to the pattern ^[0-9]{1,19}$."
+          )
+        )
       }
 
       if (!str_detect(`until_id`, "^[0-9]{1,19}$")) {
-        rlang::abort(message = "Invalid value for `until_id` when calling TweetsApi$tweet_counts_full_archive_search, must conform to the pattern ^[0-9]{1,19}$.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `until_id` when calling TweetsApi$tweet_counts_full_archive_search, must conform to the pattern ^[0-9]{1,19}$."))
+        rlang::abort(
+          message = "Invalid value for `until_id` when calling TweetsApi$tweet_counts_full_archive_search, must conform to the pattern ^[0-9]{1,19}$.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `until_id` when calling TweetsApi$tweet_counts_full_archive_search, must conform to the pattern ^[0-9]{1,19}$."
+          )
+        )
       }
 
       if (nchar(`next_token`) < 1) {
-        rlang::abort(message = "Invalid length for `next_token` when calling TweetsApi$tweet_counts_full_archive_search, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `next_token` when calling TweetsApi$tweet_counts_full_archive_search, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `next_token` when calling TweetsApi$tweet_counts_full_archive_search, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `next_token` when calling TweetsApi$tweet_counts_full_archive_search, must be bigger than or equal to 1."
+          )
+        )
       }
 
       if (nchar(`pagination_token`) < 1) {
-        rlang::abort(message = "Invalid length for `pagination_token` when calling TweetsApi$tweet_counts_full_archive_search, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `pagination_token` when calling TweetsApi$tweet_counts_full_archive_search, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `pagination_token` when calling TweetsApi$tweet_counts_full_archive_search, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `pagination_token` when calling TweetsApi$tweet_counts_full_archive_search, must be bigger than or equal to 1."
+          )
+        )
       }
 
 
       if (length(`search_count_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `search_count_fields` when calling TweetsApi$tweet_counts_full_archive_search, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `search_count_fields` when calling TweetsApi$tweet_counts_full_archive_search, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `search_count_fields` when calling TweetsApi$tweet_counts_full_archive_search, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `search_count_fields` when calling TweetsApi$tweet_counts_full_archive_search, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       query_params[["query"]] <- `query`
@@ -6000,28 +7048,40 @@ TweetsApi <- R6::R6Class(
       query_params[["pagination_token"]] <- `pagination_token`
 
       if (!(`granularity` %in% c("minute", "hour", "day"))) {
-        rlang::abort(message = "Invalid value for `granularity` when calling TweetsApi$tweet_counts_full_archive_search. Must be [minute, hour, day].",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `granularity` when calling TweetsApi$tweet_counts_full_archive_search. Must be [minute, hour, day]."))
+        rlang::abort(
+          message = "Invalid value for `granularity` when calling TweetsApi$tweet_counts_full_archive_search. Must be [minute, hour, day].",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `granularity` when calling TweetsApi$tweet_counts_full_archive_search. Must be [minute, hour, day]."
+          )
+        )
       }
       query_params[["granularity"]] <- `granularity`
 
       # check if items are unique
       if (!identical(`search_count_fields`, unique(`search_count_fields`))) {
-        rlang::abort(message = "Invalid value for `search_count_fields` when calling TweetsApi$tweet_counts_full_archive_search. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `search_count_fields` when calling TweetsApi$tweet_counts_full_archive_search. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `search_count_fields` when calling TweetsApi$tweet_counts_full_archive_search. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `search_count_fields` when calling TweetsApi$tweet_counts_full_archive_search. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `search_count_fields`) {
         if (!(query_item %in% c("end", "start", "tweet_count"))) {
-          rlang::abort(message = "Invalid value for `search_count_fields` when calling TweetsApi$tweet_counts_full_archive_search. Must be [end, start, tweet_count].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `search_count_fields` when calling TweetsApi$tweet_counts_full_archive_search. Must be [end, start, tweet_count]."))
+          rlang::abort(
+            message = "Invalid value for `search_count_fields` when calling TweetsApi$tweet_counts_full_archive_search. Must be [end, start, tweet_count].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `search_count_fields` when calling TweetsApi$tweet_counts_full_archive_search. Must be [end, start, tweet_count]."
+            )
+          )
         }
       }
       query_params[["search_count.fields"]] <- I(paste(lapply(`search_count_fields`, URLencode, reserved = TRUE), collapse = ","))
@@ -6038,18 +7098,20 @@ TweetsApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "GET",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -6060,9 +7122,11 @@ TweetsApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "Get2TweetsCountsAllResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -6072,25 +7136,31 @@ TweetsApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Recent search counts
@@ -6152,61 +7222,93 @@ TweetsApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`query`)) {
-        rlang::abort(message = "Missing required parameter `query`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `query`."))
+        rlang::abort(
+          message = "Missing required parameter `query`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `query`."
+          )
+        )
       }
 
       if (nchar(`query`) > 4096) {
-        rlang::abort(message = "Invalid length for `query` when calling TweetsApi$tweet_counts_recent_search, must be smaller than or equal to 4096.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for $query when calling TweetsApi.tweet_counts_recent_search, must be smaller than or equal to 4096."))
+        rlang::abort(
+          message = "Invalid length for `query` when calling TweetsApi$tweet_counts_recent_search, must be smaller than or equal to 4096.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for $query when calling TweetsApi.tweet_counts_recent_search, must be smaller than or equal to 4096."
+          )
+        )
       }
       if (nchar(`query`) < 1) {
-        rlang::abort(message = "Invalid length for `query` when calling TweetsApi$tweet_counts_recent_search, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `query` when calling TweetsApi$tweet_counts_recent_search, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `query` when calling TweetsApi$tweet_counts_recent_search, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `query` when calling TweetsApi$tweet_counts_recent_search, must be bigger than or equal to 1."
+          )
+        )
       }
 
 
 
       if (!str_detect(`since_id`, "^[0-9]{1,19}$")) {
-        rlang::abort(message = "Invalid value for `since_id` when calling TweetsApi$tweet_counts_recent_search, must conform to the pattern ^[0-9]{1,19}$.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `since_id` when calling TweetsApi$tweet_counts_recent_search, must conform to the pattern ^[0-9]{1,19}$."))
+        rlang::abort(
+          message = "Invalid value for `since_id` when calling TweetsApi$tweet_counts_recent_search, must conform to the pattern ^[0-9]{1,19}$.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `since_id` when calling TweetsApi$tweet_counts_recent_search, must conform to the pattern ^[0-9]{1,19}$."
+          )
+        )
       }
 
       if (!str_detect(`until_id`, "^[0-9]{1,19}$")) {
-        rlang::abort(message = "Invalid value for `until_id` when calling TweetsApi$tweet_counts_recent_search, must conform to the pattern ^[0-9]{1,19}$.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `until_id` when calling TweetsApi$tweet_counts_recent_search, must conform to the pattern ^[0-9]{1,19}$."))
+        rlang::abort(
+          message = "Invalid value for `until_id` when calling TweetsApi$tweet_counts_recent_search, must conform to the pattern ^[0-9]{1,19}$.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `until_id` when calling TweetsApi$tweet_counts_recent_search, must conform to the pattern ^[0-9]{1,19}$."
+          )
+        )
       }
 
       if (nchar(`next_token`) < 1) {
-        rlang::abort(message = "Invalid length for `next_token` when calling TweetsApi$tweet_counts_recent_search, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `next_token` when calling TweetsApi$tweet_counts_recent_search, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `next_token` when calling TweetsApi$tweet_counts_recent_search, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `next_token` when calling TweetsApi$tweet_counts_recent_search, must be bigger than or equal to 1."
+          )
+        )
       }
 
       if (nchar(`pagination_token`) < 1) {
-        rlang::abort(message = "Invalid length for `pagination_token` when calling TweetsApi$tweet_counts_recent_search, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `pagination_token` when calling TweetsApi$tweet_counts_recent_search, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `pagination_token` when calling TweetsApi$tweet_counts_recent_search, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `pagination_token` when calling TweetsApi$tweet_counts_recent_search, must be bigger than or equal to 1."
+          )
+        )
       }
 
 
       if (length(`search_count_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `search_count_fields` when calling TweetsApi$tweet_counts_recent_search, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `search_count_fields` when calling TweetsApi$tweet_counts_recent_search, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `search_count_fields` when calling TweetsApi$tweet_counts_recent_search, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `search_count_fields` when calling TweetsApi$tweet_counts_recent_search, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       query_params[["query"]] <- `query`
@@ -6224,28 +7326,40 @@ TweetsApi <- R6::R6Class(
       query_params[["pagination_token"]] <- `pagination_token`
 
       if (!(`granularity` %in% c("minute", "hour", "day"))) {
-        rlang::abort(message = "Invalid value for `granularity` when calling TweetsApi$tweet_counts_recent_search. Must be [minute, hour, day].",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `granularity` when calling TweetsApi$tweet_counts_recent_search. Must be [minute, hour, day]."))
+        rlang::abort(
+          message = "Invalid value for `granularity` when calling TweetsApi$tweet_counts_recent_search. Must be [minute, hour, day].",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `granularity` when calling TweetsApi$tweet_counts_recent_search. Must be [minute, hour, day]."
+          )
+        )
       }
       query_params[["granularity"]] <- `granularity`
 
       # check if items are unique
       if (!identical(`search_count_fields`, unique(`search_count_fields`))) {
-        rlang::abort(message = "Invalid value for `search_count_fields` when calling TweetsApi$tweet_counts_recent_search. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `search_count_fields` when calling TweetsApi$tweet_counts_recent_search. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `search_count_fields` when calling TweetsApi$tweet_counts_recent_search. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `search_count_fields` when calling TweetsApi$tweet_counts_recent_search. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `search_count_fields`) {
         if (!(query_item %in% c("end", "start", "tweet_count"))) {
-          rlang::abort(message = "Invalid value for `search_count_fields` when calling TweetsApi$tweet_counts_recent_search. Must be [end, start, tweet_count].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `search_count_fields` when calling TweetsApi$tweet_counts_recent_search. Must be [end, start, tweet_count]."))
+          rlang::abort(
+            message = "Invalid value for `search_count_fields` when calling TweetsApi$tweet_counts_recent_search. Must be [end, start, tweet_count].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `search_count_fields` when calling TweetsApi$tweet_counts_recent_search. Must be [end, start, tweet_count]."
+            )
+          )
         }
       }
       query_params[["search_count.fields"]] <- I(paste(lapply(`search_count_fields`, URLencode, reserved = TRUE), collapse = ","))
@@ -6262,18 +7376,20 @@ TweetsApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "GET",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -6284,9 +7400,11 @@ TweetsApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "Get2TweetsCountsRecentResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -6296,25 +7414,31 @@ TweetsApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Full-archive search
@@ -6388,109 +7512,169 @@ TweetsApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`query`)) {
-        rlang::abort(message = "Missing required parameter `query`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `query`."))
+        rlang::abort(
+          message = "Missing required parameter `query`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `query`."
+          )
+        )
       }
 
       if (nchar(`query`) > 4096) {
-        rlang::abort(message = "Invalid length for `query` when calling TweetsApi$tweets_fullarchive_search, must be smaller than or equal to 4096.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for $query when calling TweetsApi.tweets_fullarchive_search, must be smaller than or equal to 4096."))
+        rlang::abort(
+          message = "Invalid length for `query` when calling TweetsApi$tweets_fullarchive_search, must be smaller than or equal to 4096.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for $query when calling TweetsApi.tweets_fullarchive_search, must be smaller than or equal to 4096."
+          )
+        )
       }
       if (nchar(`query`) < 1) {
-        rlang::abort(message = "Invalid length for `query` when calling TweetsApi$tweets_fullarchive_search, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `query` when calling TweetsApi$tweets_fullarchive_search, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `query` when calling TweetsApi$tweets_fullarchive_search, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `query` when calling TweetsApi$tweets_fullarchive_search, must be bigger than or equal to 1."
+          )
+        )
       }
 
 
 
       if (!str_detect(`since_id`, "^[0-9]{1,19}$")) {
-        rlang::abort(message = "Invalid value for `since_id` when calling TweetsApi$tweets_fullarchive_search, must conform to the pattern ^[0-9]{1,19}$.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `since_id` when calling TweetsApi$tweets_fullarchive_search, must conform to the pattern ^[0-9]{1,19}$."))
+        rlang::abort(
+          message = "Invalid value for `since_id` when calling TweetsApi$tweets_fullarchive_search, must conform to the pattern ^[0-9]{1,19}$.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `since_id` when calling TweetsApi$tweets_fullarchive_search, must conform to the pattern ^[0-9]{1,19}$."
+          )
+        )
       }
 
       if (!str_detect(`until_id`, "^[0-9]{1,19}$")) {
-        rlang::abort(message = "Invalid value for `until_id` when calling TweetsApi$tweets_fullarchive_search, must conform to the pattern ^[0-9]{1,19}$.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `until_id` when calling TweetsApi$tweets_fullarchive_search, must conform to the pattern ^[0-9]{1,19}$."))
+        rlang::abort(
+          message = "Invalid value for `until_id` when calling TweetsApi$tweets_fullarchive_search, must conform to the pattern ^[0-9]{1,19}$.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `until_id` when calling TweetsApi$tweets_fullarchive_search, must conform to the pattern ^[0-9]{1,19}$."
+          )
+        )
       }
 
       if (`max_results` > 500) {
-        rlang::abort(message = "Invalid value for `max_results` when calling TweetsApi$tweets_fullarchive_search, must be smaller than or equal to 500.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling TweetsApi$tweets_fullarchive_search, must be smaller than or equal to 500."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling TweetsApi$tweets_fullarchive_search, must be smaller than or equal to 500.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling TweetsApi$tweets_fullarchive_search, must be smaller than or equal to 500."
+          )
+        )
       }
       if (`max_results` < 10) {
-        rlang::abort(message = "Invalid value for `max_results` when calling TweetsApi$tweets_fullarchive_search, must be bigger than or equal to 10.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling TweetsApi$tweets_fullarchive_search, must be bigger than or equal to 10."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling TweetsApi$tweets_fullarchive_search, must be bigger than or equal to 10.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling TweetsApi$tweets_fullarchive_search, must be bigger than or equal to 10."
+          )
+        )
       }
 
       if (nchar(`next_token`) < 1) {
-        rlang::abort(message = "Invalid length for `next_token` when calling TweetsApi$tweets_fullarchive_search, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `next_token` when calling TweetsApi$tweets_fullarchive_search, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `next_token` when calling TweetsApi$tweets_fullarchive_search, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `next_token` when calling TweetsApi$tweets_fullarchive_search, must be bigger than or equal to 1."
+          )
+        )
       }
 
       if (nchar(`pagination_token`) < 1) {
-        rlang::abort(message = "Invalid length for `pagination_token` when calling TweetsApi$tweets_fullarchive_search, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `pagination_token` when calling TweetsApi$tweets_fullarchive_search, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `pagination_token` when calling TweetsApi$tweets_fullarchive_search, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `pagination_token` when calling TweetsApi$tweets_fullarchive_search, must be bigger than or equal to 1."
+          )
+        )
       }
 
 
       if (length(`tweet_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `tweet_fields` when calling TweetsApi$tweets_fullarchive_search, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `tweet_fields` when calling TweetsApi$tweets_fullarchive_search, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `tweet_fields` when calling TweetsApi$tweets_fullarchive_search, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `tweet_fields` when calling TweetsApi$tweets_fullarchive_search, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`expansions`) < 1) {
-        rlang::abort(message = "Invalid length for `expansions` when calling TweetsApi$tweets_fullarchive_search, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `expansions` when calling TweetsApi$tweets_fullarchive_search, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `expansions` when calling TweetsApi$tweets_fullarchive_search, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `expansions` when calling TweetsApi$tweets_fullarchive_search, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`media_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `media_fields` when calling TweetsApi$tweets_fullarchive_search, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `media_fields` when calling TweetsApi$tweets_fullarchive_search, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `media_fields` when calling TweetsApi$tweets_fullarchive_search, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `media_fields` when calling TweetsApi$tweets_fullarchive_search, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`poll_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `poll_fields` when calling TweetsApi$tweets_fullarchive_search, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `poll_fields` when calling TweetsApi$tweets_fullarchive_search, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `poll_fields` when calling TweetsApi$tweets_fullarchive_search, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `poll_fields` when calling TweetsApi$tweets_fullarchive_search, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`user_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `user_fields` when calling TweetsApi$tweets_fullarchive_search, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `user_fields` when calling TweetsApi$tweets_fullarchive_search, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `user_fields` when calling TweetsApi$tweets_fullarchive_search, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `user_fields` when calling TweetsApi$tweets_fullarchive_search, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`place_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `place_fields` when calling TweetsApi$tweets_fullarchive_search, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `place_fields` when calling TweetsApi$tweets_fullarchive_search, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `place_fields` when calling TweetsApi$tweets_fullarchive_search, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `place_fields` when calling TweetsApi$tweets_fullarchive_search, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       query_params[["query"]] <- `query`
@@ -6510,123 +7694,175 @@ TweetsApi <- R6::R6Class(
       query_params[["pagination_token"]] <- `pagination_token`
 
       if (!(`sort_order` %in% c("recency", "relevancy"))) {
-        rlang::abort(message = "Invalid value for `sort_order` when calling TweetsApi$tweets_fullarchive_search. Must be [recency, relevancy].",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `sort_order` when calling TweetsApi$tweets_fullarchive_search. Must be [recency, relevancy]."))
+        rlang::abort(
+          message = "Invalid value for `sort_order` when calling TweetsApi$tweets_fullarchive_search. Must be [recency, relevancy].",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `sort_order` when calling TweetsApi$tweets_fullarchive_search. Must be [recency, relevancy]."
+          )
+        )
       }
       query_params[["sort_order"]] <- `sort_order`
 
       # check if items are unique
       if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
-        rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$tweets_fullarchive_search. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `tweet_fields` when calling TweetsApi$tweets_fullarchive_search. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `tweet_fields` when calling TweetsApi$tweets_fullarchive_search. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `tweet_fields` when calling TweetsApi$tweets_fullarchive_search. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
         if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
-          rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$tweets_fullarchive_search. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `tweet_fields` when calling TweetsApi$tweets_fullarchive_search. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `tweet_fields` when calling TweetsApi$tweets_fullarchive_search. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `tweet_fields` when calling TweetsApi$tweets_fullarchive_search. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."
+            )
+          )
         }
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`expansions`, unique(`expansions`))) {
-        rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$tweets_fullarchive_search. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `expansions` when calling TweetsApi$tweets_fullarchive_search. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `expansions` when calling TweetsApi$tweets_fullarchive_search. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `expansions` when calling TweetsApi$tweets_fullarchive_search. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
         if (!(query_item %in% c("attachments.media_keys", "attachments.poll_ids", "author_id", "entities.mentions.username", "geo.place_id", "in_reply_to_user_id", "referenced_tweets.id", "referenced_tweets.id.author_id"))) {
-          rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$tweets_fullarchive_search. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `expansions` when calling TweetsApi$tweets_fullarchive_search. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."))
+          rlang::abort(
+            message = "Invalid value for `expansions` when calling TweetsApi$tweets_fullarchive_search. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `expansions` when calling TweetsApi$tweets_fullarchive_search. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."
+            )
+          )
         }
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`media_fields`, unique(`media_fields`))) {
-        rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$tweets_fullarchive_search. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `media_fields` when calling TweetsApi$tweets_fullarchive_search. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `media_fields` when calling TweetsApi$tweets_fullarchive_search. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `media_fields` when calling TweetsApi$tweets_fullarchive_search. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `media_fields`) {
         if (!(query_item %in% c("alt_text", "duration_ms", "height", "media_key", "non_public_metrics", "organic_metrics", "preview_image_url", "promoted_metrics", "public_metrics", "type", "url", "variants", "width"))) {
-          rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$tweets_fullarchive_search. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `media_fields` when calling TweetsApi$tweets_fullarchive_search. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."))
+          rlang::abort(
+            message = "Invalid value for `media_fields` when calling TweetsApi$tweets_fullarchive_search. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `media_fields` when calling TweetsApi$tweets_fullarchive_search. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."
+            )
+          )
         }
       }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`poll_fields`, unique(`poll_fields`))) {
-        rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$tweets_fullarchive_search. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `poll_fields` when calling TweetsApi$tweets_fullarchive_search. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `poll_fields` when calling TweetsApi$tweets_fullarchive_search. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `poll_fields` when calling TweetsApi$tweets_fullarchive_search. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `poll_fields`) {
         if (!(query_item %in% c("duration_minutes", "end_datetime", "id", "options", "voting_status"))) {
-          rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$tweets_fullarchive_search. Must be [duration_minutes, end_datetime, id, options, voting_status].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `poll_fields` when calling TweetsApi$tweets_fullarchive_search. Must be [duration_minutes, end_datetime, id, options, voting_status]."))
+          rlang::abort(
+            message = "Invalid value for `poll_fields` when calling TweetsApi$tweets_fullarchive_search. Must be [duration_minutes, end_datetime, id, options, voting_status].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `poll_fields` when calling TweetsApi$tweets_fullarchive_search. Must be [duration_minutes, end_datetime, id, options, voting_status]."
+            )
+          )
         }
       }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`user_fields`, unique(`user_fields`))) {
-        rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$tweets_fullarchive_search. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `user_fields` when calling TweetsApi$tweets_fullarchive_search. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `user_fields` when calling TweetsApi$tweets_fullarchive_search. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `user_fields` when calling TweetsApi$tweets_fullarchive_search. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
         if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
-          rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$tweets_fullarchive_search. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `user_fields` when calling TweetsApi$tweets_fullarchive_search. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `user_fields` when calling TweetsApi$tweets_fullarchive_search. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `user_fields` when calling TweetsApi$tweets_fullarchive_search. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."
+            )
+          )
         }
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`place_fields`, unique(`place_fields`))) {
-        rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$tweets_fullarchive_search. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `place_fields` when calling TweetsApi$tweets_fullarchive_search. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `place_fields` when calling TweetsApi$tweets_fullarchive_search. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `place_fields` when calling TweetsApi$tweets_fullarchive_search. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `place_fields`) {
         if (!(query_item %in% c("contained_within", "country", "country_code", "full_name", "geo", "id", "name", "place_type"))) {
-          rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$tweets_fullarchive_search. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `place_fields` when calling TweetsApi$tweets_fullarchive_search. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."))
+          rlang::abort(
+            message = "Invalid value for `place_fields` when calling TweetsApi$tweets_fullarchive_search. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `place_fields` when calling TweetsApi$tweets_fullarchive_search. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."
+            )
+          )
         }
       }
       query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
@@ -6643,18 +7879,20 @@ TweetsApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "GET",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -6665,9 +7903,11 @@ TweetsApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "Get2TweetsSearchAllResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -6677,25 +7917,31 @@ TweetsApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Recent search
@@ -6769,109 +8015,169 @@ TweetsApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`query`)) {
-        rlang::abort(message = "Missing required parameter `query`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `query`."))
+        rlang::abort(
+          message = "Missing required parameter `query`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `query`."
+          )
+        )
       }
 
       if (nchar(`query`) > 4096) {
-        rlang::abort(message = "Invalid length for `query` when calling TweetsApi$tweets_recent_search, must be smaller than or equal to 4096.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for $query when calling TweetsApi.tweets_recent_search, must be smaller than or equal to 4096."))
+        rlang::abort(
+          message = "Invalid length for `query` when calling TweetsApi$tweets_recent_search, must be smaller than or equal to 4096.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for $query when calling TweetsApi.tweets_recent_search, must be smaller than or equal to 4096."
+          )
+        )
       }
       if (nchar(`query`) < 1) {
-        rlang::abort(message = "Invalid length for `query` when calling TweetsApi$tweets_recent_search, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `query` when calling TweetsApi$tweets_recent_search, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `query` when calling TweetsApi$tweets_recent_search, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `query` when calling TweetsApi$tweets_recent_search, must be bigger than or equal to 1."
+          )
+        )
       }
 
 
 
       if (!str_detect(`since_id`, "^[0-9]{1,19}$")) {
-        rlang::abort(message = "Invalid value for `since_id` when calling TweetsApi$tweets_recent_search, must conform to the pattern ^[0-9]{1,19}$.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `since_id` when calling TweetsApi$tweets_recent_search, must conform to the pattern ^[0-9]{1,19}$."))
+        rlang::abort(
+          message = "Invalid value for `since_id` when calling TweetsApi$tweets_recent_search, must conform to the pattern ^[0-9]{1,19}$.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `since_id` when calling TweetsApi$tweets_recent_search, must conform to the pattern ^[0-9]{1,19}$."
+          )
+        )
       }
 
       if (!str_detect(`until_id`, "^[0-9]{1,19}$")) {
-        rlang::abort(message = "Invalid value for `until_id` when calling TweetsApi$tweets_recent_search, must conform to the pattern ^[0-9]{1,19}$.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `until_id` when calling TweetsApi$tweets_recent_search, must conform to the pattern ^[0-9]{1,19}$."))
+        rlang::abort(
+          message = "Invalid value for `until_id` when calling TweetsApi$tweets_recent_search, must conform to the pattern ^[0-9]{1,19}$.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `until_id` when calling TweetsApi$tweets_recent_search, must conform to the pattern ^[0-9]{1,19}$."
+          )
+        )
       }
 
       if (`max_results` > 100) {
-        rlang::abort(message = "Invalid value for `max_results` when calling TweetsApi$tweets_recent_search, must be smaller than or equal to 100.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling TweetsApi$tweets_recent_search, must be smaller than or equal to 100."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling TweetsApi$tweets_recent_search, must be smaller than or equal to 100.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling TweetsApi$tweets_recent_search, must be smaller than or equal to 100."
+          )
+        )
       }
       if (`max_results` < 10) {
-        rlang::abort(message = "Invalid value for `max_results` when calling TweetsApi$tweets_recent_search, must be bigger than or equal to 10.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling TweetsApi$tweets_recent_search, must be bigger than or equal to 10."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling TweetsApi$tweets_recent_search, must be bigger than or equal to 10.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling TweetsApi$tweets_recent_search, must be bigger than or equal to 10."
+          )
+        )
       }
 
       if (nchar(`next_token`) < 1) {
-        rlang::abort(message = "Invalid length for `next_token` when calling TweetsApi$tweets_recent_search, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `next_token` when calling TweetsApi$tweets_recent_search, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `next_token` when calling TweetsApi$tweets_recent_search, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `next_token` when calling TweetsApi$tweets_recent_search, must be bigger than or equal to 1."
+          )
+        )
       }
 
       if (nchar(`pagination_token`) < 1) {
-        rlang::abort(message = "Invalid length for `pagination_token` when calling TweetsApi$tweets_recent_search, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `pagination_token` when calling TweetsApi$tweets_recent_search, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `pagination_token` when calling TweetsApi$tweets_recent_search, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `pagination_token` when calling TweetsApi$tweets_recent_search, must be bigger than or equal to 1."
+          )
+        )
       }
 
 
       if (length(`tweet_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `tweet_fields` when calling TweetsApi$tweets_recent_search, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `tweet_fields` when calling TweetsApi$tweets_recent_search, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `tweet_fields` when calling TweetsApi$tweets_recent_search, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `tweet_fields` when calling TweetsApi$tweets_recent_search, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`expansions`) < 1) {
-        rlang::abort(message = "Invalid length for `expansions` when calling TweetsApi$tweets_recent_search, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `expansions` when calling TweetsApi$tweets_recent_search, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `expansions` when calling TweetsApi$tweets_recent_search, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `expansions` when calling TweetsApi$tweets_recent_search, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`media_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `media_fields` when calling TweetsApi$tweets_recent_search, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `media_fields` when calling TweetsApi$tweets_recent_search, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `media_fields` when calling TweetsApi$tweets_recent_search, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `media_fields` when calling TweetsApi$tweets_recent_search, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`poll_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `poll_fields` when calling TweetsApi$tweets_recent_search, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `poll_fields` when calling TweetsApi$tweets_recent_search, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `poll_fields` when calling TweetsApi$tweets_recent_search, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `poll_fields` when calling TweetsApi$tweets_recent_search, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`user_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `user_fields` when calling TweetsApi$tweets_recent_search, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `user_fields` when calling TweetsApi$tweets_recent_search, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `user_fields` when calling TweetsApi$tweets_recent_search, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `user_fields` when calling TweetsApi$tweets_recent_search, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`place_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `place_fields` when calling TweetsApi$tweets_recent_search, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `place_fields` when calling TweetsApi$tweets_recent_search, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `place_fields` when calling TweetsApi$tweets_recent_search, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `place_fields` when calling TweetsApi$tweets_recent_search, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       query_params[["query"]] <- `query`
@@ -6891,123 +8197,175 @@ TweetsApi <- R6::R6Class(
       query_params[["pagination_token"]] <- `pagination_token`
 
       if (!(`sort_order` %in% c("recency", "relevancy"))) {
-        rlang::abort(message = "Invalid value for `sort_order` when calling TweetsApi$tweets_recent_search. Must be [recency, relevancy].",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `sort_order` when calling TweetsApi$tweets_recent_search. Must be [recency, relevancy]."))
+        rlang::abort(
+          message = "Invalid value for `sort_order` when calling TweetsApi$tweets_recent_search. Must be [recency, relevancy].",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `sort_order` when calling TweetsApi$tweets_recent_search. Must be [recency, relevancy]."
+          )
+        )
       }
       query_params[["sort_order"]] <- `sort_order`
 
       # check if items are unique
       if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
-        rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$tweets_recent_search. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `tweet_fields` when calling TweetsApi$tweets_recent_search. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `tweet_fields` when calling TweetsApi$tweets_recent_search. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `tweet_fields` when calling TweetsApi$tweets_recent_search. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
         if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
-          rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$tweets_recent_search. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `tweet_fields` when calling TweetsApi$tweets_recent_search. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `tweet_fields` when calling TweetsApi$tweets_recent_search. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `tweet_fields` when calling TweetsApi$tweets_recent_search. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."
+            )
+          )
         }
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`expansions`, unique(`expansions`))) {
-        rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$tweets_recent_search. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `expansions` when calling TweetsApi$tweets_recent_search. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `expansions` when calling TweetsApi$tweets_recent_search. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `expansions` when calling TweetsApi$tweets_recent_search. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
         if (!(query_item %in% c("attachments.media_keys", "attachments.poll_ids", "author_id", "entities.mentions.username", "geo.place_id", "in_reply_to_user_id", "referenced_tweets.id", "referenced_tweets.id.author_id"))) {
-          rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$tweets_recent_search. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `expansions` when calling TweetsApi$tweets_recent_search. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."))
+          rlang::abort(
+            message = "Invalid value for `expansions` when calling TweetsApi$tweets_recent_search. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `expansions` when calling TweetsApi$tweets_recent_search. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."
+            )
+          )
         }
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`media_fields`, unique(`media_fields`))) {
-        rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$tweets_recent_search. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `media_fields` when calling TweetsApi$tweets_recent_search. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `media_fields` when calling TweetsApi$tweets_recent_search. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `media_fields` when calling TweetsApi$tweets_recent_search. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `media_fields`) {
         if (!(query_item %in% c("alt_text", "duration_ms", "height", "media_key", "non_public_metrics", "organic_metrics", "preview_image_url", "promoted_metrics", "public_metrics", "type", "url", "variants", "width"))) {
-          rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$tweets_recent_search. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `media_fields` when calling TweetsApi$tweets_recent_search. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."))
+          rlang::abort(
+            message = "Invalid value for `media_fields` when calling TweetsApi$tweets_recent_search. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `media_fields` when calling TweetsApi$tweets_recent_search. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."
+            )
+          )
         }
       }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`poll_fields`, unique(`poll_fields`))) {
-        rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$tweets_recent_search. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `poll_fields` when calling TweetsApi$tweets_recent_search. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `poll_fields` when calling TweetsApi$tweets_recent_search. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `poll_fields` when calling TweetsApi$tweets_recent_search. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `poll_fields`) {
         if (!(query_item %in% c("duration_minutes", "end_datetime", "id", "options", "voting_status"))) {
-          rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$tweets_recent_search. Must be [duration_minutes, end_datetime, id, options, voting_status].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `poll_fields` when calling TweetsApi$tweets_recent_search. Must be [duration_minutes, end_datetime, id, options, voting_status]."))
+          rlang::abort(
+            message = "Invalid value for `poll_fields` when calling TweetsApi$tweets_recent_search. Must be [duration_minutes, end_datetime, id, options, voting_status].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `poll_fields` when calling TweetsApi$tweets_recent_search. Must be [duration_minutes, end_datetime, id, options, voting_status]."
+            )
+          )
         }
       }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`user_fields`, unique(`user_fields`))) {
-        rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$tweets_recent_search. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `user_fields` when calling TweetsApi$tweets_recent_search. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `user_fields` when calling TweetsApi$tweets_recent_search. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `user_fields` when calling TweetsApi$tweets_recent_search. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
         if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
-          rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$tweets_recent_search. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `user_fields` when calling TweetsApi$tweets_recent_search. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `user_fields` when calling TweetsApi$tweets_recent_search. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `user_fields` when calling TweetsApi$tweets_recent_search. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."
+            )
+          )
         }
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`place_fields`, unique(`place_fields`))) {
-        rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$tweets_recent_search. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `place_fields` when calling TweetsApi$tweets_recent_search. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `place_fields` when calling TweetsApi$tweets_recent_search. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `place_fields` when calling TweetsApi$tweets_recent_search. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `place_fields`) {
         if (!(query_item %in% c("contained_within", "country", "country_code", "full_name", "geo", "id", "name", "place_type"))) {
-          rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$tweets_recent_search. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `place_fields` when calling TweetsApi$tweets_recent_search. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."))
+          rlang::abort(
+            message = "Invalid value for `place_fields` when calling TweetsApi$tweets_recent_search. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `place_fields` when calling TweetsApi$tweets_recent_search. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."
+            )
+          )
         }
       }
       query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
@@ -7027,18 +8385,20 @@ TweetsApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "GET",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -7049,9 +8409,11 @@ TweetsApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "Get2TweetsSearchRecentResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -7061,25 +8423,31 @@ TweetsApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Causes the User (in the path) to like the specified Tweet
@@ -7127,10 +8495,14 @@ TweetsApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`id`)) {
-        rlang::abort(message = "Missing required parameter `id`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `id`."))
+        rlang::abort(
+          message = "Missing required parameter `id`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `id`."
+          )
+        )
       }
 
 
@@ -7156,18 +8528,20 @@ TweetsApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list("application/json")
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "POST",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "POST",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -7178,9 +8552,11 @@ TweetsApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "UsersLikesCreateResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -7190,25 +8566,31 @@ TweetsApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Returns Tweet objects liked by the provided User ID
@@ -7270,79 +8652,123 @@ TweetsApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`id`)) {
-        rlang::abort(message = "Missing required parameter `id`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `id`."))
+        rlang::abort(
+          message = "Missing required parameter `id`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `id`."
+          )
+        )
       }
 
       if (!str_detect(`id`, "^[0-9]{1,19}$")) {
-        rlang::abort(message = "Invalid value for `id` when calling TweetsApi$users_id_liked_tweets, must conform to the pattern ^[0-9]{1,19}$.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `id` when calling TweetsApi$users_id_liked_tweets, must conform to the pattern ^[0-9]{1,19}$."))
+        rlang::abort(
+          message = "Invalid value for `id` when calling TweetsApi$users_id_liked_tweets, must conform to the pattern ^[0-9]{1,19}$.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `id` when calling TweetsApi$users_id_liked_tweets, must conform to the pattern ^[0-9]{1,19}$."
+          )
+        )
       }
 
       if (`max_results` > 100) {
-        rlang::abort(message = "Invalid value for `max_results` when calling TweetsApi$users_id_liked_tweets, must be smaller than or equal to 100.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling TweetsApi$users_id_liked_tweets, must be smaller than or equal to 100."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling TweetsApi$users_id_liked_tweets, must be smaller than or equal to 100.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling TweetsApi$users_id_liked_tweets, must be smaller than or equal to 100."
+          )
+        )
       }
       if (`max_results` < 5) {
-        rlang::abort(message = "Invalid value for `max_results` when calling TweetsApi$users_id_liked_tweets, must be bigger than or equal to 5.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling TweetsApi$users_id_liked_tweets, must be bigger than or equal to 5."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling TweetsApi$users_id_liked_tweets, must be bigger than or equal to 5.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling TweetsApi$users_id_liked_tweets, must be bigger than or equal to 5."
+          )
+        )
       }
 
       if (nchar(`pagination_token`) < 1) {
-        rlang::abort(message = "Invalid length for `pagination_token` when calling TweetsApi$users_id_liked_tweets, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `pagination_token` when calling TweetsApi$users_id_liked_tweets, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `pagination_token` when calling TweetsApi$users_id_liked_tweets, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `pagination_token` when calling TweetsApi$users_id_liked_tweets, must be bigger than or equal to 1."
+          )
+        )
       }
 
       if (length(`tweet_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `tweet_fields` when calling TweetsApi$users_id_liked_tweets, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `tweet_fields` when calling TweetsApi$users_id_liked_tweets, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `tweet_fields` when calling TweetsApi$users_id_liked_tweets, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `tweet_fields` when calling TweetsApi$users_id_liked_tweets, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`expansions`) < 1) {
-        rlang::abort(message = "Invalid length for `expansions` when calling TweetsApi$users_id_liked_tweets, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `expansions` when calling TweetsApi$users_id_liked_tweets, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `expansions` when calling TweetsApi$users_id_liked_tweets, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `expansions` when calling TweetsApi$users_id_liked_tweets, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`media_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `media_fields` when calling TweetsApi$users_id_liked_tweets, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `media_fields` when calling TweetsApi$users_id_liked_tweets, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `media_fields` when calling TweetsApi$users_id_liked_tweets, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `media_fields` when calling TweetsApi$users_id_liked_tweets, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`poll_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `poll_fields` when calling TweetsApi$users_id_liked_tweets, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `poll_fields` when calling TweetsApi$users_id_liked_tweets, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `poll_fields` when calling TweetsApi$users_id_liked_tweets, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `poll_fields` when calling TweetsApi$users_id_liked_tweets, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`user_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `user_fields` when calling TweetsApi$users_id_liked_tweets, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `user_fields` when calling TweetsApi$users_id_liked_tweets, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `user_fields` when calling TweetsApi$users_id_liked_tweets, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `user_fields` when calling TweetsApi$users_id_liked_tweets, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`place_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `place_fields` when calling TweetsApi$users_id_liked_tweets, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `place_fields` when calling TweetsApi$users_id_liked_tweets, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `place_fields` when calling TweetsApi$users_id_liked_tweets, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `place_fields` when calling TweetsApi$users_id_liked_tweets, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       query_params[["max_results"]] <- `max_results`
@@ -7351,114 +8777,162 @@ TweetsApi <- R6::R6Class(
 
       # check if items are unique
       if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
-        rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_liked_tweets. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_liked_tweets. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_liked_tweets. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_liked_tweets. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
         if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
-          rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_liked_tweets. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_liked_tweets. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_liked_tweets. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_liked_tweets. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."
+            )
+          )
         }
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`expansions`, unique(`expansions`))) {
-        rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$users_id_liked_tweets. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `expansions` when calling TweetsApi$users_id_liked_tweets. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `expansions` when calling TweetsApi$users_id_liked_tweets. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `expansions` when calling TweetsApi$users_id_liked_tweets. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
         if (!(query_item %in% c("attachments.media_keys", "attachments.poll_ids", "author_id", "entities.mentions.username", "geo.place_id", "in_reply_to_user_id", "referenced_tweets.id", "referenced_tweets.id.author_id"))) {
-          rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$users_id_liked_tweets. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `expansions` when calling TweetsApi$users_id_liked_tweets. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."))
+          rlang::abort(
+            message = "Invalid value for `expansions` when calling TweetsApi$users_id_liked_tweets. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `expansions` when calling TweetsApi$users_id_liked_tweets. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."
+            )
+          )
         }
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`media_fields`, unique(`media_fields`))) {
-        rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$users_id_liked_tweets. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `media_fields` when calling TweetsApi$users_id_liked_tweets. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `media_fields` when calling TweetsApi$users_id_liked_tweets. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `media_fields` when calling TweetsApi$users_id_liked_tweets. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `media_fields`) {
         if (!(query_item %in% c("alt_text", "duration_ms", "height", "media_key", "non_public_metrics", "organic_metrics", "preview_image_url", "promoted_metrics", "public_metrics", "type", "url", "variants", "width"))) {
-          rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$users_id_liked_tweets. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `media_fields` when calling TweetsApi$users_id_liked_tweets. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."))
+          rlang::abort(
+            message = "Invalid value for `media_fields` when calling TweetsApi$users_id_liked_tweets. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `media_fields` when calling TweetsApi$users_id_liked_tweets. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."
+            )
+          )
         }
       }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`poll_fields`, unique(`poll_fields`))) {
-        rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$users_id_liked_tweets. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `poll_fields` when calling TweetsApi$users_id_liked_tweets. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `poll_fields` when calling TweetsApi$users_id_liked_tweets. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `poll_fields` when calling TweetsApi$users_id_liked_tweets. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `poll_fields`) {
         if (!(query_item %in% c("duration_minutes", "end_datetime", "id", "options", "voting_status"))) {
-          rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$users_id_liked_tweets. Must be [duration_minutes, end_datetime, id, options, voting_status].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `poll_fields` when calling TweetsApi$users_id_liked_tweets. Must be [duration_minutes, end_datetime, id, options, voting_status]."))
+          rlang::abort(
+            message = "Invalid value for `poll_fields` when calling TweetsApi$users_id_liked_tweets. Must be [duration_minutes, end_datetime, id, options, voting_status].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `poll_fields` when calling TweetsApi$users_id_liked_tweets. Must be [duration_minutes, end_datetime, id, options, voting_status]."
+            )
+          )
         }
       }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`user_fields`, unique(`user_fields`))) {
-        rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$users_id_liked_tweets. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `user_fields` when calling TweetsApi$users_id_liked_tweets. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `user_fields` when calling TweetsApi$users_id_liked_tweets. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `user_fields` when calling TweetsApi$users_id_liked_tweets. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
         if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
-          rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$users_id_liked_tweets. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `user_fields` when calling TweetsApi$users_id_liked_tweets. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `user_fields` when calling TweetsApi$users_id_liked_tweets. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `user_fields` when calling TweetsApi$users_id_liked_tweets. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."
+            )
+          )
         }
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`place_fields`, unique(`place_fields`))) {
-        rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$users_id_liked_tweets. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `place_fields` when calling TweetsApi$users_id_liked_tweets. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `place_fields` when calling TweetsApi$users_id_liked_tweets. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `place_fields` when calling TweetsApi$users_id_liked_tweets. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `place_fields`) {
         if (!(query_item %in% c("contained_within", "country", "country_code", "full_name", "geo", "id", "name", "place_type"))) {
-          rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$users_id_liked_tweets. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `place_fields` when calling TweetsApi$users_id_liked_tweets. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."))
+          rlang::abort(
+            message = "Invalid value for `place_fields` when calling TweetsApi$users_id_liked_tweets. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `place_fields` when calling TweetsApi$users_id_liked_tweets. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."
+            )
+          )
         }
       }
       query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
@@ -7482,18 +8956,20 @@ TweetsApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "GET",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -7504,9 +8980,11 @@ TweetsApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "Get2UsersIdLikedTweetsResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -7516,25 +8994,31 @@ TweetsApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' User mention timeline by User ID
@@ -7604,95 +9088,147 @@ TweetsApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`id`)) {
-        rlang::abort(message = "Missing required parameter `id`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `id`."))
+        rlang::abort(
+          message = "Missing required parameter `id`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `id`."
+          )
+        )
       }
 
       if (!str_detect(`id`, "^[0-9]{1,19}$")) {
-        rlang::abort(message = "Invalid value for `id` when calling TweetsApi$users_id_mentions, must conform to the pattern ^[0-9]{1,19}$.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `id` when calling TweetsApi$users_id_mentions, must conform to the pattern ^[0-9]{1,19}$."))
+        rlang::abort(
+          message = "Invalid value for `id` when calling TweetsApi$users_id_mentions, must conform to the pattern ^[0-9]{1,19}$.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `id` when calling TweetsApi$users_id_mentions, must conform to the pattern ^[0-9]{1,19}$."
+          )
+        )
       }
 
       if (!str_detect(`since_id`, "^[0-9]{1,19}$")) {
-        rlang::abort(message = "Invalid value for `since_id` when calling TweetsApi$users_id_mentions, must conform to the pattern ^[0-9]{1,19}$.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `since_id` when calling TweetsApi$users_id_mentions, must conform to the pattern ^[0-9]{1,19}$."))
+        rlang::abort(
+          message = "Invalid value for `since_id` when calling TweetsApi$users_id_mentions, must conform to the pattern ^[0-9]{1,19}$.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `since_id` when calling TweetsApi$users_id_mentions, must conform to the pattern ^[0-9]{1,19}$."
+          )
+        )
       }
 
       if (!str_detect(`until_id`, "^[0-9]{1,19}$")) {
-        rlang::abort(message = "Invalid value for `until_id` when calling TweetsApi$users_id_mentions, must conform to the pattern ^[0-9]{1,19}$.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `until_id` when calling TweetsApi$users_id_mentions, must conform to the pattern ^[0-9]{1,19}$."))
+        rlang::abort(
+          message = "Invalid value for `until_id` when calling TweetsApi$users_id_mentions, must conform to the pattern ^[0-9]{1,19}$.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `until_id` when calling TweetsApi$users_id_mentions, must conform to the pattern ^[0-9]{1,19}$."
+          )
+        )
       }
 
       if (`max_results` > 100) {
-        rlang::abort(message = "Invalid value for `max_results` when calling TweetsApi$users_id_mentions, must be smaller than or equal to 100.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling TweetsApi$users_id_mentions, must be smaller than or equal to 100."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling TweetsApi$users_id_mentions, must be smaller than or equal to 100.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling TweetsApi$users_id_mentions, must be smaller than or equal to 100."
+          )
+        )
       }
       if (`max_results` < 5) {
-        rlang::abort(message = "Invalid value for `max_results` when calling TweetsApi$users_id_mentions, must be bigger than or equal to 5.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling TweetsApi$users_id_mentions, must be bigger than or equal to 5."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling TweetsApi$users_id_mentions, must be bigger than or equal to 5.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling TweetsApi$users_id_mentions, must be bigger than or equal to 5."
+          )
+        )
       }
 
       if (nchar(`pagination_token`) < 1) {
-        rlang::abort(message = "Invalid length for `pagination_token` when calling TweetsApi$users_id_mentions, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `pagination_token` when calling TweetsApi$users_id_mentions, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `pagination_token` when calling TweetsApi$users_id_mentions, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `pagination_token` when calling TweetsApi$users_id_mentions, must be bigger than or equal to 1."
+          )
+        )
       }
 
 
 
       if (length(`tweet_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `tweet_fields` when calling TweetsApi$users_id_mentions, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `tweet_fields` when calling TweetsApi$users_id_mentions, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `tweet_fields` when calling TweetsApi$users_id_mentions, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `tweet_fields` when calling TweetsApi$users_id_mentions, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`expansions`) < 1) {
-        rlang::abort(message = "Invalid length for `expansions` when calling TweetsApi$users_id_mentions, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `expansions` when calling TweetsApi$users_id_mentions, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `expansions` when calling TweetsApi$users_id_mentions, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `expansions` when calling TweetsApi$users_id_mentions, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`media_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `media_fields` when calling TweetsApi$users_id_mentions, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `media_fields` when calling TweetsApi$users_id_mentions, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `media_fields` when calling TweetsApi$users_id_mentions, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `media_fields` when calling TweetsApi$users_id_mentions, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`poll_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `poll_fields` when calling TweetsApi$users_id_mentions, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `poll_fields` when calling TweetsApi$users_id_mentions, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `poll_fields` when calling TweetsApi$users_id_mentions, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `poll_fields` when calling TweetsApi$users_id_mentions, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`user_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `user_fields` when calling TweetsApi$users_id_mentions, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `user_fields` when calling TweetsApi$users_id_mentions, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `user_fields` when calling TweetsApi$users_id_mentions, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `user_fields` when calling TweetsApi$users_id_mentions, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`place_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `place_fields` when calling TweetsApi$users_id_mentions, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `place_fields` when calling TweetsApi$users_id_mentions, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `place_fields` when calling TweetsApi$users_id_mentions, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `place_fields` when calling TweetsApi$users_id_mentions, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       query_params[["since_id"]] <- `since_id`
@@ -7709,114 +9245,162 @@ TweetsApi <- R6::R6Class(
 
       # check if items are unique
       if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
-        rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_mentions. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_mentions. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_mentions. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_mentions. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
         if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
-          rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_mentions. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_mentions. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_mentions. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_mentions. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."
+            )
+          )
         }
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`expansions`, unique(`expansions`))) {
-        rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$users_id_mentions. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `expansions` when calling TweetsApi$users_id_mentions. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `expansions` when calling TweetsApi$users_id_mentions. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `expansions` when calling TweetsApi$users_id_mentions. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
         if (!(query_item %in% c("attachments.media_keys", "attachments.poll_ids", "author_id", "entities.mentions.username", "geo.place_id", "in_reply_to_user_id", "referenced_tweets.id", "referenced_tweets.id.author_id"))) {
-          rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$users_id_mentions. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `expansions` when calling TweetsApi$users_id_mentions. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."))
+          rlang::abort(
+            message = "Invalid value for `expansions` when calling TweetsApi$users_id_mentions. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `expansions` when calling TweetsApi$users_id_mentions. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."
+            )
+          )
         }
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`media_fields`, unique(`media_fields`))) {
-        rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$users_id_mentions. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `media_fields` when calling TweetsApi$users_id_mentions. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `media_fields` when calling TweetsApi$users_id_mentions. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `media_fields` when calling TweetsApi$users_id_mentions. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `media_fields`) {
         if (!(query_item %in% c("alt_text", "duration_ms", "height", "media_key", "non_public_metrics", "organic_metrics", "preview_image_url", "promoted_metrics", "public_metrics", "type", "url", "variants", "width"))) {
-          rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$users_id_mentions. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `media_fields` when calling TweetsApi$users_id_mentions. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."))
+          rlang::abort(
+            message = "Invalid value for `media_fields` when calling TweetsApi$users_id_mentions. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `media_fields` when calling TweetsApi$users_id_mentions. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."
+            )
+          )
         }
       }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`poll_fields`, unique(`poll_fields`))) {
-        rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$users_id_mentions. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `poll_fields` when calling TweetsApi$users_id_mentions. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `poll_fields` when calling TweetsApi$users_id_mentions. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `poll_fields` when calling TweetsApi$users_id_mentions. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `poll_fields`) {
         if (!(query_item %in% c("duration_minutes", "end_datetime", "id", "options", "voting_status"))) {
-          rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$users_id_mentions. Must be [duration_minutes, end_datetime, id, options, voting_status].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `poll_fields` when calling TweetsApi$users_id_mentions. Must be [duration_minutes, end_datetime, id, options, voting_status]."))
+          rlang::abort(
+            message = "Invalid value for `poll_fields` when calling TweetsApi$users_id_mentions. Must be [duration_minutes, end_datetime, id, options, voting_status].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `poll_fields` when calling TweetsApi$users_id_mentions. Must be [duration_minutes, end_datetime, id, options, voting_status]."
+            )
+          )
         }
       }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`user_fields`, unique(`user_fields`))) {
-        rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$users_id_mentions. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `user_fields` when calling TweetsApi$users_id_mentions. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `user_fields` when calling TweetsApi$users_id_mentions. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `user_fields` when calling TweetsApi$users_id_mentions. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
         if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
-          rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$users_id_mentions. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `user_fields` when calling TweetsApi$users_id_mentions. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `user_fields` when calling TweetsApi$users_id_mentions. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `user_fields` when calling TweetsApi$users_id_mentions. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."
+            )
+          )
         }
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`place_fields`, unique(`place_fields`))) {
-        rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$users_id_mentions. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `place_fields` when calling TweetsApi$users_id_mentions. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `place_fields` when calling TweetsApi$users_id_mentions. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `place_fields` when calling TweetsApi$users_id_mentions. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `place_fields`) {
         if (!(query_item %in% c("contained_within", "country", "country_code", "full_name", "geo", "id", "name", "place_type"))) {
-          rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$users_id_mentions. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `place_fields` when calling TweetsApi$users_id_mentions. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."))
+          rlang::abort(
+            message = "Invalid value for `place_fields` when calling TweetsApi$users_id_mentions. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `place_fields` when calling TweetsApi$users_id_mentions. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."
+            )
+          )
         }
       }
       query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
@@ -7840,18 +9424,20 @@ TweetsApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "GET",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -7862,9 +9448,11 @@ TweetsApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "Get2UsersIdMentionsResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -7874,25 +9462,31 @@ TweetsApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Causes the User (in the path) to retweet the specified Tweet.
@@ -7940,10 +9534,14 @@ TweetsApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`id`)) {
-        rlang::abort(message = "Missing required parameter `id`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `id`."))
+        rlang::abort(
+          message = "Missing required parameter `id`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `id`."
+          )
+        )
       }
 
 
@@ -7969,18 +9567,20 @@ TweetsApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list("application/json")
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "POST",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "POST",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -7991,9 +9591,11 @@ TweetsApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "UsersRetweetsCreateResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -8003,25 +9605,31 @@ TweetsApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' User home timeline by User ID
@@ -8093,90 +9701,138 @@ TweetsApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`id`)) {
-        rlang::abort(message = "Missing required parameter `id`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `id`."))
+        rlang::abort(
+          message = "Missing required parameter `id`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `id`."
+          )
+        )
       }
 
 
       if (!str_detect(`since_id`, "^[0-9]{1,19}$")) {
-        rlang::abort(message = "Invalid value for `since_id` when calling TweetsApi$users_id_timeline, must conform to the pattern ^[0-9]{1,19}$.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `since_id` when calling TweetsApi$users_id_timeline, must conform to the pattern ^[0-9]{1,19}$."))
+        rlang::abort(
+          message = "Invalid value for `since_id` when calling TweetsApi$users_id_timeline, must conform to the pattern ^[0-9]{1,19}$.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `since_id` when calling TweetsApi$users_id_timeline, must conform to the pattern ^[0-9]{1,19}$."
+          )
+        )
       }
 
       if (!str_detect(`until_id`, "^[0-9]{1,19}$")) {
-        rlang::abort(message = "Invalid value for `until_id` when calling TweetsApi$users_id_timeline, must conform to the pattern ^[0-9]{1,19}$.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `until_id` when calling TweetsApi$users_id_timeline, must conform to the pattern ^[0-9]{1,19}$."))
+        rlang::abort(
+          message = "Invalid value for `until_id` when calling TweetsApi$users_id_timeline, must conform to the pattern ^[0-9]{1,19}$.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `until_id` when calling TweetsApi$users_id_timeline, must conform to the pattern ^[0-9]{1,19}$."
+          )
+        )
       }
 
       if (`max_results` > 100) {
-        rlang::abort(message = "Invalid value for `max_results` when calling TweetsApi$users_id_timeline, must be smaller than or equal to 100.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling TweetsApi$users_id_timeline, must be smaller than or equal to 100."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling TweetsApi$users_id_timeline, must be smaller than or equal to 100.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling TweetsApi$users_id_timeline, must be smaller than or equal to 100."
+          )
+        )
       }
       if (`max_results` < 1) {
-        rlang::abort(message = "Invalid value for `max_results` when calling TweetsApi$users_id_timeline, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling TweetsApi$users_id_timeline, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling TweetsApi$users_id_timeline, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling TweetsApi$users_id_timeline, must be bigger than or equal to 1."
+          )
+        )
       }
 
       if (nchar(`pagination_token`) < 1) {
-        rlang::abort(message = "Invalid length for `pagination_token` when calling TweetsApi$users_id_timeline, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `pagination_token` when calling TweetsApi$users_id_timeline, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `pagination_token` when calling TweetsApi$users_id_timeline, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `pagination_token` when calling TweetsApi$users_id_timeline, must be bigger than or equal to 1."
+          )
+        )
       }
 
 
 
 
       if (length(`tweet_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `tweet_fields` when calling TweetsApi$users_id_timeline, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `tweet_fields` when calling TweetsApi$users_id_timeline, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `tweet_fields` when calling TweetsApi$users_id_timeline, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `tweet_fields` when calling TweetsApi$users_id_timeline, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`expansions`) < 1) {
-        rlang::abort(message = "Invalid length for `expansions` when calling TweetsApi$users_id_timeline, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `expansions` when calling TweetsApi$users_id_timeline, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `expansions` when calling TweetsApi$users_id_timeline, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `expansions` when calling TweetsApi$users_id_timeline, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`media_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `media_fields` when calling TweetsApi$users_id_timeline, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `media_fields` when calling TweetsApi$users_id_timeline, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `media_fields` when calling TweetsApi$users_id_timeline, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `media_fields` when calling TweetsApi$users_id_timeline, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`poll_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `poll_fields` when calling TweetsApi$users_id_timeline, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `poll_fields` when calling TweetsApi$users_id_timeline, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `poll_fields` when calling TweetsApi$users_id_timeline, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `poll_fields` when calling TweetsApi$users_id_timeline, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`user_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `user_fields` when calling TweetsApi$users_id_timeline, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `user_fields` when calling TweetsApi$users_id_timeline, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `user_fields` when calling TweetsApi$users_id_timeline, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `user_fields` when calling TweetsApi$users_id_timeline, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`place_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `place_fields` when calling TweetsApi$users_id_timeline, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `place_fields` when calling TweetsApi$users_id_timeline, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `place_fields` when calling TweetsApi$users_id_timeline, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `place_fields` when calling TweetsApi$users_id_timeline, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       query_params[["since_id"]] <- `since_id`
@@ -8189,19 +9845,27 @@ TweetsApi <- R6::R6Class(
 
       # check if items are unique
       if (!identical(`exclude`, unique(`exclude`))) {
-        rlang::abort(message = "Invalid value for `exclude` when calling TweetsApi$users_id_timeline. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `exclude` when calling TweetsApi$users_id_timeline. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `exclude` when calling TweetsApi$users_id_timeline. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `exclude` when calling TweetsApi$users_id_timeline. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `exclude`) {
         if (!(query_item %in% c("replies", "retweets"))) {
-          rlang::abort(message = "Invalid value for `exclude` when calling TweetsApi$users_id_timeline. Must be [replies, retweets].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `exclude` when calling TweetsApi$users_id_timeline. Must be [replies, retweets]."))
+          rlang::abort(
+            message = "Invalid value for `exclude` when calling TweetsApi$users_id_timeline. Must be [replies, retweets].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `exclude` when calling TweetsApi$users_id_timeline. Must be [replies, retweets]."
+            )
+          )
         }
       }
       query_params[["exclude"]] <- I(paste(lapply(`exclude`, URLencode, reserved = TRUE), collapse = ","))
@@ -8212,114 +9876,162 @@ TweetsApi <- R6::R6Class(
 
       # check if items are unique
       if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
-        rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_timeline. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_timeline. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_timeline. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_timeline. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
         if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
-          rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_timeline. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_timeline. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_timeline. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_timeline. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."
+            )
+          )
         }
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`expansions`, unique(`expansions`))) {
-        rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$users_id_timeline. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `expansions` when calling TweetsApi$users_id_timeline. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `expansions` when calling TweetsApi$users_id_timeline. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `expansions` when calling TweetsApi$users_id_timeline. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
         if (!(query_item %in% c("attachments.media_keys", "attachments.poll_ids", "author_id", "entities.mentions.username", "geo.place_id", "in_reply_to_user_id", "referenced_tweets.id", "referenced_tweets.id.author_id"))) {
-          rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$users_id_timeline. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `expansions` when calling TweetsApi$users_id_timeline. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."))
+          rlang::abort(
+            message = "Invalid value for `expansions` when calling TweetsApi$users_id_timeline. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `expansions` when calling TweetsApi$users_id_timeline. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."
+            )
+          )
         }
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`media_fields`, unique(`media_fields`))) {
-        rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$users_id_timeline. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `media_fields` when calling TweetsApi$users_id_timeline. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `media_fields` when calling TweetsApi$users_id_timeline. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `media_fields` when calling TweetsApi$users_id_timeline. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `media_fields`) {
         if (!(query_item %in% c("alt_text", "duration_ms", "height", "media_key", "non_public_metrics", "organic_metrics", "preview_image_url", "promoted_metrics", "public_metrics", "type", "url", "variants", "width"))) {
-          rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$users_id_timeline. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `media_fields` when calling TweetsApi$users_id_timeline. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."))
+          rlang::abort(
+            message = "Invalid value for `media_fields` when calling TweetsApi$users_id_timeline. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `media_fields` when calling TweetsApi$users_id_timeline. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."
+            )
+          )
         }
       }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`poll_fields`, unique(`poll_fields`))) {
-        rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$users_id_timeline. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `poll_fields` when calling TweetsApi$users_id_timeline. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `poll_fields` when calling TweetsApi$users_id_timeline. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `poll_fields` when calling TweetsApi$users_id_timeline. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `poll_fields`) {
         if (!(query_item %in% c("duration_minutes", "end_datetime", "id", "options", "voting_status"))) {
-          rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$users_id_timeline. Must be [duration_minutes, end_datetime, id, options, voting_status].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `poll_fields` when calling TweetsApi$users_id_timeline. Must be [duration_minutes, end_datetime, id, options, voting_status]."))
+          rlang::abort(
+            message = "Invalid value for `poll_fields` when calling TweetsApi$users_id_timeline. Must be [duration_minutes, end_datetime, id, options, voting_status].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `poll_fields` when calling TweetsApi$users_id_timeline. Must be [duration_minutes, end_datetime, id, options, voting_status]."
+            )
+          )
         }
       }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`user_fields`, unique(`user_fields`))) {
-        rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$users_id_timeline. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `user_fields` when calling TweetsApi$users_id_timeline. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `user_fields` when calling TweetsApi$users_id_timeline. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `user_fields` when calling TweetsApi$users_id_timeline. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
         if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
-          rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$users_id_timeline. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `user_fields` when calling TweetsApi$users_id_timeline. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `user_fields` when calling TweetsApi$users_id_timeline. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `user_fields` when calling TweetsApi$users_id_timeline. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."
+            )
+          )
         }
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`place_fields`, unique(`place_fields`))) {
-        rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$users_id_timeline. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `place_fields` when calling TweetsApi$users_id_timeline. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `place_fields` when calling TweetsApi$users_id_timeline. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `place_fields` when calling TweetsApi$users_id_timeline. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `place_fields`) {
         if (!(query_item %in% c("contained_within", "country", "country_code", "full_name", "geo", "id", "name", "place_type"))) {
-          rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$users_id_timeline. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `place_fields` when calling TweetsApi$users_id_timeline. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."))
+          rlang::abort(
+            message = "Invalid value for `place_fields` when calling TweetsApi$users_id_timeline. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `place_fields` when calling TweetsApi$users_id_timeline. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."
+            )
+          )
         }
       }
       query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
@@ -8339,18 +10051,20 @@ TweetsApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "GET",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -8361,9 +10075,11 @@ TweetsApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "Get2UsersIdTimelinesReverseChronologicalResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -8373,25 +10089,31 @@ TweetsApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' User Tweets timeline by User ID
@@ -8463,102 +10185,158 @@ TweetsApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`id`)) {
-        rlang::abort(message = "Missing required parameter `id`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `id`."))
+        rlang::abort(
+          message = "Missing required parameter `id`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `id`."
+          )
+        )
       }
 
       if (!str_detect(`id`, "^[0-9]{1,19}$")) {
-        rlang::abort(message = "Invalid value for `id` when calling TweetsApi$users_id_tweets, must conform to the pattern ^[0-9]{1,19}$.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `id` when calling TweetsApi$users_id_tweets, must conform to the pattern ^[0-9]{1,19}$."))
+        rlang::abort(
+          message = "Invalid value for `id` when calling TweetsApi$users_id_tweets, must conform to the pattern ^[0-9]{1,19}$.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `id` when calling TweetsApi$users_id_tweets, must conform to the pattern ^[0-9]{1,19}$."
+          )
+        )
       }
 
       if (!str_detect(`since_id`, "^[0-9]{1,19}$")) {
-        rlang::abort(message = "Invalid value for `since_id` when calling TweetsApi$users_id_tweets, must conform to the pattern ^[0-9]{1,19}$.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `since_id` when calling TweetsApi$users_id_tweets, must conform to the pattern ^[0-9]{1,19}$."))
+        rlang::abort(
+          message = "Invalid value for `since_id` when calling TweetsApi$users_id_tweets, must conform to the pattern ^[0-9]{1,19}$.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `since_id` when calling TweetsApi$users_id_tweets, must conform to the pattern ^[0-9]{1,19}$."
+          )
+        )
       }
 
       if (!str_detect(`until_id`, "^[0-9]{1,19}$")) {
-        rlang::abort(message = "Invalid value for `until_id` when calling TweetsApi$users_id_tweets, must conform to the pattern ^[0-9]{1,19}$.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `until_id` when calling TweetsApi$users_id_tweets, must conform to the pattern ^[0-9]{1,19}$."))
+        rlang::abort(
+          message = "Invalid value for `until_id` when calling TweetsApi$users_id_tweets, must conform to the pattern ^[0-9]{1,19}$.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `until_id` when calling TweetsApi$users_id_tweets, must conform to the pattern ^[0-9]{1,19}$."
+          )
+        )
       }
 
       if (`max_results` > 100) {
-        rlang::abort(message = "Invalid value for `max_results` when calling TweetsApi$users_id_tweets, must be smaller than or equal to 100.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling TweetsApi$users_id_tweets, must be smaller than or equal to 100."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling TweetsApi$users_id_tweets, must be smaller than or equal to 100.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling TweetsApi$users_id_tweets, must be smaller than or equal to 100."
+          )
+        )
       }
       if (`max_results` < 5) {
-        rlang::abort(message = "Invalid value for `max_results` when calling TweetsApi$users_id_tweets, must be bigger than or equal to 5.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling TweetsApi$users_id_tweets, must be bigger than or equal to 5."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling TweetsApi$users_id_tweets, must be bigger than or equal to 5.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling TweetsApi$users_id_tweets, must be bigger than or equal to 5."
+          )
+        )
       }
 
       if (nchar(`pagination_token`) < 1) {
-        rlang::abort(message = "Invalid length for `pagination_token` when calling TweetsApi$users_id_tweets, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `pagination_token` when calling TweetsApi$users_id_tweets, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `pagination_token` when calling TweetsApi$users_id_tweets, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `pagination_token` when calling TweetsApi$users_id_tweets, must be bigger than or equal to 1."
+          )
+        )
       }
 
       if (length(`exclude`) < 1) {
-        rlang::abort(message = "Invalid length for `exclude` when calling TweetsApi$users_id_tweets, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `exclude` when calling TweetsApi$users_id_tweets, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `exclude` when calling TweetsApi$users_id_tweets, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `exclude` when calling TweetsApi$users_id_tweets, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
 
 
       if (length(`tweet_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `tweet_fields` when calling TweetsApi$users_id_tweets, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `tweet_fields` when calling TweetsApi$users_id_tweets, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `tweet_fields` when calling TweetsApi$users_id_tweets, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `tweet_fields` when calling TweetsApi$users_id_tweets, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`expansions`) < 1) {
-        rlang::abort(message = "Invalid length for `expansions` when calling TweetsApi$users_id_tweets, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `expansions` when calling TweetsApi$users_id_tweets, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `expansions` when calling TweetsApi$users_id_tweets, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `expansions` when calling TweetsApi$users_id_tweets, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`media_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `media_fields` when calling TweetsApi$users_id_tweets, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `media_fields` when calling TweetsApi$users_id_tweets, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `media_fields` when calling TweetsApi$users_id_tweets, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `media_fields` when calling TweetsApi$users_id_tweets, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`poll_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `poll_fields` when calling TweetsApi$users_id_tweets, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `poll_fields` when calling TweetsApi$users_id_tweets, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `poll_fields` when calling TweetsApi$users_id_tweets, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `poll_fields` when calling TweetsApi$users_id_tweets, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`user_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `user_fields` when calling TweetsApi$users_id_tweets, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `user_fields` when calling TweetsApi$users_id_tweets, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `user_fields` when calling TweetsApi$users_id_tweets, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `user_fields` when calling TweetsApi$users_id_tweets, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`place_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `place_fields` when calling TweetsApi$users_id_tweets, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `place_fields` when calling TweetsApi$users_id_tweets, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `place_fields` when calling TweetsApi$users_id_tweets, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `place_fields` when calling TweetsApi$users_id_tweets, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       query_params[["since_id"]] <- `since_id`
@@ -8571,19 +10349,27 @@ TweetsApi <- R6::R6Class(
 
       # check if items are unique
       if (!identical(`exclude`, unique(`exclude`))) {
-        rlang::abort(message = "Invalid value for `exclude` when calling TweetsApi$users_id_tweets. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `exclude` when calling TweetsApi$users_id_tweets. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `exclude` when calling TweetsApi$users_id_tweets. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `exclude` when calling TweetsApi$users_id_tweets. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `exclude`) {
         if (!(query_item %in% c("replies", "retweets"))) {
-          rlang::abort(message = "Invalid value for `exclude` when calling TweetsApi$users_id_tweets. Must be [replies, retweets].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `exclude` when calling TweetsApi$users_id_tweets. Must be [replies, retweets]."))
+          rlang::abort(
+            message = "Invalid value for `exclude` when calling TweetsApi$users_id_tweets. Must be [replies, retweets].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `exclude` when calling TweetsApi$users_id_tweets. Must be [replies, retweets]."
+            )
+          )
         }
       }
       query_params[["exclude"]] <- I(paste(lapply(`exclude`, URLencode, reserved = TRUE), collapse = ","))
@@ -8594,114 +10380,162 @@ TweetsApi <- R6::R6Class(
 
       # check if items are unique
       if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
-        rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_tweets. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_tweets. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_tweets. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_tweets. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
         if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
-          rlang::abort(message = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_tweets. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_tweets. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_tweets. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `tweet_fields` when calling TweetsApi$users_id_tweets. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."
+            )
+          )
         }
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`expansions`, unique(`expansions`))) {
-        rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$users_id_tweets. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `expansions` when calling TweetsApi$users_id_tweets. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `expansions` when calling TweetsApi$users_id_tweets. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `expansions` when calling TweetsApi$users_id_tweets. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
         if (!(query_item %in% c("attachments.media_keys", "attachments.poll_ids", "author_id", "entities.mentions.username", "geo.place_id", "in_reply_to_user_id", "referenced_tweets.id", "referenced_tweets.id.author_id"))) {
-          rlang::abort(message = "Invalid value for `expansions` when calling TweetsApi$users_id_tweets. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `expansions` when calling TweetsApi$users_id_tweets. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."))
+          rlang::abort(
+            message = "Invalid value for `expansions` when calling TweetsApi$users_id_tweets. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `expansions` when calling TweetsApi$users_id_tweets. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."
+            )
+          )
         }
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`media_fields`, unique(`media_fields`))) {
-        rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$users_id_tweets. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `media_fields` when calling TweetsApi$users_id_tweets. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `media_fields` when calling TweetsApi$users_id_tweets. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `media_fields` when calling TweetsApi$users_id_tweets. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `media_fields`) {
         if (!(query_item %in% c("alt_text", "duration_ms", "height", "media_key", "non_public_metrics", "organic_metrics", "preview_image_url", "promoted_metrics", "public_metrics", "type", "url", "variants", "width"))) {
-          rlang::abort(message = "Invalid value for `media_fields` when calling TweetsApi$users_id_tweets. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `media_fields` when calling TweetsApi$users_id_tweets. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."))
+          rlang::abort(
+            message = "Invalid value for `media_fields` when calling TweetsApi$users_id_tweets. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `media_fields` when calling TweetsApi$users_id_tweets. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."
+            )
+          )
         }
       }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`poll_fields`, unique(`poll_fields`))) {
-        rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$users_id_tweets. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `poll_fields` when calling TweetsApi$users_id_tweets. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `poll_fields` when calling TweetsApi$users_id_tweets. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `poll_fields` when calling TweetsApi$users_id_tweets. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `poll_fields`) {
         if (!(query_item %in% c("duration_minutes", "end_datetime", "id", "options", "voting_status"))) {
-          rlang::abort(message = "Invalid value for `poll_fields` when calling TweetsApi$users_id_tweets. Must be [duration_minutes, end_datetime, id, options, voting_status].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `poll_fields` when calling TweetsApi$users_id_tweets. Must be [duration_minutes, end_datetime, id, options, voting_status]."))
+          rlang::abort(
+            message = "Invalid value for `poll_fields` when calling TweetsApi$users_id_tweets. Must be [duration_minutes, end_datetime, id, options, voting_status].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `poll_fields` when calling TweetsApi$users_id_tweets. Must be [duration_minutes, end_datetime, id, options, voting_status]."
+            )
+          )
         }
       }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`user_fields`, unique(`user_fields`))) {
-        rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$users_id_tweets. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `user_fields` when calling TweetsApi$users_id_tweets. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `user_fields` when calling TweetsApi$users_id_tweets. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `user_fields` when calling TweetsApi$users_id_tweets. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
         if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
-          rlang::abort(message = "Invalid value for `user_fields` when calling TweetsApi$users_id_tweets. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `user_fields` when calling TweetsApi$users_id_tweets. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `user_fields` when calling TweetsApi$users_id_tweets. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `user_fields` when calling TweetsApi$users_id_tweets. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."
+            )
+          )
         }
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`place_fields`, unique(`place_fields`))) {
-        rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$users_id_tweets. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `place_fields` when calling TweetsApi$users_id_tweets. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `place_fields` when calling TweetsApi$users_id_tweets. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `place_fields` when calling TweetsApi$users_id_tweets. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `place_fields`) {
         if (!(query_item %in% c("contained_within", "country", "country_code", "full_name", "geo", "id", "name", "place_type"))) {
-          rlang::abort(message = "Invalid value for `place_fields` when calling TweetsApi$users_id_tweets. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `place_fields` when calling TweetsApi$users_id_tweets. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."))
+          rlang::abort(
+            message = "Invalid value for `place_fields` when calling TweetsApi$users_id_tweets. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `place_fields` when calling TweetsApi$users_id_tweets. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."
+            )
+          )
         }
       }
       query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
@@ -8725,18 +10559,20 @@ TweetsApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "GET",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -8747,9 +10583,11 @@ TweetsApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "Get2UsersIdTweetsResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -8759,25 +10597,31 @@ TweetsApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Causes the User (in the path) to unlike the specified Tweet
@@ -8825,25 +10669,37 @@ TweetsApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`id`)) {
-        rlang::abort(message = "Missing required parameter `id`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `id`."))
+        rlang::abort(
+          message = "Missing required parameter `id`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `id`."
+          )
+        )
       }
 
       if (missing(`tweet_id`)) {
-        rlang::abort(message = "Missing required parameter `tweet_id`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `tweet_id`."))
+        rlang::abort(
+          message = "Missing required parameter `tweet_id`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `tweet_id`."
+          )
+        )
       }
 
 
       if (!str_detect(`tweet_id`, "^[0-9]{1,19}$")) {
-        rlang::abort(message = "Invalid value for `tweet_id` when calling TweetsApi$users_id_unlike, must conform to the pattern ^[0-9]{1,19}$.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `tweet_id` when calling TweetsApi$users_id_unlike, must conform to the pattern ^[0-9]{1,19}$."))
+        rlang::abort(
+          message = "Invalid value for `tweet_id` when calling TweetsApi$users_id_unlike, must conform to the pattern ^[0-9]{1,19}$.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `tweet_id` when calling TweetsApi$users_id_unlike, must conform to the pattern ^[0-9]{1,19}$."
+          )
+        )
       }
 
       local_var_url_path <- "/2/users/{id}/likes/{tweet_id}"
@@ -8865,18 +10721,20 @@ TweetsApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "DELETE",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "DELETE",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -8887,9 +10745,11 @@ TweetsApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "UsersLikesDeleteResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -8899,25 +10759,31 @@ TweetsApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Causes the User (in the path) to unretweet the specified Tweet
@@ -8965,25 +10831,37 @@ TweetsApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`id`)) {
-        rlang::abort(message = "Missing required parameter `id`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `id`."))
+        rlang::abort(
+          message = "Missing required parameter `id`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `id`."
+          )
+        )
       }
 
       if (missing(`source_tweet_id`)) {
-        rlang::abort(message = "Missing required parameter `source_tweet_id`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `source_tweet_id`."))
+        rlang::abort(
+          message = "Missing required parameter `source_tweet_id`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `source_tweet_id`."
+          )
+        )
       }
 
 
       if (!str_detect(`source_tweet_id`, "^[0-9]{1,19}$")) {
-        rlang::abort(message = "Invalid value for `source_tweet_id` when calling TweetsApi$users_id_unretweets, must conform to the pattern ^[0-9]{1,19}$.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `source_tweet_id` when calling TweetsApi$users_id_unretweets, must conform to the pattern ^[0-9]{1,19}$."))
+        rlang::abort(
+          message = "Invalid value for `source_tweet_id` when calling TweetsApi$users_id_unretweets, must conform to the pattern ^[0-9]{1,19}$.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `source_tweet_id` when calling TweetsApi$users_id_unretweets, must conform to the pattern ^[0-9]{1,19}$."
+          )
+        )
       }
 
       local_var_url_path <- "/2/users/{id}/retweets/{source_tweet_id}"
@@ -9005,18 +10883,20 @@ TweetsApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "DELETE",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "DELETE",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -9027,9 +10907,11 @@ TweetsApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "UsersRetweetsDeleteResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -9039,25 +10921,31 @@ TweetsApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     }
   )

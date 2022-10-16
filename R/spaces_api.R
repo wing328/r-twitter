@@ -202,12 +202,12 @@
 #'
 #' library(twitter)
 #' var_id <- "1YqKDqWqdPLsV" # character | The ID of the Space to be retrieved.
-#' var_space_fields <- ["[\"created_at\",\"creator_id\",\"ended_at\",\"host_ids\",\"id\",\"invited_user_ids\",\"is_ticketed\",\"lang\",\"participant_count\",\"scheduled_start\",\"speaker_ids\",\"started_at\",\"state\",\"subscriber_count\",\"title\",\"topic_ids\",\"updated_at\"]"] # set[character] | A comma separated list of Space fields to display.
-#' var_expansions <- ["[\"creator_id\",\"host_ids\",\"invited_user_ids\",\"speaker_ids\",\"topic_ids\"]"] # set[character] | A comma separated list of fields to expand.
-#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var_topic_fields <- ["[\"description\",\"id\",\"name\"]"] # set[character] | A comma separated list of Topic fields to display.
+#' var_space_fields <- c("created_at") # set[character] | A comma separated list of Space fields to display. (Optional)
+#' var_expansions <- c("creator_id") # set[character] | A comma separated list of fields to expand. (Optional)
+#' var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+#' var_topic_fields <- c("description") # set[character] | A comma separated list of Topic fields to display. (Optional)
 #'
-#' #Space lookup by Space ID
+#' # Space lookup by Space ID
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure HTTP bearer authorization: BearerToken
@@ -217,22 +217,21 @@
 #' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$spaces_api$find_space_by_id(var_id, space_fields = var_space_fields, expansions = var_expansions, user_fields = var_user_fields, topic_fields = var_topic_fields, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$spaces_api$find_space_by_id(var_id, space_fields = var_space_fields, expansions = var_expansions, user_fields = var_user_fields, topic_fields = var_topic_fields),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$spaces_api$find_space_by_id(var_id, space_fields = var_space_fields, expansions = var_expansions, user_fields = var_user_fields, topic_fields = var_topic_fields, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$spaces_api$find_space_by_id(var_id, space_fields = var_space_fields, expansions = var_expansions, user_fields = var_user_fields, topic_fields = var_topic_fields),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `find_space_by_id`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -244,13 +243,13 @@
 #' ####################  find_spaces_by_creator_ids  ####################
 #'
 #' library(twitter)
-#' var_user_ids <- ["user_ids_example"] # array[character] | The IDs of Users to search through.
-#' var_space_fields <- ["[\"created_at\",\"creator_id\",\"ended_at\",\"host_ids\",\"id\",\"invited_user_ids\",\"is_ticketed\",\"lang\",\"participant_count\",\"scheduled_start\",\"speaker_ids\",\"started_at\",\"state\",\"subscriber_count\",\"title\",\"topic_ids\",\"updated_at\"]"] # set[character] | A comma separated list of Space fields to display.
-#' var_expansions <- ["[\"creator_id\",\"host_ids\",\"invited_user_ids\",\"speaker_ids\",\"topic_ids\"]"] # set[character] | A comma separated list of fields to expand.
-#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var_topic_fields <- ["[\"description\",\"id\",\"name\"]"] # set[character] | A comma separated list of Topic fields to display.
+#' var_user_ids <- c("inner_example") # array[character] | The IDs of Users to search through.
+#' var_space_fields <- c("created_at") # set[character] | A comma separated list of Space fields to display. (Optional)
+#' var_expansions <- c("creator_id") # set[character] | A comma separated list of fields to expand. (Optional)
+#' var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+#' var_topic_fields <- c("description") # set[character] | A comma separated list of Topic fields to display. (Optional)
 #'
-#' #Space lookup by their creators
+#' # Space lookup by their creators
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure HTTP bearer authorization: BearerToken
@@ -260,22 +259,21 @@
 #' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$spaces_api$find_spaces_by_creator_ids(var_user_ids, space_fields = var_space_fields, expansions = var_expansions, user_fields = var_user_fields, topic_fields = var_topic_fields, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$spaces_api$find_spaces_by_creator_ids(var_user_ids, space_fields = var_space_fields, expansions = var_expansions, user_fields = var_user_fields, topic_fields = var_topic_fields),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$spaces_api$find_spaces_by_creator_ids(var_user_ids, space_fields = var_space_fields, expansions = var_expansions, user_fields = var_user_fields, topic_fields = var_topic_fields, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$spaces_api$find_spaces_by_creator_ids(var_user_ids, space_fields = var_space_fields, expansions = var_expansions, user_fields = var_user_fields, topic_fields = var_topic_fields),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `find_spaces_by_creator_ids`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -287,13 +285,13 @@
 #' ####################  find_spaces_by_ids  ####################
 #'
 #' library(twitter)
-#' var_ids <- ["ids_example"] # array[character] | The list of Space IDs to return.
-#' var_space_fields <- ["[\"created_at\",\"creator_id\",\"ended_at\",\"host_ids\",\"id\",\"invited_user_ids\",\"is_ticketed\",\"lang\",\"participant_count\",\"scheduled_start\",\"speaker_ids\",\"started_at\",\"state\",\"subscriber_count\",\"title\",\"topic_ids\",\"updated_at\"]"] # set[character] | A comma separated list of Space fields to display.
-#' var_expansions <- ["[\"creator_id\",\"host_ids\",\"invited_user_ids\",\"speaker_ids\",\"topic_ids\"]"] # set[character] | A comma separated list of fields to expand.
-#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var_topic_fields <- ["[\"description\",\"id\",\"name\"]"] # set[character] | A comma separated list of Topic fields to display.
+#' var_ids <- c("inner_example") # array[character] | The list of Space IDs to return.
+#' var_space_fields <- c("created_at") # set[character] | A comma separated list of Space fields to display. (Optional)
+#' var_expansions <- c("creator_id") # set[character] | A comma separated list of fields to expand. (Optional)
+#' var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+#' var_topic_fields <- c("description") # set[character] | A comma separated list of Topic fields to display. (Optional)
 #'
-#' #Space lookup up Space IDs
+#' # Space lookup up Space IDs
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure HTTP bearer authorization: BearerToken
@@ -303,22 +301,21 @@
 #' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$spaces_api$find_spaces_by_ids(var_ids, space_fields = var_space_fields, expansions = var_expansions, user_fields = var_user_fields, topic_fields = var_topic_fields, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$spaces_api$find_spaces_by_ids(var_ids, space_fields = var_space_fields, expansions = var_expansions, user_fields = var_user_fields, topic_fields = var_topic_fields),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$spaces_api$find_spaces_by_ids(var_ids, space_fields = var_space_fields, expansions = var_expansions, user_fields = var_user_fields, topic_fields = var_topic_fields, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$spaces_api$find_spaces_by_ids(var_ids, space_fields = var_space_fields, expansions = var_expansions, user_fields = var_user_fields, topic_fields = var_topic_fields),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `find_spaces_by_ids`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -331,14 +328,14 @@
 #'
 #' library(twitter)
 #' var_query <- "crypto" # character | The search query.
-#' var_state <- "all" # character | The state of Spaces to search for.
-#' var_max_results <- 100 # integer | The number of results to return.
-#' var_space_fields <- ["[\"created_at\",\"creator_id\",\"ended_at\",\"host_ids\",\"id\",\"invited_user_ids\",\"is_ticketed\",\"lang\",\"participant_count\",\"scheduled_start\",\"speaker_ids\",\"started_at\",\"state\",\"subscriber_count\",\"title\",\"topic_ids\",\"updated_at\"]"] # set[character] | A comma separated list of Space fields to display.
-#' var_expansions <- ["[\"creator_id\",\"host_ids\",\"invited_user_ids\",\"speaker_ids\",\"topic_ids\"]"] # set[character] | A comma separated list of fields to expand.
-#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var_topic_fields <- ["[\"description\",\"id\",\"name\"]"] # set[character] | A comma separated list of Topic fields to display.
+#' var_state <- "all" # character | The state of Spaces to search for. (Optional)
+#' var_max_results <- 100 # integer | The number of results to return. (Optional)
+#' var_space_fields <- c("created_at") # set[character] | A comma separated list of Space fields to display. (Optional)
+#' var_expansions <- c("creator_id") # set[character] | A comma separated list of fields to expand. (Optional)
+#' var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+#' var_topic_fields <- c("description") # set[character] | A comma separated list of Topic fields to display. (Optional)
 #'
-#' #Search for Spaces
+#' # Search for Spaces
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure HTTP bearer authorization: BearerToken
@@ -348,22 +345,21 @@
 #' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$spaces_api$search_spaces(var_query, state = var_state, max_results = var_max_results, space_fields = var_space_fields, expansions = var_expansions, user_fields = var_user_fields, topic_fields = var_topic_fields, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$spaces_api$search_spaces(var_query, state = var_state, max_results = var_max_results, space_fields = var_space_fields, expansions = var_expansions, user_fields = var_user_fields, topic_fields = var_topic_fields),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$spaces_api$search_spaces(var_query, state = var_state, max_results = var_max_results, space_fields = var_space_fields, expansions = var_expansions, user_fields = var_user_fields, topic_fields = var_topic_fields, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$spaces_api$search_spaces(var_query, state = var_state, max_results = var_max_results, space_fields = var_space_fields, expansions = var_expansions, user_fields = var_user_fields, topic_fields = var_topic_fields),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `search_spaces`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -376,35 +372,34 @@
 #'
 #' library(twitter)
 #' var_id <- "1YqKDqWqdPLsV" # character | The ID of the Space to be retrieved.
-#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results.
-#' var_max_results <- 100 # integer | The maximum number of results.
-#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var_expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
+#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results. (Optional)
+#' var_max_results <- 100 # integer | The maximum number of results. (Optional)
+#' var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+#' var_expansions <- c("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
+#' var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 #'
-#' #Retrieve the list of Users who purchased a ticket to the given space
+#' # Retrieve the list of Users who purchased a ticket to the given space
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
 #' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$spaces_api$space_buyers(var_id, pagination_token = var_pagination_token, max_results = var_max_results, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$spaces_api$space_buyers(var_id, pagination_token = var_pagination_token, max_results = var_max_results, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$spaces_api$space_buyers(var_id, pagination_token = var_pagination_token, max_results = var_max_results, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$spaces_api$space_buyers(var_id, pagination_token = var_pagination_token, max_results = var_max_results, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `space_buyers`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -417,15 +412,15 @@
 #'
 #' library(twitter)
 #' var_id <- "1YqKDqWqdPLsV" # character | The ID of the Space to be retrieved.
-#' var_max_results <- 100 # integer | The number of Tweets to fetch from the provided space. If not provided, the value will default to the maximum of 100.
-#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
-#' var_expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var_media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
-#' var_poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
-#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var_place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
+#' var_max_results <- 100 # integer | The number of Tweets to fetch from the provided space. If not provided, the value will default to the maximum of 100. (Optional)
+#' var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+#' var_expansions <- c("attachments.media_keys") # set[character] | A comma separated list of fields to expand. (Optional)
+#' var_media_fields <- c("alt_text") # set[character] | A comma separated list of Media fields to display. (Optional)
+#' var_poll_fields <- c("duration_minutes") # set[character] | A comma separated list of Poll fields to display. (Optional)
+#' var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+#' var_place_fields <- c("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 #'
-#' #Retrieve Tweets from a Space.
+#' # Retrieve Tweets from a Space.
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure HTTP bearer authorization: BearerToken
@@ -435,30 +430,26 @@
 #' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$spaces_api$space_tweets(var_id, max_results = var_max_results, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$spaces_api$space_tweets(var_id, max_results = var_max_results, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$spaces_api$space_tweets(var_id, max_results = var_max_results, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$spaces_api$space_tweets(var_id, max_results = var_max_results, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `space_tweets`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
 #'   dput(result$toString())
 #' }
-#'
-#'
-#'
 #' }
 #' @importFrom R6 R6Class
 #' @importFrom base64enc base64encode
@@ -533,119 +524,175 @@ SpacesApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`id`)) {
-        rlang::abort(message = "Missing required parameter `id`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `id`."))
+        rlang::abort(
+          message = "Missing required parameter `id`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `id`."
+          )
+        )
       }
 
       if (!str_detect(`id`, "^[a-zA-Z0-9]{1,13}$")) {
-        rlang::abort(message = "Invalid value for `id` when calling SpacesApi$find_space_by_id, must conform to the pattern ^[a-zA-Z0-9]{1,13}$.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `id` when calling SpacesApi$find_space_by_id, must conform to the pattern ^[a-zA-Z0-9]{1,13}$."))
+        rlang::abort(
+          message = "Invalid value for `id` when calling SpacesApi$find_space_by_id, must conform to the pattern ^[a-zA-Z0-9]{1,13}$.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `id` when calling SpacesApi$find_space_by_id, must conform to the pattern ^[a-zA-Z0-9]{1,13}$."
+          )
+        )
       }
 
       if (length(`space_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `space_fields` when calling SpacesApi$find_space_by_id, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `space_fields` when calling SpacesApi$find_space_by_id, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `space_fields` when calling SpacesApi$find_space_by_id, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `space_fields` when calling SpacesApi$find_space_by_id, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`expansions`) < 1) {
-        rlang::abort(message = "Invalid length for `expansions` when calling SpacesApi$find_space_by_id, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `expansions` when calling SpacesApi$find_space_by_id, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `expansions` when calling SpacesApi$find_space_by_id, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `expansions` when calling SpacesApi$find_space_by_id, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`user_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `user_fields` when calling SpacesApi$find_space_by_id, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `user_fields` when calling SpacesApi$find_space_by_id, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `user_fields` when calling SpacesApi$find_space_by_id, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `user_fields` when calling SpacesApi$find_space_by_id, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`topic_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `topic_fields` when calling SpacesApi$find_space_by_id, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `topic_fields` when calling SpacesApi$find_space_by_id, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `topic_fields` when calling SpacesApi$find_space_by_id, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `topic_fields` when calling SpacesApi$find_space_by_id, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       # check if items are unique
       if (!identical(`space_fields`, unique(`space_fields`))) {
-        rlang::abort(message = "Invalid value for `space_fields` when calling SpacesApi$find_space_by_id. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `space_fields` when calling SpacesApi$find_space_by_id. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `space_fields` when calling SpacesApi$find_space_by_id. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `space_fields` when calling SpacesApi$find_space_by_id. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `space_fields`) {
         if (!(query_item %in% c("created_at", "creator_id", "ended_at", "host_ids", "id", "invited_user_ids", "is_ticketed", "lang", "participant_count", "scheduled_start", "speaker_ids", "started_at", "state", "subscriber_count", "title", "topic_ids", "updated_at"))) {
-          rlang::abort(message = "Invalid value for `space_fields` when calling SpacesApi$find_space_by_id. Must be [created_at, creator_id, ended_at, host_ids, id, invited_user_ids, is_ticketed, lang, participant_count, scheduled_start, speaker_ids, started_at, state, subscriber_count, title, topic_ids, updated_at].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `space_fields` when calling SpacesApi$find_space_by_id. Must be [created_at, creator_id, ended_at, host_ids, id, invited_user_ids, is_ticketed, lang, participant_count, scheduled_start, speaker_ids, started_at, state, subscriber_count, title, topic_ids, updated_at]."))
+          rlang::abort(
+            message = "Invalid value for `space_fields` when calling SpacesApi$find_space_by_id. Must be [created_at, creator_id, ended_at, host_ids, id, invited_user_ids, is_ticketed, lang, participant_count, scheduled_start, speaker_ids, started_at, state, subscriber_count, title, topic_ids, updated_at].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `space_fields` when calling SpacesApi$find_space_by_id. Must be [created_at, creator_id, ended_at, host_ids, id, invited_user_ids, is_ticketed, lang, participant_count, scheduled_start, speaker_ids, started_at, state, subscriber_count, title, topic_ids, updated_at]."
+            )
+          )
         }
       }
       query_params[["space.fields"]] <- I(paste(lapply(`space_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`expansions`, unique(`expansions`))) {
-        rlang::abort(message = "Invalid value for `expansions` when calling SpacesApi$find_space_by_id. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `expansions` when calling SpacesApi$find_space_by_id. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `expansions` when calling SpacesApi$find_space_by_id. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `expansions` when calling SpacesApi$find_space_by_id. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
         if (!(query_item %in% c("creator_id", "host_ids", "invited_user_ids", "speaker_ids", "topic_ids"))) {
-          rlang::abort(message = "Invalid value for `expansions` when calling SpacesApi$find_space_by_id. Must be [creator_id, host_ids, invited_user_ids, speaker_ids, topic_ids].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `expansions` when calling SpacesApi$find_space_by_id. Must be [creator_id, host_ids, invited_user_ids, speaker_ids, topic_ids]."))
+          rlang::abort(
+            message = "Invalid value for `expansions` when calling SpacesApi$find_space_by_id. Must be [creator_id, host_ids, invited_user_ids, speaker_ids, topic_ids].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `expansions` when calling SpacesApi$find_space_by_id. Must be [creator_id, host_ids, invited_user_ids, speaker_ids, topic_ids]."
+            )
+          )
         }
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`user_fields`, unique(`user_fields`))) {
-        rlang::abort(message = "Invalid value for `user_fields` when calling SpacesApi$find_space_by_id. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `user_fields` when calling SpacesApi$find_space_by_id. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `user_fields` when calling SpacesApi$find_space_by_id. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `user_fields` when calling SpacesApi$find_space_by_id. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
         if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
-          rlang::abort(message = "Invalid value for `user_fields` when calling SpacesApi$find_space_by_id. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `user_fields` when calling SpacesApi$find_space_by_id. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `user_fields` when calling SpacesApi$find_space_by_id. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `user_fields` when calling SpacesApi$find_space_by_id. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."
+            )
+          )
         }
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`topic_fields`, unique(`topic_fields`))) {
-        rlang::abort(message = "Invalid value for `topic_fields` when calling SpacesApi$find_space_by_id. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `topic_fields` when calling SpacesApi$find_space_by_id. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `topic_fields` when calling SpacesApi$find_space_by_id. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `topic_fields` when calling SpacesApi$find_space_by_id. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `topic_fields`) {
         if (!(query_item %in% c("description", "id", "name"))) {
-          rlang::abort(message = "Invalid value for `topic_fields` when calling SpacesApi$find_space_by_id. Must be [description, id, name].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `topic_fields` when calling SpacesApi$find_space_by_id. Must be [description, id, name]."))
+          rlang::abort(
+            message = "Invalid value for `topic_fields` when calling SpacesApi$find_space_by_id. Must be [description, id, name].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `topic_fields` when calling SpacesApi$find_space_by_id. Must be [description, id, name]."
+            )
+          )
         }
       }
       query_params[["topic.fields"]] <- I(paste(lapply(`topic_fields`, URLencode, reserved = TRUE), collapse = ","))
@@ -669,18 +716,20 @@ SpacesApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "GET",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -691,9 +740,11 @@ SpacesApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "Get2SpacesIdResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -703,25 +754,31 @@ SpacesApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Space lookup by their creators
@@ -775,51 +832,79 @@ SpacesApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`user_ids`)) {
-        rlang::abort(message = "Missing required parameter `user_ids`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `user_ids`."))
+        rlang::abort(
+          message = "Missing required parameter `user_ids`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `user_ids`."
+          )
+        )
       }
 
       if (length(`user_ids`) > 100) {
-        rlang::abort(message = "Invalid length for `user_ids` when calling SpacesApi$find_spaces_by_creator_ids, number of items must be less than or equal to 100.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `user_ids` when calling SpacesApi$find_spaces_by_creator_ids, number of items must be less than or equal to 100."))
+        rlang::abort(
+          message = "Invalid length for `user_ids` when calling SpacesApi$find_spaces_by_creator_ids, number of items must be less than or equal to 100.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `user_ids` when calling SpacesApi$find_spaces_by_creator_ids, number of items must be less than or equal to 100."
+          )
+        )
       }
       if (length(`user_ids`) < 1) {
-        rlang::abort(message = "Invalid length for `user_ids` when calling SpacesApi$find_spaces_by_creator_ids, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `user_ids` when calling SpacesApi$find_spaces_by_creator_ids, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `user_ids` when calling SpacesApi$find_spaces_by_creator_ids, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `user_ids` when calling SpacesApi$find_spaces_by_creator_ids, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`space_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `space_fields` when calling SpacesApi$find_spaces_by_creator_ids, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `space_fields` when calling SpacesApi$find_spaces_by_creator_ids, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `space_fields` when calling SpacesApi$find_spaces_by_creator_ids, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `space_fields` when calling SpacesApi$find_spaces_by_creator_ids, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`expansions`) < 1) {
-        rlang::abort(message = "Invalid length for `expansions` when calling SpacesApi$find_spaces_by_creator_ids, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `expansions` when calling SpacesApi$find_spaces_by_creator_ids, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `expansions` when calling SpacesApi$find_spaces_by_creator_ids, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `expansions` when calling SpacesApi$find_spaces_by_creator_ids, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`user_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `user_fields` when calling SpacesApi$find_spaces_by_creator_ids, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `user_fields` when calling SpacesApi$find_spaces_by_creator_ids, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `user_fields` when calling SpacesApi$find_spaces_by_creator_ids, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `user_fields` when calling SpacesApi$find_spaces_by_creator_ids, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`topic_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `topic_fields` when calling SpacesApi$find_spaces_by_creator_ids, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `topic_fields` when calling SpacesApi$find_spaces_by_creator_ids, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `topic_fields` when calling SpacesApi$find_spaces_by_creator_ids, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `topic_fields` when calling SpacesApi$find_spaces_by_creator_ids, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       # explore
@@ -829,76 +914,108 @@ SpacesApi <- R6::R6Class(
 
       # check if items are unique
       if (!identical(`space_fields`, unique(`space_fields`))) {
-        rlang::abort(message = "Invalid value for `space_fields` when calling SpacesApi$find_spaces_by_creator_ids. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `space_fields` when calling SpacesApi$find_spaces_by_creator_ids. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `space_fields` when calling SpacesApi$find_spaces_by_creator_ids. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `space_fields` when calling SpacesApi$find_spaces_by_creator_ids. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `space_fields`) {
         if (!(query_item %in% c("created_at", "creator_id", "ended_at", "host_ids", "id", "invited_user_ids", "is_ticketed", "lang", "participant_count", "scheduled_start", "speaker_ids", "started_at", "state", "subscriber_count", "title", "topic_ids", "updated_at"))) {
-          rlang::abort(message = "Invalid value for `space_fields` when calling SpacesApi$find_spaces_by_creator_ids. Must be [created_at, creator_id, ended_at, host_ids, id, invited_user_ids, is_ticketed, lang, participant_count, scheduled_start, speaker_ids, started_at, state, subscriber_count, title, topic_ids, updated_at].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `space_fields` when calling SpacesApi$find_spaces_by_creator_ids. Must be [created_at, creator_id, ended_at, host_ids, id, invited_user_ids, is_ticketed, lang, participant_count, scheduled_start, speaker_ids, started_at, state, subscriber_count, title, topic_ids, updated_at]."))
+          rlang::abort(
+            message = "Invalid value for `space_fields` when calling SpacesApi$find_spaces_by_creator_ids. Must be [created_at, creator_id, ended_at, host_ids, id, invited_user_ids, is_ticketed, lang, participant_count, scheduled_start, speaker_ids, started_at, state, subscriber_count, title, topic_ids, updated_at].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `space_fields` when calling SpacesApi$find_spaces_by_creator_ids. Must be [created_at, creator_id, ended_at, host_ids, id, invited_user_ids, is_ticketed, lang, participant_count, scheduled_start, speaker_ids, started_at, state, subscriber_count, title, topic_ids, updated_at]."
+            )
+          )
         }
       }
       query_params[["space.fields"]] <- I(paste(lapply(`space_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`expansions`, unique(`expansions`))) {
-        rlang::abort(message = "Invalid value for `expansions` when calling SpacesApi$find_spaces_by_creator_ids. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `expansions` when calling SpacesApi$find_spaces_by_creator_ids. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `expansions` when calling SpacesApi$find_spaces_by_creator_ids. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `expansions` when calling SpacesApi$find_spaces_by_creator_ids. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
         if (!(query_item %in% c("creator_id", "host_ids", "invited_user_ids", "speaker_ids", "topic_ids"))) {
-          rlang::abort(message = "Invalid value for `expansions` when calling SpacesApi$find_spaces_by_creator_ids. Must be [creator_id, host_ids, invited_user_ids, speaker_ids, topic_ids].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `expansions` when calling SpacesApi$find_spaces_by_creator_ids. Must be [creator_id, host_ids, invited_user_ids, speaker_ids, topic_ids]."))
+          rlang::abort(
+            message = "Invalid value for `expansions` when calling SpacesApi$find_spaces_by_creator_ids. Must be [creator_id, host_ids, invited_user_ids, speaker_ids, topic_ids].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `expansions` when calling SpacesApi$find_spaces_by_creator_ids. Must be [creator_id, host_ids, invited_user_ids, speaker_ids, topic_ids]."
+            )
+          )
         }
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`user_fields`, unique(`user_fields`))) {
-        rlang::abort(message = "Invalid value for `user_fields` when calling SpacesApi$find_spaces_by_creator_ids. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `user_fields` when calling SpacesApi$find_spaces_by_creator_ids. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `user_fields` when calling SpacesApi$find_spaces_by_creator_ids. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `user_fields` when calling SpacesApi$find_spaces_by_creator_ids. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
         if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
-          rlang::abort(message = "Invalid value for `user_fields` when calling SpacesApi$find_spaces_by_creator_ids. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `user_fields` when calling SpacesApi$find_spaces_by_creator_ids. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `user_fields` when calling SpacesApi$find_spaces_by_creator_ids. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `user_fields` when calling SpacesApi$find_spaces_by_creator_ids. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."
+            )
+          )
         }
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`topic_fields`, unique(`topic_fields`))) {
-        rlang::abort(message = "Invalid value for `topic_fields` when calling SpacesApi$find_spaces_by_creator_ids. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `topic_fields` when calling SpacesApi$find_spaces_by_creator_ids. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `topic_fields` when calling SpacesApi$find_spaces_by_creator_ids. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `topic_fields` when calling SpacesApi$find_spaces_by_creator_ids. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `topic_fields`) {
         if (!(query_item %in% c("description", "id", "name"))) {
-          rlang::abort(message = "Invalid value for `topic_fields` when calling SpacesApi$find_spaces_by_creator_ids. Must be [description, id, name].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `topic_fields` when calling SpacesApi$find_spaces_by_creator_ids. Must be [description, id, name]."))
+          rlang::abort(
+            message = "Invalid value for `topic_fields` when calling SpacesApi$find_spaces_by_creator_ids. Must be [description, id, name].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `topic_fields` when calling SpacesApi$find_spaces_by_creator_ids. Must be [description, id, name]."
+            )
+          )
         }
       }
       query_params[["topic.fields"]] <- I(paste(lapply(`topic_fields`, URLencode, reserved = TRUE), collapse = ","))
@@ -918,18 +1035,20 @@ SpacesApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "GET",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -940,9 +1059,11 @@ SpacesApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "Get2SpacesByCreatorIdsResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -952,25 +1073,31 @@ SpacesApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Space lookup up Space IDs
@@ -1024,51 +1151,79 @@ SpacesApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`ids`)) {
-        rlang::abort(message = "Missing required parameter `ids`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `ids`."))
+        rlang::abort(
+          message = "Missing required parameter `ids`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `ids`."
+          )
+        )
       }
 
       if (length(`ids`) > 100) {
-        rlang::abort(message = "Invalid length for `ids` when calling SpacesApi$find_spaces_by_ids, number of items must be less than or equal to 100.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `ids` when calling SpacesApi$find_spaces_by_ids, number of items must be less than or equal to 100."))
+        rlang::abort(
+          message = "Invalid length for `ids` when calling SpacesApi$find_spaces_by_ids, number of items must be less than or equal to 100.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `ids` when calling SpacesApi$find_spaces_by_ids, number of items must be less than or equal to 100."
+          )
+        )
       }
       if (length(`ids`) < 1) {
-        rlang::abort(message = "Invalid length for `ids` when calling SpacesApi$find_spaces_by_ids, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `ids` when calling SpacesApi$find_spaces_by_ids, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `ids` when calling SpacesApi$find_spaces_by_ids, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `ids` when calling SpacesApi$find_spaces_by_ids, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`space_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `space_fields` when calling SpacesApi$find_spaces_by_ids, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `space_fields` when calling SpacesApi$find_spaces_by_ids, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `space_fields` when calling SpacesApi$find_spaces_by_ids, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `space_fields` when calling SpacesApi$find_spaces_by_ids, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`expansions`) < 1) {
-        rlang::abort(message = "Invalid length for `expansions` when calling SpacesApi$find_spaces_by_ids, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `expansions` when calling SpacesApi$find_spaces_by_ids, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `expansions` when calling SpacesApi$find_spaces_by_ids, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `expansions` when calling SpacesApi$find_spaces_by_ids, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`user_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `user_fields` when calling SpacesApi$find_spaces_by_ids, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `user_fields` when calling SpacesApi$find_spaces_by_ids, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `user_fields` when calling SpacesApi$find_spaces_by_ids, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `user_fields` when calling SpacesApi$find_spaces_by_ids, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`topic_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `topic_fields` when calling SpacesApi$find_spaces_by_ids, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `topic_fields` when calling SpacesApi$find_spaces_by_ids, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `topic_fields` when calling SpacesApi$find_spaces_by_ids, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `topic_fields` when calling SpacesApi$find_spaces_by_ids, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       # explore
@@ -1078,76 +1233,108 @@ SpacesApi <- R6::R6Class(
 
       # check if items are unique
       if (!identical(`space_fields`, unique(`space_fields`))) {
-        rlang::abort(message = "Invalid value for `space_fields` when calling SpacesApi$find_spaces_by_ids. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `space_fields` when calling SpacesApi$find_spaces_by_ids. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `space_fields` when calling SpacesApi$find_spaces_by_ids. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `space_fields` when calling SpacesApi$find_spaces_by_ids. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `space_fields`) {
         if (!(query_item %in% c("created_at", "creator_id", "ended_at", "host_ids", "id", "invited_user_ids", "is_ticketed", "lang", "participant_count", "scheduled_start", "speaker_ids", "started_at", "state", "subscriber_count", "title", "topic_ids", "updated_at"))) {
-          rlang::abort(message = "Invalid value for `space_fields` when calling SpacesApi$find_spaces_by_ids. Must be [created_at, creator_id, ended_at, host_ids, id, invited_user_ids, is_ticketed, lang, participant_count, scheduled_start, speaker_ids, started_at, state, subscriber_count, title, topic_ids, updated_at].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `space_fields` when calling SpacesApi$find_spaces_by_ids. Must be [created_at, creator_id, ended_at, host_ids, id, invited_user_ids, is_ticketed, lang, participant_count, scheduled_start, speaker_ids, started_at, state, subscriber_count, title, topic_ids, updated_at]."))
+          rlang::abort(
+            message = "Invalid value for `space_fields` when calling SpacesApi$find_spaces_by_ids. Must be [created_at, creator_id, ended_at, host_ids, id, invited_user_ids, is_ticketed, lang, participant_count, scheduled_start, speaker_ids, started_at, state, subscriber_count, title, topic_ids, updated_at].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `space_fields` when calling SpacesApi$find_spaces_by_ids. Must be [created_at, creator_id, ended_at, host_ids, id, invited_user_ids, is_ticketed, lang, participant_count, scheduled_start, speaker_ids, started_at, state, subscriber_count, title, topic_ids, updated_at]."
+            )
+          )
         }
       }
       query_params[["space.fields"]] <- I(paste(lapply(`space_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`expansions`, unique(`expansions`))) {
-        rlang::abort(message = "Invalid value for `expansions` when calling SpacesApi$find_spaces_by_ids. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `expansions` when calling SpacesApi$find_spaces_by_ids. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `expansions` when calling SpacesApi$find_spaces_by_ids. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `expansions` when calling SpacesApi$find_spaces_by_ids. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
         if (!(query_item %in% c("creator_id", "host_ids", "invited_user_ids", "speaker_ids", "topic_ids"))) {
-          rlang::abort(message = "Invalid value for `expansions` when calling SpacesApi$find_spaces_by_ids. Must be [creator_id, host_ids, invited_user_ids, speaker_ids, topic_ids].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `expansions` when calling SpacesApi$find_spaces_by_ids. Must be [creator_id, host_ids, invited_user_ids, speaker_ids, topic_ids]."))
+          rlang::abort(
+            message = "Invalid value for `expansions` when calling SpacesApi$find_spaces_by_ids. Must be [creator_id, host_ids, invited_user_ids, speaker_ids, topic_ids].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `expansions` when calling SpacesApi$find_spaces_by_ids. Must be [creator_id, host_ids, invited_user_ids, speaker_ids, topic_ids]."
+            )
+          )
         }
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`user_fields`, unique(`user_fields`))) {
-        rlang::abort(message = "Invalid value for `user_fields` when calling SpacesApi$find_spaces_by_ids. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `user_fields` when calling SpacesApi$find_spaces_by_ids. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `user_fields` when calling SpacesApi$find_spaces_by_ids. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `user_fields` when calling SpacesApi$find_spaces_by_ids. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
         if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
-          rlang::abort(message = "Invalid value for `user_fields` when calling SpacesApi$find_spaces_by_ids. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `user_fields` when calling SpacesApi$find_spaces_by_ids. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `user_fields` when calling SpacesApi$find_spaces_by_ids. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `user_fields` when calling SpacesApi$find_spaces_by_ids. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."
+            )
+          )
         }
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`topic_fields`, unique(`topic_fields`))) {
-        rlang::abort(message = "Invalid value for `topic_fields` when calling SpacesApi$find_spaces_by_ids. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `topic_fields` when calling SpacesApi$find_spaces_by_ids. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `topic_fields` when calling SpacesApi$find_spaces_by_ids. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `topic_fields` when calling SpacesApi$find_spaces_by_ids. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `topic_fields`) {
         if (!(query_item %in% c("description", "id", "name"))) {
-          rlang::abort(message = "Invalid value for `topic_fields` when calling SpacesApi$find_spaces_by_ids. Must be [description, id, name].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `topic_fields` when calling SpacesApi$find_spaces_by_ids. Must be [description, id, name]."))
+          rlang::abort(
+            message = "Invalid value for `topic_fields` when calling SpacesApi$find_spaces_by_ids. Must be [description, id, name].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `topic_fields` when calling SpacesApi$find_spaces_by_ids. Must be [description, id, name]."
+            )
+          )
         }
       }
       query_params[["topic.fields"]] <- I(paste(lapply(`topic_fields`, URLencode, reserved = TRUE), collapse = ","))
@@ -1167,18 +1354,20 @@ SpacesApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "GET",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -1189,9 +1378,11 @@ SpacesApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "Get2SpacesResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -1201,25 +1392,31 @@ SpacesApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Search for Spaces
@@ -1277,74 +1474,114 @@ SpacesApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`query`)) {
-        rlang::abort(message = "Missing required parameter `query`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `query`."))
+        rlang::abort(
+          message = "Missing required parameter `query`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `query`."
+          )
+        )
       }
 
       if (nchar(`query`) > 2048) {
-        rlang::abort(message = "Invalid length for `query` when calling SpacesApi$search_spaces, must be smaller than or equal to 2048.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for $query when calling SpacesApi.search_spaces, must be smaller than or equal to 2048."))
+        rlang::abort(
+          message = "Invalid length for `query` when calling SpacesApi$search_spaces, must be smaller than or equal to 2048.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for $query when calling SpacesApi.search_spaces, must be smaller than or equal to 2048."
+          )
+        )
       }
       if (nchar(`query`) < 1) {
-        rlang::abort(message = "Invalid length for `query` when calling SpacesApi$search_spaces, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `query` when calling SpacesApi$search_spaces, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `query` when calling SpacesApi$search_spaces, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `query` when calling SpacesApi$search_spaces, must be bigger than or equal to 1."
+          )
+        )
       }
 
 
       if (`max_results` > 100) {
-        rlang::abort(message = "Invalid value for `max_results` when calling SpacesApi$search_spaces, must be smaller than or equal to 100.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling SpacesApi$search_spaces, must be smaller than or equal to 100."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling SpacesApi$search_spaces, must be smaller than or equal to 100.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling SpacesApi$search_spaces, must be smaller than or equal to 100."
+          )
+        )
       }
       if (`max_results` < 1) {
-        rlang::abort(message = "Invalid value for `max_results` when calling SpacesApi$search_spaces, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling SpacesApi$search_spaces, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling SpacesApi$search_spaces, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling SpacesApi$search_spaces, must be bigger than or equal to 1."
+          )
+        )
       }
 
       if (length(`space_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `space_fields` when calling SpacesApi$search_spaces, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `space_fields` when calling SpacesApi$search_spaces, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `space_fields` when calling SpacesApi$search_spaces, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `space_fields` when calling SpacesApi$search_spaces, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`expansions`) < 1) {
-        rlang::abort(message = "Invalid length for `expansions` when calling SpacesApi$search_spaces, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `expansions` when calling SpacesApi$search_spaces, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `expansions` when calling SpacesApi$search_spaces, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `expansions` when calling SpacesApi$search_spaces, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`user_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `user_fields` when calling SpacesApi$search_spaces, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `user_fields` when calling SpacesApi$search_spaces, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `user_fields` when calling SpacesApi$search_spaces, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `user_fields` when calling SpacesApi$search_spaces, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`topic_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `topic_fields` when calling SpacesApi$search_spaces, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `topic_fields` when calling SpacesApi$search_spaces, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `topic_fields` when calling SpacesApi$search_spaces, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `topic_fields` when calling SpacesApi$search_spaces, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       query_params[["query"]] <- `query`
 
       if (!(`state` %in% c("live", "scheduled", "all"))) {
-        rlang::abort(message = "Invalid value for `state` when calling SpacesApi$search_spaces. Must be [live, scheduled, all].",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `state` when calling SpacesApi$search_spaces. Must be [live, scheduled, all]."))
+        rlang::abort(
+          message = "Invalid value for `state` when calling SpacesApi$search_spaces. Must be [live, scheduled, all].",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `state` when calling SpacesApi$search_spaces. Must be [live, scheduled, all]."
+          )
+        )
       }
       query_params[["state"]] <- `state`
 
@@ -1352,76 +1589,108 @@ SpacesApi <- R6::R6Class(
 
       # check if items are unique
       if (!identical(`space_fields`, unique(`space_fields`))) {
-        rlang::abort(message = "Invalid value for `space_fields` when calling SpacesApi$search_spaces. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `space_fields` when calling SpacesApi$search_spaces. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `space_fields` when calling SpacesApi$search_spaces. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `space_fields` when calling SpacesApi$search_spaces. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `space_fields`) {
         if (!(query_item %in% c("created_at", "creator_id", "ended_at", "host_ids", "id", "invited_user_ids", "is_ticketed", "lang", "participant_count", "scheduled_start", "speaker_ids", "started_at", "state", "subscriber_count", "title", "topic_ids", "updated_at"))) {
-          rlang::abort(message = "Invalid value for `space_fields` when calling SpacesApi$search_spaces. Must be [created_at, creator_id, ended_at, host_ids, id, invited_user_ids, is_ticketed, lang, participant_count, scheduled_start, speaker_ids, started_at, state, subscriber_count, title, topic_ids, updated_at].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `space_fields` when calling SpacesApi$search_spaces. Must be [created_at, creator_id, ended_at, host_ids, id, invited_user_ids, is_ticketed, lang, participant_count, scheduled_start, speaker_ids, started_at, state, subscriber_count, title, topic_ids, updated_at]."))
+          rlang::abort(
+            message = "Invalid value for `space_fields` when calling SpacesApi$search_spaces. Must be [created_at, creator_id, ended_at, host_ids, id, invited_user_ids, is_ticketed, lang, participant_count, scheduled_start, speaker_ids, started_at, state, subscriber_count, title, topic_ids, updated_at].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `space_fields` when calling SpacesApi$search_spaces. Must be [created_at, creator_id, ended_at, host_ids, id, invited_user_ids, is_ticketed, lang, participant_count, scheduled_start, speaker_ids, started_at, state, subscriber_count, title, topic_ids, updated_at]."
+            )
+          )
         }
       }
       query_params[["space.fields"]] <- I(paste(lapply(`space_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`expansions`, unique(`expansions`))) {
-        rlang::abort(message = "Invalid value for `expansions` when calling SpacesApi$search_spaces. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `expansions` when calling SpacesApi$search_spaces. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `expansions` when calling SpacesApi$search_spaces. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `expansions` when calling SpacesApi$search_spaces. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
         if (!(query_item %in% c("creator_id", "host_ids", "invited_user_ids", "speaker_ids", "topic_ids"))) {
-          rlang::abort(message = "Invalid value for `expansions` when calling SpacesApi$search_spaces. Must be [creator_id, host_ids, invited_user_ids, speaker_ids, topic_ids].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `expansions` when calling SpacesApi$search_spaces. Must be [creator_id, host_ids, invited_user_ids, speaker_ids, topic_ids]."))
+          rlang::abort(
+            message = "Invalid value for `expansions` when calling SpacesApi$search_spaces. Must be [creator_id, host_ids, invited_user_ids, speaker_ids, topic_ids].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `expansions` when calling SpacesApi$search_spaces. Must be [creator_id, host_ids, invited_user_ids, speaker_ids, topic_ids]."
+            )
+          )
         }
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`user_fields`, unique(`user_fields`))) {
-        rlang::abort(message = "Invalid value for `user_fields` when calling SpacesApi$search_spaces. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `user_fields` when calling SpacesApi$search_spaces. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `user_fields` when calling SpacesApi$search_spaces. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `user_fields` when calling SpacesApi$search_spaces. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
         if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
-          rlang::abort(message = "Invalid value for `user_fields` when calling SpacesApi$search_spaces. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `user_fields` when calling SpacesApi$search_spaces. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `user_fields` when calling SpacesApi$search_spaces. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `user_fields` when calling SpacesApi$search_spaces. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."
+            )
+          )
         }
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`topic_fields`, unique(`topic_fields`))) {
-        rlang::abort(message = "Invalid value for `topic_fields` when calling SpacesApi$search_spaces. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `topic_fields` when calling SpacesApi$search_spaces. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `topic_fields` when calling SpacesApi$search_spaces. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `topic_fields` when calling SpacesApi$search_spaces. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `topic_fields`) {
         if (!(query_item %in% c("description", "id", "name"))) {
-          rlang::abort(message = "Invalid value for `topic_fields` when calling SpacesApi$search_spaces. Must be [description, id, name].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `topic_fields` when calling SpacesApi$search_spaces. Must be [description, id, name]."))
+          rlang::abort(
+            message = "Invalid value for `topic_fields` when calling SpacesApi$search_spaces. Must be [description, id, name].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `topic_fields` when calling SpacesApi$search_spaces. Must be [description, id, name]."
+            )
+          )
         }
       }
       query_params[["topic.fields"]] <- I(paste(lapply(`topic_fields`, URLencode, reserved = TRUE), collapse = ","))
@@ -1441,18 +1710,20 @@ SpacesApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "GET",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -1463,9 +1734,11 @@ SpacesApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "Get2SpacesSearchResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -1475,25 +1748,31 @@ SpacesApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Retrieve the list of Users who purchased a ticket to the given space
@@ -1549,58 +1828,90 @@ SpacesApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`id`)) {
-        rlang::abort(message = "Missing required parameter `id`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `id`."))
+        rlang::abort(
+          message = "Missing required parameter `id`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `id`."
+          )
+        )
       }
 
       if (!str_detect(`id`, "^[a-zA-Z0-9]{1,13}$")) {
-        rlang::abort(message = "Invalid value for `id` when calling SpacesApi$space_buyers, must conform to the pattern ^[a-zA-Z0-9]{1,13}$.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `id` when calling SpacesApi$space_buyers, must conform to the pattern ^[a-zA-Z0-9]{1,13}$."))
+        rlang::abort(
+          message = "Invalid value for `id` when calling SpacesApi$space_buyers, must conform to the pattern ^[a-zA-Z0-9]{1,13}$.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `id` when calling SpacesApi$space_buyers, must conform to the pattern ^[a-zA-Z0-9]{1,13}$."
+          )
+        )
       }
 
       if (nchar(`pagination_token`) < 16) {
-        rlang::abort(message = "Invalid length for `pagination_token` when calling SpacesApi$space_buyers, must be bigger than or equal to 16.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `pagination_token` when calling SpacesApi$space_buyers, must be bigger than or equal to 16."))
+        rlang::abort(
+          message = "Invalid length for `pagination_token` when calling SpacesApi$space_buyers, must be bigger than or equal to 16.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `pagination_token` when calling SpacesApi$space_buyers, must be bigger than or equal to 16."
+          )
+        )
       }
 
       if (`max_results` > 100) {
-        rlang::abort(message = "Invalid value for `max_results` when calling SpacesApi$space_buyers, must be smaller than or equal to 100.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling SpacesApi$space_buyers, must be smaller than or equal to 100."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling SpacesApi$space_buyers, must be smaller than or equal to 100.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling SpacesApi$space_buyers, must be smaller than or equal to 100."
+          )
+        )
       }
       if (`max_results` < 1) {
-        rlang::abort(message = "Invalid value for `max_results` when calling SpacesApi$space_buyers, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling SpacesApi$space_buyers, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling SpacesApi$space_buyers, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling SpacesApi$space_buyers, must be bigger than or equal to 1."
+          )
+        )
       }
 
       if (length(`user_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `user_fields` when calling SpacesApi$space_buyers, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `user_fields` when calling SpacesApi$space_buyers, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `user_fields` when calling SpacesApi$space_buyers, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `user_fields` when calling SpacesApi$space_buyers, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`expansions`) < 1) {
-        rlang::abort(message = "Invalid length for `expansions` when calling SpacesApi$space_buyers, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `expansions` when calling SpacesApi$space_buyers, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `expansions` when calling SpacesApi$space_buyers, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `expansions` when calling SpacesApi$space_buyers, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`tweet_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `tweet_fields` when calling SpacesApi$space_buyers, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `tweet_fields` when calling SpacesApi$space_buyers, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `tweet_fields` when calling SpacesApi$space_buyers, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `tweet_fields` when calling SpacesApi$space_buyers, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       query_params[["pagination_token"]] <- `pagination_token`
@@ -1609,57 +1920,81 @@ SpacesApi <- R6::R6Class(
 
       # check if items are unique
       if (!identical(`user_fields`, unique(`user_fields`))) {
-        rlang::abort(message = "Invalid value for `user_fields` when calling SpacesApi$space_buyers. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `user_fields` when calling SpacesApi$space_buyers. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `user_fields` when calling SpacesApi$space_buyers. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `user_fields` when calling SpacesApi$space_buyers. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
         if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
-          rlang::abort(message = "Invalid value for `user_fields` when calling SpacesApi$space_buyers. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `user_fields` when calling SpacesApi$space_buyers. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `user_fields` when calling SpacesApi$space_buyers. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `user_fields` when calling SpacesApi$space_buyers. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."
+            )
+          )
         }
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`expansions`, unique(`expansions`))) {
-        rlang::abort(message = "Invalid value for `expansions` when calling SpacesApi$space_buyers. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `expansions` when calling SpacesApi$space_buyers. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `expansions` when calling SpacesApi$space_buyers. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `expansions` when calling SpacesApi$space_buyers. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
         if (!(query_item %in% c("pinned_tweet_id"))) {
-          rlang::abort(message = "Invalid value for `expansions` when calling SpacesApi$space_buyers. Must be [pinned_tweet_id].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `expansions` when calling SpacesApi$space_buyers. Must be [pinned_tweet_id]."))
+          rlang::abort(
+            message = "Invalid value for `expansions` when calling SpacesApi$space_buyers. Must be [pinned_tweet_id].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `expansions` when calling SpacesApi$space_buyers. Must be [pinned_tweet_id]."
+            )
+          )
         }
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
-        rlang::abort(message = "Invalid value for `tweet_fields` when calling SpacesApi$space_buyers. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `tweet_fields` when calling SpacesApi$space_buyers. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `tweet_fields` when calling SpacesApi$space_buyers. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `tweet_fields` when calling SpacesApi$space_buyers. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
         if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
-          rlang::abort(message = "Invalid value for `tweet_fields` when calling SpacesApi$space_buyers. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `tweet_fields` when calling SpacesApi$space_buyers. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `tweet_fields` when calling SpacesApi$space_buyers. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `tweet_fields` when calling SpacesApi$space_buyers. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."
+            )
+          )
         }
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
@@ -1679,18 +2014,20 @@ SpacesApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "GET",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -1701,9 +2038,11 @@ SpacesApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "Get2SpacesIdBuyersResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -1713,25 +2052,31 @@ SpacesApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Retrieve Tweets from a Space.
@@ -1791,186 +2136,274 @@ SpacesApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`id`)) {
-        rlang::abort(message = "Missing required parameter `id`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `id`."))
+        rlang::abort(
+          message = "Missing required parameter `id`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `id`."
+          )
+        )
       }
 
       if (!str_detect(`id`, "^[a-zA-Z0-9]{1,13}$")) {
-        rlang::abort(message = "Invalid value for `id` when calling SpacesApi$space_tweets, must conform to the pattern ^[a-zA-Z0-9]{1,13}$.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `id` when calling SpacesApi$space_tweets, must conform to the pattern ^[a-zA-Z0-9]{1,13}$."))
+        rlang::abort(
+          message = "Invalid value for `id` when calling SpacesApi$space_tweets, must conform to the pattern ^[a-zA-Z0-9]{1,13}$.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `id` when calling SpacesApi$space_tweets, must conform to the pattern ^[a-zA-Z0-9]{1,13}$."
+          )
+        )
       }
 
       if (`max_results` > 100) {
-        rlang::abort(message = "Invalid value for `max_results` when calling SpacesApi$space_tweets, must be smaller than or equal to 100.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling SpacesApi$space_tweets, must be smaller than or equal to 100."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling SpacesApi$space_tweets, must be smaller than or equal to 100.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling SpacesApi$space_tweets, must be smaller than or equal to 100."
+          )
+        )
       }
       if (`max_results` < 1) {
-        rlang::abort(message = "Invalid value for `max_results` when calling SpacesApi$space_tweets, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling SpacesApi$space_tweets, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling SpacesApi$space_tweets, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling SpacesApi$space_tweets, must be bigger than or equal to 1."
+          )
+        )
       }
 
       if (length(`tweet_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `tweet_fields` when calling SpacesApi$space_tweets, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `tweet_fields` when calling SpacesApi$space_tweets, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `tweet_fields` when calling SpacesApi$space_tweets, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `tweet_fields` when calling SpacesApi$space_tweets, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`expansions`) < 1) {
-        rlang::abort(message = "Invalid length for `expansions` when calling SpacesApi$space_tweets, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `expansions` when calling SpacesApi$space_tweets, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `expansions` when calling SpacesApi$space_tweets, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `expansions` when calling SpacesApi$space_tweets, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`media_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `media_fields` when calling SpacesApi$space_tweets, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `media_fields` when calling SpacesApi$space_tweets, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `media_fields` when calling SpacesApi$space_tweets, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `media_fields` when calling SpacesApi$space_tweets, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`poll_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `poll_fields` when calling SpacesApi$space_tweets, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `poll_fields` when calling SpacesApi$space_tweets, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `poll_fields` when calling SpacesApi$space_tweets, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `poll_fields` when calling SpacesApi$space_tweets, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`user_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `user_fields` when calling SpacesApi$space_tweets, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `user_fields` when calling SpacesApi$space_tweets, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `user_fields` when calling SpacesApi$space_tweets, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `user_fields` when calling SpacesApi$space_tweets, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`place_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `place_fields` when calling SpacesApi$space_tweets, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `place_fields` when calling SpacesApi$space_tweets, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `place_fields` when calling SpacesApi$space_tweets, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `place_fields` when calling SpacesApi$space_tweets, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       query_params[["max_results"]] <- `max_results`
 
       # check if items are unique
       if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
-        rlang::abort(message = "Invalid value for `tweet_fields` when calling SpacesApi$space_tweets. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `tweet_fields` when calling SpacesApi$space_tweets. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `tweet_fields` when calling SpacesApi$space_tweets. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `tweet_fields` when calling SpacesApi$space_tweets. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
         if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
-          rlang::abort(message = "Invalid value for `tweet_fields` when calling SpacesApi$space_tweets. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `tweet_fields` when calling SpacesApi$space_tweets. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `tweet_fields` when calling SpacesApi$space_tweets. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `tweet_fields` when calling SpacesApi$space_tweets. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."
+            )
+          )
         }
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`expansions`, unique(`expansions`))) {
-        rlang::abort(message = "Invalid value for `expansions` when calling SpacesApi$space_tweets. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `expansions` when calling SpacesApi$space_tweets. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `expansions` when calling SpacesApi$space_tweets. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `expansions` when calling SpacesApi$space_tweets. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
         if (!(query_item %in% c("attachments.media_keys", "attachments.poll_ids", "author_id", "entities.mentions.username", "geo.place_id", "in_reply_to_user_id", "referenced_tweets.id", "referenced_tweets.id.author_id"))) {
-          rlang::abort(message = "Invalid value for `expansions` when calling SpacesApi$space_tweets. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `expansions` when calling SpacesApi$space_tweets. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."))
+          rlang::abort(
+            message = "Invalid value for `expansions` when calling SpacesApi$space_tweets. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `expansions` when calling SpacesApi$space_tweets. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."
+            )
+          )
         }
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`media_fields`, unique(`media_fields`))) {
-        rlang::abort(message = "Invalid value for `media_fields` when calling SpacesApi$space_tweets. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `media_fields` when calling SpacesApi$space_tweets. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `media_fields` when calling SpacesApi$space_tweets. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `media_fields` when calling SpacesApi$space_tweets. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `media_fields`) {
         if (!(query_item %in% c("alt_text", "duration_ms", "height", "media_key", "non_public_metrics", "organic_metrics", "preview_image_url", "promoted_metrics", "public_metrics", "type", "url", "variants", "width"))) {
-          rlang::abort(message = "Invalid value for `media_fields` when calling SpacesApi$space_tweets. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `media_fields` when calling SpacesApi$space_tweets. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."))
+          rlang::abort(
+            message = "Invalid value for `media_fields` when calling SpacesApi$space_tweets. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `media_fields` when calling SpacesApi$space_tweets. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."
+            )
+          )
         }
       }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`poll_fields`, unique(`poll_fields`))) {
-        rlang::abort(message = "Invalid value for `poll_fields` when calling SpacesApi$space_tweets. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `poll_fields` when calling SpacesApi$space_tweets. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `poll_fields` when calling SpacesApi$space_tweets. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `poll_fields` when calling SpacesApi$space_tweets. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `poll_fields`) {
         if (!(query_item %in% c("duration_minutes", "end_datetime", "id", "options", "voting_status"))) {
-          rlang::abort(message = "Invalid value for `poll_fields` when calling SpacesApi$space_tweets. Must be [duration_minutes, end_datetime, id, options, voting_status].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `poll_fields` when calling SpacesApi$space_tweets. Must be [duration_minutes, end_datetime, id, options, voting_status]."))
+          rlang::abort(
+            message = "Invalid value for `poll_fields` when calling SpacesApi$space_tweets. Must be [duration_minutes, end_datetime, id, options, voting_status].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `poll_fields` when calling SpacesApi$space_tweets. Must be [duration_minutes, end_datetime, id, options, voting_status]."
+            )
+          )
         }
       }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`user_fields`, unique(`user_fields`))) {
-        rlang::abort(message = "Invalid value for `user_fields` when calling SpacesApi$space_tweets. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `user_fields` when calling SpacesApi$space_tweets. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `user_fields` when calling SpacesApi$space_tweets. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `user_fields` when calling SpacesApi$space_tweets. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
         if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
-          rlang::abort(message = "Invalid value for `user_fields` when calling SpacesApi$space_tweets. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `user_fields` when calling SpacesApi$space_tweets. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `user_fields` when calling SpacesApi$space_tweets. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `user_fields` when calling SpacesApi$space_tweets. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."
+            )
+          )
         }
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`place_fields`, unique(`place_fields`))) {
-        rlang::abort(message = "Invalid value for `place_fields` when calling SpacesApi$space_tweets. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `place_fields` when calling SpacesApi$space_tweets. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `place_fields` when calling SpacesApi$space_tweets. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `place_fields` when calling SpacesApi$space_tweets. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `place_fields`) {
         if (!(query_item %in% c("contained_within", "country", "country_code", "full_name", "geo", "id", "name", "place_type"))) {
-          rlang::abort(message = "Invalid value for `place_fields` when calling SpacesApi$space_tweets. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `place_fields` when calling SpacesApi$space_tweets. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."))
+          rlang::abort(
+            message = "Invalid value for `place_fields` when calling SpacesApi$space_tweets. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `place_fields` when calling SpacesApi$space_tweets. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."
+            )
+          )
         }
       }
       query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
@@ -1994,18 +2427,20 @@ SpacesApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "GET",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -2016,9 +2451,11 @@ SpacesApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "Get2SpacesIdTweetsResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -2028,25 +2465,31 @@ SpacesApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     }
   )
