@@ -556,11 +556,11 @@
 #' ####################  find_my_user  ####################
 #'
 #' library(twitter)
-#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var_expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
+#' var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+#' var_expansions <- c("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
+#' var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 #'
-#' #User lookup me
+#' # User lookup me
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
@@ -568,22 +568,21 @@
 #'
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$users_api$find_my_user(user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$users_api$find_my_user(user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$users_api$find_my_user(user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$users_api$find_my_user(user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `find_my_user`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -596,11 +595,11 @@
 #'
 #' library(twitter)
 #' var_id <- "2244994945" # character | The ID of the User to lookup.
-#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var_expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
+#' var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+#' var_expansions <- c("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
+#' var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 #'
-#' #User lookup by ID
+#' # User lookup by ID
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure HTTP bearer authorization: BearerToken
@@ -611,22 +610,21 @@
 #'
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$users_api$find_user_by_id(var_id, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$users_api$find_user_by_id(var_id, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$users_api$find_user_by_id(var_id, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$users_api$find_user_by_id(var_id, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `find_user_by_id`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -639,11 +637,11 @@
 #'
 #' library(twitter)
 #' var_username <- "TwitterDev" # character | A username.
-#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var_expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
+#' var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+#' var_expansions <- c("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
+#' var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 #'
-#' #User lookup by username
+#' # User lookup by username
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure HTTP bearer authorization: BearerToken
@@ -654,22 +652,21 @@
 #'
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$users_api$find_user_by_username(var_username, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$users_api$find_user_by_username(var_username, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$users_api$find_user_by_username(var_username, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$users_api$find_user_by_username(var_username, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `find_user_by_username`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -681,12 +678,12 @@
 #' ####################  find_users_by_id  ####################
 #'
 #' library(twitter)
-#' var_ids <- ["2244994945,6253282,12"] # array[character] | A list of User IDs, comma-separated. You can specify up to 100 IDs.
-#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var_expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
+#' var_ids <- c("inner_example") # array[character] | A list of User IDs, comma-separated. You can specify up to 100 IDs.
+#' var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+#' var_expansions <- c("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
+#' var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 #'
-#' #User lookup by IDs
+#' # User lookup by IDs
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure HTTP bearer authorization: BearerToken
@@ -697,22 +694,21 @@
 #'
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$users_api$find_users_by_id(var_ids, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$users_api$find_users_by_id(var_ids, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$users_api$find_users_by_id(var_ids, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$users_api$find_users_by_id(var_ids, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `find_users_by_id`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -724,12 +720,12 @@
 #' ####################  find_users_by_username  ####################
 #'
 #' library(twitter)
-#' var_usernames <- ["TwitterDev,TwitterAPI"] # array[character] | A list of usernames, comma-separated.
-#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var_expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
+#' var_usernames <- c("inner_example") # array[character] | A list of usernames, comma-separated.
+#' var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+#' var_expansions <- c("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
+#' var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 #'
-#' #User lookup by usernames
+#' # User lookup by usernames
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure HTTP bearer authorization: BearerToken
@@ -740,22 +736,21 @@
 #'
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$users_api$find_users_by_username(var_usernames, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$users_api$find_users_by_username(var_usernames, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$users_api$find_users_by_username(var_usernames, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$users_api$find_users_by_username(var_usernames, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `find_users_by_username`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -768,13 +763,13 @@
 #'
 #' library(twitter)
 #' var_id <- "id_example" # character | The ID of the List.
-#' var_max_results <- 100 # integer | The maximum number of results.
-#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results.
-#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var_expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
+#' var_max_results <- 100 # integer | The maximum number of results. (Optional)
+#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results. (Optional)
+#' var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+#' var_expansions <- c("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
+#' var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 #'
-#' #Returns User objects that follow a List by the provided List ID
+#' # Returns User objects that follow a List by the provided List ID
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure HTTP bearer authorization: BearerToken
@@ -785,22 +780,21 @@
 #'
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$users_api$list_get_followers(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$users_api$list_get_followers(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$users_api$list_get_followers(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$users_api$list_get_followers(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `list_get_followers`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -813,13 +807,13 @@
 #'
 #' library(twitter)
 #' var_id <- "id_example" # character | The ID of the List.
-#' var_max_results <- 100 # integer | The maximum number of results.
-#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results.
-#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var_expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
+#' var_max_results <- 100 # integer | The maximum number of results. (Optional)
+#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results. (Optional)
+#' var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+#' var_expansions <- c("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
+#' var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 #'
-#' #Returns User objects that are members of a List by the provided List ID.
+#' # Returns User objects that are members of a List by the provided List ID.
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure HTTP bearer authorization: BearerToken
@@ -830,22 +824,21 @@
 #'
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$users_api$list_get_members(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$users_api$list_get_members(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$users_api$list_get_members(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$users_api$list_get_members(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `list_get_members`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -858,13 +851,13 @@
 #'
 #' library(twitter)
 #' var_id <- "id_example" # character | A single Tweet ID.
-#' var_max_results <- 100 # integer | The maximum number of results.
-#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results.
-#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var_expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
+#' var_max_results <- 100 # integer | The maximum number of results. (Optional)
+#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. (Optional)
+#' var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+#' var_expansions <- c("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
+#' var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 #'
-#' #Returns User objects that have liked the provided Tweet ID
+#' # Returns User objects that have liked the provided Tweet ID
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure HTTP bearer authorization: BearerToken
@@ -875,22 +868,21 @@
 #'
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$users_api$tweets_id_liking_users(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$users_api$tweets_id_liking_users(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$users_api$tweets_id_liking_users(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$users_api$tweets_id_liking_users(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `tweets_id_liking_users`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -903,13 +895,13 @@
 #'
 #' library(twitter)
 #' var_id <- "id_example" # character | A single Tweet ID.
-#' var_max_results <- 100 # integer | The maximum number of results.
-#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results.
-#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var_expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
+#' var_max_results <- 100 # integer | The maximum number of results. (Optional)
+#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. (Optional)
+#' var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+#' var_expansions <- c("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
+#' var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 #'
-#' #Returns User objects that have retweeted the provided Tweet ID
+#' # Returns User objects that have retweeted the provided Tweet ID
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure HTTP bearer authorization: BearerToken
@@ -920,22 +912,21 @@
 #'
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$users_api$tweets_id_retweeting_users(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$users_api$tweets_id_retweeting_users(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$users_api$tweets_id_retweeting_users(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$users_api$tweets_id_retweeting_users(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `tweets_id_retweeting_users`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -948,9 +939,9 @@
 #'
 #' library(twitter)
 #' var_id <- "id_example" # character | The ID of the authenticated source User that is requesting to block the target User.
-#' var_block_user_request <- BlockUserRequest$new() # BlockUserRequest | 
+#' var_block_user_request <- BlockUserRequest$new("target_user_id_example") # BlockUserRequest |
 #'
-#' #Block User by User ID
+#' # Block User by User ID
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
@@ -958,22 +949,21 @@
 #'
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$users_api$users_id_block(var_id, var_block_user_request, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$users_api$users_id_block(var_id, var_block_user_request),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$users_api$users_id_block(var_id, var_block_user_request, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$users_api$users_id_block(var_id, var_block_user_request),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `users_id_block`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -986,13 +976,13 @@
 #'
 #' library(twitter)
 #' var_id <- "id_example" # character | The ID of the authenticated source User for whom to return results.
-#' var_max_results <- 56 # integer | The maximum number of results.
-#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results.
-#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var_expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
+#' var_max_results <- 56 # integer | The maximum number of results. (Optional)
+#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results. (Optional)
+#' var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+#' var_expansions <- c("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
+#' var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 #'
-#' #Returns User objects that are blocked by provided User ID
+#' # Returns User objects that are blocked by provided User ID
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
@@ -1000,22 +990,21 @@
 #'
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$users_api$users_id_blocking(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$users_api$users_id_blocking(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$users_api$users_id_blocking(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$users_api$users_id_blocking(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `users_id_blocking`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -1028,9 +1017,9 @@
 #'
 #' library(twitter)
 #' var_id <- "id_example" # character | The ID of the authenticated source User that is requesting to follow the target User.
-#' var_users_following_create_request <- UsersFollowingCreateRequest$new() # UsersFollowingCreateRequest | 
+#' var_users_following_create_request <- UsersFollowingCreateRequest$new("target_user_id_example") # UsersFollowingCreateRequest |  (Optional)
 #'
-#' #Follow User
+#' # Follow User
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
@@ -1038,22 +1027,21 @@
 #'
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$users_api$users_id_follow(var_id, users_following_create_request = var_users_following_create_request, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$users_api$users_id_follow(var_id, users_following_create_request = var_users_following_create_request),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$users_api$users_id_follow(var_id, users_following_create_request = var_users_following_create_request, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$users_api$users_id_follow(var_id, users_following_create_request = var_users_following_create_request),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `users_id_follow`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -1066,13 +1054,13 @@
 #'
 #' library(twitter)
 #' var_id <- "2244994945" # character | The ID of the User to lookup.
-#' var_max_results <- 56 # integer | The maximum number of results.
-#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results.
-#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var_expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
+#' var_max_results <- 56 # integer | The maximum number of results. (Optional)
+#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results. (Optional)
+#' var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+#' var_expansions <- c("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
+#' var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 #'
-#' #Followers by User ID
+#' # Followers by User ID
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure HTTP bearer authorization: BearerToken
@@ -1083,22 +1071,21 @@
 #'
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$users_api$users_id_followers(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$users_api$users_id_followers(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$users_api$users_id_followers(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$users_api$users_id_followers(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `users_id_followers`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -1111,13 +1098,13 @@
 #'
 #' library(twitter)
 #' var_id <- "2244994945" # character | The ID of the User to lookup.
-#' var_max_results <- 56 # integer | The maximum number of results.
-#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results.
-#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var_expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
+#' var_max_results <- 56 # integer | The maximum number of results. (Optional)
+#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results. (Optional)
+#' var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+#' var_expansions <- c("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
+#' var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 #'
-#' #Following by User ID
+#' # Following by User ID
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure HTTP bearer authorization: BearerToken
@@ -1128,22 +1115,21 @@
 #'
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$users_api$users_id_following(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$users_api$users_id_following(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$users_api$users_id_following(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$users_api$users_id_following(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `users_id_following`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -1156,9 +1142,9 @@
 #'
 #' library(twitter)
 #' var_id <- "id_example" # character | The ID of the authenticated source User that is requesting to mute the target User.
-#' var_mute_user_request <- MuteUserRequest$new() # MuteUserRequest | 
+#' var_mute_user_request <- MuteUserRequest$new("target_user_id_example") # MuteUserRequest |  (Optional)
 #'
-#' #Mute User by User ID.
+#' # Mute User by User ID.
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
@@ -1166,22 +1152,21 @@
 #'
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$users_api$users_id_mute(var_id, mute_user_request = var_mute_user_request, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$users_api$users_id_mute(var_id, mute_user_request = var_mute_user_request),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$users_api$users_id_mute(var_id, mute_user_request = var_mute_user_request, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$users_api$users_id_mute(var_id, mute_user_request = var_mute_user_request),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `users_id_mute`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -1194,13 +1179,13 @@
 #'
 #' library(twitter)
 #' var_id <- "id_example" # character | The ID of the authenticated source User for whom to return results.
-#' var_max_results <- 100 # integer | The maximum number of results.
-#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results.
-#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var_expansions <- ["[\"pinned_tweet_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
+#' var_max_results <- 100 # integer | The maximum number of results. (Optional)
+#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. (Optional)
+#' var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+#' var_expansions <- c("pinned_tweet_id") # set[character] | A comma separated list of fields to expand. (Optional)
+#' var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
 #'
-#' #Returns User objects that are muted by the provided User ID
+#' # Returns User objects that are muted by the provided User ID
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
@@ -1208,22 +1193,21 @@
 #'
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$users_api$users_id_muting(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$users_api$users_id_muting(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$users_api$users_id_muting(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$users_api$users_id_muting(var_id, max_results = var_max_results, pagination_token = var_pagination_token, user_fields = var_user_fields, expansions = var_expansions, tweet_fields = var_tweet_fields),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `users_id_muting`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -1238,7 +1222,7 @@
 #' var_source_user_id <- "source_user_id_example" # character | The ID of the authenticated source User that is requesting to unblock the target User.
 #' var_target_user_id <- "target_user_id_example" # character | The ID of the User that the source User is requesting to unblock.
 #'
-#' #Unblock User by User ID
+#' # Unblock User by User ID
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
@@ -1246,22 +1230,21 @@
 #'
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$users_api$users_id_unblock(var_source_user_id, var_target_user_id, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$users_api$users_id_unblock(var_source_user_id, var_target_user_id),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$users_api$users_id_unblock(var_source_user_id, var_target_user_id, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$users_api$users_id_unblock(var_source_user_id, var_target_user_id),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `users_id_unblock`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -1276,7 +1259,7 @@
 #' var_source_user_id <- "source_user_id_example" # character | The ID of the authenticated source User that is requesting to unfollow the target User.
 #' var_target_user_id <- "target_user_id_example" # character | The ID of the User that the source User is requesting to unfollow.
 #'
-#' #Unfollow User
+#' # Unfollow User
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
@@ -1284,22 +1267,21 @@
 #'
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$users_api$users_id_unfollow(var_source_user_id, var_target_user_id, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$users_api$users_id_unfollow(var_source_user_id, var_target_user_id),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$users_api$users_id_unfollow(var_source_user_id, var_target_user_id, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$users_api$users_id_unfollow(var_source_user_id, var_target_user_id),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `users_id_unfollow`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -1314,7 +1296,7 @@
 #' var_source_user_id <- "source_user_id_example" # character | The ID of the authenticated source User that is requesting to unmute the target User.
 #' var_target_user_id <- "target_user_id_example" # character | The ID of the User that the source User is requesting to unmute.
 #'
-#' #Unmute User by User ID
+#' # Unmute User by User ID
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
@@ -1322,30 +1304,26 @@
 #'
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$users_api$users_id_unmute(var_source_user_id, var_target_user_id, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$users_api$users_id_unmute(var_source_user_id, var_target_user_id),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$users_api$users_id_unmute(var_source_user_id, var_target_user_id, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$users_api$users_id_unmute(var_source_user_id, var_target_user_id),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `users_id_unmute`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
 #'   dput(result$toString())
 #' }
-#'
-#'
-#'
 #' }
 #' @importFrom R6 R6Class
 #' @importFrom base64enc base64encode
@@ -1416,79 +1394,115 @@ UsersApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (length(`user_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `user_fields` when calling UsersApi$find_my_user, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `user_fields` when calling UsersApi$find_my_user, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `user_fields` when calling UsersApi$find_my_user, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `user_fields` when calling UsersApi$find_my_user, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`expansions`) < 1) {
-        rlang::abort(message = "Invalid length for `expansions` when calling UsersApi$find_my_user, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `expansions` when calling UsersApi$find_my_user, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `expansions` when calling UsersApi$find_my_user, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `expansions` when calling UsersApi$find_my_user, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`tweet_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `tweet_fields` when calling UsersApi$find_my_user, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `tweet_fields` when calling UsersApi$find_my_user, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `tweet_fields` when calling UsersApi$find_my_user, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `tweet_fields` when calling UsersApi$find_my_user, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       # check if items are unique
       if (!identical(`user_fields`, unique(`user_fields`))) {
-        rlang::abort(message = "Invalid value for `user_fields` when calling UsersApi$find_my_user. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `user_fields` when calling UsersApi$find_my_user. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `user_fields` when calling UsersApi$find_my_user. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `user_fields` when calling UsersApi$find_my_user. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
         if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
-          rlang::abort(message = "Invalid value for `user_fields` when calling UsersApi$find_my_user. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `user_fields` when calling UsersApi$find_my_user. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `user_fields` when calling UsersApi$find_my_user. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `user_fields` when calling UsersApi$find_my_user. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."
+            )
+          )
         }
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`expansions`, unique(`expansions`))) {
-        rlang::abort(message = "Invalid value for `expansions` when calling UsersApi$find_my_user. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `expansions` when calling UsersApi$find_my_user. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `expansions` when calling UsersApi$find_my_user. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `expansions` when calling UsersApi$find_my_user. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
         if (!(query_item %in% c("pinned_tweet_id"))) {
-          rlang::abort(message = "Invalid value for `expansions` when calling UsersApi$find_my_user. Must be [pinned_tweet_id].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `expansions` when calling UsersApi$find_my_user. Must be [pinned_tweet_id]."))
+          rlang::abort(
+            message = "Invalid value for `expansions` when calling UsersApi$find_my_user. Must be [pinned_tweet_id].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `expansions` when calling UsersApi$find_my_user. Must be [pinned_tweet_id]."
+            )
+          )
         }
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
-        rlang::abort(message = "Invalid value for `tweet_fields` when calling UsersApi$find_my_user. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `tweet_fields` when calling UsersApi$find_my_user. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `tweet_fields` when calling UsersApi$find_my_user. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `tweet_fields` when calling UsersApi$find_my_user. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
         if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
-          rlang::abort(message = "Invalid value for `tweet_fields` when calling UsersApi$find_my_user. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `tweet_fields` when calling UsersApi$find_my_user. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `tweet_fields` when calling UsersApi$find_my_user. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `tweet_fields` when calling UsersApi$find_my_user. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."
+            )
+          )
         }
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
@@ -1504,18 +1518,20 @@ UsersApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "GET",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -1526,9 +1542,11 @@ UsersApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "Get2UsersMeResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -1538,25 +1556,31 @@ UsersApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' User lookup by ID
@@ -1608,93 +1632,137 @@ UsersApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`id`)) {
-        rlang::abort(message = "Missing required parameter `id`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `id`."))
+        rlang::abort(
+          message = "Missing required parameter `id`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `id`."
+          )
+        )
       }
 
       if (!str_detect(`id`, "^[0-9]{1,19}$")) {
-        rlang::abort(message = "Invalid value for `id` when calling UsersApi$find_user_by_id, must conform to the pattern ^[0-9]{1,19}$.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `id` when calling UsersApi$find_user_by_id, must conform to the pattern ^[0-9]{1,19}$."))
+        rlang::abort(
+          message = "Invalid value for `id` when calling UsersApi$find_user_by_id, must conform to the pattern ^[0-9]{1,19}$.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `id` when calling UsersApi$find_user_by_id, must conform to the pattern ^[0-9]{1,19}$."
+          )
+        )
       }
 
       if (length(`user_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `user_fields` when calling UsersApi$find_user_by_id, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `user_fields` when calling UsersApi$find_user_by_id, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `user_fields` when calling UsersApi$find_user_by_id, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `user_fields` when calling UsersApi$find_user_by_id, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`expansions`) < 1) {
-        rlang::abort(message = "Invalid length for `expansions` when calling UsersApi$find_user_by_id, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `expansions` when calling UsersApi$find_user_by_id, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `expansions` when calling UsersApi$find_user_by_id, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `expansions` when calling UsersApi$find_user_by_id, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`tweet_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `tweet_fields` when calling UsersApi$find_user_by_id, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `tweet_fields` when calling UsersApi$find_user_by_id, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `tweet_fields` when calling UsersApi$find_user_by_id, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `tweet_fields` when calling UsersApi$find_user_by_id, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       # check if items are unique
       if (!identical(`user_fields`, unique(`user_fields`))) {
-        rlang::abort(message = "Invalid value for `user_fields` when calling UsersApi$find_user_by_id. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `user_fields` when calling UsersApi$find_user_by_id. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `user_fields` when calling UsersApi$find_user_by_id. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `user_fields` when calling UsersApi$find_user_by_id. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
         if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
-          rlang::abort(message = "Invalid value for `user_fields` when calling UsersApi$find_user_by_id. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `user_fields` when calling UsersApi$find_user_by_id. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `user_fields` when calling UsersApi$find_user_by_id. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `user_fields` when calling UsersApi$find_user_by_id. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."
+            )
+          )
         }
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`expansions`, unique(`expansions`))) {
-        rlang::abort(message = "Invalid value for `expansions` when calling UsersApi$find_user_by_id. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `expansions` when calling UsersApi$find_user_by_id. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `expansions` when calling UsersApi$find_user_by_id. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `expansions` when calling UsersApi$find_user_by_id. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
         if (!(query_item %in% c("pinned_tweet_id"))) {
-          rlang::abort(message = "Invalid value for `expansions` when calling UsersApi$find_user_by_id. Must be [pinned_tweet_id].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `expansions` when calling UsersApi$find_user_by_id. Must be [pinned_tweet_id]."))
+          rlang::abort(
+            message = "Invalid value for `expansions` when calling UsersApi$find_user_by_id. Must be [pinned_tweet_id].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `expansions` when calling UsersApi$find_user_by_id. Must be [pinned_tweet_id]."
+            )
+          )
         }
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
-        rlang::abort(message = "Invalid value for `tweet_fields` when calling UsersApi$find_user_by_id. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `tweet_fields` when calling UsersApi$find_user_by_id. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `tweet_fields` when calling UsersApi$find_user_by_id. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `tweet_fields` when calling UsersApi$find_user_by_id. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
         if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
-          rlang::abort(message = "Invalid value for `tweet_fields` when calling UsersApi$find_user_by_id. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `tweet_fields` when calling UsersApi$find_user_by_id. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `tweet_fields` when calling UsersApi$find_user_by_id. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `tweet_fields` when calling UsersApi$find_user_by_id. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."
+            )
+          )
         }
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
@@ -1718,18 +1786,20 @@ UsersApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "GET",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -1740,9 +1810,11 @@ UsersApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "Get2UsersIdResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -1752,25 +1824,31 @@ UsersApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' User lookup by username
@@ -1822,93 +1900,137 @@ UsersApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`username`)) {
-        rlang::abort(message = "Missing required parameter `username`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `username`."))
+        rlang::abort(
+          message = "Missing required parameter `username`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `username`."
+          )
+        )
       }
 
       if (!str_detect(`username`, "^[A-Za-z0-9_]{1,15}$")) {
-        rlang::abort(message = "Invalid value for `username` when calling UsersApi$find_user_by_username, must conform to the pattern ^[A-Za-z0-9_]{1,15}$.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `username` when calling UsersApi$find_user_by_username, must conform to the pattern ^[A-Za-z0-9_]{1,15}$."))
+        rlang::abort(
+          message = "Invalid value for `username` when calling UsersApi$find_user_by_username, must conform to the pattern ^[A-Za-z0-9_]{1,15}$.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `username` when calling UsersApi$find_user_by_username, must conform to the pattern ^[A-Za-z0-9_]{1,15}$."
+          )
+        )
       }
 
       if (length(`user_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `user_fields` when calling UsersApi$find_user_by_username, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `user_fields` when calling UsersApi$find_user_by_username, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `user_fields` when calling UsersApi$find_user_by_username, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `user_fields` when calling UsersApi$find_user_by_username, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`expansions`) < 1) {
-        rlang::abort(message = "Invalid length for `expansions` when calling UsersApi$find_user_by_username, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `expansions` when calling UsersApi$find_user_by_username, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `expansions` when calling UsersApi$find_user_by_username, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `expansions` when calling UsersApi$find_user_by_username, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`tweet_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `tweet_fields` when calling UsersApi$find_user_by_username, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `tweet_fields` when calling UsersApi$find_user_by_username, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `tweet_fields` when calling UsersApi$find_user_by_username, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `tweet_fields` when calling UsersApi$find_user_by_username, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       # check if items are unique
       if (!identical(`user_fields`, unique(`user_fields`))) {
-        rlang::abort(message = "Invalid value for `user_fields` when calling UsersApi$find_user_by_username. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `user_fields` when calling UsersApi$find_user_by_username. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `user_fields` when calling UsersApi$find_user_by_username. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `user_fields` when calling UsersApi$find_user_by_username. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
         if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
-          rlang::abort(message = "Invalid value for `user_fields` when calling UsersApi$find_user_by_username. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `user_fields` when calling UsersApi$find_user_by_username. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `user_fields` when calling UsersApi$find_user_by_username. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `user_fields` when calling UsersApi$find_user_by_username. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."
+            )
+          )
         }
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`expansions`, unique(`expansions`))) {
-        rlang::abort(message = "Invalid value for `expansions` when calling UsersApi$find_user_by_username. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `expansions` when calling UsersApi$find_user_by_username. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `expansions` when calling UsersApi$find_user_by_username. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `expansions` when calling UsersApi$find_user_by_username. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
         if (!(query_item %in% c("pinned_tweet_id"))) {
-          rlang::abort(message = "Invalid value for `expansions` when calling UsersApi$find_user_by_username. Must be [pinned_tweet_id].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `expansions` when calling UsersApi$find_user_by_username. Must be [pinned_tweet_id]."))
+          rlang::abort(
+            message = "Invalid value for `expansions` when calling UsersApi$find_user_by_username. Must be [pinned_tweet_id].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `expansions` when calling UsersApi$find_user_by_username. Must be [pinned_tweet_id]."
+            )
+          )
         }
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
-        rlang::abort(message = "Invalid value for `tweet_fields` when calling UsersApi$find_user_by_username. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `tweet_fields` when calling UsersApi$find_user_by_username. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `tweet_fields` when calling UsersApi$find_user_by_username. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `tweet_fields` when calling UsersApi$find_user_by_username. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
         if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
-          rlang::abort(message = "Invalid value for `tweet_fields` when calling UsersApi$find_user_by_username. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `tweet_fields` when calling UsersApi$find_user_by_username. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `tweet_fields` when calling UsersApi$find_user_by_username. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `tweet_fields` when calling UsersApi$find_user_by_username. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."
+            )
+          )
         }
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
@@ -1932,18 +2054,20 @@ UsersApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "GET",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -1954,9 +2078,11 @@ UsersApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "Get2UsersByUsernameUsernameResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -1966,25 +2092,31 @@ UsersApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' User lookup by IDs
@@ -2036,44 +2168,68 @@ UsersApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`ids`)) {
-        rlang::abort(message = "Missing required parameter `ids`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `ids`."))
+        rlang::abort(
+          message = "Missing required parameter `ids`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `ids`."
+          )
+        )
       }
 
       if (length(`ids`) > 100) {
-        rlang::abort(message = "Invalid length for `ids` when calling UsersApi$find_users_by_id, number of items must be less than or equal to 100.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `ids` when calling UsersApi$find_users_by_id, number of items must be less than or equal to 100."))
+        rlang::abort(
+          message = "Invalid length for `ids` when calling UsersApi$find_users_by_id, number of items must be less than or equal to 100.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `ids` when calling UsersApi$find_users_by_id, number of items must be less than or equal to 100."
+          )
+        )
       }
       if (length(`ids`) < 1) {
-        rlang::abort(message = "Invalid length for `ids` when calling UsersApi$find_users_by_id, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `ids` when calling UsersApi$find_users_by_id, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `ids` when calling UsersApi$find_users_by_id, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `ids` when calling UsersApi$find_users_by_id, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`user_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `user_fields` when calling UsersApi$find_users_by_id, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `user_fields` when calling UsersApi$find_users_by_id, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `user_fields` when calling UsersApi$find_users_by_id, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `user_fields` when calling UsersApi$find_users_by_id, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`expansions`) < 1) {
-        rlang::abort(message = "Invalid length for `expansions` when calling UsersApi$find_users_by_id, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `expansions` when calling UsersApi$find_users_by_id, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `expansions` when calling UsersApi$find_users_by_id, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `expansions` when calling UsersApi$find_users_by_id, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`tweet_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `tweet_fields` when calling UsersApi$find_users_by_id, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `tweet_fields` when calling UsersApi$find_users_by_id, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `tweet_fields` when calling UsersApi$find_users_by_id, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `tweet_fields` when calling UsersApi$find_users_by_id, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       # no explore
@@ -2081,57 +2237,81 @@ UsersApi <- R6::R6Class(
 
       # check if items are unique
       if (!identical(`user_fields`, unique(`user_fields`))) {
-        rlang::abort(message = "Invalid value for `user_fields` when calling UsersApi$find_users_by_id. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `user_fields` when calling UsersApi$find_users_by_id. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `user_fields` when calling UsersApi$find_users_by_id. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `user_fields` when calling UsersApi$find_users_by_id. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
         if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
-          rlang::abort(message = "Invalid value for `user_fields` when calling UsersApi$find_users_by_id. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `user_fields` when calling UsersApi$find_users_by_id. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `user_fields` when calling UsersApi$find_users_by_id. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `user_fields` when calling UsersApi$find_users_by_id. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."
+            )
+          )
         }
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`expansions`, unique(`expansions`))) {
-        rlang::abort(message = "Invalid value for `expansions` when calling UsersApi$find_users_by_id. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `expansions` when calling UsersApi$find_users_by_id. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `expansions` when calling UsersApi$find_users_by_id. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `expansions` when calling UsersApi$find_users_by_id. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
         if (!(query_item %in% c("pinned_tweet_id"))) {
-          rlang::abort(message = "Invalid value for `expansions` when calling UsersApi$find_users_by_id. Must be [pinned_tweet_id].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `expansions` when calling UsersApi$find_users_by_id. Must be [pinned_tweet_id]."))
+          rlang::abort(
+            message = "Invalid value for `expansions` when calling UsersApi$find_users_by_id. Must be [pinned_tweet_id].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `expansions` when calling UsersApi$find_users_by_id. Must be [pinned_tweet_id]."
+            )
+          )
         }
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
-        rlang::abort(message = "Invalid value for `tweet_fields` when calling UsersApi$find_users_by_id. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `tweet_fields` when calling UsersApi$find_users_by_id. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `tweet_fields` when calling UsersApi$find_users_by_id. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `tweet_fields` when calling UsersApi$find_users_by_id. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
         if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
-          rlang::abort(message = "Invalid value for `tweet_fields` when calling UsersApi$find_users_by_id. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `tweet_fields` when calling UsersApi$find_users_by_id. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `tweet_fields` when calling UsersApi$find_users_by_id. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `tweet_fields` when calling UsersApi$find_users_by_id. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."
+            )
+          )
         }
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
@@ -2151,18 +2331,20 @@ UsersApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "GET",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -2173,9 +2355,11 @@ UsersApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "Get2UsersResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -2185,25 +2369,31 @@ UsersApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' User lookup by usernames
@@ -2255,44 +2445,68 @@ UsersApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`usernames`)) {
-        rlang::abort(message = "Missing required parameter `usernames`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `usernames`."))
+        rlang::abort(
+          message = "Missing required parameter `usernames`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `usernames`."
+          )
+        )
       }
 
       if (length(`usernames`) > 100) {
-        rlang::abort(message = "Invalid length for `usernames` when calling UsersApi$find_users_by_username, number of items must be less than or equal to 100.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `usernames` when calling UsersApi$find_users_by_username, number of items must be less than or equal to 100."))
+        rlang::abort(
+          message = "Invalid length for `usernames` when calling UsersApi$find_users_by_username, number of items must be less than or equal to 100.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `usernames` when calling UsersApi$find_users_by_username, number of items must be less than or equal to 100."
+          )
+        )
       }
       if (length(`usernames`) < 1) {
-        rlang::abort(message = "Invalid length for `usernames` when calling UsersApi$find_users_by_username, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `usernames` when calling UsersApi$find_users_by_username, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `usernames` when calling UsersApi$find_users_by_username, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `usernames` when calling UsersApi$find_users_by_username, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`user_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `user_fields` when calling UsersApi$find_users_by_username, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `user_fields` when calling UsersApi$find_users_by_username, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `user_fields` when calling UsersApi$find_users_by_username, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `user_fields` when calling UsersApi$find_users_by_username, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`expansions`) < 1) {
-        rlang::abort(message = "Invalid length for `expansions` when calling UsersApi$find_users_by_username, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `expansions` when calling UsersApi$find_users_by_username, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `expansions` when calling UsersApi$find_users_by_username, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `expansions` when calling UsersApi$find_users_by_username, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`tweet_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `tweet_fields` when calling UsersApi$find_users_by_username, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `tweet_fields` when calling UsersApi$find_users_by_username, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `tweet_fields` when calling UsersApi$find_users_by_username, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `tweet_fields` when calling UsersApi$find_users_by_username, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       # no explore
@@ -2300,57 +2514,81 @@ UsersApi <- R6::R6Class(
 
       # check if items are unique
       if (!identical(`user_fields`, unique(`user_fields`))) {
-        rlang::abort(message = "Invalid value for `user_fields` when calling UsersApi$find_users_by_username. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `user_fields` when calling UsersApi$find_users_by_username. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `user_fields` when calling UsersApi$find_users_by_username. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `user_fields` when calling UsersApi$find_users_by_username. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
         if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
-          rlang::abort(message = "Invalid value for `user_fields` when calling UsersApi$find_users_by_username. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `user_fields` when calling UsersApi$find_users_by_username. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `user_fields` when calling UsersApi$find_users_by_username. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `user_fields` when calling UsersApi$find_users_by_username. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."
+            )
+          )
         }
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`expansions`, unique(`expansions`))) {
-        rlang::abort(message = "Invalid value for `expansions` when calling UsersApi$find_users_by_username. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `expansions` when calling UsersApi$find_users_by_username. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `expansions` when calling UsersApi$find_users_by_username. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `expansions` when calling UsersApi$find_users_by_username. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
         if (!(query_item %in% c("pinned_tweet_id"))) {
-          rlang::abort(message = "Invalid value for `expansions` when calling UsersApi$find_users_by_username. Must be [pinned_tweet_id].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `expansions` when calling UsersApi$find_users_by_username. Must be [pinned_tweet_id]."))
+          rlang::abort(
+            message = "Invalid value for `expansions` when calling UsersApi$find_users_by_username. Must be [pinned_tweet_id].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `expansions` when calling UsersApi$find_users_by_username. Must be [pinned_tweet_id]."
+            )
+          )
         }
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
-        rlang::abort(message = "Invalid value for `tweet_fields` when calling UsersApi$find_users_by_username. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `tweet_fields` when calling UsersApi$find_users_by_username. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `tweet_fields` when calling UsersApi$find_users_by_username. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `tweet_fields` when calling UsersApi$find_users_by_username. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
         if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
-          rlang::abort(message = "Invalid value for `tweet_fields` when calling UsersApi$find_users_by_username. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `tweet_fields` when calling UsersApi$find_users_by_username. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `tweet_fields` when calling UsersApi$find_users_by_username. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `tweet_fields` when calling UsersApi$find_users_by_username. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."
+            )
+          )
         }
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
@@ -2370,18 +2608,20 @@ UsersApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "GET",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -2392,9 +2632,11 @@ UsersApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "Get2UsersByResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -2404,25 +2646,31 @@ UsersApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Returns User objects that follow a List by the provided List ID
@@ -2478,64 +2726,100 @@ UsersApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`id`)) {
-        rlang::abort(message = "Missing required parameter `id`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `id`."))
+        rlang::abort(
+          message = "Missing required parameter `id`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `id`."
+          )
+        )
       }
 
       if (!str_detect(`id`, "^[0-9]{1,19}$")) {
-        rlang::abort(message = "Invalid value for `id` when calling UsersApi$list_get_followers, must conform to the pattern ^[0-9]{1,19}$.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `id` when calling UsersApi$list_get_followers, must conform to the pattern ^[0-9]{1,19}$."))
+        rlang::abort(
+          message = "Invalid value for `id` when calling UsersApi$list_get_followers, must conform to the pattern ^[0-9]{1,19}$.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `id` when calling UsersApi$list_get_followers, must conform to the pattern ^[0-9]{1,19}$."
+          )
+        )
       }
 
       if (`max_results` > 100) {
-        rlang::abort(message = "Invalid value for `max_results` when calling UsersApi$list_get_followers, must be smaller than or equal to 100.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling UsersApi$list_get_followers, must be smaller than or equal to 100."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling UsersApi$list_get_followers, must be smaller than or equal to 100.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling UsersApi$list_get_followers, must be smaller than or equal to 100."
+          )
+        )
       }
       if (`max_results` < 1) {
-        rlang::abort(message = "Invalid value for `max_results` when calling UsersApi$list_get_followers, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling UsersApi$list_get_followers, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling UsersApi$list_get_followers, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling UsersApi$list_get_followers, must be bigger than or equal to 1."
+          )
+        )
       }
 
       if (nchar(`pagination_token`) > 19) {
-        rlang::abort(message = "Invalid length for `pagination_token` when calling UsersApi$list_get_followers, must be smaller than or equal to 19.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for $pagination_token when calling UsersApi.list_get_followers, must be smaller than or equal to 19."))
+        rlang::abort(
+          message = "Invalid length for `pagination_token` when calling UsersApi$list_get_followers, must be smaller than or equal to 19.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for $pagination_token when calling UsersApi.list_get_followers, must be smaller than or equal to 19."
+          )
+        )
       }
       if (nchar(`pagination_token`) < 1) {
-        rlang::abort(message = "Invalid length for `pagination_token` when calling UsersApi$list_get_followers, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `pagination_token` when calling UsersApi$list_get_followers, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `pagination_token` when calling UsersApi$list_get_followers, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `pagination_token` when calling UsersApi$list_get_followers, must be bigger than or equal to 1."
+          )
+        )
       }
 
       if (length(`user_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `user_fields` when calling UsersApi$list_get_followers, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `user_fields` when calling UsersApi$list_get_followers, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `user_fields` when calling UsersApi$list_get_followers, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `user_fields` when calling UsersApi$list_get_followers, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`expansions`) < 1) {
-        rlang::abort(message = "Invalid length for `expansions` when calling UsersApi$list_get_followers, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `expansions` when calling UsersApi$list_get_followers, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `expansions` when calling UsersApi$list_get_followers, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `expansions` when calling UsersApi$list_get_followers, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`tweet_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `tweet_fields` when calling UsersApi$list_get_followers, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `tweet_fields` when calling UsersApi$list_get_followers, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `tweet_fields` when calling UsersApi$list_get_followers, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `tweet_fields` when calling UsersApi$list_get_followers, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       query_params[["max_results"]] <- `max_results`
@@ -2544,57 +2828,81 @@ UsersApi <- R6::R6Class(
 
       # check if items are unique
       if (!identical(`user_fields`, unique(`user_fields`))) {
-        rlang::abort(message = "Invalid value for `user_fields` when calling UsersApi$list_get_followers. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `user_fields` when calling UsersApi$list_get_followers. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `user_fields` when calling UsersApi$list_get_followers. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `user_fields` when calling UsersApi$list_get_followers. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
         if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
-          rlang::abort(message = "Invalid value for `user_fields` when calling UsersApi$list_get_followers. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `user_fields` when calling UsersApi$list_get_followers. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `user_fields` when calling UsersApi$list_get_followers. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `user_fields` when calling UsersApi$list_get_followers. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."
+            )
+          )
         }
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`expansions`, unique(`expansions`))) {
-        rlang::abort(message = "Invalid value for `expansions` when calling UsersApi$list_get_followers. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `expansions` when calling UsersApi$list_get_followers. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `expansions` when calling UsersApi$list_get_followers. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `expansions` when calling UsersApi$list_get_followers. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
         if (!(query_item %in% c("pinned_tweet_id"))) {
-          rlang::abort(message = "Invalid value for `expansions` when calling UsersApi$list_get_followers. Must be [pinned_tweet_id].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `expansions` when calling UsersApi$list_get_followers. Must be [pinned_tweet_id]."))
+          rlang::abort(
+            message = "Invalid value for `expansions` when calling UsersApi$list_get_followers. Must be [pinned_tweet_id].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `expansions` when calling UsersApi$list_get_followers. Must be [pinned_tweet_id]."
+            )
+          )
         }
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
-        rlang::abort(message = "Invalid value for `tweet_fields` when calling UsersApi$list_get_followers. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `tweet_fields` when calling UsersApi$list_get_followers. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `tweet_fields` when calling UsersApi$list_get_followers. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `tweet_fields` when calling UsersApi$list_get_followers. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
         if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
-          rlang::abort(message = "Invalid value for `tweet_fields` when calling UsersApi$list_get_followers. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `tweet_fields` when calling UsersApi$list_get_followers. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `tweet_fields` when calling UsersApi$list_get_followers. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `tweet_fields` when calling UsersApi$list_get_followers. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."
+            )
+          )
         }
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
@@ -2618,18 +2926,20 @@ UsersApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "GET",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -2640,9 +2950,11 @@ UsersApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "Get2ListsIdFollowersResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -2652,25 +2964,31 @@ UsersApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Returns User objects that are members of a List by the provided List ID.
@@ -2726,64 +3044,100 @@ UsersApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`id`)) {
-        rlang::abort(message = "Missing required parameter `id`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `id`."))
+        rlang::abort(
+          message = "Missing required parameter `id`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `id`."
+          )
+        )
       }
 
       if (!str_detect(`id`, "^[0-9]{1,19}$")) {
-        rlang::abort(message = "Invalid value for `id` when calling UsersApi$list_get_members, must conform to the pattern ^[0-9]{1,19}$.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `id` when calling UsersApi$list_get_members, must conform to the pattern ^[0-9]{1,19}$."))
+        rlang::abort(
+          message = "Invalid value for `id` when calling UsersApi$list_get_members, must conform to the pattern ^[0-9]{1,19}$.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `id` when calling UsersApi$list_get_members, must conform to the pattern ^[0-9]{1,19}$."
+          )
+        )
       }
 
       if (`max_results` > 100) {
-        rlang::abort(message = "Invalid value for `max_results` when calling UsersApi$list_get_members, must be smaller than or equal to 100.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling UsersApi$list_get_members, must be smaller than or equal to 100."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling UsersApi$list_get_members, must be smaller than or equal to 100.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling UsersApi$list_get_members, must be smaller than or equal to 100."
+          )
+        )
       }
       if (`max_results` < 1) {
-        rlang::abort(message = "Invalid value for `max_results` when calling UsersApi$list_get_members, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling UsersApi$list_get_members, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling UsersApi$list_get_members, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling UsersApi$list_get_members, must be bigger than or equal to 1."
+          )
+        )
       }
 
       if (nchar(`pagination_token`) > 19) {
-        rlang::abort(message = "Invalid length for `pagination_token` when calling UsersApi$list_get_members, must be smaller than or equal to 19.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for $pagination_token when calling UsersApi.list_get_members, must be smaller than or equal to 19."))
+        rlang::abort(
+          message = "Invalid length for `pagination_token` when calling UsersApi$list_get_members, must be smaller than or equal to 19.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for $pagination_token when calling UsersApi.list_get_members, must be smaller than or equal to 19."
+          )
+        )
       }
       if (nchar(`pagination_token`) < 1) {
-        rlang::abort(message = "Invalid length for `pagination_token` when calling UsersApi$list_get_members, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `pagination_token` when calling UsersApi$list_get_members, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `pagination_token` when calling UsersApi$list_get_members, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `pagination_token` when calling UsersApi$list_get_members, must be bigger than or equal to 1."
+          )
+        )
       }
 
       if (length(`user_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `user_fields` when calling UsersApi$list_get_members, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `user_fields` when calling UsersApi$list_get_members, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `user_fields` when calling UsersApi$list_get_members, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `user_fields` when calling UsersApi$list_get_members, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`expansions`) < 1) {
-        rlang::abort(message = "Invalid length for `expansions` when calling UsersApi$list_get_members, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `expansions` when calling UsersApi$list_get_members, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `expansions` when calling UsersApi$list_get_members, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `expansions` when calling UsersApi$list_get_members, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`tweet_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `tweet_fields` when calling UsersApi$list_get_members, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `tweet_fields` when calling UsersApi$list_get_members, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `tweet_fields` when calling UsersApi$list_get_members, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `tweet_fields` when calling UsersApi$list_get_members, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       query_params[["max_results"]] <- `max_results`
@@ -2792,57 +3146,81 @@ UsersApi <- R6::R6Class(
 
       # check if items are unique
       if (!identical(`user_fields`, unique(`user_fields`))) {
-        rlang::abort(message = "Invalid value for `user_fields` when calling UsersApi$list_get_members. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `user_fields` when calling UsersApi$list_get_members. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `user_fields` when calling UsersApi$list_get_members. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `user_fields` when calling UsersApi$list_get_members. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
         if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
-          rlang::abort(message = "Invalid value for `user_fields` when calling UsersApi$list_get_members. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `user_fields` when calling UsersApi$list_get_members. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `user_fields` when calling UsersApi$list_get_members. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `user_fields` when calling UsersApi$list_get_members. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."
+            )
+          )
         }
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`expansions`, unique(`expansions`))) {
-        rlang::abort(message = "Invalid value for `expansions` when calling UsersApi$list_get_members. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `expansions` when calling UsersApi$list_get_members. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `expansions` when calling UsersApi$list_get_members. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `expansions` when calling UsersApi$list_get_members. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
         if (!(query_item %in% c("pinned_tweet_id"))) {
-          rlang::abort(message = "Invalid value for `expansions` when calling UsersApi$list_get_members. Must be [pinned_tweet_id].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `expansions` when calling UsersApi$list_get_members. Must be [pinned_tweet_id]."))
+          rlang::abort(
+            message = "Invalid value for `expansions` when calling UsersApi$list_get_members. Must be [pinned_tweet_id].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `expansions` when calling UsersApi$list_get_members. Must be [pinned_tweet_id]."
+            )
+          )
         }
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
-        rlang::abort(message = "Invalid value for `tweet_fields` when calling UsersApi$list_get_members. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `tweet_fields` when calling UsersApi$list_get_members. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `tweet_fields` when calling UsersApi$list_get_members. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `tweet_fields` when calling UsersApi$list_get_members. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
         if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
-          rlang::abort(message = "Invalid value for `tweet_fields` when calling UsersApi$list_get_members. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `tweet_fields` when calling UsersApi$list_get_members. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `tweet_fields` when calling UsersApi$list_get_members. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `tweet_fields` when calling UsersApi$list_get_members. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."
+            )
+          )
         }
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
@@ -2866,18 +3244,20 @@ UsersApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "GET",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -2888,9 +3268,11 @@ UsersApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "Get2ListsIdMembersResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -2900,25 +3282,31 @@ UsersApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Returns User objects that have liked the provided Tweet ID
@@ -2974,58 +3362,90 @@ UsersApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`id`)) {
-        rlang::abort(message = "Missing required parameter `id`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `id`."))
+        rlang::abort(
+          message = "Missing required parameter `id`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `id`."
+          )
+        )
       }
 
       if (!str_detect(`id`, "^[0-9]{1,19}$")) {
-        rlang::abort(message = "Invalid value for `id` when calling UsersApi$tweets_id_liking_users, must conform to the pattern ^[0-9]{1,19}$.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `id` when calling UsersApi$tweets_id_liking_users, must conform to the pattern ^[0-9]{1,19}$."))
+        rlang::abort(
+          message = "Invalid value for `id` when calling UsersApi$tweets_id_liking_users, must conform to the pattern ^[0-9]{1,19}$.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `id` when calling UsersApi$tweets_id_liking_users, must conform to the pattern ^[0-9]{1,19}$."
+          )
+        )
       }
 
       if (`max_results` > 100) {
-        rlang::abort(message = "Invalid value for `max_results` when calling UsersApi$tweets_id_liking_users, must be smaller than or equal to 100.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling UsersApi$tweets_id_liking_users, must be smaller than or equal to 100."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling UsersApi$tweets_id_liking_users, must be smaller than or equal to 100.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling UsersApi$tweets_id_liking_users, must be smaller than or equal to 100."
+          )
+        )
       }
       if (`max_results` < 1) {
-        rlang::abort(message = "Invalid value for `max_results` when calling UsersApi$tweets_id_liking_users, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling UsersApi$tweets_id_liking_users, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling UsersApi$tweets_id_liking_users, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling UsersApi$tweets_id_liking_users, must be bigger than or equal to 1."
+          )
+        )
       }
 
       if (nchar(`pagination_token`) < 1) {
-        rlang::abort(message = "Invalid length for `pagination_token` when calling UsersApi$tweets_id_liking_users, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `pagination_token` when calling UsersApi$tweets_id_liking_users, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `pagination_token` when calling UsersApi$tweets_id_liking_users, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `pagination_token` when calling UsersApi$tweets_id_liking_users, must be bigger than or equal to 1."
+          )
+        )
       }
 
       if (length(`user_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `user_fields` when calling UsersApi$tweets_id_liking_users, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `user_fields` when calling UsersApi$tweets_id_liking_users, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `user_fields` when calling UsersApi$tweets_id_liking_users, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `user_fields` when calling UsersApi$tweets_id_liking_users, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`expansions`) < 1) {
-        rlang::abort(message = "Invalid length for `expansions` when calling UsersApi$tweets_id_liking_users, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `expansions` when calling UsersApi$tweets_id_liking_users, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `expansions` when calling UsersApi$tweets_id_liking_users, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `expansions` when calling UsersApi$tweets_id_liking_users, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`tweet_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `tweet_fields` when calling UsersApi$tweets_id_liking_users, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `tweet_fields` when calling UsersApi$tweets_id_liking_users, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `tweet_fields` when calling UsersApi$tweets_id_liking_users, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `tweet_fields` when calling UsersApi$tweets_id_liking_users, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       query_params[["max_results"]] <- `max_results`
@@ -3034,57 +3454,81 @@ UsersApi <- R6::R6Class(
 
       # check if items are unique
       if (!identical(`user_fields`, unique(`user_fields`))) {
-        rlang::abort(message = "Invalid value for `user_fields` when calling UsersApi$tweets_id_liking_users. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `user_fields` when calling UsersApi$tweets_id_liking_users. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `user_fields` when calling UsersApi$tweets_id_liking_users. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `user_fields` when calling UsersApi$tweets_id_liking_users. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
         if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
-          rlang::abort(message = "Invalid value for `user_fields` when calling UsersApi$tweets_id_liking_users. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `user_fields` when calling UsersApi$tweets_id_liking_users. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `user_fields` when calling UsersApi$tweets_id_liking_users. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `user_fields` when calling UsersApi$tweets_id_liking_users. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."
+            )
+          )
         }
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`expansions`, unique(`expansions`))) {
-        rlang::abort(message = "Invalid value for `expansions` when calling UsersApi$tweets_id_liking_users. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `expansions` when calling UsersApi$tweets_id_liking_users. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `expansions` when calling UsersApi$tweets_id_liking_users. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `expansions` when calling UsersApi$tweets_id_liking_users. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
         if (!(query_item %in% c("pinned_tweet_id"))) {
-          rlang::abort(message = "Invalid value for `expansions` when calling UsersApi$tweets_id_liking_users. Must be [pinned_tweet_id].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `expansions` when calling UsersApi$tweets_id_liking_users. Must be [pinned_tweet_id]."))
+          rlang::abort(
+            message = "Invalid value for `expansions` when calling UsersApi$tweets_id_liking_users. Must be [pinned_tweet_id].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `expansions` when calling UsersApi$tweets_id_liking_users. Must be [pinned_tweet_id]."
+            )
+          )
         }
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
-        rlang::abort(message = "Invalid value for `tweet_fields` when calling UsersApi$tweets_id_liking_users. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `tweet_fields` when calling UsersApi$tweets_id_liking_users. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `tweet_fields` when calling UsersApi$tweets_id_liking_users. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `tweet_fields` when calling UsersApi$tweets_id_liking_users. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
         if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
-          rlang::abort(message = "Invalid value for `tweet_fields` when calling UsersApi$tweets_id_liking_users. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `tweet_fields` when calling UsersApi$tweets_id_liking_users. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `tweet_fields` when calling UsersApi$tweets_id_liking_users. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `tweet_fields` when calling UsersApi$tweets_id_liking_users. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."
+            )
+          )
         }
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
@@ -3108,18 +3552,20 @@ UsersApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "GET",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -3130,9 +3576,11 @@ UsersApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "Get2TweetsIdLikingUsersResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -3142,25 +3590,31 @@ UsersApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Returns User objects that have retweeted the provided Tweet ID
@@ -3216,58 +3670,90 @@ UsersApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`id`)) {
-        rlang::abort(message = "Missing required parameter `id`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `id`."))
+        rlang::abort(
+          message = "Missing required parameter `id`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `id`."
+          )
+        )
       }
 
       if (!str_detect(`id`, "^[0-9]{1,19}$")) {
-        rlang::abort(message = "Invalid value for `id` when calling UsersApi$tweets_id_retweeting_users, must conform to the pattern ^[0-9]{1,19}$.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `id` when calling UsersApi$tweets_id_retweeting_users, must conform to the pattern ^[0-9]{1,19}$."))
+        rlang::abort(
+          message = "Invalid value for `id` when calling UsersApi$tweets_id_retweeting_users, must conform to the pattern ^[0-9]{1,19}$.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `id` when calling UsersApi$tweets_id_retweeting_users, must conform to the pattern ^[0-9]{1,19}$."
+          )
+        )
       }
 
       if (`max_results` > 100) {
-        rlang::abort(message = "Invalid value for `max_results` when calling UsersApi$tweets_id_retweeting_users, must be smaller than or equal to 100.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling UsersApi$tweets_id_retweeting_users, must be smaller than or equal to 100."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling UsersApi$tweets_id_retweeting_users, must be smaller than or equal to 100.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling UsersApi$tweets_id_retweeting_users, must be smaller than or equal to 100."
+          )
+        )
       }
       if (`max_results` < 1) {
-        rlang::abort(message = "Invalid value for `max_results` when calling UsersApi$tweets_id_retweeting_users, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling UsersApi$tweets_id_retweeting_users, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling UsersApi$tweets_id_retweeting_users, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling UsersApi$tweets_id_retweeting_users, must be bigger than or equal to 1."
+          )
+        )
       }
 
       if (nchar(`pagination_token`) < 1) {
-        rlang::abort(message = "Invalid length for `pagination_token` when calling UsersApi$tweets_id_retweeting_users, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `pagination_token` when calling UsersApi$tweets_id_retweeting_users, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `pagination_token` when calling UsersApi$tweets_id_retweeting_users, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `pagination_token` when calling UsersApi$tweets_id_retweeting_users, must be bigger than or equal to 1."
+          )
+        )
       }
 
       if (length(`user_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `user_fields` when calling UsersApi$tweets_id_retweeting_users, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `user_fields` when calling UsersApi$tweets_id_retweeting_users, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `user_fields` when calling UsersApi$tweets_id_retweeting_users, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `user_fields` when calling UsersApi$tweets_id_retweeting_users, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`expansions`) < 1) {
-        rlang::abort(message = "Invalid length for `expansions` when calling UsersApi$tweets_id_retweeting_users, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `expansions` when calling UsersApi$tweets_id_retweeting_users, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `expansions` when calling UsersApi$tweets_id_retweeting_users, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `expansions` when calling UsersApi$tweets_id_retweeting_users, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`tweet_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `tweet_fields` when calling UsersApi$tweets_id_retweeting_users, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `tweet_fields` when calling UsersApi$tweets_id_retweeting_users, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `tweet_fields` when calling UsersApi$tweets_id_retweeting_users, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `tweet_fields` when calling UsersApi$tweets_id_retweeting_users, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       query_params[["max_results"]] <- `max_results`
@@ -3276,57 +3762,81 @@ UsersApi <- R6::R6Class(
 
       # check if items are unique
       if (!identical(`user_fields`, unique(`user_fields`))) {
-        rlang::abort(message = "Invalid value for `user_fields` when calling UsersApi$tweets_id_retweeting_users. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `user_fields` when calling UsersApi$tweets_id_retweeting_users. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `user_fields` when calling UsersApi$tweets_id_retweeting_users. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `user_fields` when calling UsersApi$tweets_id_retweeting_users. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
         if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
-          rlang::abort(message = "Invalid value for `user_fields` when calling UsersApi$tweets_id_retweeting_users. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `user_fields` when calling UsersApi$tweets_id_retweeting_users. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `user_fields` when calling UsersApi$tweets_id_retweeting_users. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `user_fields` when calling UsersApi$tweets_id_retweeting_users. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."
+            )
+          )
         }
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`expansions`, unique(`expansions`))) {
-        rlang::abort(message = "Invalid value for `expansions` when calling UsersApi$tweets_id_retweeting_users. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `expansions` when calling UsersApi$tweets_id_retweeting_users. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `expansions` when calling UsersApi$tweets_id_retweeting_users. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `expansions` when calling UsersApi$tweets_id_retweeting_users. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
         if (!(query_item %in% c("pinned_tweet_id"))) {
-          rlang::abort(message = "Invalid value for `expansions` when calling UsersApi$tweets_id_retweeting_users. Must be [pinned_tweet_id].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `expansions` when calling UsersApi$tweets_id_retweeting_users. Must be [pinned_tweet_id]."))
+          rlang::abort(
+            message = "Invalid value for `expansions` when calling UsersApi$tweets_id_retweeting_users. Must be [pinned_tweet_id].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `expansions` when calling UsersApi$tweets_id_retweeting_users. Must be [pinned_tweet_id]."
+            )
+          )
         }
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
-        rlang::abort(message = "Invalid value for `tweet_fields` when calling UsersApi$tweets_id_retweeting_users. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `tweet_fields` when calling UsersApi$tweets_id_retweeting_users. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `tweet_fields` when calling UsersApi$tweets_id_retweeting_users. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `tweet_fields` when calling UsersApi$tweets_id_retweeting_users. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
         if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
-          rlang::abort(message = "Invalid value for `tweet_fields` when calling UsersApi$tweets_id_retweeting_users. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `tweet_fields` when calling UsersApi$tweets_id_retweeting_users. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `tweet_fields` when calling UsersApi$tweets_id_retweeting_users. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `tweet_fields` when calling UsersApi$tweets_id_retweeting_users. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."
+            )
+          )
         }
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
@@ -3350,18 +3860,20 @@ UsersApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "GET",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -3372,9 +3884,11 @@ UsersApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "Get2TweetsIdRetweetedByResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -3384,25 +3898,31 @@ UsersApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Block User by User ID
@@ -3411,7 +3931,7 @@ UsersApi <- R6::R6Class(
     #' Block User by User ID
     #'
     #' @param id The ID of the authenticated source User that is requesting to block the target User.
-    #' @param block_user_request 
+    #' @param block_user_request
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @return BlockUserMutationResponse
@@ -3434,7 +3954,7 @@ UsersApi <- R6::R6Class(
     #' Block User by User ID
     #'
     #' @param id The ID of the authenticated source User that is requesting to block the target User.
-    #' @param block_user_request 
+    #' @param block_user_request
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @return API response (BlockUserMutationResponse) with additional information such as HTTP status code, headers
@@ -3450,17 +3970,25 @@ UsersApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`id`)) {
-        rlang::abort(message = "Missing required parameter `id`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `id`."))
+        rlang::abort(
+          message = "Missing required parameter `id`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `id`."
+          )
+        )
       }
 
       if (missing(`block_user_request`)) {
-        rlang::abort(message = "Missing required parameter `block_user_request`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `block_user_request`."))
+        rlang::abort(
+          message = "Missing required parameter `block_user_request`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `block_user_request`."
+          )
+        )
       }
 
 
@@ -3486,18 +4014,20 @@ UsersApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list("application/json")
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "POST",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "POST",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -3508,9 +4038,11 @@ UsersApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "BlockUserMutationResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -3520,25 +4052,31 @@ UsersApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Returns User objects that are blocked by provided User ID
@@ -3594,52 +4132,80 @@ UsersApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`id`)) {
-        rlang::abort(message = "Missing required parameter `id`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `id`."))
+        rlang::abort(
+          message = "Missing required parameter `id`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `id`."
+          )
+        )
       }
 
 
       if (`max_results` > 1000) {
-        rlang::abort(message = "Invalid value for `max_results` when calling UsersApi$users_id_blocking, must be smaller than or equal to 1000.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling UsersApi$users_id_blocking, must be smaller than or equal to 1000."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling UsersApi$users_id_blocking, must be smaller than or equal to 1000.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling UsersApi$users_id_blocking, must be smaller than or equal to 1000."
+          )
+        )
       }
       if (`max_results` < 1) {
-        rlang::abort(message = "Invalid value for `max_results` when calling UsersApi$users_id_blocking, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling UsersApi$users_id_blocking, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling UsersApi$users_id_blocking, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling UsersApi$users_id_blocking, must be bigger than or equal to 1."
+          )
+        )
       }
 
       if (nchar(`pagination_token`) < 16) {
-        rlang::abort(message = "Invalid length for `pagination_token` when calling UsersApi$users_id_blocking, must be bigger than or equal to 16.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `pagination_token` when calling UsersApi$users_id_blocking, must be bigger than or equal to 16."))
+        rlang::abort(
+          message = "Invalid length for `pagination_token` when calling UsersApi$users_id_blocking, must be bigger than or equal to 16.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `pagination_token` when calling UsersApi$users_id_blocking, must be bigger than or equal to 16."
+          )
+        )
       }
 
       if (length(`user_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `user_fields` when calling UsersApi$users_id_blocking, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `user_fields` when calling UsersApi$users_id_blocking, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `user_fields` when calling UsersApi$users_id_blocking, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `user_fields` when calling UsersApi$users_id_blocking, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`expansions`) < 1) {
-        rlang::abort(message = "Invalid length for `expansions` when calling UsersApi$users_id_blocking, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `expansions` when calling UsersApi$users_id_blocking, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `expansions` when calling UsersApi$users_id_blocking, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `expansions` when calling UsersApi$users_id_blocking, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`tweet_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `tweet_fields` when calling UsersApi$users_id_blocking, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `tweet_fields` when calling UsersApi$users_id_blocking, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `tweet_fields` when calling UsersApi$users_id_blocking, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `tweet_fields` when calling UsersApi$users_id_blocking, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       query_params[["max_results"]] <- `max_results`
@@ -3648,57 +4214,81 @@ UsersApi <- R6::R6Class(
 
       # check if items are unique
       if (!identical(`user_fields`, unique(`user_fields`))) {
-        rlang::abort(message = "Invalid value for `user_fields` when calling UsersApi$users_id_blocking. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `user_fields` when calling UsersApi$users_id_blocking. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `user_fields` when calling UsersApi$users_id_blocking. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `user_fields` when calling UsersApi$users_id_blocking. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
         if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
-          rlang::abort(message = "Invalid value for `user_fields` when calling UsersApi$users_id_blocking. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `user_fields` when calling UsersApi$users_id_blocking. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `user_fields` when calling UsersApi$users_id_blocking. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `user_fields` when calling UsersApi$users_id_blocking. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."
+            )
+          )
         }
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`expansions`, unique(`expansions`))) {
-        rlang::abort(message = "Invalid value for `expansions` when calling UsersApi$users_id_blocking. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `expansions` when calling UsersApi$users_id_blocking. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `expansions` when calling UsersApi$users_id_blocking. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `expansions` when calling UsersApi$users_id_blocking. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
         if (!(query_item %in% c("pinned_tweet_id"))) {
-          rlang::abort(message = "Invalid value for `expansions` when calling UsersApi$users_id_blocking. Must be [pinned_tweet_id].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `expansions` when calling UsersApi$users_id_blocking. Must be [pinned_tweet_id]."))
+          rlang::abort(
+            message = "Invalid value for `expansions` when calling UsersApi$users_id_blocking. Must be [pinned_tweet_id].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `expansions` when calling UsersApi$users_id_blocking. Must be [pinned_tweet_id]."
+            )
+          )
         }
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
-        rlang::abort(message = "Invalid value for `tweet_fields` when calling UsersApi$users_id_blocking. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `tweet_fields` when calling UsersApi$users_id_blocking. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `tweet_fields` when calling UsersApi$users_id_blocking. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `tweet_fields` when calling UsersApi$users_id_blocking. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
         if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
-          rlang::abort(message = "Invalid value for `tweet_fields` when calling UsersApi$users_id_blocking. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `tweet_fields` when calling UsersApi$users_id_blocking. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `tweet_fields` when calling UsersApi$users_id_blocking. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `tweet_fields` when calling UsersApi$users_id_blocking. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."
+            )
+          )
         }
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
@@ -3718,18 +4308,20 @@ UsersApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "GET",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -3740,9 +4332,11 @@ UsersApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "Get2UsersIdBlockingResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -3752,25 +4346,31 @@ UsersApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Follow User
@@ -3818,10 +4418,14 @@ UsersApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`id`)) {
-        rlang::abort(message = "Missing required parameter `id`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `id`."))
+        rlang::abort(
+          message = "Missing required parameter `id`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `id`."
+          )
+        )
       }
 
 
@@ -3847,18 +4451,20 @@ UsersApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list("application/json")
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "POST",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "POST",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -3869,9 +4475,11 @@ UsersApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "UsersFollowingCreateResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -3881,25 +4489,31 @@ UsersApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Followers by User ID
@@ -3955,58 +4569,90 @@ UsersApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`id`)) {
-        rlang::abort(message = "Missing required parameter `id`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `id`."))
+        rlang::abort(
+          message = "Missing required parameter `id`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `id`."
+          )
+        )
       }
 
       if (!str_detect(`id`, "^[0-9]{1,19}$")) {
-        rlang::abort(message = "Invalid value for `id` when calling UsersApi$users_id_followers, must conform to the pattern ^[0-9]{1,19}$.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `id` when calling UsersApi$users_id_followers, must conform to the pattern ^[0-9]{1,19}$."))
+        rlang::abort(
+          message = "Invalid value for `id` when calling UsersApi$users_id_followers, must conform to the pattern ^[0-9]{1,19}$.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `id` when calling UsersApi$users_id_followers, must conform to the pattern ^[0-9]{1,19}$."
+          )
+        )
       }
 
       if (`max_results` > 1000) {
-        rlang::abort(message = "Invalid value for `max_results` when calling UsersApi$users_id_followers, must be smaller than or equal to 1000.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling UsersApi$users_id_followers, must be smaller than or equal to 1000."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling UsersApi$users_id_followers, must be smaller than or equal to 1000.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling UsersApi$users_id_followers, must be smaller than or equal to 1000."
+          )
+        )
       }
       if (`max_results` < 1) {
-        rlang::abort(message = "Invalid value for `max_results` when calling UsersApi$users_id_followers, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling UsersApi$users_id_followers, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling UsersApi$users_id_followers, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling UsersApi$users_id_followers, must be bigger than or equal to 1."
+          )
+        )
       }
 
       if (nchar(`pagination_token`) < 16) {
-        rlang::abort(message = "Invalid length for `pagination_token` when calling UsersApi$users_id_followers, must be bigger than or equal to 16.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `pagination_token` when calling UsersApi$users_id_followers, must be bigger than or equal to 16."))
+        rlang::abort(
+          message = "Invalid length for `pagination_token` when calling UsersApi$users_id_followers, must be bigger than or equal to 16.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `pagination_token` when calling UsersApi$users_id_followers, must be bigger than or equal to 16."
+          )
+        )
       }
 
       if (length(`user_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `user_fields` when calling UsersApi$users_id_followers, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `user_fields` when calling UsersApi$users_id_followers, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `user_fields` when calling UsersApi$users_id_followers, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `user_fields` when calling UsersApi$users_id_followers, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`expansions`) < 1) {
-        rlang::abort(message = "Invalid length for `expansions` when calling UsersApi$users_id_followers, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `expansions` when calling UsersApi$users_id_followers, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `expansions` when calling UsersApi$users_id_followers, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `expansions` when calling UsersApi$users_id_followers, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`tweet_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `tweet_fields` when calling UsersApi$users_id_followers, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `tweet_fields` when calling UsersApi$users_id_followers, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `tweet_fields` when calling UsersApi$users_id_followers, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `tweet_fields` when calling UsersApi$users_id_followers, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       query_params[["max_results"]] <- `max_results`
@@ -4015,57 +4661,81 @@ UsersApi <- R6::R6Class(
 
       # check if items are unique
       if (!identical(`user_fields`, unique(`user_fields`))) {
-        rlang::abort(message = "Invalid value for `user_fields` when calling UsersApi$users_id_followers. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `user_fields` when calling UsersApi$users_id_followers. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `user_fields` when calling UsersApi$users_id_followers. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `user_fields` when calling UsersApi$users_id_followers. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
         if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
-          rlang::abort(message = "Invalid value for `user_fields` when calling UsersApi$users_id_followers. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `user_fields` when calling UsersApi$users_id_followers. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `user_fields` when calling UsersApi$users_id_followers. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `user_fields` when calling UsersApi$users_id_followers. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."
+            )
+          )
         }
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`expansions`, unique(`expansions`))) {
-        rlang::abort(message = "Invalid value for `expansions` when calling UsersApi$users_id_followers. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `expansions` when calling UsersApi$users_id_followers. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `expansions` when calling UsersApi$users_id_followers. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `expansions` when calling UsersApi$users_id_followers. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
         if (!(query_item %in% c("pinned_tweet_id"))) {
-          rlang::abort(message = "Invalid value for `expansions` when calling UsersApi$users_id_followers. Must be [pinned_tweet_id].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `expansions` when calling UsersApi$users_id_followers. Must be [pinned_tweet_id]."))
+          rlang::abort(
+            message = "Invalid value for `expansions` when calling UsersApi$users_id_followers. Must be [pinned_tweet_id].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `expansions` when calling UsersApi$users_id_followers. Must be [pinned_tweet_id]."
+            )
+          )
         }
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
-        rlang::abort(message = "Invalid value for `tweet_fields` when calling UsersApi$users_id_followers. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `tweet_fields` when calling UsersApi$users_id_followers. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `tweet_fields` when calling UsersApi$users_id_followers. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `tweet_fields` when calling UsersApi$users_id_followers. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
         if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
-          rlang::abort(message = "Invalid value for `tweet_fields` when calling UsersApi$users_id_followers. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `tweet_fields` when calling UsersApi$users_id_followers. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `tweet_fields` when calling UsersApi$users_id_followers. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `tweet_fields` when calling UsersApi$users_id_followers. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."
+            )
+          )
         }
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
@@ -4089,18 +4759,20 @@ UsersApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "GET",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -4111,9 +4783,11 @@ UsersApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "Get2UsersIdFollowersResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -4123,25 +4797,31 @@ UsersApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Following by User ID
@@ -4197,58 +4877,90 @@ UsersApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`id`)) {
-        rlang::abort(message = "Missing required parameter `id`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `id`."))
+        rlang::abort(
+          message = "Missing required parameter `id`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `id`."
+          )
+        )
       }
 
       if (!str_detect(`id`, "^[0-9]{1,19}$")) {
-        rlang::abort(message = "Invalid value for `id` when calling UsersApi$users_id_following, must conform to the pattern ^[0-9]{1,19}$.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `id` when calling UsersApi$users_id_following, must conform to the pattern ^[0-9]{1,19}$."))
+        rlang::abort(
+          message = "Invalid value for `id` when calling UsersApi$users_id_following, must conform to the pattern ^[0-9]{1,19}$.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `id` when calling UsersApi$users_id_following, must conform to the pattern ^[0-9]{1,19}$."
+          )
+        )
       }
 
       if (`max_results` > 1000) {
-        rlang::abort(message = "Invalid value for `max_results` when calling UsersApi$users_id_following, must be smaller than or equal to 1000.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling UsersApi$users_id_following, must be smaller than or equal to 1000."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling UsersApi$users_id_following, must be smaller than or equal to 1000.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling UsersApi$users_id_following, must be smaller than or equal to 1000."
+          )
+        )
       }
       if (`max_results` < 1) {
-        rlang::abort(message = "Invalid value for `max_results` when calling UsersApi$users_id_following, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling UsersApi$users_id_following, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling UsersApi$users_id_following, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling UsersApi$users_id_following, must be bigger than or equal to 1."
+          )
+        )
       }
 
       if (nchar(`pagination_token`) < 16) {
-        rlang::abort(message = "Invalid length for `pagination_token` when calling UsersApi$users_id_following, must be bigger than or equal to 16.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `pagination_token` when calling UsersApi$users_id_following, must be bigger than or equal to 16."))
+        rlang::abort(
+          message = "Invalid length for `pagination_token` when calling UsersApi$users_id_following, must be bigger than or equal to 16.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `pagination_token` when calling UsersApi$users_id_following, must be bigger than or equal to 16."
+          )
+        )
       }
 
       if (length(`user_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `user_fields` when calling UsersApi$users_id_following, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `user_fields` when calling UsersApi$users_id_following, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `user_fields` when calling UsersApi$users_id_following, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `user_fields` when calling UsersApi$users_id_following, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`expansions`) < 1) {
-        rlang::abort(message = "Invalid length for `expansions` when calling UsersApi$users_id_following, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `expansions` when calling UsersApi$users_id_following, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `expansions` when calling UsersApi$users_id_following, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `expansions` when calling UsersApi$users_id_following, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`tweet_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `tweet_fields` when calling UsersApi$users_id_following, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `tweet_fields` when calling UsersApi$users_id_following, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `tweet_fields` when calling UsersApi$users_id_following, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `tweet_fields` when calling UsersApi$users_id_following, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       query_params[["max_results"]] <- `max_results`
@@ -4257,57 +4969,81 @@ UsersApi <- R6::R6Class(
 
       # check if items are unique
       if (!identical(`user_fields`, unique(`user_fields`))) {
-        rlang::abort(message = "Invalid value for `user_fields` when calling UsersApi$users_id_following. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `user_fields` when calling UsersApi$users_id_following. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `user_fields` when calling UsersApi$users_id_following. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `user_fields` when calling UsersApi$users_id_following. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
         if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
-          rlang::abort(message = "Invalid value for `user_fields` when calling UsersApi$users_id_following. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `user_fields` when calling UsersApi$users_id_following. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `user_fields` when calling UsersApi$users_id_following. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `user_fields` when calling UsersApi$users_id_following. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."
+            )
+          )
         }
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`expansions`, unique(`expansions`))) {
-        rlang::abort(message = "Invalid value for `expansions` when calling UsersApi$users_id_following. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `expansions` when calling UsersApi$users_id_following. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `expansions` when calling UsersApi$users_id_following. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `expansions` when calling UsersApi$users_id_following. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
         if (!(query_item %in% c("pinned_tweet_id"))) {
-          rlang::abort(message = "Invalid value for `expansions` when calling UsersApi$users_id_following. Must be [pinned_tweet_id].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `expansions` when calling UsersApi$users_id_following. Must be [pinned_tweet_id]."))
+          rlang::abort(
+            message = "Invalid value for `expansions` when calling UsersApi$users_id_following. Must be [pinned_tweet_id].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `expansions` when calling UsersApi$users_id_following. Must be [pinned_tweet_id]."
+            )
+          )
         }
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
-        rlang::abort(message = "Invalid value for `tweet_fields` when calling UsersApi$users_id_following. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `tweet_fields` when calling UsersApi$users_id_following. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `tweet_fields` when calling UsersApi$users_id_following. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `tweet_fields` when calling UsersApi$users_id_following. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
         if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
-          rlang::abort(message = "Invalid value for `tweet_fields` when calling UsersApi$users_id_following. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `tweet_fields` when calling UsersApi$users_id_following. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `tweet_fields` when calling UsersApi$users_id_following. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `tweet_fields` when calling UsersApi$users_id_following. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."
+            )
+          )
         }
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
@@ -4331,18 +5067,20 @@ UsersApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "GET",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -4353,9 +5091,11 @@ UsersApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "Get2UsersIdFollowingResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -4365,25 +5105,31 @@ UsersApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Mute User by User ID.
@@ -4431,10 +5177,14 @@ UsersApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`id`)) {
-        rlang::abort(message = "Missing required parameter `id`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `id`."))
+        rlang::abort(
+          message = "Missing required parameter `id`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `id`."
+          )
+        )
       }
 
 
@@ -4460,18 +5210,20 @@ UsersApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list("application/json")
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "POST",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "POST",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -4482,9 +5234,11 @@ UsersApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "MuteUserMutationResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -4494,25 +5248,31 @@ UsersApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Returns User objects that are muted by the provided User ID
@@ -4568,58 +5328,90 @@ UsersApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`id`)) {
-        rlang::abort(message = "Missing required parameter `id`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `id`."))
+        rlang::abort(
+          message = "Missing required parameter `id`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `id`."
+          )
+        )
       }
 
 
       if (`max_results` > 1000) {
-        rlang::abort(message = "Invalid value for `max_results` when calling UsersApi$users_id_muting, must be smaller than or equal to 1000.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling UsersApi$users_id_muting, must be smaller than or equal to 1000."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling UsersApi$users_id_muting, must be smaller than or equal to 1000.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling UsersApi$users_id_muting, must be smaller than or equal to 1000."
+          )
+        )
       }
       if (`max_results` < 1) {
-        rlang::abort(message = "Invalid value for `max_results` when calling UsersApi$users_id_muting, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling UsersApi$users_id_muting, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling UsersApi$users_id_muting, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling UsersApi$users_id_muting, must be bigger than or equal to 1."
+          )
+        )
       }
 
       if (nchar(`pagination_token`) > 19) {
-        rlang::abort(message = "Invalid length for `pagination_token` when calling UsersApi$users_id_muting, must be smaller than or equal to 19.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for $pagination_token when calling UsersApi.users_id_muting, must be smaller than or equal to 19."))
+        rlang::abort(
+          message = "Invalid length for `pagination_token` when calling UsersApi$users_id_muting, must be smaller than or equal to 19.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for $pagination_token when calling UsersApi.users_id_muting, must be smaller than or equal to 19."
+          )
+        )
       }
       if (nchar(`pagination_token`) < 1) {
-        rlang::abort(message = "Invalid length for `pagination_token` when calling UsersApi$users_id_muting, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `pagination_token` when calling UsersApi$users_id_muting, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `pagination_token` when calling UsersApi$users_id_muting, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `pagination_token` when calling UsersApi$users_id_muting, must be bigger than or equal to 1."
+          )
+        )
       }
 
       if (length(`user_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `user_fields` when calling UsersApi$users_id_muting, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `user_fields` when calling UsersApi$users_id_muting, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `user_fields` when calling UsersApi$users_id_muting, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `user_fields` when calling UsersApi$users_id_muting, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`expansions`) < 1) {
-        rlang::abort(message = "Invalid length for `expansions` when calling UsersApi$users_id_muting, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `expansions` when calling UsersApi$users_id_muting, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `expansions` when calling UsersApi$users_id_muting, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `expansions` when calling UsersApi$users_id_muting, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`tweet_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `tweet_fields` when calling UsersApi$users_id_muting, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `tweet_fields` when calling UsersApi$users_id_muting, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `tweet_fields` when calling UsersApi$users_id_muting, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `tweet_fields` when calling UsersApi$users_id_muting, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       query_params[["max_results"]] <- `max_results`
@@ -4628,57 +5420,81 @@ UsersApi <- R6::R6Class(
 
       # check if items are unique
       if (!identical(`user_fields`, unique(`user_fields`))) {
-        rlang::abort(message = "Invalid value for `user_fields` when calling UsersApi$users_id_muting. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `user_fields` when calling UsersApi$users_id_muting. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `user_fields` when calling UsersApi$users_id_muting. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `user_fields` when calling UsersApi$users_id_muting. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
         if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
-          rlang::abort(message = "Invalid value for `user_fields` when calling UsersApi$users_id_muting. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `user_fields` when calling UsersApi$users_id_muting. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `user_fields` when calling UsersApi$users_id_muting. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `user_fields` when calling UsersApi$users_id_muting. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."
+            )
+          )
         }
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`expansions`, unique(`expansions`))) {
-        rlang::abort(message = "Invalid value for `expansions` when calling UsersApi$users_id_muting. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `expansions` when calling UsersApi$users_id_muting. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `expansions` when calling UsersApi$users_id_muting. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `expansions` when calling UsersApi$users_id_muting. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
         if (!(query_item %in% c("pinned_tweet_id"))) {
-          rlang::abort(message = "Invalid value for `expansions` when calling UsersApi$users_id_muting. Must be [pinned_tweet_id].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `expansions` when calling UsersApi$users_id_muting. Must be [pinned_tweet_id]."))
+          rlang::abort(
+            message = "Invalid value for `expansions` when calling UsersApi$users_id_muting. Must be [pinned_tweet_id].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `expansions` when calling UsersApi$users_id_muting. Must be [pinned_tweet_id]."
+            )
+          )
         }
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
-        rlang::abort(message = "Invalid value for `tweet_fields` when calling UsersApi$users_id_muting. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `tweet_fields` when calling UsersApi$users_id_muting. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `tweet_fields` when calling UsersApi$users_id_muting. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `tweet_fields` when calling UsersApi$users_id_muting. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
         if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
-          rlang::abort(message = "Invalid value for `tweet_fields` when calling UsersApi$users_id_muting. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `tweet_fields` when calling UsersApi$users_id_muting. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `tweet_fields` when calling UsersApi$users_id_muting. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `tweet_fields` when calling UsersApi$users_id_muting. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."
+            )
+          )
         }
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
@@ -4698,18 +5514,20 @@ UsersApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "GET",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -4720,9 +5538,11 @@ UsersApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "Get2UsersIdMutingResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -4732,25 +5552,31 @@ UsersApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Unblock User by User ID
@@ -4798,25 +5624,37 @@ UsersApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`source_user_id`)) {
-        rlang::abort(message = "Missing required parameter `source_user_id`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `source_user_id`."))
+        rlang::abort(
+          message = "Missing required parameter `source_user_id`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `source_user_id`."
+          )
+        )
       }
 
       if (missing(`target_user_id`)) {
-        rlang::abort(message = "Missing required parameter `target_user_id`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `target_user_id`."))
+        rlang::abort(
+          message = "Missing required parameter `target_user_id`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `target_user_id`."
+          )
+        )
       }
 
 
       if (!str_detect(`target_user_id`, "^[0-9]{1,19}$")) {
-        rlang::abort(message = "Invalid value for `target_user_id` when calling UsersApi$users_id_unblock, must conform to the pattern ^[0-9]{1,19}$.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `target_user_id` when calling UsersApi$users_id_unblock, must conform to the pattern ^[0-9]{1,19}$."))
+        rlang::abort(
+          message = "Invalid value for `target_user_id` when calling UsersApi$users_id_unblock, must conform to the pattern ^[0-9]{1,19}$.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `target_user_id` when calling UsersApi$users_id_unblock, must conform to the pattern ^[0-9]{1,19}$."
+          )
+        )
       }
 
       local_var_url_path <- "/2/users/{source_user_id}/blocking/{target_user_id}"
@@ -4838,18 +5676,20 @@ UsersApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "DELETE",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "DELETE",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -4860,9 +5700,11 @@ UsersApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "BlockUserMutationResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -4872,25 +5714,31 @@ UsersApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Unfollow User
@@ -4938,25 +5786,37 @@ UsersApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`source_user_id`)) {
-        rlang::abort(message = "Missing required parameter `source_user_id`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `source_user_id`."))
+        rlang::abort(
+          message = "Missing required parameter `source_user_id`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `source_user_id`."
+          )
+        )
       }
 
       if (missing(`target_user_id`)) {
-        rlang::abort(message = "Missing required parameter `target_user_id`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `target_user_id`."))
+        rlang::abort(
+          message = "Missing required parameter `target_user_id`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `target_user_id`."
+          )
+        )
       }
 
 
       if (!str_detect(`target_user_id`, "^[0-9]{1,19}$")) {
-        rlang::abort(message = "Invalid value for `target_user_id` when calling UsersApi$users_id_unfollow, must conform to the pattern ^[0-9]{1,19}$.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `target_user_id` when calling UsersApi$users_id_unfollow, must conform to the pattern ^[0-9]{1,19}$."))
+        rlang::abort(
+          message = "Invalid value for `target_user_id` when calling UsersApi$users_id_unfollow, must conform to the pattern ^[0-9]{1,19}$.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `target_user_id` when calling UsersApi$users_id_unfollow, must conform to the pattern ^[0-9]{1,19}$."
+          )
+        )
       }
 
       local_var_url_path <- "/2/users/{source_user_id}/following/{target_user_id}"
@@ -4978,18 +5838,20 @@ UsersApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "DELETE",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "DELETE",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -5000,9 +5862,11 @@ UsersApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "UsersFollowingDeleteResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -5012,25 +5876,31 @@ UsersApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Unmute User by User ID
@@ -5078,25 +5948,37 @@ UsersApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`source_user_id`)) {
-        rlang::abort(message = "Missing required parameter `source_user_id`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `source_user_id`."))
+        rlang::abort(
+          message = "Missing required parameter `source_user_id`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `source_user_id`."
+          )
+        )
       }
 
       if (missing(`target_user_id`)) {
-        rlang::abort(message = "Missing required parameter `target_user_id`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `target_user_id`."))
+        rlang::abort(
+          message = "Missing required parameter `target_user_id`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `target_user_id`."
+          )
+        )
       }
 
 
       if (!str_detect(`target_user_id`, "^[0-9]{1,19}$")) {
-        rlang::abort(message = "Invalid value for `target_user_id` when calling UsersApi$users_id_unmute, must conform to the pattern ^[0-9]{1,19}$.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `target_user_id` when calling UsersApi$users_id_unmute, must conform to the pattern ^[0-9]{1,19}$."))
+        rlang::abort(
+          message = "Invalid value for `target_user_id` when calling UsersApi$users_id_unmute, must conform to the pattern ^[0-9]{1,19}$.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `target_user_id` when calling UsersApi$users_id_unmute, must conform to the pattern ^[0-9]{1,19}$."
+          )
+        )
       }
 
       local_var_url_path <- "/2/users/{source_user_id}/muting/{target_user_id}"
@@ -5118,18 +6000,20 @@ UsersApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "DELETE",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "DELETE",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -5140,9 +6024,11 @@ UsersApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "MuteUserMutationResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -5152,25 +6038,31 @@ UsersApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     }
   )
