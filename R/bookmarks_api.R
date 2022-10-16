@@ -521,15 +521,15 @@ BookmarksApi <- R6::R6Class(
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
         if (!is.null(data_file)) {
-            write(local_var_resp$response, data_file)
+          write(local_var_resp$response, data_file)
         }
 
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "Get2UsersIdBookmarksResponse", loadNamespace("twitter")),
           error = function(e) {
-             rlang::abort(message = "Failed to deserialize response",
-                          .subclass = "ApiException",
-                          ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(message = "Failed to deserialize response",
+                         .subclass = "ApiException",
+                         ApiException = ApiException$new(http_response = local_var_resp))
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -657,15 +657,15 @@ BookmarksApi <- R6::R6Class(
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
         if (!is.null(data_file)) {
-            write(local_var_resp$response, data_file)
+          write(local_var_resp$response, data_file)
         }
 
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "BookmarkMutationResponse", loadNamespace("twitter")),
           error = function(e) {
-             rlang::abort(message = "Failed to deserialize response",
-                          .subclass = "ApiException",
-                          ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(message = "Failed to deserialize response",
+                         .subclass = "ApiException",
+                         ApiException = ApiException$new(http_response = local_var_resp))
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -797,15 +797,15 @@ BookmarksApi <- R6::R6Class(
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
         if (!is.null(data_file)) {
-            write(local_var_resp$response, data_file)
+          write(local_var_resp$response, data_file)
         }
 
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "BookmarkMutationResponse", loadNamespace("twitter")),
           error = function(e) {
-             rlang::abort(message = "Failed to deserialize response",
-                          .subclass = "ApiException",
-                          ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(message = "Failed to deserialize response",
+                         .subclass = "ApiException",
+                         ApiException = ApiException$new(http_response = local_var_resp))
           }
         )
         local_var_resp$content <- deserialized_resp_obj

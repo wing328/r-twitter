@@ -54,11 +54,15 @@ ComplianceJob <- R6::R6Class(
     #' @export
     initialize = function(`created_at`, `download_expires_at`, `download_url`, `id`, `status`, `type`, `upload_expires_at`, `upload_url`, `name` = NULL, additional_properties = NULL, ...) {
       if (!missing(`created_at`)) {
-        stopifnot(is.character(`created_at`), length(`created_at`) == 1)
+        if (!is.character(`created_at`)) {
+          stop(paste("Error! Invalid DateTime. Must be a string:", `created_at`))
+        }
         self$`created_at` <- `created_at`
       }
       if (!missing(`download_expires_at`)) {
-        stopifnot(is.character(`download_expires_at`), length(`download_expires_at`) == 1)
+        if (!is.character(`download_expires_at`)) {
+          stop(paste("Error! Invalid DateTime. Must be a string:", `download_expires_at`))
+        }
         self$`download_expires_at` <- `download_expires_at`
       }
       if (!missing(`download_url`)) {
@@ -82,7 +86,9 @@ ComplianceJob <- R6::R6Class(
         self$`type` <- `type`
       }
       if (!missing(`upload_expires_at`)) {
-        stopifnot(is.character(`upload_expires_at`), length(`upload_expires_at`) == 1)
+        if (!is.character(`upload_expires_at`)) {
+          stop(paste("Error! Invalid DateTime. Must be a string:", `upload_expires_at`))
+        }
         self$`upload_expires_at` <- `upload_expires_at`
       }
       if (!missing(`upload_url`)) {
@@ -205,7 +211,8 @@ ComplianceJob <- R6::R6Class(
       }
       # process additional properties/fields in the payload
       for (key in names(this_object)) {
-        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+        if (!(key %in% self$`_field_list`)) {
+          # json key not in list of fields
           self$additional_properties[[key]] <- this_object[[key]]
         }
       }
@@ -331,7 +338,8 @@ ComplianceJob <- R6::R6Class(
       self$`upload_url` <- this_object$`upload_url`
       # process additional properties/fields in the payload
       for (key in names(this_object)) {
-        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+        if (!(key %in% self$`_field_list`)) {
+          # json key not in list of fields
           self$additional_properties[[key]] <- this_object[[key]]
         }
       }
@@ -550,8 +558,8 @@ ComplianceJob <- R6::R6Class(
 #
 ## Below is an example to define the print fnuction
 # ComplianceJob$set("public", "print", function(...) {
-#  print(jsonlite::prettify(self$toJSONString()))
-#  invisible(self)
+#   print(jsonlite::prettify(self$toJSONString()))
+#   invisible(self)
 # })
 ## Uncomment below to lock the class to prevent modifications to the method or field
 # ComplianceJob$lock()

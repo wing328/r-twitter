@@ -89,7 +89,9 @@ Space <- R6::R6Class(
         self$`state` <- `state`
       }
       if (!is.null(`created_at`)) {
-        stopifnot(is.character(`created_at`), length(`created_at`) == 1)
+        if (!is.character(`created_at`)) {
+          stop(paste("Error! Invalid DateTime. Must be a string:", `created_at`))
+        }
         self$`created_at` <- `created_at`
       }
       if (!is.null(`creator_id`)) {
@@ -97,7 +99,9 @@ Space <- R6::R6Class(
         self$`creator_id` <- `creator_id`
       }
       if (!is.null(`ended_at`)) {
-        stopifnot(is.character(`ended_at`), length(`ended_at`) == 1)
+        if (!is.character(`ended_at`)) {
+          stop(paste("Error! Invalid DateTime. Must be a string:", `ended_at`))
+        }
         self$`ended_at` <- `ended_at`
       }
       if (!is.null(`host_ids`)) {
@@ -123,7 +127,9 @@ Space <- R6::R6Class(
         self$`participant_count` <- `participant_count`
       }
       if (!is.null(`scheduled_start`)) {
-        stopifnot(is.character(`scheduled_start`), length(`scheduled_start`) == 1)
+        if (!is.character(`scheduled_start`)) {
+          stop(paste("Error! Invalid DateTime. Must be a string:", `scheduled_start`))
+        }
         self$`scheduled_start` <- `scheduled_start`
       }
       if (!is.null(`speaker_ids`)) {
@@ -132,7 +138,9 @@ Space <- R6::R6Class(
         self$`speaker_ids` <- `speaker_ids`
       }
       if (!is.null(`started_at`)) {
-        stopifnot(is.character(`started_at`), length(`started_at`) == 1)
+        if (!is.character(`started_at`)) {
+          stop(paste("Error! Invalid DateTime. Must be a string:", `started_at`))
+        }
         self$`started_at` <- `started_at`
       }
       if (!is.null(`subscriber_count`)) {
@@ -149,7 +157,9 @@ Space <- R6::R6Class(
         self$`topics` <- `topics`
       }
       if (!is.null(`updated_at`)) {
-        stopifnot(is.character(`updated_at`), length(`updated_at`) == 1)
+        if (!is.character(`updated_at`)) {
+          stop(paste("Error! Invalid DateTime. Must be a string:", `updated_at`))
+        }
         self$`updated_at` <- `updated_at`
       }
       if (!is.null(additional_properties)) {
@@ -307,7 +317,8 @@ Space <- R6::R6Class(
       }
       # process additional properties/fields in the payload
       for (key in names(this_object)) {
-        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+        if (!(key %in% self$`_field_list`)) {
+          # json key not in list of fields
           self$additional_properties[[key]] <- this_object[[key]]
         }
       }
@@ -500,7 +511,8 @@ Space <- R6::R6Class(
       self$`updated_at` <- this_object$`updated_at`
       # process additional properties/fields in the payload
       for (key in names(this_object)) {
-        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+        if (!(key %in% self$`_field_list`)) {
+          # json key not in list of fields
           self$additional_properties[[key]] <- this_object[[key]]
         }
       }
@@ -615,8 +627,8 @@ Space <- R6::R6Class(
 #
 ## Below is an example to define the print fnuction
 # Space$set("public", "print", function(...) {
-#  print(jsonlite::prettify(self$toJSONString()))
-#  invisible(self)
+#   print(jsonlite::prettify(self$toJSONString()))
+#   invisible(self)
 # })
 ## Uncomment below to lock the class to prevent modifications to the method or field
 # Space$lock()

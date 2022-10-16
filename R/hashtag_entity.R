@@ -101,7 +101,8 @@ HashtagEntity <- R6::R6Class(
       }
       # process additional properties/fields in the payload
       for (key in names(this_object)) {
-        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+        if (!(key %in% self$`_field_list`)) {
+          # json key not in list of fields
           self$additional_properties[[key]] <- this_object[[key]]
         }
       }
@@ -165,7 +166,8 @@ HashtagEntity <- R6::R6Class(
       self$`tag` <- this_object$`tag`
       # process additional properties/fields in the payload
       for (key in names(this_object)) {
-        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+        if (!(key %in% self$`_field_list`)) {
+          # json key not in list of fields
           self$additional_properties[[key]] <- this_object[[key]]
         }
       }
@@ -296,8 +298,8 @@ HashtagEntity <- R6::R6Class(
 #
 ## Below is an example to define the print fnuction
 # HashtagEntity$set("public", "print", function(...) {
-#  print(jsonlite::prettify(self$toJSONString()))
-#  invisible(self)
+#   print(jsonlite::prettify(self$toJSONString()))
+#   invisible(self)
 # })
 ## Uncomment below to lock the class to prevent modifications to the method or field
 # HashtagEntity$lock()

@@ -230,7 +230,8 @@ ApiClient <- R6::R6Class(
         if (typeof(query_params[[query_param]]) == "list") {
           # for explode, e.g. a=1,a=2,a=3
           req <- req %>% req_url_query(!!!query_params[[query_param]])
-        } else { # for non-explode, e.g. a=1,2,3
+        } else {
+          # for non-explode, e.g. a=1,2,3
           tmp <- list()
           tmp[[query_param]] <- query_params[[query_param]]
           req <- req %>% req_url_query(!!!tmp)
@@ -245,7 +246,8 @@ ApiClient <- R6::R6Class(
         if (!is.null(form_params) && length(form_params) != 0) {
           req <- req %>% req_body_multipart(!!!form_params)
         }
-      } else { # no file upload
+      } else {
+        # no file upload
         # add form parameters via req_body_form
         if (!is.null(form_params) && length(form_params) != 0) {
           req <- req %>% req_body_form(!!!form_params)

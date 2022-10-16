@@ -36,11 +36,15 @@ SearchCount <- R6::R6Class(
     #' @export
     initialize = function(`end`, `start`, `tweet_count`, additional_properties = NULL, ...) {
       if (!missing(`end`)) {
-        stopifnot(is.character(`end`), length(`end`) == 1)
+        if (!is.character(`end`)) {
+          stop(paste("Error! Invalid DateTime. Must be a string:", `end`))
+        }
         self$`end` <- `end`
       }
       if (!missing(`start`)) {
-        stopifnot(is.character(`start`), length(`start`) == 1)
+        if (!is.character(`start`)) {
+          stop(paste("Error! Invalid DateTime. Must be a string:", `start`))
+        }
         self$`start` <- `start`
       }
       if (!missing(`tweet_count`)) {
@@ -101,7 +105,8 @@ SearchCount <- R6::R6Class(
       }
       # process additional properties/fields in the payload
       for (key in names(this_object)) {
-        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+        if (!(key %in% self$`_field_list`)) {
+          # json key not in list of fields
           self$additional_properties[[key]] <- this_object[[key]]
         }
       }
@@ -165,7 +170,8 @@ SearchCount <- R6::R6Class(
       self$`tweet_count` <- this_object$`tweet_count`
       # process additional properties/fields in the payload
       for (key in names(this_object)) {
-        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+        if (!(key %in% self$`_field_list`)) {
+          # json key not in list of fields
           self$additional_properties[[key]] <- this_object[[key]]
         }
       }
@@ -280,8 +286,8 @@ SearchCount <- R6::R6Class(
 #
 ## Below is an example to define the print fnuction
 # SearchCount$set("public", "print", function(...) {
-#  print(jsonlite::prettify(self$toJSONString()))
-#  invisible(self)
+#   print(jsonlite::prettify(self$toJSONString()))
+#   invisible(self)
 # })
 ## Uncomment below to lock the class to prevent modifications to the method or field
 # SearchCount$lock()

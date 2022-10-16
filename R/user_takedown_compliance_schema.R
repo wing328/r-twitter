@@ -36,7 +36,9 @@ UserTakedownComplianceSchema <- R6::R6Class(
     #' @export
     initialize = function(`event_at`, `user`, `withheld_in_countries`, additional_properties = NULL, ...) {
       if (!missing(`event_at`)) {
-        stopifnot(is.character(`event_at`), length(`event_at`) == 1)
+        if (!is.character(`event_at`)) {
+          stop(paste("Error! Invalid DateTime. Must be a string:", `event_at`))
+        }
         self$`event_at` <- `event_at`
       }
       if (!missing(`user`)) {
@@ -104,7 +106,8 @@ UserTakedownComplianceSchema <- R6::R6Class(
       }
       # process additional properties/fields in the payload
       for (key in names(this_object)) {
-        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+        if (!(key %in% self$`_field_list`)) {
+          # json key not in list of fields
           self$additional_properties[[key]] <- this_object[[key]]
         }
       }
@@ -168,7 +171,8 @@ UserTakedownComplianceSchema <- R6::R6Class(
       self$`withheld_in_countries` <- ApiClient$new()$deserializeObj(this_object$`withheld_in_countries`, "array[character]", loadNamespace("twitter"))
       # process additional properties/fields in the payload
       for (key in names(this_object)) {
-        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+        if (!(key %in% self$`_field_list`)) {
+          # json key not in list of fields
           self$additional_properties[[key]] <- this_object[[key]]
         }
       }
@@ -292,8 +296,8 @@ UserTakedownComplianceSchema <- R6::R6Class(
 #
 ## Below is an example to define the print fnuction
 # UserTakedownComplianceSchema$set("public", "print", function(...) {
-#  print(jsonlite::prettify(self$toJSONString()))
-#  invisible(self)
+#   print(jsonlite::prettify(self$toJSONString()))
+#   invisible(self)
 # })
 ## Uncomment below to lock the class to prevent modifications to the method or field
 # UserTakedownComplianceSchema$lock()

@@ -55,7 +55,9 @@ Poll <- R6::R6Class(
         self$`duration_minutes` <- `duration_minutes`
       }
       if (!is.null(`end_datetime`)) {
-        stopifnot(is.character(`end_datetime`), length(`end_datetime`) == 1)
+        if (!is.character(`end_datetime`)) {
+          stop(paste("Error! Invalid DateTime. Must be a string:", `end_datetime`))
+        }
         self$`end_datetime` <- `end_datetime`
       }
       if (!is.null(`voting_status`)) {
@@ -136,7 +138,8 @@ Poll <- R6::R6Class(
       }
       # process additional properties/fields in the payload
       for (key in names(this_object)) {
-        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+        if (!(key %in% self$`_field_list`)) {
+          # json key not in list of fields
           self$additional_properties[[key]] <- this_object[[key]]
         }
       }
@@ -221,7 +224,8 @@ Poll <- R6::R6Class(
       self$`voting_status` <- this_object$`voting_status`
       # process additional properties/fields in the payload
       for (key in names(this_object)) {
-        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+        if (!(key %in% self$`_field_list`)) {
+          # json key not in list of fields
           self$additional_properties[[key]] <- this_object[[key]]
         }
       }
@@ -357,8 +361,8 @@ Poll <- R6::R6Class(
 #
 ## Below is an example to define the print fnuction
 # Poll$set("public", "print", function(...) {
-#  print(jsonlite::prettify(self$toJSONString()))
-#  invisible(self)
+#   print(jsonlite::prettify(self$toJSONString()))
+#   invisible(self)
 # })
 ## Uncomment below to lock the class to prevent modifications to the method or field
 # Poll$lock()

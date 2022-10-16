@@ -36,7 +36,9 @@ UserScrubGeoObjectSchema <- R6::R6Class(
     #' @export
     initialize = function(`event_at`, `up_to_tweet_id`, `user`, additional_properties = NULL, ...) {
       if (!missing(`event_at`)) {
-        stopifnot(is.character(`event_at`), length(`event_at`) == 1)
+        if (!is.character(`event_at`)) {
+          stop(paste("Error! Invalid DateTime. Must be a string:", `event_at`))
+        }
         self$`event_at` <- `event_at`
       }
       if (!missing(`up_to_tweet_id`)) {
@@ -103,7 +105,8 @@ UserScrubGeoObjectSchema <- R6::R6Class(
       }
       # process additional properties/fields in the payload
       for (key in names(this_object)) {
-        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+        if (!(key %in% self$`_field_list`)) {
+          # json key not in list of fields
           self$additional_properties[[key]] <- this_object[[key]]
         }
       }
@@ -167,7 +170,8 @@ UserScrubGeoObjectSchema <- R6::R6Class(
       self$`user` <- UserComplianceSchemaUser$new()$fromJSON(jsonlite::toJSON(this_object$user, auto_unbox = TRUE, digits = NA))
       # process additional properties/fields in the payload
       for (key in names(this_object)) {
-        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+        if (!(key %in% self$`_field_list`)) {
+          # json key not in list of fields
           self$additional_properties[[key]] <- this_object[[key]]
         }
       }
@@ -290,8 +294,8 @@ UserScrubGeoObjectSchema <- R6::R6Class(
 #
 ## Below is an example to define the print fnuction
 # UserScrubGeoObjectSchema$set("public", "print", function(...) {
-#  print(jsonlite::prettify(self$toJSONString()))
-#  invisible(self)
+#   print(jsonlite::prettify(self$toJSONString()))
+#   invisible(self)
 # })
 ## Uncomment below to lock the class to prevent modifications to the method or field
 # UserScrubGeoObjectSchema$lock()
