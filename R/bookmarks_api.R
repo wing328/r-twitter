@@ -107,38 +107,37 @@
 #'
 #' library(twitter)
 #' var_id <- "id_example" # character | The ID of the authenticated source User for whom to return results.
-#' var_max_results <- 56 # integer | The maximum number of results.
-#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results.
-#' var_tweet_fields <- ["[\"attachments\",\"author_id\",\"context_annotations\",\"conversation_id\",\"created_at\",\"entities\",\"geo\",\"id\",\"in_reply_to_user_id\",\"lang\",\"non_public_metrics\",\"organic_metrics\",\"possibly_sensitive\",\"promoted_metrics\",\"public_metrics\",\"referenced_tweets\",\"reply_settings\",\"source\",\"text\",\"withheld\"]"] # set[character] | A comma separated list of Tweet fields to display.
-#' var_expansions <- ["[\"attachments.media_keys\",\"attachments.poll_ids\",\"author_id\",\"entities.mentions.username\",\"geo.place_id\",\"in_reply_to_user_id\",\"referenced_tweets.id\",\"referenced_tweets.id.author_id\"]"] # set[character] | A comma separated list of fields to expand.
-#' var_media_fields <- ["[\"alt_text\",\"duration_ms\",\"height\",\"media_key\",\"non_public_metrics\",\"organic_metrics\",\"preview_image_url\",\"promoted_metrics\",\"public_metrics\",\"type\",\"url\",\"variants\",\"width\"]"] # set[character] | A comma separated list of Media fields to display.
-#' var_poll_fields <- ["[\"duration_minutes\",\"end_datetime\",\"id\",\"options\",\"voting_status\"]"] # set[character] | A comma separated list of Poll fields to display.
-#' var_user_fields <- ["[\"created_at\",\"description\",\"entities\",\"id\",\"location\",\"name\",\"pinned_tweet_id\",\"profile_image_url\",\"protected\",\"public_metrics\",\"url\",\"username\",\"verified\",\"withheld\"]"] # set[character] | A comma separated list of User fields to display.
-#' var_place_fields <- ["[\"contained_within\",\"country\",\"country_code\",\"full_name\",\"geo\",\"id\",\"name\",\"place_type\"]"] # set[character] | A comma separated list of Place fields to display.
+#' var_max_results <- 56 # integer | The maximum number of results. (Optional)
+#' var_pagination_token <- "pagination_token_example" # character | This parameter is used to get the next 'page' of results. (Optional)
+#' var_tweet_fields <- c("attachments") # set[character] | A comma separated list of Tweet fields to display. (Optional)
+#' var_expansions <- c("attachments.media_keys") # set[character] | A comma separated list of fields to expand. (Optional)
+#' var_media_fields <- c("alt_text") # set[character] | A comma separated list of Media fields to display. (Optional)
+#' var_poll_fields <- c("duration_minutes") # set[character] | A comma separated list of Poll fields to display. (Optional)
+#' var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+#' var_place_fields <- c("contained_within") # set[character] | A comma separated list of Place fields to display. (Optional)
 #'
-#' #Bookmarks by User
+#' # Bookmarks by User
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
 #' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$bookmarks_api$get_users_id_bookmarks(var_id, max_results = var_max_results, pagination_token = var_pagination_token, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$bookmarks_api$get_users_id_bookmarks(var_id, max_results = var_max_results, pagination_token = var_pagination_token, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$bookmarks_api$get_users_id_bookmarks(var_id, max_results = var_max_results, pagination_token = var_pagination_token, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$bookmarks_api$get_users_id_bookmarks(var_id, max_results = var_max_results, pagination_token = var_pagination_token, tweet_fields = var_tweet_fields, expansions = var_expansions, media_fields = var_media_fields, poll_fields = var_poll_fields, user_fields = var_user_fields, place_fields = var_place_fields),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `get_users_id_bookmarks`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -151,31 +150,30 @@
 #'
 #' library(twitter)
 #' var_id <- "id_example" # character | The ID of the authenticated source User for whom to add bookmarks.
-#' var_bookmark_add_request <- BookmarkAddRequest$new() # BookmarkAddRequest | 
+#' var_bookmark_add_request <- BookmarkAddRequest$new("tweet_id_example") # BookmarkAddRequest |
 #'
-#' #Add Tweet to Bookmarks
+#' # Add Tweet to Bookmarks
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
 #' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$bookmarks_api$post_users_id_bookmarks(var_id, var_bookmark_add_request, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$bookmarks_api$post_users_id_bookmarks(var_id, var_bookmark_add_request),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$bookmarks_api$post_users_id_bookmarks(var_id, var_bookmark_add_request, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$bookmarks_api$post_users_id_bookmarks(var_id, var_bookmark_add_request),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `post_users_id_bookmarks`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -190,37 +188,33 @@
 #' var_id <- "id_example" # character | The ID of the authenticated source User whose bookmark is to be removed.
 #' var_tweet_id <- "tweet_id_example" # character | The ID of the Tweet that the source User is removing from bookmarks.
 #'
-#' #Remove a bookmarked Tweet
+#' # Remove a bookmarked Tweet
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure OAuth2 access token for authorization: OAuth2UserToken
 #' api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$bookmarks_api$users_id_bookmarks_delete(var_id, var_tweet_id, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$bookmarks_api$users_id_bookmarks_delete(var_id, var_tweet_id),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$bookmarks_api$users_id_bookmarks_delete(var_id, var_tweet_id, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$bookmarks_api$users_id_bookmarks_delete(var_id, var_tweet_id),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `users_id_bookmarks_delete`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
 #'   dput(result$toString())
 #' }
-#'
-#'
-#'
 #' }
 #' @importFrom R6 R6Class
 #' @importFrom base64enc base64encode
@@ -303,73 +297,113 @@ BookmarksApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`id`)) {
-        rlang::abort(message = "Missing required parameter `id`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `id`."))
+        rlang::abort(
+          message = "Missing required parameter `id`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `id`."
+          )
+        )
       }
 
 
       if (`max_results` > 100) {
-        rlang::abort(message = "Invalid value for `max_results` when calling BookmarksApi$get_users_id_bookmarks, must be smaller than or equal to 100.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling BookmarksApi$get_users_id_bookmarks, must be smaller than or equal to 100."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling BookmarksApi$get_users_id_bookmarks, must be smaller than or equal to 100.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling BookmarksApi$get_users_id_bookmarks, must be smaller than or equal to 100."
+          )
+        )
       }
       if (`max_results` < 1) {
-        rlang::abort(message = "Invalid value for `max_results` when calling BookmarksApi$get_users_id_bookmarks, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `max_results` when calling BookmarksApi$get_users_id_bookmarks, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid value for `max_results` when calling BookmarksApi$get_users_id_bookmarks, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `max_results` when calling BookmarksApi$get_users_id_bookmarks, must be bigger than or equal to 1."
+          )
+        )
       }
 
       if (nchar(`pagination_token`) < 1) {
-        rlang::abort(message = "Invalid length for `pagination_token` when calling BookmarksApi$get_users_id_bookmarks, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `pagination_token` when calling BookmarksApi$get_users_id_bookmarks, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `pagination_token` when calling BookmarksApi$get_users_id_bookmarks, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `pagination_token` when calling BookmarksApi$get_users_id_bookmarks, must be bigger than or equal to 1."
+          )
+        )
       }
 
       if (length(`tweet_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `tweet_fields` when calling BookmarksApi$get_users_id_bookmarks, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `tweet_fields` when calling BookmarksApi$get_users_id_bookmarks, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `tweet_fields` when calling BookmarksApi$get_users_id_bookmarks, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `tweet_fields` when calling BookmarksApi$get_users_id_bookmarks, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`expansions`) < 1) {
-        rlang::abort(message = "Invalid length for `expansions` when calling BookmarksApi$get_users_id_bookmarks, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `expansions` when calling BookmarksApi$get_users_id_bookmarks, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `expansions` when calling BookmarksApi$get_users_id_bookmarks, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `expansions` when calling BookmarksApi$get_users_id_bookmarks, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`media_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `media_fields` when calling BookmarksApi$get_users_id_bookmarks, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `media_fields` when calling BookmarksApi$get_users_id_bookmarks, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `media_fields` when calling BookmarksApi$get_users_id_bookmarks, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `media_fields` when calling BookmarksApi$get_users_id_bookmarks, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`poll_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `poll_fields` when calling BookmarksApi$get_users_id_bookmarks, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `poll_fields` when calling BookmarksApi$get_users_id_bookmarks, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `poll_fields` when calling BookmarksApi$get_users_id_bookmarks, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `poll_fields` when calling BookmarksApi$get_users_id_bookmarks, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`user_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `user_fields` when calling BookmarksApi$get_users_id_bookmarks, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `user_fields` when calling BookmarksApi$get_users_id_bookmarks, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `user_fields` when calling BookmarksApi$get_users_id_bookmarks, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `user_fields` when calling BookmarksApi$get_users_id_bookmarks, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (length(`place_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `place_fields` when calling BookmarksApi$get_users_id_bookmarks, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `place_fields` when calling BookmarksApi$get_users_id_bookmarks, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `place_fields` when calling BookmarksApi$get_users_id_bookmarks, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `place_fields` when calling BookmarksApi$get_users_id_bookmarks, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       query_params[["max_results"]] <- `max_results`
@@ -378,114 +412,162 @@ BookmarksApi <- R6::R6Class(
 
       # check if items are unique
       if (!identical(`tweet_fields`, unique(`tweet_fields`))) {
-        rlang::abort(message = "Invalid value for `tweet_fields` when calling BookmarksApi$get_users_id_bookmarks. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `tweet_fields` when calling BookmarksApi$get_users_id_bookmarks. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `tweet_fields` when calling BookmarksApi$get_users_id_bookmarks. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `tweet_fields` when calling BookmarksApi$get_users_id_bookmarks. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `tweet_fields`) {
         if (!(query_item %in% c("attachments", "author_id", "context_annotations", "conversation_id", "created_at", "entities", "geo", "id", "in_reply_to_user_id", "lang", "non_public_metrics", "organic_metrics", "possibly_sensitive", "promoted_metrics", "public_metrics", "referenced_tweets", "reply_settings", "source", "text", "withheld"))) {
-          rlang::abort(message = "Invalid value for `tweet_fields` when calling BookmarksApi$get_users_id_bookmarks. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `tweet_fields` when calling BookmarksApi$get_users_id_bookmarks. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `tweet_fields` when calling BookmarksApi$get_users_id_bookmarks. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `tweet_fields` when calling BookmarksApi$get_users_id_bookmarks. Must be [attachments, author_id, context_annotations, conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang, non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets, reply_settings, source, text, withheld]."
+            )
+          )
         }
       }
       query_params[["tweet.fields"]] <- I(paste(lapply(`tweet_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`expansions`, unique(`expansions`))) {
-        rlang::abort(message = "Invalid value for `expansions` when calling BookmarksApi$get_users_id_bookmarks. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `expansions` when calling BookmarksApi$get_users_id_bookmarks. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `expansions` when calling BookmarksApi$get_users_id_bookmarks. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `expansions` when calling BookmarksApi$get_users_id_bookmarks. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `expansions`) {
         if (!(query_item %in% c("attachments.media_keys", "attachments.poll_ids", "author_id", "entities.mentions.username", "geo.place_id", "in_reply_to_user_id", "referenced_tweets.id", "referenced_tweets.id.author_id"))) {
-          rlang::abort(message = "Invalid value for `expansions` when calling BookmarksApi$get_users_id_bookmarks. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `expansions` when calling BookmarksApi$get_users_id_bookmarks. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."))
+          rlang::abort(
+            message = "Invalid value for `expansions` when calling BookmarksApi$get_users_id_bookmarks. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `expansions` when calling BookmarksApi$get_users_id_bookmarks. Must be [attachments.media_keys, attachments.poll_ids, author_id, entities.mentions.username, geo.place_id, in_reply_to_user_id, referenced_tweets.id, referenced_tweets.id.author_id]."
+            )
+          )
         }
       }
       query_params[["expansions"]] <- I(paste(lapply(`expansions`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`media_fields`, unique(`media_fields`))) {
-        rlang::abort(message = "Invalid value for `media_fields` when calling BookmarksApi$get_users_id_bookmarks. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `media_fields` when calling BookmarksApi$get_users_id_bookmarks. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `media_fields` when calling BookmarksApi$get_users_id_bookmarks. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `media_fields` when calling BookmarksApi$get_users_id_bookmarks. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `media_fields`) {
         if (!(query_item %in% c("alt_text", "duration_ms", "height", "media_key", "non_public_metrics", "organic_metrics", "preview_image_url", "promoted_metrics", "public_metrics", "type", "url", "variants", "width"))) {
-          rlang::abort(message = "Invalid value for `media_fields` when calling BookmarksApi$get_users_id_bookmarks. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `media_fields` when calling BookmarksApi$get_users_id_bookmarks. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."))
+          rlang::abort(
+            message = "Invalid value for `media_fields` when calling BookmarksApi$get_users_id_bookmarks. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `media_fields` when calling BookmarksApi$get_users_id_bookmarks. Must be [alt_text, duration_ms, height, media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics, public_metrics, type, url, variants, width]."
+            )
+          )
         }
       }
       query_params[["media.fields"]] <- I(paste(lapply(`media_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`poll_fields`, unique(`poll_fields`))) {
-        rlang::abort(message = "Invalid value for `poll_fields` when calling BookmarksApi$get_users_id_bookmarks. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `poll_fields` when calling BookmarksApi$get_users_id_bookmarks. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `poll_fields` when calling BookmarksApi$get_users_id_bookmarks. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `poll_fields` when calling BookmarksApi$get_users_id_bookmarks. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `poll_fields`) {
         if (!(query_item %in% c("duration_minutes", "end_datetime", "id", "options", "voting_status"))) {
-          rlang::abort(message = "Invalid value for `poll_fields` when calling BookmarksApi$get_users_id_bookmarks. Must be [duration_minutes, end_datetime, id, options, voting_status].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `poll_fields` when calling BookmarksApi$get_users_id_bookmarks. Must be [duration_minutes, end_datetime, id, options, voting_status]."))
+          rlang::abort(
+            message = "Invalid value for `poll_fields` when calling BookmarksApi$get_users_id_bookmarks. Must be [duration_minutes, end_datetime, id, options, voting_status].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `poll_fields` when calling BookmarksApi$get_users_id_bookmarks. Must be [duration_minutes, end_datetime, id, options, voting_status]."
+            )
+          )
         }
       }
       query_params[["poll.fields"]] <- I(paste(lapply(`poll_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`user_fields`, unique(`user_fields`))) {
-        rlang::abort(message = "Invalid value for `user_fields` when calling BookmarksApi$get_users_id_bookmarks. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `user_fields` when calling BookmarksApi$get_users_id_bookmarks. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `user_fields` when calling BookmarksApi$get_users_id_bookmarks. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `user_fields` when calling BookmarksApi$get_users_id_bookmarks. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `user_fields`) {
         if (!(query_item %in% c("created_at", "description", "entities", "id", "location", "name", "pinned_tweet_id", "profile_image_url", "protected", "public_metrics", "url", "username", "verified", "withheld"))) {
-          rlang::abort(message = "Invalid value for `user_fields` when calling BookmarksApi$get_users_id_bookmarks. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `user_fields` when calling BookmarksApi$get_users_id_bookmarks. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."))
+          rlang::abort(
+            message = "Invalid value for `user_fields` when calling BookmarksApi$get_users_id_bookmarks. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `user_fields` when calling BookmarksApi$get_users_id_bookmarks. Must be [created_at, description, entities, id, location, name, pinned_tweet_id, profile_image_url, protected, public_metrics, url, username, verified, withheld]."
+            )
+          )
         }
       }
       query_params[["user.fields"]] <- I(paste(lapply(`user_fields`, URLencode, reserved = TRUE), collapse = ","))
 
       # check if items are unique
       if (!identical(`place_fields`, unique(`place_fields`))) {
-        rlang::abort(message = "Invalid value for `place_fields` when calling BookmarksApi$get_users_id_bookmarks. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `place_fields` when calling BookmarksApi$get_users_id_bookmarks. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `place_fields` when calling BookmarksApi$get_users_id_bookmarks. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `place_fields` when calling BookmarksApi$get_users_id_bookmarks. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `place_fields`) {
         if (!(query_item %in% c("contained_within", "country", "country_code", "full_name", "geo", "id", "name", "place_type"))) {
-          rlang::abort(message = "Invalid value for `place_fields` when calling BookmarksApi$get_users_id_bookmarks. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `place_fields` when calling BookmarksApi$get_users_id_bookmarks. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."))
+          rlang::abort(
+            message = "Invalid value for `place_fields` when calling BookmarksApi$get_users_id_bookmarks. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `place_fields` when calling BookmarksApi$get_users_id_bookmarks. Must be [contained_within, country, country_code, full_name, geo, id, name, place_type]."
+            )
+          )
         }
       }
       query_params[["place.fields"]] <- I(paste(lapply(`place_fields`, URLencode, reserved = TRUE), collapse = ","))
@@ -505,18 +587,20 @@ BookmarksApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "GET",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -527,9 +611,11 @@ BookmarksApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "Get2UsersIdBookmarksResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -539,25 +625,31 @@ BookmarksApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Add Tweet to Bookmarks
@@ -566,7 +658,7 @@ BookmarksApi <- R6::R6Class(
     #' Add Tweet to Bookmarks
     #'
     #' @param id The ID of the authenticated source User for whom to add bookmarks.
-    #' @param bookmark_add_request 
+    #' @param bookmark_add_request
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @return BookmarkMutationResponse
@@ -589,7 +681,7 @@ BookmarksApi <- R6::R6Class(
     #' Add Tweet to Bookmarks
     #'
     #' @param id The ID of the authenticated source User for whom to add bookmarks.
-    #' @param bookmark_add_request 
+    #' @param bookmark_add_request
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @return API response (BookmarkMutationResponse) with additional information such as HTTP status code, headers
@@ -605,17 +697,25 @@ BookmarksApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`id`)) {
-        rlang::abort(message = "Missing required parameter `id`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `id`."))
+        rlang::abort(
+          message = "Missing required parameter `id`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `id`."
+          )
+        )
       }
 
       if (missing(`bookmark_add_request`)) {
-        rlang::abort(message = "Missing required parameter `bookmark_add_request`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `bookmark_add_request`."))
+        rlang::abort(
+          message = "Missing required parameter `bookmark_add_request`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `bookmark_add_request`."
+          )
+        )
       }
 
 
@@ -641,18 +741,20 @@ BookmarksApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list("application/json")
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "POST",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "POST",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -663,9 +765,11 @@ BookmarksApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "BookmarkMutationResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -675,25 +779,31 @@ BookmarksApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Remove a bookmarked Tweet
@@ -741,25 +851,37 @@ BookmarksApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`id`)) {
-        rlang::abort(message = "Missing required parameter `id`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `id`."))
+        rlang::abort(
+          message = "Missing required parameter `id`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `id`."
+          )
+        )
       }
 
       if (missing(`tweet_id`)) {
-        rlang::abort(message = "Missing required parameter `tweet_id`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `tweet_id`."))
+        rlang::abort(
+          message = "Missing required parameter `tweet_id`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `tweet_id`."
+          )
+        )
       }
 
 
       if (!str_detect(`tweet_id`, "^[0-9]{1,19}$")) {
-        rlang::abort(message = "Invalid value for `tweet_id` when calling BookmarksApi$users_id_bookmarks_delete, must conform to the pattern ^[0-9]{1,19}$.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `tweet_id` when calling BookmarksApi$users_id_bookmarks_delete, must conform to the pattern ^[0-9]{1,19}$."))
+        rlang::abort(
+          message = "Invalid value for `tweet_id` when calling BookmarksApi$users_id_bookmarks_delete, must conform to the pattern ^[0-9]{1,19}$.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `tweet_id` when calling BookmarksApi$users_id_bookmarks_delete, must conform to the pattern ^[0-9]{1,19}$."
+          )
+        )
       }
 
       local_var_url_path <- "/2/users/{id}/bookmarks/{tweet_id}"
@@ -781,18 +903,20 @@ BookmarksApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "DELETE",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "DELETE",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -803,9 +927,11 @@ BookmarksApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "BookmarkMutationResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -815,25 +941,31 @@ BookmarksApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     }
   )

@@ -37,9 +37,9 @@ library(twitter)
 var_id <- "2244994945" # character | The ID of the User to lookup.
 var_max_results <- 100 # integer | The maximum number of results. (Optional)
 var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results. (Optional)
-var_list_fields <- list("created_at") # set[character] | A comma separated list of List fields to display. (Optional)
-var_expansions <- list("owner_id") # set[character] | A comma separated list of fields to expand. (Optional)
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_list_fields <- c("created_at") # set[character] | A comma separated list of List fields to display. (Optional)
+var_expansions <- c("owner_id") # set[character] | A comma separated list of fields to expand. (Optional)
+var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
@@ -305,9 +305,9 @@ library(twitter)
 #
 # prepare function argument(s)
 var_id <- "id_example" # character | The ID of the List.
-var_list_fields <- list("created_at") # set[character] | A comma separated list of List fields to display. (Optional)
-var_expansions <- list("owner_id") # set[character] | A comma separated list of fields to expand. (Optional)
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_list_fields <- c("created_at") # set[character] | A comma separated list of List fields to display. (Optional)
+var_expansions <- c("owner_id") # set[character] | A comma separated list of fields to expand. (Optional)
+var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
@@ -577,9 +577,9 @@ library(twitter)
 var_id <- "2244994945" # character | The ID of the User to lookup.
 var_max_results <- 100 # integer | The maximum number of results. (Optional)
 var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results. (Optional)
-var_list_fields <- list("created_at") # set[character] | A comma separated list of List fields to display. (Optional)
-var_expansions <- list("owner_id") # set[character] | A comma separated list of fields to expand. (Optional)
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_list_fields <- c("created_at") # set[character] | A comma separated list of List fields to display. (Optional)
+var_expansions <- c("owner_id") # set[character] | A comma separated list of fields to expand. (Optional)
+var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken
@@ -717,9 +717,9 @@ library(twitter)
 #
 # prepare function argument(s)
 var_id <- "id_example" # character | The ID of the authenticated source User for whom to return results.
-var_list_fields <- list("created_at") # set[character] | A comma separated list of List fields to display. (Optional)
-var_expansions <- list("owner_id") # set[character] | A comma separated list of fields to expand. (Optional)
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_list_fields <- c("created_at") # set[character] | A comma separated list of List fields to display. (Optional)
+var_expansions <- c("owner_id") # set[character] | A comma separated list of fields to expand. (Optional)
+var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 
 api_instance <- twitter_api$new()
 # Configure OAuth2 access token for authorization: OAuth2UserToken
@@ -921,9 +921,9 @@ library(twitter)
 var_id <- "2244994945" # character | The ID of the User to lookup.
 var_max_results <- 100 # integer | The maximum number of results. (Optional)
 var_pagination_token <- "pagination_token_example" # character | This parameter is used to get a specified 'page' of results. (Optional)
-var_list_fields <- list("created_at") # set[character] | A comma separated list of List fields to display. (Optional)
-var_expansions <- list("owner_id") # set[character] | A comma separated list of fields to expand. (Optional)
-var_user_fields <- list("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
+var_list_fields <- c("created_at") # set[character] | A comma separated list of List fields to display. (Optional)
+var_expansions <- c("owner_id") # set[character] | A comma separated list of fields to expand. (Optional)
+var_user_fields <- c("created_at") # set[character] | A comma separated list of User fields to display. (Optional)
 
 api_instance <- twitter_api$new()
 # Configure HTTP bearer authorization: BearerToken

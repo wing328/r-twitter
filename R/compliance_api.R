@@ -155,31 +155,30 @@
 #' ####################  create_batch_compliance_job  ####################
 #'
 #' library(twitter)
-#' var_create_compliance_job_request <- CreateComplianceJobRequest$new() # CreateComplianceJobRequest | 
+#' var_create_compliance_job_request <- CreateComplianceJobRequest$new("tweets", "name_example", "resumable_example") # CreateComplianceJobRequest |
 #'
-#' #Create compliance job
+#' # Create compliance job
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure HTTP bearer authorization: BearerToken
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$compliance_api$create_batch_compliance_job(var_create_compliance_job_request, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$compliance_api$create_batch_compliance_job(var_create_compliance_job_request),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$compliance_api$create_batch_compliance_job(var_create_compliance_job_request, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$compliance_api$create_batch_compliance_job(var_create_compliance_job_request),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `create_batch_compliance_job`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -192,31 +191,30 @@
 #'
 #' library(twitter)
 #' var_id <- "id_example" # character | The ID of the Compliance Job to retrieve.
-#' var_compliance_job_fields <- ["[\"created_at\",\"download_expires_at\",\"download_url\",\"id\",\"name\",\"resumable\",\"status\",\"type\",\"upload_expires_at\",\"upload_url\"]"] # set[character] | A comma separated list of ComplianceJob fields to display.
+#' var_compliance_job_fields <- c("created_at") # set[character] | A comma separated list of ComplianceJob fields to display. (Optional)
 #'
-#' #Get Compliance Job
+#' # Get Compliance Job
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure HTTP bearer authorization: BearerToken
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$compliance_api$get_batch_compliance_job(var_id, compliance_job_fields = var_compliance_job_fields, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$compliance_api$get_batch_compliance_job(var_id, compliance_job_fields = var_compliance_job_fields),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$compliance_api$get_batch_compliance_job(var_id, compliance_job_fields = var_compliance_job_fields, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$compliance_api$get_batch_compliance_job(var_id, compliance_job_fields = var_compliance_job_fields),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `get_batch_compliance_job`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -229,36 +227,35 @@
 #'
 #' library(twitter)
 #' var_partition <- 56 # integer | The partition number.
-#' var_backfill_minutes <- 56 # integer | The number of minutes of backfill requested.
-#' var_start_time <- "2021-02-01T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweet Compliance events will be provided.
-#' var_end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweet Compliance events will be provided.
+#' var_backfill_minutes <- 56 # integer | The number of minutes of backfill requested. (Optional)
+#' var_start_time <- "2021-02-01T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweet Compliance events will be provided. (Optional)
+#' var_end_time <- "2021-02-14T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweet Compliance events will be provided. (Optional)
 #'
-#' #Tweets Compliance stream
+#' # Tweets Compliance stream
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure HTTP bearer authorization: BearerToken
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$compliance_api$get_tweets_compliance_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, data_file = "result.txt"),
-#'              
-#'              # this endpoint supports data streaming via a callback function using the optional `stream_callback` parameter, e.g.
-#'              # api_instance$compliance_api$get_tweets_compliance_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, stream_callback = function(x){ print(length(x)) }),
-#'              
-#'              
-#'              api_instance$compliance_api$get_tweets_compliance_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$compliance_api$get_tweets_compliance_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, data_file = "result.txt"),
+#'
+#'   # this endpoint supports data streaming via a callback function using the optional `stream_callback` parameter, e.g.
+#'   # api_instance$compliance_api$get_tweets_compliance_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, stream_callback = function(x){ print(length(x)) }),
+#'
+#'
+#'   api_instance$compliance_api$get_tweets_compliance_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `get_tweets_compliance_stream`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -271,36 +268,35 @@
 #'
 #' library(twitter)
 #' var_partition <- 56 # integer | The partition number.
-#' var_backfill_minutes <- 56 # integer | The number of minutes of backfill requested.
-#' var_start_time <- "2021-02-01T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the User Compliance events will be provided.
-#' var_end_time <- "2021-02-01T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp from which the User Compliance events will be provided.
+#' var_backfill_minutes <- 56 # integer | The number of minutes of backfill requested. (Optional)
+#' var_start_time <- "2021-02-01T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the User Compliance events will be provided. (Optional)
+#' var_end_time <- "2021-02-01T18:40:40.000Z" # character | YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp from which the User Compliance events will be provided. (Optional)
 #'
-#' #Users Compliance stream
+#' # Users Compliance stream
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure HTTP bearer authorization: BearerToken
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$compliance_api$get_users_compliance_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, data_file = "result.txt"),
-#'              
-#'              # this endpoint supports data streaming via a callback function using the optional `stream_callback` parameter, e.g.
-#'              # api_instance$compliance_api$get_users_compliance_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, stream_callback = function(x){ print(length(x)) }),
-#'              
-#'              
-#'              api_instance$compliance_api$get_users_compliance_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$compliance_api$get_users_compliance_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, data_file = "result.txt"),
+#'
+#'   # this endpoint supports data streaming via a callback function using the optional `stream_callback` parameter, e.g.
+#'   # api_instance$compliance_api$get_users_compliance_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time, stream_callback = function(x){ print(length(x)) }),
+#'
+#'
+#'   api_instance$compliance_api$get_users_compliance_stream(var_partition, backfill_minutes = var_backfill_minutes, start_time = var_start_time, end_time = var_end_time),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `get_users_compliance_stream`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
@@ -313,40 +309,36 @@
 #'
 #' library(twitter)
 #' var_type <- "type_example" # character | Type of Compliance Job to list.
-#' var_status <- "status_example" # character | Status of Compliance Job to list.
-#' var_compliance_job_fields <- ["[\"created_at\",\"download_expires_at\",\"download_url\",\"id\",\"name\",\"resumable\",\"status\",\"type\",\"upload_expires_at\",\"upload_url\"]"] # set[character] | A comma separated list of ComplianceJob fields to display.
+#' var_status <- "status_example" # character | Status of Compliance Job to list. (Optional)
+#' var_compliance_job_fields <- c("created_at") # set[character] | A comma separated list of ComplianceJob fields to display. (Optional)
 #'
-#' #List Compliance Jobs
+#' # List Compliance Jobs
 #' api_instance <- twitter_api$new()
 #'
 #' # Configure HTTP bearer authorization: BearerToken
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' result <- tryCatch(
-#'              
-#'              # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#'              # api_instance$compliance_api$list_batch_compliance_jobs(var_type, status = var_status, compliance_job_fields = var_compliance_job_fields, data_file = "result.txt"),
-#'              
-#'              
-#'              api_instance$compliance_api$list_batch_compliance_jobs(var_type, status = var_status, compliance_job_fields = var_compliance_job_fields),
-#'              ApiException = function(ex) ex
-#'           )
+#'
+#'   # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#'   # api_instance$compliance_api$list_batch_compliance_jobs(var_type, status = var_status, compliance_job_fields = var_compliance_job_fields, data_file = "result.txt"),
+#'
+#'
+#'   api_instance$compliance_api$list_batch_compliance_jobs(var_type, status = var_status, compliance_job_fields = var_compliance_job_fields),
+#'   ApiException = function(ex) ex
+#' )
 #' # In case of error, print the error object
 #' if (!is.null(result$ApiException)) {
 #'   print("Exception occurs when calling `list_batch_compliance_jobs`:")
 #'   dput(result$ApiException$toString())
-#'   
+#'
 #'   # error object
 #'   dput(result$ApiException$error_object$toJSONString())
-#'   
 #' } else {
 #'   # deserialized response object
 #'   print("The response is ...")
 #'   dput(result$toString())
 #' }
-#'
-#'
-#'
 #' }
 #' @importFrom R6 R6Class
 #' @importFrom base64enc base64encode
@@ -375,7 +367,7 @@ ComplianceApi <- R6::R6Class(
     #' @description
     #' Create compliance job
     #'
-    #' @param create_compliance_job_request 
+    #' @param create_compliance_job_request
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @return CreateComplianceJobResponse
@@ -397,7 +389,7 @@ ComplianceApi <- R6::R6Class(
     #' @description
     #' Create compliance job
     #'
-    #' @param create_compliance_job_request 
+    #' @param create_compliance_job_request
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @return API response (CreateComplianceJobResponse) with additional information such as HTTP status code, headers
@@ -413,10 +405,14 @@ ComplianceApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`create_compliance_job_request`)) {
-        rlang::abort(message = "Missing required parameter `create_compliance_job_request`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `create_compliance_job_request`."))
+        rlang::abort(
+          message = "Missing required parameter `create_compliance_job_request`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `create_compliance_job_request`."
+          )
+        )
       }
 
 
@@ -438,18 +434,20 @@ ComplianceApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list("application/json")
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "POST",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "POST",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -460,9 +458,11 @@ ComplianceApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "CreateComplianceJobResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -472,25 +472,31 @@ ComplianceApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Get Compliance Job
@@ -538,41 +544,61 @@ ComplianceApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`id`)) {
-        rlang::abort(message = "Missing required parameter `id`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `id`."))
+        rlang::abort(
+          message = "Missing required parameter `id`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `id`."
+          )
+        )
       }
 
       if (!str_detect(`id`, "^[0-9]{1,19}$")) {
-        rlang::abort(message = "Invalid value for `id` when calling ComplianceApi$get_batch_compliance_job, must conform to the pattern ^[0-9]{1,19}$.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `id` when calling ComplianceApi$get_batch_compliance_job, must conform to the pattern ^[0-9]{1,19}$."))
+        rlang::abort(
+          message = "Invalid value for `id` when calling ComplianceApi$get_batch_compliance_job, must conform to the pattern ^[0-9]{1,19}$.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `id` when calling ComplianceApi$get_batch_compliance_job, must conform to the pattern ^[0-9]{1,19}$."
+          )
+        )
       }
 
       if (length(`compliance_job_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `compliance_job_fields` when calling ComplianceApi$get_batch_compliance_job, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `compliance_job_fields` when calling ComplianceApi$get_batch_compliance_job, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `compliance_job_fields` when calling ComplianceApi$get_batch_compliance_job, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `compliance_job_fields` when calling ComplianceApi$get_batch_compliance_job, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       # check if items are unique
       if (!identical(`compliance_job_fields`, unique(`compliance_job_fields`))) {
-        rlang::abort(message = "Invalid value for `compliance_job_fields` when calling ComplianceApi$get_batch_compliance_job. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `compliance_job_fields` when calling ComplianceApi$get_batch_compliance_job. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `compliance_job_fields` when calling ComplianceApi$get_batch_compliance_job. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `compliance_job_fields` when calling ComplianceApi$get_batch_compliance_job. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `compliance_job_fields`) {
         if (!(query_item %in% c("created_at", "download_expires_at", "download_url", "id", "name", "resumable", "status", "type", "upload_expires_at", "upload_url"))) {
-          rlang::abort(message = "Invalid value for `compliance_job_fields` when calling ComplianceApi$get_batch_compliance_job. Must be [created_at, download_expires_at, download_url, id, name, resumable, status, type, upload_expires_at, upload_url].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `compliance_job_fields` when calling ComplianceApi$get_batch_compliance_job. Must be [created_at, download_expires_at, download_url, id, name, resumable, status, type, upload_expires_at, upload_url]."))
+          rlang::abort(
+            message = "Invalid value for `compliance_job_fields` when calling ComplianceApi$get_batch_compliance_job. Must be [created_at, download_expires_at, download_url, id, name, resumable, status, type, upload_expires_at, upload_url].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `compliance_job_fields` when calling ComplianceApi$get_batch_compliance_job. Must be [created_at, download_expires_at, download_url, id, name, resumable, status, type, upload_expires_at, upload_url]."
+            )
+          )
         }
       }
       query_params[["compliance_job.fields"]] <- I(paste(lapply(`compliance_job_fields`, URLencode, reserved = TRUE), collapse = ","))
@@ -593,18 +619,20 @@ ComplianceApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "GET",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -615,9 +643,11 @@ ComplianceApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "Get2ComplianceJobsIdResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -627,25 +657,31 @@ ComplianceApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Tweets Compliance stream
@@ -664,7 +700,8 @@ ComplianceApi <- R6::R6Class(
     #' @export
     get_tweets_compliance_stream = function(partition, backfill_minutes = NULL, start_time = NULL, end_time = NULL, stream_callback = NULL, data_file = NULL, ...) {
       local_var_response <- self$get_tweets_compliance_stream_with_http_info(partition, backfill_minutes, start_time, end_time, stream_callback = stream_callback, data_file = data_file, ...)
-      if (typeof(stream_callback) == "closure") { # return void if streaming is enabled
+      if (typeof(stream_callback) == "closure") {
+        # return void if streaming is enabled
         return(invisible(NULL))
       }
 
@@ -703,36 +740,56 @@ ComplianceApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`partition`)) {
-        rlang::abort(message = "Missing required parameter `partition`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `partition`."))
+        rlang::abort(
+          message = "Missing required parameter `partition`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `partition`."
+          )
+        )
       }
 
       if (`partition` > 4) {
-        rlang::abort(message = "Invalid value for `partition` when calling ComplianceApi$get_tweets_compliance_stream, must be smaller than or equal to 4.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `partition` when calling ComplianceApi$get_tweets_compliance_stream, must be smaller than or equal to 4."))
+        rlang::abort(
+          message = "Invalid value for `partition` when calling ComplianceApi$get_tweets_compliance_stream, must be smaller than or equal to 4.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `partition` when calling ComplianceApi$get_tweets_compliance_stream, must be smaller than or equal to 4."
+          )
+        )
       }
       if (`partition` < 1) {
-        rlang::abort(message = "Invalid value for `partition` when calling ComplianceApi$get_tweets_compliance_stream, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `partition` when calling ComplianceApi$get_tweets_compliance_stream, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid value for `partition` when calling ComplianceApi$get_tweets_compliance_stream, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `partition` when calling ComplianceApi$get_tweets_compliance_stream, must be bigger than or equal to 1."
+          )
+        )
       }
 
       if (`backfill_minutes` > 5) {
-        rlang::abort(message = "Invalid value for `backfill_minutes` when calling ComplianceApi$get_tweets_compliance_stream, must be smaller than or equal to 5.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `backfill_minutes` when calling ComplianceApi$get_tweets_compliance_stream, must be smaller than or equal to 5."))
+        rlang::abort(
+          message = "Invalid value for `backfill_minutes` when calling ComplianceApi$get_tweets_compliance_stream, must be smaller than or equal to 5.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `backfill_minutes` when calling ComplianceApi$get_tweets_compliance_stream, must be smaller than or equal to 5."
+          )
+        )
       }
       if (`backfill_minutes` < 0) {
-        rlang::abort(message = "Invalid value for `backfill_minutes` when calling ComplianceApi$get_tweets_compliance_stream, must be bigger than or equal to 0.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `backfill_minutes` when calling ComplianceApi$get_tweets_compliance_stream, must be bigger than or equal to 0."))
+        rlang::abort(
+          message = "Invalid value for `backfill_minutes` when calling ComplianceApi$get_tweets_compliance_stream, must be bigger than or equal to 0.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `backfill_minutes` when calling ComplianceApi$get_tweets_compliance_stream, must be bigger than or equal to 0."
+          )
+        )
       }
 
 
@@ -757,21 +814,24 @@ ComplianceApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 stream_callback = stream_callback,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "GET",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        stream_callback = stream_callback,
+        ...
+      )
 
-      if (typeof(stream_callback) == "closure") { # return void if streaming is enabled
+      if (typeof(stream_callback) == "closure") {
+        # return void if streaming is enabled
         return(invisible(NULL))
       }
 
@@ -784,9 +844,11 @@ ComplianceApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "TweetComplianceStreamResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -796,25 +858,31 @@ ComplianceApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' Users Compliance stream
@@ -833,7 +901,8 @@ ComplianceApi <- R6::R6Class(
     #' @export
     get_users_compliance_stream = function(partition, backfill_minutes = NULL, start_time = NULL, end_time = NULL, stream_callback = NULL, data_file = NULL, ...) {
       local_var_response <- self$get_users_compliance_stream_with_http_info(partition, backfill_minutes, start_time, end_time, stream_callback = stream_callback, data_file = data_file, ...)
-      if (typeof(stream_callback) == "closure") { # return void if streaming is enabled
+      if (typeof(stream_callback) == "closure") {
+        # return void if streaming is enabled
         return(invisible(NULL))
       }
 
@@ -872,36 +941,56 @@ ComplianceApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`partition`)) {
-        rlang::abort(message = "Missing required parameter `partition`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `partition`."))
+        rlang::abort(
+          message = "Missing required parameter `partition`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `partition`."
+          )
+        )
       }
 
       if (`partition` > 4) {
-        rlang::abort(message = "Invalid value for `partition` when calling ComplianceApi$get_users_compliance_stream, must be smaller than or equal to 4.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `partition` when calling ComplianceApi$get_users_compliance_stream, must be smaller than or equal to 4."))
+        rlang::abort(
+          message = "Invalid value for `partition` when calling ComplianceApi$get_users_compliance_stream, must be smaller than or equal to 4.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `partition` when calling ComplianceApi$get_users_compliance_stream, must be smaller than or equal to 4."
+          )
+        )
       }
       if (`partition` < 1) {
-        rlang::abort(message = "Invalid value for `partition` when calling ComplianceApi$get_users_compliance_stream, must be bigger than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `partition` when calling ComplianceApi$get_users_compliance_stream, must be bigger than or equal to 1."))
+        rlang::abort(
+          message = "Invalid value for `partition` when calling ComplianceApi$get_users_compliance_stream, must be bigger than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `partition` when calling ComplianceApi$get_users_compliance_stream, must be bigger than or equal to 1."
+          )
+        )
       }
 
       if (`backfill_minutes` > 5) {
-        rlang::abort(message = "Invalid value for `backfill_minutes` when calling ComplianceApi$get_users_compliance_stream, must be smaller than or equal to 5.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `backfill_minutes` when calling ComplianceApi$get_users_compliance_stream, must be smaller than or equal to 5."))
+        rlang::abort(
+          message = "Invalid value for `backfill_minutes` when calling ComplianceApi$get_users_compliance_stream, must be smaller than or equal to 5.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `backfill_minutes` when calling ComplianceApi$get_users_compliance_stream, must be smaller than or equal to 5."
+          )
+        )
       }
       if (`backfill_minutes` < 0) {
-        rlang::abort(message = "Invalid value for `backfill_minutes` when calling ComplianceApi$get_users_compliance_stream, must be bigger than or equal to 0.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `backfill_minutes` when calling ComplianceApi$get_users_compliance_stream, must be bigger than or equal to 0."))
+        rlang::abort(
+          message = "Invalid value for `backfill_minutes` when calling ComplianceApi$get_users_compliance_stream, must be bigger than or equal to 0.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `backfill_minutes` when calling ComplianceApi$get_users_compliance_stream, must be bigger than or equal to 0."
+          )
+        )
       }
 
 
@@ -926,21 +1015,24 @@ ComplianceApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 stream_callback = stream_callback,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "GET",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        stream_callback = stream_callback,
+        ...
+      )
 
-      if (typeof(stream_callback) == "closure") { # return void if streaming is enabled
+      if (typeof(stream_callback) == "closure") {
+        # return void if streaming is enabled
         return(invisible(NULL))
       }
 
@@ -953,9 +1045,11 @@ ComplianceApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "UserComplianceStreamResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -965,25 +1059,31 @@ ComplianceApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     },
     #' List Compliance Jobs
@@ -1033,52 +1133,76 @@ ComplianceApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (missing(`type`)) {
-        rlang::abort(message = "Missing required parameter `type`.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Missing required parameter `type`."))
+        rlang::abort(
+          message = "Missing required parameter `type`.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Missing required parameter `type`."
+          )
+        )
       }
 
 
 
       if (length(`compliance_job_fields`) < 1) {
-        rlang::abort(message = "Invalid length for `compliance_job_fields` when calling ComplianceApi$list_batch_compliance_jobs, number of items must be greater than or equal to 1.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid length for `compliance_job_fields` when calling ComplianceApi$list_batch_compliance_jobs, number of items must be greater than or equal to 1."))
+        rlang::abort(
+          message = "Invalid length for `compliance_job_fields` when calling ComplianceApi$list_batch_compliance_jobs, number of items must be greater than or equal to 1.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid length for `compliance_job_fields` when calling ComplianceApi$list_batch_compliance_jobs, number of items must be greater than or equal to 1."
+          )
+        )
       }
 
       if (!(`type` %in% c("tweets", "users"))) {
-        rlang::abort(message = "Invalid value for `type` when calling ComplianceApi$list_batch_compliance_jobs. Must be [tweets, users].",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `type` when calling ComplianceApi$list_batch_compliance_jobs. Must be [tweets, users]."))
+        rlang::abort(
+          message = "Invalid value for `type` when calling ComplianceApi$list_batch_compliance_jobs. Must be [tweets, users].",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `type` when calling ComplianceApi$list_batch_compliance_jobs. Must be [tweets, users]."
+          )
+        )
       }
       query_params[["type"]] <- `type`
 
       if (!(`status` %in% c("created", "in_progress", "failed", "complete"))) {
-        rlang::abort(message = "Invalid value for `status` when calling ComplianceApi$list_batch_compliance_jobs. Must be [created, in_progress, failed, complete].",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `status` when calling ComplianceApi$list_batch_compliance_jobs. Must be [created, in_progress, failed, complete]."))
+        rlang::abort(
+          message = "Invalid value for `status` when calling ComplianceApi$list_batch_compliance_jobs. Must be [created, in_progress, failed, complete].",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `status` when calling ComplianceApi$list_batch_compliance_jobs. Must be [created, in_progress, failed, complete]."
+          )
+        )
       }
       query_params[["status"]] <- `status`
 
       # check if items are unique
       if (!identical(`compliance_job_fields`, unique(`compliance_job_fields`))) {
-        rlang::abort(message = "Invalid value for `compliance_job_fields` when calling ComplianceApi$list_batch_compliance_jobs. Items must be unique.",
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(status = 0,
-                                                     reason = "Invalid value for `compliance_job_fields` when calling ComplianceApi$list_batch_compliance_jobs. Items must be unique."))
+        rlang::abort(
+          message = "Invalid value for `compliance_job_fields` when calling ComplianceApi$list_batch_compliance_jobs. Items must be unique.",
+          .subclass = "ApiException",
+          ApiException = ApiException$new(
+            status = 0,
+            reason = "Invalid value for `compliance_job_fields` when calling ComplianceApi$list_batch_compliance_jobs. Items must be unique."
+          )
+        )
       }
       # no explore
       # validate enum values
       for (query_item in `compliance_job_fields`) {
         if (!(query_item %in% c("created_at", "download_expires_at", "download_url", "id", "name", "resumable", "status", "type", "upload_expires_at", "upload_url"))) {
-          rlang::abort(message = "Invalid value for `compliance_job_fields` when calling ComplianceApi$list_batch_compliance_jobs. Must be [created_at, download_expires_at, download_url, id, name, resumable, status, type, upload_expires_at, upload_url].",
-                       .subclass = "ApiException",
-                       ApiException = ApiException$new(status = 0,
-                                                       reason = "Invalid value for `compliance_job_fields` when calling ComplianceApi$list_batch_compliance_jobs. Must be [created_at, download_expires_at, download_url, id, name, resumable, status, type, upload_expires_at, upload_url]."))
+          rlang::abort(
+            message = "Invalid value for `compliance_job_fields` when calling ComplianceApi$list_batch_compliance_jobs. Must be [created_at, download_expires_at, download_url, id, name, resumable, status, type, upload_expires_at, upload_url].",
+            .subclass = "ApiException",
+            ApiException = ApiException$new(
+              status = 0,
+              reason = "Invalid value for `compliance_job_fields` when calling ComplianceApi$list_batch_compliance_jobs. Must be [created_at, download_expires_at, download_url, id, name, resumable, status, type, upload_expires_at, upload_url]."
+            )
+          )
         }
       }
       query_params[["compliance_job.fields"]] <- I(paste(lapply(`compliance_job_fields`, URLencode, reserved = TRUE), collapse = ","))
@@ -1095,18 +1219,20 @@ ComplianceApi <- R6::R6Class(
       # The Content-Type representation header
       local_var_content_types <- list()
 
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
+      local_var_resp <- self$api_client$CallApi(
+        url = paste0(self$api_client$base_path, local_var_url_path),
+        method = "GET",
+        query_params = query_params,
+        header_params = header_params,
+        form_params = form_params,
+        file_params = file_params,
+        accepts = local_var_accepts,
+        content_types = local_var_content_types,
+        body = local_var_body,
+        is_oauth = is_oauth,
+        oauth_scopes = oauth_scopes,
+        ...
+      )
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
         # save response in a file
@@ -1117,9 +1243,11 @@ ComplianceApi <- R6::R6Class(
         deserialized_resp_obj <- tryCatch(
           self$api_client$deserialize(local_var_resp$response, "Get2ComplianceJobsResponse", loadNamespace("twitter")),
           error = function(e) {
-            rlang::abort(message = "Failed to deserialize response",
-                         .subclass = "ApiException",
-                         ApiException = ApiException$new(http_response = local_var_resp))
+            rlang::abort(
+              message = "Failed to deserialize response",
+              .subclass = "ApiException",
+              ApiException = ApiException$new(http_response = local_var_resp)
+            )
           }
         )
         local_var_resp$content <- deserialized_resp_obj
@@ -1129,25 +1257,31 @@ ComplianceApi <- R6::R6Class(
         if (local_var_error_msg == "") {
           local_var_error_msg <- paste("Server returned ", local_var_resp$status_code, " response status code.")
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api client exception encountered."
         }
-        rlang::abort(message = local_var_error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = local_var_error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
         local_var_error_msg <- local_var_resp$response
         if (local_var_error_msg == "") {
           local_var_error_msg <- "Api server exception encountered."
         }
-        rlang::abort(message = error_msg,
-                     .subclass = "ApiException",
-                     ApiException = ApiException$new(http_response = local_var_resp))
+        rlang::abort(
+          message = error_msg,
+          .subclass = "ApiException",
+          ApiException = ApiException$new(http_response = local_var_resp)
+        )
       }
     }
   )
