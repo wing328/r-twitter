@@ -153,8 +153,8 @@ TweetCreateRequestGeo <- R6::R6Class(
 #
 ## Below is an example to define the print fnuction
 # TweetCreateRequestGeo$set("public", "print", function(...) {
-#  print(jsonlite::prettify(self$toJSONString()))
-#  invisible(self)
+#   print(jsonlite::prettify(self$toJSONString()))
+#   invisible(self)
 # })
 ## Uncomment below to lock the class to prevent modifications to the method or field
 # TweetCreateRequestGeo$lock()

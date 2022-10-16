@@ -56,6 +56,17 @@ install.packages("twitter_1.0.0.tar.gz", repos = NULL, type = "source")
 library(twitter)
 ```
 
+### Reformat code
+
+To reformat code using [styler](https://styler.r-lib.org/index.html), please run the following in the R console:
+
+```R
+install.packages("remotes")
+remotes::install_github("r-lib/styler@v1.7.0.9003")
+library("styler")
+style_dir()
+```
+
 ## Documentation for API Endpoints
 
 All URIs are relative to *https://api.twitter.com*

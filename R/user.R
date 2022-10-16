@@ -81,7 +81,9 @@ User <- R6::R6Class(
         self$`username` <- `username`
       }
       if (!is.null(`created_at`)) {
-        stopifnot(is.character(`created_at`), length(`created_at`) == 1)
+        if (!is.character(`created_at`)) {
+          stop(paste("Error! Invalid DateTime. Must be a string:", `created_at`))
+        }
         self$`created_at` <- `created_at`
       }
       if (!is.null(`description`)) {
@@ -269,7 +271,8 @@ User <- R6::R6Class(
       }
       # process additional properties/fields in the payload
       for (key in names(this_object)) {
-        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+        if (!(key %in% self$`_field_list`)) {
+          # json key not in list of fields
           self$additional_properties[[key]] <- this_object[[key]]
         }
       }
@@ -436,7 +439,8 @@ User <- R6::R6Class(
       self$`withheld` <- UserWithheld$new()$fromJSON(jsonlite::toJSON(this_object$withheld, auto_unbox = TRUE, digits = NA))
       # process additional properties/fields in the payload
       for (key in names(this_object)) {
-        if (!(key %in% self$`_field_list`)) { # json key not in list of fields
+        if (!(key %in% self$`_field_list`)) {
+          # json key not in list of fields
           self$additional_properties[[key]] <- this_object[[key]]
         }
       }
@@ -575,8 +579,8 @@ User <- R6::R6Class(
 #
 ## Below is an example to define the print fnuction
 # User$set("public", "print", function(...) {
-#  print(jsonlite::prettify(self$toJSONString()))
-#  invisible(self)
+#   print(jsonlite::prettify(self$toJSONString()))
+#   invisible(self)
 # })
 ## Uncomment below to lock the class to prevent modifications to the method or field
 # User$lock()
