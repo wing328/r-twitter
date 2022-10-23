@@ -36,14 +36,18 @@ ClientForbiddenProblemAllOf <- R6::R6Class(
         if (!(`reason` %in% c("official-client-forbidden", "client-not-enrolled"))) {
           stop(paste("Error! \"", `reason`, "\" cannot be assigned to `reason`. Must be \"official-client-forbidden\", \"client-not-enrolled\".", sep = ""))
         }
-        stopifnot(is.character(`reason`), length(`reason`) == 1)
+        if (!(is.character(`reason`) && length(`reason`) == 1)) {
+          stop(paste("Error! Invalid data for `reason`. Must be a string:", `reason`))
+        }
         self$`reason` <- `reason`
       }
       if (!is.null(`registration_url`)) {
-        stopifnot(is.character(`registration_url`), length(`registration_url`) == 1)
+        if (!(is.character(`registration_url`) && length(`registration_url`) == 1)) {
+          stop(paste("Error! Invalid data for `registration_url`. Must be a string:", `registration_url`))
+        }
         # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
         if (!stringr::str_detect(`registration_url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-          stop(paste("Error! Invalid URL:", `registration_url`))
+          stop(paste("Error! Invalid data for `registration_url`. Must be a URL:", `registration_url`))
         }
         self$`registration_url` <- `registration_url`
       }
@@ -95,7 +99,7 @@ ClientForbiddenProblemAllOf <- R6::R6Class(
       if (!is.null(this_object$`registration_url`)) {
         # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
         if (!stringr::str_detect(this_object$`registration_url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-          stop(paste("Error! Invalid URL:", this_object$`registration_url`))
+          stop(paste("Error! Invalid data for `registration_url`. Must be a URL:", this_object$`registration_url`))
         }
         self$`registration_url` <- this_object$`registration_url`
       }
@@ -159,7 +163,7 @@ ClientForbiddenProblemAllOf <- R6::R6Class(
       self$`reason` <- this_object$`reason`
       # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
       if (!stringr::str_detect(this_object$`registration_url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-        stop(paste("Error! Invalid URL:", this_object$`registration_url`))
+        stop(paste("Error! Invalid data for `registration_url`. Must be a URL:", this_object$`registration_url`))
       }
       self$`registration_url` <- this_object$`registration_url`
       # process additional properties/fields in the payload

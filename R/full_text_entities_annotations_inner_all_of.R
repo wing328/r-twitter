@@ -36,15 +36,21 @@ FullTextEntitiesAnnotationsInnerAllOf <- R6::R6Class(
     #' @export
     initialize = function(`normalized_text` = NULL, `probability` = NULL, `type` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`normalized_text`)) {
-        stopifnot(is.character(`normalized_text`), length(`normalized_text`) == 1)
+        if (!(is.character(`normalized_text`) && length(`normalized_text`) == 1)) {
+          stop(paste("Error! Invalid data for `normalized_text`. Must be a string:", `normalized_text`))
+        }
         self$`normalized_text` <- `normalized_text`
       }
       if (!is.null(`probability`)) {
-        stopifnot(is.numeric(`probability`), length(`probability`) == 1)
+        if (!(is.numeric(`probability`) && length(`probability`) == 1)) {
+          stop(paste("Error! Invalid data for `probability`. Must be a number:", `probability`))
+        }
         self$`probability` <- `probability`
       }
       if (!is.null(`type`)) {
-        stopifnot(is.character(`type`), length(`type`) == 1)
+        if (!(is.character(`type`) && length(`type`) == 1)) {
+          stop(paste("Error! Invalid data for `type`. Must be a string:", `type`))
+        }
         self$`type` <- `type`
       }
       if (!is.null(additional_properties)) {

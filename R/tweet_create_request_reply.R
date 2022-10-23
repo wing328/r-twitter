@@ -28,7 +28,9 @@ TweetCreateRequestReply <- R6::R6Class(
     #' @export
     initialize = function(`in_reply_to_tweet_id`, `exclude_reply_user_ids` = NULL, ...) {
       if (!missing(`in_reply_to_tweet_id`)) {
-        stopifnot(is.character(`in_reply_to_tweet_id`), length(`in_reply_to_tweet_id`) == 1)
+        if (!(is.character(`in_reply_to_tweet_id`) && length(`in_reply_to_tweet_id`) == 1)) {
+          stop(paste("Error! Invalid data for `in_reply_to_tweet_id`. Must be a string:", `in_reply_to_tweet_id`))
+        }
         self$`in_reply_to_tweet_id` <- `in_reply_to_tweet_id`
       }
       if (!is.null(`exclude_reply_user_ids`)) {
@@ -128,7 +130,9 @@ TweetCreateRequestReply <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `in_reply_to_tweet_id`
       if (!is.null(input_json$`in_reply_to_tweet_id`)) {
-        stopifnot(is.character(input_json$`in_reply_to_tweet_id`), length(input_json$`in_reply_to_tweet_id`) == 1)
+        if (!(is.character(input_json$`in_reply_to_tweet_id`) && length(input_json$`in_reply_to_tweet_id`) == 1)) {
+          stop(paste("Error! Invalid data for `in_reply_to_tweet_id`. Must be a string:", input_json$`in_reply_to_tweet_id`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for TweetCreateRequestReply: the required field `in_reply_to_tweet_id` is missing."))
       }

@@ -36,15 +36,21 @@ ListCreateRequest <- R6::R6Class(
     #' @export
     initialize = function(`name`, `description` = NULL, `item_private` = FALSE, additional_properties = NULL, ...) {
       if (!missing(`name`)) {
-        stopifnot(is.character(`name`), length(`name`) == 1)
+        if (!(is.character(`name`) && length(`name`) == 1)) {
+          stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
+        }
         self$`name` <- `name`
       }
       if (!is.null(`description`)) {
-        stopifnot(is.character(`description`), length(`description`) == 1)
+        if (!(is.character(`description`) && length(`description`) == 1)) {
+          stop(paste("Error! Invalid data for `description`. Must be a string:", `description`))
+        }
         self$`description` <- `description`
       }
       if (!is.null(`item_private`)) {
-        stopifnot(is.logical(`item_private`), length(`item_private`) == 1)
+        if (!(is.logical(`item_private`) && length(`item_private`) == 1)) {
+          stop(paste("Error! Invalid data for `item_private`. Must be a boolean:", `item_private`))
+        }
         self$`item_private` <- `item_private`
       }
       if (!is.null(additional_properties)) {
@@ -185,7 +191,9 @@ ListCreateRequest <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `name`
       if (!is.null(input_json$`name`)) {
-        stopifnot(is.character(input_json$`name`), length(input_json$`name`) == 1)
+        if (!(is.character(input_json$`name`) && length(input_json$`name`) == 1)) {
+          stop(paste("Error! Invalid data for `name`. Must be a string:", input_json$`name`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for ListCreateRequest: the required field `name` is missing."))
       }

@@ -42,23 +42,33 @@ Get2UsersIdMentionsResponseMeta <- R6::R6Class(
     #' @export
     initialize = function(`newest_id` = NULL, `next_token` = NULL, `oldest_id` = NULL, `previous_token` = NULL, `result_count` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`newest_id`)) {
-        stopifnot(is.character(`newest_id`), length(`newest_id`) == 1)
+        if (!(is.character(`newest_id`) && length(`newest_id`) == 1)) {
+          stop(paste("Error! Invalid data for `newest_id`. Must be a string:", `newest_id`))
+        }
         self$`newest_id` <- `newest_id`
       }
       if (!is.null(`next_token`)) {
-        stopifnot(is.character(`next_token`), length(`next_token`) == 1)
+        if (!(is.character(`next_token`) && length(`next_token`) == 1)) {
+          stop(paste("Error! Invalid data for `next_token`. Must be a string:", `next_token`))
+        }
         self$`next_token` <- `next_token`
       }
       if (!is.null(`oldest_id`)) {
-        stopifnot(is.character(`oldest_id`), length(`oldest_id`) == 1)
+        if (!(is.character(`oldest_id`) && length(`oldest_id`) == 1)) {
+          stop(paste("Error! Invalid data for `oldest_id`. Must be a string:", `oldest_id`))
+        }
         self$`oldest_id` <- `oldest_id`
       }
       if (!is.null(`previous_token`)) {
-        stopifnot(is.character(`previous_token`), length(`previous_token`) == 1)
+        if (!(is.character(`previous_token`) && length(`previous_token`) == 1)) {
+          stop(paste("Error! Invalid data for `previous_token`. Must be a string:", `previous_token`))
+        }
         self$`previous_token` <- `previous_token`
       }
       if (!is.null(`result_count`)) {
-        stopifnot(is.numeric(`result_count`), length(`result_count`) == 1)
+        if (!(is.numeric(`result_count`) && length(`result_count`) == 1)) {
+          stop(paste("Error! Invalid data for `result_count`. Must be an integer:", `result_count`))
+        }
         self$`result_count` <- `result_count`
       }
       if (!is.null(additional_properties)) {

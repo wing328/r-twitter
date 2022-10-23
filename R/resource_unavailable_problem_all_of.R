@@ -36,18 +36,24 @@ ResourceUnavailableProblemAllOf <- R6::R6Class(
     #' @export
     initialize = function(`parameter`, `resource_id`, `resource_type`, additional_properties = NULL, ...) {
       if (!missing(`parameter`)) {
-        stopifnot(is.character(`parameter`), length(`parameter`) == 1)
+        if (!(is.character(`parameter`) && length(`parameter`) == 1)) {
+          stop(paste("Error! Invalid data for `parameter`. Must be a string:", `parameter`))
+        }
         self$`parameter` <- `parameter`
       }
       if (!missing(`resource_id`)) {
-        stopifnot(is.character(`resource_id`), length(`resource_id`) == 1)
+        if (!(is.character(`resource_id`) && length(`resource_id`) == 1)) {
+          stop(paste("Error! Invalid data for `resource_id`. Must be a string:", `resource_id`))
+        }
         self$`resource_id` <- `resource_id`
       }
       if (!missing(`resource_type`)) {
         if (!(`resource_type` %in% c("user", "tweet", "media", "list", "space"))) {
           stop(paste("Error! \"", `resource_type`, "\" cannot be assigned to `resource_type`. Must be \"user\", \"tweet\", \"media\", \"list\", \"space\".", sep = ""))
         }
-        stopifnot(is.character(`resource_type`), length(`resource_type`) == 1)
+        if (!(is.character(`resource_type`) && length(`resource_type`) == 1)) {
+          stop(paste("Error! Invalid data for `resource_type`. Must be a string:", `resource_type`))
+        }
         self$`resource_type` <- `resource_type`
       }
       if (!is.null(additional_properties)) {
@@ -194,19 +200,25 @@ ResourceUnavailableProblemAllOf <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `parameter`
       if (!is.null(input_json$`parameter`)) {
-        stopifnot(is.character(input_json$`parameter`), length(input_json$`parameter`) == 1)
+        if (!(is.character(input_json$`parameter`) && length(input_json$`parameter`) == 1)) {
+          stop(paste("Error! Invalid data for `parameter`. Must be a string:", input_json$`parameter`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for ResourceUnavailableProblemAllOf: the required field `parameter` is missing."))
       }
       # check the required field `resource_id`
       if (!is.null(input_json$`resource_id`)) {
-        stopifnot(is.character(input_json$`resource_id`), length(input_json$`resource_id`) == 1)
+        if (!(is.character(input_json$`resource_id`) && length(input_json$`resource_id`) == 1)) {
+          stop(paste("Error! Invalid data for `resource_id`. Must be a string:", input_json$`resource_id`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for ResourceUnavailableProblemAllOf: the required field `resource_id` is missing."))
       }
       # check the required field `resource_type`
       if (!is.null(input_json$`resource_type`)) {
-        stopifnot(is.character(input_json$`resource_type`), length(input_json$`resource_type`) == 1)
+        if (!(is.character(input_json$`resource_type`) && length(input_json$`resource_type`) == 1)) {
+          stop(paste("Error! Invalid data for `resource_type`. Must be a string:", input_json$`resource_type`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for ResourceUnavailableProblemAllOf: the required field `resource_type` is missing."))
       }

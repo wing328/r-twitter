@@ -30,7 +30,9 @@ VideoAllOfPublicMetrics <- R6::R6Class(
     #' @export
     initialize = function(`view_count` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`view_count`)) {
-        stopifnot(is.numeric(`view_count`), length(`view_count`) == 1)
+        if (!(is.numeric(`view_count`) && length(`view_count`) == 1)) {
+          stop(paste("Error! Invalid data for `view_count`. Must be an integer:", `view_count`))
+        }
         self$`view_count` <- `view_count`
       }
       if (!is.null(additional_properties)) {

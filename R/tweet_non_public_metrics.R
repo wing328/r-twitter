@@ -30,7 +30,9 @@ TweetNonPublicMetrics <- R6::R6Class(
     #' @export
     initialize = function(`impression_count` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`impression_count`)) {
-        stopifnot(is.numeric(`impression_count`), length(`impression_count`) == 1)
+        if (!(is.numeric(`impression_count`) && length(`impression_count`) == 1)) {
+          stop(paste("Error! Invalid data for `impression_count`. Must be an integer:", `impression_count`))
+        }
         self$`impression_count` <- `impression_count`
       }
       if (!is.null(additional_properties)) {

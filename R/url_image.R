@@ -36,19 +36,25 @@ UrlImage <- R6::R6Class(
     #' @export
     initialize = function(`height` = NULL, `url` = NULL, `width` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`height`)) {
-        stopifnot(is.numeric(`height`), length(`height`) == 1)
+        if (!(is.numeric(`height`) && length(`height`) == 1)) {
+          stop(paste("Error! Invalid data for `height`. Must be an integer:", `height`))
+        }
         self$`height` <- `height`
       }
       if (!is.null(`url`)) {
-        stopifnot(is.character(`url`), length(`url`) == 1)
+        if (!(is.character(`url`) && length(`url`) == 1)) {
+          stop(paste("Error! Invalid data for `url`. Must be a string:", `url`))
+        }
         # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
         if (!stringr::str_detect(`url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-          stop(paste("Error! Invalid URL:", `url`))
+          stop(paste("Error! Invalid data for `url`. Must be a URL:", `url`))
         }
         self$`url` <- `url`
       }
       if (!is.null(`width`)) {
-        stopifnot(is.numeric(`width`), length(`width`) == 1)
+        if (!(is.numeric(`width`) && length(`width`) == 1)) {
+          stop(paste("Error! Invalid data for `width`. Must be an integer:", `width`))
+        }
         self$`width` <- `width`
       }
       if (!is.null(additional_properties)) {
@@ -100,7 +106,7 @@ UrlImage <- R6::R6Class(
       if (!is.null(this_object$`url`)) {
         # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
         if (!stringr::str_detect(this_object$`url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-          stop(paste("Error! Invalid URL:", this_object$`url`))
+          stop(paste("Error! Invalid data for `url`. Must be a URL:", this_object$`url`))
         }
         self$`url` <- this_object$`url`
       }
@@ -172,7 +178,7 @@ UrlImage <- R6::R6Class(
       self$`height` <- this_object$`height`
       # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
       if (!stringr::str_detect(this_object$`url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-        stop(paste("Error! Invalid URL:", this_object$`url`))
+        stop(paste("Error! Invalid data for `url`. Must be a URL:", this_object$`url`))
       }
       self$`url` <- this_object$`url`
       self$`width` <- this_object$`width`

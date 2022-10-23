@@ -30,7 +30,9 @@ ListAddUserRequest <- R6::R6Class(
     #' @export
     initialize = function(`user_id`, additional_properties = NULL, ...) {
       if (!missing(`user_id`)) {
-        stopifnot(is.character(`user_id`), length(`user_id`) == 1)
+        if (!(is.character(`user_id`) && length(`user_id`) == 1)) {
+          stop(paste("Error! Invalid data for `user_id`. Must be a string:", `user_id`))
+        }
         self$`user_id` <- `user_id`
       }
       if (!is.null(additional_properties)) {
@@ -139,7 +141,9 @@ ListAddUserRequest <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `user_id`
       if (!is.null(input_json$`user_id`)) {
-        stopifnot(is.character(input_json$`user_id`), length(input_json$`user_id`) == 1)
+        if (!(is.character(input_json$`user_id`) && length(input_json$`user_id`) == 1)) {
+          stop(paste("Error! Invalid data for `user_id`. Must be a string:", input_json$`user_id`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for ListAddUserRequest: the required field `user_id` is missing."))
       }

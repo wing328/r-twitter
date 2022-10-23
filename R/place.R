@@ -51,11 +51,15 @@ Place <- R6::R6Class(
     #' @export
     initialize = function(`full_name`, `id`, `contained_within` = NULL, `country` = NULL, `country_code` = NULL, `geo` = NULL, `name` = NULL, `place_type` = NULL, additional_properties = NULL, ...) {
       if (!missing(`full_name`)) {
-        stopifnot(is.character(`full_name`), length(`full_name`) == 1)
+        if (!(is.character(`full_name`) && length(`full_name`) == 1)) {
+          stop(paste("Error! Invalid data for `full_name`. Must be a string:", `full_name`))
+        }
         self$`full_name` <- `full_name`
       }
       if (!missing(`id`)) {
-        stopifnot(is.character(`id`), length(`id`) == 1)
+        if (!(is.character(`id`) && length(`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
+        }
         self$`id` <- `id`
       }
       if (!is.null(`contained_within`)) {
@@ -64,11 +68,15 @@ Place <- R6::R6Class(
         self$`contained_within` <- `contained_within`
       }
       if (!is.null(`country`)) {
-        stopifnot(is.character(`country`), length(`country`) == 1)
+        if (!(is.character(`country`) && length(`country`) == 1)) {
+          stop(paste("Error! Invalid data for `country`. Must be a string:", `country`))
+        }
         self$`country` <- `country`
       }
       if (!is.null(`country_code`)) {
-        stopifnot(is.character(`country_code`), length(`country_code`) == 1)
+        if (!(is.character(`country_code`) && length(`country_code`) == 1)) {
+          stop(paste("Error! Invalid data for `country_code`. Must be a string:", `country_code`))
+        }
         self$`country_code` <- `country_code`
       }
       if (!is.null(`geo`)) {
@@ -76,7 +84,9 @@ Place <- R6::R6Class(
         self$`geo` <- `geo`
       }
       if (!is.null(`name`)) {
-        stopifnot(is.character(`name`), length(`name`) == 1)
+        if (!(is.character(`name`) && length(`name`) == 1)) {
+          stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
+        }
         self$`name` <- `name`
       }
       if (!is.null(`place_type`)) {
@@ -305,13 +315,17 @@ Place <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `full_name`
       if (!is.null(input_json$`full_name`)) {
-        stopifnot(is.character(input_json$`full_name`), length(input_json$`full_name`) == 1)
+        if (!(is.character(input_json$`full_name`) && length(input_json$`full_name`) == 1)) {
+          stop(paste("Error! Invalid data for `full_name`. Must be a string:", input_json$`full_name`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for Place: the required field `full_name` is missing."))
       }
       # check the required field `id`
       if (!is.null(input_json$`id`)) {
-        stopifnot(is.character(input_json$`id`), length(input_json$`id`) == 1)
+        if (!(is.character(input_json$`id`) && length(input_json$`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", input_json$`id`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for Place: the required field `id` is missing."))
       }

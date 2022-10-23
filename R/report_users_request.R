@@ -28,7 +28,9 @@ ReportUsersRequest <- R6::R6Class(
     #' @export
     initialize = function(`description`, `user_ids`, ...) {
       if (!missing(`description`)) {
-        stopifnot(is.character(`description`), length(`description`) == 1)
+        if (!(is.character(`description`) && length(`description`) == 1)) {
+          stop(paste("Error! Invalid data for `description`. Must be a string:", `description`))
+        }
         self$`description` <- `description`
       }
       if (!missing(`user_ids`)) {
@@ -128,7 +130,9 @@ ReportUsersRequest <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `description`
       if (!is.null(input_json$`description`)) {
-        stopifnot(is.character(input_json$`description`), length(input_json$`description`) == 1)
+        if (!(is.character(input_json$`description`) && length(input_json$`description`) == 1)) {
+          stop(paste("Error! Invalid data for `description`. Must be a string:", input_json$`description`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for ReportUsersRequest: the required field `description` is missing."))
       }

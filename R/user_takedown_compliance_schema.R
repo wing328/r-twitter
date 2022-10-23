@@ -36,8 +36,8 @@ UserTakedownComplianceSchema <- R6::R6Class(
     #' @export
     initialize = function(`event_at`, `user`, `withheld_in_countries`, additional_properties = NULL, ...) {
       if (!missing(`event_at`)) {
-        if (!is.character(`event_at`)) {
-          stop(paste("Error! Invalid DateTime. Must be a string:", `event_at`))
+        if (!(is.character(`event_at`) && length(`event_at`) == 1)) {
+          stop(paste("Error! Invalid data for `event_at`. Must be a string:", `event_at`))
         }
         self$`event_at` <- `event_at`
       }
@@ -190,7 +190,9 @@ UserTakedownComplianceSchema <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `event_at`
       if (!is.null(input_json$`event_at`)) {
-        stopifnot(is.character(input_json$`event_at`), length(input_json$`event_at`) == 1)
+        if (!(is.character(input_json$`event_at`) && length(input_json$`event_at`) == 1)) {
+          stop(paste("Error! Invalid data for `event_at`. Must be a string:", input_json$`event_at`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for UserTakedownComplianceSchema: the required field `event_at` is missing."))
       }

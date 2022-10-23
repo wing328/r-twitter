@@ -30,7 +30,9 @@ TweetHideResponseData <- R6::R6Class(
     #' @export
     initialize = function(`hidden` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`hidden`)) {
-        stopifnot(is.logical(`hidden`), length(`hidden`) == 1)
+        if (!(is.logical(`hidden`) && length(`hidden`) == 1)) {
+          stop(paste("Error! Invalid data for `hidden`. Must be a boolean:", `hidden`))
+        }
         self$`hidden` <- `hidden`
       }
       if (!is.null(additional_properties)) {

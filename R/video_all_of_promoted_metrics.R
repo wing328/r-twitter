@@ -45,27 +45,39 @@ VideoAllOfPromotedMetrics <- R6::R6Class(
     #' @export
     initialize = function(`playback_0_count` = NULL, `playback_100_count` = NULL, `playback_25_count` = NULL, `playback_50_count` = NULL, `playback_75_count` = NULL, `view_count` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`playback_0_count`)) {
-        stopifnot(is.numeric(`playback_0_count`), length(`playback_0_count`) == 1)
+        if (!(is.numeric(`playback_0_count`) && length(`playback_0_count`) == 1)) {
+          stop(paste("Error! Invalid data for `playback_0_count`. Must be an integer:", `playback_0_count`))
+        }
         self$`playback_0_count` <- `playback_0_count`
       }
       if (!is.null(`playback_100_count`)) {
-        stopifnot(is.numeric(`playback_100_count`), length(`playback_100_count`) == 1)
+        if (!(is.numeric(`playback_100_count`) && length(`playback_100_count`) == 1)) {
+          stop(paste("Error! Invalid data for `playback_100_count`. Must be an integer:", `playback_100_count`))
+        }
         self$`playback_100_count` <- `playback_100_count`
       }
       if (!is.null(`playback_25_count`)) {
-        stopifnot(is.numeric(`playback_25_count`), length(`playback_25_count`) == 1)
+        if (!(is.numeric(`playback_25_count`) && length(`playback_25_count`) == 1)) {
+          stop(paste("Error! Invalid data for `playback_25_count`. Must be an integer:", `playback_25_count`))
+        }
         self$`playback_25_count` <- `playback_25_count`
       }
       if (!is.null(`playback_50_count`)) {
-        stopifnot(is.numeric(`playback_50_count`), length(`playback_50_count`) == 1)
+        if (!(is.numeric(`playback_50_count`) && length(`playback_50_count`) == 1)) {
+          stop(paste("Error! Invalid data for `playback_50_count`. Must be an integer:", `playback_50_count`))
+        }
         self$`playback_50_count` <- `playback_50_count`
       }
       if (!is.null(`playback_75_count`)) {
-        stopifnot(is.numeric(`playback_75_count`), length(`playback_75_count`) == 1)
+        if (!(is.numeric(`playback_75_count`) && length(`playback_75_count`) == 1)) {
+          stop(paste("Error! Invalid data for `playback_75_count`. Must be an integer:", `playback_75_count`))
+        }
         self$`playback_75_count` <- `playback_75_count`
       }
       if (!is.null(`view_count`)) {
-        stopifnot(is.numeric(`view_count`), length(`view_count`) == 1)
+        if (!(is.numeric(`view_count`) && length(`view_count`) == 1)) {
+          stop(paste("Error! Invalid data for `view_count`. Must be an integer:", `view_count`))
+        }
         self$`view_count` <- `view_count`
       }
       if (!is.null(additional_properties)) {

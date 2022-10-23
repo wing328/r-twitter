@@ -33,11 +33,15 @@ Error <- R6::R6Class(
     #' @export
     initialize = function(`code`, `message`, additional_properties = NULL, ...) {
       if (!missing(`code`)) {
-        stopifnot(is.numeric(`code`), length(`code`) == 1)
+        if (!(is.numeric(`code`) && length(`code`) == 1)) {
+          stop(paste("Error! Invalid data for `code`. Must be an integer:", `code`))
+        }
         self$`code` <- `code`
       }
       if (!missing(`message`)) {
-        stopifnot(is.character(`message`), length(`message`) == 1)
+        if (!(is.character(`message`) && length(`message`) == 1)) {
+          stop(paste("Error! Invalid data for `message`. Must be a string:", `message`))
+        }
         self$`message` <- `message`
       }
       if (!is.null(additional_properties)) {
@@ -162,13 +166,17 @@ Error <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `code`
       if (!is.null(input_json$`code`)) {
-        stopifnot(is.numeric(input_json$`code`), length(input_json$`code`) == 1)
+        if (!(is.numeric(input_json$`code`) && length(input_json$`code`) == 1)) {
+          stop(paste("Error! Invalid data for `code`. Must be an integer:", input_json$`code`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for Error: the required field `code` is missing."))
       }
       # check the required field `message`
       if (!is.null(input_json$`message`)) {
-        stopifnot(is.character(input_json$`message`), length(input_json$`message`) == 1)
+        if (!(is.character(input_json$`message`) && length(input_json$`message`) == 1)) {
+          stop(paste("Error! Invalid data for `message`. Must be a string:", input_json$`message`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for Error: the required field `message` is missing."))
       }

@@ -30,7 +30,9 @@ CashtagFields <- R6::R6Class(
     #' @export
     initialize = function(`tag`, additional_properties = NULL, ...) {
       if (!missing(`tag`)) {
-        stopifnot(is.character(`tag`), length(`tag`) == 1)
+        if (!(is.character(`tag`) && length(`tag`) == 1)) {
+          stop(paste("Error! Invalid data for `tag`. Must be a string:", `tag`))
+        }
         self$`tag` <- `tag`
       }
       if (!is.null(additional_properties)) {
@@ -139,7 +141,9 @@ CashtagFields <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `tag`
       if (!is.null(input_json$`tag`)) {
-        stopifnot(is.character(input_json$`tag`), length(input_json$`tag`) == 1)
+        if (!(is.character(input_json$`tag`) && length(input_json$`tag`) == 1)) {
+          stop(paste("Error! Invalid data for `tag`. Must be a string:", input_json$`tag`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CashtagFields: the required field `tag` is missing."))
       }

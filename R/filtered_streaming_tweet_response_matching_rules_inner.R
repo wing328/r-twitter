@@ -33,11 +33,15 @@ FilteredStreamingTweetResponseMatchingRulesInner <- R6::R6Class(
     #' @export
     initialize = function(`id`, `tag` = NULL, additional_properties = NULL, ...) {
       if (!missing(`id`)) {
-        stopifnot(is.character(`id`), length(`id`) == 1)
+        if (!(is.character(`id`) && length(`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
+        }
         self$`id` <- `id`
       }
       if (!is.null(`tag`)) {
-        stopifnot(is.character(`tag`), length(`tag`) == 1)
+        if (!(is.character(`tag`) && length(`tag`) == 1)) {
+          stop(paste("Error! Invalid data for `tag`. Must be a string:", `tag`))
+        }
         self$`tag` <- `tag`
       }
       if (!is.null(additional_properties)) {
@@ -162,7 +166,9 @@ FilteredStreamingTweetResponseMatchingRulesInner <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `id`
       if (!is.null(input_json$`id`)) {
-        stopifnot(is.character(input_json$`id`), length(input_json$`id`) == 1)
+        if (!(is.character(input_json$`id`) && length(input_json$`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", input_json$`id`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for FilteredStreamingTweetResponseMatchingRulesInner: the required field `id` is missing."))
       }

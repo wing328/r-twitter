@@ -30,7 +30,9 @@ BookmarkMutationResponseData <- R6::R6Class(
     #' @export
     initialize = function(`bookmarked` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`bookmarked`)) {
-        stopifnot(is.logical(`bookmarked`), length(`bookmarked`) == 1)
+        if (!(is.logical(`bookmarked`) && length(`bookmarked`) == 1)) {
+          stop(paste("Error! Invalid data for `bookmarked`. Must be a boolean:", `bookmarked`))
+        }
         self$`bookmarked` <- `bookmarked`
       }
       if (!is.null(additional_properties)) {

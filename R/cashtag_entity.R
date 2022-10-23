@@ -36,15 +36,21 @@ CashtagEntity <- R6::R6Class(
     #' @export
     initialize = function(`end`, `start`, `tag`, additional_properties = NULL, ...) {
       if (!missing(`end`)) {
-        stopifnot(is.numeric(`end`), length(`end`) == 1)
+        if (!(is.numeric(`end`) && length(`end`) == 1)) {
+          stop(paste("Error! Invalid data for `end`. Must be an integer:", `end`))
+        }
         self$`end` <- `end`
       }
       if (!missing(`start`)) {
-        stopifnot(is.numeric(`start`), length(`start`) == 1)
+        if (!(is.numeric(`start`) && length(`start`) == 1)) {
+          stop(paste("Error! Invalid data for `start`. Must be an integer:", `start`))
+        }
         self$`start` <- `start`
       }
       if (!missing(`tag`)) {
-        stopifnot(is.character(`tag`), length(`tag`) == 1)
+        if (!(is.character(`tag`) && length(`tag`) == 1)) {
+          stop(paste("Error! Invalid data for `tag`. Must be a string:", `tag`))
+        }
         self$`tag` <- `tag`
       }
       if (!is.null(additional_properties)) {
@@ -185,19 +191,25 @@ CashtagEntity <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `end`
       if (!is.null(input_json$`end`)) {
-        stopifnot(is.numeric(input_json$`end`), length(input_json$`end`) == 1)
+        if (!(is.numeric(input_json$`end`) && length(input_json$`end`) == 1)) {
+          stop(paste("Error! Invalid data for `end`. Must be an integer:", input_json$`end`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CashtagEntity: the required field `end` is missing."))
       }
       # check the required field `start`
       if (!is.null(input_json$`start`)) {
-        stopifnot(is.numeric(input_json$`start`), length(input_json$`start`) == 1)
+        if (!(is.numeric(input_json$`start`) && length(input_json$`start`) == 1)) {
+          stop(paste("Error! Invalid data for `start`. Must be an integer:", input_json$`start`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CashtagEntity: the required field `start` is missing."))
       }
       # check the required field `tag`
       if (!is.null(input_json$`tag`)) {
-        stopifnot(is.character(input_json$`tag`), length(input_json$`tag`) == 1)
+        if (!(is.character(input_json$`tag`) && length(input_json$`tag`) == 1)) {
+          stop(paste("Error! Invalid data for `tag`. Must be a string:", input_json$`tag`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CashtagEntity: the required field `tag` is missing."))
       }

@@ -60,34 +60,46 @@ UrlEntity <- R6::R6Class(
     #' @export
     initialize = function(`end`, `start`, `url`, `description` = NULL, `display_url` = NULL, `expanded_url` = NULL, `images` = NULL, `media_key` = NULL, `status` = NULL, `title` = NULL, `unwound_url` = NULL, additional_properties = NULL, ...) {
       if (!missing(`end`)) {
-        stopifnot(is.numeric(`end`), length(`end`) == 1)
+        if (!(is.numeric(`end`) && length(`end`) == 1)) {
+          stop(paste("Error! Invalid data for `end`. Must be an integer:", `end`))
+        }
         self$`end` <- `end`
       }
       if (!missing(`start`)) {
-        stopifnot(is.numeric(`start`), length(`start`) == 1)
+        if (!(is.numeric(`start`) && length(`start`) == 1)) {
+          stop(paste("Error! Invalid data for `start`. Must be an integer:", `start`))
+        }
         self$`start` <- `start`
       }
       if (!missing(`url`)) {
-        stopifnot(is.character(`url`), length(`url`) == 1)
+        if (!(is.character(`url`) && length(`url`) == 1)) {
+          stop(paste("Error! Invalid data for `url`. Must be a string:", `url`))
+        }
         # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
         if (!stringr::str_detect(`url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-          stop(paste("Error! Invalid URL:", `url`))
+          stop(paste("Error! Invalid data for `url`. Must be a URL:", `url`))
         }
         self$`url` <- `url`
       }
       if (!is.null(`description`)) {
-        stopifnot(is.character(`description`), length(`description`) == 1)
+        if (!(is.character(`description`) && length(`description`) == 1)) {
+          stop(paste("Error! Invalid data for `description`. Must be a string:", `description`))
+        }
         self$`description` <- `description`
       }
       if (!is.null(`display_url`)) {
-        stopifnot(is.character(`display_url`), length(`display_url`) == 1)
+        if (!(is.character(`display_url`) && length(`display_url`) == 1)) {
+          stop(paste("Error! Invalid data for `display_url`. Must be a string:", `display_url`))
+        }
         self$`display_url` <- `display_url`
       }
       if (!is.null(`expanded_url`)) {
-        stopifnot(is.character(`expanded_url`), length(`expanded_url`) == 1)
+        if (!(is.character(`expanded_url`) && length(`expanded_url`) == 1)) {
+          stop(paste("Error! Invalid data for `expanded_url`. Must be a string:", `expanded_url`))
+        }
         # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
         if (!stringr::str_detect(`expanded_url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-          stop(paste("Error! Invalid URL:", `expanded_url`))
+          stop(paste("Error! Invalid data for `expanded_url`. Must be a URL:", `expanded_url`))
         }
         self$`expanded_url` <- `expanded_url`
       }
@@ -97,22 +109,30 @@ UrlEntity <- R6::R6Class(
         self$`images` <- `images`
       }
       if (!is.null(`media_key`)) {
-        stopifnot(is.character(`media_key`), length(`media_key`) == 1)
+        if (!(is.character(`media_key`) && length(`media_key`) == 1)) {
+          stop(paste("Error! Invalid data for `media_key`. Must be a string:", `media_key`))
+        }
         self$`media_key` <- `media_key`
       }
       if (!is.null(`status`)) {
-        stopifnot(is.numeric(`status`), length(`status`) == 1)
+        if (!(is.numeric(`status`) && length(`status`) == 1)) {
+          stop(paste("Error! Invalid data for `status`. Must be an integer:", `status`))
+        }
         self$`status` <- `status`
       }
       if (!is.null(`title`)) {
-        stopifnot(is.character(`title`), length(`title`) == 1)
+        if (!(is.character(`title`) && length(`title`) == 1)) {
+          stop(paste("Error! Invalid data for `title`. Must be a string:", `title`))
+        }
         self$`title` <- `title`
       }
       if (!is.null(`unwound_url`)) {
-        stopifnot(is.character(`unwound_url`), length(`unwound_url`) == 1)
+        if (!(is.character(`unwound_url`) && length(`unwound_url`) == 1)) {
+          stop(paste("Error! Invalid data for `unwound_url`. Must be a string:", `unwound_url`))
+        }
         # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
         if (!stringr::str_detect(`unwound_url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-          stop(paste("Error! Invalid URL:", `unwound_url`))
+          stop(paste("Error! Invalid data for `unwound_url`. Must be a URL:", `unwound_url`))
         }
         self$`unwound_url` <- `unwound_url`
       }
@@ -206,7 +226,7 @@ UrlEntity <- R6::R6Class(
       if (!is.null(this_object$`expanded_url`)) {
         # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
         if (!stringr::str_detect(this_object$`expanded_url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-          stop(paste("Error! Invalid URL:", this_object$`expanded_url`))
+          stop(paste("Error! Invalid data for `expanded_url`. Must be a URL:", this_object$`expanded_url`))
         }
         self$`expanded_url` <- this_object$`expanded_url`
       }
@@ -225,14 +245,14 @@ UrlEntity <- R6::R6Class(
       if (!is.null(this_object$`unwound_url`)) {
         # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
         if (!stringr::str_detect(this_object$`unwound_url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-          stop(paste("Error! Invalid URL:", this_object$`unwound_url`))
+          stop(paste("Error! Invalid data for `unwound_url`. Must be a URL:", this_object$`unwound_url`))
         }
         self$`unwound_url` <- this_object$`unwound_url`
       }
       if (!is.null(this_object$`url`)) {
         # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
         if (!stringr::str_detect(this_object$`url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-          stop(paste("Error! Invalid URL:", this_object$`url`))
+          stop(paste("Error! Invalid data for `url`. Must be a URL:", this_object$`url`))
         }
         self$`url` <- this_object$`url`
       }
@@ -368,7 +388,7 @@ UrlEntity <- R6::R6Class(
       self$`display_url` <- this_object$`display_url`
       # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
       if (!stringr::str_detect(this_object$`expanded_url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-        stop(paste("Error! Invalid URL:", this_object$`expanded_url`))
+        stop(paste("Error! Invalid data for `expanded_url`. Must be a URL:", this_object$`expanded_url`))
       }
       self$`expanded_url` <- this_object$`expanded_url`
       self$`images` <- ApiClient$new()$deserializeObj(this_object$`images`, "array[UrlImage]", loadNamespace("twitter"))
@@ -377,12 +397,12 @@ UrlEntity <- R6::R6Class(
       self$`title` <- this_object$`title`
       # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
       if (!stringr::str_detect(this_object$`unwound_url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-        stop(paste("Error! Invalid URL:", this_object$`unwound_url`))
+        stop(paste("Error! Invalid data for `unwound_url`. Must be a URL:", this_object$`unwound_url`))
       }
       self$`unwound_url` <- this_object$`unwound_url`
       # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
       if (!stringr::str_detect(this_object$`url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-        stop(paste("Error! Invalid URL:", this_object$`url`))
+        stop(paste("Error! Invalid data for `url`. Must be a URL:", this_object$`url`))
       }
       self$`url` <- this_object$`url`
       # process additional properties/fields in the payload
@@ -406,22 +426,28 @@ UrlEntity <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `end`
       if (!is.null(input_json$`end`)) {
-        stopifnot(is.numeric(input_json$`end`), length(input_json$`end`) == 1)
+        if (!(is.numeric(input_json$`end`) && length(input_json$`end`) == 1)) {
+          stop(paste("Error! Invalid data for `end`. Must be an integer:", input_json$`end`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for UrlEntity: the required field `end` is missing."))
       }
       # check the required field `start`
       if (!is.null(input_json$`start`)) {
-        stopifnot(is.numeric(input_json$`start`), length(input_json$`start`) == 1)
+        if (!(is.numeric(input_json$`start`) && length(input_json$`start`) == 1)) {
+          stop(paste("Error! Invalid data for `start`. Must be an integer:", input_json$`start`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for UrlEntity: the required field `start` is missing."))
       }
       # check the required field `url`
       if (!is.null(input_json$`url`)) {
-        stopifnot(is.character(input_json$`url`), length(input_json$`url`) == 1)
+        if (!(is.character(input_json$`url`) && length(input_json$`url`) == 1)) {
+          stop(paste("Error! Invalid data for `url`. Must be a string:", input_json$`url`))
+        }
         # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
         if (!stringr::str_detect(input_json$`url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-          stop(paste("Error! Invalid URL:", input_json$`url`))
+          stop(paste("Error! Invalid data for `url`. Must be a URL:", input_json$`url`))
         }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for UrlEntity: the required field `url` is missing."))

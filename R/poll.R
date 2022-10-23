@@ -42,7 +42,9 @@ Poll <- R6::R6Class(
     #' @export
     initialize = function(`id`, `options`, `duration_minutes` = NULL, `end_datetime` = NULL, `voting_status` = NULL, additional_properties = NULL, ...) {
       if (!missing(`id`)) {
-        stopifnot(is.character(`id`), length(`id`) == 1)
+        if (!(is.character(`id`) && length(`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
+        }
         self$`id` <- `id`
       }
       if (!missing(`options`)) {
@@ -51,12 +53,14 @@ Poll <- R6::R6Class(
         self$`options` <- `options`
       }
       if (!is.null(`duration_minutes`)) {
-        stopifnot(is.numeric(`duration_minutes`), length(`duration_minutes`) == 1)
+        if (!(is.numeric(`duration_minutes`) && length(`duration_minutes`) == 1)) {
+          stop(paste("Error! Invalid data for `duration_minutes`. Must be an integer:", `duration_minutes`))
+        }
         self$`duration_minutes` <- `duration_minutes`
       }
       if (!is.null(`end_datetime`)) {
         if (!is.character(`end_datetime`)) {
-          stop(paste("Error! Invalid DateTime. Must be a string:", `end_datetime`))
+          stop(paste("Error! Invalid data for `end_datetime`. Must be a string:", `end_datetime`))
         }
         self$`end_datetime` <- `end_datetime`
       }
@@ -64,7 +68,9 @@ Poll <- R6::R6Class(
         if (!(`voting_status` %in% c("open", "closed"))) {
           stop(paste("Error! \"", `voting_status`, "\" cannot be assigned to `voting_status`. Must be \"open\", \"closed\".", sep = ""))
         }
-        stopifnot(is.character(`voting_status`), length(`voting_status`) == 1)
+        if (!(is.character(`voting_status`) && length(`voting_status`) == 1)) {
+          stop(paste("Error! Invalid data for `voting_status`. Must be a string:", `voting_status`))
+        }
         self$`voting_status` <- `voting_status`
       }
       if (!is.null(additional_properties)) {
@@ -243,7 +249,9 @@ Poll <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `id`
       if (!is.null(input_json$`id`)) {
-        stopifnot(is.character(input_json$`id`), length(input_json$`id`) == 1)
+        if (!(is.character(input_json$`id`) && length(input_json$`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", input_json$`id`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for Poll: the required field `id` is missing."))
       }

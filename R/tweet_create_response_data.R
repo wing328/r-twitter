@@ -33,11 +33,15 @@ TweetCreateResponseData <- R6::R6Class(
     #' @export
     initialize = function(`id`, `text`, additional_properties = NULL, ...) {
       if (!missing(`id`)) {
-        stopifnot(is.character(`id`), length(`id`) == 1)
+        if (!(is.character(`id`) && length(`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
+        }
         self$`id` <- `id`
       }
       if (!missing(`text`)) {
-        stopifnot(is.character(`text`), length(`text`) == 1)
+        if (!(is.character(`text`) && length(`text`) == 1)) {
+          stop(paste("Error! Invalid data for `text`. Must be a string:", `text`))
+        }
         self$`text` <- `text`
       }
       if (!is.null(additional_properties)) {
@@ -162,13 +166,17 @@ TweetCreateResponseData <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `id`
       if (!is.null(input_json$`id`)) {
-        stopifnot(is.character(input_json$`id`), length(input_json$`id`) == 1)
+        if (!(is.character(input_json$`id`) && length(input_json$`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", input_json$`id`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for TweetCreateResponseData: the required field `id` is missing."))
       }
       # check the required field `text`
       if (!is.null(input_json$`text`)) {
-        stopifnot(is.character(input_json$`text`), length(input_json$`text`) == 1)
+        if (!(is.character(input_json$`text`) && length(input_json$`text`) == 1)) {
+          stop(paste("Error! Invalid data for `text`. Must be a string:", input_json$`text`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for TweetCreateResponseData: the required field `text` is missing."))
       }

@@ -36,15 +36,21 @@ PollOption <- R6::R6Class(
     #' @export
     initialize = function(`label`, `position`, `votes`, additional_properties = NULL, ...) {
       if (!missing(`label`)) {
-        stopifnot(is.character(`label`), length(`label`) == 1)
+        if (!(is.character(`label`) && length(`label`) == 1)) {
+          stop(paste("Error! Invalid data for `label`. Must be a string:", `label`))
+        }
         self$`label` <- `label`
       }
       if (!missing(`position`)) {
-        stopifnot(is.numeric(`position`), length(`position`) == 1)
+        if (!(is.numeric(`position`) && length(`position`) == 1)) {
+          stop(paste("Error! Invalid data for `position`. Must be an integer:", `position`))
+        }
         self$`position` <- `position`
       }
       if (!missing(`votes`)) {
-        stopifnot(is.numeric(`votes`), length(`votes`) == 1)
+        if (!(is.numeric(`votes`) && length(`votes`) == 1)) {
+          stop(paste("Error! Invalid data for `votes`. Must be an integer:", `votes`))
+        }
         self$`votes` <- `votes`
       }
       if (!is.null(additional_properties)) {
@@ -185,19 +191,25 @@ PollOption <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `label`
       if (!is.null(input_json$`label`)) {
-        stopifnot(is.character(input_json$`label`), length(input_json$`label`) == 1)
+        if (!(is.character(input_json$`label`) && length(input_json$`label`) == 1)) {
+          stop(paste("Error! Invalid data for `label`. Must be a string:", input_json$`label`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for PollOption: the required field `label` is missing."))
       }
       # check the required field `position`
       if (!is.null(input_json$`position`)) {
-        stopifnot(is.numeric(input_json$`position`), length(input_json$`position`) == 1)
+        if (!(is.numeric(input_json$`position`) && length(input_json$`position`) == 1)) {
+          stop(paste("Error! Invalid data for `position`. Must be an integer:", input_json$`position`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for PollOption: the required field `position` is missing."))
       }
       # check the required field `votes`
       if (!is.null(input_json$`votes`)) {
-        stopifnot(is.numeric(input_json$`votes`), length(input_json$`votes`) == 1)
+        if (!(is.numeric(input_json$`votes`) && length(input_json$`votes`) == 1)) {
+          stop(paste("Error! Invalid data for `votes`. Must be an integer:", input_json$`votes`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for PollOption: the required field `votes` is missing."))
       }

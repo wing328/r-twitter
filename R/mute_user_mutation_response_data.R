@@ -30,7 +30,9 @@ MuteUserMutationResponseData <- R6::R6Class(
     #' @export
     initialize = function(`muting` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`muting`)) {
-        stopifnot(is.logical(`muting`), length(`muting`) == 1)
+        if (!(is.logical(`muting`) && length(`muting`) == 1)) {
+          stop(paste("Error! Invalid data for `muting`. Must be a boolean:", `muting`))
+        }
         self$`muting` <- `muting`
       }
       if (!is.null(additional_properties)) {

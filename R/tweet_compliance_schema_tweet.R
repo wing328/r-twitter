@@ -33,11 +33,15 @@ TweetComplianceSchemaTweet <- R6::R6Class(
     #' @export
     initialize = function(`author_id`, `id`, additional_properties = NULL, ...) {
       if (!missing(`author_id`)) {
-        stopifnot(is.character(`author_id`), length(`author_id`) == 1)
+        if (!(is.character(`author_id`) && length(`author_id`) == 1)) {
+          stop(paste("Error! Invalid data for `author_id`. Must be a string:", `author_id`))
+        }
         self$`author_id` <- `author_id`
       }
       if (!missing(`id`)) {
-        stopifnot(is.character(`id`), length(`id`) == 1)
+        if (!(is.character(`id`) && length(`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
+        }
         self$`id` <- `id`
       }
       if (!is.null(additional_properties)) {
@@ -162,13 +166,17 @@ TweetComplianceSchemaTweet <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `author_id`
       if (!is.null(input_json$`author_id`)) {
-        stopifnot(is.character(input_json$`author_id`), length(input_json$`author_id`) == 1)
+        if (!(is.character(input_json$`author_id`) && length(input_json$`author_id`) == 1)) {
+          stop(paste("Error! Invalid data for `author_id`. Must be a string:", input_json$`author_id`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for TweetComplianceSchemaTweet: the required field `author_id` is missing."))
       }
       # check the required field `id`
       if (!is.null(input_json$`id`)) {
-        stopifnot(is.character(input_json$`id`), length(input_json$`id`) == 1)
+        if (!(is.character(input_json$`id`) && length(input_json$`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", input_json$`id`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for TweetComplianceSchemaTweet: the required field `id` is missing."))
       }

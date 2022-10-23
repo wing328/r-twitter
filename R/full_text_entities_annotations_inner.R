@@ -42,23 +42,33 @@ FullTextEntitiesAnnotationsInner <- R6::R6Class(
     #' @export
     initialize = function(`end`, `start`, `normalized_text` = NULL, `probability` = NULL, `type` = NULL, additional_properties = NULL, ...) {
       if (!missing(`end`)) {
-        stopifnot(is.numeric(`end`), length(`end`) == 1)
+        if (!(is.numeric(`end`) && length(`end`) == 1)) {
+          stop(paste("Error! Invalid data for `end`. Must be an integer:", `end`))
+        }
         self$`end` <- `end`
       }
       if (!missing(`start`)) {
-        stopifnot(is.numeric(`start`), length(`start`) == 1)
+        if (!(is.numeric(`start`) && length(`start`) == 1)) {
+          stop(paste("Error! Invalid data for `start`. Must be an integer:", `start`))
+        }
         self$`start` <- `start`
       }
       if (!is.null(`normalized_text`)) {
-        stopifnot(is.character(`normalized_text`), length(`normalized_text`) == 1)
+        if (!(is.character(`normalized_text`) && length(`normalized_text`) == 1)) {
+          stop(paste("Error! Invalid data for `normalized_text`. Must be a string:", `normalized_text`))
+        }
         self$`normalized_text` <- `normalized_text`
       }
       if (!is.null(`probability`)) {
-        stopifnot(is.numeric(`probability`), length(`probability`) == 1)
+        if (!(is.numeric(`probability`) && length(`probability`) == 1)) {
+          stop(paste("Error! Invalid data for `probability`. Must be a number:", `probability`))
+        }
         self$`probability` <- `probability`
       }
       if (!is.null(`type`)) {
-        stopifnot(is.character(`type`), length(`type`) == 1)
+        if (!(is.character(`type`) && length(`type`) == 1)) {
+          stop(paste("Error! Invalid data for `type`. Must be a string:", `type`))
+        }
         self$`type` <- `type`
       }
       if (!is.null(additional_properties)) {
@@ -231,13 +241,17 @@ FullTextEntitiesAnnotationsInner <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `end`
       if (!is.null(input_json$`end`)) {
-        stopifnot(is.numeric(input_json$`end`), length(input_json$`end`) == 1)
+        if (!(is.numeric(input_json$`end`) && length(input_json$`end`) == 1)) {
+          stop(paste("Error! Invalid data for `end`. Must be an integer:", input_json$`end`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for FullTextEntitiesAnnotationsInner: the required field `end` is missing."))
       }
       # check the required field `start`
       if (!is.null(input_json$`start`)) {
-        stopifnot(is.numeric(input_json$`start`), length(input_json$`start`) == 1)
+        if (!(is.numeric(input_json$`start`) && length(input_json$`start`) == 1)) {
+          stop(paste("Error! Invalid data for `start`. Must be an integer:", input_json$`start`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for FullTextEntitiesAnnotationsInner: the required field `start` is missing."))
       }

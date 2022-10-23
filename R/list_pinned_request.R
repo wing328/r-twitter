@@ -30,7 +30,9 @@ ListPinnedRequest <- R6::R6Class(
     #' @export
     initialize = function(`list_id`, additional_properties = NULL, ...) {
       if (!missing(`list_id`)) {
-        stopifnot(is.character(`list_id`), length(`list_id`) == 1)
+        if (!(is.character(`list_id`) && length(`list_id`) == 1)) {
+          stop(paste("Error! Invalid data for `list_id`. Must be a string:", `list_id`))
+        }
         self$`list_id` <- `list_id`
       }
       if (!is.null(additional_properties)) {
@@ -139,7 +141,9 @@ ListPinnedRequest <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `list_id`
       if (!is.null(input_json$`list_id`)) {
-        stopifnot(is.character(input_json$`list_id`), length(input_json$`list_id`) == 1)
+        if (!(is.character(input_json$`list_id`) && length(input_json$`list_id`) == 1)) {
+          stop(paste("Error! Invalid data for `list_id`. Must be a string:", input_json$`list_id`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for ListPinnedRequest: the required field `list_id` is missing."))
       }

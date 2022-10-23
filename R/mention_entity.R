@@ -39,19 +39,27 @@ MentionEntity <- R6::R6Class(
     #' @export
     initialize = function(`end`, `start`, `username`, `id` = NULL, additional_properties = NULL, ...) {
       if (!missing(`end`)) {
-        stopifnot(is.numeric(`end`), length(`end`) == 1)
+        if (!(is.numeric(`end`) && length(`end`) == 1)) {
+          stop(paste("Error! Invalid data for `end`. Must be an integer:", `end`))
+        }
         self$`end` <- `end`
       }
       if (!missing(`start`)) {
-        stopifnot(is.numeric(`start`), length(`start`) == 1)
+        if (!(is.numeric(`start`) && length(`start`) == 1)) {
+          stop(paste("Error! Invalid data for `start`. Must be an integer:", `start`))
+        }
         self$`start` <- `start`
       }
       if (!missing(`username`)) {
-        stopifnot(is.character(`username`), length(`username`) == 1)
+        if (!(is.character(`username`) && length(`username`) == 1)) {
+          stop(paste("Error! Invalid data for `username`. Must be a string:", `username`))
+        }
         self$`username` <- `username`
       }
       if (!is.null(`id`)) {
-        stopifnot(is.character(`id`), length(`id`) == 1)
+        if (!(is.character(`id`) && length(`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
+        }
         self$`id` <- `id`
       }
       if (!is.null(additional_properties)) {
@@ -208,19 +216,25 @@ MentionEntity <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `end`
       if (!is.null(input_json$`end`)) {
-        stopifnot(is.numeric(input_json$`end`), length(input_json$`end`) == 1)
+        if (!(is.numeric(input_json$`end`) && length(input_json$`end`) == 1)) {
+          stop(paste("Error! Invalid data for `end`. Must be an integer:", input_json$`end`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for MentionEntity: the required field `end` is missing."))
       }
       # check the required field `start`
       if (!is.null(input_json$`start`)) {
-        stopifnot(is.numeric(input_json$`start`), length(input_json$`start`) == 1)
+        if (!(is.numeric(input_json$`start`) && length(input_json$`start`) == 1)) {
+          stop(paste("Error! Invalid data for `start`. Must be an integer:", input_json$`start`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for MentionEntity: the required field `start` is missing."))
       }
       # check the required field `username`
       if (!is.null(input_json$`username`)) {
-        stopifnot(is.character(input_json$`username`), length(input_json$`username`) == 1)
+        if (!(is.character(input_json$`username`) && length(input_json$`username`) == 1)) {
+          stop(paste("Error! Invalid data for `username`. Must be a string:", input_json$`username`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for MentionEntity: the required field `username` is missing."))
       }

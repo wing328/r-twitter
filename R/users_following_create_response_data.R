@@ -33,11 +33,15 @@ UsersFollowingCreateResponseData <- R6::R6Class(
     #' @export
     initialize = function(`following` = NULL, `pending_follow` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`following`)) {
-        stopifnot(is.logical(`following`), length(`following`) == 1)
+        if (!(is.logical(`following`) && length(`following`) == 1)) {
+          stop(paste("Error! Invalid data for `following`. Must be a boolean:", `following`))
+        }
         self$`following` <- `following`
       }
       if (!is.null(`pending_follow`)) {
-        stopifnot(is.logical(`pending_follow`), length(`pending_follow`) == 1)
+        if (!(is.logical(`pending_follow`) && length(`pending_follow`) == 1)) {
+          stop(paste("Error! Invalid data for `pending_follow`. Must be a boolean:", `pending_follow`))
+        }
         self$`pending_follow` <- `pending_follow`
       }
       if (!is.null(additional_properties)) {

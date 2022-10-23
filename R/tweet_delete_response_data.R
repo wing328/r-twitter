@@ -30,7 +30,9 @@ TweetDeleteResponseData <- R6::R6Class(
     #' @export
     initialize = function(`deleted`, additional_properties = NULL, ...) {
       if (!missing(`deleted`)) {
-        stopifnot(is.logical(`deleted`), length(`deleted`) == 1)
+        if (!(is.logical(`deleted`) && length(`deleted`) == 1)) {
+          stop(paste("Error! Invalid data for `deleted`. Must be a boolean:", `deleted`))
+        }
         self$`deleted` <- `deleted`
       }
       if (!is.null(additional_properties)) {
@@ -139,7 +141,9 @@ TweetDeleteResponseData <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `deleted`
       if (!is.null(input_json$`deleted`)) {
-        stopifnot(is.logical(input_json$`deleted`), length(input_json$`deleted`) == 1)
+        if (!(is.logical(input_json$`deleted`) && length(input_json$`deleted`) == 1)) {
+          stop(paste("Error! Invalid data for `deleted`. Must be a boolean:", input_json$`deleted`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for TweetDeleteResponseData: the required field `deleted` is missing."))
       }

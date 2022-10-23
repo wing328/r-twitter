@@ -46,33 +46,45 @@ ClientForbiddenProblem <- R6::R6Class(
     #' @export
     initialize = function(`title`, `type`, `detail` = NULL, `status` = NULL, `reason` = NULL, `registration_url` = NULL, additional_properties = NULL, ...) {
       if (!missing(`title`)) {
-        stopifnot(is.character(`title`), length(`title`) == 1)
+        if (!(is.character(`title`) && length(`title`) == 1)) {
+          stop(paste("Error! Invalid data for `title`. Must be a string:", `title`))
+        }
         self$`title` <- `title`
       }
       if (!missing(`type`)) {
-        stopifnot(is.character(`type`), length(`type`) == 1)
+        if (!(is.character(`type`) && length(`type`) == 1)) {
+          stop(paste("Error! Invalid data for `type`. Must be a string:", `type`))
+        }
         self$`type` <- `type`
       }
       if (!is.null(`detail`)) {
-        stopifnot(is.character(`detail`), length(`detail`) == 1)
+        if (!(is.character(`detail`) && length(`detail`) == 1)) {
+          stop(paste("Error! Invalid data for `detail`. Must be a string:", `detail`))
+        }
         self$`detail` <- `detail`
       }
       if (!is.null(`status`)) {
-        stopifnot(is.numeric(`status`), length(`status`) == 1)
+        if (!(is.numeric(`status`) && length(`status`) == 1)) {
+          stop(paste("Error! Invalid data for `status`. Must be an integer:", `status`))
+        }
         self$`status` <- `status`
       }
       if (!is.null(`reason`)) {
         if (!(`reason` %in% c("official-client-forbidden", "client-not-enrolled"))) {
           stop(paste("Error! \"", `reason`, "\" cannot be assigned to `reason`. Must be \"official-client-forbidden\", \"client-not-enrolled\".", sep = ""))
         }
-        stopifnot(is.character(`reason`), length(`reason`) == 1)
+        if (!(is.character(`reason`) && length(`reason`) == 1)) {
+          stop(paste("Error! Invalid data for `reason`. Must be a string:", `reason`))
+        }
         self$`reason` <- `reason`
       }
       if (!is.null(`registration_url`)) {
-        stopifnot(is.character(`registration_url`), length(`registration_url`) == 1)
+        if (!(is.character(`registration_url`) && length(`registration_url`) == 1)) {
+          stop(paste("Error! Invalid data for `registration_url`. Must be a string:", `registration_url`))
+        }
         # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
         if (!stringr::str_detect(`registration_url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-          stop(paste("Error! Invalid URL:", `registration_url`))
+          stop(paste("Error! Invalid data for `registration_url`. Must be a URL:", `registration_url`))
         }
         self$`registration_url` <- `registration_url`
       }
@@ -152,7 +164,7 @@ ClientForbiddenProblem <- R6::R6Class(
       if (!is.null(this_object$`registration_url`)) {
         # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
         if (!stringr::str_detect(this_object$`registration_url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-          stop(paste("Error! Invalid URL:", this_object$`registration_url`))
+          stop(paste("Error! Invalid data for `registration_url`. Must be a URL:", this_object$`registration_url`))
         }
         self$`registration_url` <- this_object$`registration_url`
       }
@@ -252,7 +264,7 @@ ClientForbiddenProblem <- R6::R6Class(
       self$`reason` <- this_object$`reason`
       # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
       if (!stringr::str_detect(this_object$`registration_url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-        stop(paste("Error! Invalid URL:", this_object$`registration_url`))
+        stop(paste("Error! Invalid data for `registration_url`. Must be a URL:", this_object$`registration_url`))
       }
       self$`registration_url` <- this_object$`registration_url`
       # process additional properties/fields in the payload
@@ -276,13 +288,17 @@ ClientForbiddenProblem <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `title`
       if (!is.null(input_json$`title`)) {
-        stopifnot(is.character(input_json$`title`), length(input_json$`title`) == 1)
+        if (!(is.character(input_json$`title`) && length(input_json$`title`) == 1)) {
+          stop(paste("Error! Invalid data for `title`. Must be a string:", input_json$`title`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for ClientForbiddenProblem: the required field `title` is missing."))
       }
       # check the required field `type`
       if (!is.null(input_json$`type`)) {
-        stopifnot(is.character(input_json$`type`), length(input_json$`type`) == 1)
+        if (!(is.character(input_json$`type`) && length(input_json$`type`) == 1)) {
+          stop(paste("Error! Invalid data for `type`. Must be a string:", input_json$`type`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for ClientForbiddenProblem: the required field `type` is missing."))
       }

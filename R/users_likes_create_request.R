@@ -30,7 +30,9 @@ UsersLikesCreateRequest <- R6::R6Class(
     #' @export
     initialize = function(`tweet_id`, additional_properties = NULL, ...) {
       if (!missing(`tweet_id`)) {
-        stopifnot(is.character(`tweet_id`), length(`tweet_id`) == 1)
+        if (!(is.character(`tweet_id`) && length(`tweet_id`) == 1)) {
+          stop(paste("Error! Invalid data for `tweet_id`. Must be a string:", `tweet_id`))
+        }
         self$`tweet_id` <- `tweet_id`
       }
       if (!is.null(additional_properties)) {
@@ -139,7 +141,9 @@ UsersLikesCreateRequest <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `tweet_id`
       if (!is.null(input_json$`tweet_id`)) {
-        stopifnot(is.character(input_json$`tweet_id`), length(input_json$`tweet_id`) == 1)
+        if (!(is.character(input_json$`tweet_id`) && length(input_json$`tweet_id`) == 1)) {
+          stop(paste("Error! Invalid data for `tweet_id`. Must be a string:", input_json$`tweet_id`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for UsersLikesCreateRequest: the required field `tweet_id` is missing."))
       }

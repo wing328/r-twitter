@@ -30,7 +30,9 @@ ListDeleteResponseData <- R6::R6Class(
     #' @export
     initialize = function(`deleted` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`deleted`)) {
-        stopifnot(is.logical(`deleted`), length(`deleted`) == 1)
+        if (!(is.logical(`deleted`) && length(`deleted`) == 1)) {
+          stop(paste("Error! Invalid data for `deleted`. Must be a boolean:", `deleted`))
+        }
         self$`deleted` <- `deleted`
       }
       if (!is.null(additional_properties)) {

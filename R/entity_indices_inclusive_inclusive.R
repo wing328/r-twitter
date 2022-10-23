@@ -33,11 +33,15 @@ EntityIndicesInclusiveInclusive <- R6::R6Class(
     #' @export
     initialize = function(`end`, `start`, additional_properties = NULL, ...) {
       if (!missing(`end`)) {
-        stopifnot(is.numeric(`end`), length(`end`) == 1)
+        if (!(is.numeric(`end`) && length(`end`) == 1)) {
+          stop(paste("Error! Invalid data for `end`. Must be an integer:", `end`))
+        }
         self$`end` <- `end`
       }
       if (!missing(`start`)) {
-        stopifnot(is.numeric(`start`), length(`start`) == 1)
+        if (!(is.numeric(`start`) && length(`start`) == 1)) {
+          stop(paste("Error! Invalid data for `start`. Must be an integer:", `start`))
+        }
         self$`start` <- `start`
       }
       if (!is.null(additional_properties)) {
@@ -162,13 +166,17 @@ EntityIndicesInclusiveInclusive <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `end`
       if (!is.null(input_json$`end`)) {
-        stopifnot(is.numeric(input_json$`end`), length(input_json$`end`) == 1)
+        if (!(is.numeric(input_json$`end`) && length(input_json$`end`) == 1)) {
+          stop(paste("Error! Invalid data for `end`. Must be an integer:", input_json$`end`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for EntityIndicesInclusiveInclusive: the required field `end` is missing."))
       }
       # check the required field `start`
       if (!is.null(input_json$`start`)) {
-        stopifnot(is.numeric(input_json$`start`), length(input_json$`start`) == 1)
+        if (!(is.numeric(input_json$`start`) && length(input_json$`start`) == 1)) {
+          stop(paste("Error! Invalid data for `start`. Must be an integer:", input_json$`start`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for EntityIndicesInclusiveInclusive: the required field `start` is missing."))
       }

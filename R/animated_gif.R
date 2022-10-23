@@ -46,26 +46,36 @@ AnimatedGif <- R6::R6Class(
     #' @export
     initialize = function(`type`, `height` = NULL, `media_key` = NULL, `width` = NULL, `preview_image_url` = NULL, `variants` = NULL, additional_properties = NULL, ...) {
       if (!missing(`type`)) {
-        stopifnot(is.character(`type`), length(`type`) == 1)
+        if (!(is.character(`type`) && length(`type`) == 1)) {
+          stop(paste("Error! Invalid data for `type`. Must be a string:", `type`))
+        }
         self$`type` <- `type`
       }
       if (!is.null(`height`)) {
-        stopifnot(is.numeric(`height`), length(`height`) == 1)
+        if (!(is.numeric(`height`) && length(`height`) == 1)) {
+          stop(paste("Error! Invalid data for `height`. Must be an integer:", `height`))
+        }
         self$`height` <- `height`
       }
       if (!is.null(`media_key`)) {
-        stopifnot(is.character(`media_key`), length(`media_key`) == 1)
+        if (!(is.character(`media_key`) && length(`media_key`) == 1)) {
+          stop(paste("Error! Invalid data for `media_key`. Must be a string:", `media_key`))
+        }
         self$`media_key` <- `media_key`
       }
       if (!is.null(`width`)) {
-        stopifnot(is.numeric(`width`), length(`width`) == 1)
+        if (!(is.numeric(`width`) && length(`width`) == 1)) {
+          stop(paste("Error! Invalid data for `width`. Must be an integer:", `width`))
+        }
         self$`width` <- `width`
       }
       if (!is.null(`preview_image_url`)) {
-        stopifnot(is.character(`preview_image_url`), length(`preview_image_url`) == 1)
+        if (!(is.character(`preview_image_url`) && length(`preview_image_url`) == 1)) {
+          stop(paste("Error! Invalid data for `preview_image_url`. Must be a string:", `preview_image_url`))
+        }
         # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
         if (!stringr::str_detect(`preview_image_url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-          stop(paste("Error! Invalid URL:", `preview_image_url`))
+          stop(paste("Error! Invalid data for `preview_image_url`. Must be a URL:", `preview_image_url`))
         }
         self$`preview_image_url` <- `preview_image_url`
       }
@@ -144,7 +154,7 @@ AnimatedGif <- R6::R6Class(
       if (!is.null(this_object$`preview_image_url`)) {
         # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
         if (!stringr::str_detect(this_object$`preview_image_url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-          stop(paste("Error! Invalid URL:", this_object$`preview_image_url`))
+          stop(paste("Error! Invalid data for `preview_image_url`. Must be a URL:", this_object$`preview_image_url`))
         }
         self$`preview_image_url` <- this_object$`preview_image_url`
       }
@@ -243,7 +253,7 @@ AnimatedGif <- R6::R6Class(
       self$`width` <- this_object$`width`
       # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
       if (!stringr::str_detect(this_object$`preview_image_url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-        stop(paste("Error! Invalid URL:", this_object$`preview_image_url`))
+        stop(paste("Error! Invalid data for `preview_image_url`. Must be a URL:", this_object$`preview_image_url`))
       }
       self$`preview_image_url` <- this_object$`preview_image_url`
       self$`variants` <- ApiClient$new()$deserializeObj(this_object$`variants`, "array[Variant]", loadNamespace("twitter"))
@@ -268,7 +278,9 @@ AnimatedGif <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `type`
       if (!is.null(input_json$`type`)) {
-        stopifnot(is.character(input_json$`type`), length(input_json$`type`) == 1)
+        if (!(is.character(input_json$`type`) && length(input_json$`type`) == 1)) {
+          stop(paste("Error! Invalid data for `type`. Must be a string:", input_json$`type`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for AnimatedGif: the required field `type` is missing."))
       }

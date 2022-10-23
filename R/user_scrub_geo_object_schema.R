@@ -36,13 +36,15 @@ UserScrubGeoObjectSchema <- R6::R6Class(
     #' @export
     initialize = function(`event_at`, `up_to_tweet_id`, `user`, additional_properties = NULL, ...) {
       if (!missing(`event_at`)) {
-        if (!is.character(`event_at`)) {
-          stop(paste("Error! Invalid DateTime. Must be a string:", `event_at`))
+        if (!(is.character(`event_at`) && length(`event_at`) == 1)) {
+          stop(paste("Error! Invalid data for `event_at`. Must be a string:", `event_at`))
         }
         self$`event_at` <- `event_at`
       }
       if (!missing(`up_to_tweet_id`)) {
-        stopifnot(is.character(`up_to_tweet_id`), length(`up_to_tweet_id`) == 1)
+        if (!(is.character(`up_to_tweet_id`) && length(`up_to_tweet_id`) == 1)) {
+          stop(paste("Error! Invalid data for `up_to_tweet_id`. Must be a string:", `up_to_tweet_id`))
+        }
         self$`up_to_tweet_id` <- `up_to_tweet_id`
       }
       if (!missing(`user`)) {
@@ -189,13 +191,17 @@ UserScrubGeoObjectSchema <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `event_at`
       if (!is.null(input_json$`event_at`)) {
-        stopifnot(is.character(input_json$`event_at`), length(input_json$`event_at`) == 1)
+        if (!(is.character(input_json$`event_at`) && length(input_json$`event_at`) == 1)) {
+          stop(paste("Error! Invalid data for `event_at`. Must be a string:", input_json$`event_at`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for UserScrubGeoObjectSchema: the required field `event_at` is missing."))
       }
       # check the required field `up_to_tweet_id`
       if (!is.null(input_json$`up_to_tweet_id`)) {
-        stopifnot(is.character(input_json$`up_to_tweet_id`), length(input_json$`up_to_tweet_id`) == 1)
+        if (!(is.character(input_json$`up_to_tweet_id`) && length(input_json$`up_to_tweet_id`) == 1)) {
+          stop(paste("Error! Invalid data for `up_to_tweet_id`. Must be a string:", input_json$`up_to_tweet_id`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for UserScrubGeoObjectSchema: the required field `up_to_tweet_id` is missing."))
       }

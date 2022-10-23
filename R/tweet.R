@@ -87,11 +87,15 @@ Tweet <- R6::R6Class(
     #' @export
     initialize = function(`id`, `text`, `attachments` = NULL, `author_id` = NULL, `context_annotations` = NULL, `conversation_id` = NULL, `created_at` = NULL, `entities` = NULL, `geo` = NULL, `in_reply_to_user_id` = NULL, `lang` = NULL, `non_public_metrics` = NULL, `organic_metrics` = NULL, `possibly_sensitive` = NULL, `promoted_metrics` = NULL, `public_metrics` = NULL, `referenced_tweets` = NULL, `reply_settings` = NULL, `source` = NULL, `withheld` = NULL, additional_properties = NULL, ...) {
       if (!missing(`id`)) {
-        stopifnot(is.character(`id`), length(`id`) == 1)
+        if (!(is.character(`id`) && length(`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
+        }
         self$`id` <- `id`
       }
       if (!missing(`text`)) {
-        stopifnot(is.character(`text`), length(`text`) == 1)
+        if (!(is.character(`text`) && length(`text`) == 1)) {
+          stop(paste("Error! Invalid data for `text`. Must be a string:", `text`))
+        }
         self$`text` <- `text`
       }
       if (!is.null(`attachments`)) {
@@ -99,7 +103,9 @@ Tweet <- R6::R6Class(
         self$`attachments` <- `attachments`
       }
       if (!is.null(`author_id`)) {
-        stopifnot(is.character(`author_id`), length(`author_id`) == 1)
+        if (!(is.character(`author_id`) && length(`author_id`) == 1)) {
+          stop(paste("Error! Invalid data for `author_id`. Must be a string:", `author_id`))
+        }
         self$`author_id` <- `author_id`
       }
       if (!is.null(`context_annotations`)) {
@@ -108,12 +114,14 @@ Tweet <- R6::R6Class(
         self$`context_annotations` <- `context_annotations`
       }
       if (!is.null(`conversation_id`)) {
-        stopifnot(is.character(`conversation_id`), length(`conversation_id`) == 1)
+        if (!(is.character(`conversation_id`) && length(`conversation_id`) == 1)) {
+          stop(paste("Error! Invalid data for `conversation_id`. Must be a string:", `conversation_id`))
+        }
         self$`conversation_id` <- `conversation_id`
       }
       if (!is.null(`created_at`)) {
         if (!is.character(`created_at`)) {
-          stop(paste("Error! Invalid DateTime. Must be a string:", `created_at`))
+          stop(paste("Error! Invalid data for `created_at`. Must be a string:", `created_at`))
         }
         self$`created_at` <- `created_at`
       }
@@ -126,11 +134,15 @@ Tweet <- R6::R6Class(
         self$`geo` <- `geo`
       }
       if (!is.null(`in_reply_to_user_id`)) {
-        stopifnot(is.character(`in_reply_to_user_id`), length(`in_reply_to_user_id`) == 1)
+        if (!(is.character(`in_reply_to_user_id`) && length(`in_reply_to_user_id`) == 1)) {
+          stop(paste("Error! Invalid data for `in_reply_to_user_id`. Must be a string:", `in_reply_to_user_id`))
+        }
         self$`in_reply_to_user_id` <- `in_reply_to_user_id`
       }
       if (!is.null(`lang`)) {
-        stopifnot(is.character(`lang`), length(`lang`) == 1)
+        if (!(is.character(`lang`) && length(`lang`) == 1)) {
+          stop(paste("Error! Invalid data for `lang`. Must be a string:", `lang`))
+        }
         self$`lang` <- `lang`
       }
       if (!is.null(`non_public_metrics`)) {
@@ -142,7 +154,9 @@ Tweet <- R6::R6Class(
         self$`organic_metrics` <- `organic_metrics`
       }
       if (!is.null(`possibly_sensitive`)) {
-        stopifnot(is.logical(`possibly_sensitive`), length(`possibly_sensitive`) == 1)
+        if (!(is.logical(`possibly_sensitive`) && length(`possibly_sensitive`) == 1)) {
+          stop(paste("Error! Invalid data for `possibly_sensitive`. Must be a boolean:", `possibly_sensitive`))
+        }
         self$`possibly_sensitive` <- `possibly_sensitive`
       }
       if (!is.null(`promoted_metrics`)) {
@@ -163,7 +177,9 @@ Tweet <- R6::R6Class(
         self$`reply_settings` <- `reply_settings`
       }
       if (!is.null(`source`)) {
-        stopifnot(is.character(`source`), length(`source`) == 1)
+        if (!(is.character(`source`) && length(`source`) == 1)) {
+          stop(paste("Error! Invalid data for `source`. Must be a string:", `source`))
+        }
         self$`source` <- `source`
       }
       if (!is.null(`withheld`)) {
@@ -598,13 +614,17 @@ Tweet <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `id`
       if (!is.null(input_json$`id`)) {
-        stopifnot(is.character(input_json$`id`), length(input_json$`id`) == 1)
+        if (!(is.character(input_json$`id`) && length(input_json$`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", input_json$`id`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for Tweet: the required field `id` is missing."))
       }
       # check the required field `text`
       if (!is.null(input_json$`text`)) {
-        stopifnot(is.character(input_json$`text`), length(input_json$`text`) == 1)
+        if (!(is.character(input_json$`text`) && length(input_json$`text`) == 1)) {
+          stop(paste("Error! Invalid data for `text`. Must be a string:", input_json$`text`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for Tweet: the required field `text` is missing."))
       }

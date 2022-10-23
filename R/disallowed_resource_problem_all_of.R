@@ -36,21 +36,27 @@ DisallowedResourceProblemAllOf <- R6::R6Class(
     #' @export
     initialize = function(`resource_id`, `resource_type`, `section`, additional_properties = NULL, ...) {
       if (!missing(`resource_id`)) {
-        stopifnot(is.character(`resource_id`), length(`resource_id`) == 1)
+        if (!(is.character(`resource_id`) && length(`resource_id`) == 1)) {
+          stop(paste("Error! Invalid data for `resource_id`. Must be a string:", `resource_id`))
+        }
         self$`resource_id` <- `resource_id`
       }
       if (!missing(`resource_type`)) {
         if (!(`resource_type` %in% c("user", "tweet", "media", "list", "space"))) {
           stop(paste("Error! \"", `resource_type`, "\" cannot be assigned to `resource_type`. Must be \"user\", \"tweet\", \"media\", \"list\", \"space\".", sep = ""))
         }
-        stopifnot(is.character(`resource_type`), length(`resource_type`) == 1)
+        if (!(is.character(`resource_type`) && length(`resource_type`) == 1)) {
+          stop(paste("Error! Invalid data for `resource_type`. Must be a string:", `resource_type`))
+        }
         self$`resource_type` <- `resource_type`
       }
       if (!missing(`section`)) {
         if (!(`section` %in% c("data", "includes"))) {
           stop(paste("Error! \"", `section`, "\" cannot be assigned to `section`. Must be \"data\", \"includes\".", sep = ""))
         }
-        stopifnot(is.character(`section`), length(`section`) == 1)
+        if (!(is.character(`section`) && length(`section`) == 1)) {
+          stop(paste("Error! Invalid data for `section`. Must be a string:", `section`))
+        }
         self$`section` <- `section`
       }
       if (!is.null(additional_properties)) {
@@ -203,19 +209,25 @@ DisallowedResourceProblemAllOf <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `resource_id`
       if (!is.null(input_json$`resource_id`)) {
-        stopifnot(is.character(input_json$`resource_id`), length(input_json$`resource_id`) == 1)
+        if (!(is.character(input_json$`resource_id`) && length(input_json$`resource_id`) == 1)) {
+          stop(paste("Error! Invalid data for `resource_id`. Must be a string:", input_json$`resource_id`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for DisallowedResourceProblemAllOf: the required field `resource_id` is missing."))
       }
       # check the required field `resource_type`
       if (!is.null(input_json$`resource_type`)) {
-        stopifnot(is.character(input_json$`resource_type`), length(input_json$`resource_type`) == 1)
+        if (!(is.character(input_json$`resource_type`) && length(input_json$`resource_type`) == 1)) {
+          stop(paste("Error! Invalid data for `resource_type`. Must be a string:", input_json$`resource_type`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for DisallowedResourceProblemAllOf: the required field `resource_type` is missing."))
       }
       # check the required field `section`
       if (!is.null(input_json$`section`)) {
-        stopifnot(is.character(input_json$`section`), length(input_json$`section`) == 1)
+        if (!(is.character(input_json$`section`) && length(input_json$`section`) == 1)) {
+          stop(paste("Error! Invalid data for `section`. Must be a string:", input_json$`section`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for DisallowedResourceProblemAllOf: the required field `section` is missing."))
       }

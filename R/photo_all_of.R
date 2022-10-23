@@ -33,14 +33,18 @@ PhotoAllOf <- R6::R6Class(
     #' @export
     initialize = function(`alt_text` = NULL, `url` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`alt_text`)) {
-        stopifnot(is.character(`alt_text`), length(`alt_text`) == 1)
+        if (!(is.character(`alt_text`) && length(`alt_text`) == 1)) {
+          stop(paste("Error! Invalid data for `alt_text`. Must be a string:", `alt_text`))
+        }
         self$`alt_text` <- `alt_text`
       }
       if (!is.null(`url`)) {
-        stopifnot(is.character(`url`), length(`url`) == 1)
+        if (!(is.character(`url`) && length(`url`) == 1)) {
+          stop(paste("Error! Invalid data for `url`. Must be a string:", `url`))
+        }
         # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
         if (!stringr::str_detect(`url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-          stop(paste("Error! Invalid URL:", `url`))
+          stop(paste("Error! Invalid data for `url`. Must be a URL:", `url`))
         }
         self$`url` <- `url`
       }
@@ -89,7 +93,7 @@ PhotoAllOf <- R6::R6Class(
       if (!is.null(this_object$`url`)) {
         # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
         if (!stringr::str_detect(this_object$`url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-          stop(paste("Error! Invalid URL:", this_object$`url`))
+          stop(paste("Error! Invalid data for `url`. Must be a URL:", this_object$`url`))
         }
         self$`url` <- this_object$`url`
       }
@@ -150,7 +154,7 @@ PhotoAllOf <- R6::R6Class(
       self$`alt_text` <- this_object$`alt_text`
       # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
       if (!stringr::str_detect(this_object$`url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-        stop(paste("Error! Invalid URL:", this_object$`url`))
+        stop(paste("Error! Invalid data for `url`. Must be a URL:", this_object$`url`))
       }
       self$`url` <- this_object$`url`
       # process additional properties/fields in the payload

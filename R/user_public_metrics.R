@@ -39,19 +39,27 @@ UserPublicMetrics <- R6::R6Class(
     #' @export
     initialize = function(`followers_count`, `following_count`, `listed_count`, `tweet_count`, additional_properties = NULL, ...) {
       if (!missing(`followers_count`)) {
-        stopifnot(is.numeric(`followers_count`), length(`followers_count`) == 1)
+        if (!(is.numeric(`followers_count`) && length(`followers_count`) == 1)) {
+          stop(paste("Error! Invalid data for `followers_count`. Must be an integer:", `followers_count`))
+        }
         self$`followers_count` <- `followers_count`
       }
       if (!missing(`following_count`)) {
-        stopifnot(is.numeric(`following_count`), length(`following_count`) == 1)
+        if (!(is.numeric(`following_count`) && length(`following_count`) == 1)) {
+          stop(paste("Error! Invalid data for `following_count`. Must be an integer:", `following_count`))
+        }
         self$`following_count` <- `following_count`
       }
       if (!missing(`listed_count`)) {
-        stopifnot(is.numeric(`listed_count`), length(`listed_count`) == 1)
+        if (!(is.numeric(`listed_count`) && length(`listed_count`) == 1)) {
+          stop(paste("Error! Invalid data for `listed_count`. Must be an integer:", `listed_count`))
+        }
         self$`listed_count` <- `listed_count`
       }
       if (!missing(`tweet_count`)) {
-        stopifnot(is.numeric(`tweet_count`), length(`tweet_count`) == 1)
+        if (!(is.numeric(`tweet_count`) && length(`tweet_count`) == 1)) {
+          stop(paste("Error! Invalid data for `tweet_count`. Must be an integer:", `tweet_count`))
+        }
         self$`tweet_count` <- `tweet_count`
       }
       if (!is.null(additional_properties)) {
@@ -208,25 +216,33 @@ UserPublicMetrics <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `followers_count`
       if (!is.null(input_json$`followers_count`)) {
-        stopifnot(is.numeric(input_json$`followers_count`), length(input_json$`followers_count`) == 1)
+        if (!(is.numeric(input_json$`followers_count`) && length(input_json$`followers_count`) == 1)) {
+          stop(paste("Error! Invalid data for `followers_count`. Must be an integer:", input_json$`followers_count`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for UserPublicMetrics: the required field `followers_count` is missing."))
       }
       # check the required field `following_count`
       if (!is.null(input_json$`following_count`)) {
-        stopifnot(is.numeric(input_json$`following_count`), length(input_json$`following_count`) == 1)
+        if (!(is.numeric(input_json$`following_count`) && length(input_json$`following_count`) == 1)) {
+          stop(paste("Error! Invalid data for `following_count`. Must be an integer:", input_json$`following_count`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for UserPublicMetrics: the required field `following_count` is missing."))
       }
       # check the required field `listed_count`
       if (!is.null(input_json$`listed_count`)) {
-        stopifnot(is.numeric(input_json$`listed_count`), length(input_json$`listed_count`) == 1)
+        if (!(is.numeric(input_json$`listed_count`) && length(input_json$`listed_count`) == 1)) {
+          stop(paste("Error! Invalid data for `listed_count`. Must be an integer:", input_json$`listed_count`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for UserPublicMetrics: the required field `listed_count` is missing."))
       }
       # check the required field `tweet_count`
       if (!is.null(input_json$`tweet_count`)) {
-        stopifnot(is.numeric(input_json$`tweet_count`), length(input_json$`tweet_count`) == 1)
+        if (!(is.numeric(input_json$`tweet_count`) && length(input_json$`tweet_count`) == 1)) {
+          stop(paste("Error! Invalid data for `tweet_count`. Must be an integer:", input_json$`tweet_count`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for UserPublicMetrics: the required field `tweet_count` is missing."))
       }
