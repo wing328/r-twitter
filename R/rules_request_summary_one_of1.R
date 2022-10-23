@@ -33,11 +33,15 @@ RulesRequestSummaryOneOf1 <- R6::R6Class(
     #' @export
     initialize = function(`deleted`, `not_deleted`, additional_properties = NULL, ...) {
       if (!missing(`deleted`)) {
-        stopifnot(is.numeric(`deleted`), length(`deleted`) == 1)
+        if (!(is.numeric(`deleted`) && length(`deleted`) == 1)) {
+          stop(paste("Error! Invalid data for `deleted`. Must be an integer:", `deleted`))
+        }
         self$`deleted` <- `deleted`
       }
       if (!missing(`not_deleted`)) {
-        stopifnot(is.numeric(`not_deleted`), length(`not_deleted`) == 1)
+        if (!(is.numeric(`not_deleted`) && length(`not_deleted`) == 1)) {
+          stop(paste("Error! Invalid data for `not_deleted`. Must be an integer:", `not_deleted`))
+        }
         self$`not_deleted` <- `not_deleted`
       }
       if (!is.null(additional_properties)) {
@@ -162,13 +166,17 @@ RulesRequestSummaryOneOf1 <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `deleted`
       if (!is.null(input_json$`deleted`)) {
-        stopifnot(is.numeric(input_json$`deleted`), length(input_json$`deleted`) == 1)
+        if (!(is.numeric(input_json$`deleted`) && length(input_json$`deleted`) == 1)) {
+          stop(paste("Error! Invalid data for `deleted`. Must be an integer:", input_json$`deleted`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for RulesRequestSummaryOneOf1: the required field `deleted` is missing."))
       }
       # check the required field `not_deleted`
       if (!is.null(input_json$`not_deleted`)) {
-        stopifnot(is.numeric(input_json$`not_deleted`), length(input_json$`not_deleted`) == 1)
+        if (!(is.numeric(input_json$`not_deleted`) && length(input_json$`not_deleted`) == 1)) {
+          stop(paste("Error! Invalid data for `not_deleted`. Must be an integer:", input_json$`not_deleted`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for RulesRequestSummaryOneOf1: the required field `not_deleted` is missing."))
       }

@@ -30,7 +30,9 @@ UsersRetweetsCreateResponseData <- R6::R6Class(
     #' @export
     initialize = function(`retweeted` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`retweeted`)) {
-        stopifnot(is.logical(`retweeted`), length(`retweeted`) == 1)
+        if (!(is.logical(`retweeted`) && length(`retweeted`) == 1)) {
+          stop(paste("Error! Invalid data for `retweeted`. Must be a boolean:", `retweeted`))
+        }
         self$`retweeted` <- `retweeted`
       }
       if (!is.null(additional_properties)) {

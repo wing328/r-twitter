@@ -30,7 +30,9 @@ ReportUsersResponseData <- R6::R6Class(
     #' @export
     initialize = function(`id` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`id`)) {
-        stopifnot(is.numeric(`id`), length(`id`) == 1)
+        if (!(is.numeric(`id`) && length(`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be an integer:", `id`))
+        }
         self$`id` <- `id`
       }
       if (!is.null(additional_properties)) {

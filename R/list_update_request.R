@@ -36,15 +36,21 @@ ListUpdateRequest <- R6::R6Class(
     #' @export
     initialize = function(`description` = NULL, `name` = NULL, `item_private` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`description`)) {
-        stopifnot(is.character(`description`), length(`description`) == 1)
+        if (!(is.character(`description`) && length(`description`) == 1)) {
+          stop(paste("Error! Invalid data for `description`. Must be a string:", `description`))
+        }
         self$`description` <- `description`
       }
       if (!is.null(`name`)) {
-        stopifnot(is.character(`name`), length(`name`) == 1)
+        if (!(is.character(`name`) && length(`name`) == 1)) {
+          stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
+        }
         self$`name` <- `name`
       }
       if (!is.null(`item_private`)) {
-        stopifnot(is.logical(`item_private`), length(`item_private`) == 1)
+        if (!(is.logical(`item_private`) && length(`item_private`) == 1)) {
+          stop(paste("Error! Invalid data for `item_private`. Must be a boolean:", `item_private`))
+        }
         self$`item_private` <- `item_private`
       }
       if (!is.null(additional_properties)) {

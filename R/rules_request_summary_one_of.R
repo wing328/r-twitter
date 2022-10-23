@@ -39,19 +39,27 @@ RulesRequestSummaryOneOf <- R6::R6Class(
     #' @export
     initialize = function(`created`, `invalid`, `not_created`, `valid`, additional_properties = NULL, ...) {
       if (!missing(`created`)) {
-        stopifnot(is.numeric(`created`), length(`created`) == 1)
+        if (!(is.numeric(`created`) && length(`created`) == 1)) {
+          stop(paste("Error! Invalid data for `created`. Must be an integer:", `created`))
+        }
         self$`created` <- `created`
       }
       if (!missing(`invalid`)) {
-        stopifnot(is.numeric(`invalid`), length(`invalid`) == 1)
+        if (!(is.numeric(`invalid`) && length(`invalid`) == 1)) {
+          stop(paste("Error! Invalid data for `invalid`. Must be an integer:", `invalid`))
+        }
         self$`invalid` <- `invalid`
       }
       if (!missing(`not_created`)) {
-        stopifnot(is.numeric(`not_created`), length(`not_created`) == 1)
+        if (!(is.numeric(`not_created`) && length(`not_created`) == 1)) {
+          stop(paste("Error! Invalid data for `not_created`. Must be an integer:", `not_created`))
+        }
         self$`not_created` <- `not_created`
       }
       if (!missing(`valid`)) {
-        stopifnot(is.numeric(`valid`), length(`valid`) == 1)
+        if (!(is.numeric(`valid`) && length(`valid`) == 1)) {
+          stop(paste("Error! Invalid data for `valid`. Must be an integer:", `valid`))
+        }
         self$`valid` <- `valid`
       }
       if (!is.null(additional_properties)) {
@@ -208,25 +216,33 @@ RulesRequestSummaryOneOf <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `created`
       if (!is.null(input_json$`created`)) {
-        stopifnot(is.numeric(input_json$`created`), length(input_json$`created`) == 1)
+        if (!(is.numeric(input_json$`created`) && length(input_json$`created`) == 1)) {
+          stop(paste("Error! Invalid data for `created`. Must be an integer:", input_json$`created`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for RulesRequestSummaryOneOf: the required field `created` is missing."))
       }
       # check the required field `invalid`
       if (!is.null(input_json$`invalid`)) {
-        stopifnot(is.numeric(input_json$`invalid`), length(input_json$`invalid`) == 1)
+        if (!(is.numeric(input_json$`invalid`) && length(input_json$`invalid`) == 1)) {
+          stop(paste("Error! Invalid data for `invalid`. Must be an integer:", input_json$`invalid`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for RulesRequestSummaryOneOf: the required field `invalid` is missing."))
       }
       # check the required field `not_created`
       if (!is.null(input_json$`not_created`)) {
-        stopifnot(is.numeric(input_json$`not_created`), length(input_json$`not_created`) == 1)
+        if (!(is.numeric(input_json$`not_created`) && length(input_json$`not_created`) == 1)) {
+          stop(paste("Error! Invalid data for `not_created`. Must be an integer:", input_json$`not_created`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for RulesRequestSummaryOneOf: the required field `not_created` is missing."))
       }
       # check the required field `valid`
       if (!is.null(input_json$`valid`)) {
-        stopifnot(is.numeric(input_json$`valid`), length(input_json$`valid`) == 1)
+        if (!(is.numeric(input_json$`valid`) && length(input_json$`valid`) == 1)) {
+          stop(paste("Error! Invalid data for `valid`. Must be an integer:", input_json$`valid`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for RulesRequestSummaryOneOf: the required field `valid` is missing."))
       }

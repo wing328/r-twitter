@@ -30,7 +30,9 @@ BlockUserRequest <- R6::R6Class(
     #' @export
     initialize = function(`target_user_id`, additional_properties = NULL, ...) {
       if (!missing(`target_user_id`)) {
-        stopifnot(is.character(`target_user_id`), length(`target_user_id`) == 1)
+        if (!(is.character(`target_user_id`) && length(`target_user_id`) == 1)) {
+          stop(paste("Error! Invalid data for `target_user_id`. Must be a string:", `target_user_id`))
+        }
         self$`target_user_id` <- `target_user_id`
       }
       if (!is.null(additional_properties)) {
@@ -139,7 +141,9 @@ BlockUserRequest <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `target_user_id`
       if (!is.null(input_json$`target_user_id`)) {
-        stopifnot(is.character(input_json$`target_user_id`), length(input_json$`target_user_id`) == 1)
+        if (!(is.character(input_json$`target_user_id`) && length(input_json$`target_user_id`) == 1)) {
+          stop(paste("Error! Invalid data for `target_user_id`. Must be a string:", input_json$`target_user_id`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for BlockUserRequest: the required field `target_user_id` is missing."))
       }

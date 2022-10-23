@@ -39,19 +39,27 @@ TweetOrganicMetrics <- R6::R6Class(
     #' @export
     initialize = function(`impression_count`, `like_count`, `reply_count`, `retweet_count`, additional_properties = NULL, ...) {
       if (!missing(`impression_count`)) {
-        stopifnot(is.numeric(`impression_count`), length(`impression_count`) == 1)
+        if (!(is.numeric(`impression_count`) && length(`impression_count`) == 1)) {
+          stop(paste("Error! Invalid data for `impression_count`. Must be an integer:", `impression_count`))
+        }
         self$`impression_count` <- `impression_count`
       }
       if (!missing(`like_count`)) {
-        stopifnot(is.numeric(`like_count`), length(`like_count`) == 1)
+        if (!(is.numeric(`like_count`) && length(`like_count`) == 1)) {
+          stop(paste("Error! Invalid data for `like_count`. Must be an integer:", `like_count`))
+        }
         self$`like_count` <- `like_count`
       }
       if (!missing(`reply_count`)) {
-        stopifnot(is.numeric(`reply_count`), length(`reply_count`) == 1)
+        if (!(is.numeric(`reply_count`) && length(`reply_count`) == 1)) {
+          stop(paste("Error! Invalid data for `reply_count`. Must be an integer:", `reply_count`))
+        }
         self$`reply_count` <- `reply_count`
       }
       if (!missing(`retweet_count`)) {
-        stopifnot(is.numeric(`retweet_count`), length(`retweet_count`) == 1)
+        if (!(is.numeric(`retweet_count`) && length(`retweet_count`) == 1)) {
+          stop(paste("Error! Invalid data for `retweet_count`. Must be an integer:", `retweet_count`))
+        }
         self$`retweet_count` <- `retweet_count`
       }
       if (!is.null(additional_properties)) {
@@ -208,25 +216,33 @@ TweetOrganicMetrics <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `impression_count`
       if (!is.null(input_json$`impression_count`)) {
-        stopifnot(is.numeric(input_json$`impression_count`), length(input_json$`impression_count`) == 1)
+        if (!(is.numeric(input_json$`impression_count`) && length(input_json$`impression_count`) == 1)) {
+          stop(paste("Error! Invalid data for `impression_count`. Must be an integer:", input_json$`impression_count`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for TweetOrganicMetrics: the required field `impression_count` is missing."))
       }
       # check the required field `like_count`
       if (!is.null(input_json$`like_count`)) {
-        stopifnot(is.numeric(input_json$`like_count`), length(input_json$`like_count`) == 1)
+        if (!(is.numeric(input_json$`like_count`) && length(input_json$`like_count`) == 1)) {
+          stop(paste("Error! Invalid data for `like_count`. Must be an integer:", input_json$`like_count`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for TweetOrganicMetrics: the required field `like_count` is missing."))
       }
       # check the required field `reply_count`
       if (!is.null(input_json$`reply_count`)) {
-        stopifnot(is.numeric(input_json$`reply_count`), length(input_json$`reply_count`) == 1)
+        if (!(is.numeric(input_json$`reply_count`) && length(input_json$`reply_count`) == 1)) {
+          stop(paste("Error! Invalid data for `reply_count`. Must be an integer:", input_json$`reply_count`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for TweetOrganicMetrics: the required field `reply_count` is missing."))
       }
       # check the required field `retweet_count`
       if (!is.null(input_json$`retweet_count`)) {
-        stopifnot(is.numeric(input_json$`retweet_count`), length(input_json$`retweet_count`) == 1)
+        if (!(is.numeric(input_json$`retweet_count`) && length(input_json$`retweet_count`) == 1)) {
+          stop(paste("Error! Invalid data for `retweet_count`. Must be an integer:", input_json$`retweet_count`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for TweetOrganicMetrics: the required field `retweet_count` is missing."))
       }

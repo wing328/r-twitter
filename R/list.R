@@ -51,37 +51,51 @@ List <- R6::R6Class(
     #' @export
     initialize = function(`id`, `name`, `created_at` = NULL, `description` = NULL, `follower_count` = NULL, `member_count` = NULL, `owner_id` = NULL, `item_private` = NULL, additional_properties = NULL, ...) {
       if (!missing(`id`)) {
-        stopifnot(is.character(`id`), length(`id`) == 1)
+        if (!(is.character(`id`) && length(`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
+        }
         self$`id` <- `id`
       }
       if (!missing(`name`)) {
-        stopifnot(is.character(`name`), length(`name`) == 1)
+        if (!(is.character(`name`) && length(`name`) == 1)) {
+          stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
+        }
         self$`name` <- `name`
       }
       if (!is.null(`created_at`)) {
         if (!is.character(`created_at`)) {
-          stop(paste("Error! Invalid DateTime. Must be a string:", `created_at`))
+          stop(paste("Error! Invalid data for `created_at`. Must be a string:", `created_at`))
         }
         self$`created_at` <- `created_at`
       }
       if (!is.null(`description`)) {
-        stopifnot(is.character(`description`), length(`description`) == 1)
+        if (!(is.character(`description`) && length(`description`) == 1)) {
+          stop(paste("Error! Invalid data for `description`. Must be a string:", `description`))
+        }
         self$`description` <- `description`
       }
       if (!is.null(`follower_count`)) {
-        stopifnot(is.numeric(`follower_count`), length(`follower_count`) == 1)
+        if (!(is.numeric(`follower_count`) && length(`follower_count`) == 1)) {
+          stop(paste("Error! Invalid data for `follower_count`. Must be an integer:", `follower_count`))
+        }
         self$`follower_count` <- `follower_count`
       }
       if (!is.null(`member_count`)) {
-        stopifnot(is.numeric(`member_count`), length(`member_count`) == 1)
+        if (!(is.numeric(`member_count`) && length(`member_count`) == 1)) {
+          stop(paste("Error! Invalid data for `member_count`. Must be an integer:", `member_count`))
+        }
         self$`member_count` <- `member_count`
       }
       if (!is.null(`owner_id`)) {
-        stopifnot(is.character(`owner_id`), length(`owner_id`) == 1)
+        if (!(is.character(`owner_id`) && length(`owner_id`) == 1)) {
+          stop(paste("Error! Invalid data for `owner_id`. Must be a string:", `owner_id`))
+        }
         self$`owner_id` <- `owner_id`
       }
       if (!is.null(`item_private`)) {
-        stopifnot(is.logical(`item_private`), length(`item_private`) == 1)
+        if (!(is.logical(`item_private`) && length(`item_private`) == 1)) {
+          stop(paste("Error! Invalid data for `item_private`. Must be a boolean:", `item_private`))
+        }
         self$`item_private` <- `item_private`
       }
       if (!is.null(additional_properties)) {
@@ -302,13 +316,17 @@ List <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `id`
       if (!is.null(input_json$`id`)) {
-        stopifnot(is.character(input_json$`id`), length(input_json$`id`) == 1)
+        if (!(is.character(input_json$`id`) && length(input_json$`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", input_json$`id`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for List: the required field `id` is missing."))
       }
       # check the required field `name`
       if (!is.null(input_json$`name`)) {
-        stopifnot(is.character(input_json$`name`), length(input_json$`name`) == 1)
+        if (!(is.character(input_json$`name`) && length(input_json$`name`) == 1)) {
+          stop(paste("Error! Invalid data for `name`. Must be a string:", input_json$`name`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for List: the required field `name` is missing."))
       }

@@ -39,19 +39,27 @@ TweetPromotedMetrics <- R6::R6Class(
     #' @export
     initialize = function(`impression_count` = NULL, `like_count` = NULL, `reply_count` = NULL, `retweet_count` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`impression_count`)) {
-        stopifnot(is.numeric(`impression_count`), length(`impression_count`) == 1)
+        if (!(is.numeric(`impression_count`) && length(`impression_count`) == 1)) {
+          stop(paste("Error! Invalid data for `impression_count`. Must be an integer:", `impression_count`))
+        }
         self$`impression_count` <- `impression_count`
       }
       if (!is.null(`like_count`)) {
-        stopifnot(is.numeric(`like_count`), length(`like_count`) == 1)
+        if (!(is.numeric(`like_count`) && length(`like_count`) == 1)) {
+          stop(paste("Error! Invalid data for `like_count`. Must be an integer:", `like_count`))
+        }
         self$`like_count` <- `like_count`
       }
       if (!is.null(`reply_count`)) {
-        stopifnot(is.numeric(`reply_count`), length(`reply_count`) == 1)
+        if (!(is.numeric(`reply_count`) && length(`reply_count`) == 1)) {
+          stop(paste("Error! Invalid data for `reply_count`. Must be an integer:", `reply_count`))
+        }
         self$`reply_count` <- `reply_count`
       }
       if (!is.null(`retweet_count`)) {
-        stopifnot(is.numeric(`retweet_count`), length(`retweet_count`) == 1)
+        if (!(is.numeric(`retweet_count`) && length(`retweet_count`) == 1)) {
+          stop(paste("Error! Invalid data for `retweet_count`. Must be an integer:", `retweet_count`))
+        }
         self$`retweet_count` <- `retweet_count`
       }
       if (!is.null(additional_properties)) {

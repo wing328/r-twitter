@@ -33,7 +33,9 @@ ConnectionExceptionProblemAllOf <- R6::R6Class(
         if (!(`connection_issue` %in% c("TooManyConnections", "ProvisioningSubscription", "RuleConfigurationIssue", "RulesInvalidIssue"))) {
           stop(paste("Error! \"", `connection_issue`, "\" cannot be assigned to `connection_issue`. Must be \"TooManyConnections\", \"ProvisioningSubscription\", \"RuleConfigurationIssue\", \"RulesInvalidIssue\".", sep = ""))
         }
-        stopifnot(is.character(`connection_issue`), length(`connection_issue`) == 1)
+        if (!(is.character(`connection_issue`) && length(`connection_issue`) == 1)) {
+          stop(paste("Error! Invalid data for `connection_issue`. Must be a string:", `connection_issue`))
+        }
         self$`connection_issue` <- `connection_issue`
       }
       if (!is.null(additional_properties)) {

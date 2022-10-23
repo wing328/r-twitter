@@ -33,11 +33,15 @@ MentionFields <- R6::R6Class(
     #' @export
     initialize = function(`username`, `id` = NULL, additional_properties = NULL, ...) {
       if (!missing(`username`)) {
-        stopifnot(is.character(`username`), length(`username`) == 1)
+        if (!(is.character(`username`) && length(`username`) == 1)) {
+          stop(paste("Error! Invalid data for `username`. Must be a string:", `username`))
+        }
         self$`username` <- `username`
       }
       if (!is.null(`id`)) {
-        stopifnot(is.character(`id`), length(`id`) == 1)
+        if (!(is.character(`id`) && length(`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
+        }
         self$`id` <- `id`
       }
       if (!is.null(additional_properties)) {
@@ -162,7 +166,9 @@ MentionFields <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `username`
       if (!is.null(input_json$`username`)) {
-        stopifnot(is.character(input_json$`username`), length(input_json$`username`) == 1)
+        if (!(is.character(input_json$`username`) && length(input_json$`username`) == 1)) {
+          stop(paste("Error! Invalid data for `username`. Must be a string:", input_json$`username`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for MentionFields: the required field `username` is missing."))
       }

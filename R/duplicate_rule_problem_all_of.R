@@ -33,11 +33,15 @@ DuplicateRuleProblemAllOf <- R6::R6Class(
     #' @export
     initialize = function(`id` = NULL, `value` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`id`)) {
-        stopifnot(is.character(`id`), length(`id`) == 1)
+        if (!(is.character(`id`) && length(`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
+        }
         self$`id` <- `id`
       }
       if (!is.null(`value`)) {
-        stopifnot(is.character(`value`), length(`value`) == 1)
+        if (!(is.character(`value`) && length(`value`) == 1)) {
+          stop(paste("Error! Invalid data for `value`. Must be a string:", `value`))
+        }
         self$`value` <- `value`
       }
       if (!is.null(additional_properties)) {

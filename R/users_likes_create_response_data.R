@@ -30,7 +30,9 @@ UsersLikesCreateResponseData <- R6::R6Class(
     #' @export
     initialize = function(`liked` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`liked`)) {
-        stopifnot(is.logical(`liked`), length(`liked`) == 1)
+        if (!(is.logical(`liked`) && length(`liked`) == 1)) {
+          stop(paste("Error! Invalid data for `liked`. Must be a boolean:", `liked`))
+        }
         self$`liked` <- `liked`
       }
       if (!is.null(additional_properties)) {

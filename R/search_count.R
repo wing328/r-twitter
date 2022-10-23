@@ -36,19 +36,21 @@ SearchCount <- R6::R6Class(
     #' @export
     initialize = function(`end`, `start`, `tweet_count`, additional_properties = NULL, ...) {
       if (!missing(`end`)) {
-        if (!is.character(`end`)) {
-          stop(paste("Error! Invalid DateTime. Must be a string:", `end`))
+        if (!(is.character(`end`) && length(`end`) == 1)) {
+          stop(paste("Error! Invalid data for `end`. Must be a string:", `end`))
         }
         self$`end` <- `end`
       }
       if (!missing(`start`)) {
-        if (!is.character(`start`)) {
-          stop(paste("Error! Invalid DateTime. Must be a string:", `start`))
+        if (!(is.character(`start`) && length(`start`) == 1)) {
+          stop(paste("Error! Invalid data for `start`. Must be a string:", `start`))
         }
         self$`start` <- `start`
       }
       if (!missing(`tweet_count`)) {
-        stopifnot(is.numeric(`tweet_count`), length(`tweet_count`) == 1)
+        if (!(is.numeric(`tweet_count`) && length(`tweet_count`) == 1)) {
+          stop(paste("Error! Invalid data for `tweet_count`. Must be an integer:", `tweet_count`))
+        }
         self$`tweet_count` <- `tweet_count`
       }
       if (!is.null(additional_properties)) {
@@ -189,19 +191,25 @@ SearchCount <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `end`
       if (!is.null(input_json$`end`)) {
-        stopifnot(is.character(input_json$`end`), length(input_json$`end`) == 1)
+        if (!(is.character(input_json$`end`) && length(input_json$`end`) == 1)) {
+          stop(paste("Error! Invalid data for `end`. Must be a string:", input_json$`end`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for SearchCount: the required field `end` is missing."))
       }
       # check the required field `start`
       if (!is.null(input_json$`start`)) {
-        stopifnot(is.character(input_json$`start`), length(input_json$`start`) == 1)
+        if (!(is.character(input_json$`start`) && length(input_json$`start`) == 1)) {
+          stop(paste("Error! Invalid data for `start`. Must be a string:", input_json$`start`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for SearchCount: the required field `start` is missing."))
       }
       # check the required field `tweet_count`
       if (!is.null(input_json$`tweet_count`)) {
-        stopifnot(is.numeric(input_json$`tweet_count`), length(input_json$`tweet_count`) == 1)
+        if (!(is.numeric(input_json$`tweet_count`) && length(input_json$`tweet_count`) == 1)) {
+          stop(paste("Error! Invalid data for `tweet_count`. Must be an integer:", input_json$`tweet_count`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for SearchCount: the required field `tweet_count` is missing."))
       }

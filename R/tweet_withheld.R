@@ -36,7 +36,9 @@ TweetWithheld <- R6::R6Class(
     #' @export
     initialize = function(`copyright`, `country_codes`, `scope` = NULL, additional_properties = NULL, ...) {
       if (!missing(`copyright`)) {
-        stopifnot(is.logical(`copyright`), length(`copyright`) == 1)
+        if (!(is.logical(`copyright`) && length(`copyright`) == 1)) {
+          stop(paste("Error! Invalid data for `copyright`. Must be a boolean:", `copyright`))
+        }
         self$`copyright` <- `copyright`
       }
       if (!missing(`country_codes`)) {
@@ -51,7 +53,9 @@ TweetWithheld <- R6::R6Class(
         if (!(`scope` %in% c("tweet", "user"))) {
           stop(paste("Error! \"", `scope`, "\" cannot be assigned to `scope`. Must be \"tweet\", \"user\".", sep = ""))
         }
-        stopifnot(is.character(`scope`), length(`scope`) == 1)
+        if (!(is.character(`scope`) && length(`scope`) == 1)) {
+          stop(paste("Error! Invalid data for `scope`. Must be a string:", `scope`))
+        }
         self$`scope` <- `scope`
       }
       if (!is.null(additional_properties)) {
@@ -204,7 +208,9 @@ TweetWithheld <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `copyright`
       if (!is.null(input_json$`copyright`)) {
-        stopifnot(is.logical(input_json$`copyright`), length(input_json$`copyright`) == 1)
+        if (!(is.logical(input_json$`copyright`) && length(input_json$`copyright`) == 1)) {
+          stop(paste("Error! Invalid data for `copyright`. Must be a boolean:", input_json$`copyright`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for TweetWithheld: the required field `copyright` is missing."))
       }

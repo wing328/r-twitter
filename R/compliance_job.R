@@ -54,27 +54,31 @@ ComplianceJob <- R6::R6Class(
     #' @export
     initialize = function(`created_at`, `download_expires_at`, `download_url`, `id`, `status`, `type`, `upload_expires_at`, `upload_url`, `name` = NULL, additional_properties = NULL, ...) {
       if (!missing(`created_at`)) {
-        if (!is.character(`created_at`)) {
-          stop(paste("Error! Invalid DateTime. Must be a string:", `created_at`))
+        if (!(is.character(`created_at`) && length(`created_at`) == 1)) {
+          stop(paste("Error! Invalid data for `created_at`. Must be a string:", `created_at`))
         }
         self$`created_at` <- `created_at`
       }
       if (!missing(`download_expires_at`)) {
-        if (!is.character(`download_expires_at`)) {
-          stop(paste("Error! Invalid DateTime. Must be a string:", `download_expires_at`))
+        if (!(is.character(`download_expires_at`) && length(`download_expires_at`) == 1)) {
+          stop(paste("Error! Invalid data for `download_expires_at`. Must be a string:", `download_expires_at`))
         }
         self$`download_expires_at` <- `download_expires_at`
       }
       if (!missing(`download_url`)) {
-        stopifnot(is.character(`download_url`), length(`download_url`) == 1)
+        if (!(is.character(`download_url`) && length(`download_url`) == 1)) {
+          stop(paste("Error! Invalid data for `download_url`. Must be a string:", `download_url`))
+        }
         # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
         if (!stringr::str_detect(`download_url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-          stop(paste("Error! Invalid URL:", `download_url`))
+          stop(paste("Error! Invalid data for `download_url`. Must be a URL:", `download_url`))
         }
         self$`download_url` <- `download_url`
       }
       if (!missing(`id`)) {
-        stopifnot(is.character(`id`), length(`id`) == 1)
+        if (!(is.character(`id`) && length(`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
+        }
         self$`id` <- `id`
       }
       if (!missing(`status`)) {
@@ -86,21 +90,25 @@ ComplianceJob <- R6::R6Class(
         self$`type` <- `type`
       }
       if (!missing(`upload_expires_at`)) {
-        if (!is.character(`upload_expires_at`)) {
-          stop(paste("Error! Invalid DateTime. Must be a string:", `upload_expires_at`))
+        if (!(is.character(`upload_expires_at`) && length(`upload_expires_at`) == 1)) {
+          stop(paste("Error! Invalid data for `upload_expires_at`. Must be a string:", `upload_expires_at`))
         }
         self$`upload_expires_at` <- `upload_expires_at`
       }
       if (!missing(`upload_url`)) {
-        stopifnot(is.character(`upload_url`), length(`upload_url`) == 1)
+        if (!(is.character(`upload_url`) && length(`upload_url`) == 1)) {
+          stop(paste("Error! Invalid data for `upload_url`. Must be a string:", `upload_url`))
+        }
         # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
         if (!stringr::str_detect(`upload_url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-          stop(paste("Error! Invalid URL:", `upload_url`))
+          stop(paste("Error! Invalid data for `upload_url`. Must be a URL:", `upload_url`))
         }
         self$`upload_url` <- `upload_url`
       }
       if (!is.null(`name`)) {
-        stopifnot(is.character(`name`), length(`name`) == 1)
+        if (!(is.character(`name`) && length(`name`) == 1)) {
+          stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
+        }
         self$`name` <- `name`
       }
       if (!is.null(additional_properties)) {
@@ -179,7 +187,7 @@ ComplianceJob <- R6::R6Class(
       if (!is.null(this_object$`download_url`)) {
         # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
         if (!stringr::str_detect(this_object$`download_url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-          stop(paste("Error! Invalid URL:", this_object$`download_url`))
+          stop(paste("Error! Invalid data for `download_url`. Must be a URL:", this_object$`download_url`))
         }
         self$`download_url` <- this_object$`download_url`
       }
@@ -205,7 +213,7 @@ ComplianceJob <- R6::R6Class(
       if (!is.null(this_object$`upload_url`)) {
         # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
         if (!stringr::str_detect(this_object$`upload_url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-          stop(paste("Error! Invalid URL:", this_object$`upload_url`))
+          stop(paste("Error! Invalid data for `upload_url`. Must be a URL:", this_object$`upload_url`))
         }
         self$`upload_url` <- this_object$`upload_url`
       }
@@ -323,7 +331,7 @@ ComplianceJob <- R6::R6Class(
       self$`download_expires_at` <- this_object$`download_expires_at`
       # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
       if (!stringr::str_detect(this_object$`download_url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-        stop(paste("Error! Invalid URL:", this_object$`download_url`))
+        stop(paste("Error! Invalid data for `download_url`. Must be a URL:", this_object$`download_url`))
       }
       self$`download_url` <- this_object$`download_url`
       self$`id` <- this_object$`id`
@@ -333,7 +341,7 @@ ComplianceJob <- R6::R6Class(
       self$`upload_expires_at` <- this_object$`upload_expires_at`
       # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
       if (!stringr::str_detect(this_object$`upload_url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-        stop(paste("Error! Invalid URL:", this_object$`upload_url`))
+        stop(paste("Error! Invalid data for `upload_url`. Must be a URL:", this_object$`upload_url`))
       }
       self$`upload_url` <- this_object$`upload_url`
       # process additional properties/fields in the payload
@@ -357,29 +365,37 @@ ComplianceJob <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `created_at`
       if (!is.null(input_json$`created_at`)) {
-        stopifnot(is.character(input_json$`created_at`), length(input_json$`created_at`) == 1)
+        if (!(is.character(input_json$`created_at`) && length(input_json$`created_at`) == 1)) {
+          stop(paste("Error! Invalid data for `created_at`. Must be a string:", input_json$`created_at`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for ComplianceJob: the required field `created_at` is missing."))
       }
       # check the required field `download_expires_at`
       if (!is.null(input_json$`download_expires_at`)) {
-        stopifnot(is.character(input_json$`download_expires_at`), length(input_json$`download_expires_at`) == 1)
+        if (!(is.character(input_json$`download_expires_at`) && length(input_json$`download_expires_at`) == 1)) {
+          stop(paste("Error! Invalid data for `download_expires_at`. Must be a string:", input_json$`download_expires_at`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for ComplianceJob: the required field `download_expires_at` is missing."))
       }
       # check the required field `download_url`
       if (!is.null(input_json$`download_url`)) {
-        stopifnot(is.character(input_json$`download_url`), length(input_json$`download_url`) == 1)
+        if (!(is.character(input_json$`download_url`) && length(input_json$`download_url`) == 1)) {
+          stop(paste("Error! Invalid data for `download_url`. Must be a string:", input_json$`download_url`))
+        }
         # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
         if (!stringr::str_detect(input_json$`download_url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-          stop(paste("Error! Invalid URL:", input_json$`download_url`))
+          stop(paste("Error! Invalid data for `download_url`. Must be a URL:", input_json$`download_url`))
         }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for ComplianceJob: the required field `download_url` is missing."))
       }
       # check the required field `id`
       if (!is.null(input_json$`id`)) {
-        stopifnot(is.character(input_json$`id`), length(input_json$`id`) == 1)
+        if (!(is.character(input_json$`id`) && length(input_json$`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", input_json$`id`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for ComplianceJob: the required field `id` is missing."))
       }
@@ -397,16 +413,20 @@ ComplianceJob <- R6::R6Class(
       }
       # check the required field `upload_expires_at`
       if (!is.null(input_json$`upload_expires_at`)) {
-        stopifnot(is.character(input_json$`upload_expires_at`), length(input_json$`upload_expires_at`) == 1)
+        if (!(is.character(input_json$`upload_expires_at`) && length(input_json$`upload_expires_at`) == 1)) {
+          stop(paste("Error! Invalid data for `upload_expires_at`. Must be a string:", input_json$`upload_expires_at`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for ComplianceJob: the required field `upload_expires_at` is missing."))
       }
       # check the required field `upload_url`
       if (!is.null(input_json$`upload_url`)) {
-        stopifnot(is.character(input_json$`upload_url`), length(input_json$`upload_url`) == 1)
+        if (!(is.character(input_json$`upload_url`) && length(input_json$`upload_url`) == 1)) {
+          stop(paste("Error! Invalid data for `upload_url`. Must be a string:", input_json$`upload_url`))
+        }
         # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
         if (!stringr::str_detect(input_json$`upload_url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-          stop(paste("Error! Invalid URL:", input_json$`upload_url`))
+          stop(paste("Error! Invalid data for `upload_url`. Must be a URL:", input_json$`upload_url`))
         }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for ComplianceJob: the required field `upload_url` is missing."))

@@ -54,11 +54,15 @@ TweetCreateRequest <- R6::R6Class(
     #' @export
     initialize = function(`direct_message_deep_link` = NULL, `for_super_followers_only` = FALSE, `geo` = NULL, `media` = NULL, `poll` = NULL, `quote_tweet_id` = NULL, `reply` = NULL, `reply_settings` = NULL, `text` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`direct_message_deep_link`)) {
-        stopifnot(is.character(`direct_message_deep_link`), length(`direct_message_deep_link`) == 1)
+        if (!(is.character(`direct_message_deep_link`) && length(`direct_message_deep_link`) == 1)) {
+          stop(paste("Error! Invalid data for `direct_message_deep_link`. Must be a string:", `direct_message_deep_link`))
+        }
         self$`direct_message_deep_link` <- `direct_message_deep_link`
       }
       if (!is.null(`for_super_followers_only`)) {
-        stopifnot(is.logical(`for_super_followers_only`), length(`for_super_followers_only`) == 1)
+        if (!(is.logical(`for_super_followers_only`) && length(`for_super_followers_only`) == 1)) {
+          stop(paste("Error! Invalid data for `for_super_followers_only`. Must be a boolean:", `for_super_followers_only`))
+        }
         self$`for_super_followers_only` <- `for_super_followers_only`
       }
       if (!is.null(`geo`)) {
@@ -74,7 +78,9 @@ TweetCreateRequest <- R6::R6Class(
         self$`poll` <- `poll`
       }
       if (!is.null(`quote_tweet_id`)) {
-        stopifnot(is.character(`quote_tweet_id`), length(`quote_tweet_id`) == 1)
+        if (!(is.character(`quote_tweet_id`) && length(`quote_tweet_id`) == 1)) {
+          stop(paste("Error! Invalid data for `quote_tweet_id`. Must be a string:", `quote_tweet_id`))
+        }
         self$`quote_tweet_id` <- `quote_tweet_id`
       }
       if (!is.null(`reply`)) {
@@ -85,11 +91,15 @@ TweetCreateRequest <- R6::R6Class(
         if (!(`reply_settings` %in% c("following", "mentionedUsers"))) {
           stop(paste("Error! \"", `reply_settings`, "\" cannot be assigned to `reply_settings`. Must be \"following\", \"mentionedUsers\".", sep = ""))
         }
-        stopifnot(is.character(`reply_settings`), length(`reply_settings`) == 1)
+        if (!(is.character(`reply_settings`) && length(`reply_settings`) == 1)) {
+          stop(paste("Error! Invalid data for `reply_settings`. Must be a string:", `reply_settings`))
+        }
         self$`reply_settings` <- `reply_settings`
       }
       if (!is.null(`text`)) {
-        stopifnot(is.character(`text`), length(`text`) == 1)
+        if (!(is.character(`text`) && length(`text`) == 1)) {
+          stop(paste("Error! Invalid data for `text`. Must be a string:", `text`))
+        }
         self$`text` <- `text`
       }
       if (!is.null(additional_properties)) {

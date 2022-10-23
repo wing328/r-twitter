@@ -48,7 +48,9 @@ VideoAllOf <- R6::R6Class(
     #' @export
     initialize = function(`duration_ms` = NULL, `non_public_metrics` = NULL, `organic_metrics` = NULL, `preview_image_url` = NULL, `promoted_metrics` = NULL, `public_metrics` = NULL, `variants` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`duration_ms`)) {
-        stopifnot(is.numeric(`duration_ms`), length(`duration_ms`) == 1)
+        if (!(is.numeric(`duration_ms`) && length(`duration_ms`) == 1)) {
+          stop(paste("Error! Invalid data for `duration_ms`. Must be an integer:", `duration_ms`))
+        }
         self$`duration_ms` <- `duration_ms`
       }
       if (!is.null(`non_public_metrics`)) {
@@ -60,10 +62,12 @@ VideoAllOf <- R6::R6Class(
         self$`organic_metrics` <- `organic_metrics`
       }
       if (!is.null(`preview_image_url`)) {
-        stopifnot(is.character(`preview_image_url`), length(`preview_image_url`) == 1)
+        if (!(is.character(`preview_image_url`) && length(`preview_image_url`) == 1)) {
+          stop(paste("Error! Invalid data for `preview_image_url`. Must be a string:", `preview_image_url`))
+        }
         # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
         if (!stringr::str_detect(`preview_image_url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-          stop(paste("Error! Invalid URL:", `preview_image_url`))
+          stop(paste("Error! Invalid data for `preview_image_url`. Must be a URL:", `preview_image_url`))
         }
         self$`preview_image_url` <- `preview_image_url`
       }
@@ -155,7 +159,7 @@ VideoAllOf <- R6::R6Class(
       if (!is.null(this_object$`preview_image_url`)) {
         # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
         if (!stringr::str_detect(this_object$`preview_image_url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-          stop(paste("Error! Invalid URL:", this_object$`preview_image_url`))
+          stop(paste("Error! Invalid data for `preview_image_url`. Must be a URL:", this_object$`preview_image_url`))
         }
         self$`preview_image_url` <- this_object$`preview_image_url`
       }
@@ -271,7 +275,7 @@ VideoAllOf <- R6::R6Class(
       self$`organic_metrics` <- VideoAllOfOrganicMetrics$new()$fromJSON(jsonlite::toJSON(this_object$organic_metrics, auto_unbox = TRUE, digits = NA))
       # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
       if (!stringr::str_detect(this_object$`preview_image_url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-        stop(paste("Error! Invalid URL:", this_object$`preview_image_url`))
+        stop(paste("Error! Invalid data for `preview_image_url`. Must be a URL:", this_object$`preview_image_url`))
       }
       self$`preview_image_url` <- this_object$`preview_image_url`
       self$`promoted_metrics` <- VideoAllOfPromotedMetrics$new()$fromJSON(jsonlite::toJSON(this_object$promoted_metrics, auto_unbox = TRUE, digits = NA))

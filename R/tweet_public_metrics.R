@@ -39,19 +39,27 @@ TweetPublicMetrics <- R6::R6Class(
     #' @export
     initialize = function(`like_count`, `reply_count`, `retweet_count`, `quote_count` = NULL, additional_properties = NULL, ...) {
       if (!missing(`like_count`)) {
-        stopifnot(is.numeric(`like_count`), length(`like_count`) == 1)
+        if (!(is.numeric(`like_count`) && length(`like_count`) == 1)) {
+          stop(paste("Error! Invalid data for `like_count`. Must be an integer:", `like_count`))
+        }
         self$`like_count` <- `like_count`
       }
       if (!missing(`reply_count`)) {
-        stopifnot(is.numeric(`reply_count`), length(`reply_count`) == 1)
+        if (!(is.numeric(`reply_count`) && length(`reply_count`) == 1)) {
+          stop(paste("Error! Invalid data for `reply_count`. Must be an integer:", `reply_count`))
+        }
         self$`reply_count` <- `reply_count`
       }
       if (!missing(`retweet_count`)) {
-        stopifnot(is.numeric(`retweet_count`), length(`retweet_count`) == 1)
+        if (!(is.numeric(`retweet_count`) && length(`retweet_count`) == 1)) {
+          stop(paste("Error! Invalid data for `retweet_count`. Must be an integer:", `retweet_count`))
+        }
         self$`retweet_count` <- `retweet_count`
       }
       if (!is.null(`quote_count`)) {
-        stopifnot(is.numeric(`quote_count`), length(`quote_count`) == 1)
+        if (!(is.numeric(`quote_count`) && length(`quote_count`) == 1)) {
+          stop(paste("Error! Invalid data for `quote_count`. Must be an integer:", `quote_count`))
+        }
         self$`quote_count` <- `quote_count`
       }
       if (!is.null(additional_properties)) {
@@ -208,19 +216,25 @@ TweetPublicMetrics <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `like_count`
       if (!is.null(input_json$`like_count`)) {
-        stopifnot(is.numeric(input_json$`like_count`), length(input_json$`like_count`) == 1)
+        if (!(is.numeric(input_json$`like_count`) && length(input_json$`like_count`) == 1)) {
+          stop(paste("Error! Invalid data for `like_count`. Must be an integer:", input_json$`like_count`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for TweetPublicMetrics: the required field `like_count` is missing."))
       }
       # check the required field `reply_count`
       if (!is.null(input_json$`reply_count`)) {
-        stopifnot(is.numeric(input_json$`reply_count`), length(input_json$`reply_count`) == 1)
+        if (!(is.numeric(input_json$`reply_count`) && length(input_json$`reply_count`) == 1)) {
+          stop(paste("Error! Invalid data for `reply_count`. Must be an integer:", input_json$`reply_count`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for TweetPublicMetrics: the required field `reply_count` is missing."))
       }
       # check the required field `retweet_count`
       if (!is.null(input_json$`retweet_count`)) {
-        stopifnot(is.numeric(input_json$`retweet_count`), length(input_json$`retweet_count`) == 1)
+        if (!(is.numeric(input_json$`retweet_count`) && length(input_json$`retweet_count`) == 1)) {
+          stop(paste("Error! Invalid data for `retweet_count`. Must be an integer:", input_json$`retweet_count`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for TweetPublicMetrics: the required field `retweet_count` is missing."))
       }

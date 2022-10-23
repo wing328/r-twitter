@@ -44,7 +44,9 @@ UserWithheld <- R6::R6Class(
         if (!(`scope` %in% c("user"))) {
           stop(paste("Error! \"", `scope`, "\" cannot be assigned to `scope`. Must be \"user\".", sep = ""))
         }
-        stopifnot(is.character(`scope`), length(`scope`) == 1)
+        if (!(is.character(`scope`) && length(`scope`) == 1)) {
+          stop(paste("Error! Invalid data for `scope`. Must be a string:", `scope`))
+        }
         self$`scope` <- `scope`
       }
       if (!is.null(additional_properties)) {

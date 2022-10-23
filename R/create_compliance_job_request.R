@@ -39,15 +39,21 @@ CreateComplianceJobRequest <- R6::R6Class(
         if (!(`type` %in% c("tweets", "users"))) {
           stop(paste("Error! \"", `type`, "\" cannot be assigned to `type`. Must be \"tweets\", \"users\".", sep = ""))
         }
-        stopifnot(is.character(`type`), length(`type`) == 1)
+        if (!(is.character(`type`) && length(`type`) == 1)) {
+          stop(paste("Error! Invalid data for `type`. Must be a string:", `type`))
+        }
         self$`type` <- `type`
       }
       if (!is.null(`name`)) {
-        stopifnot(is.character(`name`), length(`name`) == 1)
+        if (!(is.character(`name`) && length(`name`) == 1)) {
+          stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
+        }
         self$`name` <- `name`
       }
       if (!is.null(`resumable`)) {
-        stopifnot(is.logical(`resumable`), length(`resumable`) == 1)
+        if (!(is.logical(`resumable`) && length(`resumable`) == 1)) {
+          stop(paste("Error! Invalid data for `resumable`. Must be a boolean:", `resumable`))
+        }
         self$`resumable` <- `resumable`
       }
       if (!is.null(additional_properties)) {
@@ -194,7 +200,9 @@ CreateComplianceJobRequest <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `type`
       if (!is.null(input_json$`type`)) {
-        stopifnot(is.character(input_json$`type`), length(input_json$`type`) == 1)
+        if (!(is.character(input_json$`type`) && length(input_json$`type`) == 1)) {
+          stop(paste("Error! Invalid data for `type`. Must be a string:", input_json$`type`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CreateComplianceJobRequest: the required field `type` is missing."))
       }

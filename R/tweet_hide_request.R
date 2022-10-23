@@ -30,7 +30,9 @@ TweetHideRequest <- R6::R6Class(
     #' @export
     initialize = function(`hidden`, additional_properties = NULL, ...) {
       if (!missing(`hidden`)) {
-        stopifnot(is.logical(`hidden`), length(`hidden`) == 1)
+        if (!(is.logical(`hidden`) && length(`hidden`) == 1)) {
+          stop(paste("Error! Invalid data for `hidden`. Must be a boolean:", `hidden`))
+        }
         self$`hidden` <- `hidden`
       }
       if (!is.null(additional_properties)) {
@@ -139,7 +141,9 @@ TweetHideRequest <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `hidden`
       if (!is.null(input_json$`hidden`)) {
-        stopifnot(is.logical(input_json$`hidden`), length(input_json$`hidden`) == 1)
+        if (!(is.logical(input_json$`hidden`) && length(input_json$`hidden`) == 1)) {
+          stop(paste("Error! Invalid data for `hidden`. Must be a boolean:", input_json$`hidden`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for TweetHideRequest: the required field `hidden` is missing."))
       }

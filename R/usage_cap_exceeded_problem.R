@@ -46,33 +46,45 @@ UsageCapExceededProblem <- R6::R6Class(
     #' @export
     initialize = function(`title`, `type`, `detail` = NULL, `status` = NULL, `period` = NULL, `scope` = NULL, additional_properties = NULL, ...) {
       if (!missing(`title`)) {
-        stopifnot(is.character(`title`), length(`title`) == 1)
+        if (!(is.character(`title`) && length(`title`) == 1)) {
+          stop(paste("Error! Invalid data for `title`. Must be a string:", `title`))
+        }
         self$`title` <- `title`
       }
       if (!missing(`type`)) {
-        stopifnot(is.character(`type`), length(`type`) == 1)
+        if (!(is.character(`type`) && length(`type`) == 1)) {
+          stop(paste("Error! Invalid data for `type`. Must be a string:", `type`))
+        }
         self$`type` <- `type`
       }
       if (!is.null(`detail`)) {
-        stopifnot(is.character(`detail`), length(`detail`) == 1)
+        if (!(is.character(`detail`) && length(`detail`) == 1)) {
+          stop(paste("Error! Invalid data for `detail`. Must be a string:", `detail`))
+        }
         self$`detail` <- `detail`
       }
       if (!is.null(`status`)) {
-        stopifnot(is.numeric(`status`), length(`status`) == 1)
+        if (!(is.numeric(`status`) && length(`status`) == 1)) {
+          stop(paste("Error! Invalid data for `status`. Must be an integer:", `status`))
+        }
         self$`status` <- `status`
       }
       if (!is.null(`period`)) {
         if (!(`period` %in% c("Daily", "Monthly"))) {
           stop(paste("Error! \"", `period`, "\" cannot be assigned to `period`. Must be \"Daily\", \"Monthly\".", sep = ""))
         }
-        stopifnot(is.character(`period`), length(`period`) == 1)
+        if (!(is.character(`period`) && length(`period`) == 1)) {
+          stop(paste("Error! Invalid data for `period`. Must be a string:", `period`))
+        }
         self$`period` <- `period`
       }
       if (!is.null(`scope`)) {
         if (!(`scope` %in% c("Account", "Product"))) {
           stop(paste("Error! \"", `scope`, "\" cannot be assigned to `scope`. Must be \"Account\", \"Product\".", sep = ""))
         }
-        stopifnot(is.character(`scope`), length(`scope`) == 1)
+        if (!(is.character(`scope`) && length(`scope`) == 1)) {
+          stop(paste("Error! Invalid data for `scope`. Must be a string:", `scope`))
+        }
         self$`scope` <- `scope`
       }
       if (!is.null(additional_properties)) {
@@ -273,13 +285,17 @@ UsageCapExceededProblem <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `title`
       if (!is.null(input_json$`title`)) {
-        stopifnot(is.character(input_json$`title`), length(input_json$`title`) == 1)
+        if (!(is.character(input_json$`title`) && length(input_json$`title`) == 1)) {
+          stop(paste("Error! Invalid data for `title`. Must be a string:", input_json$`title`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for UsageCapExceededProblem: the required field `title` is missing."))
       }
       # check the required field `type`
       if (!is.null(input_json$`type`)) {
-        stopifnot(is.character(input_json$`type`), length(input_json$`type`) == 1)
+        if (!(is.character(input_json$`type`) && length(input_json$`type`) == 1)) {
+          stop(paste("Error! Invalid data for `type`. Must be a string:", input_json$`type`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for UsageCapExceededProblem: the required field `type` is missing."))
       }

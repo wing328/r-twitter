@@ -33,10 +33,12 @@ AnimatedGifAllOf <- R6::R6Class(
     #' @export
     initialize = function(`preview_image_url` = NULL, `variants` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`preview_image_url`)) {
-        stopifnot(is.character(`preview_image_url`), length(`preview_image_url`) == 1)
+        if (!(is.character(`preview_image_url`) && length(`preview_image_url`) == 1)) {
+          stop(paste("Error! Invalid data for `preview_image_url`. Must be a string:", `preview_image_url`))
+        }
         # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
         if (!stringr::str_detect(`preview_image_url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-          stop(paste("Error! Invalid URL:", `preview_image_url`))
+          stop(paste("Error! Invalid data for `preview_image_url`. Must be a URL:", `preview_image_url`))
         }
         self$`preview_image_url` <- `preview_image_url`
       }
@@ -87,7 +89,7 @@ AnimatedGifAllOf <- R6::R6Class(
       if (!is.null(this_object$`preview_image_url`)) {
         # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
         if (!stringr::str_detect(this_object$`preview_image_url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-          stop(paste("Error! Invalid URL:", this_object$`preview_image_url`))
+          stop(paste("Error! Invalid data for `preview_image_url`. Must be a URL:", this_object$`preview_image_url`))
         }
         self$`preview_image_url` <- this_object$`preview_image_url`
       }
@@ -150,7 +152,7 @@ AnimatedGifAllOf <- R6::R6Class(
       this_object <- jsonlite::fromJSON(input_json)
       # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
       if (!stringr::str_detect(this_object$`preview_image_url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-        stop(paste("Error! Invalid URL:", this_object$`preview_image_url`))
+        stop(paste("Error! Invalid data for `preview_image_url`. Must be a URL:", this_object$`preview_image_url`))
       }
       self$`preview_image_url` <- this_object$`preview_image_url`
       self$`variants` <- ApiClient$new()$deserializeObj(this_object$`variants`, "array[Variant]", loadNamespace("twitter"))

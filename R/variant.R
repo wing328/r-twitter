@@ -36,18 +36,24 @@ Variant <- R6::R6Class(
     #' @export
     initialize = function(`bit_rate` = NULL, `content_type` = NULL, `url` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`bit_rate`)) {
-        stopifnot(is.numeric(`bit_rate`), length(`bit_rate`) == 1)
+        if (!(is.numeric(`bit_rate`) && length(`bit_rate`) == 1)) {
+          stop(paste("Error! Invalid data for `bit_rate`. Must be an integer:", `bit_rate`))
+        }
         self$`bit_rate` <- `bit_rate`
       }
       if (!is.null(`content_type`)) {
-        stopifnot(is.character(`content_type`), length(`content_type`) == 1)
+        if (!(is.character(`content_type`) && length(`content_type`) == 1)) {
+          stop(paste("Error! Invalid data for `content_type`. Must be a string:", `content_type`))
+        }
         self$`content_type` <- `content_type`
       }
       if (!is.null(`url`)) {
-        stopifnot(is.character(`url`), length(`url`) == 1)
+        if (!(is.character(`url`) && length(`url`) == 1)) {
+          stop(paste("Error! Invalid data for `url`. Must be a string:", `url`))
+        }
         # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
         if (!stringr::str_detect(`url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-          stop(paste("Error! Invalid URL:", `url`))
+          stop(paste("Error! Invalid data for `url`. Must be a URL:", `url`))
         }
         self$`url` <- `url`
       }
@@ -103,7 +109,7 @@ Variant <- R6::R6Class(
       if (!is.null(this_object$`url`)) {
         # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
         if (!stringr::str_detect(this_object$`url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-          stop(paste("Error! Invalid URL:", this_object$`url`))
+          stop(paste("Error! Invalid data for `url`. Must be a URL:", this_object$`url`))
         }
         self$`url` <- this_object$`url`
       }
@@ -173,7 +179,7 @@ Variant <- R6::R6Class(
       self$`content_type` <- this_object$`content_type`
       # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
       if (!stringr::str_detect(this_object$`url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-        stop(paste("Error! Invalid URL:", this_object$`url`))
+        stop(paste("Error! Invalid data for `url`. Must be a URL:", this_object$`url`))
       }
       self$`url` <- this_object$`url`
       # process additional properties/fields in the payload

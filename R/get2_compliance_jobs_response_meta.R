@@ -30,7 +30,9 @@ Get2ComplianceJobsResponseMeta <- R6::R6Class(
     #' @export
     initialize = function(`result_count` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`result_count`)) {
-        stopifnot(is.numeric(`result_count`), length(`result_count`) == 1)
+        if (!(is.numeric(`result_count`) && length(`result_count`) == 1)) {
+          stop(paste("Error! Invalid data for `result_count`. Must be an integer:", `result_count`))
+        }
         self$`result_count` <- `result_count`
       }
       if (!is.null(additional_properties)) {

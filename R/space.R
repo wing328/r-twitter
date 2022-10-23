@@ -78,29 +78,35 @@ Space <- R6::R6Class(
     #' @export
     initialize = function(`id`, `state`, `created_at` = NULL, `creator_id` = NULL, `ended_at` = NULL, `host_ids` = NULL, `invited_user_ids` = NULL, `is_ticketed` = NULL, `lang` = NULL, `participant_count` = NULL, `scheduled_start` = NULL, `speaker_ids` = NULL, `started_at` = NULL, `subscriber_count` = NULL, `title` = NULL, `topics` = NULL, `updated_at` = NULL, additional_properties = NULL, ...) {
       if (!missing(`id`)) {
-        stopifnot(is.character(`id`), length(`id`) == 1)
+        if (!(is.character(`id`) && length(`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
+        }
         self$`id` <- `id`
       }
       if (!missing(`state`)) {
         if (!(`state` %in% c("live", "scheduled", "ended"))) {
           stop(paste("Error! \"", `state`, "\" cannot be assigned to `state`. Must be \"live\", \"scheduled\", \"ended\".", sep = ""))
         }
-        stopifnot(is.character(`state`), length(`state`) == 1)
+        if (!(is.character(`state`) && length(`state`) == 1)) {
+          stop(paste("Error! Invalid data for `state`. Must be a string:", `state`))
+        }
         self$`state` <- `state`
       }
       if (!is.null(`created_at`)) {
         if (!is.character(`created_at`)) {
-          stop(paste("Error! Invalid DateTime. Must be a string:", `created_at`))
+          stop(paste("Error! Invalid data for `created_at`. Must be a string:", `created_at`))
         }
         self$`created_at` <- `created_at`
       }
       if (!is.null(`creator_id`)) {
-        stopifnot(is.character(`creator_id`), length(`creator_id`) == 1)
+        if (!(is.character(`creator_id`) && length(`creator_id`) == 1)) {
+          stop(paste("Error! Invalid data for `creator_id`. Must be a string:", `creator_id`))
+        }
         self$`creator_id` <- `creator_id`
       }
       if (!is.null(`ended_at`)) {
         if (!is.character(`ended_at`)) {
-          stop(paste("Error! Invalid DateTime. Must be a string:", `ended_at`))
+          stop(paste("Error! Invalid data for `ended_at`. Must be a string:", `ended_at`))
         }
         self$`ended_at` <- `ended_at`
       }
@@ -115,20 +121,26 @@ Space <- R6::R6Class(
         self$`invited_user_ids` <- `invited_user_ids`
       }
       if (!is.null(`is_ticketed`)) {
-        stopifnot(is.logical(`is_ticketed`), length(`is_ticketed`) == 1)
+        if (!(is.logical(`is_ticketed`) && length(`is_ticketed`) == 1)) {
+          stop(paste("Error! Invalid data for `is_ticketed`. Must be a boolean:", `is_ticketed`))
+        }
         self$`is_ticketed` <- `is_ticketed`
       }
       if (!is.null(`lang`)) {
-        stopifnot(is.character(`lang`), length(`lang`) == 1)
+        if (!(is.character(`lang`) && length(`lang`) == 1)) {
+          stop(paste("Error! Invalid data for `lang`. Must be a string:", `lang`))
+        }
         self$`lang` <- `lang`
       }
       if (!is.null(`participant_count`)) {
-        stopifnot(is.numeric(`participant_count`), length(`participant_count`) == 1)
+        if (!(is.numeric(`participant_count`) && length(`participant_count`) == 1)) {
+          stop(paste("Error! Invalid data for `participant_count`. Must be an integer:", `participant_count`))
+        }
         self$`participant_count` <- `participant_count`
       }
       if (!is.null(`scheduled_start`)) {
         if (!is.character(`scheduled_start`)) {
-          stop(paste("Error! Invalid DateTime. Must be a string:", `scheduled_start`))
+          stop(paste("Error! Invalid data for `scheduled_start`. Must be a string:", `scheduled_start`))
         }
         self$`scheduled_start` <- `scheduled_start`
       }
@@ -139,16 +151,20 @@ Space <- R6::R6Class(
       }
       if (!is.null(`started_at`)) {
         if (!is.character(`started_at`)) {
-          stop(paste("Error! Invalid DateTime. Must be a string:", `started_at`))
+          stop(paste("Error! Invalid data for `started_at`. Must be a string:", `started_at`))
         }
         self$`started_at` <- `started_at`
       }
       if (!is.null(`subscriber_count`)) {
-        stopifnot(is.numeric(`subscriber_count`), length(`subscriber_count`) == 1)
+        if (!(is.numeric(`subscriber_count`) && length(`subscriber_count`) == 1)) {
+          stop(paste("Error! Invalid data for `subscriber_count`. Must be an integer:", `subscriber_count`))
+        }
         self$`subscriber_count` <- `subscriber_count`
       }
       if (!is.null(`title`)) {
-        stopifnot(is.character(`title`), length(`title`) == 1)
+        if (!(is.character(`title`) && length(`title`) == 1)) {
+          stop(paste("Error! Invalid data for `title`. Must be a string:", `title`))
+        }
         self$`title` <- `title`
       }
       if (!is.null(`topics`)) {
@@ -158,7 +174,7 @@ Space <- R6::R6Class(
       }
       if (!is.null(`updated_at`)) {
         if (!is.character(`updated_at`)) {
-          stop(paste("Error! Invalid DateTime. Must be a string:", `updated_at`))
+          stop(paste("Error! Invalid data for `updated_at`. Must be a string:", `updated_at`))
         }
         self$`updated_at` <- `updated_at`
       }
@@ -530,13 +546,17 @@ Space <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `id`
       if (!is.null(input_json$`id`)) {
-        stopifnot(is.character(input_json$`id`), length(input_json$`id`) == 1)
+        if (!(is.character(input_json$`id`) && length(input_json$`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", input_json$`id`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for Space: the required field `id` is missing."))
       }
       # check the required field `state`
       if (!is.null(input_json$`state`)) {
-        stopifnot(is.character(input_json$`state`), length(input_json$`state`) == 1)
+        if (!(is.character(input_json$`state`) && length(input_json$`state`) == 1)) {
+          stop(paste("Error! Invalid data for `state`. Must be a string:", input_json$`state`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for Space: the required field `state` is missing."))
       }

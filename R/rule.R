@@ -36,15 +36,21 @@ Rule <- R6::R6Class(
     #' @export
     initialize = function(`value`, `id` = NULL, `tag` = NULL, additional_properties = NULL, ...) {
       if (!missing(`value`)) {
-        stopifnot(is.character(`value`), length(`value`) == 1)
+        if (!(is.character(`value`) && length(`value`) == 1)) {
+          stop(paste("Error! Invalid data for `value`. Must be a string:", `value`))
+        }
         self$`value` <- `value`
       }
       if (!is.null(`id`)) {
-        stopifnot(is.character(`id`), length(`id`) == 1)
+        if (!(is.character(`id`) && length(`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
+        }
         self$`id` <- `id`
       }
       if (!is.null(`tag`)) {
-        stopifnot(is.character(`tag`), length(`tag`) == 1)
+        if (!(is.character(`tag`) && length(`tag`) == 1)) {
+          stop(paste("Error! Invalid data for `tag`. Must be a string:", `tag`))
+        }
         self$`tag` <- `tag`
       }
       if (!is.null(additional_properties)) {
@@ -185,7 +191,9 @@ Rule <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `value`
       if (!is.null(input_json$`value`)) {
-        stopifnot(is.character(input_json$`value`), length(input_json$`value`) == 1)
+        if (!(is.character(input_json$`value`) && length(input_json$`value`) == 1)) {
+          stop(paste("Error! Invalid data for `value`. Must be a string:", input_json$`value`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for Rule: the required field `value` is missing."))
       }

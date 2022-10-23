@@ -39,17 +39,21 @@ UserProfileModificationObjectSchema <- R6::R6Class(
     #' @export
     initialize = function(`event_at`, `new_value`, `profile_field`, `user`, additional_properties = NULL, ...) {
       if (!missing(`event_at`)) {
-        if (!is.character(`event_at`)) {
-          stop(paste("Error! Invalid DateTime. Must be a string:", `event_at`))
+        if (!(is.character(`event_at`) && length(`event_at`) == 1)) {
+          stop(paste("Error! Invalid data for `event_at`. Must be a string:", `event_at`))
         }
         self$`event_at` <- `event_at`
       }
       if (!missing(`new_value`)) {
-        stopifnot(is.character(`new_value`), length(`new_value`) == 1)
+        if (!(is.character(`new_value`) && length(`new_value`) == 1)) {
+          stop(paste("Error! Invalid data for `new_value`. Must be a string:", `new_value`))
+        }
         self$`new_value` <- `new_value`
       }
       if (!missing(`profile_field`)) {
-        stopifnot(is.character(`profile_field`), length(`profile_field`) == 1)
+        if (!(is.character(`profile_field`) && length(`profile_field`) == 1)) {
+          stop(paste("Error! Invalid data for `profile_field`. Must be a string:", `profile_field`))
+        }
         self$`profile_field` <- `profile_field`
       }
       if (!missing(`user`)) {
@@ -212,19 +216,25 @@ UserProfileModificationObjectSchema <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `event_at`
       if (!is.null(input_json$`event_at`)) {
-        stopifnot(is.character(input_json$`event_at`), length(input_json$`event_at`) == 1)
+        if (!(is.character(input_json$`event_at`) && length(input_json$`event_at`) == 1)) {
+          stop(paste("Error! Invalid data for `event_at`. Must be a string:", input_json$`event_at`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for UserProfileModificationObjectSchema: the required field `event_at` is missing."))
       }
       # check the required field `new_value`
       if (!is.null(input_json$`new_value`)) {
-        stopifnot(is.character(input_json$`new_value`), length(input_json$`new_value`) == 1)
+        if (!(is.character(input_json$`new_value`) && length(input_json$`new_value`) == 1)) {
+          stop(paste("Error! Invalid data for `new_value`. Must be a string:", input_json$`new_value`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for UserProfileModificationObjectSchema: the required field `new_value` is missing."))
       }
       # check the required field `profile_field`
       if (!is.null(input_json$`profile_field`)) {
-        stopifnot(is.character(input_json$`profile_field`), length(input_json$`profile_field`) == 1)
+        if (!(is.character(input_json$`profile_field`) && length(input_json$`profile_field`) == 1)) {
+          stop(paste("Error! Invalid data for `profile_field`. Must be a string:", input_json$`profile_field`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for UserProfileModificationObjectSchema: the required field `profile_field` is missing."))
       }

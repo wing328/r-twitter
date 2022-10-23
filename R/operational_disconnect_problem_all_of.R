@@ -33,7 +33,9 @@ OperationalDisconnectProblemAllOf <- R6::R6Class(
         if (!(`disconnect_type` %in% c("OperationalDisconnect", "UpstreamOperationalDisconnect", "ForceDisconnect", "UpstreamUncleanDisconnect", "SlowReader", "InternalError", "ClientApplicationStateDegraded", "InvalidRules"))) {
           stop(paste("Error! \"", `disconnect_type`, "\" cannot be assigned to `disconnect_type`. Must be \"OperationalDisconnect\", \"UpstreamOperationalDisconnect\", \"ForceDisconnect\", \"UpstreamUncleanDisconnect\", \"SlowReader\", \"InternalError\", \"ClientApplicationStateDegraded\", \"InvalidRules\".", sep = ""))
         }
-        stopifnot(is.character(`disconnect_type`), length(`disconnect_type`) == 1)
+        if (!(is.character(`disconnect_type`) && length(`disconnect_type`) == 1)) {
+          stop(paste("Error! Invalid data for `disconnect_type`. Must be a string:", `disconnect_type`))
+        }
         self$`disconnect_type` <- `disconnect_type`
       }
       if (!is.null(additional_properties)) {

@@ -30,7 +30,9 @@ BlockUserMutationResponseData <- R6::R6Class(
     #' @export
     initialize = function(`blocking` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`blocking`)) {
-        stopifnot(is.logical(`blocking`), length(`blocking`) == 1)
+        if (!(is.logical(`blocking`) && length(`blocking`) == 1)) {
+          stop(paste("Error! Invalid data for `blocking`. Must be a boolean:", `blocking`))
+        }
         self$`blocking` <- `blocking`
       }
       if (!is.null(additional_properties)) {

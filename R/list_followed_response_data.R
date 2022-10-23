@@ -30,7 +30,9 @@ ListFollowedResponseData <- R6::R6Class(
     #' @export
     initialize = function(`following` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`following`)) {
-        stopifnot(is.logical(`following`), length(`following`) == 1)
+        if (!(is.logical(`following`) && length(`following`) == 1)) {
+          stop(paste("Error! Invalid data for `following`. Must be a boolean:", `following`))
+        }
         self$`following` <- `following`
       }
       if (!is.null(additional_properties)) {

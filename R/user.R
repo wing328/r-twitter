@@ -69,25 +69,33 @@ User <- R6::R6Class(
     #' @export
     initialize = function(`id`, `name`, `username`, `created_at` = NULL, `description` = NULL, `entities` = NULL, `location` = NULL, `pinned_tweet_id` = NULL, `profile_image_url` = NULL, `protected` = NULL, `public_metrics` = NULL, `url` = NULL, `verified` = NULL, `withheld` = NULL, additional_properties = NULL, ...) {
       if (!missing(`id`)) {
-        stopifnot(is.character(`id`), length(`id`) == 1)
+        if (!(is.character(`id`) && length(`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
+        }
         self$`id` <- `id`
       }
       if (!missing(`name`)) {
-        stopifnot(is.character(`name`), length(`name`) == 1)
+        if (!(is.character(`name`) && length(`name`) == 1)) {
+          stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
+        }
         self$`name` <- `name`
       }
       if (!missing(`username`)) {
-        stopifnot(is.character(`username`), length(`username`) == 1)
+        if (!(is.character(`username`) && length(`username`) == 1)) {
+          stop(paste("Error! Invalid data for `username`. Must be a string:", `username`))
+        }
         self$`username` <- `username`
       }
       if (!is.null(`created_at`)) {
         if (!is.character(`created_at`)) {
-          stop(paste("Error! Invalid DateTime. Must be a string:", `created_at`))
+          stop(paste("Error! Invalid data for `created_at`. Must be a string:", `created_at`))
         }
         self$`created_at` <- `created_at`
       }
       if (!is.null(`description`)) {
-        stopifnot(is.character(`description`), length(`description`) == 1)
+        if (!(is.character(`description`) && length(`description`) == 1)) {
+          stop(paste("Error! Invalid data for `description`. Must be a string:", `description`))
+        }
         self$`description` <- `description`
       }
       if (!is.null(`entities`)) {
@@ -95,23 +103,31 @@ User <- R6::R6Class(
         self$`entities` <- `entities`
       }
       if (!is.null(`location`)) {
-        stopifnot(is.character(`location`), length(`location`) == 1)
+        if (!(is.character(`location`) && length(`location`) == 1)) {
+          stop(paste("Error! Invalid data for `location`. Must be a string:", `location`))
+        }
         self$`location` <- `location`
       }
       if (!is.null(`pinned_tweet_id`)) {
-        stopifnot(is.character(`pinned_tweet_id`), length(`pinned_tweet_id`) == 1)
+        if (!(is.character(`pinned_tweet_id`) && length(`pinned_tweet_id`) == 1)) {
+          stop(paste("Error! Invalid data for `pinned_tweet_id`. Must be a string:", `pinned_tweet_id`))
+        }
         self$`pinned_tweet_id` <- `pinned_tweet_id`
       }
       if (!is.null(`profile_image_url`)) {
-        stopifnot(is.character(`profile_image_url`), length(`profile_image_url`) == 1)
+        if (!(is.character(`profile_image_url`) && length(`profile_image_url`) == 1)) {
+          stop(paste("Error! Invalid data for `profile_image_url`. Must be a string:", `profile_image_url`))
+        }
         # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
         if (!stringr::str_detect(`profile_image_url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-          stop(paste("Error! Invalid URL:", `profile_image_url`))
+          stop(paste("Error! Invalid data for `profile_image_url`. Must be a URL:", `profile_image_url`))
         }
         self$`profile_image_url` <- `profile_image_url`
       }
       if (!is.null(`protected`)) {
-        stopifnot(is.logical(`protected`), length(`protected`) == 1)
+        if (!(is.logical(`protected`) && length(`protected`) == 1)) {
+          stop(paste("Error! Invalid data for `protected`. Must be a boolean:", `protected`))
+        }
         self$`protected` <- `protected`
       }
       if (!is.null(`public_metrics`)) {
@@ -119,11 +135,15 @@ User <- R6::R6Class(
         self$`public_metrics` <- `public_metrics`
       }
       if (!is.null(`url`)) {
-        stopifnot(is.character(`url`), length(`url`) == 1)
+        if (!(is.character(`url`) && length(`url`) == 1)) {
+          stop(paste("Error! Invalid data for `url`. Must be a string:", `url`))
+        }
         self$`url` <- `url`
       }
       if (!is.null(`verified`)) {
-        stopifnot(is.logical(`verified`), length(`verified`) == 1)
+        if (!(is.logical(`verified`) && length(`verified`) == 1)) {
+          stop(paste("Error! Invalid data for `verified`. Must be a boolean:", `verified`))
+        }
         self$`verified` <- `verified`
       }
       if (!is.null(`withheld`)) {
@@ -243,7 +263,7 @@ User <- R6::R6Class(
       if (!is.null(this_object$`profile_image_url`)) {
         # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
         if (!stringr::str_detect(this_object$`profile_image_url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-          stop(paste("Error! Invalid URL:", this_object$`profile_image_url`))
+          stop(paste("Error! Invalid data for `profile_image_url`. Must be a URL:", this_object$`profile_image_url`))
         }
         self$`profile_image_url` <- this_object$`profile_image_url`
       }
@@ -428,7 +448,7 @@ User <- R6::R6Class(
       self$`pinned_tweet_id` <- this_object$`pinned_tweet_id`
       # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
       if (!stringr::str_detect(this_object$`profile_image_url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
-        stop(paste("Error! Invalid URL:", this_object$`profile_image_url`))
+        stop(paste("Error! Invalid data for `profile_image_url`. Must be a URL:", this_object$`profile_image_url`))
       }
       self$`profile_image_url` <- this_object$`profile_image_url`
       self$`protected` <- this_object$`protected`
@@ -458,19 +478,25 @@ User <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `id`
       if (!is.null(input_json$`id`)) {
-        stopifnot(is.character(input_json$`id`), length(input_json$`id`) == 1)
+        if (!(is.character(input_json$`id`) && length(input_json$`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", input_json$`id`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for User: the required field `id` is missing."))
       }
       # check the required field `name`
       if (!is.null(input_json$`name`)) {
-        stopifnot(is.character(input_json$`name`), length(input_json$`name`) == 1)
+        if (!(is.character(input_json$`name`) && length(input_json$`name`) == 1)) {
+          stop(paste("Error! Invalid data for `name`. Must be a string:", input_json$`name`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for User: the required field `name` is missing."))
       }
       # check the required field `username`
       if (!is.null(input_json$`username`)) {
-        stopifnot(is.character(input_json$`username`), length(input_json$`username`) == 1)
+        if (!(is.character(input_json$`username`) && length(input_json$`username`) == 1)) {
+          stop(paste("Error! Invalid data for `username`. Must be a string:", input_json$`username`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for User: the required field `username` is missing."))
       }

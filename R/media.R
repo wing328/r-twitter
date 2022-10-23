@@ -41,19 +41,27 @@ Media <- R6::R6Class(
     #' @export
     initialize = function(`type`, `height` = NULL, `media_key` = NULL, `width` = NULL, additional_properties = NULL, ...) {
       if (!missing(`type`)) {
-        stopifnot(is.character(`type`), length(`type`) == 1)
+        if (!(is.character(`type`) && length(`type`) == 1)) {
+          stop(paste("Error! Invalid data for `type`. Must be a string:", `type`))
+        }
         self$`type` <- `type`
       }
       if (!is.null(`height`)) {
-        stopifnot(is.numeric(`height`), length(`height`) == 1)
+        if (!(is.numeric(`height`) && length(`height`) == 1)) {
+          stop(paste("Error! Invalid data for `height`. Must be an integer:", `height`))
+        }
         self$`height` <- `height`
       }
       if (!is.null(`media_key`)) {
-        stopifnot(is.character(`media_key`), length(`media_key`) == 1)
+        if (!(is.character(`media_key`) && length(`media_key`) == 1)) {
+          stop(paste("Error! Invalid data for `media_key`. Must be a string:", `media_key`))
+        }
         self$`media_key` <- `media_key`
       }
       if (!is.null(`width`)) {
-        stopifnot(is.numeric(`width`), length(`width`) == 1)
+        if (!(is.numeric(`width`) && length(`width`) == 1)) {
+          stop(paste("Error! Invalid data for `width`. Must be an integer:", `width`))
+        }
         self$`width` <- `width`
       }
       if (!is.null(additional_properties)) {
@@ -210,7 +218,9 @@ Media <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `type`
       if (!is.null(input_json$`type`)) {
-        stopifnot(is.character(input_json$`type`), length(input_json$`type`) == 1)
+        if (!(is.character(input_json$`type`) && length(input_json$`type`) == 1)) {
+          stop(paste("Error! Invalid data for `type`. Must be a string:", input_json$`type`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for Media: the required field `type` is missing."))
       }

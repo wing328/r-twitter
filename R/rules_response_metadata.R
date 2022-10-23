@@ -39,15 +39,21 @@ RulesResponseMetadata <- R6::R6Class(
     #' @export
     initialize = function(`sent`, `next_token` = NULL, `result_count` = NULL, `summary` = NULL, additional_properties = NULL, ...) {
       if (!missing(`sent`)) {
-        stopifnot(is.character(`sent`), length(`sent`) == 1)
+        if (!(is.character(`sent`) && length(`sent`) == 1)) {
+          stop(paste("Error! Invalid data for `sent`. Must be a string:", `sent`))
+        }
         self$`sent` <- `sent`
       }
       if (!is.null(`next_token`)) {
-        stopifnot(is.character(`next_token`), length(`next_token`) == 1)
+        if (!(is.character(`next_token`) && length(`next_token`) == 1)) {
+          stop(paste("Error! Invalid data for `next_token`. Must be a string:", `next_token`))
+        }
         self$`next_token` <- `next_token`
       }
       if (!is.null(`result_count`)) {
-        stopifnot(is.numeric(`result_count`), length(`result_count`) == 1)
+        if (!(is.numeric(`result_count`) && length(`result_count`) == 1)) {
+          stop(paste("Error! Invalid data for `result_count`. Must be an integer:", `result_count`))
+        }
         self$`result_count` <- `result_count`
       }
       if (!is.null(`summary`)) {
@@ -210,7 +216,9 @@ RulesResponseMetadata <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `sent`
       if (!is.null(input_json$`sent`)) {
-        stopifnot(is.character(input_json$`sent`), length(input_json$`sent`) == 1)
+        if (!(is.character(input_json$`sent`) && length(input_json$`sent`) == 1)) {
+          stop(paste("Error! Invalid data for `sent`. Must be a string:", input_json$`sent`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for RulesResponseMetadata: the required field `sent` is missing."))
       }

@@ -37,7 +37,9 @@ TweetGeo <- R6::R6Class(
         self$`coordinates` <- `coordinates`
       }
       if (!is.null(`place_id`)) {
-        stopifnot(is.character(`place_id`), length(`place_id`) == 1)
+        if (!(is.character(`place_id`) && length(`place_id`) == 1)) {
+          stop(paste("Error! Invalid data for `place_id`. Must be a string:", `place_id`))
+        }
         self$`place_id` <- `place_id`
       }
       if (!is.null(additional_properties)) {

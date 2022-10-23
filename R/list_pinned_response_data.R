@@ -30,7 +30,9 @@ ListPinnedResponseData <- R6::R6Class(
     #' @export
     initialize = function(`pinned` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`pinned`)) {
-        stopifnot(is.logical(`pinned`), length(`pinned`) == 1)
+        if (!(is.logical(`pinned`) && length(`pinned`) == 1)) {
+          stop(paste("Error! Invalid data for `pinned`. Must be a boolean:", `pinned`))
+        }
         self$`pinned` <- `pinned`
       }
       if (!is.null(additional_properties)) {

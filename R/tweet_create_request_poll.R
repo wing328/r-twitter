@@ -31,7 +31,9 @@ TweetCreateRequestPoll <- R6::R6Class(
     #' @export
     initialize = function(`duration_minutes`, `options`, `reply_settings` = NULL, ...) {
       if (!missing(`duration_minutes`)) {
-        stopifnot(is.numeric(`duration_minutes`), length(`duration_minutes`) == 1)
+        if (!(is.numeric(`duration_minutes`) && length(`duration_minutes`) == 1)) {
+          stop(paste("Error! Invalid data for `duration_minutes`. Must be an integer:", `duration_minutes`))
+        }
         self$`duration_minutes` <- `duration_minutes`
       }
       if (!missing(`options`)) {
@@ -43,7 +45,9 @@ TweetCreateRequestPoll <- R6::R6Class(
         if (!(`reply_settings` %in% c("following", "mentionedUsers"))) {
           stop(paste("Error! \"", `reply_settings`, "\" cannot be assigned to `reply_settings`. Must be \"following\", \"mentionedUsers\".", sep = ""))
         }
-        stopifnot(is.character(`reply_settings`), length(`reply_settings`) == 1)
+        if (!(is.character(`reply_settings`) && length(`reply_settings`) == 1)) {
+          stop(paste("Error! Invalid data for `reply_settings`. Must be a string:", `reply_settings`))
+        }
         self$`reply_settings` <- `reply_settings`
       }
     },
@@ -160,7 +164,9 @@ TweetCreateRequestPoll <- R6::R6Class(
       input_json <- jsonlite::fromJSON(input)
       # check the required field `duration_minutes`
       if (!is.null(input_json$`duration_minutes`)) {
-        stopifnot(is.numeric(input_json$`duration_minutes`), length(input_json$`duration_minutes`) == 1)
+        if (!(is.numeric(input_json$`duration_minutes`) && length(input_json$`duration_minutes`) == 1)) {
+          stop(paste("Error! Invalid data for `duration_minutes`. Must be an integer:", input_json$`duration_minutes`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for TweetCreateRequestPoll: the required field `duration_minutes` is missing."))
       }

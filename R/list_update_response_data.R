@@ -30,7 +30,9 @@ ListUpdateResponseData <- R6::R6Class(
     #' @export
     initialize = function(`updated` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`updated`)) {
-        stopifnot(is.logical(`updated`), length(`updated`) == 1)
+        if (!(is.logical(`updated`) && length(`updated`) == 1)) {
+          stop(paste("Error! Invalid data for `updated`. Must be a boolean:", `updated`))
+        }
         self$`updated` <- `updated`
       }
       if (!is.null(additional_properties)) {

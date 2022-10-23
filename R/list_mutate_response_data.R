@@ -30,7 +30,9 @@ ListMutateResponseData <- R6::R6Class(
     #' @export
     initialize = function(`is_member` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`is_member`)) {
-        stopifnot(is.logical(`is_member`), length(`is_member`) == 1)
+        if (!(is.logical(`is_member`) && length(`is_member`) == 1)) {
+          stop(paste("Error! Invalid data for `is_member`. Must be a boolean:", `is_member`))
+        }
         self$`is_member` <- `is_member`
       }
       if (!is.null(additional_properties)) {

@@ -33,7 +33,9 @@ InvalidRequestProblemAllOfErrors <- R6::R6Class(
     #' @export
     initialize = function(`message` = NULL, `parameters` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`message`)) {
-        stopifnot(is.character(`message`), length(`message`) == 1)
+        if (!(is.character(`message`) && length(`message`) == 1)) {
+          stop(paste("Error! Invalid data for `message`. Must be a string:", `message`))
+        }
         self$`message` <- `message`
       }
       if (!is.null(`parameters`)) {
